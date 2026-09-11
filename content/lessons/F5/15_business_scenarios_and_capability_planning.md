@@ -36,6 +36,43 @@ metrics), *Actionable* (segments the problem and gives a basis for the solution)
 (solvable within physical, time and cost bounds), *Time-bound* (a clear statement of when the
 opportunity expires) (GUIDE:business-scenarios §1).
 
+<figure class="my-4">
+<svg viewBox="0 0 760 146" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="SMART as a checklist for a business scenario: specific, measurable, actionable, realistic, time-bound">
+<rect x="15" y="12" width="140" height="100" rx="8" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="39" y="46" text-anchor="middle" font-size="26" fill="#222" font-weight="bold">S</text>
+<text x="61" y="42" text-anchor="start" font-size="13" fill="#222" font-weight="bold">Specific</text>
+<text x="61" y="60" text-anchor="start" font-size="13" fill="#3a7d3a">✓</text>
+<text x="85" y="82" text-anchor="middle" font-size="10" fill="#333">what must</text>
+<text x="85" y="96" text-anchor="middle" font-size="10" fill="#333">be done</text>
+<rect x="163" y="12" width="140" height="100" rx="8" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="187" y="46" text-anchor="middle" font-size="26" fill="#222" font-weight="bold">M</text>
+<text x="209" y="42" text-anchor="start" font-size="13" fill="#222" font-weight="bold">Measurable</text>
+<text x="209" y="60" text-anchor="start" font-size="13" fill="#3a7d3a">✓</text>
+<text x="233" y="82" text-anchor="middle" font-size="10" fill="#333">clear success</text>
+<text x="233" y="96" text-anchor="middle" font-size="10" fill="#333">metrics</text>
+<rect x="311" y="12" width="140" height="100" rx="8" fill="#fff1d6" stroke="#e0b060"/>
+<text x="335" y="46" text-anchor="middle" font-size="26" fill="#222" font-weight="bold">A</text>
+<text x="357" y="42" text-anchor="start" font-size="13" fill="#222" font-weight="bold">Actionable</text>
+<text x="357" y="60" text-anchor="start" font-size="13" fill="#3a7d3a">✓</text>
+<text x="381" y="82" text-anchor="middle" font-size="10" fill="#333">segments the problem;</text>
+<text x="381" y="96" text-anchor="middle" font-size="10" fill="#333">basis for the solution</text>
+<rect x="459" y="12" width="140" height="100" rx="8" fill="#fff1d6" stroke="#e0b060"/>
+<text x="483" y="46" text-anchor="middle" font-size="26" fill="#222" font-weight="bold">R</text>
+<text x="505" y="42" text-anchor="start" font-size="13" fill="#222" font-weight="bold">Realistic</text>
+<text x="505" y="60" text-anchor="start" font-size="13" fill="#3a7d3a">✓</text>
+<text x="529" y="82" text-anchor="middle" font-size="10" fill="#333">solvable within physical,</text>
+<text x="529" y="96" text-anchor="middle" font-size="10" fill="#333">time and cost bounds</text>
+<rect x="607" y="12" width="140" height="100" rx="8" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="631" y="46" text-anchor="middle" font-size="26" fill="#222" font-weight="bold">T</text>
+<text x="653" y="42" text-anchor="start" font-size="13" fill="#222" font-weight="bold">Time-bound</text>
+<text x="653" y="60" text-anchor="start" font-size="13" fill="#3a7d3a">✓</text>
+<text x="677" y="82" text-anchor="middle" font-size="10" fill="#333">when the</text>
+<text x="677" y="96" text-anchor="middle" font-size="10" fill="#333">opportunity expires</text>
+<text x="380" y="134" text-anchor="middle" font-size="11" fill="#c0392b">A is Actionable and R is Realistic — not Achievable, not Relevant</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">The SMART checklist for a scenario, with the two letters the exam likes to swap highlighted. Original drawing; wording per GUIDE:business-scenarios §1.</figcaption>
+</figure>
+
 > **Trap.** The "A" is *Actionable* and the "R" is *Realistic* — not "Achievable" or
 > "Relevant". And a Business Scenario is **not** a use-case (more detailed human–computer
 > interaction), not a business model, business case or plan, not SPIN selling, and not an
@@ -124,6 +161,58 @@ catalog, checking for hidden dependent value streams) (GUIDE:business-capability
 Capabilities often cannot reach the target in one step; gaps addressed together that keep the
 value stream functional form a **plateau**, and the gaps carry dependencies that sequence the
 increments delivered through work packages (GUIDE:business-capability-planning §7.2).
+
+<figure class="my-4">
+<svg viewBox="0 0 760 226" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="From value stream stages to the capability catalog, capability instances, gaps, and increments grouped into plateaus and work packages">
+<defs><marker id="arr-f5-15b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="15" y="15" width="110" height="36" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="70.0" y="36.9" text-anchor="middle" font-size="11">Stage 1</text>
+<line x1="125" y1="33" x2="135" y2="33" stroke="#555" marker-end="url(#arr-f5-15b)"/>
+<rect x="135" y="15" width="110" height="36" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="190.0" y="36.9" text-anchor="middle" font-size="11">Stage 2</text>
+<line x1="245" y1="33" x2="255" y2="33" stroke="#555" marker-end="url(#arr-f5-15b)"/>
+<rect x="255" y="15" width="110" height="36" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="310.0" y="36.9" text-anchor="middle" font-size="11">Stage 3</text>
+<text x="380" y="38" text-anchor="start" font-size="11" fill="#345">value stream — each stage adds stakeholder value</text>
+<line x1="190" y1="51" x2="135" y2="90" stroke="#999" stroke-dasharray="4 3" marker-end="url(#arr-f5-15b)"/>
+<text x="150" y="76" text-anchor="start" font-size="9" fill="#666">cross-map stages to capabilities</text>
+<rect x="15" y="92" width="240" height="46" rx="6" fill="#fff" stroke="#666"/>
+<text x="135.0" y="112.0" text-anchor="middle" font-size="10" font-weight="bold">Business capability catalog</text>
+<text x="135.0" y="125.0" text-anchor="middle" font-size="10">what the business does, not how; ≤ ~100 items</text>
+<line x1="255" y1="115" x2="288" y2="115" stroke="#555" marker-end="url(#arr-f5-15b)"/>
+<rect x="290" y="92" width="225" height="46" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+<text x="402.5" y="112.0" text-anchor="middle" font-size="10" font-weight="bold">Capability instances</text>
+<text x="402.5" y="125.0" text-anchor="middle" font-size="10">people + processes + tools, per stage</text>
+<line x1="515" y1="115" x2="543" y2="115" stroke="#555" marker-end="url(#arr-f5-15b)"/>
+<rect x="545" y="92" width="200" height="46" rx="6" fill="#fff1d6" stroke="#e0b060"/>
+<text x="645.0" y="112.0" text-anchor="middle" font-size="10" font-weight="bold">Gaps</text>
+<text x="645.0" y="125.0" text-anchor="middle" font-size="10">actors, resources, applications, processes</text>
+<line x1="645" y1="138" x2="645" y2="164" stroke="#555" marker-end="url(#arr-f5-15b)"/>
+<rect x="290" y="166" width="455" height="48" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="517.5" y="180.5" text-anchor="middle" font-size="10" font-weight="bold">Increments → plateaus → work packages</text>
+<text x="517.5" y="193.5" text-anchor="middle" font-size="10">gaps addressed together that keep the stream working form a plateau;</text>
+<text x="517.5" y="206.5" text-anchor="middle" font-size="10">dependencies set the sequence</text>
+<text x="150" y="190" text-anchor="middle" font-size="10" fill="#666">optimise · consolidate · create · retire</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">The planning chain from value stream to capability increments. Original drawing; instances per GUIDE:business-capability-planning §6.4, plateaus per §7.2.</figcaption>
+</figure>
+
+<!-- figures:start -->
+## Figures from the standard
+
+The diagrams the cited sections carry, from your local copy of the publication. The exam reproduces these; know what each box is.
+
+<div class="grid gap-4 md:grid-cols-2">
+<figure class="max-w-lg"><img src="/figure/GUIDE:business-capability-planning:fig-5-1" alt="Figure 5-1: Example Value Stream Stage" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 5-1: Example Value Stream Stage (GUIDE:business-capability-planning)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/GUIDE:business-capability-planning:fig-6-1" alt="Figure 6-1: Business Capability Catalog Model (Example)" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 6-1: Business Capability Catalog Model (Example) (GUIDE:business-capability-planning)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/GUIDE:business-capability-planning:fig-6-2" alt="Figure 6-2: Mapping Business Capabilities to Value Stream Stages" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 6-2: Mapping Business Capabilities to Value Stream Stages (GUIDE:business-capability-planning)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/GUIDE:business-capability-planning:fig-6-3" alt="Figure 6-3: Acquire Retail Product Online Value Stream" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 6-3: Acquire Retail Product Online Value Stream (GUIDE:business-capability-planning)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/GUIDE:business-capability-planning:fig-7-1" alt="Figure 7-1: Abstracted Acquire Retail Product Online Value Stream" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 7-1: Abstracted Acquire Retail Product Online Value Stream (GUIDE:business-capability-planning)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/GUIDE:business-capability-planning:fig-7-2" alt="Figure 7-2: Addition of the Incentive Management Application" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 7-2: Addition of the Incentive Management Application (GUIDE:business-capability-planning)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/GUIDE:business-scenarios:fig-3-1" alt="Figure 3-1: Creating a Business Scenario" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-1: Creating a Business Scenario (GUIDE:business-scenarios)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/GUIDE:business-scenarios:fig-3-2" alt="Figure 3-2: Phases and Steps of Developing a Business Scenario" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-2: Phases and Steps of Developing a Business Scenario (GUIDE:business-scenarios)</figcaption></figure>
+</div>
+<!-- figures:end -->
 
 ## Check yourself
 

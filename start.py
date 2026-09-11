@@ -4,6 +4,7 @@ Start Learn TOGAF locally (learn_togaf.md §5).
 
     python start.py                    # uvicorn --reload on 5014 (127.0.0.1)
     python start.py --load-content     # rebuild the content cache from content/ first
+    python start.py --reset-progress   # wipe the learner's state (attempts, cards, notes, plan), keep content
     python start.py --stop             # stop whatever is on the port
     python start.py --port 5015
 
@@ -70,12 +71,37 @@ def load_content(environment: dict[str, str]) -> None:
     subprocess.run([_python(), "-c", code], cwd=API_DIR, env=environment, check=True)
 
 
+LEARNER_STATE_TABLES = (
+    "attempt_answer",
+    "attempt",
+    "card_review",
+    "note",
+    "study_session",
+    "lesson_progress",
+    "setting",
+)
+
+
+def reset_progress(environment: dict[str, str]) -> None:
+    """Delete every learner-state row (learn_togaf.md §3) and nothing else: the content cache and
+    the source index are rebuilt from files, but this is the one thing the learner owns."""
+    code = (
+        "from learn_togaf.db import apply_schema, connect, transaction\n"
+        f"tables = {LEARNER_STATE_TABLES!r}\n"
+        "c = connect(); apply_schema(c)\n"
+        "with transaction(c):\n"
+        "    for t in tables: print(t, c.execute(f'DELETE FROM {t}').rowcount, 'rows deleted')\n"
+    )
+    subprocess.run([_python(), "-c", code], cwd=API_DIR, env=environment, check=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--port", type=int, default=DEFAULT_PORT)
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--profile", default="dev", help="LEARN_TOGAF_ENV profile (resources/env/<profile>/.env.yaml)")
     parser.add_argument("--load-content", action="store_true")
+    parser.add_argument("--reset-progress", action="store_true", help="delete the learner's state, then exit")
     parser.add_argument("--no-reload", action="store_true")
     parser.add_argument("--stop", action="store_true")
     args = parser.parse_args()
@@ -86,6 +112,9 @@ def main() -> None:
 
     environment = _environment(args.profile)
     LOG_DIR.mkdir(exist_ok=True)
+    if args.reset_progress:
+        reset_progress(environment)
+        return
     if args.load_content:
         load_content(environment)
     if _pids_on_port(args.port):

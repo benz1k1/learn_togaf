@@ -26,6 +26,34 @@ key (ADM §9.5):
 | Transition Architecture | The enterprise at an architecturally significant state between baseline and target — an interim target to converge on |
 | Implementation and Migration Plan | The schedule of projects that will realise the target |
 
+<figure class="my-4">
+<svg viewBox="0 0 760 158" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="Gaps become work packages, work packages and Transition Architectures become the Architecture Roadmap and the Implementation and Migration Plan">
+<defs><marker id="arr-f5-16a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="15" y="18" width="160" height="52" rx="6" fill="#fff" stroke="#666"/>
+<text x="95.0" y="34.5" text-anchor="middle" font-size="10" font-weight="bold">Gaps from B, C, D</text>
+<text x="95.0" y="47.5" text-anchor="middle" font-size="10">and candidate</text>
+<text x="95.0" y="60.5" text-anchor="middle" font-size="10">roadmap components</text>
+<line x1="175" y1="44" x2="205" y2="44" stroke="#555" marker-end="url(#arr-f5-16a)"/>
+<rect x="205" y="18" width="160" height="52" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="285.0" y="41.0" text-anchor="middle" font-size="10" font-weight="bold">Work Package</text>
+<text x="285.0" y="54.0" text-anchor="middle" font-size="10">a logical group of changes</text>
+<line x1="365" y1="44" x2="395" y2="44" stroke="#555" marker-end="url(#arr-f5-16a)"/>
+<rect x="395" y="18" width="160" height="52" rx="6" fill="#fff1d6" stroke="#e0b060"/>
+<text x="475.0" y="41.0" text-anchor="middle" font-size="10" font-weight="bold">Transition Architecture</text>
+<text x="475.0" y="54.0" text-anchor="middle" font-size="10">an interim state to converge on</text>
+<line x1="555" y1="44" x2="585" y2="44" stroke="#555" marker-end="url(#arr-f5-16a)"/>
+<rect x="585" y="18" width="160" height="52" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+<text x="665.0" y="41.0" text-anchor="middle" font-size="10" font-weight="bold">Architecture Roadmap</text>
+<text x="665.0" y="54.0" text-anchor="middle" font-size="10">work packages on a timeline</text>
+<path d="M285 70 L285 100 L380 100" fill="none" stroke="#555"/>
+<path d="M475 70 L475 100 L380 100 L380 108" fill="none" stroke="#555" marker-end="url(#arr-f5-16a)"/>
+<rect x="205" y="110" width="350" height="36" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+<text x="380.0" y="125.0" text-anchor="middle" font-size="10" font-weight="bold">Implementation and Migration Plan</text>
+<text x="380.0" y="138.0" text-anchor="middle" font-size="10">the schedule of projects that realise the target</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">How the four Phase E concepts chain together. Original drawing; concepts per ADM §9.5.</figcaption>
+</figure>
+
 Phase E's objectives are to produce the initial complete Architecture Roadmap from the gap results
 and candidate roadmap components of B–D, decide whether an incremental approach is needed and if
 so identify Transition Architectures that deliver continuous business value, and define the SBBs
@@ -111,9 +139,60 @@ with Transition Architectures as portfolio milestones (ADM §10.3.6).
 > §3.6.8, §3.6.9). The Implementation Factor catalog and the Consolidated Gaps matrix are Phase E
 > in both documents.
 
+<figure class="my-4">
+<svg viewBox="0 0 760 308" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="The migration planning techniques listed by phase: six Phase E steps on the left, six Phase F steps on the right, in order">
+<defs><marker id="arr-f5-16b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="15" y="12" width="355" height="30" rx="6" fill="#fff1d6" stroke="#e0b060"/>
+<text x="192.5" y="31.2" text-anchor="middle" font-size="12" font-weight="bold">Phase E — Opportunities and Solutions</text>
+<rect x="15" y="52" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="192.5" y="70.5" text-anchor="middle" font-size="10">Consolidated Gaps, Solutions and Dependencies matrix (9.3.3)</text>
+<rect x="15" y="90" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="192.5" y="108.5" text-anchor="middle" font-size="10">Implementation Factor catalog (9.3.3)</text>
+<rect x="15" y="128" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="192.5" y="146.5" text-anchor="middle" font-size="10">Strategy: greenfield / revolutionary / evolutionary (9.3.8)</text>
+<rect x="15" y="166" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="192.5" y="184.5" text-anchor="middle" font-size="10">Work packages; systems Mainstream / Contain / Replace (9.3.9)</text>
+<rect x="15" y="204" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="192.5" y="222.5" text-anchor="middle" font-size="10">Transition Architectures, each with measurable value (9.3.10)</text>
+<rect x="15" y="242" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="192.5" y="260.5" text-anchor="middle" font-size="10">Draft roadmap and draft Implementation and Migration Plan (9.3.11)</text>
+<rect x="390" y="12" width="355" height="30" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+<text x="567.5" y="31.2" text-anchor="middle" font-size="12" font-weight="bold">Phase F — Migration Planning</text>
+<rect x="390" y="52" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="567.5" y="70.5" text-anchor="middle" font-size="10">Interactions with the four management frameworks (10.3.1)</text>
+<rect x="390" y="90" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="567.5" y="108.5" text-anchor="middle" font-size="10">Business value per work package: Business Value and Risk Matrix (10.3.2)</text>
+<rect x="390" y="128" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="567.5" y="146.5" text-anchor="middle" font-size="10">Resources and timing; capital vs operations (10.3.3)</text>
+<rect x="390" y="166" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="567.5" y="184.5" text-anchor="middle" font-size="10">Prioritise projects: value against cost, risks mitigated (10.3.4)</text>
+<rect x="390" y="204" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="567.5" y="222.5" text-anchor="middle" font-size="10">Confirm the roadmap: State Evolution Table, Increments Table (10.3.5)</text>
+<rect x="390" y="242" width="355" height="30" rx="6" fill="#fff" stroke="#666"/>
+<text x="567.5" y="260.5" text-anchor="middle" font-size="10">Finalised plan; Transition Architectures as portfolio milestones (10.3.6)</text>
+<line x1="370" y1="27" x2="390" y2="27" stroke="#555" marker-end="url(#arr-f5-16b)"/>
+<text x="380" y="296" text-anchor="middle" font-size="10" fill="#666">E hands over an incomplete roadmap and plan; F adds portfolio and project detail and closes with lessons learned</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">The techniques placed on Phases E and F, in step order. Original drawing; steps per ADM §9.3 and §10.3.</figcaption>
+</figure>
+
 Phase E hands over an incomplete roadmap and plan; Phase F integrates them with the enterprise's
 other change activity, adding portfolio- and project-level detail, and closes the cycle with
 lessons learned (ADM §10.5).
+
+<!-- figures:start -->
+## Figures from the standard
+
+The diagrams the cited sections carry, from your local copy of the publication. The exam reproduces these; know what each box is.
+
+<div class="grid gap-4 md:grid-cols-2">
+<figure class="max-w-lg"><img src="/figure/CONTENT:fig-3-5" alt="Figure 3-5: Implementation Factor Catalog" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-5: Implementation Factor Catalog (CONTENT)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/CONTENT:fig-3-6" alt="Figure 3-6: Consolidated Gaps, Solutions, and Dependencies Matrix" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-6: Consolidated Gaps, Solutions, and Dependencies Matrix (CONTENT)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/CONTENT:fig-3-7" alt="Figure 3-7: Architecture Definition Increments Table" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-7: Architecture Definition Increments Table (CONTENT)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/CONTENT:fig-3-8" alt="Figure 3-8: Transition Architecture State Evolution Table" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-8: Transition Architecture State Evolution Table (CONTENT)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/CONTENT:fig-3-9" alt="Figure 3-9: Sample Project Assessment with Respect to Business Value and Risk" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-9: Sample Project Assessment with Respect to Business Value and Risk (CONTENT)</figcaption></figure>
+</div>
+<!-- figures:end -->
 
 ## Check yourself
 

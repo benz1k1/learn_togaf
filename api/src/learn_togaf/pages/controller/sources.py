@@ -5,16 +5,19 @@ not in ``config.LOCAL_ONLY_HOSTS`` — the check is the peer address, never a he
 """
 
 import sqlite3
+from urllib.parse import quote
 
 from fastapi import Depends, HTTPException
 from fastapi.responses import FileResponse
 from starlette.requests import Request
+from starlette.responses import RedirectResponse
 
 from learn_togaf.config import LOCAL_ONLY_HOSTS
 from learn_togaf.deps import get_db
 from learn_togaf.pages.context import base_context
 from learn_togaf.pages.templating import templates
 from learn_togaf.service import sources as sources_service
+from learn_togaf.sources import index
 
 
 def _require_local(request: Request) -> None:
@@ -44,6 +47,12 @@ async def source_index(request: Request, q: str = "", connection: sqlite3.Connec
 async def section_page(request: Request, section_id: str, connection: sqlite3.Connection = Depends(get_db)):
     _require_local(request)
     section = sources_service.get_section(connection, section_id)
+    if section is None and "§" in section_id:
+        # Lessons and questions cite by reference ("CONTENT §4"), not by section id; resolve the
+        # reference the way the index does and show the section whose heading carries that number.
+        matches = index.resolve_ref(connection, section_id)
+        if matches:
+            return RedirectResponse(f"/source/{quote(matches[0]['id'])}", status_code=303)
     if section is None:
         raise HTTPException(
             status_code=404, detail=f"No source section {section_id!r}. Run: python sources.py fetch"

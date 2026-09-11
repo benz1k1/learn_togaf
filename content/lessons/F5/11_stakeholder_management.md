@@ -43,6 +43,48 @@ Plan (who to communicate with) and the Statement of Architecture Work (roles and
 
 (TECH §3.3)
 
+<figure class="my-4">
+<svg viewBox="0 0 760 212" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="The four stakeholder management steps produce the stakeholder map, which feeds the Architecture Vision, the Communications Plan and the Statement of Architecture Work">
+<defs><marker id="arr-f5-11a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="15" y="15" width="170" height="54" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="100.0" y="31.9" text-anchor="middle" font-size="11" font-weight="bold">1 Identify</text>
+<text x="100.0" y="45.9" text-anchor="middle" font-size="11">who is affected, has power,</text>
+<text x="100.0" y="59.9" text-anchor="middle" font-size="11">has an interest</text>
+<line x1="185" y1="42" x2="200" y2="42" stroke="#555" marker-end="url(#arr-f5-11a)"/>
+<rect x="200" y="15" width="170" height="54" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="285.0" y="31.9" text-anchor="middle" font-size="11" font-weight="bold">2 Classify positions</text>
+<text x="285.0" y="45.9" text-anchor="middle" font-size="11">understanding, commitment,</text>
+<text x="285.0" y="59.9" text-anchor="middle" font-size="11">readiness to support</text>
+<line x1="370" y1="42" x2="385" y2="42" stroke="#555" marker-end="url(#arr-f5-11a)"/>
+<rect x="385" y="15" width="170" height="54" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="470.0" y="31.9" text-anchor="middle" font-size="11" font-weight="bold">3 Determine approach</text>
+<text x="470.0" y="45.9" text-anchor="middle" font-size="11">place on the</text>
+<text x="470.0" y="59.9" text-anchor="middle" font-size="11">power / interest grid</text>
+<line x1="555" y1="42" x2="570" y2="42" stroke="#555" marker-end="url(#arr-f5-11a)"/>
+<rect x="570" y="15" width="170" height="54" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="655.0" y="31.9" text-anchor="middle" font-size="11" font-weight="bold">4 Tailor deliverables</text>
+<text x="655.0" y="45.9" text-anchor="middle" font-size="11">catalogs, matrices, diagrams</text>
+<text x="655.0" y="59.9" text-anchor="middle" font-size="11">per stakeholder group</text>
+<path d="M100 69 L100 84 L380 84" fill="none" stroke="#555"/>
+<path d="M655 69 L655 84 L380 84 L380 96" fill="none" stroke="#555" marker-end="url(#arr-f5-11a)"/>
+<rect x="230" y="98" width="300" height="30" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+<text x="380.0" y="116.8" text-anchor="middle" font-size="11" font-weight="bold">Stakeholder Map — the Phase A step's output</text>
+<line x1="380" y1="128" x2="127" y2="158" stroke="#555" marker-end="url(#arr-f5-11a)"/>
+<rect x="15" y="160" width="225" height="40" rx="6" fill="#fff" stroke="#666"/>
+<text x="127.5" y="176.8" text-anchor="middle" font-size="11" font-weight="bold">Architecture Vision</text>
+<text x="127.5" y="190.8" text-anchor="middle" font-size="11">relevant concerns and viewpoints</text>
+<line x1="380" y1="128" x2="382" y2="158" stroke="#555" marker-end="url(#arr-f5-11a)"/>
+<rect x="270" y="160" width="225" height="40" rx="6" fill="#fff" stroke="#666"/>
+<text x="382.5" y="176.8" text-anchor="middle" font-size="11" font-weight="bold">Communications Plan</text>
+<text x="382.5" y="190.8" text-anchor="middle" font-size="11">who to communicate with</text>
+<line x1="380" y1="128" x2="637" y2="158" stroke="#555" marker-end="url(#arr-f5-11a)"/>
+<rect x="525" y="160" width="225" height="40" rx="6" fill="#fff" stroke="#666"/>
+<text x="637.5" y="176.8" text-anchor="middle" font-size="11" font-weight="bold">Statement of Architecture Work</text>
+<text x="637.5" y="190.8" text-anchor="middle" font-size="11">roles and responsibilities</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">Four steps in, three deliverables out. Original drawing; steps per TECH §3.3, downstream use per ADM §3.3.2.</figcaption>
+</figure>
+
 ### 1. Identify
 
 Think about everyone affected by, influential over, or interested in the Enterprise Architecture:
@@ -78,6 +120,33 @@ interest** matrix, which also indicates the engagement strategy for each quadran
 > High power + low interest = *Keep Satisfied*; low power + high interest = *Keep Informed*.
 > Only high/high are *Key Players* (TECH §3.3.3).
 
+<figure class="my-4">
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="The power and interest grid as a two by two: power up the vertical axis, interest along the horizontal; Key Players top right, Keep Satisfied top left, Keep Informed bottom right, Minimal Effort bottom left">
+<defs><marker id="arr-f5-11b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="130" y="30" width="285.0" height="110.0" fill="#fff1d6" stroke="#e0b060"/>
+<text x="272.5" y="81.0" text-anchor="middle" font-size="14" fill="#222" font-weight="bold">Keep Satisfied</text>
+<text x="272.5" y="101.0" text-anchor="middle" font-size="11" fill="#555">high power · low interest</text>
+<rect x="415.0" y="30" width="285.0" height="110.0" fill="#e3f5e1" stroke="#7fbf7a"/>
+<text x="557.5" y="81.0" text-anchor="middle" font-size="14" fill="#222" font-weight="bold">Key Players</text>
+<text x="557.5" y="101.0" text-anchor="middle" font-size="11" fill="#555">high power · high interest</text>
+<rect x="130" y="140.0" width="285.0" height="110.0" fill="#f1f1f1" stroke="#999"/>
+<text x="272.5" y="191.0" text-anchor="middle" font-size="14" fill="#222" font-weight="bold">Minimal Effort</text>
+<text x="272.5" y="211.0" text-anchor="middle" font-size="11" fill="#555">low power · low interest</text>
+<rect x="415.0" y="140.0" width="285.0" height="110.0" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="557.5" y="191.0" text-anchor="middle" font-size="14" fill="#222" font-weight="bold">Keep Informed</text>
+<text x="557.5" y="211.0" text-anchor="middle" font-size="11" fill="#555">low power · high interest</text>
+<line x1="105" y1="250" x2="105" y2="22" stroke="#555" marker-end="url(#arr-f5-11b)"/>
+<text x="60" y="144.0" text-anchor="middle" font-size="12" fill="#222" font-weight="bold" transform="rotate(-90 60 144.0)">Power</text>
+<text x="95" y="44" text-anchor="end" font-size="10" fill="#666">high</text>
+<text x="95" y="246" text-anchor="end" font-size="10" fill="#666">low</text>
+<line x1="130" y1="268" x2="708" y2="268" stroke="#555" marker-end="url(#arr-f5-11b)"/>
+<text x="415.0" y="292" text-anchor="middle" font-size="12" fill="#222" font-weight="bold">Level of interest</text>
+<text x="134" y="282" text-anchor="start" font-size="10" fill="#666">low</text>
+<text x="696" y="282" text-anchor="end" font-size="10" fill="#666">high</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">The four quadrants, with power vertical and interest horizontal. Original drawing; quadrants per TECH §3.3.3.</figcaption>
+</figure>
+
 ### 4. Tailor engagement deliverables
 
 Identify the catalogs, matrices and diagrams the engagement must produce and validate with each
@@ -93,6 +162,17 @@ drivers, goals and objectives and are classed Keep Satisfied; Enterprise Securit
 concerned with access and tamper protection and is served by Data Security and Network diagrams;
 Regulatory Bodies are Keep Satisfied and need the Business Footprint and Application Communication
 diagrams (TECH §3.4).
+
+<!-- figures:start -->
+## Figures from the standard
+
+The diagrams the cited sections carry, from your local copy of the publication. The exam reproduces these; know what each box is.
+
+<div class="grid gap-4 md:grid-cols-2">
+<figure class="max-w-lg"><img src="/figure/TECH:fig-3-1" alt="Figure 3-1: Sample Stakeholders and Categories" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-1: Sample Stakeholders and Categories (TECH)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/TECH:fig-3-2" alt="Figure 3-2: Stakeholder Power Grid" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-2: Stakeholder Power Grid (TECH)</figcaption></figure>
+</div>
+<!-- figures:end -->
 
 ## Check yourself
 

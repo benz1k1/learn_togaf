@@ -10,6 +10,7 @@ is the plan and the source of truth; read the section a change touches before ch
 cd api && uv sync                      # venv at api/.venv; uv only, never pip or poetry
 python start.py                        # uvicorn --reload on http://127.0.0.1:5014
 python start.py --load-content         # rebuild the content cache from content/ first
+python start.py --reset-progress       # wipe learner state only (attempts, cards, notes, plan)
 python start.py --stop
 python sources.py init-key | encrypt | login | fetch | pdf | index | figures   # §1.4
 python generate.py lessons <unit> | glossary | adm | questions foundation <unit> | verify      # §1.5

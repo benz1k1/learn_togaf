@@ -78,6 +78,50 @@ by family. Every definition below is paraphrased; the flashcards carry the same 
 | Actor | a person, organisation or system with one or more roles that initiates or interacts with activities; internal or external | INTRO §4.2 |
 | Role | the expected behaviour of an actor, or the part someone plays in a process; an actor may have several | INTRO §4.67 |
 
+<figure class="my-4">
+<svg viewBox="0 0 760 225" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="Concept map: a stakeholder has concerns, which are framed by a viewpoint that governs a view; viewpoints reference model kinds and views incorporate models">
+  <defs><marker id="arr-f2-10a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="10" y="75" width="135" height="56" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="77.5" y="93.85" text-anchor="middle" font-size="11" font-weight="bold">Stakeholder</text>
+  <text x="77.5" y="106.85" text-anchor="middle" font-size="11" fill="#345">individual, team,</text>
+  <text x="77.5" y="119.85" text-anchor="middle" font-size="11" fill="#345">organisation or class</text>
+  <line x1="145" y1="103" x2="178" y2="103" stroke="#555" marker-end="url(#arr-f2-10a)"/>
+  <text x="162" y="95" text-anchor="middle" font-size="10" fill="#666">has</text>
+  <rect x="180" y="75" width="135" height="56" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="247.5" y="93.85" text-anchor="middle" font-size="11" font-weight="bold">Concern</text>
+  <text x="247.5" y="106.85" text-anchor="middle" font-size="11" fill="#345">an interest in the</text>
+  <text x="247.5" y="119.85" text-anchor="middle" font-size="11" fill="#345">system</text>
+  <line x1="315" y1="88" x2="373" y2="50" stroke="#555" marker-end="url(#arr-f2-10a)"/>
+  <text x="330" y="58" text-anchor="middle" font-size="10" fill="#666">framed by</text>
+  <line x1="315" y1="118" x2="373" y2="156" stroke="#555" marker-end="url(#arr-f2-10a)"/>
+  <text x="330" y="150" text-anchor="middle" font-size="10" fill="#666">addressed in</text>
+  <rect x="375" y="15" width="150" height="56" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+  <text x="450" y="33.85" text-anchor="middle" font-size="11" font-weight="bold">Architecture Viewpoint</text>
+  <text x="450" y="46.85" text-anchor="middle" font-size="11" fill="#345">the conventions for a</text>
+  <text x="450" y="59.85" text-anchor="middle" font-size="11" fill="#345">kind of view: its schema</text>
+  <line x1="450" y1="72" x2="450" y2="128" stroke="#555" marker-end="url(#arr-f2-10a)"/>
+  <text x="460" y="103" text-anchor="start" font-size="10" fill="#666">governs</text>
+  <rect x="375" y="130" width="150" height="56" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+  <text x="450" y="148.85" text-anchor="middle" font-size="11" font-weight="bold">Architecture View</text>
+  <text x="450" y="161.85" text-anchor="middle" font-size="11" fill="#345">the system seen from</text>
+  <text x="450" y="174.85" text-anchor="middle" font-size="11" fill="#345">a set of concerns</text>
+  <line x1="525" y1="43" x2="598" y2="43" stroke="#555" marker-end="url(#arr-f2-10a)"/>
+  <text x="562" y="35" text-anchor="middle" font-size="10" fill="#666">references</text>
+  <rect x="600" y="15" width="150" height="56" rx="6" fill="#fff1d6" stroke="#e0b060"/>
+  <text x="675" y="33.85" text-anchor="middle" font-size="11" font-weight="bold">Model Kind</text>
+  <text x="675" y="46.85" text-anchor="middle" font-size="11" fill="#345">conventions for a</text>
+  <text x="675" y="59.85" text-anchor="middle" font-size="11" fill="#345">type of modelling</text>
+  <line x1="525" y1="158" x2="598" y2="158" stroke="#555" marker-end="url(#arr-f2-10a)"/>
+  <text x="562" y="150" text-anchor="middle" font-size="10" fill="#666">incorporates</text>
+  <rect x="600" y="130" width="150" height="56" rx="6" fill="#fff1d6" stroke="#e0b060"/>
+  <text x="675" y="148.85" text-anchor="middle" font-size="11" font-weight="bold">Architecture Model</text>
+  <text x="675" y="161.85" text-anchor="middle" font-size="11" fill="#345">a smaller, simplified</text>
+  <text x="675" y="174.85" text-anchor="middle" font-size="11" fill="#345">representation</text>
+  <text x="380" y="212" text-anchor="middle" font-size="11" fill="#666">viewpoint is to view as model kind is to model: the template and the instance; viewpoints are kept in the Viewpoint Library</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">The views family as one chain. Original drawing; the relationships follow INTRO §4.20, INTRO §4.21, INTRO §4.37, INTRO §4.58 and INTRO §4.76.</figcaption>
+</figure>
+
 ## States and levels
 
 | Term | Meaning, in short | Ref |
@@ -92,6 +136,46 @@ by family. Every definition below is paraphrased; the flashcards carry the same 
 | Segment Architecture | a detailed, formal description of areas within an enterprise, used at programme or portfolio level to organise and align change | INTRO §4.68 |
 | Capability Architecture | an architecture describing the abilities an enterprise possesses | INTRO §4.34 |
 | Capability Increment | a discrete portion of a capability architecture that delivers specific value; once all increments are done, the capability is realised | INTRO §4.35 |
+
+<figure class="my-4">
+<svg viewBox="0 0 760 245" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="Baseline, Transition and Target Architectures on a timeline; the three Landscape levels stacked beside a set of partitions">
+  <defs><marker id="arr-f2-10b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <text x="20" y="22" text-anchor="start" font-size="12" font-weight="bold">States along a roadmap</text>
+  <rect x="20" y="32" width="140" height="46" rx="6" fill="#fff" stroke="#666"/>
+  <text x="90" y="51.85" text-anchor="middle" font-size="11" font-weight="bold">Baseline</text>
+  <text x="90" y="65.85" text-anchor="middle" font-size="11" fill="#345">where you are now</text>
+  <rect x="210" y="32" width="150" height="46" rx="6" fill="#fff1d6" stroke="#e0b060"/>
+  <text x="285" y="51.85" text-anchor="middle" font-size="11" font-weight="bold">Transition Architecture</text>
+  <text x="285" y="65.85" text-anchor="middle" font-size="11" fill="#345">a significant point in time</text>
+  <rect x="400" y="32" width="150" height="46" rx="6" fill="#fff1d6" stroke="#e0b060"/>
+  <text x="475" y="51.85" text-anchor="middle" font-size="11" font-weight="bold">Transition Architecture</text>
+  <text x="475" y="65.85" text-anchor="middle" font-size="11" fill="#345">another such point</text>
+  <rect x="600" y="32" width="140" height="46" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+  <text x="670" y="51.85" text-anchor="middle" font-size="11" font-weight="bold">Target</text>
+  <text x="670" y="65.85" text-anchor="middle" font-size="11" fill="#345">the future state</text>
+  <line x1="160" y1="55" x2="208" y2="55" stroke="#555" marker-end="url(#arr-f2-10b)"/>
+  <line x1="360" y1="55" x2="398" y2="55" stroke="#555" marker-end="url(#arr-f2-10b)"/>
+  <line x1="550" y1="55" x2="598" y2="55" stroke="#555" marker-end="url(#arr-f2-10b)"/>
+  <text x="380" y="98" text-anchor="middle" font-size="11" fill="#345">a sequence of Transition Architectures shows the path; several Targets may sit along one roadmap</text>
+  <text x="20" y="128" text-anchor="start" font-size="12" font-weight="bold">Levels: granularity of the Landscape</text>
+  <rect x="20" y="138" width="360" height="28" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="200" y="155.85" text-anchor="middle" font-size="11" fill="#345">Strategic Architecture: whole enterprise, long-term, for executives</text>
+  <rect x="20" y="170" width="360" height="28" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="200" y="187.85" text-anchor="middle" font-size="11" fill="#345">Segment Architecture: areas, at programme or portfolio level</text>
+  <rect x="20" y="202" width="360" height="28" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="200" y="219.85" text-anchor="middle" font-size="11" fill="#345">Capability Architecture: one ability, delivered in Capability Increments</text>
+  <text x="430" y="128" text-anchor="start" font-size="12" font-weight="bold">Partitions: subsets cut to ease development</text>
+  <rect x="430" y="138" width="310" height="92" rx="8" fill="#f4f4f4" stroke="#bbb" stroke-dasharray="6 4"/>
+  <rect x="445" y="150" width="88" height="40" rx="6" fill="#fff" stroke="#666"/>
+  <text x="489" y="173.85" text-anchor="middle" font-size="11" fill="#345">partition 1</text>
+  <rect x="543" y="150" width="88" height="40" rx="6" fill="#fff" stroke="#666"/>
+  <text x="587" y="173.85" text-anchor="middle" font-size="11" fill="#345">partition 2</text>
+  <rect x="641" y="150" width="88" height="40" rx="6" fill="#fff" stroke="#666"/>
+  <text x="685" y="173.85" text-anchor="middle" font-size="11" fill="#345">partition 3</text>
+  <text x="585" y="215" text-anchor="middle" font-size="10" fill="#c0392b">a level is not a partition: the definition says so</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">States on a timeline, and levels beside partitions. Original drawing; the terms follow INTRO §4.15, INTRO §4.16, INTRO §4.18, INTRO §4.24, INTRO §4.79 and INTRO §4.84.</figcaption>
+</figure>
 
 ## Capabilities, services and governance
 

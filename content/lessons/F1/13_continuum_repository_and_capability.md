@@ -53,6 +53,78 @@ about providing solution value and moving left is about addressing enterprise ne
 > (in the Application domain, about Boundaryless Information Flow). Swapping them is a common
 > distractor (CONTENT §6.4.1).
 
+<figure class="my-4">
+<svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="The Architecture and Solutions Continua running Foundation, Common Systems, Industry, Organization-Specific, beside the repository parts they classify">
+  <defs><marker id="arr-f1-13a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="10" y="10" width="525" height="290" rx="8" fill="#f4f4f4" stroke="#bbb" stroke-dasharray="6 4"/>
+  <text x="272.5" y="28" text-anchor="middle" font-size="12" font-weight="bold">Enterprise Continuum: classifies, generic on the left to specific on the right</text>
+  <rect x="25" y="45" width="495" height="105" rx="8" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="272.5" y="63" text-anchor="middle" font-size="12" font-weight="bold">Architecture Continuum (ABBs)</text>
+  <rect x="35" y="72" width="112" height="50" rx="6" fill="#fff" stroke="#666"/>
+  <text x="91" y="94.35" text-anchor="middle" font-size="11" font-weight="bold">Foundation</text>
+  <text x="91" y="107.35" text-anchor="middle" font-size="11" fill="#345">e.g. the TRM</text>
+  <line x1="147" y1="97" x2="157" y2="97" stroke="#555" marker-end="url(#arr-f1-13a)"/>
+  <rect x="157" y="72" width="112" height="50" rx="6" fill="#fff" stroke="#666"/>
+  <text x="213" y="94.35" text-anchor="middle" font-size="11" font-weight="bold">Common Systems</text>
+  <text x="213" y="107.35" text-anchor="middle" font-size="11" fill="#345">e.g. the III-RM</text>
+  <line x1="269" y1="97" x2="279" y2="97" stroke="#555" marker-end="url(#arr-f1-13a)"/>
+  <rect x="279" y="72" width="112" height="50" rx="6" fill="#fff" stroke="#666"/>
+  <text x="335" y="87.85" text-anchor="middle" font-size="11" font-weight="bold">Industry</text>
+  <text x="335" y="100.85" text-anchor="middle" font-size="11" fill="#345">industry models,</text>
+  <text x="335" y="113.85" text-anchor="middle" font-size="11" fill="#345">business rules</text>
+  <line x1="391" y1="97" x2="401" y2="97" stroke="#555" marker-end="url(#arr-f1-13a)"/>
+  <rect x="401" y="72" width="112" height="50" rx="6" fill="#fff" stroke="#666"/>
+  <text x="457" y="87.85" text-anchor="middle" font-size="11" font-weight="bold">Organization-</text>
+  <text x="457" y="100.85" text-anchor="middle" font-size="11" fill="#345">Specific</text>
+  <text x="457" y="113.85" text-anchor="middle" font-size="11" fill="#345">one enterprise</text>
+  <text x="272" y="140" text-anchor="middle" font-size="11" fill="#345">more reusable on the left; more detail and specificity on the right</text>
+  <rect x="25" y="170" width="495" height="105" rx="8" fill="#e3f5e1" stroke="#7fbf7a"/>
+  <text x="272.5" y="188" text-anchor="middle" font-size="12" font-weight="bold">Solutions Continuum (SBBs)</text>
+  <rect x="35" y="197" width="112" height="50" rx="6" fill="#fff" stroke="#666"/>
+  <text x="91" y="212.85" text-anchor="middle" font-size="11" font-weight="bold">Foundation</text>
+  <text x="91" y="225.85" text-anchor="middle" font-size="11" fill="#345">Solutions</text>
+  <text x="91" y="238.85" text-anchor="middle" font-size="11" fill="#345">languages, OS, ITIL</text>
+  <line x1="147" y1="222" x2="157" y2="222" stroke="#555" marker-end="url(#arr-f1-13a)"/>
+  <rect x="157" y="197" width="112" height="50" rx="6" fill="#fff" stroke="#666"/>
+  <text x="213" y="212.85" text-anchor="middle" font-size="11" font-weight="bold">Common Systems</text>
+  <text x="213" y="225.85" text-anchor="middle" font-size="11" fill="#345">Solutions</text>
+  <text x="213" y="238.85" text-anchor="middle" font-size="11" fill="#345">e.g. a security product</text>
+  <line x1="269" y1="222" x2="279" y2="222" stroke="#555" marker-end="url(#arr-f1-13a)"/>
+  <rect x="279" y="197" width="112" height="50" rx="6" fill="#fff" stroke="#666"/>
+  <text x="335" y="212.85" text-anchor="middle" font-size="11" font-weight="bold">Industry</text>
+  <text x="335" y="225.85" text-anchor="middle" font-size="11" fill="#345">Solutions</text>
+  <text x="335" y="238.85" text-anchor="middle" font-size="11" fill="#345">e.g. a POS device</text>
+  <line x1="391" y1="222" x2="401" y2="222" stroke="#555" marker-end="url(#arr-f1-13a)"/>
+  <rect x="401" y="197" width="112" height="50" rx="6" fill="#fff" stroke="#666"/>
+  <text x="457" y="212.85" text-anchor="middle" font-size="11" font-weight="bold">Organization-</text>
+  <text x="457" y="225.85" text-anchor="middle" font-size="11" fill="#345">Specific Solutions</text>
+  <text x="457" y="238.85" text-anchor="middle" font-size="11" fill="#345">built to its SLAs</text>
+  <text x="272" y="265" text-anchor="middle" font-size="11" fill="#345">each stage implements the architecture stage above it</text>
+  <line x1="272" y1="152" x2="272" y2="168" stroke="#555" marker-end="url(#arr-f1-13a)"/>
+  <text x="285" y="163" text-anchor="start" font-size="10" fill="#666">guides selection</text>
+  <rect x="555" y="10" width="195" height="290" rx="8" fill="#fff1d6" stroke="#e0b060"/>
+  <text x="652.5" y="28" text-anchor="middle" font-size="12" font-weight="bold">Architecture Repository: stores</text>
+  <rect x="568" y="45" width="170" height="56" rx="6" fill="#fff" stroke="#666"/>
+  <text x="653" y="63.85" text-anchor="middle" font-size="11" font-weight="bold">Reference Library</text>
+  <text x="653" y="76.85" text-anchor="middle" font-size="11" fill="#345">may use the Architecture</text>
+  <text x="653" y="89.85" text-anchor="middle" font-size="11" fill="#345">Continuum as its scheme</text>
+  <rect x="568" y="115" width="170" height="50" rx="6" fill="#fff" stroke="#666"/>
+  <text x="653" y="136.85" text-anchor="middle" font-size="11" font-weight="bold">Architecture Landscape</text>
+  <text x="653" y="150.85" text-anchor="middle" font-size="11" fill="#345">ABBs in use or planned</text>
+  <rect x="568" y="180" width="170" height="50" rx="6" fill="#fff" stroke="#666"/>
+  <text x="653" y="201.85" text-anchor="middle" font-size="11" font-weight="bold">Solutions Landscape</text>
+  <text x="653" y="215.85" text-anchor="middle" font-size="11" fill="#345">SBBs planned or deployed</text>
+  <rect x="568" y="245" width="170" height="40" rx="6" fill="#fff" stroke="#666"/>
+  <text x="653" y="261.85" text-anchor="middle" font-size="11" font-weight="bold">Standards Library</text>
+  <text x="653" y="275.85" text-anchor="middle" font-size="11" fill="#345">what new work must meet</text>
+  <line x1="520" y1="97" x2="566" y2="73" stroke="#555" stroke-dasharray="5 4" marker-end="url(#arr-f1-13a)"/>
+  <line x1="520" y1="110" x2="566" y2="138" stroke="#555" stroke-dasharray="5 4" marker-end="url(#arr-f1-13a)"/>
+  <line x1="520" y1="222" x2="566" y2="205" stroke="#555" stroke-dasharray="5 4" marker-end="url(#arr-f1-13a)"/>
+  <text x="380" y="318" text-anchor="middle" font-size="11" fill="#666">the continuum classifies; the repository stores. Reference and Standards Libraries are repository parts, not continuum stages</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">The two continua and their four stages, beside the repository parts that hold what they classify. Original drawing; the stages follow CONTENT §6.3, CONTENT §6.4.1 and CONTENT §6.4.2.</figcaption>
+</figure>
+
 ## The Architecture Repository: where assets are stored
 
 Supporting the continuum is the Architecture Repository, which stores the different classes of
@@ -82,6 +154,55 @@ for executive direction-setting; **Segment Architectures** give more detailed op
 areas, used at programme or portfolio level; **Capability Architectures** show in detail how one
 unit of capability is supported, including current, target and capability increments, so that
 work packages and projects can be grouped into portfolios and programmes (CONTENT §7.2).
+
+<figure class="my-4">
+<svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="The eight content classes of the Architecture Repository, with the Architecture Landscape broken into strategic, segment and capability levels">
+  <defs><marker id="arr-f1-13b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="10" y="10" width="740" height="230" rx="8" fill="#fff1d6" stroke="#e0b060"/>
+  <text x="380.0" y="28" text-anchor="middle" font-size="12" font-weight="bold">Architecture Repository: eight classes of content</text>
+  <rect x="25" y="40" width="170" height="48" rx="6" fill="#fff" stroke="#666"/>
+  <text x="110" y="61.35" text-anchor="middle" font-size="11" font-weight="bold">Architecture Metamodel</text>
+  <text x="110" y="74.35" text-anchor="middle" font-size="11" fill="#345">tailored framework, metamodel</text>
+  <rect x="205" y="40" width="170" height="48" rx="6" fill="#fff" stroke="#666"/>
+  <text x="290" y="61.35" text-anchor="middle" font-size="11" font-weight="bold">Architecture Capability</text>
+  <text x="290" y="74.35" text-anchor="middle" font-size="11" fill="#345">governance of the repository</text>
+  <rect x="385" y="40" width="170" height="48" rx="6" fill="#fff" stroke="#666"/>
+  <text x="470" y="61.35" text-anchor="middle" font-size="11" font-weight="bold">Standards Library</text>
+  <text x="470" y="74.35" text-anchor="middle" font-size="11" fill="#345">what new work must meet</text>
+  <rect x="565" y="40" width="170" height="48" rx="6" fill="#fff" stroke="#666"/>
+  <text x="650" y="61.35" text-anchor="middle" font-size="11" font-weight="bold">Reference Library</text>
+  <text x="650" y="74.35" text-anchor="middle" font-size="11" fill="#345">guidelines, templates, patterns</text>
+  <rect x="25" y="98" width="170" height="48" rx="6" fill="#fff" stroke="#666"/>
+  <text x="110" y="119.35" text-anchor="middle" font-size="11" font-weight="bold">Governance Repository</text>
+  <text x="110" y="132.35" text-anchor="middle" font-size="11" fill="#345">record of governance activity</text>
+  <rect x="205" y="98" width="170" height="48" rx="6" fill="#fff" stroke="#666"/>
+  <text x="290" y="119.35" text-anchor="middle" font-size="11" font-weight="bold">Requirements Repository</text>
+  <text x="290" y="132.35" text-anchor="middle" font-size="11" fill="#345">all authorised requirements</text>
+  <rect x="385" y="98" width="170" height="48" rx="6" fill="#fff" stroke="#666"/>
+  <text x="470" y="119.35" text-anchor="middle" font-size="11" font-weight="bold">Architecture Landscape</text>
+  <text x="470" y="132.35" text-anchor="middle" font-size="11" fill="#345">assets in use or planned</text>
+  <rect x="565" y="98" width="170" height="48" rx="6" fill="#fff" stroke="#666"/>
+  <text x="650" y="119.35" text-anchor="middle" font-size="11" font-weight="bold">Solutions Landscape</text>
+  <text x="650" y="132.35" text-anchor="middle" font-size="11" fill="#345">SBBs planned or deployed</text>
+  <rect x="205" y="175" width="170" height="52" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="290" y="191.85" text-anchor="middle" font-size="11" font-weight="bold">Strategic</text>
+  <text x="290" y="204.85" text-anchor="middle" font-size="11" fill="#345">whole enterprise, long-term;</text>
+  <text x="290" y="217.85" text-anchor="middle" font-size="11" fill="#345">executive direction-setting</text>
+  <rect x="385" y="175" width="170" height="52" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="470" y="191.85" text-anchor="middle" font-size="11" font-weight="bold">Segment</text>
+  <text x="470" y="204.85" text-anchor="middle" font-size="11" fill="#345">areas as operating models;</text>
+  <text x="470" y="217.85" text-anchor="middle" font-size="11" fill="#345">programme or portfolio level</text>
+  <rect x="565" y="175" width="170" height="52" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="650" y="191.85" text-anchor="middle" font-size="11" font-weight="bold">Capability</text>
+  <text x="650" y="204.85" text-anchor="middle" font-size="11" fill="#345">one unit of capability, with</text>
+  <text x="650" y="217.85" text-anchor="middle" font-size="11" fill="#345">current, target and increments</text>
+  <path d="M470 146 L470 150 L290 150 L290 173" fill="none" stroke="#555" marker-end="url(#arr-f1-13b)"/>
+  <path d="M470 150 L470 173" fill="none" stroke="#555" marker-end="url(#arr-f1-13b)"/>
+  <path d="M470 150 L650 150 L650 173" fill="none" stroke="#555" marker-end="url(#arr-f1-13b)"/>
+  <text x="470" y="165" text-anchor="middle" font-size="10" fill="#666">the Landscape is split into three levels of granularity</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">The repository's eight classes and the three Landscape levels. Original drawing; the classes follow CONTENT §7.1 and the levels CONTENT §7.2.</figcaption>
+</figure>
 
 > **Trap.** Continuum versus repository. The continuum *classifies*; the repository *stores*.
 > Reference Library and Standards Library are parts of the repository, not of the continuum, though
@@ -113,6 +234,22 @@ organisation, products), a Data Architecture defining the structure of the Enter
 and Architecture Repository, an Application Architecture of the tooling, and a Technology
 Architecture for its infrastructure (GOV §2.1). That Data Architecture is sometimes called the
 metamodel of the practice (GOV §2.4).
+
+<!-- figures:start -->
+## Figures from the standard
+
+The diagrams the cited sections carry, from your local copy of the publication. The exam reproduces these; know what each box is.
+
+<div class="grid gap-4 md:grid-cols-2">
+<figure class="max-w-lg"><img src="/figure/CONTENT:fig-6-1" alt="Figure 6-1: Enterprise Continuum" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 6-1: Enterprise Continuum (CONTENT)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/CONTENT:fig-6-2" alt="Figure 6-2: Architecture Continuum" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 6-2: Architecture Continuum (CONTENT)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/CONTENT:fig-6-3" alt="Figure 6-3: Solutions Continuum" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 6-3: Solutions Continuum (CONTENT)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/CONTENT:fig-7-1" alt="Figure 7-1: Overview of Architecture Repository" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 7-1: Overview of Architecture Repository (CONTENT)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/INTRO:fig-3-4" alt="Figure 3-4: Enterprise Continuum" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-4: Enterprise Continuum (INTRO)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/INTRO:fig-3-5" alt="Figure 3-5: TOGAF Architecture Repository Structure" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-5: TOGAF Architecture Repository Structure (INTRO)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/INTRO:fig-3-9" alt="Figure 3-9: TOGAF Architecture Capability Overview" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 3-9: TOGAF Architecture Capability Overview (INTRO)</figcaption></figure>
+</div>
+<!-- figures:end -->
 
 ## Check yourself
 

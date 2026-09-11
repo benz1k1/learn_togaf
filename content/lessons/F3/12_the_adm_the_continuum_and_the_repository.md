@@ -36,6 +36,38 @@ content to the repository; seen this way, the ADM is also the process of populat
 enterprise's own repository with reusable building blocks drawn from the "left", more generic side
 of the continuum (ADM §1.1.1).
 
+<figure class="my-4">
+<svg viewBox="0 0 760 285" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="A triangle: the ADM reads from and writes to the Architecture Repository, moves left to right and right to left along the Enterprise Continuum, and the continuum classifies what the repository stores">
+  <defs><marker id="arr-f3-12a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="270" y="15" width="220" height="56" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="380" y="33.85" text-anchor="middle" font-size="11" font-weight="bold">The ADM</text>
+  <text x="380" y="46.85" text-anchor="middle" font-size="11" fill="#345">every phase of every cycle</text>
+  <text x="380" y="59.85" text-anchor="middle" font-size="11" fill="#345">checks what it can reuse</text>
+  <rect x="15" y="190" width="300" height="62" rx="6" fill="#fff1d6" stroke="#e0b060"/>
+  <text x="165" y="211.85" text-anchor="middle" font-size="11" font-weight="bold">Enterprise Continuum</text>
+  <text x="165" y="224.85" text-anchor="middle" font-size="11" fill="#345">classifies: generic on the left,</text>
+  <text x="165" y="237.85" text-anchor="middle" font-size="11" fill="#345">organisation-specific on the right</text>
+  <rect x="445" y="190" width="300" height="62" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+  <text x="595" y="211.85" text-anchor="middle" font-size="11" font-weight="bold">Architecture Repository</text>
+  <text x="595" y="224.85" text-anchor="middle" font-size="11" fill="#345">stores: reference models, patterns, standards,</text>
+  <text x="595" y="237.85" text-anchor="middle" font-size="11" fill="#345">earlier work, work in progress, the Landscape</text>
+  <line x1="455" y1="71" x2="590" y2="188" stroke="#555" marker-end="url(#arr-f3-12a)"/>
+  <line x1="575" y1="188" x2="440" y2="71" stroke="#555" marker-end="url(#arr-f3-12a)"/>
+  <text x="560" y="118" text-anchor="start" font-size="10" fill="#666">reads assets to reuse</text>
+  <text x="560" y="133" text-anchor="start" font-size="10" fill="#666">writes each result back</text>
+  <line x1="305" y1="71" x2="170" y2="188" stroke="#555" marker-end="url(#arr-f3-12a)"/>
+  <line x1="185" y1="188" x2="320" y2="71" stroke="#555" marker-end="url(#arr-f3-12a)"/>
+  <text x="215" y="118" text-anchor="end" font-size="10" fill="#666">adopt and adapt: left to right</text>
+  <text x="215" y="133" text-anchor="end" font-size="10" fill="#666">generalise proven work: right to left</text>
+  <line x1="315" y1="221" x2="443" y2="221" stroke="#555" stroke-dasharray="5 4" marker-end="url(#arr-f3-12a)"/>
+  <text x="380" y="213" text-anchor="middle" font-size="10" fill="#666">classification scheme for</text>
+  <text x="380" y="236" text-anchor="middle" font-size="10" fill="#666">what is stored</text>
+  <text x="380" y="165" text-anchor="middle" font-size="10" fill="#c0392b">Architecture Governance decides what is admitted to the repository</text>
+  <text x="380" y="275" text-anchor="middle" font-size="11" fill="#666">the first cycle has the least to reuse; every later cycle adds to the repository and finds more there</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">Method, classification and store as a triangle. Original drawing; the relationships follow ADM §1.1.1 and CONTENT §6.5.</figcaption>
+</figure>
+
 > **Trap.** The **first** execution of the ADM is usually the hardest, because there is little to
 > reuse; even then, external assets such as the standard itself and industry material are
 > available. Later executions get easier as the repository fills (ADM §1.1.1). A question about
@@ -112,6 +144,54 @@ Three of them interact with the ADM most directly:
 The **Solutions Landscape** holds the SBBs that support the specified ABBs, categorised by the
 continuum and as strategic, segment or capability SBBs; it does not hold the data the solutions
 produce (CONTENT §7.7).
+
+<figure class="my-4">
+<svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="The ADM in the centre exchanging content with the Architecture Landscape, Reference Library, Architecture Requirements Repository and Solutions Landscape">
+  <defs><marker id="arr-f3-12b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="290" y="90" width="180" height="70" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="380" y="109.35" text-anchor="middle" font-size="11" font-weight="bold">ADM phases</text>
+  <text x="380" y="122.35" text-anchor="middle" font-size="11" fill="#345">Preliminary to H, with</text>
+  <text x="380" y="135.35" text-anchor="middle" font-size="11" fill="#345">Requirements Management</text>
+  <text x="380" y="148.35" text-anchor="middle" font-size="11" fill="#345">at the centre</text>
+  <rect x="10" y="15" width="250" height="62" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+  <text x="135" y="36.85" text-anchor="middle" font-size="11" font-weight="bold">Architecture Landscape</text>
+  <text x="135" y="49.85" text-anchor="middle" font-size="11" fill="#345">strategic, segment, capability views</text>
+  <text x="135" y="62.85" text-anchor="middle" font-size="11" fill="#345">at points in time; each cycle extends it</text>
+  <rect x="10" y="175" width="250" height="62" rx="6" fill="#fff1d6" stroke="#e0b060"/>
+  <text x="135" y="196.5" text-anchor="middle" font-size="10" font-weight="bold">Reference Library</text>
+  <text x="135" y="209.5" text-anchor="middle" font-size="10" fill="#345">reference models, viewpoint library,</text>
+  <text x="135" y="222.5" text-anchor="middle" font-size="10" fill="#345">templates; classified by the Architecture Continuum</text>
+  <rect x="500" y="15" width="250" height="62" rx="6" fill="#f3e3f7" stroke="#b58ac9"/>
+  <text x="625" y="36.85" text-anchor="middle" font-size="11" font-weight="bold">Architecture Requirements Repository</text>
+  <text x="625" y="49.85" text-anchor="middle" font-size="11" fill="#345">used by all phases; its contents owned</text>
+  <text x="625" y="62.85" text-anchor="middle" font-size="11" fill="#345">by Requirements Management</text>
+  <rect x="500" y="175" width="250" height="62" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+  <text x="625" y="196.85" text-anchor="middle" font-size="11" font-weight="bold">Solutions Landscape</text>
+  <text x="625" y="209.85" text-anchor="middle" font-size="11" fill="#345">the SBBs that support the specified ABBs;</text>
+  <text x="625" y="222.85" text-anchor="middle" font-size="11" fill="#345">not the data those solutions produce</text>
+  <line x1="300" y1="90" x2="190" y2="79" stroke="#555" marker-end="url(#arr-f3-12b)"/>
+  <text x="255" y="100" text-anchor="end" font-size="10" fill="#666">writes and changes</text>
+  <line x1="190" y1="173" x2="300" y2="160" stroke="#555" marker-end="url(#arr-f3-12b)"/>
+  <text x="255" y="150" text-anchor="end" font-size="10" fill="#666">reads for reuse</text>
+  <line x1="470" y1="100" x2="570" y2="79" stroke="#555" marker-end="url(#arr-f3-12b)"/>
+  <line x1="585" y1="79" x2="485" y2="92" stroke="#555" marker-end="url(#arr-f3-12b)"/>
+  <text x="525" y="105" text-anchor="start" font-size="10" fill="#666">records and retrieves</text>
+  <line x1="470" y1="150" x2="580" y2="173" stroke="#555" marker-end="url(#arr-f3-12b)"/>
+  <text x="520" y="150" text-anchor="start" font-size="10" fill="#666">Phase G output</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">The four repository areas the method touches most. Original drawing; the areas follow CONTENT §7.2, CONTENT §7.3.1, CONTENT §7.6.1 and CONTENT §7.7.</figcaption>
+</figure>
+
+<!-- figures:start -->
+## Figures from the standard
+
+The diagrams the cited sections carry, from your local copy of the publication. The exam reproduces these; know what each box is.
+
+<div class="grid gap-4 md:grid-cols-2">
+<figure class="max-w-lg"><img src="/figure/CONTENT:fig-7-1" alt="Figure 7-1: Overview of Architecture Repository" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 7-1: Overview of Architecture Repository (CONTENT)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/CONTENT:fig-7-2" alt="Figure 7-2: Architecture Continuum" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 7-2: Architecture Continuum (CONTENT)</figcaption></figure>
+</div>
+<!-- figures:end -->
 
 ## Check yourself
 

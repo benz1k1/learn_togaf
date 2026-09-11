@@ -35,6 +35,32 @@ one should trace clearly back to business objectives and key architecture driver
 
 (TECH §2.3)
 
+<figure class="my-4">
+<svg viewBox="0 0 760 232" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="A principle in four parts: name and statement give the rule; rationale and implications give the reason and the cost">
+<defs><marker id="arr-f5-10a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="40" y="18" width="150" height="38" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="115.0" y="41.2" text-anchor="middle" font-size="12" font-weight="bold">Name</text>
+<text x="205" y="42" text-anchor="start" font-size="11" fill="#333">the essence of the rule, easy to remember — no platform names, no fuzzy verbs</text>
+<line x1="115" y1="56" x2="115" y2="68" stroke="#555" marker-end="url(#arr-f5-10a)"/>
+<rect x="40" y="68" width="150" height="38" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="115.0" y="91.2" text-anchor="middle" font-size="12" font-weight="bold">Statement</text>
+<text x="205" y="92" text-anchor="start" font-size="11" fill="#333">the fundamental rule itself, succinct and unambiguous</text>
+<line x1="115" y1="106" x2="115" y2="118" stroke="#555" marker-end="url(#arr-f5-10a)"/>
+<rect x="40" y="118" width="150" height="38" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+<text x="115.0" y="141.2" text-anchor="middle" font-size="12" font-weight="bold">Rationale</text>
+<text x="205" y="142" text-anchor="start" font-size="11" fill="#333">the business benefit, in business language; how it relates to other principles</text>
+<line x1="115" y1="156" x2="115" y2="168" stroke="#555" marker-end="url(#arr-f5-10a)"/>
+<rect x="40" y="168" width="150" height="38" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+<text x="115.0" y="191.2" text-anchor="middle" font-size="12" font-weight="bold">Implications</text>
+<text x="205" y="192" text-anchor="start" font-size="11" fill="#333">what business and IT must do — resources, costs, tasks — “how does this affect me?”</text>
+<path d="M28 20 L20 20 L20 106 L28 106" fill="none" stroke="#7aa2e3"/>
+<text x="12" y="66" text-anchor="middle" font-size="10" fill="#345" transform="rotate(-90 12 66)">the rule</text>
+<path d="M28 120 L20 120 L20 206 L28 206" fill="none" stroke="#7fbf7a"/>
+<text x="12" y="166" text-anchor="middle" font-size="10" fill="#345" transform="rotate(-90 12 166)">why, and the cost</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">The anatomy of one principle: two parts state the rule, two parts justify it. Original drawing; parts per TECH §2.3.</figcaption>
+</figure>
+
 > **Trap.** The standard's template has exactly four parts: name, statement, rationale,
 > implications. Options that add "owner", "priority", "measure" or "review date" are describing
 > something else. "Goal / objective / measure" is a business-scenario or requirements structure;
@@ -51,6 +77,39 @@ Five influences typically shape their development: the enterprise mission and pl
 strategic initiatives (strengths, weaknesses, opportunities, threats, current initiatives);
 external constraints (market factors, legislation); current systems and technology; and emerging
 industry trends (TECH §2.4).
+
+<figure class="my-4">
+<svg viewBox="0 0 760 212" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="Five influences feed the drafting of Architecture Principles, which the Architecture Board approves">
+<defs><marker id="arr-f5-10b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="15" y="12" width="200" height="28" rx="6" fill="#fff" stroke="#666"/>
+<text x="115.0" y="29.9" text-anchor="middle" font-size="11">enterprise mission and plans</text>
+<path d="M215 26 L300 26 L318 102" fill="none" stroke="#555" marker-end="url(#arr-f5-10b)"/>
+<rect x="15" y="48" width="200" height="28" rx="6" fill="#fff" stroke="#666"/>
+<text x="115.0" y="65.8" text-anchor="middle" font-size="11">strategic initiatives (SWOT)</text>
+<path d="M215 62 L300 62 L318 102" fill="none" stroke="#555" marker-end="url(#arr-f5-10b)"/>
+<rect x="15" y="84" width="200" height="28" rx="6" fill="#fff" stroke="#666"/>
+<text x="115.0" y="101.8" text-anchor="middle" font-size="11">external constraints (market, law)</text>
+<path d="M215 98 L300 98 L318 102" fill="none" stroke="#555" marker-end="url(#arr-f5-10b)"/>
+<rect x="15" y="120" width="200" height="28" rx="6" fill="#fff" stroke="#666"/>
+<text x="115.0" y="137.8" text-anchor="middle" font-size="11">current systems and technology</text>
+<path d="M215 134 L300 134 L318 102" fill="none" stroke="#555" marker-end="url(#arr-f5-10b)"/>
+<rect x="15" y="156" width="200" height="28" rx="6" fill="#fff" stroke="#666"/>
+<text x="115.0" y="173.8" text-anchor="middle" font-size="11">emerging industry trends</text>
+<path d="M215 170 L300 170 L318 102" fill="none" stroke="#555" marker-end="url(#arr-f5-10b)"/>
+<rect x="320" y="66" width="200" height="72" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="420.0" y="91.8" text-anchor="middle" font-size="11" font-weight="bold">Architecture Principles</text>
+<text x="420.0" y="105.8" text-anchor="middle" font-size="11">drafted by the Enterprise Architects</text>
+<text x="420.0" y="119.8" text-anchor="middle" font-size="11">with the key stakeholders</text>
+<line x1="520" y1="102" x2="555" y2="102" stroke="#555" marker-end="url(#arr-f5-10b)"/>
+<rect x="557" y="66" width="188" height="72" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+<text x="651.0" y="98.8" text-anchor="middle" font-size="11" font-weight="bold">Architecture Board</text>
+<text x="651.0" y="112.8" text-anchor="middle" font-size="11">approves the set</text>
+<text x="117" y="202" text-anchor="middle" font-size="10" fill="#666">five influences (TECH §2.4)</text>
+<text x="532" y="160" text-anchor="middle" font-size="10" fill="#666">traceable to business objectives and drivers;</text>
+<text x="532" y="174" text-anchor="middle" font-size="10" fill="#666">keeps the Target Architecture aligned to strategy</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">What shapes the principles and who approves them. Original drawing; influences and approval per TECH §2.4.</figcaption>
+</figure>
 
 ## The five qualities of a good set
 

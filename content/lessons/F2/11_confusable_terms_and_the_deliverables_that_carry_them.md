@@ -80,6 +80,38 @@ description and scope, an overview of the Vision, change-of-scope procedures, ro
 deliverables, acceptance criteria, plan and schedule, and approvals (CONTENT §4.2.20). It is
 output from A through H.
 
+<figure class="my-4">
+<svg viewBox="0 0 760 232" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="The Request for Architecture Work flows from the sponsoring organisation to the architects; the Statement of Architecture Work flows back">
+  <defs><marker id="arr-f2-11a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="10" y="70" width="175" height="70" rx="6" fill="#f4f4f4" stroke="#bbb"/>
+  <text x="97.5" y="101.85" text-anchor="middle" font-size="11" font-weight="bold">Sponsoring</text>
+  <text x="97.5" y="115.85" text-anchor="middle" font-size="11" fill="#345">organisation</text>
+  <rect x="575" y="70" width="175" height="70" rx="6" fill="#f4f4f4" stroke="#bbb"/>
+  <text x="662.5" y="101.85" text-anchor="middle" font-size="11" font-weight="bold">Architecture</text>
+  <text x="662.5" y="115.85" text-anchor="middle" font-size="11" fill="#345">organisation</text>
+  <rect x="225" y="10" width="310" height="70" rx="6" fill="#fff1d6" stroke="#e0b060"/>
+  <text x="380" y="29.35" text-anchor="middle" font-size="11" font-weight="bold">Request for Architecture Work</text>
+  <text x="380" y="42.35" text-anchor="middle" font-size="11" fill="#345">the trigger: sponsors, mission, goals, budget,</text>
+  <text x="380" y="55.35" text-anchor="middle" font-size="11" fill="#345">constraints, time limits, current systems</text>
+  <text x="380" y="68.35" text-anchor="middle" font-size="11" fill="#345">output of Preliminary, F, H; input to A and G</text>
+  <line x1="185" y1="45" x2="223" y2="45" stroke="#555" marker-end="url(#arr-f2-11a)"/>
+  <line x1="535" y1="45" x2="573" y2="45" stroke="#555" marker-end="url(#arr-f2-11a)"/>
+  <path d="M97 70 L97 45 L185 45" fill="none" stroke="#555"/>
+  <path d="M573 45 L662 45 L662 70" fill="none" stroke="#555"/>
+  <rect x="225" y="130" width="310" height="70" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="380" y="149.35" text-anchor="middle" font-size="11" font-weight="bold">Statement of Architecture Work</text>
+  <text x="380" y="162.35" text-anchor="middle" font-size="11" fill="#345">the response: scope, approach, deliverables,</text>
+  <text x="380" y="175.35" text-anchor="middle" font-size="11" fill="#345">acceptance criteria, plan, approvals</text>
+  <text x="380" y="188.35" text-anchor="middle" font-size="11" fill="#345">output of A through H; basis of a contract</text>
+  <line x1="573" y1="165" x2="537" y2="165" stroke="#555" marker-end="url(#arr-f2-11a)"/>
+  <line x1="223" y1="165" x2="187" y2="165" stroke="#555" marker-end="url(#arr-f2-11a)"/>
+  <path d="M662 140 L662 165 L573 165" fill="none" stroke="#555"/>
+  <path d="M187 165 L97 165 L97 140" fill="none" stroke="#555"/>
+  <text x="380" y="222" text-anchor="middle" font-size="11" fill="#666">the Request comes in; the Statement goes back and becomes the yardstick for measuring the project</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">Request in, Statement back. Original drawing; the contents and phases follow CONTENT §4.2.17, CONTENT §4.2.20 and CONTENT §4.1.</figcaption>
+</figure>
+
 ## Architecture Roadmap versus Implementation and Migration Plan
 
 The **Roadmap** lists the *work packages* that will realise the Target Architecture and lays them
@@ -94,6 +126,55 @@ grouped into portfolios and programmes; the Implementation and Migration Strateg
 of it. Contents: the strategy (direction, sequencing approach), the project and portfolio
 breakdown (work packages allocated to projects, capabilities delivered, milestones, work breakdown
 structure), and optionally project charters (CONTENT §4.2.14). It is output from E and F
+
+<figure class="my-4">
+<svg viewBox="0 0 760 255" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="The Architecture Roadmap as work packages on a timeline beside the Implementation and Migration Plan as projects grouped into a programme and portfolio">
+  <defs><marker id="arr-f2-11b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="10" y="10" width="350" height="235" rx="8" fill="#fff1d6" stroke="#e0b060"/>
+  <text x="185.0" y="28" text-anchor="middle" font-size="12" font-weight="bold">Architecture Roadmap: work packages on a timeline</text>
+  <text x="60" y="50" text-anchor="middle" font-size="10" fill="#666">Baseline</text>
+  <text x="190" y="50" text-anchor="middle" font-size="10" fill="#666">Transition</text>
+  <text x="320" y="50" text-anchor="middle" font-size="10" fill="#666">Target</text>
+  <line x1="25" y1="58" x2="345" y2="58" stroke="#555" marker-end="url(#arr-f2-11b)"/>
+  <rect x="25" y="66" width="58" height="26" rx="6" fill="#fff" stroke="#666"/>
+  <text x="54" y="82.85" text-anchor="middle" font-size="11" fill="#345">WP1</text>
+  <rect x="88" y="66" width="58" height="26" rx="6" fill="#fff" stroke="#666"/>
+  <text x="117" y="82.85" text-anchor="middle" font-size="11" fill="#345">WP2</text>
+  <rect x="151" y="66" width="58" height="26" rx="6" fill="#fff" stroke="#666"/>
+  <text x="180" y="82.85" text-anchor="middle" font-size="11" fill="#345">WP3</text>
+  <rect x="214" y="66" width="58" height="26" rx="6" fill="#fff" stroke="#666"/>
+  <text x="243" y="82.85" text-anchor="middle" font-size="11" fill="#345">WP4</text>
+  <rect x="277" y="66" width="58" height="26" rx="6" fill="#fff" stroke="#666"/>
+  <text x="306" y="82.85" text-anchor="middle" font-size="11" fill="#345">WP5</text>
+  <text x="185" y="110" text-anchor="middle" font-size="11" fill="#345">business value shown at each stage</text>
+  <text x="185" y="135" text-anchor="middle" font-size="11" fill="#345">contents: work package portfolio,</text>
+  <text x="185" y="150" text-anchor="middle" font-size="11" fill="#345">Implementation Factor catalog,</text>
+  <text x="185" y="165" text-anchor="middle" font-size="11" fill="#345">Consolidated Gaps, Solutions and</text>
+  <text x="185" y="180" text-anchor="middle" font-size="11" fill="#345">Dependencies matrix, Transition</text>
+  <text x="185" y="195" text-anchor="middle" font-size="11" fill="#345">Architectures, recommendations</text>
+  <text x="185" y="228" text-anchor="middle" font-size="10" fill="#c0392b">built in E and F from B, C, D components</text>
+  <rect x="400" y="10" width="350" height="235" rx="8" fill="#e0ecff" stroke="#7aa2e3"/>
+  <text x="575.0" y="28" text-anchor="middle" font-size="12" font-weight="bold">Implementation and Migration Plan: the projects</text>
+  <rect x="412" y="38" width="326" height="152" rx="8" fill="#f4f4f4" stroke="#bbb" stroke-dasharray="6 4"/>
+  <text x="575.0" y="56" text-anchor="middle" font-size="11" font-weight="bold">portfolio</text>
+  <rect x="424" y="62" width="302" height="118" rx="8" fill="#fff" stroke="#666" stroke-dasharray="6 4"/>
+  <text x="575.0" y="80" text-anchor="middle" font-size="11" font-weight="bold">programme</text>
+  <rect x="436" y="90" width="135" height="44" rx="6" fill="#fff" stroke="#666"/>
+  <text x="503.5" y="109.35" text-anchor="middle" font-size="11" font-weight="bold">project 1</text>
+  <text x="503.5" y="122.35" text-anchor="middle" font-size="11" fill="#345">WP1, WP2  |  milestones</text>
+  <rect x="580" y="90" width="135" height="44" rx="6" fill="#fff" stroke="#666"/>
+  <text x="647.5" y="109.35" text-anchor="middle" font-size="11" font-weight="bold">project 2</text>
+  <text x="647.5" y="122.35" text-anchor="middle" font-size="11" fill="#345">WP3, WP4  |  milestones</text>
+  <text x="575" y="160" text-anchor="middle" font-size="10" fill="#345">work breakdown structure, capabilities delivered</text>
+  <text x="575" y="208" text-anchor="middle" font-size="11" fill="#345">plus the Implementation and Migration Strategy:</text>
+  <text x="575" y="223" text-anchor="middle" font-size="11" fill="#345">direction and sequencing; output of E and F</text>
+  <line x1="362" y1="128" x2="398" y2="128" stroke="#555" marker-end="url(#arr-f2-11b)"/>
+  <text x="380" y="116" text-anchor="middle" font-size="9" fill="#666">allocated</text>
+  <text x="380" y="143" text-anchor="middle" font-size="9" fill="#666">to projects</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">Roadmap on the left, plan on the right. Original drawing; the contents follow CONTENT §4.2.7 and CONTENT §4.2.14.</figcaption>
+</figure>
+
 (CONTENT §4.1).
 
 ## Enterprise Continuum versus Architecture Repository

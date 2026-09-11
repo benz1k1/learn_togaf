@@ -39,6 +39,52 @@ change to the Architecture Capability (APPLY §2.1).
 > cycle *extends into* Phases E and F so that implementability is considered while the
 > architecture is finalised (APPLY §2.2).
 
+<figure class="my-4">
+<svg viewBox="0 0 760 328" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="The four iteration cycles drawn as arcs on the ADM ring: Capability over the Preliminary Phase and A, Development over A to D and extending into E and F, Transition Planning over E and F, Governance over G and H">
+<defs><marker id="arr-f6-10a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<circle cx="300" cy="178" r="100" fill="none" stroke="#bbb" stroke-width="2"/>
+<path d="M228.9 76.4 A124 124 0 0 1 371.1 76.4" fill="none" stroke="#7aa2e3" stroke-width="7" stroke-linecap="round" opacity="0.85"/>
+<path d="M300.0 38.0 A140 140 0 0 1 399.0 277.0" fill="none" stroke="#7fbf7a" stroke-width="7" stroke-linecap="round" opacity="0.85"/>
+<path d="M300.0 302.0 A124 124 0 0 1 212.3 265.7" fill="none" stroke="#e0b060" stroke-width="7" stroke-linecap="round" opacity="0.85"/>
+<path d="M160.0 178.0 A140 140 0 0 1 201.0 79.0" fill="none" stroke="#b58ac9" stroke-width="7" stroke-linecap="round" opacity="0.85"/>
+<rect x="40" y="20" width="110" height="28" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="95.0" y="37.9" text-anchor="middle" font-size="11" font-weight="bold">Preliminary</text>
+<line x1="150" y1="34" x2="282.0" y2="72.0" stroke="#7aa2e3" stroke-width="2" marker-end="url(#arr-f6-10a)"/>
+<circle cx="300.0" cy="78.0" r="17" fill="#fff" stroke="#666"/>
+<text x="300.0" y="82.5" text-anchor="middle" font-size="13" fill="#222" font-weight="bold">A</text>
+<circle cx="370.7" cy="107.3" r="17" fill="#fff" stroke="#666"/>
+<text x="370.7" y="111.8" text-anchor="middle" font-size="13" fill="#222" font-weight="bold">B</text>
+<circle cx="400.0" cy="178.0" r="17" fill="#fff" stroke="#666"/>
+<text x="400.0" y="182.5" text-anchor="middle" font-size="13" fill="#222" font-weight="bold">C</text>
+<circle cx="370.7" cy="248.7" r="17" fill="#fff" stroke="#666"/>
+<text x="370.7" y="253.2" text-anchor="middle" font-size="13" fill="#222" font-weight="bold">D</text>
+<circle cx="300.0" cy="278.0" r="17" fill="#fff" stroke="#666"/>
+<text x="300.0" y="282.5" text-anchor="middle" font-size="13" fill="#222" font-weight="bold">E</text>
+<circle cx="229.3" cy="248.7" r="17" fill="#fff" stroke="#666"/>
+<text x="229.3" y="253.2" text-anchor="middle" font-size="13" fill="#222" font-weight="bold">F</text>
+<circle cx="200.0" cy="178.0" r="17" fill="#fff" stroke="#666"/>
+<text x="200.0" y="182.5" text-anchor="middle" font-size="13" fill="#222" font-weight="bold">G</text>
+<circle cx="229.3" cy="107.3" r="17" fill="#fff" stroke="#666"/>
+<text x="229.3" y="111.8" text-anchor="middle" font-size="13" fill="#222" font-weight="bold">H</text>
+<text x="300" y="174" text-anchor="middle" font-size="10" fill="#666">Requirements</text>
+<text x="300" y="188" text-anchor="middle" font-size="10" fill="#666">Management</text>
+<rect x="490" y="70" width="16" height="16" rx="3" fill="#7aa2e3"/>
+<text x="514" y="83" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Architecture Capability</text>
+<text x="514" y="100" text-anchor="start" font-size="10" fill="#555">Preliminary, A</text>
+<rect x="490" y="126" width="16" height="16" rx="3" fill="#7fbf7a"/>
+<text x="514" y="139" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Architecture Development</text>
+<text x="514" y="156" text-anchor="start" font-size="10" fill="#555">A, B, C, D — extends into E, F as it converges</text>
+<rect x="490" y="182" width="16" height="16" rx="3" fill="#e0b060"/>
+<text x="514" y="195" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Transition Planning</text>
+<text x="514" y="212" text-anchor="start" font-size="10" fill="#555">E, F</text>
+<rect x="490" y="238" width="16" height="16" rx="3" fill="#b58ac9"/>
+<text x="514" y="251" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Architecture Governance</text>
+<text x="514" y="268" text-anchor="start" font-size="10" fill="#555">G, H</text>
+<text x="380" y="318" text-anchor="middle" font-size="10" fill="#666">Each arc can be repeated; the Development arc is where baseline-first or target-first applies</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">The four cycles mapped onto the ring, with Development reaching into E and F. Original drawing; cycles per APPLY §2.2.</figcaption>
+</figure>
+
 ## Classes of engagement
 
 Architects are engaged in three areas: **identification of required change** (architecture as
@@ -91,6 +137,51 @@ or *informal* (APPLY §2.5.2):
 
 (APPLY §2.5.2)
 
+<figure class="my-4">
+<svg viewBox="0 0 760 218" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12" role="img" aria-label="Baseline first and target first compared iteration by iteration: which state is defined first, which second, and the refinement that follows">
+<defs><marker id="arr-f6-10b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<text x="15" y="42" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Baseline First</text>
+<text x="15" y="58" text-anchor="start" font-size="9" fill="#666">suits:</text>
+<text x="15" y="70" text-anchor="start" font-size="9" fill="#666">a complex, poorly</text>
+<text x="15" y="82" text-anchor="start" font-size="9" fill="#666">understood or disputed</text>
+<text x="15" y="94" text-anchor="start" font-size="9" fill="#666">baseline</text>
+<rect x="160" y="18" width="180" height="60" rx="6" fill="#e0ecff" stroke="#7aa2e3"/>
+<text x="250.0" y="38.5" text-anchor="middle" font-size="10" font-weight="bold">Iteration 1</text>
+<text x="250.0" y="51.5" text-anchor="middle" font-size="10">define the Baseline (B, C, D;</text>
+<text x="250.0" y="64.5" text-anchor="middle" font-size="10">E and F test feasibility)</text>
+<line x1="340" y1="48" x2="360" y2="48" stroke="#555" marker-end="url(#arr-f6-10b)"/>
+<rect x="360" y="18" width="180" height="60" rx="6" fill="#fff" stroke="#666"/>
+<text x="450.0" y="38.5" text-anchor="middle" font-size="10" font-weight="bold">Iteration 2</text>
+<text x="450.0" y="51.5" text-anchor="middle" font-size="10">define the Target and the</text>
+<text x="450.0" y="64.5" text-anchor="middle" font-size="10">gaps against the baseline</text>
+<line x1="540" y1="48" x2="560" y2="48" stroke="#555" marker-end="url(#arr-f6-10b)"/>
+<rect x="560" y="18" width="180" height="60" rx="6" fill="#fff" stroke="#666"/>
+<text x="650.0" y="38.5" text-anchor="middle" font-size="10" font-weight="bold">Iteration n</text>
+<text x="650.0" y="51.5" text-anchor="middle" font-size="10">refine baseline,</text>
+<text x="650.0" y="64.5" text-anchor="middle" font-size="10">target and gaps</text>
+<text x="15" y="134" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Target First</text>
+<text x="15" y="150" text-anchor="start" font-size="9" fill="#666">suits:</text>
+<text x="15" y="162" text-anchor="start" font-size="9" fill="#666">a target already agreed at</text>
+<text x="15" y="174" text-anchor="start" font-size="9" fill="#666">a high level</text>
+<rect x="160" y="110" width="180" height="60" rx="6" fill="#e3f5e1" stroke="#7fbf7a"/>
+<text x="250.0" y="130.5" text-anchor="middle" font-size="10" font-weight="bold">Iteration 1</text>
+<text x="250.0" y="143.5" text-anchor="middle" font-size="10">define the Target</text>
+<text x="250.0" y="156.5" text-anchor="middle" font-size="10">Architecture</text>
+<line x1="340" y1="140" x2="360" y2="140" stroke="#555" marker-end="url(#arr-f6-10b)"/>
+<rect x="360" y="110" width="180" height="60" rx="6" fill="#fff" stroke="#666"/>
+<text x="450.0" y="130.5" text-anchor="middle" font-size="10" font-weight="bold">Iteration 2</text>
+<text x="450.0" y="143.5" text-anchor="middle" font-size="10">define the Baseline and the</text>
+<text x="450.0" y="156.5" text-anchor="middle" font-size="10">gaps against the target</text>
+<line x1="540" y1="140" x2="560" y2="140" stroke="#555" marker-end="url(#arr-f6-10b)"/>
+<rect x="560" y="110" width="180" height="60" rx="6" fill="#fff" stroke="#666"/>
+<text x="650.0" y="130.5" text-anchor="middle" font-size="10" font-weight="bold">Iteration n</text>
+<text x="650.0" y="143.5" text-anchor="middle" font-size="10">refine baseline,</text>
+<text x="650.0" y="156.5" text-anchor="middle" font-size="10">target and gaps</text>
+<text x="380" y="206" text-anchor="middle" font-size="10" fill="#666">Give one state priority to keep focus; the other is always considered informally</text>
+</svg>
+<figcaption class="text-xs text-base-content/60 mt-1">Baseline-first and target-first as iteration sequences. Original drawing; approaches per APPLY §2.4, iterations per APPLY §2.5.2.</figcaption>
+</figure>
+
 ## What decides how you iterate
 
 The ADM should always be used iteratively; how depends on: the formality and nature of process
@@ -98,6 +189,20 @@ checkpoints; the expected level of stakeholder involvement; the number of teams 
 relationships; the maturity of the solution area and expected rework; attitude to risk (does
 partial work circulate? must solutions be proved in a trial?); and the class of engagement
 (APPLY §2.6).
+
+<!-- figures:start -->
+## Figures from the standard
+
+The diagrams the cited sections carry, from your local copy of the publication. The exam reproduces these; know what each box is.
+
+<div class="grid gap-4 md:grid-cols-2">
+<figure class="max-w-lg"><img src="/figure/APPLY:fig-2-1" alt="Figure 2-1: Iteration Cycles" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 2-1: Iteration Cycles (APPLY)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/APPLY:fig-2-2" alt="Figure 2-2: Classes of Enterprise Architecture Engagement" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 2-2: Classes of Enterprise Architecture Engagement (APPLY)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/APPLY:fig-2-3" alt="Figure 2-3: A Hierarchy of ADM Processes Example" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 2-3: A Hierarchy of ADM Processes Example (APPLY)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/APPLY:fig-2-4" alt="Figure 2-4: Activity by Iteration for Baseline First Architecture Definition" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 2-4: Activity by Iteration for Baseline First Architecture Definition (APPLY)</figcaption></figure>
+<figure class="max-w-lg"><img src="/figure/APPLY:fig-2-5" alt="Figure 2-5: Activity by Iteration for Target First Architecture Definition" loading="lazy" class="rounded border border-base-300"><figcaption class="text-xs text-base-content/60 mt-1">Figure 2-5: Activity by Iteration for Target First Architecture Definition (APPLY)</figcaption></figure>
+</div>
+<!-- figures:end -->
 
 ## Check yourself
 

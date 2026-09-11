@@ -45,8 +45,9 @@ examples, `source: authored`, `status: draft`, tables + trap callouts, a ref per
 Questions: `content/questions/foundation/<unit>.yaml` (code <UNIT>_BANK, exam FOUNDATION,
 kind DRILL) or `content/questions/practitioner/<unit>.yaml` (exam PRACTITIONER; scenario
 600–900 words, four answers with points exactly 5/3/1/0, a `why` per answer, `open_book_hint`,
-≥ 5 per Practitioner unit). Validate with tests/test_content.py; do not run
-`start.py --load-content` (the server reloads content itself); do not touch other units.
+≥ 5 per Practitioner unit). Validate with tests/test_content.py. New or edited files show in the app only after a reload:
+`python start.py --load-content` (restarts the server) or, with the server up, run the loader
+in-process (see CLAUDE.md, "Commands"). Do not touch other units.
 
 ## 10th Edition chapter map (the mapping already encodes it)
 
