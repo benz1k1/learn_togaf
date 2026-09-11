@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Artefacts · Learn TOGAF{% endblock %}
+{% block heading %}Artefact catalogue{% endblock %}
+{% block content %}
+<form class="flex flex-wrap gap-2 mb-3" hx-get="/artefact" hx-target="#artefact-table" hx-swap="outerHTML" hx-trigger="change" hx-push-url="true">
+  <select name="phase" class="select select-bordered select-sm">
+    <option value="">All phases</option>
+    {% for code in filters.phases %}<option value="{{ code }}" {% if selected.phase == code %}selected{% endif %}>{{ phase_names.get(code, code) }}</option>{% endfor %}
+  </select>
+  <select name="domain" class="select select-bordered select-sm">
+    <option value="">All domains</option>
+    {% for domain in filters.domains %}<option value="{{ domain }}" {% if selected.domain == domain %}selected{% endif %}>{{ domain | capitalize }}</option>{% endfor %}
+  </select>
+  <select name="kind" class="select select-bordered select-sm">
+    <option value="">All kinds</option>
+    {% for kind in filters.kinds %}<option value="{{ kind }}" {% if selected.kind == kind %}selected{% endif %}>{{ kind | capitalize }}</option>{% endfor %}
+  </select>
+  <a class="btn btn-sm btn-ghost" href="/artefact">Clear</a>
+</form>
+{% include "_artefact_table.html" %}
+{% endblock %}

@@ -1,0 +1,4 @@
+id,exam,unit,objective,stem,option_a,option_b,option_c,option_d,correct,explanation,refs
+,FOUNDATION,F4,4.2,"Which of the following is an output of Phase A, Architecture Vision?",Architecture Definition Document (finalised),Approved Statement of Architecture Work,Implementation and Migration Plan,Architecture Contract (signed),B,Copied from F4-002 on purpose: reported as a duplicate.,ADM §3
+,FOUNDATION,F4,4.3,TEST_IMPORT_BROKEN: this row has no explanation and must fail,a,b,c,d,A,,ADM §3
+,FOUNDATION,F4,4.3,TEST_IMPORT_BROKEN: which phase lists inputs steps and outputs for every phase?,Every ADM phase,Only Phase A,Only the Preliminary Phase,Only Phase H,A,Every phase chapter has inputs steps and outputs.,ADM §4

@@ -1,0 +1,21 @@
+<div class="card bg-base-100 shadow-sm">
+  <div class="card-body p-4">
+    <h2 class="card-title text-sm">Weakest objectives</h2>
+    {% if weakest %}
+    <ul class="flex flex-col gap-2">
+      {% for item in weakest %}
+      <li class="flex items-start justify-between gap-2">
+        <div class="min-w-0">
+          <span class="badge badge-outline badge-sm">{{ item.code }}</span>
+          <span class="text-sm">{{ item.text }}</span>
+          <div class="text-xs text-base-content/60">{{ (item.accuracy * 100) | round | int }}% over {{ item.answered }} answers</div>
+        </div>
+        <a class="btn btn-xs btn-primary whitespace-nowrap" href="/practice?objective={{ item.code | urlencode }}">Drill</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="text-sm text-base-content/60">Nothing yet — an objective shows here once it has three answers.</p>
+    {% endif %}
+  </div>
+</div>

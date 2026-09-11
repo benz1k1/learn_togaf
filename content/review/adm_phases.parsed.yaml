@@ -1,0 +1,469 @@
+# Parsed from the ADM phase chapters by `python sources.py index`. Review against adm/phases.yaml; not loaded.
+- code: PRELIM
+  name: Preliminary Phase
+  objective:
+  - 'Determine the Architecture Capability desired by the organization: Review the organizational context for conducting
+    Enterprise Architecture Identify and scope the elements of the enterprise organizations affected by the Architecture
+    Capability Identify the established frameworks, methods, and processes that intersect with the Architecture
+    Capability Establish Capability Maturity target'
+  - 'Establish the Architecture Capability: Define and establish the Organizational Model for Enterprise Architecture
+    Define and establish the detailed process and resources for Architecture Governance Select and implement tools
+    that support the Architecture Capability Define the Architecture Principles'
+  approach: 'This Preliminary Phase is about defining “where, what, why, who, and how we do architecture” in the
+    enterprise concerned. The main aspects are as follows: - Defining the enterprise - Identifying key drivers and
+    elements in the organizational context - Defining the requirements for architecture work - Defining the Architecture
+    Principles that will inform any architecture work - Defining the framework to be used - Defining the relationships
+    between management frameworks - Evaluating the Enterprise Architecture maturity The Enterprise Architecture
+    provides a strategic, top-down view of an organization to enable executives, planners, architects, and engineers
+    to coherently co-ordinate, integrate, and conduct their activities. The Enterprise Architecture framework provides
+    the strategic context within which this team can operate. Therefore, developing the Enterprise Architecture
+    is not a solitary activity and Enterprise Architects need to recognize the interoperability between their frameworks
+    and the rest of the business. Strategic, interim, and tactical business objectives and aspirations need to be
+    met. Similarly, the Enterprise Architecture needs to reflect this requirement and allow for operation of architecture
+    discipline at different levels within the organization. Depending on the scale of the enterprise and the level
+    of budgetary commitment to Enterprise Architecture discipline, a number of approaches may be adopted to sub-divide
+    or partition architecture teams, processes, and deliverables. Approaches for architecture partitioning are discussed
+    in the TOGAF Standard — Architecture Content . The Preliminary Phase should be used to determine the desired
+    approach to partitioning and to establish the groundwork for the selected approach to be put into practice.
+    The Preliminary Phase may be revisited, from the Architecture Vision phase (see the TOGAF Standard — Applying
+    the ADM ), in order to ensure that the organization’s Architecture Capability is suitable to address a specific
+    architecture problem. The Preliminary Phase is about creating an architecture for the Enterprise Architecture
+    Capability in an organization. As such, the same best practices employed in developing any architecture should
+    be used here. Refer to the TOGAF Standard — EA Capability and Governance for an explanation about the application
+    of the TOGAF ADM to establish the Enterprise Architecture Capability. Further guidance on how to construct an
+    Enterprise Architecture Capability may be found in the following document: TOGAF ® Series Guide: The TOGAF Leader’s
+    Guide to Establishing and Evolving an EA Capability .'
+  inputs: []
+  steps:
+  - Scope the enterprise organizations impacted; see Section 2.3.1, “Scope the Enterprise Organizations Impacted”
+  - Confirm governance and support frameworks; see Section 2.3.2, “Confirm Governance and Support Frameworks”
+  - Define and establish Enterprise Architecture team and organization; see Section 2.3.3, “Define and Establish
+    Enterprise Architecture Team and Organization”
+  - Identify and establish Architecture Principles; see Section 2.3.4, “Identify and Establish Architecture Principles”
+  - Tailor the TOGAF framework and, if any, other selected architecture frameworks; see Section 2.3.5, “Tailor the
+    TOGAF Framework and, if any, Other Selected Architecture Framework(s)”
+  - Develop a strategy and implementation plan for tools and techniques; see Section 2.3.6, “Develop a Strategy
+    and Implementation Plan for Tools and Techniques”
+  outputs:
+  - 'Organizational Model for Enterprise Architecture (see the TOGAF Standard — Architecture Content ), including:
+    Scope of organizations impacted Maturity assessment, gaps, and resolution approach Roles and responsibilities
+    for architecture team(s) Constraints on architecture work Budget requirements Governance and support strategy'
+  - 'Tailored Architecture Framework (see the TOGAF Standard — Architecture Content ), including: Tailored architecture
+    method Tailored architecture content (deliverables and artifacts) Architecture Principles (see the TOGAF Standard
+    — Architecture Content ) Configured and deployed tools'
+  - Initial Architecture Repository (see the TOGAF Standard — Architecture Content ), populated with framework content
+  - Restatement of, or reference to, business principles, business goals, and business drivers (see the TOGAF Standard
+    — Architecture Content )
+  - Request for Architecture Work (optional) (see the TOGAF Standard — Architecture Content )
+  - Architecture Governance Framework (see the TOGAF Standard — EA Capability and Governance )
+  - The Architecture of the Enterprise Architecture Capability (see the TOGAF Standard — EA Capability and Governance
+    )
+  - 'Catalogs: Principles catalog'
+  refs:
+  - ADM §2
+- code: A
+  name: 'Phase A: Architecture Vision'
+  objective:
+  - Develop a high-level aspirational vision of the capabilities and business value to be delivered as a result
+    of the proposed Enterprise Architecture
+  - Obtain approval for a Statement of Architecture Work that defines a program of works to develop and deploy the
+    architecture outlined in the Architecture Vision
+  approach: ''
+  inputs: []
+  steps:
+  - Establish the architecture project; see Section 3.3.1, “Establish the Architecture Project”
+  - Identify stakeholders, concerns, and business requirements; see Section 3.3.2, “Identify Stakeholders, Concerns,
+    and Business Requirements”
+  - Confirm and elaborate business goals, business drivers, and constraints; see Section 3.3.3, “Confirm and Elaborate
+    Business Goals, Business Drivers, and Constraints”
+  - Evaluate capabilities; see Section 3.3.4, “Evaluate Capabilities”
+  - Assess readiness for business transformation; see Section 3.3.5, “Assess Readiness for Business Transformation”
+  - Define scope; see Section 3.3.6, “Define Scope”
+  - Confirm and elaborate Architecture Principles, including business principles; see Section 3.3.7, “Confirm and
+    Elaborate Architecture Principles, including Business Principles”
+  - Develop Architecture Vision; see Section 3.3.8, “Develop Architecture Vision”
+  - Define the Target Architecture value propositions and KPIs; see Section 3.3.9, “Define the Target Architecture
+    Value Propositions and KPIs”
+  - Identify the business transformation risks and mitigation activities; see Section 3.3.10, “Identify the Business
+    Transformation Risks and Mitigation Activities”
+  - Develop Statement of Architecture Work; secure approval; see Section 3.3.11, “Develop Statement of Architecture
+    Work; Secure Approval”
+  outputs:
+  - 'Approved Statement of Architecture Work (see the TOGAF Standard — Architecture Content ), including in particular:
+    Architecture project description and scope Overview of Architecture Vision Architecture project plan and schedule'
+  - Refined statements of business principles, business goals, and business drivers (see the TOGAF Standard — Architecture
+    Content )
+  - Architecture Principles (see the TOGAF Standard — ADM Techniques )
+  - Capability Assessment (see the TOGAF Standard — Architecture Content )
+  - 'Tailored Architecture Framework (see the TOGAF Standard — Architecture Content ) (for the engagement), including:
+    Tailored architecture method Tailored architecture content (deliverables and artifacts) Configured and deployed
+    tools'
+  - 'Architecture Vision (see the TOGAF Standard — Architecture Content ), including: Problem description Objective
+    of the Statement of Architecture Work Summary views Business scenario (optional) Refined key high-level stakeholder
+    requirements'
+  - Draft Architecture Definition Document, which may include Baseline and/or Target Architectures of any architecture
+    domain
+  - Communications Plan (see the TOGAF Standard — Architecture Content )
+  - 'Additional content populating the Architecture Repository (see the TOGAF Standard — Architecture Content )
+    Note: Multiple business scenarios may be used to generate a single Architecture Vision.'
+  refs:
+  - ADM §3
+- code: B
+  name: 'Phase B: Business Architecture'
+  objective:
+  - Develop the Target Business Architecture that describes how the enterprise needs to operate to achieve the business
+    goals, and respond to the strategic drivers set out in the Architecture Vision, in a way that addresses the
+    Statement of Architecture Work and stakeholder concerns
+  - Identify candidate Architecture Roadmap components based upon gaps between the Baseline and Target Business
+    Architectures
+  approach: Business Architecture is a representation of holistic, multi-dimensional business views of capabilities,
+    end-to-end value delivery, information, and organizational structure; and the relationships among these business
+    views and strategies, products, policies, initiatives, and stakeholders. Business Architecture relates business
+    elements to business goals and elements of other domains.
+  inputs: []
+  steps:
+  - Select reference models, viewpoints, and tools; see Section 4.3.1, “Select Reference Models, Viewpoints, and
+    Tools”
+  - Develop Baseline Business Architecture Description; see Section 4.3.2, “Develop Baseline Business Architecture
+    Description”
+  - Develop Target Business Architecture Description; see Section 4.3.3, “Develop Target Business Architecture Description”
+  - Perform gap analysis; see Section 4.3.4, “Perform Gap Analysis”
+  - Define candidate roadmap components; see Section 4.3.5, “Define Candidate Roadmap Components”
+  - Resolve impacts across the Architecture Landscape; see Section 4.3.6, “Resolve Impacts Across the Architecture
+    Landscape”
+  - Conduct formal stakeholder review; see Section 4.3.7, “Conduct Formal Stakeholder Review”
+  - Finalize the Business Architecture; see Section 4.3.8, “Finalize the Business Architecture”
+  - Create/Update the Architecture Definition Document; see Section 4.3.9, “Create/Update the Architecture Definition
+    Document”
+  outputs:
+  - 'Refined and updated versions of the Architecture Vision phase deliverables, where applicable, including: Statement
+    of Architecture Work (see the TOGAF Standard — Architecture Content ), updated if necessary Validated business
+    principles, business goals, and business drivers (see the TOGAF Standard — Architecture Content ), updated if
+    necessary Architecture Principles (see the TOGAF Standard — Architecture Content )'
+  - 'Draft Architecture Definition Document (see the TOGAF Standard — Architecture Content ), including: Baseline
+    Business Architecture, Approved, if appropriate Target Business Architecture, Approved, including: Organization
+    structure — identifying business locations and relating them to organizational units Business goals and objectives
+    — for the enterprise and each organizational unit Business functions — a detailed, recursive step involving
+    successive decomposition of major functional areas into sub-functions Business capabilities — the abilities
+    that a business needs to possess or exchange to achieve its goals and objectives Business services — the services
+    that support the business by encapsulating a unique “elements of business behavior”; a service offered external
+    to the enterprise may be supported by business services Products — output generated by the business to be offered
+    to customers; products include materials and/or services Business processes, including measures and deliverables
+    Business roles, including development and modification of skills requirements Business data model Correlation
+    of organization/business functions and business capabilities — relate business capabilities to organizational
+    units in the form of a matrix report Views corresponding to the selected viewpoints addressing key stakeholder
+    concerns'
+  - 'Draft Architecture Requirements Specification (see the TOGAF Standard — Architecture Content ), including such
+    Business Architecture requirements as: Gap analysis results Technical requirements — identifying, categorizing,
+    and prioritizing the implications for work in the remaining architecture domains; for example, by a dependency/priority
+    matrix (e.g., guiding trade-off between speed of transaction processing and security); list the specific models
+    that are expected to be produced (for example, expressed as primitives of the Zachman Framework) Updated business
+    requirements'
+  - Business Architecture components of an Architecture Roadmap (see the TOGAF Standard — Architecture Content )
+  refs:
+  - ADM §4
+- code: C
+  name: 'Phase C: Information Systems Architectures'
+  objective:
+  - Develop the Target Information Systems Architectures, describing how the enterprise’s Information Systems Architecture
+    will enable the Business Architecture and the Architecture Vision, in a way that addresses the Statement of
+    Architecture Work and stakeholder concerns
+  - Identify candidate Architecture Roadmap components based upon gaps between the Baseline and Target Information
+    Systems (Data and Application) Architectures
+  approach: 'Phase C involves some combination of Data and Application Architecture, in either order. Advocates
+    exist for both sequences. For example, Steven Spewak’s Enterprise Architecture Planning (EAP) recommends a data-driven
+    approach. On the other hand, major applications systems — such as those for Enterprise Resource Planning (ERP),
+    Customer Relationship Management (CRM), etc. — often provide a combination of technology infrastructure and
+    business application logic. Some organizations take an application-driven approach, whereby they recognize certain
+    key applications as forming the core underpinning of the mission-critical business processes, and take the implementation
+    and integration of those core applications as the primary focus of their architecture effort (the integration
+    issues often constituting a major challenge). Detailed descriptions for Phase C are given separately for each
+    architecture domain: - Phase C: Information Systems Architectures — Data Architecture; see Chapter 6, Phase
+    C: Information Systems Architectures — Data Architecture - Phase C: Information Systems Architectures — Application
+    Architecture; see Chapter 7, Phase C: Information Systems Architectures — Application Architecture ← Previous:
+    Phase B: Business Architecture | ↑ Up: TOGAF® Standard — Architecture Development Method | ⌂ Home: TOGAF® Standard
+    — Architecture Development Method | Next: Phase C: Information Systems Architectures — Data Architecture → ©
+    The Open Group, All Rights Reserved. Last updated 2025-06-02 17:38:10 +0100'
+  inputs: []
+  steps: []
+  outputs: []
+  refs:
+  - ADM §5
+- code: D
+  name: 'Phase D: Technology Architecture'
+  objective:
+  - Develop the Target Technology Architecture that enables the Architecture Vision, target business, data, and
+    application building blocks to be delivered through technology components and technology services, in a way
+    that addresses the Statement of Architecture Work and stakeholder concerns
+  - Identify candidate Architecture Roadmap components based upon gaps between the Baseline and Target Technology
+    Architectures
+  approach: ''
+  inputs: []
+  steps:
+  - Select reference models, viewpoints, and tools; see Section 8.3.1, “Select Reference Models, Viewpoints, and
+    Tools”
+  - Develop Baseline Technology Architecture Description; see Section 8.3.2, “Develop Baseline Technology Architecture
+    Description”
+  - Develop Target Technology Architecture Description; see Section 8.3.3, “Develop Target Technology Architecture
+    Description”
+  - Perform gap analysis; see Section 8.3.4, “Perform Gap Analysis”
+  - Define candidate roadmap components; see Section 8.3.5, “Define Candidate Roadmap Components”
+  - Resolve impacts across the Architecture Landscape; see Section 8.3.6, “Resolve Impacts Across the Architecture
+    Landscape”
+  - Conduct formal stakeholder review; see Section 8.3.7, “Conduct Formal Stakeholder Review”
+  - Finalize the Technology Architecture; see Section 8.3.8, “Finalize the Technology Architecture”
+  - Create/Update the Architecture Definition Document; see Section 8.3.9, “Create/Update the Architecture Definition
+    Document”
+  outputs:
+  - 'Refined and updated versions of the Architecture Vision phase deliverables, where applicable: Statement of
+    Architecture Work (see the TOGAF Standard — Architecture Content ), updated if necessary Validated technology
+    principles, or new technology principles (if generated here)'
+  - 'Draft Architecture Definition Document (see the TOGAF Standard — Architecture Content ), including: Baseline
+    Technology Architecture, Approved, if appropriate Target Technology Architecture, Approved, including: Technology
+    Components and their relationships to information systems Technology platforms and their decomposition, showing
+    the combinations of technology required to realize a particular technology “stack” Environments and locations
+    — a grouping of the required technology into computing environments (e.g., development, production) Expected
+    processing load and distribution of load across technology components Physical (network) communications Hardware
+    and network specifications Views corresponding to the selected viewpoints addressing key stakeholder concerns'
+  - 'Draft Architecture Requirements Specification (see the TOGAF Standard — Architecture Content ), including such
+    Technology Architecture requirements as: Gap analysis results Requirements output from Phases B and C Updated
+    technology requirements'
+  - Technology Architecture components of an Architecture Roadmap (see the TOGAF Standard — Architecture Content
+    )
+  refs:
+  - ADM §8
+- code: E
+  name: 'Phase E: Opportunities & Solutions'
+  objective:
+  - Generate the initial complete version of the Architecture Roadmap, based upon the gap analysis and candidate
+    Architecture Roadmap components from Phases B, C, and D
+  - Determine whether an incremental approach is required, and if so identify Transition Architectures that will
+    deliver continuous business value
+  - Define the overall Solution Building Blocks (SBBs) to finalize the Target Architecture based on the ABBs
+  approach: 'Phase E concentrates on how to deliver the architecture. It takes into account the complete set of
+    gaps between the Target and Baseline Architectures in all architecture domains, and logically groups changes
+    into work packages within the enterprise’s portfolios. This is an effort to build a best-fit roadmap that is
+    based upon the stakeholder requirements, the enterprise’s business transformation readiness, identified opportunities
+    and solutions, and identified implementation constraints. The key is to focus on the final target while realizing
+    incremental business value. Phase E is the initial step in the creation of the Implementation and Migration
+    Plan which is completed in Phase F. It provides the basis of a well considered Implementation and Migration
+    Plan that is integrated into the enterprise’s portfolio in Phase F. The following four concepts are key to transitioning
+    from developing to delivering a Target Architecture: - Architecture Roadmap - Work Packages - Transition Architectures
+    - Implementation and Migration Plan The Architecture Roadmap lists individual work packages in a timeline that
+    will realize the Target Architecture. Each work package identifies a logical group of changes necessary to realize
+    the Target Architecture. A Transition Architecture describes the enterprise at an architecturally significant
+    state between the Baseline and Target Architectures. Transition Architectures provide interim Target Architectures
+    upon which the organization can converge. The Implementation and Migration Plan provides a schedule of the projects
+    that will realize the Target Architecture. ← Previous: Phase D: Technology Architecture | ↑ Up: TOGAF® Standard
+    — Architecture Development Method | ⌂ Home: TOGAF® Standard — Architecture Development Method | Next: Phase
+    F: Migration Planning → © The Open Group, All Rights Reserved. Last updated 2025-06-02 17:38:10 +0100'
+  inputs: []
+  steps:
+  - Determine/confirm key corporate change attributes; see Section 9.3.1, “Determine/Confirm Key Corporate Change
+    Attributes”
+  - Determine business constraints for implementation; see Section 9.3.2, “Determine Business Constraints for Implementation”
+  - Review and consolidate gap analysis results from Phases B to D; see Section 9.3.3, “Review and Consolidate Gap
+    Analysis Results from Phases B to D”
+  - Review consolidated requirements across related business functions; see Section 9.3.4, “Review Consolidated
+    Requirements Across Related Business Functions”
+  - Consolidate and reconcile interoperability requirements; see Section 9.3.5, “Consolidate and Reconcile Interoperability
+    Requirements”
+  - Refine and validate dependencies; see Section 9.3.6, “Refine and Validate Dependencies”
+  - Confirm readiness and risk for business transformation; see Section 9.3.7, “Confirm Readiness and Risk for Business
+    Transformation”
+  - Formulate Implementation and Migration Strategy; see Section 9.3.8, “Formulate Implementation and Migration
+    Strategy”
+  - Identify and group major work packages; see Section 9.3.9, “Identify and Group Major Work Packages”
+  - Identify Transition Architectures; see Section 9.3.10, “Identify Transition Architectures”
+  - Create the Architecture Roadmap & Implementation and Migration Plan; see Section 9.3.11, “Create the Architecture
+    Roadmap & Implementation and Migration Plan”
+  outputs:
+  - 'Refined and updated version of the Architecture Vision phase deliverables, where applicable, including: Architecture
+    Vision, including definition of types and degrees of interoperability Statement of Architecture Work (see the
+    TOGAF Standard — Architecture Content ), updated if necessary'
+  - 'Draft Architecture Definition Document (see the TOGAF Standard — Architecture Content ), including: Baseline
+    Business Architecture, Approved, updated if necessary Target Business Architecture, Approved, updated if necessary
+    Baseline Data Architecture, Approved, updated if necessary Target Data Architecture, Approved, updated if necessary
+    Baseline Application Architecture, Approved, updated if necessary Target Application Architecture, Approved,
+    updated if necessary Baseline Technology Architecture, Approved, updated if necessary Target Technology Architecture,
+    Approved, updated if necessary Transition Architecture, number and scope as necessary Views corresponding to
+    the selected viewpoints addressing key stakeholder concerns'
+  - 'Draft Architecture Requirements Specification (see the TOGAF Standard — Architecture Content ), including:
+    Consolidated Gaps, Solutions, and Dependencies Assessment'
+  - 'Capability Assessments, including: Business Capability Assessment IT Capability Assessment'
+  - 'Architecture Roadmap (see the TOGAF Standard — Architecture Content ), including: Work package portfolio: Work
+    package description (name, description, objectives) Functional requirements Dependencies Relationship to opportunity
+    Relationship to Architecture Definition Document and Architecture Requirements Specification Relationship to
+    any capability increments Business value Implementation Factor catalog Impact Identification of Transition Architectures,
+    if any, including: Relationship to Architecture Definition Document Implementation recommendations: Criteria
+    measures of effectiveness Risks and issues Solution Building Blocks (SBBs)'
+  - 'Implementation and Migration Plan, Draft, including: Implementation and Migration Strategy'
+  refs:
+  - ADM §9
+- code: F
+  name: 'Phase F: Migration Planning'
+  objective:
+  - Finalize the Architecture Roadmap and the supporting Implementation and Migration Plan
+  - Ensure that the Implementation and Migration Plan is co-ordinated with the enterprise’s approach to managing
+    and implementing change in the enterprise’s overall change portfolio
+  - Ensure that the business value and cost of work packages and Transition Architectures is understood by key stakeholders
+  approach: 'The focus of Phase F is the creation of an Implementation and Migration Plan in co-operation with the
+    project and portfolio managers. Phase E provides an incomplete Architecture Roadmap and Implementation and Migration
+    Plan that address the Statement of Architecture Work. In Phase F this Roadmap and the Implementation and Migration
+    Plan are integrated with the enterprise’s other change activity. Activities include assessing the dependencies,
+    costs, and benefits of the various migration projects within the context of the enterprise’s other activity.
+    The Draft Architecture Roadmap, and Draft Implementation and Migration Plan, from Phase E will form the basis
+    of the final Implementation and Migration Plan that will include portfolio and project-level detail. The architecture
+    development cycle should then be completed and lessons learned documented to enable continuous process improvement.
+    ← Previous: Phase E: Opportunities & Solutions | ↑ Up: TOGAF® Standard — Architecture Development Method | ⌂
+    Home: TOGAF® Standard — Architecture Development Method | Next: Phase G: Implementation Governance → © The Open
+    Group, All Rights Reserved. Last updated 2025-06-02 17:38:10 +0100'
+  inputs: []
+  steps:
+  - Confirm management framework interactions for Implementation and Migration Plan; see Section 10.3.1, “Confirm
+    Management Framework Interactions for the Implementation and Migration Plan”
+  - Assign a business value to each work package; see Section 10.3.2, “Assign a Business Value to Each Work Package”
+  - Estimate resource requirements, project timings, and availability/delivery vehicle; see Section 10.3.3, “Estimate
+    Resource Requirements, Project Timings, and Availability/Delivery Vehicle”
+  - Prioritize the migration projects by conducting a cost/benefit assessment and risk assessment; see Section 10.3.4,
+    “Prioritize the Migration Projects by Conducting a Cost/Benefit Assessment and Risk Assessment”
+  - Confirm Architecture Roadmap and update Architecture Definition Document; see Section 10.3.5, “Confirm Architecture
+    Roadmap and Update Architecture Definition Document”
+  - Complete the Implementation and Migration Plan; see Section 10.3.6, “Complete the Implementation and Migration
+    Plan”
+  - Complete the architecture development cycle and document lessons learned; see Section 10.3.7, “Complete the
+    Architecture Development Cycle and Document Lessons Learned”
+  outputs:
+  - 'Implementation and Migration Plan, Approved (see the TOGAF Standard — Architecture Content ), including: Implementation
+    and Migration Strategy Project and portfolio breakdown of the implementation: Allocation of work packages to
+    project and portfolio Capabilities delivered by projects Relationship to Target Architecture and any Transition
+    Architectures Milestones and timing Work breakdown structure Project charters (optional): Related work packages
+    Business value Risk, issues, assumptions, dependencies Resource requirements and costs Benefits of migration
+    Estimated costs of migration options'
+  - 'Finalized Architecture Definition Document (see the TOGAF Standard — Architecture Content ), including: Finalized
+    Transition Architectures, if any'
+  - Finalized Architecture Requirements Specification (see the TOGAF Standard — Architecture Content )
+  - Finalized Architecture Roadmap (see the TOGAF Standard — Architecture Content )
+  - Re-Usable ABBs (see the TOGAF Standard — Architecture Content )
+  - Requests for Architecture Work (see the TOGAF Standard — Architecture Content ) for a new iteration of the ADM
+    cycle (if any)
+  - Implementation Governance Model (if any) (see the TOGAF Standard — Architecture Content )
+  - Change Requests for the Architecture Capability arising from lessons learned
+  refs:
+  - ADM §10
+- code: G
+  name: 'Phase G: Implementation Governance'
+  objective:
+  - Ensure conformance with the Target Architecture by implementation projects
+  - Perform appropriate Architecture Governance functions for the solution and any implementation-driven architecture
+    Change Requests
+  approach: 'It is here that all the information for successful management of the various implementation projects
+    is brought together. Note that, in parallel with Phase G, there is the execution of an organizational-specific
+    development process, where the actual development happens. To enable early realization of business value and
+    benefits, and to minimize the risk in the transformation and migration program, the favored approach is to deploy
+    the Target Architecture as a series of transitions. Each transition represents an incremental step towards the
+    target, and each delivers business benefit in its own right. Therefore, the overall approach in Phase G is to:
+    - Establish an implementation program that will enable the delivery of the Transition Architectures agreed for
+    implementation during the Migration Planning phase - Adopt a phased deployment schedule that reflects the business
+    priorities embodied in the Architecture Roadmap - Follow the organization’s standard for corporate, IT, and
+    Architecture Governance - Use the organization’s established portfolio/program management approach, where this
+    exists - Define an operations framework to ensure the effective long life of the deployed solution Phase G establishes
+    the connection between architecture and implementation organization, through the Architecture Contract. Project
+    details are developed, including: - Name, description, and objectives - Scope, deliverables, and constraints
+    - Measures of effectiveness - Acceptance criteria - Risks and issues Implementation governance is closely allied
+    to overall Architecture Governance, which is discussed in the TOGAF Standard — EA Capability and Governance
+    . A key aspect of Phase G is ensuring compliance with the defined architecture(s), not only by the implementation
+    projects, but also by other ongoing projects within the enterprise. The considerations involved with this are
+    explained in detail in the TOGAF Standard — EA Capability and Governance . ← Previous: Phase F: Migration Planning
+    | ↑ Up: TOGAF® Standard — Architecture Development Method | ⌂ Home: TOGAF® Standard — Architecture Development
+    Method | Next: Phase H: Architecture Change Management → © The Open Group, All Rights Reserved. Last updated
+    2025-06-02 17:38:10 +0100'
+  inputs: []
+  steps:
+  - Confirm scope and priorities for deployment with development management; see Section 11.3.1, “Confirm Scope
+    and Priorities for Deployment with Development Management”
+  - Identify deployment resources and skills; see Section 11.3.2, “Identify Deployment Resources and Skills”
+  - Guide development of solutions deployment; see Section 11.3.3, “Guide Development of Solutions Deployment”
+  - Perform Enterprise Architecture Compliance reviews; see Section 11.3.4, “Perform Enterprise Architecture Compliance
+    Reviews”
+  - Implement business and IT operations; see Section 11.3.5, “Implement Business and IT Operations”
+  - Perform post-implementation review and close the implementation; see Section 11.3.6, “Perform Post-Implementation
+    Review and Close the Implementation”
+  outputs:
+  - Architecture Contract (signed) (see the TOGAF Standard — EA Capability and Governance ), as recommended in the
+    architecture-compliant implemented architectures
+  - Compliance Assessments (see the TOGAF Standard — Architecture Content )
+  - Change Requests (see the TOGAF Standard — Architecture Content )
+  - 'Architecture-compliant solutions deployed including: The architecture-compliant implemented system Note: The
+    implemented system is actually an output of the development process. However, given the importance of this output,
+    it is stated here as an output of the ADM. The direct involvement of architecture staff in implementation will
+    vary according to organizational policy, as described in the TOGAF Standard — EA Capability and Governance .
+    Populated Architecture Repository Architecture compliance recommendations and dispensations Recommendations
+    on service delivery requirements Recommendations on performance metrics Service-Level Agreements (SLAs) Architecture
+    Vision, updated post-implementation Architecture Definition Document, updated post-implementation Business and
+    IT operating models for the implemented solution Architecture Building Blocks (ABBs)'
+  refs:
+  - ADM §11
+- code: H
+  name: 'Phase H: Architecture Change Management'
+  objective:
+  - Ensure that the architecture development cycle is maintained
+  - Ensure that the Architecture Governance Framework is executed
+  - Ensure that the Enterprise Architecture Capability meets current requirements
+  approach: 'The goal of an architecture change management process is to ensure that the architecture achieves its
+    original target business value. This includes managing changes to the architecture in a cohesive and architected
+    way. This process will typically provide for the continual monitoring of such things as governance requests,
+    new developments in technology, and changes in the business environment. When changes are identified, change
+    management will determine whether to formally initiate a new architecture evolution cycle. Additionally, the
+    architecture change management process aims to establish and support the implemented Enterprise Architecture
+    as a dynamic architecture; that is, one having the flexibility to evolve rapidly in response to changes in the
+    technology and business environment. Monitoring business growth and decline is a critical aspect of this phase.
+    Usage of the Enterprise Architecture is the most important part of the architecture development cycle. All too
+    often the business has been left with an Enterprise Architecture that works for the organization of yesterday
+    but may not give back sufficient capability to meet the needs of the enterprise of today and tomorrow. In many
+    cases the architecture continues to fit, but the solutions underlying them may not, and some changes are required.
+    The Enterprise Architect needs to be aware of these change requirements and considers this an essential part
+    of constant renewal of the architecture. Capacity measurement and recommendations for planning are a key aspect
+    of this phase. While the architecture has been built to deliver a steady state Business Architecture with agreed
+    capacity during the lifecycle of this Enterprise Architecture, the growth or decline in usage needs to be continually
+    assessed to ensure that maximum business value is achieved. For example, some Solution Architectures may not
+    lend themselves to be scalable by a large factor — say 10 — or alternative solutions may be more economic when
+    scaled up. While the architecture specifications may not change, the solutions or their operational context
+    may change. If the performance management and reporting has been built into the work products through previous
+    phases, then this phase is about ensuring the effectiveness of these. If there needs to be additional monitoring
+    or reporting, then this phase will handle the changes. The value and change management process, once established,
+    will determine: - The circumstances under which the Enterprise Architecture, or parts of it, will be permitted
+    to change after deployment, and the process by which that will happen - The circumstances under which the architecture
+    development cycle will be initiated again to develop a new architecture The architecture change management process
+    is very closely related to the Architecture Governance processes of the enterprise, and to the management of
+    the Architecture Contract (see the TOGAF Standard — EA Capability and Governance ) between the architecture
+    function and the business users of the enterprise. In Phase H it is critical that the governance body establish
+    criteria to judge whether a Change Request warrants just an architecture update or whether it warrants starting
+    a new cycle of the ADM. It is especially important to avoid “creeping elegance”, and the governance body must
+    continue to look for changes that relate directly to business value. An Architecture Compliance report should
+    state whether the change is compliant to the current architecture. If it is non-compliant, an exemption may
+    be granted with valid rationale. If the change has high impact on the architecture, then a strategy to manage
+    its impact should be defined. Guidelines for establishing these criteria are difficult to prescribe, as many
+    companies accept risk differently, but as the ADM is exercised, the maturity level of the governance body will
+    improve, and criteria will become clear for specific needs.'
+  inputs: []
+  steps:
+  - Establish value realization process; see Section 12.3.1, “Establish Value Realization Process”
+  - Deploy monitoring tools; see Section 12.3.2, “Deploy Monitoring Tools”
+  - Manage risks; see Section 12.3.3, “Manage Risks”
+  - Provide analysis for architecture change management; see Section 12.3.4, “Provide Analysis for Architecture
+    Change Management”
+  - Develop change requirements to meet performance targets; see Section 12.3.5, “Develop Change Requirements to
+    Meet Performance Targets”
+  - Manage governance process; see Section 12.3.6, “Manage Governance Process”
+  - Activate the process to implement change; see Section 12.3.7, “Activate the Process to Implement Change”
+  outputs:
+  - Architecture updates (for maintenance changes)
+  - Changes to architecture framework and principles (for maintenance changes)
+  - New Request for Architecture Work (see the TOGAF Standard — Architecture Content ), to move to another cycle
+    (for major changes)
+  - Statement of Architecture Work (see the TOGAF Standard — Architecture Content ), updated if necessary
+  - Architecture Contract (see the TOGAF Standard — EA Capability and Governance ), updated if necessary
+  - Compliance Assessments (see the TOGAF Standard — Architecture Content ), updated if necessary
+  refs:
+  - ADM §12

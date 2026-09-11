@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Coverage · Learn TOGAF{% endblock %}
+{% block heading %}Coverage and question quality{% endblock %}
+{% block content %}
+<div class="stats shadow-sm bg-base-100 mb-4">
+  <div class="stat p-3"><div class="stat-title text-xs">Objectives</div><div class="stat-value text-2xl">{{ objectives | length }}</div><div class="stat-desc">{{ flagged }} with a shortfall</div></div>
+  <div class="stat p-3"><div class="stat-title text-xs">Drafts waiting</div><div class="stat-value text-2xl">{{ drafts_waiting }}</div><div class="stat-desc"><a class="link" href="/review-queue">content/review/</a></div></div>
+  <div class="stat p-3"><div class="stat-title text-xs">Orphan figures</div><div class="stat-value text-2xl">{{ orphan_figures | length }}</div><div class="stat-desc">no lesson, no question</div></div>
+  <div class="stat p-3"><div class="stat-title text-xs">Quality flags</div><div class="stat-value text-2xl">{{ quality.too_easy | length + quality.guessable | length + quality.weak_why | length }}</div><div class="stat-desc">too easy / guessable / weak why</div></div>
+</div>
+<div class="card bg-base-100 shadow-sm mb-4"><div class="card-body p-0 overflow-x-auto">
+  <table class="table table-xs">
+    <thead><tr><th>Objective</th><th>Unit</th><th class="text-right">Sources</th><th class="text-right">Lessons</th><th class="text-right">Cards</th><th class="text-right">Reviewed F / {{ foundation_floor }}</th><th class="text-right">Reviewed P / {{ practitioner_floor }}</th><th>Flags</th></tr></thead>
+    <tbody>
+      {% for item in objectives %}
+      <tr class="{{ 'bg-warning/10' if item.flags else '' }}">
+        <td><span class="badge badge-outline badge-xs mr-1">{{ item.code }}</span><span class="text-xs">{{ item.text }}</span></td>
+        <td><a class="link" href="/unit/{{ item.unit_code }}">{{ item.unit_code }}</a></td>
+        <td class="text-right">{{ item.sources }}</td>
+        <td class="text-right">{{ item.lessons }}</td>
+        <td class="text-right">{{ item.cards }}</td>
+        <td class="text-right">{{ item.reviewed_foundation }}</td>
+        <td class="text-right">{{ item.reviewed_practitioner }}</td>
+        <td>{% for flag in item.flags %}<span class="badge badge-warning badge-xs mr-1">{{ flag }}</span>{% endfor %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+  <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+    <h2 class="card-title text-sm">Figures with no lesson and no question</h2>
+    {% if orphan_figures %}
+    <ul class="text-sm max-h-80 overflow-y-auto">{% for figure in orphan_figures %}<li><a class="link" href="/figure/{{ figure.id }}">{{ figure.id }}</a> {{ figure.caption }}{% if figure.important %} <span class="badge badge-error badge-xs">important</span>{% endif %}</li>{% endfor %}</ul>
+    {% else %}<p class="text-sm text-base-content/60">None — or the source store is not indexed yet.</p>{% endif %}
+  </div></div>
+  <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+    <h2 class="card-title text-sm">Question quality</h2>
+    <h3 class="text-xs uppercase text-base-content/60 mt-1">Too easy (≥ 5 answers, all correct)</h3>
+    {% if quality.too_easy %}<ul class="text-sm">{% for q in quality.too_easy %}<li>{{ q.id }} <span class="text-xs text-base-content/60">{{ q.answers }} answers, {{ q.objective }}</span></li>{% endfor %}</ul>{% else %}<p class="text-xs text-base-content/60">None.</p>{% endif %}
+    <h3 class="text-xs uppercase text-base-content/60 mt-2">Guessable (median under 5 s)</h3>
+    {% if quality.guessable %}<ul class="text-sm">{% for q in quality.guessable %}<li>{{ q.id }} <span class="text-xs text-base-content/60">median {{ q.median_seconds }} s over {{ q.answers }}</span></li>{% endfor %}</ul>{% else %}<p class="text-xs text-base-content/60">None.</p>{% endif %}
+    <h3 class="text-xs uppercase text-base-content/60 mt-2">Practitioner: 3-point answer chosen more than the 5-point</h3>
+    {% if quality.weak_why %}<ul class="text-sm">{% for q in quality.weak_why %}<li>{{ q.id }} <span class="text-xs text-base-content/60">3-pt {{ q.three }} vs 5-pt {{ q.five }} of {{ q.answers }}</span></li>{% endfor %}</ul>{% else %}<p class="text-xs text-base-content/60">None.</p>{% endif %}
+  </div></div>
+</div>
+{% endblock %}

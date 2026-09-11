@@ -1,0 +1,39 @@
+# Catalogs, matrices and diagrams by phase (learn_togaf.md §2). Authored starter, status draft.
+- {code: PRINCIPLES_CATALOG, name: Principles Catalog, kind: CATALOG, phase: PRELIM, domain: CROSS, purpose: Captures the architecture principles, refs: ["CONTENT §4"]}
+- {code: STAKEHOLDER_MAP_MATRIX, name: Stakeholder Map Matrix, kind: MATRIX, phase: A, domain: CROSS, purpose: Stakeholders, their concerns, class and the artefacts they need, refs: ["CONTENT §4"]}
+- {code: VALUE_CHAIN_DIAGRAM, name: Value Chain Diagram, kind: DIAGRAM, phase: A, domain: BUSINESS, purpose: High-level orientation view of the enterprise and how it interacts with the outside world, refs: ["CONTENT §4"]}
+- {code: SOLUTION_CONCEPT_DIAGRAM, name: Solution Concept Diagram, kind: DIAGRAM, phase: A, domain: CROSS, purpose: High-level orientation of the solution envisaged, refs: ["CONTENT §4"]}
+- {code: BUSINESS_MODEL_DIAGRAM, name: Business Model Diagram, kind: DIAGRAM, phase: A, domain: BUSINESS, purpose: How the enterprise creates, delivers and captures value, refs: ["CONTENT §4"]}
+- {code: BUSINESS_CAPABILITY_MAP, name: Business Capability Map, kind: DIAGRAM, phase: A, domain: BUSINESS, purpose: The capabilities the enterprise needs, refs: ["CONTENT §4"]}
+- {code: VALUE_STREAM_MAP, name: Value Stream Map, kind: DIAGRAM, phase: A, domain: BUSINESS, purpose: The stages by which value is delivered to a stakeholder, refs: ["CONTENT §4"]}
+- {code: ORGANIZATION_ACTOR_CATALOG, name: Organization/Actor Catalog, kind: CATALOG, phase: B, domain: BUSINESS, purpose: Organisation units, actors and locations, refs: ["CONTENT §4"]}
+- {code: DRIVER_GOAL_OBJECTIVE_CATALOG, name: Driver/Goal/Objective Catalog, kind: CATALOG, phase: B, domain: BUSINESS, purpose: Cross-organisational reference of drivers, goals and objectives, refs: ["CONTENT §4"]}
+- {code: ROLE_CATALOG, name: Role Catalog, kind: CATALOG, phase: B, domain: BUSINESS, purpose: The roles in the enterprise, refs: ["CONTENT §4"]}
+- {code: BUSINESS_SERVICE_FUNCTION_CATALOG, name: Business Service/Function Catalog, kind: CATALOG, phase: B, domain: BUSINESS, purpose: Functional decomposition and the services offered, refs: ["CONTENT §4"]}
+- {code: BUSINESS_INTERACTION_MATRIX, name: Business Interaction Matrix, kind: MATRIX, phase: B, domain: BUSINESS, purpose: Interaction relationships between organisations and business functions, refs: ["CONTENT §4"]}
+- {code: ACTOR_ROLE_MATRIX, name: Actor/Role Matrix, kind: MATRIX, phase: B, domain: BUSINESS, purpose: Which actors perform which roles, refs: ["CONTENT §4"]}
+- {code: BUSINESS_FOOTPRINT_DIAGRAM, name: Business Footprint Diagram, kind: DIAGRAM, phase: B, domain: BUSINESS, purpose: Links business goals, organisation units, functions and services to the technical components that deliver them, refs: ["CONTENT §4"]}
+- {code: FUNCTIONAL_DECOMPOSITION_DIAGRAM, name: Functional Decomposition Diagram, kind: DIAGRAM, phase: B, domain: BUSINESS, purpose: The capabilities of an organisation on one page, refs: ["CONTENT §4"]}
+- {code: PROCESS_FLOW_DIAGRAM, name: Process Flow Diagram, kind: DIAGRAM, phase: B, domain: BUSINESS, purpose: Sequential flow of controls within a process, refs: ["CONTENT §4"]}
+- {code: ORGANIZATION_DECOMPOSITION_DIAGRAM, name: Organization Decomposition Diagram, kind: DIAGRAM, phase: B, domain: BUSINESS, purpose: Links actors, roles and locations in an organisation tree, refs: ["CONTENT §4"]}
+- {code: DATA_ENTITY_DATA_COMPONENT_CATALOG, name: Data Entity/Data Component Catalog, kind: CATALOG, phase: C, domain: DATA, purpose: The data entities and the components that hold them, refs: ["CONTENT §4"]}
+- {code: DATA_ENTITY_BUSINESS_FUNCTION_MATRIX, name: Data Entity/Business Function Matrix, kind: MATRIX, phase: C, domain: DATA, purpose: Which functions use which data entities, refs: ["CONTENT §4"]}
+- {code: APPLICATION_DATA_MATRIX, name: Application/Data Matrix, kind: MATRIX, phase: C, domain: DATA, purpose: Which applications use which data entities, refs: ["CONTENT §4"]}
+- {code: CONCEPTUAL_DATA_DIAGRAM, name: Conceptual Data Diagram, kind: DIAGRAM, phase: C, domain: DATA, purpose: Critical data entities and their relationships, refs: ["CONTENT §4"]}
+- {code: LOGICAL_DATA_DIAGRAM, name: Logical Data Diagram, kind: DIAGRAM, phase: C, domain: DATA, purpose: Logical view of data entities and relationships, refs: ["CONTENT §4"]}
+- {code: DATA_DISSEMINATION_DIAGRAM, name: Data Dissemination Diagram, kind: DIAGRAM, phase: C, domain: DATA, purpose: Relationship between data entities, business services and application components, refs: ["CONTENT §4"]}
+- {code: APPLICATION_PORTFOLIO_CATALOG, name: Application Portfolio Catalog, kind: CATALOG, phase: C, domain: APPLICATION, purpose: All applications in the enterprise, refs: ["CONTENT §4"]}
+- {code: INTERFACE_CATALOG, name: Interface Catalog, kind: CATALOG, phase: C, domain: APPLICATION, purpose: Interfaces between applications, refs: ["CONTENT §4"]}
+- {code: APPLICATION_ORGANIZATION_MATRIX, name: Application/Organization Matrix, kind: MATRIX, phase: C, domain: APPLICATION, purpose: Which organisation units use which applications, refs: ["CONTENT §4"]}
+- {code: APPLICATION_INTERACTION_MATRIX, name: Application Interaction Matrix, kind: MATRIX, phase: C, domain: APPLICATION, purpose: Communication relationships between applications, refs: ["CONTENT §4"]}
+- {code: APPLICATION_COMMUNICATION_DIAGRAM, name: Application Communication Diagram, kind: DIAGRAM, phase: C, domain: APPLICATION, purpose: Models and their communication, refs: ["CONTENT §4"]}
+- {code: APPLICATION_USE_CASE_DIAGRAM, name: Application Use-Case Diagram, kind: DIAGRAM, phase: C, domain: APPLICATION, purpose: Relationships between consumers and providers of application services, refs: ["CONTENT §4"]}
+- {code: TECHNOLOGY_STANDARDS_CATALOG, name: Technology Standards Catalog, kind: CATALOG, phase: D, domain: TECHNOLOGY, purpose: Agreed standards for technology, refs: ["CONTENT §4"]}
+- {code: TECHNOLOGY_PORTFOLIO_CATALOG, name: Technology Portfolio Catalog, kind: CATALOG, phase: D, domain: TECHNOLOGY, purpose: All technology in use, refs: ["CONTENT §4"]}
+- {code: APPLICATION_TECHNOLOGY_MATRIX, name: Application/Technology Matrix, kind: MATRIX, phase: D, domain: TECHNOLOGY, purpose: Mapping of applications to technology platforms, refs: ["CONTENT §4"]}
+- {code: ENVIRONMENTS_LOCATIONS_DIAGRAM, name: Environments and Locations Diagram, kind: DIAGRAM, phase: D, domain: TECHNOLOGY, purpose: Which locations host which applications and environments, refs: ["CONTENT §4"]}
+- {code: PLATFORM_DECOMPOSITION_DIAGRAM, name: Platform Decomposition Diagram, kind: DIAGRAM, phase: D, domain: TECHNOLOGY, purpose: The technology platform that supports the architecture, refs: ["CONTENT §4"]}
+- {code: NETWORKED_COMPUTING_HARDWARE_DIAGRAM, name: Networked Computing/Hardware Diagram, kind: DIAGRAM, phase: D, domain: TECHNOLOGY, purpose: Logical view of hardware and network, refs: ["CONTENT §4"]}
+- {code: PROJECT_CONTEXT_DIAGRAM, name: Project Context Diagram, kind: DIAGRAM, phase: E, domain: CROSS, purpose: The scope of a work package and its relation to the architecture, refs: ["CONTENT §4"]}
+- {code: BENEFITS_DIAGRAM, name: Benefits Diagram, kind: DIAGRAM, phase: E, domain: CROSS, purpose: Opportunities identified, classified by benefit, refs: ["CONTENT §4"]}
+- {code: REQUIREMENTS_CATALOG, name: Requirements Catalog, kind: CATALOG, phase: REQ, domain: CROSS, purpose: Requirements output from every phase, refs: ["CONTENT §4"]}

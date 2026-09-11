@@ -1,0 +1,22 @@
+<div id="term-list" class="flex flex-col gap-2">
+  <p class="text-xs text-base-content/60">{{ terms | length }} term{{ '' if terms | length == 1 else 's' }}{% if q %} matching “{{ q }}”{% endif %}</p>
+  {% for term in terms %}
+  <div class="card bg-base-100 shadow-sm">
+    <div class="card-body p-3 gap-1">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a class="font-semibold link link-hover" href="/glossary/{{ term.id }}">{{ term.term }}</a>
+        <span class="text-xs text-base-content/60">{{ term.document }} §{{ term.section }}</span>
+        {% if term.status == 'draft' %}<span class="badge badge-warning badge-xs">draft</span>{% endif %}
+        {% for code in term.objectives %}<span class="badge badge-outline badge-xs">{{ code }}</span>{% endfor %}
+      </div>
+      <p class="text-sm">{{ term.definition }}</p>
+      {% if term.confusable_with %}
+      <p class="text-xs text-base-content/70">Not to be confused with
+        {% for other in term.confusable_with %}<a class="link" href="/glossary/{{ other.id }}">{{ other.term }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+      {% endif %}
+    </div>
+  </div>
+  {% else %}
+  <p class="text-sm text-base-content/60">No term matches.</p>
+  {% endfor %}
+</div>

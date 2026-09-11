@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Glossary · Learn TOGAF{% endblock %}
+{% block heading %}Glossary{% endblock %}
+{% block content %}
+<label class="input input-bordered flex items-center gap-2 mb-3 max-w-lg">
+  <i class="mdi mdi-magnify"></i>
+  <input type="search" name="q" value="{{ q }}" placeholder="Search terms and definitions" class="grow" autofocus
+         hx-get="/glossary" hx-trigger="input changed delay:300ms, search" hx-target="#term-list" hx-swap="outerHTML" hx-push-url="true">
+</label>
+{% include "_term_list.html" %}
+{% endblock %}

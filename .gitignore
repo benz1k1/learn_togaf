@@ -1,0 +1,22 @@
+# Learner's private copy of the publications (learn_togaf.md §1.3–1.4): never committed.
+resources/sources/*
+!resources/sources/manifest.yaml
+!resources/sources/objective_sections.yaml
+!resources/sources/figures/
+resources/sources/figures/*
+!resources/sources/figures/important.yaml
+# Learner state
+resources/learn_togaf.db*
+# Secrets
+resources/env/*/.env.yaml
+# The learner's own imported sets
+content/questions/imported/*
+logs/
+api/.venv/
+api/dist/
+api/build/
+**/__pycache__/
+**/*.egg-info/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/

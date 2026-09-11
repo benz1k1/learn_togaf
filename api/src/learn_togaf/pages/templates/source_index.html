@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Sources · Learn TOGAF{% endblock %}
+{% block heading %}Sources{% endblock %}
+{% block header_actions %}
+<span class="badge badge-ghost">{{ counts.documents }} documents</span>
+<span class="badge badge-ghost">{{ counts.sections }} sections</span>
+<span class="badge badge-ghost">{{ counts.figures }} figures</span>
+{% endblock %}
+{% block content %}
+<p class="text-sm text-base-content/70 mb-3">
+  Your private, local copy of the publications (§1.4): indexed by document, section and figure, served on
+  <code>127.0.0.1</code> only, never packaged or shared. Lessons and questions cite these sections.
+</p>
+
+{% if counts.documents == 0 %}
+<div class="card bg-base-100 shadow-sm mb-4">
+  <div class="card-body items-center text-center gap-2">
+    <i class="mdi mdi-library-outline text-4xl text-base-content/30"></i>
+    <p class="font-medium">The source store is empty.</p>
+    <p class="text-sm text-base-content/60">
+      Log in once and fetch the Digital Edition with your own Open Group account:
+    </p>
+    <pre class="text-left text-xs bg-base-200 rounded p-3">python sources.py init-key    # once
+python sources.py encrypt     # paste your Open Group password → token for the env YAML
+python sources.py login       # opens the Open Group login in Playwright once
+python sources.py fetch       # crawls pubs.opengroup.org/togaf-standard/ into resources/sources/
+python sources.py index       # builds source_section
+python sources.py figures     # downloads every figure into resources/sources/figures/</pre>
+  </div>
+</div>
+{% else %}
+<div class="card bg-base-100 shadow-sm mb-4">
+  <div class="card-body py-3">
+    <table class="table table-sm">
+      <thead><tr><th>Document</th><th>Kind</th><th class="text-right">Sections</th><th class="text-right">Figures</th><th>Fetched</th><th>Links</th></tr></thead>
+      <tbody>
+      {% for document in documents %}
+      <tr>
+        <td><span class="font-medium">{{ document.code }}</span> <span class="text-base-content/70">{{ document.title }}</span></td>
+        <td class="text-xs">{{ document.kind }}</td>
+        <td class="text-right">{{ document.sections }}</td>
+        <td class="text-right">{{ document.figures }}</td>
+        <td class="text-xs">{{ document.fetched_at | fmt_dt }}</td>
+        <td class="text-xs">
+          {% if document.html_url %}<a class="link" href="{{ document.html_url }}" target="_blank" rel="noopener">HTML</a>{% endif %}
+          {% if document.pdf_path %} · <span title="{{ document.pdf_path }}">PDF</span>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+
+<div class="card bg-base-100 shadow-sm">
+  <div class="card-body gap-3 py-3">
+    <form method="get" action="/source" class="flex gap-2 items-center"
+          hx-get="/source" hx-target="#section-results" hx-trigger="submit, keyup changed delay:400ms from:input[name='q']" hx-push-url="true">
+      <i class="mdi mdi-magnify text-base-content/60"></i>
+      <input type="search" name="q" value="{{ q }}" placeholder="Search heading paths and section text"
+             class="input input-bordered input-sm w-full max-w-lg" {% if counts.sections == 0 %}disabled{% endif %}>
+      <button type="submit" class="btn btn-sm" {% if counts.sections == 0 %}disabled{% endif %}>Search</button>
+    </form>
+    <div id="section-results">{% include "_section.html" %}</div>
+  </div>
+</div>
+{% endblock %}

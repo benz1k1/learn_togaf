@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}{{ term.term }} · Glossary · Learn TOGAF{% endblock %}
+{% block heading %}<a href="/glossary" class="link link-hover">Glossary</a> › {{ term.term }}{% endblock %}
+{% block content %}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+  <div class="lg:col-span-2 flex flex-col gap-4">
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <div class="flex items-center gap-2 flex-wrap">
+        <h2 class="text-lg font-bold">{{ term.term }}</h2>
+        {% if term.status == 'draft' %}<span class="badge badge-warning badge-xs">draft</span>{% endif %}
+        <span class="text-xs text-base-content/60">{{ term.document }} §{{ term.section }}</span>
+      </div>
+      <p class="mt-2">{{ term.definition }}</p>
+      {% if term.objective_rows %}
+      <ul class="mt-2 text-sm">{% for objective in term.objective_rows %}<li><span class="badge badge-outline badge-xs mr-1">{{ objective.code }}</span>{{ objective.text }} <a class="link text-xs" href="/unit/{{ objective.unit_code }}">{{ objective.unit_code }}</a></li>{% endfor %}</ul>
+      {% endif %}
+    </div></div>
+    {% if term.confusables %}
+    <h3 class="text-xs uppercase text-base-content/60">Confusable with — side by side</h3>
+    <div class="grid grid-cols-1 md:grid-cols-{{ [term.confusables | length + 1, 3] | min }} gap-3">
+      <div class="card bg-primary/10 border border-primary"><div class="card-body p-3">
+        <div class="font-semibold">{{ term.term }}</div>
+        <p class="text-sm">{{ term.definition }}</p>
+        <div class="text-xs text-base-content/60">{{ term.document }} §{{ term.section }}</div>
+      </div></div>
+      {% for other in term.confusables %}
+      <div class="card bg-base-100 shadow-sm"><div class="card-body p-3">
+        <a class="font-semibold link link-hover" href="/glossary/{{ other.id }}">{{ other.term }}</a>
+        <p class="text-sm">{{ other.definition }}</p>
+        <div class="text-xs text-base-content/60">{{ other.document }} §{{ other.section }}</div>
+      </div></div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  <aside class="card bg-base-100 shadow-sm h-fit"><div class="card-body p-4">
+    <h2 class="card-title text-sm">Your note</h2>
+    {% with ref_kind = "TERM", ref_id = term.id %}{% include "_note.html" %}{% endwith %}
+  </div></aside>
+</div>
+{% endblock %}

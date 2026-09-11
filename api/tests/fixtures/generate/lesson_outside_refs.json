@@ -1,0 +1,8 @@
+{
+  "title": "A lesson that cites the wrong document",
+  "slug": "wrong_document",
+  "reading_minutes": 3,
+  "body_md": "This paragraph cites a section the model was never given. [GOV §9]",
+  "refs": ["GOV §9"],
+  "check_yourself": []
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="pastel">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}Learn TOGAF{% endblock %}</title>
+  <link rel="stylesheet" href="/static/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/static/daisyui.full.min.css">
+  <script src="/static/tailwind.js"></script>
+  <script src="/static/htmx.min.js"></script>
+  <script src="/static/chart.umd.min.js"></script>
+  <script src="/static/alpine.min.js" defer></script>
+  <style>
+    [x-cloak] { display: none !important; }
+    .htmx-indicator { opacity: 0; transition: opacity 150ms ease-in; }
+    .htmx-request .htmx-indicator, .htmx-request.htmx-indicator { opacity: 1; }
+    .prose-lesson h2 { font-size: 1.15rem; font-weight: 600; margin: 1.25rem 0 .5rem; }
+    .prose-lesson h3 { font-size: 1rem; font-weight: 600; margin: 1rem 0 .4rem; }
+    .prose-lesson p { margin: .5rem 0; line-height: 1.6; }
+    .prose-lesson ul, .prose-lesson ol { margin: .5rem 0 .5rem 1.25rem; list-style: disc; }
+    .prose-lesson ol { list-style: decimal; }
+    .prose-lesson table { border-collapse: collapse; margin: .75rem 0; font-size: .9rem; }
+    .prose-lesson th, .prose-lesson td { border: 1px solid #ddd; padding: .3rem .6rem; }
+    .prose-lesson code { background: rgba(0,0,0,.06); padding: 0 .25rem; border-radius: .2rem; }
+    .prose-lesson blockquote { border-left: 3px solid #ccc; padding-left: .75rem; color: #555; }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+{# hx-headers on <body> is inherited by every htmx request, so no hx-post has to remember the
+   CSRF token. Plain <form method="post"> is not htmx, so those include _csrf.html instead. #}
+<body class="min-h-screen bg-base-200"
+      x-data="{ sidebarCollapsed: false }"
+      hx-headers='{"X-CSRF-Token": "{{ csrf_token(request) }}"}'>
+<div class="flex min-h-screen">
+  <nav class="flex flex-col flex-shrink-0 bg-base-100 border-r border-base-300 transition-all duration-200"
+       :class="sidebarCollapsed ? 'w-14' : 'w-60'">
+    <div class="flex items-center justify-between gap-2 px-3 py-2">
+      <a href="/" class="flex items-center gap-2 overflow-hidden">
+        <i class="mdi mdi-school-outline text-primary text-lg"></i>
+        <span x-show="!sidebarCollapsed" class="font-bold text-sm whitespace-nowrap">Learn TOGAF</span>
+      </a>
+      <button type="button" class="btn btn-ghost btn-xs px-1" @click="sidebarCollapsed = !sidebarCollapsed" aria-label="Toggle sidebar">
+        <i class="mdi mdi-chevron-left" :style="sidebarCollapsed ? 'transform: rotate(180deg)' : ''"></i>
+      </button>
+    </div>
+    <div class="divider my-0"></div>
+    <ul class="menu menu-sm flex-nowrap flex-grow overflow-y-auto overflow-x-hidden py-2" :class="sidebarCollapsed ? 'px-0' : 'px-2'">
+      {% for item in nav_items(request) %}
+      {% if loop.changed(item.group) %}
+      <li class="menu-title pt-3" x-show="!sidebarCollapsed"><span class="whitespace-nowrap">{{ item.group }}</span></li>
+      {% endif %}
+      <li>
+        <a href="{{ item.path }}" title="{{ item.label }}" class="{% if item.active %}active{% endif %}" :class="sidebarCollapsed ? 'justify-center px-0' : ''">
+          <i class="mdi {{ item.icon }}"></i>
+          <span x-show="!sidebarCollapsed" class="whitespace-nowrap">{{ item.label }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="px-3 py-2 text-xs text-base-content/50" x-show="!sidebarCollapsed">
+      {% if exam_date %}<i class="mdi mdi-calendar"></i> exam {{ exam_date | fmt_date }}{% endif %}
+    </div>
+  </nav>
+
+  <div class="flex flex-col flex-grow min-w-0">
+    <header class="flex items-center gap-3 px-4 py-2 bg-base-100 border-b border-base-300">
+      <h1 class="text-base font-semibold truncate">{% block heading %}{% endblock %}</h1>
+      <div class="ml-auto flex items-center gap-2">{% block header_actions %}{% endblock %}</div>
+    </header>
+    <main class="flex-grow p-4 min-w-0">
+      {% if flash %}<div class="alert alert-{{ flash.kind or 'info' }} mb-4"><span>{{ flash.text }}</span></div>{% endif %}
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+</body>
+</html>

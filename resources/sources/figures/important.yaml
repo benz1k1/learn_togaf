@@ -1,0 +1,47 @@
+# The diagrams the exams reproduce (learn_togaf.md §1.4): the study plan schedules these
+# explicitly; every other figure is still stored and searchable. Hand-kept.
+#
+# Ids are "<DOC>:fig-<chapter>-<n>" as the Digital Edition captions them ("Figure 3-1: …").
+# The numbers below are placeholders in that form until `python sources.py figures` has run;
+# the coverage page lists an important id with no stored file, which is the cue to fix it.
+# blank_boxes: [x, y, w, h] overlays for the FIGURE flashcard kind — empty until drawn.
+- id: "ADM:fig-1-1"
+  label: Architecture Development Cycle
+  why: The ADM cycle is the one diagram every exam expects you to reproduce from memory — phase order, the central Requirements Management, and which phases the cycle returns to.
+  objectives: ["3.1", "4.3"]
+  blank_boxes: []
+- id: "CONTENT:fig-2-1"
+  label: Content Metamodel overview
+  why: "'Which metamodel entity belongs where' questions read this figure; the core and extension boundaries are a recurring trap."
+  objectives: ["7.1", "7.2"]
+  blank_boxes: []
+- id: "CONTENT:fig-6-1"
+  label: Architecture Repository
+  why: The repository's parts (Metamodel, Capability, Landscape, SIB, Reference Library, Requirements Repository, Governance Log) are asked as "which part holds X".
+  objectives: ["1.5", "7.4"]
+  blank_boxes: []
+- id: "CONTENT:fig-7-1"
+  label: Enterprise Continuum
+  why: Foundation → Common Systems → Industry → Organization-Specific, on both the Architecture and the Solutions Continuum; the direction of generic-to-specific is tested.
+  objectives: ["1.5", "7.5"]
+  blank_boxes: []
+- id: "TECH:fig-3-2"
+  label: Stakeholder power/interest grid
+  why: The four quadrants and the engagement each implies (keep satisfied, key players, monitor, keep informed) are asked directly and in Practitioner scenarios.
+  objectives: ["5.2", "P2.2"]
+  blank_boxes: []
+- id: "GOV:fig-3-1"
+  label: Architecture Governance framework, conceptual structure
+  why: Process, content and context layers; the exam asks what the governance framework separates and where compliance sits.
+  objectives: ["8.2", "P9.1"]
+  blank_boxes: []
+- id: "TECH:fig-3-1"
+  label: Capability-Based Planning
+  why: Capability increments against the ADM phases; the relationship between capabilities, increments and work packages is a Phase E/F question.
+  objectives: ["5.5", "P5.1"]
+  blank_boxes: []
+- id: "TECH:fig-7-1"
+  label: Migration planning tables (Implementation Factor Assessment and Deduction Matrix, Consolidated Gaps, Solutions and Dependencies Matrix)
+  why: Phase E/F questions name these tables and ask which technique produces which; the figures show the columns.
+  objectives: ["5.3", "P5.1"]
+  blank_boxes: []

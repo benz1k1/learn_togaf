@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block title %}Attempt {{ attempt.id }} review · Learn TOGAF{% endblock %}
+{% block heading %}Review · {{ attempt.exam | lower | capitalize }} {{ attempt.mode | lower }} #{{ attempt.id }}{% endblock %}
+{% block header_actions %}
+<form method="post" action="/practice" class="inline">
+  {% include "_csrf.html" %}
+  <input type="hidden" name="mode" value="{{ mode_label }}">
+  <input type="hidden" name="seed" value="{{ attempt.seed }}">
+  {% if attempt.mode == 'DRILL' %}
+    <input type="hidden" name="exam" value="{{ attempt.exam }}">
+    {% if filters.phase %}<input type="hidden" name="phase" value="{{ filters.phase }}"><input type="hidden" name="kind" value="io">{% endif %}
+    {% for unit in filters.units or [] %}<input type="hidden" name="units" value="{{ unit }}">{% endfor %}
+    {% for objective in filters.objectives or [] %}<input type="hidden" name="objectives" value="{{ objective }}">{% endfor %}
+    <input type="hidden" name="count" value="{{ filters.count or question_count }}">
+    <input type="hidden" name="include_drafts" value="{{ 'on' if filters.include_drafts is not defined or filters.include_drafts else '' }}">
+    <input type="hidden" name="sources" value="{{ filters.sources or 'all' }}">
+  {% endif %}
+  <button type="submit" class="btn btn-sm" title="Same seed — the same questions in the same order" data-testid="retake-identical"><i class="mdi mdi-repeat"></i> Retake identical</button>
+</form>
+<form method="post" action="/practice" class="inline">
+  {% include "_csrf.html" %}
+  <input type="hidden" name="mode" value="{{ mode_label }}">
+  {% if attempt.mode == 'DRILL' %}
+    <input type="hidden" name="exam" value="{{ attempt.exam }}">
+    {% if filters.phase %}<input type="hidden" name="phase" value="{{ filters.phase }}"><input type="hidden" name="kind" value="io">{% endif %}
+    {% for unit in filters.units or [] %}<input type="hidden" name="units" value="{{ unit }}">{% endfor %}
+    {% for objective in filters.objectives or [] %}<input type="hidden" name="objectives" value="{{ objective }}">{% endfor %}
+    <input type="hidden" name="count" value="{{ filters.count or question_count }}">
+    <input type="hidden" name="include_drafts" value="{{ 'on' if filters.include_drafts is not defined or filters.include_drafts else '' }}">
+    <input type="hidden" name="sources" value="{{ filters.sources or 'all' }}">
+  {% endif %}
+  <button type="submit" class="btn btn-primary btn-sm" title="New random draw with the same settings" data-testid="retake-fresh"><i class="mdi mdi-shuffle-variant"></i> Retake fresh</button>
+</form>
+{% endblock %}
+{% block content %}
+{% if filters.short_units %}
+<div class="alert alert-warning mb-4 text-sm" data-testid="short-units-warning">
+  <i class="mdi mdi-alert-outline"></i>
+  <span>Units short of reviewed questions: {{ filters.short_units | join(', ') }} — drafts were used, so treat this score as indicative.</span>
+</div>
+{% endif %}
+
+<div class="stats stats-horizontal shadow bg-base-100 w-full mb-4" data-testid="score">
+  <div class="stat py-3">
+    <div class="stat-title">Score</div>
+    <div class="stat-value text-2xl {% if attempt.passed == 1 %}text-success{% elif attempt.passed == 0 %}text-error{% endif %}" data-testid="score-value">{{ attempt.score }} / {{ attempt.max_score }}</div>
+    <div class="stat-desc">
+      {% if attempt.passed == 1 %}<span class="badge badge-success badge-sm">PASS</span> pass mark {{ pass_mark }}
+      {% elif attempt.passed == 0 %}<span class="badge badge-error badge-sm">FAIL</span> pass mark {{ pass_mark }}
+      {% else %}drill — no pass mark{% endif %}
+    </div>
+  </div>
+  <div class="stat py-3">
+    <div class="stat-title">Correct</div>
+    <div class="stat-value text-2xl">{{ review.correct }}<span class="text-base text-base-content/50"> / {{ question_count }}</span></div>
+    <div class="stat-desc">{{ review.answered }} answered</div>
+  </div>
+  <div class="stat py-3">
+    <div class="stat-title">Time</div>
+    <div class="stat-value text-2xl">{{ review.total_seconds | duration }}</div>
+    <div class="stat-desc">{% if attempt.time_limit_s %}of {{ attempt.time_limit_s | duration }} · {% endif %}{{ attempt.started_at | fmt_dt }}</div>
+  </div>
+  <div class="stat py-3">
+    <div class="stat-title">Changed a correct answer to a wrong one</div>
+    <div class="stat-value text-2xl {% if review.changed_from_correct %}text-warning{% endif %}" data-testid="changed-from-correct">{{ review.changed_from_correct }}</div>
+    <div class="stat-desc">the habit worth breaking</div>
+  </div>
+</div>
+
+<div class="grid gap-4 md:grid-cols-2 mb-4">
+  <div class="card bg-base-100 shadow-sm">
+    <div class="card-body p-4">
+      <h2 class="card-title text-sm">By unit</h2>
+      <table class="table table-xs" data-testid="per-unit">
+        <thead><tr><th>Unit</th><th class="text-right">Points</th><th class="text-right">Correct</th></tr></thead>
+        <tbody>
+        {% for row in review.per_unit %}
+        <tr><td><span class="font-mono">{{ row.code }}</span> {{ row.name }}</td><td class="text-right">{{ row.score }}/{{ row.max }}</td><td class="text-right">{{ row.correct }}/{{ row.questions }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card bg-base-100 shadow-sm">
+    <div class="card-body p-4">
+      <h2 class="card-title text-sm">By objective</h2>
+      <table class="table table-xs" data-testid="per-objective">
+        <thead><tr><th>Objective</th><th class="text-right">Points</th><th class="text-right">Correct</th></tr></thead>
+        <tbody>
+        {% for row in review.per_objective %}
+        <tr><td><span class="font-mono">{{ row.code }}</span> <span class="text-base-content/70">{{ row.name }}</span></td><td class="text-right">{{ row.score }}/{{ row.max }}</td><td class="text-right {% if row.correct < row.questions %}text-error{% endif %}">{{ row.correct }}/{{ row.questions }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="space-y-3" data-testid="questions">
+{% for item in review['items'] %}
+  <div class="card bg-base-100 shadow-sm border-l-4 {% if item.correct %}border-success{% elif item.chosen_key %}border-error{% else %}border-base-300{% endif %}" id="q{{ item.number }}">
+    <div class="card-body p-4 gap-2">
+      <div class="flex items-center gap-2 text-xs text-base-content/60">
+        <span class="font-semibold text-base-content">{{ item.number }}.</span>
+        <span class="badge badge-ghost badge-sm">{{ item.question.unit_code }} · {{ item.question.objective_code }}</span>
+        {% if item.question.status == 'draft' %}<span class="badge badge-warning badge-sm">draft</span>{% endif %}
+        {% if item.flagged %}<span class="badge badge-warning badge-outline badge-sm"><i class="mdi mdi-flag"></i> flagged</span>{% endif %}
+        {% if item.changed_from_correct %}<span class="badge badge-error badge-outline badge-sm">changed from correct</span>{% endif %}
+        <span class="ml-auto">{{ item.points }} / {{ item.max_points }} pts · {{ item.seconds | duration }}</span>
+      </div>
+      {% if item.question.exam == 'PRACTITIONER' %}
+      <details class="text-sm"><summary class="cursor-pointer text-base-content/70">Scenario</summary><div class="prose-lesson bg-base-200/60 rounded p-3 mt-1">{{ item.question.stem_or_scenario | markdown }}</div></details>
+      <div class="prose-lesson font-medium text-sm">{{ item.question.question_text | markdown }}</div>
+      {% else %}
+      <div class="prose-lesson text-sm">{{ item.question.stem_or_scenario | markdown }}</div>
+      {% endif %}
+      <ul class="space-y-1 text-sm">
+        {% for option in item.options %}
+        {% set is_correct = option.key == item.correct_key %}
+        {% set is_chosen = option.key == item.chosen_key %}
+        <li class="flex items-start gap-2 p-1.5 rounded {% if is_correct %}bg-success/10{% elif is_chosen %}bg-error/10{% endif %}">
+          <span class="font-mono font-semibold w-5">{{ option.key }}.</span>
+          <span class="flex-1">{{ option.text }}
+            {% if item.question.exam == 'PRACTITIONER' %}<span class="badge badge-xs ml-1 {% if option.points == 5 %}badge-success{% elif option.points == 3 %}badge-info{% elif option.points == 1 %}badge-warning{% else %}badge-error{% endif %}">{{ option.points }} pts</span>{% endif %}
+            {% if is_chosen %}<span class="badge badge-outline badge-xs ml-1">your answer</span>{% endif %}
+            {% if is_correct %}<span class="badge badge-success badge-xs ml-1">{% if item.question.exam == 'PRACTITIONER' %}best{% else %}correct{% endif %}</span>{% endif %}
+            {% if option.why %}<span class="block text-xs text-base-content/70 mt-0.5">{{ option.why }}</span>{% endif %}
+          </span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% if item.question.explanation %}<div class="prose-lesson text-sm border-t border-base-300 pt-2">{{ item.question.explanation | markdown }}</div>{% endif %}
+      {% if item.question.open_book_hint %}<p class="text-xs text-base-content/60"><i class="mdi mdi-book-open-variant"></i> Where to look: {{ item.question.open_book_hint }}</p>{% endif %}
+      {% if item.refs %}<p class="text-xs text-base-content/60">Refs: {{ item.refs | join(' · ') }}</p>{% endif %}
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}

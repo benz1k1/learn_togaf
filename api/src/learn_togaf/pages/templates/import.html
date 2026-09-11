@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Import questions · Learn TOGAF{% endblock %}
+{% block heading %}Import questions{% endblock %}
+{% block content %}
+<div class="grid gap-4 lg:grid-cols-3">
+  <section class="card bg-base-100 shadow-sm lg:col-span-2">
+    <div class="card-body gap-3">
+      <h2 class="card-title text-base"><i class="mdi mdi-tray-arrow-down"></i> Load a question set</h2>
+      <p class="text-sm text-base-content/70">
+        Files only, from disk (§4.7). Native YAML (a set file like <code>content/questions/foundation/starter.yaml</code>
+        or a bare list), CSV with header
+        <code>id,exam,unit,objective,stem,option_a,option_b,option_c,option_d,correct,explanation,refs</code>
+        (refs separated by <code>;</code>), JSON arrays of either shape, or Markdown
+        (<code>### Q1 stem</code>, <code>- [x] answer</code>, <code>&gt; explanation</code>, <code>refs:</code>,
+        with <code>## unit F4 objective 4.3</code> headings). Nothing lands before you confirm the preview.
+      </p>
+      <form method="post" action="/import/preview" enctype="multipart/form-data"
+            hx-post="/import/preview" hx-encoding="multipart/form-data" hx-target="#preview" hx-swap="innerHTML"
+            hx-indicator="#preview-spinner" class="grid gap-3 md:grid-cols-2">
+        {% include "_csrf.html" %}
+        <label class="form-control md:col-span-2">
+          <span class="label-text">File</span>
+          <input type="file" name="file" required accept=".yaml,.yml,.csv,.json,.md,.markdown,text/*"
+                 class="file-input file-input-bordered file-input-sm w-full">
+        </label>
+        <label class="form-control">
+          <span class="label-text">Exam</span>
+          <select name="exam" class="select select-bordered select-sm" required>
+            <option value="FOUNDATION">Foundation (OGEA-101)</option>
+            <option value="PRACTITIONER">Practitioner (OGEA-102)</option>
+          </select>
+        </label>
+        <label class="form-control">
+          <span class="label-text">Set name</span>
+          <input type="text" name="name" class="input input-bordered input-sm" placeholder="from the file header or file name">
+        </label>
+        <label class="form-control">
+          <span class="label-text">Set code <span class="text-base-content/50">(optional)</span></span>
+          <input type="text" name="set_code" class="input input-bordered input-sm" placeholder="e.g. MY_SET — derived from the file name">
+        </label>
+        <label class="form-control">
+          <span class="label-text">Unit mapping: rows without a unit go to</span>
+          <select name="default_unit" class="select select-bordered select-sm">
+            <option value="">guess by keyword (flagged unverified)</option>
+            {% for code, exam, name in units %}
+            <option value="{{ code }}">{{ code }} · {{ name }} ({{ exam | lower }})</option>
+            {% endfor %}
+          </select>
+        </label>
+        <div class="md:col-span-2 flex items-center gap-2">
+          <button type="submit" class="btn btn-primary btn-sm"><i class="mdi mdi-magnify"></i> Preview</button>
+          <span id="preview-spinner" class="htmx-indicator loading loading-spinner loading-sm"></span>
+          <span class="text-xs text-base-content/60">Step 1 of 2 — parse, map units, validate, dedupe. Confirm on the preview.</span>
+        </div>
+      </form>
+      <div id="preview">
+        {% if preview is defined %}{% include "_import_preview.html" %}{% endif %}
+      </div>
+    </div>
+  </section>
+
+  <div class="flex flex-col gap-4">
+    <section class="card bg-base-100 shadow-sm">
+      <div class="card-body gap-2">
+        <h2 class="card-title text-base"><i class="mdi mdi-folder-multiple-outline"></i> Imported sets</h2>
+        {% if sets %}
+        <table class="table table-xs">
+          <thead><tr><th>Set</th><th>Exam</th><th class="text-right">Q</th><th></th></tr></thead>
+          <tbody>
+          {% for set in sets %}
+          <tr>
+            <td>
+              <div class="font-medium">{{ set.code }}</div>
+              <div class="text-xs text-base-content/60">{{ set.name }} · {{ set.file_name }} · {{ set.imported_at | fmt_dt }}</div>
+              {% if set.unverified %}<span class="badge badge-warning badge-xs">{{ set.unverified }} unit unverified</span>{% endif %}
+            </td>
+            <td class="text-xs">{{ set.exam | lower }}</td>
+            <td class="text-right">{{ set.question_count }}</td>
+            <td>
+              <form method="post" action="/import/remove/{{ set.code }}" onsubmit="return confirm('Remove set {{ set.code }} and its {{ set.question_count }} questions?')">
+                {% include "_csrf.html" %}
+                <button type="submit" class="btn btn-ghost btn-xs text-error" title="Remove"><i class="mdi mdi-delete-outline"></i> Remove</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p class="text-sm text-base-content/60">No imported sets yet. Authored and generated sets live under <code>content/questions/</code> and are not listed here.</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <section class="card bg-base-100 shadow-sm">
+      <div class="card-body gap-2">
+        <h2 class="card-title text-base"><i class="mdi mdi-database-import-outline"></i> Import learner state</h2>
+        <p class="text-sm text-base-content/70">
+          The JSON from <a class="link" href="/export">Export state</a>. Attempts and study sessions are appended;
+          card reviews, notes, lesson progress and settings are merged keeping the later timestamp.
+        </p>
+        <form method="post" action="/import/state" enctype="multipart/form-data" class="flex flex-col gap-2">
+          {% include "_csrf.html" %}
+          <input type="file" name="file" required accept=".json,application/json" class="file-input file-input-bordered file-input-sm w-full">
+          <button type="submit" class="btn btn-sm btn-outline"><i class="mdi mdi-upload-outline"></i> Merge state</button>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}

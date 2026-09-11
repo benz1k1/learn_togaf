@@ -1,0 +1,541 @@
+# Authored starter set (learn_togaf.md §2). Every question is original, cites a section, and is
+# status: draft until reviewed. Mocks draw reviewed items only; drills include drafts with a badge.
+code: F_STARTER
+exam: FOUNDATION
+name: Foundation starter set
+kind: DRILL
+source: authored
+questions:
+  - id: F1-001
+    unit: F1
+    objective: "1.3"
+    stem: "Which four architecture domains does the TOGAF Standard say are commonly accepted as subsets of an overall enterprise architecture?"
+    options:
+      - {key: A, text: "Business, Data, Application, Technology", correct: true}
+      - {key: B, text: "Business, Information, Security, Technology"}
+      - {key: C, text: "Strategy, Segment, Capability, Solution"}
+      - {key: D, text: "Process, Data, Network, Infrastructure"}
+    explanation: "The standard names Business, Data, Application and Technology (BDAT). B mixes in security, which is a cross-cutting concern, not a domain. C lists the Architecture Landscape levels. D is not TOGAF vocabulary."
+    refs: ["INTRO §2"]
+    difficulty: 1
+    tags: [domains]
+  - id: F1-002
+    unit: F1
+    objective: "1.4"
+    stem: "An architect produces a matrix showing which business functions use which data entities. In TOGAF terms this is best described as:"
+    options:
+      - {key: A, text: "A deliverable"}
+      - {key: B, text: "An artifact", correct: true}
+      - {key: C, text: "A building block"}
+      - {key: D, text: "A viewpoint"}
+    explanation: "A matrix is one of the three artifact kinds (catalog, matrix, diagram). A deliverable is a contractually specified, signed-off work product that contains artifacts. A building block is a reusable component of capability. A viewpoint is the convention for building a view, not the work product."
+    refs: ["INTRO §3"]
+    difficulty: 2
+    tags: [artifacts]
+  - id: F1-003
+    unit: F1
+    objective: "1.2"
+    stem: "Which statement best describes the structure of the TOGAF Standard, 10th Edition?"
+    options:
+      - {key: A, text: "A single book divided into seven parts"}
+      - {key: B, text: "The TOGAF Fundamental Content plus a set of TOGAF Series Guides", correct: true}
+      - {key: C, text: "A core standard and a separate certification syllabus"}
+      - {key: D, text: "A metamodel and a set of reference architectures"}
+    explanation: "The 10th Edition separates the stable Fundamental Content (six documents) from the TOGAF Series Guides that extend it. A describes the 9.x single-book layout. C and D describe parts of the ecosystem, not the standard's structure."
+    refs: ["INTRO §1"]
+    difficulty: 1
+    tags: [structure]
+  - id: F1-004
+    unit: F1
+    objective: "1.5"
+    stem: "Which of the following provides a classification for architecture and solution artifacts as they evolve from generic to organisation-specific?"
+    options:
+      - {key: A, text: "The Architecture Repository"}
+      - {key: B, text: "The Enterprise Continuum", correct: true}
+      - {key: C, text: "The Architecture Landscape"}
+      - {key: D, text: "The Standards Library"}
+    explanation: "The Enterprise Continuum is the classification mechanism. The Architecture Repository stores the artifacts; the Architecture Landscape is the part of the repository holding architectures in use; the Standards Library holds standards."
+    refs: ["CONTENT §8"]
+    difficulty: 2
+    tags: [continuum]
+  - id: F2-001
+    unit: F2
+    objective: "2.1"
+    stem: "According to the TOGAF Standard, what is a 'concern'?"
+    options:
+      - {key: A, text: "A risk that has been identified but not yet mitigated"}
+      - {key: B, text: "An interest in a system relevant to one or more of its stakeholders", correct: true}
+      - {key: C, text: "A requirement that conflicts with an architecture principle"}
+      - {key: D, text: "A gap found between the Baseline and Target Architectures"}
+    explanation: "A concern is a stakeholder's interest in the system. A describes a risk, C a requirements conflict and D a gap; none is the defined term."
+    refs: ["INTRO §3"]
+    difficulty: 1
+    tags: [definitions]
+  - id: F2-002
+    unit: F2
+    objective: "2.2"
+    stem: "Which pair correctly distinguishes a view from a viewpoint?"
+    options:
+      - {key: A, text: "A view is what the stakeholder sees; a viewpoint is the convention used to construct it", correct: true}
+      - {key: B, text: "A view is a diagram; a viewpoint is a catalog"}
+      - {key: C, text: "A view is produced in Phase A; a viewpoint in Phase B"}
+      - {key: D, text: "A view is for business stakeholders; a viewpoint is for technical stakeholders"}
+    explanation: "A viewpoint is the template, a view is the instance built from it. B confuses artifact kinds, C invents a phase split, D invents an audience split."
+    refs: ["INTRO §3"]
+    difficulty: 2
+    tags: [definitions, confusable]
+  - id: F2-003
+    unit: F2
+    objective: "2.1"
+    stem: "Which of the following is the TOGAF definition of a Transition Architecture?"
+    options:
+      - {key: A, text: "The existing architecture before a cycle of review begins"}
+      - {key: B, text: "A formal description of the architecture at an architecturally significant state between Baseline and Target", correct: true}
+      - {key: C, text: "The final architecture described in the Architecture Vision"}
+      - {key: D, text: "An architecture used temporarily during a system migration weekend"}
+    explanation: "B is the definition. A is the Baseline Architecture, C the Target Architecture, D a colloquial misuse."
+    refs: ["INTRO §3"]
+    difficulty: 1
+    tags: [definitions]
+  - id: F3-001
+    unit: F3
+    objective: "3.1"
+    stem: "Which process sits at the centre of the ADM cycle and operates throughout all phases?"
+    options:
+      - {key: A, text: "Architecture Change Management"}
+      - {key: B, text: "Requirements Management", correct: true}
+      - {key: C, text: "Implementation Governance"}
+      - {key: D, text: "The Preliminary Phase"}
+    explanation: "Requirements Management is the continuous process at the centre of the ADM graphic. A is Phase H, C is Phase G, D is the phase that precedes the cycle."
+    refs: ["ADM §1"]
+    difficulty: 1
+    tags: [adm-cycle]
+  - id: F3-002
+    unit: F3
+    objective: "3.2"
+    stem: "Which of the following is a reason the standard gives for adapting the ADM to an enterprise?"
+    options:
+      - {key: A, text: "The ADM must never be changed, so adaptation is not permitted"}
+      - {key: B, text: "The enterprise may already use other frameworks, have a different maturity, or need a different scope and level of detail", correct: true}
+      - {key: C, text: "Adaptation is only allowed for government organisations"}
+      - {key: D, text: "Each phase must be replaced by an equivalent from ITIL"}
+    explanation: "The ADM is a generic method meant to be tailored to the organisation's frameworks, maturity, and the scope, schedule and detail of the work. A contradicts the standard; C and D are invented restrictions."
+    refs: ["ADM §1"]
+    difficulty: 2
+    tags: [adaptation]
+  - id: F3-003
+    unit: F3
+    objective: "3.3"
+    stem: "During the ADM, where are the architectural assets created by earlier iterations stored so that later work can reuse them?"
+    options:
+      - {key: A, text: "In the Architecture Repository", correct: true}
+      - {key: B, text: "In the Statement of Architecture Work"}
+      - {key: C, text: "In the Architecture Contract"}
+      - {key: D, text: "In the Implementation and Migration Plan"}
+    explanation: "The Architecture Repository holds reusable assets; the ADM populates it and draws from it in every phase. The other three are deliverables, not stores."
+    refs: ["ADM §1"]
+    difficulty: 1
+    tags: [repository]
+  - id: F4-001
+    unit: F4
+    objective: "4.1"
+    stem: "Which of the following is an objective of the Preliminary Phase?"
+    options:
+      - {key: A, text: "Develop the Target Business Architecture"}
+      - {key: B, text: "Establish the Architecture Capability desired by the organisation", correct: true}
+      - {key: C, text: "Obtain approval for the Statement of Architecture Work"}
+      - {key: D, text: "Generate the initial Architecture Roadmap"}
+    explanation: "The Preliminary Phase determines and establishes the Architecture Capability. A is Phase B, C is Phase A, D is Phase E."
+    refs: ["ADM §2"]
+    difficulty: 1
+    tags: [preliminary, objectives]
+  - id: F4-002
+    unit: F4
+    objective: "4.2"
+    stem: "Which of the following is an output of Phase A, Architecture Vision?"
+    options:
+      - {key: A, text: "Architecture Definition Document (finalised)"}
+      - {key: B, text: "Approved Statement of Architecture Work", correct: true}
+      - {key: C, text: "Implementation and Migration Plan"}
+      - {key: D, text: "Architecture Contract (signed)"}
+    explanation: "Phase A ends with the approved Statement of Architecture Work. The finalised Architecture Definition Document is Phase F, the Implementation and Migration Plan is E/F, and the signed Architecture Contract is Phase G."
+    refs: ["ADM §3"]
+    difficulty: 2
+    tags: [phase-a, outputs]
+  - id: F4-003
+    unit: F4
+    objective: "4.3"
+    stem: "Which document is the primary input that triggers Phase A?"
+    options:
+      - {key: A, text: "Architecture Vision"}
+      - {key: B, text: "Request for Architecture Work", correct: true}
+      - {key: C, text: "Architecture Roadmap"}
+      - {key: D, text: "Requirements Impact Assessment"}
+    explanation: "The Request for Architecture Work from the sponsor starts Phase A. The Architecture Vision is Phase A's output; the Roadmap comes from B–F; the Requirements Impact Assessment is a Requirements Management output."
+    refs: ["ADM §3"]
+    difficulty: 1
+    tags: [phase-a, inputs]
+  - id: F4-004
+    unit: F4
+    objective: "4.4"
+    stem: "In Phases B, C and D, which step immediately follows developing the Target Architecture description?"
+    options:
+      - {key: A, text: "Select reference models, viewpoints and tools"}
+      - {key: B, text: "Perform gap analysis", correct: true}
+      - {key: C, text: "Conduct formal stakeholder review"}
+      - {key: D, text: "Create the Architecture Definition Document"}
+    explanation: "The nine-step sequence is: select reference models; baseline; target; gap analysis; candidate roadmap components; resolve impacts; stakeholder review; finalise; create the Architecture Definition Document. A is step 1, C step 7, D step 9."
+    refs: ["ADM §4"]
+    difficulty: 2
+    tags: [steps]
+  - id: F4-005
+    unit: F4
+    objective: "4.4"
+    stem: "Phase C, Information Systems Architectures, covers which two architecture domains?"
+    options:
+      - {key: A, text: "Business and Data"}
+      - {key: B, text: "Data and Application", correct: true}
+      - {key: C, text: "Application and Technology"}
+      - {key: D, text: "Data and Technology"}
+    explanation: "Phase C is one phase covering Data and Application Architecture. Business is Phase B and Technology is Phase D."
+    refs: ["ADM §5"]
+    difficulty: 1
+    tags: [phase-c]
+  - id: F4-006
+    unit: F4
+    objective: "4.5"
+    stem: "Which phase generates the initial complete version of the Architecture Roadmap and decides whether Transition Architectures are needed?"
+    options:
+      - {key: A, text: "Phase D"}
+      - {key: B, text: "Phase E", correct: true}
+      - {key: C, text: "Phase F"}
+      - {key: D, text: "Phase G"}
+    explanation: "Phase E, Opportunities and Solutions, consolidates the gaps into the Roadmap and identifies Transition Architectures. Phase F finalises the Implementation and Migration Plan; D develops the Technology Architecture; G governs implementation."
+    refs: ["ADM §9"]
+    difficulty: 2
+    tags: [phase-e]
+  - id: F4-007
+    unit: F4
+    objective: "4.5"
+    stem: "Which of the following is a step in Phase F, Migration Planning?"
+    options:
+      - {key: A, text: "Assign a business value to each work package", correct: true}
+      - {key: B, text: "Identify Transition Architectures"}
+      - {key: C, text: "Perform Enterprise Architecture compliance reviews"}
+      - {key: D, text: "Develop the Architecture Vision"}
+    explanation: "Assigning business value to work packages is a Phase F step. Identifying Transition Architectures is Phase E, compliance reviews are Phase G, and the Architecture Vision is Phase A."
+    refs: ["ADM §10"]
+    difficulty: 2
+    tags: [phase-f, steps]
+  - id: F4-008
+    unit: F4
+    objective: "4.6"
+    stem: "In which phase is the Architecture Contract signed between the architecture function and the implementing organisation?"
+    options:
+      - {key: A, text: "Phase E"}
+      - {key: B, text: "Phase F"}
+      - {key: C, text: "Phase G", correct: true}
+      - {key: D, text: "Phase H"}
+    explanation: "The signed Architecture Contract is an output of Phase G, Implementation Governance. E and F plan the migration; H manages change after deployment."
+    refs: ["ADM §11"]
+    difficulty: 1
+    tags: [phase-g]
+  - id: F4-009
+    unit: F4
+    objective: "4.6"
+    stem: "In Phase H, which class of change would normally require a new ADM cycle to be started?"
+    options:
+      - {key: A, text: "Simplification change"}
+      - {key: B, text: "Incremental change"}
+      - {key: C, text: "Re-architecting change", correct: true}
+      - {key: D, text: "Any change request, regardless of class"}
+    explanation: "Re-architecting change puts the whole architecture through the cycle again. Simplification and incremental changes are handled through change management without a new cycle. D overstates it."
+    refs: ["ADM §12"]
+    difficulty: 2
+    tags: [phase-h]
+  - id: F4-010
+    unit: F4
+    objective: "4.7"
+    stem: "Which statement about Requirements Management is correct?"
+    options:
+      - {key: A, text: "It disposes of requirements on behalf of the phases"}
+      - {key: B, text: "It manages the flow of requirements but the disposal of a requirement is done in the relevant phase", correct: true}
+      - {key: C, text: "It is executed once, between Phase A and Phase B"}
+      - {key: D, text: "It replaces gap analysis in Phases B to D"}
+    explanation: "Requirements Management stores, assesses and feeds requirements to the phases; the phases dispose of them. A reverses that, C makes it a one-off, D confuses it with a technique."
+    refs: ["ADM §13"]
+    difficulty: 2
+    tags: [requirements]
+  - id: F4-011
+    unit: F4
+    objective: "4.3"
+    stem: "Which of the following is an output of Phase B, Business Architecture?"
+    options:
+      - {key: A, text: "Draft Architecture Requirements Specification, including gap analysis results", correct: true}
+      - {key: B, text: "Implementation Governance Model"}
+      - {key: C, text: "Signed Architecture Contract"}
+      - {key: D, text: "Request for Architecture Work"}
+    explanation: "Phase B produces the draft Architecture Definition Document and draft Architecture Requirements Specification with gap analysis. The Implementation Governance Model is Phase F, the signed contract Phase G, and the Request for Architecture Work is an input (or a Preliminary/Phase H output)."
+    refs: ["ADM §4"]
+    difficulty: 2
+    tags: [phase-b, outputs]
+  - id: F5-001
+    unit: F5
+    objective: "5.1"
+    stem: "Which four elements does the standard recommend for stating an architecture principle?"
+    options:
+      - {key: A, text: "Name, statement, rationale, implications", correct: true}
+      - {key: B, text: "Name, owner, priority, review date"}
+      - {key: C, text: "Goal, objective, measure, target"}
+      - {key: D, text: "Problem, context, forces, solution"}
+    explanation: "A principle has a name, a statement, a rationale and implications. C describes goals and objectives; D is the structure of an architecture pattern; B is invented."
+    refs: ["TECH §2"]
+    difficulty: 1
+    tags: [principles]
+  - id: F5-002
+    unit: F5
+    objective: "5.2"
+    stem: "On the stakeholder power/interest grid, a stakeholder with high power and low interest should be:"
+    options:
+      - {key: A, text: "Treated as a Key Player"}
+      - {key: B, text: "Kept Satisfied", correct: true}
+      - {key: C, text: "Kept Informed"}
+      - {key: D, text: "Given Minimal Effort"}
+    explanation: "High power, low interest is Keep Satisfied. Key Players are high/high; Keep Informed is low power, high interest; Minimal Effort is low/low."
+    refs: ["TECH §3"]
+    difficulty: 2
+    tags: [stakeholders]
+  - id: F5-003
+    unit: F5
+    objective: "5.3"
+    stem: "In a gap analysis matrix, what does a building block marked 'Eliminated' indicate?"
+    options:
+      - {key: A, text: "A baseline building block that has no counterpart in the target and was deliberately removed", correct: true}
+      - {key: B, text: "A target building block that cannot be funded"}
+      - {key: C, text: "A building block that failed a compliance review"}
+      - {key: D, text: "A building block moved to the Reference Library"}
+    explanation: "The matrix compares baseline against target; an 'Eliminated' cell records a baseline element intentionally dropped, so an accidental omission can be told from a decision. The other options are not what the matrix records."
+    refs: ["TECH §5.2"]
+    difficulty: 2
+    tags: [gap-analysis]
+  - id: F5-004
+    unit: F5
+    objective: "5.4"
+    stem: "Which technique is used to discover and document business requirements through a description of a problem, its environment, the desired outcome and the actors involved?"
+    options:
+      - {key: A, text: "Capability-Based Planning"}
+      - {key: B, text: "Business Scenarios", correct: true}
+      - {key: C, text: "Business Transformation Readiness Assessment"}
+      - {key: D, text: "Gap Analysis"}
+    explanation: "That is the Business Scenario technique. Capability-Based Planning plans capabilities, readiness assessment measures the organisation's readiness to change, and gap analysis compares architectures."
+    refs: ["GUIDE:business-scenarios §1"]
+    difficulty: 1
+    tags: [business-scenarios]
+  - id: F5-005
+    unit: F5
+    objective: "5.4"
+    stem: "In Risk Management, what is the 'residual' level of risk?"
+    options:
+      - {key: A, text: "The risk before any mitigation is applied"}
+      - {key: B, text: "The risk remaining after mitigating actions have been taken", correct: true}
+      - {key: C, text: "The risk that was transferred to a supplier"}
+      - {key: D, text: "The average of all risks on the project"}
+    explanation: "Initial risk is before mitigation; residual risk is after. C and D are not TOGAF classifications."
+    refs: ["TECH §8.1"]
+    difficulty: 1
+    tags: [risk]
+  - id: F5-006
+    unit: F5
+    objective: "5.3"
+    stem: "Which migration planning technique is used in Phase E to consolidate the results of gap analysis across the domain phases?"
+    options:
+      - {key: A, text: "Architecture Definition Increments Table"}
+      - {key: B, text: "Consolidated Gaps, Solutions and Dependencies Matrix", correct: true}
+      - {key: C, text: "Business Value Assessment"}
+      - {key: D, text: "Transition Architecture State Evolution Table"}
+    explanation: "The consolidated gaps matrix is the Phase E technique. The increments table, the state evolution table and Business Value Assessment are Phase F techniques."
+    refs: ["ADM §9.3.3", "ADM §10.3.5"]
+    difficulty: 3
+    tags: [migration-planning]
+  - id: F6-001
+    unit: F6
+    objective: "6.1"
+    stem: "Which iteration cycle of the ADM focuses on establishing or adjusting the Architecture Capability?"
+    options:
+      - {key: A, text: "Architecture Capability iteration", correct: true}
+      - {key: B, text: "Architecture Development iteration"}
+      - {key: C, text: "Transition Planning iteration"}
+      - {key: D, text: "Architecture Governance iteration"}
+    explanation: "The four cycles are Capability (Preliminary and A), Development (A–D), Transition Planning (E–F) and Governance (G–H). Only the first concerns the capability itself."
+    refs: ["APPLY §2"]
+    difficulty: 2
+    tags: [iteration]
+  - id: F6-002
+    unit: F6
+    objective: "6.2"
+    stem: "Which level of the Architecture Landscape provides an organising framework for operational and change activity and an executive-level long-term view?"
+    options:
+      - {key: A, text: "Capability Architecture"}
+      - {key: B, text: "Segment Architecture"}
+      - {key: C, text: "Strategic Architecture", correct: true}
+      - {key: D, text: "Solution Architecture"}
+    explanation: "Strategic Architecture is the summary, direction-setting level. Segment is the programme/portfolio level, Capability the project level, and Solution Architecture is not a Landscape level."
+    refs: ["APPLY §3"]
+    difficulty: 2
+    tags: [landscape]
+  - id: F6-003
+    unit: F6
+    objective: "6.2"
+    stem: "What is the main purpose of architecture partitioning?"
+    options:
+      - {key: A, text: "To divide the enterprise so that architectures can be developed by different teams at different levels without conflict", correct: true}
+      - {key: B, text: "To split the Architecture Board into sub-committees"}
+      - {key: C, text: "To separate business stakeholders from technical stakeholders"}
+      - {key: D, text: "To allocate the budget across the ADM phases"}
+    explanation: "Partitioning addresses complexity, conflict and parallel development by dividing the enterprise and its architectures by subject matter, time and level of detail. The other options are not what partitioning means."
+    refs: ["APPLY §4"]
+    difficulty: 2
+    tags: [partitioning]
+  - id: F7-001
+    unit: F7
+    objective: "7.4"
+    stem: "Which part of the Architecture Repository records decisions, compliance assessments and dispensations?"
+    options:
+      - {key: A, text: "The Reference Library"}
+      - {key: B, text: "The Standards Library"}
+      - {key: C, text: "The Governance Repository", correct: true}
+      - {key: D, text: "The Architecture Requirements Repository"}
+    explanation: "Governance activity is logged in the Governance Repository. The Reference Library holds templates and patterns, the Standards Library holds standards, and the Requirements Repository holds authorised requirements."
+    refs: ["CONTENT §9"]
+    difficulty: 2
+    tags: [repository]
+  - id: F7-002
+    unit: F7
+    objective: "7.3"
+    stem: "Which statement about Architecture Building Blocks and Solution Building Blocks is correct?"
+    options:
+      - {key: A, text: "An SBB defines what capability is needed; an ABB is a product that provides it"}
+      - {key: B, text: "An ABB captures architecture requirements and guides the development of SBBs, which are the physical implementations", correct: true}
+      - {key: C, text: "ABBs are used only in Phase D; SBBs only in Phase B"}
+      - {key: D, text: "ABBs and SBBs are different names for the same thing"}
+    explanation: "ABBs are the architectural specification; SBBs are candidate physical solutions that realise them. A reverses the relationship; C invents phase restrictions; D denies the distinction."
+    refs: ["CONTENT §5"]
+    difficulty: 2
+    tags: [building-blocks]
+  - id: F7-003
+    unit: F7
+    objective: "7.2"
+    stem: "Which artifact is produced in Phase A to record stakeholders, their concerns and the views they require?"
+    options:
+      - {key: A, text: "Stakeholder Map Matrix", correct: true}
+      - {key: B, text: "Actor/Role Matrix"}
+      - {key: C, text: "Business Interaction Matrix"}
+      - {key: D, text: "Requirements Catalog"}
+    explanation: "The Stakeholder Map Matrix is the Phase A artifact. Actor/Role and Business Interaction matrices are Phase B; the Requirements Catalog belongs to Requirements Management."
+    refs: ["CONTENT §4"]
+    difficulty: 2
+    tags: [artifacts, phase-a]
+  - id: F7-004
+    unit: F7
+    objective: "7.1"
+    stem: "What is the purpose of the content metamodel?"
+    options:
+      - {key: A, text: "To define the entities and relationships used to describe an architecture in a structured way", correct: true}
+      - {key: B, text: "To list the standards that products must comply with"}
+      - {key: C, text: "To schedule the ADM phases on a calendar"}
+      - {key: D, text: "To classify architectures from generic to specific"}
+    explanation: "The metamodel defines the building blocks of an architecture description. B is the Standards Library, C is project planning, D is the Enterprise Continuum."
+    refs: ["CONTENT §3"]
+    difficulty: 1
+    tags: [metamodel]
+  - id: F7-005
+    unit: F7
+    objective: "7.5"
+    stem: "In the Architecture Continuum, which of the following is the most generic category?"
+    options:
+      - {key: A, text: "Organization-Specific Architectures"}
+      - {key: B, text: "Industry Architectures"}
+      - {key: C, text: "Common Systems Architectures"}
+      - {key: D, text: "Foundation Architectures", correct: true}
+    explanation: "The continuum runs from Foundation (most generic) through Common Systems and Industry to Organization-Specific (most specific)."
+    refs: ["CONTENT §8"]
+    difficulty: 1
+    tags: [continuum]
+  - id: F8-001
+    unit: F8
+    objective: "8.1"
+    stem: "Which body is responsible for enterprise-wide oversight of the architecture, including granting dispensations and resolving ambiguities?"
+    options:
+      - {key: A, text: "The Architecture Board", correct: true}
+      - {key: B, text: "The Programme Management Office"}
+      - {key: C, text: "The Requirements Management process"}
+      - {key: D, text: "The sponsor of the Request for Architecture Work"}
+    explanation: "That is the Architecture Board's role. The PMO runs delivery; Requirements Management is a process; the sponsor commissions work but does not govern the architecture."
+    refs: ["GOV §3"]
+    difficulty: 1
+    tags: [board]
+  - id: F8-002
+    unit: F8
+    objective: "8.2"
+    stem: "Which of the following is a characteristic of Architecture Governance as described in the standard?"
+    options:
+      - {key: A, text: "It applies only to technology decisions"}
+      - {key: B, text: "It implements controls over the creation and monitoring of architectural components and ensures compliance with standards", correct: true}
+      - {key: C, text: "It is performed only after Phase H"}
+      - {key: D, text: "It replaces corporate governance for IT"}
+    explanation: "Governance covers controls, compliance, accountability and process across the enterprise architecture. A narrows it, C mis-times it, D overstates it: architecture governance sits within corporate and IT governance."
+    refs: ["GOV §4"]
+    difficulty: 2
+    tags: [governance]
+  - id: F8-003
+    unit: F8
+    objective: "8.3"
+    stem: "A project implements some, but not all, of the architecture specification, and everything it implements is in line with it. Which compliance level applies?"
+    options:
+      - {key: A, text: "Non-conformant"}
+      - {key: B, text: "Consistent", correct: true}
+      - {key: C, text: "Fully conformant"}
+      - {key: D, text: "Irrelevant"}
+    explanation: "'Consistent' is partial implementation in line with the spec. Fully conformant implements all of it and nothing else; non-conformant contradicts it; irrelevant has no features in common."
+    refs: ["GOV §5"]
+    difficulty: 3
+    tags: [compliance]
+  - id: F8-004
+    unit: F8
+    objective: "8.4"
+    stem: "Which of the following is typically found in an Architecture Contract?"
+    options:
+      - {key: A, text: "The organisation's annual budget"}
+      - {key: B, text: "Conformance requirements, time window, and architecture deliverables with their quality measures", correct: true}
+      - {key: C, text: "The list of glossary terms used by the project"}
+      - {key: D, text: "The staff appraisal criteria for the architects"}
+    explanation: "An Architecture Contract sets out scope, conformance requirements, deliverables, quality measures and the time window. The other options are not contract content."
+    refs: ["GOV §6"]
+    difficulty: 2
+    tags: [contract]
+  - id: F8-005
+    unit: F8
+    objective: "8.5"
+    stem: "What is the purpose of an Architecture Maturity Model?"
+    options:
+      - {key: A, text: "To measure how completely a project implements the architecture"}
+      - {key: B, text: "To assess an organisation's architecture practice against defined levels and plan improvement", correct: true}
+      - {key: C, text: "To rank building blocks by reuse"}
+      - {key: D, text: "To grade architects for certification"}
+    explanation: "Maturity models assess the capability's practice over levels. A is compliance assessment, C is not a TOGAF concept, D is the Skills Framework's domain, loosely, but not the maturity model."
+    refs: ["GOV §7"]
+    difficulty: 2
+    tags: [maturity]
+  - id: F8-006
+    unit: F8
+    objective: "8.5"
+    stem: "What does the Architecture Skills Framework provide?"
+    options:
+      - {key: A, text: "A set of roles, skills and proficiency levels for enterprise architecture work", correct: true}
+      - {key: B, text: "The list of certifications required to sit the exam"}
+      - {key: C, text: "A model of the technology platform"}
+      - {key: D, text: "The steps of the compliance review process"}
+    explanation: "The Skills Framework defines roles, skills and proficiency levels. B is certification policy, C is the TRM, D is the compliance review process."
+    refs: ["GOV §8"]
+    difficulty: 1
+    tags: [skills]

@@ -1,0 +1,31 @@
+{# Open-book side panel (§0, §4.6). The whole panel on first render; only the result list when htmx asks. #}
+{% if not fragment_only %}
+<aside id="open-book" class="card bg-base-100 shadow-sm h-fit" data-testid="open-book">
+  <div class="card-body p-3 gap-2">
+    <h3 class="card-title text-sm"><i class="mdi mdi-book-open-variant"></i> Open book</h3>
+    <input type="search" name="q" value="{{ q }}" placeholder="Search the standard, glossary, ADM…" autocomplete="off"
+           class="input input-bordered input-sm w-full"
+           hx-get="/open-book" hx-trigger="input changed delay:300ms, search" hx-target="#open-book-results" hx-swap="innerHTML">
+    <p class="text-xs text-base-content/50">Section index, glossary, phases, techniques and artefacts — the way the standard is available in the exam.</p>
+    <div id="open-book-results" class="max-h-[60vh] overflow-y-auto">
+{% endif %}
+      {% if results %}
+      <ul class="menu menu-xs p-0 gap-1" data-testid="open-book-results">
+        {% for hit in results %}
+        <li>
+          <a href="{{ hit.href }}" target="_blank" rel="noopener" class="flex flex-col items-start gap-0 rounded">
+            <span class="font-medium leading-tight"><span class="badge badge-ghost badge-xs mr-1">{{ hit.kind }}</span>{{ hit.title }}</span>
+            <span class="text-[11px] text-base-content/60">{{ hit.subtitle }}</span>
+            {% if hit.snippet %}<span class="text-[11px] text-base-content/70 line-clamp-2">{{ hit.snippet }}</span>{% endif %}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% elif q | trim | length >= 2 %}
+      <p class="text-xs text-base-content/60 p-2">Nothing matches “{{ q }}”.</p>
+      {% endif %}
+{% if not fragment_only %}
+    </div>
+  </div>
+</aside>
+{% endif %}

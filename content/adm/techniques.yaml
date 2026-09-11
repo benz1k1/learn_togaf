@@ -1,0 +1,121 @@
+# ADM Techniques (learn_togaf.md §1.1, §2). Authored starter, status draft.
+# Chapter numbers follow the 10th Edition ADM Techniques document (TECH): 2 Principles, 3 Stakeholder
+# Management, 4 Patterns, 5 Gap Analysis, 6 Interoperability, 7 Readiness, 8 Risk, 9 Alternatives.
+# Business Scenarios and Capability-Based Planning are Series Guides; the migration planning
+# techniques live in ADM chapters 9 and 10 with the tables catalogued in CONTENT §3.6.8-3.6.9.
+- code: PRINCIPLES
+  name: Architecture Principles
+  purpose: "General rules and guidelines, intended to be enduring and seldom amended, that inform and support the way an organisation fulfils its mission. Each principle has a name, statement, rationale and implications; Architecture Principles are informed and constrained by enterprise principles."
+  phases: [PRELIM, A]
+  artefacts: [PRINCIPLES_CATALOG]
+  traps:
+    - "The five criteria of a good set of principles: understandable, robust, complete, consistent, stable — not 'measurable' or 'achievable'."
+    - "Developed by the Enterprise Architects with key stakeholders and approved by the Architecture Board; established with the capability and confirmed/elaborated as a Phase A step."
+    - "Rationale is written in business terms and explains the benefit; implications answer 'how does this affect me?'. No technology platform names in the name or statement."
+    - "Principles compete (accessibility vs security); the rationale for giving one precedence must be documented."
+  refs: ["TECH §2.1", "TECH §2.3", "TECH §2.4", "TECH §2.4.1", "TECH §2.5", "ADM §3.3.7"]
+- code: STAKEHOLDER_MGMT
+  name: Stakeholder Management
+  purpose: "Identify stakeholders, classify their positions, determine the management approach with the power/interest grid, and tailor the catalogs, matrices and diagrams each group needs. Used during Phase A to find the key players and updated throughout every later phase."
+  phases: [A]
+  artefacts: [STAKEHOLDER_MAP_MATRIX]
+  traps:
+    - "Power grid quadrants (power vertical, interest horizontal): Key Players (high/high), Keep Satisfied (high power, low interest), Keep Informed (low power, high interest), Minimal Effort (low/low)."
+    - "The four steps in order: identify stakeholders; classify stakeholder positions; determine stakeholder management approach; tailor engagement deliverables."
+    - "The template stakeholder map has four columns: stakeholder, key concerns, class, and the catalogs/matrices/diagrams that address the concerns."
+    - "The Phase A stakeholder map feeds the Architecture Vision (concerns and viewpoints), the Communications Plan and the Statement of Architecture Work."
+  refs: ["TECH §3.2", "TECH §3.3", "TECH §3.3.3", "TECH §3.4", "ADM §3.3.2"]
+- code: PATTERNS
+  name: Architecture Patterns
+  purpose: "A way of putting building blocks into context: building blocks are what you use, patterns tell you how, when and why to use them and what trade-offs you make. Described with name, problem, context, forces, solution, resulting context, examples, rationale, related patterns and known uses."
+  phases: [A, B, C, D]
+  artefacts: []
+  traps:
+    - "A pattern is not a building block; it describes how proven combinations of ABBs/SBBs are used."
+    - "Patterns are re-usable assets of the Architecture Continuum to be considered in Phases A through D."
+    - "Architecture pattern (structural organisation of subsystems) vs design pattern (refining components) vs idiom (language-specific) — all three are software terms; the standard's concern is enterprise system patterns."
+  refs: ["TECH §4.1.1", "TECH §4.1.2", "TECH §4.1.3"]
+- code: ALTERNATIVES_TRADEOFFS
+  name: Architecture Alternatives and Trade-Offs
+  purpose: "Identify alternative Target Architectures that each conform to the vision, principles and requirements, and perform trade-offs between them with stakeholders. Three parts: select criteria; define alternatives and understand each; choose one or combine features into the proposed alternative."
+  phases: [B, C, D, E]
+  artefacts: []
+  traps:
+    - "Alternatives are commonly defined per domain to simplify the analysis, then merged."
+    - "Usable in any phase at any level; Phase E's consolidation step names it for investigating Target Architecture alternatives."
+    - "Each alternative gets an informal gap analysis against the baseline and an impact assessment across the Architecture Landscape, in just enough detail to decide."
+  refs: ["TECH §9.1", "TECH §9.2", "TECH §9.2.2", "TECH §9.2.3", "ADM §9.3.3"]
+- code: BUSINESS_SCENARIOS
+  name: Business Scenarios
+  purpose: "A technique to validate, elaborate or change the premise behind an architecture effort by documenting, in iterations, real business problems, the business and technology environment, value streams enabled by capabilities, the desired outcomes, and the human and computing actors. A good scenario is SMART. Most prominent in Phase A; also used in the Preliminary and Business Architecture phases."
+  phases: [PRELIM, A, B]
+  artefacts: []
+  traps:
+    - "SMART here is Specific, Measurable, Actionable, Realistic, Time-bound — not 'Achievable' or 'Relevant'."
+    - "A Series Guide, not part of the ADM Techniques document in the 10th Edition."
+    - "Each iteration runs plan, gather, analyse, document, review across three phases: Premise Formulation, Initial Verification, Refinement; the approved scenario goes into the Requirements Repository."
+    - "A Business Scenario is not a use-case, a business model, a business case or an engineering specification."
+  refs: ["GUIDE:business-scenarios §1", "GUIDE:business-scenarios §3.1", "GUIDE:business-scenarios §3.3", "GUIDE:business-scenarios §6"]
+- code: GAP_ANALYSIS
+  name: Gap Analysis
+  purpose: "Validate an architecture by highlighting the shortfall between the Baseline and Target Architectures — items deliberately omitted, accidentally left out, or not yet defined — using a matrix of baseline against target building blocks marked Included, Eliminated or New."
+  phases: [B, C, D, E]
+  artefacts: []
+  traps:
+    - "Baseline ABBs on the vertical axis, Target ABBs on the horizontal; a final 'New' row on the baseline axis and a final 'Eliminated' column on the target axis."
+    - "The most critical source of gaps is stakeholder concerns not addressed in earlier work."
+    - "Performed as a step in each of Phases B, C and D; consolidated in Phase E into the Consolidated Gaps, Solutions, and Dependencies matrix."
+  refs: ["TECH §5", "TECH §5.1", "TECH §5.2", "ADM §9.3.3"]
+- code: MIGRATION_PLANNING
+  name: Migration Planning Techniques
+  purpose: "The Phase E and F techniques — Implementation Factor catalog, Consolidated Gaps/Solutions/Dependencies matrix, Implementation and Migration Strategy, Transition Architectures, Business Value and Risk Matrix, Transition Architecture State Evolution Table, Architecture Definition Increments Table — that turn gaps into a sequenced Architecture Roadmap and Implementation and Migration Plan."
+  phases: [E, F]
+  artefacts: []
+  traps:
+    - "Phase E: Implementation Factor catalog and Consolidated Gaps matrix (step 9.3.3); strategy approaches Greenfield / Revolutionary / Evolutionary and methodologies quick win / achievable targets / value chain (9.3.8); systems classified Mainstream / Contain / Replace (9.3.9)."
+    - "Phase F: Business Value and Risk Matrix in 'Assign a Business Value to Each Work Package' (10.3.2); State Evolution Table and Architecture Definition Increments Table in 'Confirm Architecture Roadmap and Update ADD' (10.3.5). CONTENT lists the Increments Table among Phase E artifacts and the State Evolution Table and Business Value and Risk Matrix among Phase F artifacts."
+    - "Transition Architectures must deliver measurable business value; their intervals need not be uniform."
+    - "Four management frameworks must interact with the plan: Business Planning, Enterprise Architecture, Project/Portfolio Management, Operations Management."
+  refs: ["ADM §9.3.3", "ADM §9.3.8", "ADM §9.3.9", "ADM §9.3.10", "ADM §9.5", "ADM §10.3.1", "ADM §10.3.2", "ADM §10.3.5", "CONTENT §3.6.8", "CONTENT §3.6.9"]
+- code: INTEROPERABILITY
+  name: Interoperability Requirements
+  purpose: "Interoperability is the ability to share information and services; the technique defines the degree to which they are shared — business/operational, information and technical — guided by the enterprise operating model, and reconciles those requirements with the chosen solutions."
+  phases: [A, B, C, D, E, F]
+  artefacts: []
+  traps:
+    - "Operating model determined in Phase A, if not B, and definitely by Phase E."
+    - "The interoperability matrix starts in Phase B between stakeholders and evolves in Phase C between systems; requirements are consolidated and reconciled in Phase E (two fixes: a translating building block, or a changed specification)."
+    - "Business interoperability is the most significant reconciliation issue because SBBs/COTS embed processes; changes are signed off in a revised Statement of Architecture Work."
+  refs: ["TECH §6.1", "TECH §6.2", "TECH §6.3", "TECH §6.5", "TECH §6.6", "ADM §9.3.5"]
+- code: READINESS
+  name: Business Transformation Readiness Assessment
+  purpose: "Evaluate and quantify the organisation's readiness to undergo change: determine the readiness factors, present them as maturity models, assess and rate them, assess the risks and improvement actions for each, and work the actions into the Phase E and F Implementation and Migration Plan."
+  phases: [A, E, F, G]
+  artefacts: []
+  traps:
+    - "Rating scheme: Urgency, Readiness Status (Low / Fair / Acceptable / Good / High) and Degree of Difficulty to Fix — maturity models are the presentation, not the rating."
+    - "A Phase A step whose results go into the Capability Assessment; reviewed in Phase E (9.3.7); factors monitored in Phase G."
+    - "The human/cultural factors, not the technology, are the critical ones; do not circulate the Architecture Definition widely until transformation issues are mitigated."
+  refs: ["TECH §7", "TECH §7.1", "TECH §7.2", "TECH §7.3", "TECH §7.4.2", "TECH §7.5", "ADM §3.3.5", "ADM §9.3.7"]
+- code: RISK
+  name: Risk Management
+  purpose: "Identify, classify and mitigate risks to the transformation and track them throughout: initial level of risk (before mitigation) and residual level (after), assessed by combining effect and frequency into an impact, accepted and managed within the governance framework, and monitored in Phase G."
+  phases: [A, E, F, G]
+  artefacts: []
+  traps:
+    - "Initial vs residual level of risk — the classic question."
+    - "Process order: classification; identification; initial assessment; mitigation and residual assessment; monitoring."
+    - "Effect (catastrophic / critical / marginal / negligible) x frequency (frequent / likely / occasional / seldom / unlikely) gives impact E / H / M / L; a mitigation that moves frequent-catastrophic to frequent-critical is still extremely high and must be reconsidered."
+    - "Risks are normally classified as time, cost and scope; worksheets are kept as governance artifacts in Phase G."
+  refs: ["TECH §8.1", "TECH §8.2", "TECH §8.4", "TECH §8.6", "TECH §8.7", "ADM §3.3.10"]
+- code: CAPABILITY_PLANNING
+  name: Business Capability Planning
+  purpose: "Plan investment through value streams and business capabilities: a business capability is an ability the organisation possesses, expressed in high-level terms and requiring people, processes and tools; capabilities are catalogued, mapped to value stream stages, modelled as instances, and improved by optimising, consolidating, creating or retiring, with gaps grouped into plateaus and delivered as increments."
+  phases: [A, B, E, F]
+  artefacts: [BUSINESS_CAPABILITY_MAP, VALUE_STREAM_MAP]
+  traps:
+    - "A capability says what the business does, not how, why or where; it needs people, processes and tools (not 'people, process and material')."
+    - "Catalog approaches: top-down (20-30 top-level capabilities), bottom-up, incremental; more than about 100 entries suggests instances or stages are being listed."
+    - "Value is defined from the stakeholder's perspective; a plateau is a set of gaps addressed together that keeps the value stream functional."
+    - "A Series Guide (Business Capability Planning), not part of the ADM Techniques document in the 10th Edition."
+  refs: ["GUIDE:business-capability-planning §1", "GUIDE:business-capability-planning §5.1", "GUIDE:business-capability-planning §6", "GUIDE:business-capability-planning §6.2", "GUIDE:business-capability-planning §6.4", "GUIDE:business-capability-planning §7.1", "GUIDE:business-capability-planning §7.2"]

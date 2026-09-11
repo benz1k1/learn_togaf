@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Flashcards · Learn TOGAF{% endblock %}
+{% block heading %}Flashcards{% endblock %}
+{% block header_actions %}
+<form method="post" action="/review/rebuild" class="inline">
+  {% include "_csrf.html" %}
+  <button type="submit" class="btn btn-ghost btn-sm" title="Add cards for any new term, phase, technique, artefact or figure; existing progress is kept">
+    <i class="mdi mdi-refresh"></i> Rebuild deck
+  </button>
+</form>
+{% endblock %}
+{% block content %}
+<div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_16rem]">
+  <section class="min-w-0">
+    <div class="stats stats-horizontal shadow bg-base-100 w-full mb-4" id="review-stats">
+      <div class="stat py-3">
+        <div class="stat-title">Due now</div>
+        <div class="stat-value text-primary text-2xl" data-testid="due-count">{{ stats.due }}</div>
+      </div>
+      <div class="stat py-3">
+        <div class="stat-title">Reviewed today</div>
+        <div class="stat-value text-2xl" data-testid="reviewed-today">{{ stats.reviewed_today }}<span class="text-base text-base-content/50"> / {{ stats.cap }}</span></div>
+        <div class="stat-desc">daily cap (setting <code>daily_card_cap</code>)</div>
+      </div>
+      <div class="stat py-3">
+        <div class="stat-title">Deck</div>
+        <div class="stat-value text-2xl" data-testid="total-cards">{{ stats.total }}</div>
+        <div class="stat-desc">cards generated from content</div>
+      </div>
+    </div>
+
+    <div id="card" hx-get="/review/next" hx-trigger="load" hx-swap="innerHTML" class="min-h-[18rem]">
+      <div class="flex items-center justify-center h-40 text-base-content/50"><span class="loading loading-dots"></span></div>
+    </div>
+
+    <p class="text-xs text-base-content/60 mt-3">
+      <kbd class="kbd kbd-xs">space</kbd> flip ·
+      <kbd class="kbd kbd-xs">0</kbd>–<kbd class="kbd kbd-xs">5</kbd> grade (0 blank, 3 hard, 5 easy) · grading is SM-2, the next due date follows the grade.
+    </p>
+  </section>
+
+  <aside class="card bg-base-100 shadow-sm h-fit">
+    <div class="card-body p-4">
+      <h2 class="card-title text-sm">By kind</h2>
+      <table class="table table-xs">
+        <thead><tr><th>Kind</th><th class="text-right">Due</th><th class="text-right">Total</th></tr></thead>
+        <tbody>
+        {% for row in stats.kinds %}
+          <tr><td>{{ row.kind | replace('_', ' ') | lower | capitalize }}</td><td class="text-right">{{ row.due }}</td><td class="text-right">{{ row.total }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <p class="text-xs text-base-content/60 mt-2">Question cards are added automatically for every question you miss in a drill or mock.</p>
+    </div>
+  </aside>
+</div>
+{% endblock %}

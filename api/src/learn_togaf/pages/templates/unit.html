@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{{ unit.code }} {{ unit.name }} · Learn TOGAF{% endblock %}
+{% block heading %}<a href="/unit" class="link link-hover">Lessons</a> › {{ unit.code }} {{ unit.name }}{% endblock %}
+{% block content %}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+  <div class="lg:col-span-2 flex flex-col gap-4">
+    {% if unit.summary_md %}
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4 prose-lesson">{{ unit.summary_md | markdown }}</div></div>
+    {% endif %}
+    <div class="card bg-base-100 shadow-sm">
+      <div class="card-body p-4">
+        <h2 class="card-title text-sm">Lessons</h2>
+        {% if lessons %}
+        <ul class="menu menu-sm p-0">
+          {% for lesson in lessons %}
+          <li>
+            <a href="/lesson/{{ lesson.id }}" class="flex items-center gap-2">
+              <span class="text-base-content/50 w-6">{{ lesson.ordinal }}.</span>
+              <span class="flex-grow">{{ lesson.title }}</span>
+              <span class="text-xs text-base-content/50">{{ lesson.reading_minutes }} min</span>
+              {% if lesson.status == 'draft' %}<span class="badge badge-warning badge-xs">draft</span>{% endif %}
+              {% if lesson.state %}<span class="badge badge-sm {{ 'badge-success' if lesson.state == 'MASTERED' else 'badge-info' }}">{{ lesson.state | lower }}</span>{% else %}<span class="badge badge-ghost badge-sm">unread</span>{% endif %}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-sm text-base-content/60">No lessons for this unit yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="card bg-base-100 shadow-sm h-fit">
+    <div class="card-body p-4">
+      <h2 class="card-title text-sm">Objectives</h2>
+      <ul class="flex flex-col gap-2 text-sm">
+        {% for objective in objectives %}
+        <li><span class="badge badge-outline badge-sm mr-1">{{ objective.code }}</span>{{ objective.text }}
+          <a class="link text-xs ml-1" href="/practice?objective={{ objective.code | urlencode }}">drill</a></li>
+        {% endfor %}
+      </ul>
+      {% if unit.weight %}<p class="text-xs text-base-content/60 mt-2">Blueprint weight: {{ unit.weight }} question{{ '' if unit.weight == 1 else 's' }}.</p>{% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

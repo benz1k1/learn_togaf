@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Review queue · Learn TOGAF{% endblock %}
+{% block heading %}Review queue{% endblock %}
+{% block header_actions %}
+<span class="badge badge-ghost">{{ drafts | length }} draft(s)</span>
+{% if failed %}<span class="badge badge-error">{{ failed }} failed verify</span>{% endif %}
+{% endblock %}
+{% block content %}
+<p class="text-sm text-base-content/70 mb-3">
+  Generated drafts waiting under <code>{{ review_dir }}</code> (§1.5). Accepting a draft sets
+  <code>status: reviewed</code> on every item, moves it to <code>content/questions/&lt;exam&gt;/</code> or
+  <code>content/lessons/&lt;unit&gt;/</code> and reloads the content cache; rejecting moves it to
+  <code>review/rejected/</code>. Mocks draw reviewed items only.
+</p>
+{% if drafts %}
+<div class="flex flex-col gap-3">
+  {% for draft in drafts %}{% include "_draft.html" %}{% endfor %}
+</div>
+{% else %}
+<div class="card bg-base-100 shadow-sm">
+  <div class="card-body items-center text-center gap-2">
+    <i class="mdi mdi-clipboard-check-outline text-4xl text-base-content/30"></i>
+    <p class="font-medium">Nothing waiting for review.</p>
+    <p class="text-sm text-base-content/60">
+      Drafts appear here after <code>python generate.py questions foundation &lt;unit&gt;</code>,
+      <code>python generate.py lessons &lt;unit&gt;</code> and <code>python generate.py verify</code>
+      write to <code>content/review/</code>.
+    </p>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

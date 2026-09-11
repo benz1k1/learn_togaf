@@ -1,0 +1,61 @@
+{# One draft in the review queue (§1.5): the verifier's note, the items, accept / reject. #}
+<div class="card bg-base-100 shadow-sm" id="draft-{{ draft.id | replace('/', '-') | replace('.', '-') }}">
+  <div class="card-body gap-2 py-3">
+    <div class="flex flex-wrap items-center gap-2">
+      <i class="mdi {% if draft.kind == 'lesson' %}mdi-book-open-page-variant-outline{% else %}mdi-help-circle-outline{% endif %} text-primary"></i>
+      <span class="font-semibold">{{ draft.title }}</span>
+      <code class="text-xs">{{ draft.id }}</code>
+      <span class="badge badge-ghost badge-sm">{{ draft.kind }}</span>
+      {% if draft.exam %}<span class="badge badge-ghost badge-sm">{{ draft.exam | lower }}</span>{% endif %}
+      {% if draft.unit %}<span class="badge badge-ghost badge-sm">{{ draft.unit }}</span>{% endif %}
+      {% if draft.set_code %}<span class="badge badge-ghost badge-sm">set {{ draft.set_code }}</span>{% endif %}
+      {% if draft.verify %}
+        {% if draft.verify.passed %}<span class="badge badge-success badge-sm">verify passed</span>
+        {% elif draft.verify.passed is sameas false %}<span class="badge badge-error badge-sm">verify failed</span>
+        {% else %}<span class="badge badge-warning badge-sm">verify: no verdict</span>{% endif %}
+      {% else %}<span class="badge badge-warning badge-sm">not verified</span>{% endif %}
+      <span class="ml-auto text-xs text-base-content/60">
+        {% if draft.model %}{{ draft.model }} · {% endif %}{{ (draft.generated_at or draft.modified_at) | fmt_dt }}
+      </span>
+    </div>
+    {% if draft.error %}
+    <div class="alert alert-error py-2 text-sm"><i class="mdi mdi-alert-circle-outline"></i><span>Cannot read this draft: {{ draft.error }}</span></div>
+    {% endif %}
+    {% if draft.verify and draft.verify.reason %}
+    <blockquote class="border-l-4 {% if draft.verify.passed %}border-success{% else %}border-error{% endif %} pl-3 text-sm text-base-content/80">
+      <span class="font-medium">Verifier:</span> {{ draft.verify.reason }}
+    </blockquote>
+    {% endif %}
+    {% if draft.kind == 'lesson' and draft.body_preview %}
+    <pre class="whitespace-pre-wrap text-xs bg-base-200 rounded p-2 max-h-40 overflow-auto">{{ draft.body_preview }}</pre>
+    {% elif draft.items %}
+    <table class="table table-xs">
+      <thead><tr><th>Id</th><th>Item</th><th>Verify</th></tr></thead>
+      <tbody>
+      {% for item in draft.items %}
+      <tr>
+        <td><code>{{ item.id }}</code></td>
+        <td class="max-w-xl truncate" title="{{ item.title }}">{{ item.title }}</td>
+        <td class="text-xs">
+          {% if item.verify %}
+            {% if item.verify.passed %}<span class="text-success">pass</span>{% elif item.verify.passed is sameas false %}<span class="text-error">fail</span>{% else %}—{% endif %}
+            {% if item.verify.reason %}<span class="text-base-content/70"> · {{ item.verify.reason }}</span>{% endif %}
+          {% else %}—{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+    <div class="flex gap-2 justify-end">
+      <form method="post" action="/review-queue/{{ draft.id }}/reject">
+        {% include "_csrf.html" %}
+        <button type="submit" class="btn btn-sm btn-outline btn-error"><i class="mdi mdi-close"></i> Reject</button>
+      </form>
+      <form method="post" action="/review-queue/{{ draft.id }}/accept">
+        {% include "_csrf.html" %}
+        <button type="submit" class="btn btn-sm btn-primary" {% if draft.error %}disabled{% endif %}><i class="mdi mdi-check"></i> Accept as reviewed</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+{# One flashcard, or the "done" state. Swapped into #card; the stats block is refreshed out of band. #}
+<div class="stats stats-horizontal shadow bg-base-100 w-full mb-4" id="review-stats" hx-swap-oob="true">
+  <div class="stat py-3">
+    <div class="stat-title">Due now</div>
+    <div class="stat-value text-primary text-2xl" data-testid="due-count">{{ stats.due }}</div>
+  </div>
+  <div class="stat py-3">
+    <div class="stat-title">Reviewed today</div>
+    <div class="stat-value text-2xl" data-testid="reviewed-today">{{ stats.reviewed_today }}<span class="text-base text-base-content/50"> / {{ stats.cap }}</span></div>
+    <div class="stat-desc">daily cap (setting <code>daily_card_cap</code>)</div>
+  </div>
+  <div class="stat py-3">
+    <div class="stat-title">Deck</div>
+    <div class="stat-value text-2xl" data-testid="total-cards">{{ stats.total }}</div>
+    <div class="stat-desc">cards generated from content</div>
+  </div>
+</div>
+
+{% if card is none %}
+<div class="card bg-base-100 shadow" data-testid="review-done" data-reason="{{ reason }}">
+  <div class="card-body items-center text-center">
+    <i class="mdi mdi-check-decagram-outline text-4xl text-success"></i>
+    {% if reason == 'cap' %}
+    <h2 class="card-title">Done for today</h2>
+    <p class="text-sm text-base-content/70">You have reviewed {{ stats.reviewed_today }} cards, the daily cap of {{ stats.cap }}. {{ stats.due }} still due — they keep until tomorrow, or raise <code>daily_card_cap</code>.</p>
+    {% elif stats.total == 0 %}
+    <h2 class="card-title">No cards yet</h2>
+    <p class="text-sm text-base-content/70">The deck is generated from the glossary, ADM and figures. Use <em>Rebuild deck</em> above once content is loaded.</p>
+    {% else %}
+    <h2 class="card-title">Nothing due</h2>
+    <p class="text-sm text-base-content/70">All {{ stats.total }} cards are scheduled ahead. Come back tomorrow, or <a class="link" href="/practice">run a drill</a> — missed questions become cards.</p>
+    {% endif %}
+  </div>
+</div>
+{% else %}
+<div class="card bg-base-100 shadow" data-testid="flashcard" data-card-id="{{ card.id }}" data-card-kind="{{ card.card_kind }}"
+     x-data="{ flipped: false }"
+     @keydown.window="if ($event.key === ' ') { $event.preventDefault(); flipped = !flipped } else if (flipped && '012345'.includes($event.key) && $event.key.length === 1) { $refs['g' + $event.key].click() }">
+  <div class="card-body">
+    <div class="flex items-center gap-2 text-xs text-base-content/60">
+      <span class="badge badge-outline badge-sm">{{ card.card_kind | replace('_', ' ') | lower }}</span>
+      <span>{{ content.title }}</span>
+      <span class="ml-auto">interval {{ card.interval_days | round(1) }} d · ease {{ '%.2f' | format(card.ease) }} · reps {{ card.reps }}{% if card.lapses %} · lapses {{ card.lapses }}{% endif %}</span>
+    </div>
+
+    <div class="min-h-[8rem] py-3 cursor-pointer" @click="flipped = !flipped" title="Click or press space to flip">
+      {% if content.front_image %}
+      <img src="{{ content.front_image }}" alt="figure (caption hidden)" class="max-h-72 mx-auto rounded border border-base-300">
+      {% endif %}
+      {% if content.front %}
+      <div class="text-lg font-medium prose-lesson">{% if card.card_kind == 'QUESTION' %}{{ content.front | markdown }}{% else %}{{ content.front }}{% endif %}</div>
+      {% endif %}
+      <div x-show="flipped" x-cloak class="mt-4 pt-4 border-t border-base-300 text-base">
+        {% if content.back_lines | length > 1 %}
+        <ul class="list-disc ml-5 space-y-1">{% for line in content.back_lines %}<li>{{ line }}</li>{% endfor %}</ul>
+        {% else %}
+        <p>{{ content.back_lines[0] }}</p>
+        {% endif %}
+        {% if content.back_note %}<p class="text-sm text-base-content/60 mt-3">{{ content.back_note }}</p>{% endif %}
+        {% if content.link %}<a href="{{ content.link }}" class="link link-primary text-xs mt-1 inline-block" @click.stop>Read more</a>{% endif %}
+      </div>
+    </div>
+
+    <div class="card-actions justify-between items-center">
+      <button type="button" class="btn btn-sm" x-show="!flipped" @click="flipped = true"><i class="mdi mdi-rotate-3d-variant"></i> Show answer <kbd class="kbd kbd-xs ml-1">space</kbd></button>
+      <div class="join" x-show="flipped" x-cloak>
+        {% for grade, label, cls in [(0, 'Blank', 'btn-error'), (1, 'Wrong', 'btn-error btn-outline'), (2, 'Almost', 'btn-warning btn-outline'), (3, 'Hard', 'btn-warning'), (4, 'Good', 'btn-success btn-outline'), (5, 'Easy', 'btn-success')] %}
+        <button type="button" class="btn btn-sm join-item {{ cls }}" x-ref="g{{ grade }}"
+                hx-post="/review/{{ card.id }}/grade" hx-vals='{"grade": {{ grade }}}' hx-target="#card" hx-swap="innerHTML"
+                title="grade {{ grade }} — press {{ grade }}"><kbd class="kbd kbd-xs mr-1">{{ grade }}</kbd>{{ label }}</button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

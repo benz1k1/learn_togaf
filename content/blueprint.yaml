@@ -1,0 +1,204 @@
+# Exam formats, learning units, objectives and weights (learn_togaf.md §0).
+# Transcribed from the TOGAF 10 Conformance Requirements; verify against the current revision
+# on opengroup.org before authoring a mock and record the revision here.
+revision: "TOGAF 10 Foundation & Practitioner Conformance Requirements — transcription 2026-09-10, unverified against the live document"
+
+foundation:
+  code: OGEA-101
+  questions: 40
+  time_minutes: 60
+  pass_mark: 24
+  max_score: 40
+  open_book: false
+  scoring: single
+
+practitioner:
+  code: OGEA-102
+  questions: 8
+  time_minutes: 90
+  pass_mark: 24
+  max_score: 40
+  open_book: true
+  scoring: gradient
+
+units:
+  # ---------------------------------------------------------------- Part 1 (40 questions)
+  - code: F1
+    exam: FOUNDATION
+    name: Concepts
+    weight: 3
+    objectives:
+      - {code: "1.1", text: "Explain what enterprise architecture is and why the TOGAF Standard exists"}
+      - {code: "1.2", text: "Describe the structure of the TOGAF Standard: the Fundamental Content and the Series Guides"}
+      - {code: "1.3", text: "Describe the four architecture domains (business, data, application, technology)"}
+      - {code: "1.4", text: "Explain deliverables, artefacts and building blocks and how they differ"}
+      - {code: "1.5", text: "Describe the Enterprise Continuum, the Architecture Repository and the EA Capability at a summary level"}
+  - code: F2
+    exam: FOUNDATION
+    name: Definitions
+    weight: 3
+    objectives:
+      - {code: "2.1", text: "Define the key terms of the standard as given in the Definitions chapter"}
+      - {code: "2.2", text: "Distinguish commonly confused terms (artefact/deliverable/building block, vision/definition document, continuum/repository)"}
+  - code: F3
+    exam: FOUNDATION
+    name: Introduction to the ADM
+    weight: 3
+    objectives:
+      - {code: "3.1", text: "Describe the ADM cycle, its phases and the role of Requirements Management"}
+      - {code: "3.2", text: "Explain how the ADM is adapted, scoped and iterated, and what governs it"}
+      - {code: "3.3", text: "Explain the relationship between the ADM and the Architecture Repository and Continuum"}
+  - code: F4
+    exam: FOUNDATION
+    name: ADM Phases
+    weight: 9
+    objectives:
+      - {code: "4.1", text: "Describe the objectives and approach of the Preliminary Phase"}
+      - {code: "4.2", text: "Describe the objectives and approach of Phase A, Architecture Vision"}
+      - {code: "4.3", text: "Describe the inputs, steps and outputs of each ADM phase"}
+      - {code: "4.4", text: "Describe the objectives and approach of Phases B, C and D"}
+      - {code: "4.5", text: "Describe the objectives and approach of Phases E and F"}
+      - {code: "4.6", text: "Describe the objectives and approach of Phases G and H"}
+      - {code: "4.7", text: "Describe the objectives and approach of Requirements Management"}
+  - code: F5
+    exam: FOUNDATION
+    name: ADM Techniques
+    weight: 6
+    objectives:
+      - {code: "5.1", text: "Explain architecture principles and what makes a good principle"}
+      - {code: "5.2", text: "Explain stakeholder management, the stakeholder map and the power/interest grid"}
+      - {code: "5.3", text: "Explain gap analysis and the migration planning techniques"}
+      - {code: "5.4", text: "Explain business scenarios, interoperability requirements, readiness assessment and risk management"}
+      - {code: "5.5", text: "Explain capability-based planning and architecture patterns"}
+  - code: F6
+    exam: FOUNDATION
+    name: Applying the ADM
+    weight: 4
+    objectives:
+      - {code: "6.1", text: "Explain architecture iteration and the four iteration cycles"}
+      - {code: "6.2", text: "Explain the Architecture Landscape levels and architecture partitioning"}
+      - {code: "6.3", text: "Explain security in the ADM and using the ADM with agile methods, at a summary level"}
+  - code: F7
+    exam: FOUNDATION
+    name: Architecture Content Framework
+    weight: 5
+    objectives:
+      - {code: "7.1", text: "Describe the Architecture Content Framework and the content metamodel"}
+      - {code: "7.2", text: "Describe the artefacts (catalogs, matrices, diagrams) produced in each phase"}
+      - {code: "7.3", text: "Describe Architecture Building Blocks and Solution Building Blocks"}
+      - {code: "7.4", text: "Describe the Architecture Repository and its parts"}
+      - {code: "7.5", text: "Describe the Enterprise Continuum, the Architecture Continuum and the Solutions Continuum"}
+  - code: F8
+    exam: FOUNDATION
+    name: Enterprise Architecture Capability and Governance
+    weight: 7
+    objectives:
+      - {code: "8.1", text: "Explain how an Architecture Capability is established and the Architecture Board"}
+      - {code: "8.2", text: "Explain the Architecture Governance framework, conceptual and organisational"}
+      - {code: "8.3", text: "Explain Architecture Compliance, compliance reviews and checklists"}
+      - {code: "8.4", text: "Explain Architecture Contracts and their content"}
+      - {code: "8.5", text: "Explain Architecture Maturity Models and the Architecture Skills Framework"}
+
+  # ---------------------------------------------------------------- Part 2 (8 scenarios)
+  - code: P1
+    exam: PRACTITIONER
+    name: Context for Enterprise Architecture
+    weight: 1
+    objectives:
+      - {code: "P1.1", text: "Apply the concepts of the EA Capability and the Leader's Guide to an enterprise's situation"}
+      - {code: "P1.2", text: "Apply architecture partitioning and the Architecture Landscape to scope work"}
+  - code: P2
+    exam: PRACTITIONER
+    name: Stakeholder Management
+    weight: 1
+    objectives:
+      - {code: "P2.1", text: "Identify stakeholders, their concerns and the views and viewpoints that address them"}
+      - {code: "P2.2", text: "Apply the stakeholder map and power/interest grid to plan engagement"}
+  - code: P3
+    exam: PRACTITIONER
+    name: Architecture Vision and Phase A
+    weight: 1
+    objectives:
+      - {code: "P3.1", text: "Apply Phase A to establish scope, vision, principles and the Statement of Architecture Work"}
+      - {code: "P3.2", text: "Apply business scenarios, readiness assessment and risk management in Phase A"}
+  - code: P4
+    exam: PRACTITIONER
+    name: Architecture Development (Phases B, C, D)
+    weight: 1
+    objectives:
+      - {code: "P4.1", text: "Develop baseline and target architectures across the four domains and choose the right artefacts"}
+      - {code: "P4.2", text: "Apply gap analysis and building blocks to produce candidate roadmap components"}
+  - code: P5
+    exam: PRACTITIONER
+    name: Implementing the Architecture (Phases E, F, G)
+    weight: 1
+    objectives:
+      - {code: "P5.1", text: "Apply the migration planning techniques to produce the Implementation and Migration Plan"}
+      - {code: "P5.2", text: "Apply implementation governance, compliance reviews and Architecture Contracts"}
+  - code: P6
+    exam: PRACTITIONER
+    name: Architecture Change Management (Phase H)
+    weight: 1
+    objectives:
+      - {code: "P6.1", text: "Classify change requests and decide between simplification, incremental and re-architecting change"}
+  - code: P7
+    exam: PRACTITIONER
+    name: Requirements Management
+    weight: 1
+    objectives:
+      - {code: "P7.1", text: "Apply Requirements Management across the cycle and manage the Architecture Requirements Repository"}
+  - code: P8
+    exam: PRACTITIONER
+    name: Supporting the ADM Work (Series Guides)
+    weight: 1
+    objectives:
+      - {code: "P8.1", text: "Choose and apply the Series Guides: business capabilities, value streams, information and organization maps"}
+      - {code: "P8.2", text: "Apply the risk and security, agile and digital guides to a situation"}
+  - code: P9
+    exam: PRACTITIONER
+    name: Architecture Governance in Practice
+    weight: 0
+    objectives:
+      - {code: "P9.1", text: "Apply the governance framework, maturity models and skills framework to an organisation"}
+
+  # ---------------------------------------------------------------- Series Guides (summary lessons)
+  - code: G_LEADERS
+    exam: PRACTITIONER
+    name: "Guide: The TOGAF Leader's Guide to Establishing and Evolving an EA Capability"
+    objectives:
+      - {code: "G1.1", text: "Summarise the Leader's Guide and when it applies"}
+  - code: G_PRACTITIONERS
+    exam: PRACTITIONER
+    name: "Guide: A Practitioners' Approach to Developing EA Following the ADM"
+    objectives:
+      - {code: "G2.1", text: "Summarise the Practitioners' Approach and when it applies"}
+  - code: G_BUSINESS_SCENARIOS
+    exam: PRACTITIONER
+    name: "Guide: Business Scenarios"
+    objectives:
+      - {code: "G3.1", text: "Summarise the Business Scenarios guide and when it applies"}
+  - code: G_BUSINESS_ARCH
+    exam: PRACTITIONER
+    name: "Guide: Business Capabilities, Value Streams, Information Mapping, Organization Mapping, Business Models"
+    objectives:
+      - {code: "G4.1", text: "Summarise the business architecture guides and when each applies"}
+  - code: G_DIGITAL_AGILE
+    exam: PRACTITIONER
+    name: "Guide: Digital, Enterprise Agility and the ADM in an agile sprint context"
+    objectives:
+      - {code: "G5.1", text: "Summarise the digital and agility guides and when each applies"}
+  - code: G_RISK_SECURITY
+    exam: PRACTITIONER
+    name: "Guide: Integrating Risk and Security; Security Architecture"
+    objectives:
+      - {code: "G6.1", text: "Summarise the risk and security guides and when each applies"}
+  - code: G_GOVERNANCE
+    exam: PRACTITIONER
+    name: "Guide: Architecture Project Management, Maturity Models, Skills Framework, Partitioning, Repository patterns"
+    objectives:
+      - {code: "G7.1", text: "Summarise the governance-related guides and when each applies"}
+  - code: G_REFERENCE_MODELS
+    exam: PRACTITIONER
+    name: "Guide: Reference models (TRM, III-RM, Government Reference Model, Microservices, SOA)"
+    objectives:
+      - {code: "G8.1", text: "Summarise the reference-model guides and when each applies"}

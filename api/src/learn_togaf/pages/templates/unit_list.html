@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Lessons · Learn TOGAF{% endblock %}
+{% block heading %}Lessons{% endblock %}
+{% block content %}
+{% for group in groups %}
+<h2 class="text-sm font-semibold uppercase text-base-content/60 mt-2 mb-2">{{ group.exam | capitalize }}</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 mb-6">
+  {% for unit in group.units %}
+  <a href="/unit/{{ unit.code }}" class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow">
+    <div class="card-body p-4">
+      <div class="flex items-center justify-between gap-2">
+        <span class="font-semibold"><span class="badge badge-neutral badge-sm mr-1">{{ unit.code }}</span>{{ unit.name }}</span>
+        {% if unit.weight %}<span class="badge badge-ghost badge-sm" title="blueprint weight">{{ unit.weight }}</span>{% endif %}
+      </div>
+      <div class="flex items-center gap-2 text-xs text-base-content/70">
+        <progress class="progress progress-primary w-24" value="{{ unit.done_count }}" max="{{ unit.lesson_count if unit.lesson_count else 1 }}"></progress>
+        <span>{{ unit.done_count }}/{{ unit.lesson_count }} lesson{{ '' if unit.lesson_count == 1 else 's' }}</span>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endfor %}
+{% endblock %}

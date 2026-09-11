@@ -1,0 +1,83 @@
+[project]
+name = "learn-togaf"
+version = "1.0.0"
+description = "Learn TOGAF — single-user study app for the TOGAF 10 Foundation and Practitioner exams"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.12",
+    "uvicorn[standard]>=0.34.0",
+    "jinja2>=3.1.6",
+    "pydantic>=2.11.0",
+    "pyyaml>=6.0.2",
+    "markdown-it-py>=3.0.0",
+    "loguru>=0.7.3",
+    "orjson>=3.10.0",
+    "polars>=1.27.1",
+    "httpx>=0.28.0",
+    "selectolax>=0.3.29",
+    "pymupdf>=1.25.0",
+    "playwright>=1.40.0",
+    "anthropic>=0.50.0",
+    "cryptography>=44.0.2",
+    "python-multipart>=0.0.20",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "ruff>=0.11.7",
+    "mypy>=1.15.0",
+    "types-pyyaml>=6.0.12",
+    "pytest-playwright>=0.4.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = {find = {where = ["src"]}}
+include-package-data = true
+zip-safe = false
+
+# Runtime data read off disk (learn_togaf.md §10): templates, vendored static assets, the SQL
+# schema, the prompt files. Named here AND in MANIFEST.in; a wheel missing either starts and dies.
+[tool.setuptools.package-data]
+"learn_togaf" = ["schema.sql"]
+"learn_togaf.generate" = ["prompts/*.md"]
+"learn_togaf.pages" = [
+    "templates/*.html",
+    "static/*.js",
+    "static/*.css",
+    "static/*.md",
+    "static/mdi/css/*.css",
+    "static/mdi/fonts/*",
+]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["*.py"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+# Depends(get_db) / Form(...) defaults are the FastAPI idiom, not a mutable-default bug.
+[tool.ruff.lint.per-file-ignores]
+"src/learn_togaf/pages/controller/*" = ["B008"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+warn_unused_ignores = true
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = ["ui"]
+addopts = "-ra"

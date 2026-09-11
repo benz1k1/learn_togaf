@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Export state · Learn TOGAF{% endblock %}
+{% block heading %}Export learner state{% endblock %}
+{% block content %}
+<div class="card bg-base-100 shadow-sm max-w-2xl"><div class="card-body p-4 gap-3">
+  <p class="text-sm">One JSON file with everything that is yours and not in <code>content/</code>: attempts and answers, flashcard reviews, notes, lesson progress, settings and study sessions. Keep it somewhere the SQLite file is not.</p>
+  <table class="table table-xs w-auto">
+    <tbody>{% for table, count in counts.items() %}<tr><td>{{ table }}</td><td class="text-right">{{ count }}</td></tr>{% endfor %}</tbody>
+  </table>
+  <div class="flex gap-2">
+    <a class="btn btn-sm btn-primary" href="/export/state.json"><i class="mdi mdi-download"></i> Download state.json</a>
+    <a class="btn btn-sm" href="/import"><i class="mdi mdi-upload"></i> Import a state file</a>
+  </div>
+</div></div>
+{% endblock %}

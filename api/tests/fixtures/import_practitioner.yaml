@@ -1,0 +1,13 @@
+# Test fixture (api/tests/test_import.py): a bare list of Practitioner questions.
+- id: TEST_IMPORT_P-001
+  unit: P3
+  objective: "P3.1"
+  scenario: "TEST_IMPORT_P: a utility has a Request for Architecture Work and no agreed scope."
+  question: "Refer to the scenario. Which of the following is the best answer?"
+  answers:
+    - {key: A, points: 5, text: "Run Phase A: identify stakeholders and produce a Statement of Architecture Work.", why: "The phase's approval gate."}
+    - {key: B, points: 3, text: "Draft the Vision from the strategy and circulate it.", why: "Skips the stakeholder step."}
+    - {key: C, points: 1, text: "Start Phase B directly.", why: "No mandate."}
+    - {key: D, points: 0, text: "Procure a billing product.", why: "Not an architecture activity."}
+  refs: ["ADM §6"]
+  open_book_hint: "ADM, Phase A."

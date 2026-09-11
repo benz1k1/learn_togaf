@@ -1,0 +1,21 @@
+{# Exam-style question navigator. Included by attempt.html and, out of band, by every question fragment. #}
+<div id="navigator" {% if oob %}hx-swap-oob="true"{% endif %} class="card bg-base-100 shadow-sm">
+  <div class="card-body p-3">
+    <div class="flex items-center justify-between text-xs text-base-content/60 mb-2">
+      <span>{{ answered_count }} / {{ question_count }} answered</span>
+      <span><i class="mdi mdi-flag text-warning"></i> flagged</span>
+    </div>
+    <div class="grid grid-cols-5 gap-1" data-testid="navigator">
+      {% for entry in navigator %}
+      <button type="button"
+              class="btn btn-xs {% if entry.index == index %}btn-primary{% elif entry.answered %}btn-success btn-outline{% else %}btn-ghost border border-base-300{% endif %} relative"
+              hx-get="/attempt/{{ attempt.id }}/question/{{ entry.index }}" hx-target="#question" hx-swap="innerHTML"
+              data-answered="{{ 1 if entry.answered else 0 }}" data-flagged="{{ 1 if entry.flagged else 0 }}"
+              title="Question {{ entry.number }}{% if entry.answered %} · answered{% endif %}{% if entry.flagged %} · flagged{% endif %}">
+        {{ entry.number }}
+        {% if entry.flagged %}<i class="mdi mdi-flag text-warning absolute -top-1 -right-1 text-xs"></i>{% endif %}
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+</div>

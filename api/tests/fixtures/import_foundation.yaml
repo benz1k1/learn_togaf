@@ -1,0 +1,27 @@
+# Test fixture (api/tests/test_import.py): a native Foundation set with generated ids.
+code: TEST_IMPORT_YAML
+exam: FOUNDATION
+name: Import test (YAML)
+questions:
+  - unit: F4
+    objective: "4.3"
+    stem: "TEST_IMPORT_YAML: which deliverable closes Phase A?"
+    options:
+      - {key: A, text: "Architecture Definition Document"}
+      - {key: B, text: "Statement of Architecture Work", correct: true}
+      - {key: C, text: "Architecture Roadmap"}
+      - {key: D, text: "Transition Architecture"}
+    explanation: "Phase A ends with the approved Statement of Architecture Work."
+    refs: ["ADM §6"]
+    difficulty: 1
+    tags: [test]
+  - unit: F5
+    objective: "5.1"
+    stem: "TEST_IMPORT_YAML: which technique compares baseline and target to find what is missing?"
+    options:
+      - {key: A, text: "Gap analysis", correct: true}
+      - {key: B, text: "Business scenarios"}
+      - {key: C, text: "Capability-based planning"}
+      - {key: D, text: "Risk management"}
+    explanation: "Gap analysis compares the baseline and target architectures."
+    refs: ["TECH §5"]

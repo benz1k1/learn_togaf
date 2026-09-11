@@ -1,0 +1,50 @@
+{% if result %}
+<div class="card border {{ 'border-success' if result.correct else 'border-error' }} bg-base-100">
+  <div class="card-body p-4 gap-2">
+    <div class="alert {{ 'alert-success' if result.correct else 'alert-error' }} py-2">
+      <i class="mdi {{ 'mdi-check-circle-outline' if result.correct else 'mdi-close-circle-outline' }}"></i>
+      <span>{{ 'Correct' if result.correct else 'Incorrect' }} — {{ result.points }}/{{ result.max_points }} point{{ '' if result.max_points == 1 else 's' }}.{% if not result.correct %} Added to your flashcards.{% endif %}</span>
+    </div>
+    <div class="text-sm prose-lesson">{{ result.question.stem_or_scenario | markdown }}</div>
+    {% if result.question.question_text %}<p class="text-sm font-medium">{{ result.question.question_text }}</p>{% endif %}
+    <ul class="flex flex-col gap-1 text-sm">
+      {% for option in result.options %}
+      <li class="rounded px-2 py-1 {{ 'bg-success/20' if option.key == result.best.key else ('bg-error/20' if option.key == result.chosen.key else '') }}">
+        <span class="font-mono font-semibold">{{ option.key }}.</span> {{ option.text }}
+        {% if option.key == result.chosen.key %}<span class="badge badge-xs badge-outline ml-1">your answer</span>{% endif %}
+        {% if option.key == result.best.key %}<span class="badge badge-xs badge-success ml-1">best</span>{% endif %}
+        {% if option.why %}<div class="text-xs text-base-content/70 ml-5">{{ option.why }}</div>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% if result.question.explanation %}<div class="text-sm prose-lesson border-t border-base-300 pt-2">{{ result.question.explanation | markdown }}</div>{% endif %}
+  </div>
+</div>
+{% else %}
+{% if not questions %}
+<p class="text-sm text-base-content/60">No questions are tagged to this lesson's objectives yet.</p>
+{% endif %}
+<div class="flex flex-col gap-3">
+  {% for item in questions %}
+  <form class="card bg-base-200" hx-post="/lesson-check/{{ lesson_id }}" hx-target="this" hx-swap="outerHTML">
+    <input type="hidden" name="question_id" value="{{ item.question.id }}">
+    <div class="card-body p-4 gap-2">
+      <div class="flex items-center gap-2 text-xs text-base-content/60">
+        <span>{{ loop.index }} of {{ questions | length }}</span>
+        <span class="badge badge-ghost badge-xs">{{ item.question.id }}</span>
+        {% if item.question.status == 'draft' %}<span class="badge badge-warning badge-xs">draft</span>{% endif %}
+      </div>
+      <div class="text-sm prose-lesson">{{ item.question.stem_or_scenario | markdown }}</div>
+      {% if item.question.question_text %}<p class="text-sm font-medium">{{ item.question.question_text }}</p>{% endif %}
+      <div class="flex flex-col gap-1">
+        {% for option in item.options %}
+        <button type="submit" name="key" value="{{ option.key }}" class="btn btn-sm btn-ghost justify-start text-left h-auto py-2 font-normal">
+          <span class="font-mono font-semibold">{{ option.key }}.</span> <span>{{ option.text }}</span>
+        </button>
+        {% endfor %}
+      </div>
+    </div>
+  </form>
+  {% endfor %}
+</div>
+{% endif %}

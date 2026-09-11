@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ technique.name }} · Learn TOGAF{% endblock %}
+{% block heading %}<a href="/adm" class="link link-hover">ADM</a> › Technique › {{ technique.name }}{% endblock %}
+{% block content %}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+  <div class="lg:col-span-2 flex flex-col gap-4">
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Purpose</h2>
+      <div class="prose-lesson text-sm">{{ technique.purpose | markdown }}</div>
+    </div></div>
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Where it is used</h2>
+      {% if technique.phase_links %}
+      <div class="flex flex-wrap gap-2">{% for phase in technique.phase_links %}<a class="btn btn-sm" href="/adm/{{ phase.code }}"><span class="badge badge-neutral badge-sm">{{ phase.code }}</span>{{ phase.name }}</a>{% endfor %}</div>
+      {% else %}<p class="text-sm text-base-content/60">Used across the ADM rather than in one phase.</p>{% endif %}
+    </div></div>
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">What it produces</h2>
+      {% if technique.artefact_rows %}
+      <ul class="text-sm">{% for artefact in technique.artefact_rows %}<li><a class="link" href="/artefact?phase={{ artefact.phase_code }}">{{ artefact.name }}</a> <span class="text-xs text-base-content/60">{{ artefact.kind | lower }}, {{ artefact.phase_code }}</span></li>{% endfor %}</ul>
+      {% elif technique.artefacts %}
+      <ul class="text-sm">{% for item in technique.artefacts %}<li>{{ item }}</li>{% endfor %}</ul>
+      {% else %}<p class="text-sm text-base-content/60">No artefacts recorded.</p>{% endif %}
+    </div></div>
+  </div>
+  <aside class="flex flex-col gap-4">
+    {% if technique.traps %}
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Exam traps</h2>
+      <ul class="flex flex-col gap-1">{% for item in technique.traps %}<li class="alert alert-warning py-1 px-2 text-xs"><i class="mdi mdi-alert-outline"></i><span>{{ item }}</span></li>{% endfor %}</ul>
+    </div></div>
+    {% endif %}
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">References</h2>
+      {% if technique.refs %}<ul class="text-sm">{% for ref in technique.refs %}<li><a class="link link-primary" href="/source/{{ ref | urlencode }}">{{ ref }}</a></li>{% endfor %}</ul>
+      {% else %}<p class="text-xs text-base-content/60">None recorded.</p>{% endif %}
+    </div></div>
+  </aside>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+<div class="card bg-base-100 shadow-sm">
+  <div class="card-body p-4 gap-3">
+    <div class="stats stats-vertical sm:stats-horizontal shadow-none">
+      <div class="stat p-2">
+        <div class="stat-title text-xs">Cards due</div>
+        <div class="stat-value text-2xl"><a href="/review" class="link link-hover">{{ cards_due }}</a></div>
+      </div>
+      <div class="stat p-2">
+        <div class="stat-title text-xs">Days to exam</div>
+        <div class="stat-value text-2xl">
+          {% if days_to_exam is none %}<a href="/plan" class="link link-hover text-base">set a date</a>{% else %}{{ days_to_exam }}{% endif %}
+        </div>
+        {% if exam_date %}<div class="stat-desc">{{ exam_date | fmt_date }}</div>{% endif %}
+      </div>
+    </div>
+    <div>
+      <div class="text-xs uppercase text-base-content/60">Next lesson</div>
+      {% if next_lesson %}
+      <a class="link link-primary" href="/lesson/{{ next_lesson.id }}">{{ next_lesson.title }}</a>
+      {% if next_lesson.date %}<span class="text-xs text-base-content/60">planned {{ next_lesson.date | fmt_date }}</span>{% endif %}
+      {% else %}
+      <span class="text-sm">Every lesson has been opened. <a class="link" href="/unit">Pick one to revisit.</a></span>
+      {% endif %}
+    </div>
+  </div>
+</div>

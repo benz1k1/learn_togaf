@@ -1,0 +1,11 @@
+{
+  "title": "Phase A in the fixture method",
+  "slug": "phase_a_in_the_fixture",
+  "reading_minutes": 4,
+  "body_md": "Phase A of the fixture takes a request for work and ends with an approved statement of work; nothing starts without the request. [ADM §3]\n\nIts two objectives are a high-level vision of the value to be delivered and approval for the statement of work — **the vision is aspirational, the statement is the mandate**. [ADM §3.1]\n\nThe inputs are the request, the principles and a populated repository; the outputs are the approved statement and the vision. Trap: the request is an input, never an output. [ADM §3.3]\n\nThe steps run: establish the project, identify stakeholders and concerns (with a stakeholder map), define scope, then develop the vision and the statement. [ADM §3.4]",
+  "refs": ["ADM §3", "ADM §3.1", "ADM §3.3", "ADM §3.4"],
+  "check_yourself": [
+    {"question": "What does Phase A end with?", "answer": "An approved statement of work", "ref": "ADM §3.5"},
+    {"question": "Is the request an input or an output?", "answer": "An input", "ref": "ADM §3.3"}
+  ]
+}

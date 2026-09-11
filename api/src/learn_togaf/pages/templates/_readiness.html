@@ -1,0 +1,38 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  {% for exam, label, estimate, units in [("FOUNDATION", "Foundation (OGEA-101)", foundation, foundation_units), ("PRACTITIONER", "Practitioner (OGEA-102)", practitioner, practitioner_units)] %}
+  <div class="card bg-base-100 shadow-sm">
+    <div class="card-body p-4">
+      <div class="flex items-baseline justify-between">
+        <h2 class="card-title text-sm">{{ label }}</h2>
+        {% if estimate is none %}
+        <span class="badge badge-ghost">no data yet</span>
+        {% else %}
+        <span class="badge {{ 'badge-success' if estimate >= pass_mark else 'badge-warning' }}">{{ estimate }}/{{ max_score }}</span>
+        {% endif %}
+      </div>
+      <table class="table table-xs mt-2">
+        <thead><tr><th>Unit</th><th class="text-right">Weight</th><th class="text-right">Answered</th><th class="w-32">Accuracy</th></tr></thead>
+        <tbody>
+          {% for unit in units %}
+          <tr>
+            <td><a class="link" href="/unit/{{ unit.code }}">{{ unit.code }} {{ unit.name }}</a></td>
+            <td class="text-right">{{ unit.weight }}</td>
+            <td class="text-right">{{ unit.answered }}</td>
+            <td>
+              {% if unit.accuracy is none %}
+              <span class="text-base-content/40">—</span>
+              {% else %}
+              <div class="flex items-center gap-2">
+                <progress class="progress {{ 'progress-success' if unit.accuracy >= 0.6 else 'progress-warning' }} w-16" value="{{ (unit.accuracy * 100) | round }}" max="100"></progress>
+                <span class="text-xs">{{ (unit.accuracy * 100) | round | int }}%</span>
+              </div>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endfor %}
+</div>

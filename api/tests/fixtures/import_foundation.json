@@ -1,0 +1,11 @@
+[
+  {
+    "unit": "F6",
+    "objective": "6.1",
+    "stem": "TEST_IMPORT_JSON: which part of the Architecture Repository holds architectures in use?",
+    "options": {"A": "Architecture Landscape", "B": "Standards Library", "C": "Reference Library", "D": "Governance Log"},
+    "correct": "A",
+    "explanation": "The Architecture Landscape holds the architectures in use.",
+    "refs": ["CONTENT §8"]
+  }
+]

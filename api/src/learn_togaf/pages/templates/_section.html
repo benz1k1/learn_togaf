@@ -1,0 +1,23 @@
+{# Section search results (§5.1 `_section.html`): the htmx fragment behind /source?q= #}
+{% if q %}
+  {% if results %}
+  <p class="text-xs text-base-content/60">{{ results | length }} section(s) match “{{ q }}”{% if results | length >= 100 %} (first 100){% endif %}</p>
+  <ul class="menu menu-sm bg-base-100 rounded-box p-0">
+    {% for section in results %}
+    <li>
+      <a href="/source/{{ section.id }}" class="flex flex-col items-start gap-0">
+        <span class="font-medium">{{ section.heading_path }}</span>
+        <span class="text-xs text-base-content/60 line-clamp-2">{{ section.snippet }}</span>
+        <span class="text-xs text-base-content/50">{{ section.document_code }}{% if section.pdf_page %} · PDF p.{{ section.pdf_page }}{% endif %}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="text-sm text-base-content/60">No section matches “{{ q }}”.</p>
+  {% endif %}
+{% else %}
+  <p class="text-sm text-base-content/60">
+    {% if counts.sections %}Type to search {{ counts.sections }} sections.{% else %}No sections indexed yet — run <code>python sources.py fetch</code>.{% endif %}
+  </p>
+{% endif %}

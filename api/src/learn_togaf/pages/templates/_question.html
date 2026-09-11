@@ -1,0 +1,66 @@
+{# One Foundation question (§4.6). In a drill the answer response re-renders this with reveal=true. #}
+{% with oob=true %}{% include "_navigator.html" %}{% endwith %}
+<div class="card bg-base-100 shadow-sm" data-testid="question" data-index="{{ index }}" data-question-id="{{ question.id }}"
+     x-data="{ s: 0, picked: {{ chosen_key | attr_json }} }" x-init="setInterval(() => s++, 1000)">
+  <div class="card-body gap-3">
+    <div class="flex items-center gap-2 text-xs text-base-content/60">
+      <span class="font-semibold text-base-content">Question {{ number }} of {{ question_count }}</span>
+      <span class="badge badge-ghost badge-sm">{{ question.unit_code }} · {{ question.objective_code }}</span>
+      {% if question.status == 'draft' %}<span class="badge badge-warning badge-sm" title="Draft question — not yet reviewed">draft</span>{% endif %}
+      {% if question.source == 'imported' %}<span class="badge badge-outline badge-sm">imported</span>{% endif %}
+      <button type="button" class="btn btn-xs ml-auto {% if flagged %}btn-warning{% else %}btn-ghost{% endif %}"
+              hx-post="/attempt/{{ attempt.id }}/flag" hx-vals='{"index": {{ index }}, "question_id": "{{ question.id }}"}' hx-target="#question" hx-swap="innerHTML"
+              title="Flag for review" data-testid="flag">
+        <i class="mdi mdi-flag{% if not flagged %}-outline{% endif %}"></i> {% if flagged %}flagged{% else %}flag{% endif %}
+      </button>
+    </div>
+
+    <div class="prose-lesson text-base">{{ question.stem_or_scenario | markdown }}</div>
+    {% if question.figure_id %}<img src="/figure/{{ question.figure_id }}" alt="figure {{ question.figure_id }}" class="max-h-80 rounded border border-base-300">{% endif %}
+
+    <form hx-post="/attempt/{{ attempt.id }}/answer" hx-target="#question" hx-swap="innerHTML" class="space-y-2">
+      <input type="hidden" name="index" value="{{ index }}">
+      <input type="hidden" name="question_id" value="{{ question.id }}">
+      <input type="hidden" name="seconds" :value="s">
+      {% for option in options %}
+      {% set is_correct = option.key == correct_key %}
+      {% set is_chosen = option.key == chosen_key %}
+      <label class="flex items-start gap-3 p-2 rounded-lg border cursor-pointer
+                    {% if reveal and is_correct %}border-success bg-success/10{% elif reveal and is_chosen %}border-error bg-error/10{% else %}border-base-300 hover:bg-base-200{% endif %}">
+        <input type="radio" name="key" value="{{ option.key }}" class="radio radio-sm mt-0.5" x-model="picked" {% if reveal %}disabled{% endif %} {% if is_chosen %}checked{% endif %}>
+        <span class="flex-1"><span class="font-mono font-semibold mr-2">{{ option.key }}.</span>{{ option.text }}
+          {% if reveal %}
+            {% if is_correct %}<span class="badge badge-success badge-xs ml-2">correct</span>{% elif is_chosen %}<span class="badge badge-error badge-xs ml-2">your answer</span>{% endif %}
+            {% if option.why and not is_correct %}<span class="block text-xs text-base-content/70 mt-1"><i class="mdi mdi-close-circle-outline"></i> {{ option.why }}</span>{% endif %}
+          {% endif %}
+        </span>
+      </label>
+      {% endfor %}
+      {% if not reveal %}
+      <div class="flex items-center gap-2 pt-1">
+        <button type="submit" class="btn btn-primary btn-sm" :disabled="!picked" data-testid="submit-answer">
+          {% if attempt.mode == 'DRILL' %}Check answer{% else %}Save &amp; next{% endif %}
+        </button>
+        {% if attempt.mode == 'MOCK' and answered %}<span class="text-xs text-base-content/60">answered {{ chosen_key }} — change it and save, or move on</span>{% endif %}
+      </div>
+      {% endif %}
+    </form>
+
+    {% if reveal %}
+    <div class="rounded-lg border {% if chosen_key == correct_key %}border-success{% else %}border-error{% endif %} p-3 text-sm space-y-2" data-testid="explanation">
+      <p class="font-semibold">{% if chosen_key == correct_key %}<i class="mdi mdi-check-circle text-success"></i> Correct{% elif chosen_key %}<i class="mdi mdi-close-circle text-error"></i> Not quite — the answer is {{ correct_key }}{% else %}Unanswered — the answer is {{ correct_key }}{% endif %}</p>
+      <div class="prose-lesson">{{ question.explanation | markdown }}</div>
+      {% if refs %}<p class="text-xs text-base-content/60">Refs: {{ refs | join(' · ') }}</p>{% endif %}
+    </div>
+    {% endif %}
+
+    <div class="flex items-center gap-2 pt-1">
+      {% if has_prev %}<button type="button" class="btn btn-ghost btn-sm" hx-get="/attempt/{{ attempt.id }}/question/{{ index - 1 }}" hx-target="#question" hx-swap="innerHTML"><i class="mdi mdi-chevron-left"></i> Previous</button>{% endif %}
+      {% if has_next %}
+      <button type="button" class="btn btn-sm ml-auto {% if reveal %}btn-primary{% else %}btn-ghost{% endif %}" hx-get="/attempt/{{ attempt.id }}/question/{{ index + 1 }}" hx-target="#question" hx-swap="innerHTML" data-testid="next">Next <i class="mdi mdi-chevron-right"></i></button>
+      {% else %}
+      <button type="button" class="btn btn-sm btn-primary ml-auto" hx-post="/attempt/{{ attempt.id }}/finish" hx-swap="none" hx-confirm="Finish and score this attempt?"><i class="mdi mdi-flag-checkered"></i> Finish</button>
+      {% endif %}
+    </div>
+  </div>
+</div>

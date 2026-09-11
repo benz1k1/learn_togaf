@@ -1,0 +1,517 @@
+# The ADM, one entry per phase (learn_togaf.md §2). Objectives, steps and outputs follow the
+# wording of the ADM chapters (compared against review/adm_phases.parsed.yaml); inputs are the
+# union of each chapter's "Reference Materials External to the Enterprise", "Non-Architectural
+# Inputs" and "Architectural Inputs" lists, which the parser missed. `generate adm` diffs these
+# lists on every re-fetch.
+- code: PRELIM
+  name: Preliminary Phase
+  objective:
+    - "Determine the Architecture Capability desired by the organization: review the organizational context, identify and scope the enterprise organizations affected, identify the established frameworks, methods and processes that intersect with the capability, and establish a Capability Maturity target"
+    - "Establish the Architecture Capability: define and establish the Organizational Model for Enterprise Architecture, the detailed process and resources for Architecture Governance, select and implement supporting tools, and define the Architecture Principles"
+  approach: >
+    Answers "where, what, why, who and how we do architecture" in this enterprise: defining the
+    enterprise, identifying key drivers and elements in the organizational context, defining the
+    requirements for architecture work, defining the Architecture Principles, defining the
+    framework to be used, defining the relationships between management frameworks, and evaluating
+    Enterprise Architecture maturity. It decides the approach to partitioning and may be revisited
+    from Phase A when the capability is not suitable for a specific architecture problem.
+  inputs:
+    - The TOGAF Library
+    - Other architecture framework(s), if required
+    - Board strategies and board business plans, business strategy, IT strategy, business principles, business goals and business drivers, when pre-existing
+    - Major frameworks operating in the business (e.g. project/portfolio management)
+    - Governance and legal frameworks, including Architecture Governance strategy, when pre-existing
+    - Architecture capability
+    - Partnership and contract agreements
+    - Organizational Model for Enterprise Architecture, when a pre-existing model is used as a baseline
+    - Existing Architecture Framework, if any (architecture method, content, configured tools, Architecture Principles, Architecture Repository)
+  steps:
+    - Scope the enterprise organizations impacted
+    - Confirm governance and support frameworks
+    - Define and establish Enterprise Architecture team and organization
+    - Identify and establish Architecture Principles
+    - Tailor the TOGAF framework and, if any, other selected architecture frameworks
+    - Develop a strategy and implementation plan for tools and techniques
+  outputs:
+    - Organizational Model for Enterprise Architecture (scope of organizations impacted, maturity assessment, roles and responsibilities, constraints, budget requirements, governance and support strategy)
+    - Tailored Architecture Framework (tailored architecture method, tailored architecture content, Architecture Principles, configured and deployed tools)
+    - Initial Architecture Repository, populated with framework content
+    - Restatement of, or reference to, business principles, business goals and business drivers
+    - Request for Architecture Work (optional)
+    - Architecture Governance Framework
+    - The Architecture of the Enterprise Architecture Capability
+    - Principles catalog
+  artefacts: [PRINCIPLES_CATALOG]
+  deliverables: [Organizational Model for EA, Tailored Architecture Framework, Architecture Principles, Architecture Repository (initial), Architecture Governance Framework]
+  refs: ["ADM §2", "ADM §2.1", "ADM §2.2", "ADM §2.3", "ADM §2.4", "ADM §2.5"]
+  traps:
+    - The Request for Architecture Work is an OPTIONAL output here and the trigger INPUT of Phase A.
+    - Principles are identified and established here; Phase A confirms and elaborates them.
+    - The inputs are mostly non-architectural (strategies, plans, legal and governance frameworks); the only architectural inputs are a pre-existing Organizational Model and an existing framework.
+    - The Preliminary Phase can be re-entered from Phase A when the Architecture Capability is not suitable for the problem in hand.
+
+- code: A
+  name: "Phase A: Architecture Vision"
+  objective:
+    - Develop a high-level aspirational vision of the capabilities and business value to be delivered as a result of the proposed Enterprise Architecture
+    - Obtain approval for a Statement of Architecture Work that defines a program of works to develop and deploy the architecture outlined in the Architecture Vision
+  approach: >
+    Starts with receipt of a Request for Architecture Work from the sponsoring organization.
+    Defines what is in and out of scope and the constraints, confirms (or defines for the first
+    time) business principles, goals, drivers and Architecture Principles, conducts a business
+    assessment (business scenarios) to select a course of action, and produces a first-cut,
+    high-level description of the Baseline and Target Architectures across all four domains. The
+    consensus is represented by the sponsor signing the Statement of Architecture Work.
+  inputs:
+    - Architecture reference materials
+    - Request for Architecture Work
+    - Business principles, business goals and business drivers
+    - Organizational Model for Enterprise Architecture
+    - Tailored Architecture Framework, including Architecture Principles and business principles when pre-existing
+    - Populated Architecture Repository (existing architectural documentation, baseline descriptions, ABBs)
+  steps:
+    - Establish the architecture project
+    - Identify stakeholders, concerns and business requirements
+    - Confirm and elaborate business goals, business drivers and constraints
+    - Evaluate capabilities
+    - Assess readiness for business transformation
+    - Define scope
+    - Confirm and elaborate Architecture Principles, including business principles
+    - Develop Architecture Vision
+    - Define the Target Architecture value propositions and KPIs
+    - Identify the business transformation risks and mitigation activities
+    - Develop Statement of Architecture Work; secure approval
+  outputs:
+    - Approved Statement of Architecture Work (architecture project description and scope, overview of the Architecture Vision, project plan and schedule)
+    - Refined statements of business principles, business goals and business drivers
+    - Architecture Principles
+    - Capability Assessment
+    - Tailored Architecture Framework, for the engagement
+    - Architecture Vision (problem description, objective of the Statement of Architecture Work, summary views, optional business scenario, refined key high-level stakeholder requirements)
+    - Draft Architecture Definition Document, which may include Baseline and/or Target Architectures of any architecture domain
+    - Communications Plan
+    - Additional content populating the Architecture Repository
+  artefacts: [STAKEHOLDER_MAP_MATRIX, VALUE_CHAIN_DIAGRAM, SOLUTION_CONCEPT_DIAGRAM, BUSINESS_MODEL_DIAGRAM, BUSINESS_CAPABILITY_MAP, VALUE_STREAM_MAP]
+  deliverables: [Statement of Architecture Work, Architecture Vision, Communications Plan, Capability Assessment]
+  refs: ["ADM §3", "ADM §3.1", "ADM §3.2", "ADM §3.3", "ADM §3.4", "ADM §3.5"]
+  traps:
+    - The Statement of Architecture Work is an OUTPUT of Phase A (approved by the sponsor), not an input; the input is the Request for Architecture Work.
+    - The Communications Plan and the Capability Assessment are first produced here; readiness-assessment results are added to the Capability Assessment.
+    - Phase A may already produce a draft Architecture Definition Document; the Architecture Requirements Specification is NOT a Phase A output.
+    - The stakeholder map is the product of step 2 and feeds the Architecture Vision, the Communications Plan and the Statement of Architecture Work.
+
+- code: B
+  name: "Phase B: Business Architecture"
+  objective:
+    - Develop the Target Business Architecture that describes how the enterprise needs to operate to achieve the business goals, and respond to the strategic drivers set out in the Architecture Vision, in a way that addresses the Statement of Architecture Work and stakeholder concerns
+    - Identify candidate Architecture Roadmap components based upon gaps between the Baseline and Target Business Architectures
+  approach: >
+    Business Architecture is a prerequisite for architecture work in any other domain and so is
+    the first architecture activity, and it demonstrates the business value of subsequent work.
+    The scope is set by the Architecture Vision. Business capabilities, value streams, organization
+    maps and information maps from Phase A are applied and extended; business scenarios and other
+    modeling techniques (activity, use-case and class models) are used; existing Architecture
+    Descriptions are re-used as the Baseline where they exist.
+  inputs:
+    - Architecture reference materials
+    - Request for Architecture Work
+    - Business principles, business goals and business drivers
+    - Capability Assessment
+    - Communications Plan
+    - Organizational Model for Enterprise Architecture
+    - Tailored Architecture Framework
+    - Approved Statement of Architecture Work
+    - Architecture Principles, including business principles, when pre-existing
+    - Enterprise Continuum
+    - Architecture Repository (re-usable building blocks, public and organization-specific reference models, organization standards)
+    - Architecture Vision
+    - Draft Architecture Definition Document, which may include Baseline and/or Target Architectures of any architecture domain
+  steps:
+    - Select reference models, viewpoints and tools
+    - Develop Baseline Business Architecture Description
+    - Develop Target Business Architecture Description
+    - Perform gap analysis
+    - Define candidate roadmap components
+    - Resolve impacts across the Architecture Landscape
+    - Conduct formal stakeholder review
+    - Finalize the Business Architecture
+    - Create/Update the Architecture Definition Document
+  outputs:
+    - Refined and updated versions of the Architecture Vision phase deliverables (Statement of Architecture Work, validated business principles, goals and drivers, Architecture Principles)
+    - Draft Architecture Definition Document, including Baseline and Target Business Architecture and the views for the selected viewpoints
+    - Draft Architecture Requirements Specification, including gap analysis results, technical requirements and updated business requirements
+    - Business Architecture components of an Architecture Roadmap
+  artefacts: [ORGANIZATION_ACTOR_CATALOG, DRIVER_GOAL_OBJECTIVE_CATALOG, ROLE_CATALOG, BUSINESS_SERVICE_FUNCTION_CATALOG, BUSINESS_INTERACTION_MATRIX, ACTOR_ROLE_MATRIX, BUSINESS_FOOTPRINT_DIAGRAM, FUNCTIONAL_DECOMPOSITION_DIAGRAM, PROCESS_FLOW_DIAGRAM, ORGANIZATION_DECOMPOSITION_DIAGRAM]
+  deliverables: [Architecture Definition Document (draft), Architecture Requirements Specification (draft), Architecture Roadmap (business components)]
+  refs: ["ADM §4", "ADM §4.1", "ADM §4.2", "ADM §4.3", "ADM §4.4", "ADM §4.5"]
+  traps:
+    - The same nine steps are used in Phases B, C and D; questions swap the domain name.
+    - The draft Architecture Requirements Specification is first PRODUCED in Phase B; it is not listed among Phase B's inputs (it is an input from Phase C onwards).
+    - Step 9 is "Create/Update" the Architecture Definition Document, because Phase A may already have started it.
+    - Gap analysis is a step in every development phase; the Consolidated Gaps, Solutions and Dependencies matrix is a Phase E technique.
+
+- code: C
+  name: "Phase C: Information Systems Architectures"
+  objective:
+    - Develop the Target Information Systems Architectures, describing how the enterprise's Information Systems Architecture will enable the Business Architecture and the Architecture Vision, in a way that addresses the Statement of Architecture Work and stakeholder concerns
+    - Identify candidate Architecture Roadmap components based upon gaps between the Baseline and Target Information Systems (Data and Application) Architectures
+  approach: >
+    Some combination of Data and Application Architecture, in either order: a data-driven approach
+    (Spewak's EAP) or an application-driven approach built around core packaged applications.
+    Each part runs the same nine steps as Phase B. Data Architecture handles data at rest, in
+    motion, in use and open data, using data entity, logical and physical data components, and
+    considers data management, data migration and data governance. Application Architecture
+    identifies the application portfolio, rationalizes it and maps applications to business
+    services and data.
+  inputs:
+    - Architecture reference materials (for Data Architecture also the TOGAF Series Guides on Information Architecture)
+    - Request for Architecture Work
+    - Capability Assessment
+    - Communications Plan
+    - Organizational Model for Enterprise Architecture
+    - Tailored Architecture Framework
+    - Data principles and application principles, if existing
+    - Statement of Architecture Work
+    - Architecture Vision
+    - Architecture Repository (re-usable building blocks, in particular definitions of current data; reference models; organization standards)
+    - Draft Architecture Definition Document, which may include Baseline and/or Target Architectures of any architecture domain
+    - Draft Architecture Requirements Specification, including gap analysis results from the Business Architecture (and from Data Architecture, for the Application part) and relevant technical requirements
+    - Business Architecture components of an Architecture Roadmap (and Data Architecture components, for the Application part, if available)
+  steps:
+    - Select reference models, viewpoints and tools
+    - Develop Baseline Data (or Application) Architecture Description
+    - Develop Target Data (or Application) Architecture Description
+    - Perform gap analysis
+    - Define candidate roadmap components
+    - Resolve impacts across the Architecture Landscape
+    - Conduct formal stakeholder review
+    - Finalize the Data (or Application) Architecture
+    - Create/Update the Architecture Definition Document
+  outputs:
+    - Refined and updated versions of the Architecture Vision phase deliverables (Statement of Architecture Work; validated or new data principles and application principles)
+    - Draft Architecture Definition Document, including Baseline and Target Data Architecture (business data model, logical data model, data management process models, Data Entity/Business Function matrix) and Baseline and Target Application Architecture, with views for the selected viewpoints
+    - Draft Architecture Requirements Specification, including gap analysis results, data and application interoperability requirements, relevant technical requirements, constraints on the Technology Architecture about to be designed, and updated business, data and application requirements
+    - Data Architecture and Application Architecture components of an Architecture Roadmap
+  artefacts: [DATA_ENTITY_DATA_COMPONENT_CATALOG, DATA_ENTITY_BUSINESS_FUNCTION_MATRIX, APPLICATION_DATA_MATRIX, CONCEPTUAL_DATA_DIAGRAM, LOGICAL_DATA_DIAGRAM, DATA_DISSEMINATION_DIAGRAM, APPLICATION_PORTFOLIO_CATALOG, INTERFACE_CATALOG, APPLICATION_ORGANIZATION_MATRIX, APPLICATION_INTERACTION_MATRIX, APPLICATION_COMMUNICATION_DIAGRAM, APPLICATION_USE_CASE_DIAGRAM]
+  deliverables: [Architecture Definition Document (draft), Architecture Requirements Specification (draft), Architecture Roadmap (data and application components)]
+  refs: ["ADM §5", "ADM §5.1", "ADM §5.2", "ADM §6", "ADM §6.1", "ADM §6.2", "ADM §6.3", "ADM §6.4", "ADM §6.5", "ADM §7", "ADM §7.1", "ADM §7.2", "ADM §7.3", "ADM §7.4", "ADM §7.5"]
+  traps:
+    - Phase C is ONE phase with two parts, Data and Application, described in two chapters (6 and 7); the ADM diagram shows one circle.
+    - Data before Application is common but the standard allows either order; the Application part's inputs include the Data Architecture roadmap components only "if available".
+    - Phase C's outputs add constraints on the Technology Architecture about to be designed to the Architecture Requirements Specification.
+    - Data principles and application principles are reviewed (or generated) in step 1 of the respective part, not in the Preliminary Phase.
+
+- code: D
+  name: "Phase D: Technology Architecture"
+  objective:
+    - Develop the Target Technology Architecture that enables the Architecture Vision, target business, data and application building blocks to be delivered through technology components and technology services, in a way that addresses the Statement of Architecture Work and stakeholder concerns
+    - Identify candidate Architecture Roadmap components based upon gaps between the Baseline and Target Technology Architectures
+  approach: >
+    Same nine steps applied to the technology domain. Emerging technologies are treated as a driver
+    for change, so the Technology Architecture may both drive business capabilities and respond to
+    information system requirements. The Architecture Repository supplies existing IT services, the
+    adopted technical reference model, industry technology models and Common Systems Architecture
+    models. Product selection may occur here; a selection that deviates from standards or has wide
+    impact is flagged as an opportunity for Phase E.
+  inputs:
+    - Architecture reference materials
+    - Product information on candidate products
+    - Request for Architecture Work
+    - Capability Assessment
+    - Communications Plan
+    - Organizational Model for Enterprise Architecture
+    - Tailored Architecture Framework
+    - Technology principles, if existing
+    - Statement of Architecture Work
+    - Architecture Vision
+    - Architecture Repository (re-usable building blocks, reference models, organization standards)
+    - Draft Architecture Definition Document, which may include Baseline and/or Target Architectures of any architecture domain
+    - Draft Architecture Requirements Specification, including gap analysis results from the Business, Data and Application Architectures and relevant technical requirements from previous phases
+    - Business, Data and Application Architecture components of an Architecture Roadmap
+  steps:
+    - Select reference models, viewpoints and tools
+    - Develop Baseline Technology Architecture Description
+    - Develop Target Technology Architecture Description
+    - Perform gap analysis
+    - Define candidate roadmap components
+    - Resolve impacts across the Architecture Landscape
+    - Conduct formal stakeholder review
+    - Finalize the Technology Architecture
+    - Create/Update the Architecture Definition Document
+  outputs:
+    - Refined and updated versions of the Architecture Vision phase deliverables (Statement of Architecture Work; validated or new technology principles)
+    - Draft Architecture Definition Document, including Baseline and Target Technology Architecture (technology components and their relationships to information systems, technology platforms and their decomposition, environments and locations, expected processing load, physical network communications, hardware and network specifications) and views for the selected viewpoints
+    - Draft Architecture Requirements Specification, including gap analysis results, requirements output from Phases B and C, and updated technology requirements
+    - Technology Architecture components of an Architecture Roadmap
+  artefacts: [TECHNOLOGY_STANDARDS_CATALOG, TECHNOLOGY_PORTFOLIO_CATALOG, APPLICATION_TECHNOLOGY_MATRIX, ENVIRONMENTS_LOCATIONS_DIAGRAM, PLATFORM_DECOMPOSITION_DIAGRAM, NETWORKED_COMPUTING_HARDWARE_DIAGRAM]
+  deliverables: [Architecture Definition Document (draft), Architecture Requirements Specification (draft), Architecture Roadmap (technology components)]
+  refs: ["ADM §8", "ADM §8.1", "ADM §8.2", "ADM §8.3", "ADM §8.4", "ADM §8.5"]
+  traps:
+    - Phase D is the only development phase whose external reference inputs include product information on candidate products.
+    - The Technology Standards Catalog and Technology Portfolio Catalog belong to Phase D; the Standards Library is a part of the Architecture Repository.
+    - Phase D's Architecture Requirements Specification carries the requirements output from Phases B and C forward, so it is the last chance to add architecture requirements before Phase E consolidates them.
+
+- code: E
+  name: "Phase E: Opportunities and Solutions"
+  objective:
+    - Generate the initial complete version of the Architecture Roadmap, based upon the gap analysis and candidate Architecture Roadmap components from Phases B, C and D
+    - Determine whether an incremental approach is required, and if so identify Transition Architectures that will deliver continuous business value
+    - Define the overall Solution Building Blocks (SBBs) to finalize the Target Architecture based on the ABBs
+  approach: >
+    Concentrates on HOW to deliver the architecture: takes the complete set of gaps across all
+    domains and logically groups changes into work packages within the enterprise's portfolios,
+    building a best-fit roadmap from stakeholder requirements, transformation readiness,
+    opportunities and solutions, and implementation constraints, focusing on the final target while
+    realizing incremental business value. It is the initial step in creating the Implementation and
+    Migration Plan, which Phase F completes. Four concepts are key: Architecture Roadmap, work
+    packages, Transition Architectures, Implementation and Migration Plan.
+  inputs:
+    - Architecture reference materials
+    - Product information
+    - Request for Architecture Work
+    - Capability Assessment
+    - Communications Plan
+    - Planning methodologies
+    - Organizational Model for Enterprise Architecture
+    - Governance models and frameworks for corporate business planning, Enterprise Architecture, portfolio/program/project management, system development/engineering and operations
+    - Tailored Architecture Framework
+    - Statement of Architecture Work
+    - Architecture Vision
+    - Architecture Repository
+    - Draft Architecture Definition Document, which may include Baseline and/or Target Architectures of any architecture domain
+    - Draft Architecture Requirements Specification, including architectural requirements, gap analysis results from all four domains and IT Service Management requirements
+    - Change Requests for existing business programs and projects
+    - Candidate Architecture Roadmap components from Phases B, C and D
+  steps:
+    - Determine/confirm key corporate change attributes
+    - Determine business constraints for implementation
+    - Review and consolidate gap analysis results from Phases B to D
+    - Review consolidated requirements across related business functions
+    - Consolidate and reconcile interoperability requirements
+    - Refine and validate dependencies
+    - Confirm readiness and risk for business transformation
+    - Formulate Implementation and Migration Strategy
+    - Identify and group major work packages
+    - Identify Transition Architectures
+    - Create the Architecture Roadmap and Implementation and Migration Plan
+  outputs:
+    - Refined and updated versions of the Architecture Vision phase deliverables (Architecture Vision, including definition of types and degrees of interoperability; Statement of Architecture Work)
+    - Draft Architecture Definition Document, including all Baseline and Target domain architectures updated if necessary, Transition Architectures (number and scope as necessary) and views for the selected viewpoints
+    - Draft Architecture Requirements Specification, including the Consolidated Gaps, Solutions and Dependencies Assessment
+    - Capability Assessments, including Business Capability Assessment and IT Capability Assessment
+    - Architecture Roadmap, including the work package portfolio, Implementation Factor catalog, identification of Transition Architectures, implementation recommendations and Solution Building Blocks
+    - Implementation and Migration Plan, Draft, including the Implementation and Migration Strategy
+  artefacts: [PROJECT_CONTEXT_DIAGRAM, BENEFITS_DIAGRAM]
+  deliverables: [Architecture Roadmap, Implementation and Migration Plan (draft), Transition Architectures]
+  refs: ["ADM §9", "ADM §9.1", "ADM §9.2", "ADM §9.3", "ADM §9.4", "ADM §9.5"]
+  traps:
+    - Phase E produces the initial complete Architecture Roadmap and a DRAFT Implementation and Migration Plan; Phase F finalizes both.
+    - The Implementation Factor catalog (step 1) and the Consolidated Gaps, Solutions and Dependencies matrix (step 3) are created in Phase E.
+    - The three objectives include defining the Solution Building Blocks; SBBs are not chosen in Phases B to D.
+    - The Business Transformation Readiness Assessment is CONDUCTED in Phase A and REVIEWED in Phase E (step 7).
+
+- code: F
+  name: "Phase F: Migration Planning"
+  objective:
+    - Finalize the Architecture Roadmap and the supporting Implementation and Migration Plan
+    - Ensure that the Implementation and Migration Plan is co-ordinated with the enterprise's approach to managing and implementing change in the enterprise's overall change portfolio
+    - Ensure that the business value and cost of work packages and Transition Architectures is understood by key stakeholders
+  approach: >
+    Creates the Implementation and Migration Plan in co-operation with the project and portfolio
+    managers. Phase E provides an incomplete Roadmap and Plan; in Phase F they are integrated with
+    the enterprise's other change activity, assessing the dependencies, costs and benefits of the
+    migration projects, and adding portfolio and project-level detail. The architecture development
+    cycle is then completed and lessons learned are documented.
+  inputs:
+    - Architecture reference materials
+    - Request for Architecture Work
+    - Capability Assessment
+    - Communications Plan
+    - Organizational Model for Enterprise Architecture
+    - Governance models and frameworks for corporate business planning, Enterprise Architecture, portfolio/program/project management, system development/engineering and operations
+    - Tailored Architecture Framework
+    - Statement of Architecture Work
+    - Architecture Vision
+    - Architecture Repository
+    - Draft Architecture Definition Document, which may include Baseline and/or Target Architectures of any domain and/or Transition Architectures
+    - Draft Architecture Requirements Specification, including architectural requirements, gap analysis results from all four domains and IT Service Management requirements
+    - Change Requests for existing business programs and projects
+    - Architecture Roadmap, Draft (work packages, Transition Architectures, Implementation Factor catalog)
+    - Capability Assessment, including Business Capability Assessment and IT Capability Assessment
+    - Implementation and Migration Plan, Draft, including the high-level Implementation and Migration Strategy
+  steps:
+    - Confirm management framework interactions for the Implementation and Migration Plan
+    - Assign a business value to each work package
+    - Estimate resource requirements, project timings and availability/delivery vehicle
+    - Prioritize the migration projects by conducting a cost/benefit assessment and risk assessment
+    - Confirm Architecture Roadmap and update Architecture Definition Document
+    - Complete the Implementation and Migration Plan
+    - Complete the architecture development cycle and document lessons learned
+  outputs:
+    - Implementation and Migration Plan, Approved (Implementation and Migration Strategy, project and portfolio breakdown, milestones and timing, work breakdown structure, optional project charters)
+    - Finalized Architecture Definition Document, including finalized Transition Architectures, if any
+    - Finalized Architecture Requirements Specification
+    - Finalized Architecture Roadmap
+    - Re-Usable ABBs
+    - Requests for Architecture Work for a new iteration of the ADM cycle (if any)
+    - Implementation Governance Model (if any)
+    - Change Requests for the Architecture Capability arising from lessons learned
+  artefacts: []
+  deliverables: [Implementation and Migration Plan (approved), Architecture Definition Document (finalized), Architecture Requirements Specification (finalized), Architecture Roadmap (finalized), Implementation Governance Model]
+  refs: ["ADM §10", "ADM §10.1", "ADM §10.2", "ADM §10.3", "ADM §10.4", "ADM §10.5"]
+  traps:
+    - Phase F FINALIZES the Architecture Definition Document, the Architecture Requirements Specification and the Architecture Roadmap; every earlier phase produces drafts.
+    - Business Value Assessment (Business Value and Risk Matrix), the Transition Architecture State Evolution Table and the Architecture Definition Increments Table are Phase F techniques.
+    - Four management frameworks must co-ordinate (business planning, Enterprise Architecture, project/portfolio management, operations management) — step 1.
+    - Lessons learned close the development cycle in Phase F and are captured by the governance process in Phase H.
+
+- code: G
+  name: "Phase G: Implementation Governance"
+  objective:
+    - Ensure conformance with the Target Architecture by implementation projects
+    - Perform appropriate Architecture Governance functions for the solution and any implementation-driven architecture Change Requests
+  approach: >
+    Brings together all the information for managing the implementation projects; the actual
+    development happens in a parallel, organization-specific development process. The favored
+    approach deploys the Target Architecture as a series of transitions, each delivering business
+    benefit. Phase G establishes the connection between architecture and the implementation
+    organization through the Architecture Contract, and ensures compliance with the architecture by
+    the implementation projects and other ongoing projects.
+  inputs:
+    - Architecture reference materials
+    - Request for Architecture Work
+    - Capability Assessment
+    - Organizational Model for Enterprise Architecture
+    - Tailored Architecture Framework
+    - Statement of Architecture Work
+    - Architecture Vision
+    - Architecture Repository
+    - Architecture Definition Document
+    - Architecture Requirements Specification, including architectural requirements and gap analysis results from all four domains
+    - Architecture Roadmap
+    - Architecture Governance Framework
+    - Implementation Governance Model
+    - Architecture Contract (standard)
+    - Request for Architecture Work identified during Phases E and F
+    - Implementation and Migration Plan
+  steps:
+    - Confirm scope and priorities for deployment with development management
+    - Identify deployment resources and skills
+    - Guide development of solutions deployment
+    - Perform Enterprise Architecture Compliance reviews
+    - Implement business and IT operations
+    - Perform post-implementation review and close the implementation
+  outputs:
+    - Architecture Contract (signed)
+    - Compliance Assessments
+    - Change Requests
+    - Architecture-compliant solutions deployed, including the implemented system, populated Architecture Repository, compliance recommendations and dispensations, recommendations on service delivery requirements and performance metrics, SLAs, Architecture Vision and Architecture Definition Document updated post-implementation, business and IT operating models, and ABBs
+  artefacts: []
+  deliverables: [Architecture Contract (signed), Compliance Assessments, Change Requests]
+  refs: ["ADM §11", "ADM §11.1", "ADM §11.2", "ADM §11.3", "ADM §11.4", "ADM §11.5"]
+  traps:
+    - The Architecture Contract enters Phase G as a STANDARD (template) and leaves it SIGNED by the developing and sponsoring organizations (step 3).
+    - The Communications Plan is NOT listed as a Phase G input; the Implementation Governance Model and Architecture Governance Framework are.
+    - The implemented system is really an output of the development process; the standard lists it as an ADM output because of its importance.
+    - Phase G closes when the solutions are fully deployed once.
+
+- code: H
+  name: "Phase H: Architecture Change Management"
+  objective:
+    - Ensure that the architecture development cycle is maintained
+    - Ensure that the Architecture Governance Framework is executed
+    - Ensure that the Enterprise Architecture Capability meets current requirements
+  approach: >
+    Ensures the architecture achieves its original target business value by managing change in a
+    cohesive, architected way: continual monitoring of governance requests, technology developments
+    and business change, and a decision on whether a change warrants an architecture update or a new
+    ADM cycle. Changes are classified as simplification, incremental or re-architecting; a change
+    affecting two or more stakeholders is likely to need re-entry to the ADM. Capacity measurement
+    and business growth/decline monitoring are key. Avoid "creeping elegance".
+  inputs:
+    - Architecture reference materials
+    - Request for Architecture Work
+    - Organizational Model for Enterprise Architecture
+    - Tailored Architecture Framework
+    - Statement of Architecture Work
+    - Architecture Vision
+    - Architecture Repository
+    - Architecture Definition Document
+    - Architecture Requirements Specification
+    - Architecture Roadmap
+    - Change Request — technology changes (new technology reports, asset management cost reduction initiatives, technology withdrawal reports, standards initiatives)
+    - Change Request — business changes (business developments, business exceptions, business innovations, business technology innovations, strategic change developments)
+    - Change Request — from lessons learned
+    - Implementation Governance Model
+    - Architecture Contract (signed)
+    - Compliance Assessments
+    - Implementation and Migration Plan
+  steps:
+    - Establish value realization process
+    - Deploy monitoring tools
+    - Manage risks
+    - Provide analysis for architecture change management
+    - Develop change requirements to meet performance targets
+    - Manage governance process
+    - Activate the process to implement change
+  outputs:
+    - Architecture updates (for maintenance changes)
+    - Changes to architecture framework and principles (for maintenance changes)
+    - New Request for Architecture Work, to move to another cycle (for major changes)
+    - Statement of Architecture Work, updated if necessary
+    - Architecture Contract, updated if necessary
+    - Compliance Assessments, updated if necessary
+  artefacts: []
+  deliverables: [Request for Architecture Work (new cycle), Architecture updates]
+  refs: ["ADM §12", "ADM §12.1", "ADM §12.2", "ADM §12.3", "ADM §12.4", "ADM §12.5"]
+  traps:
+    - Three change classes — simplification, incremental, re-architecting — and only re-architecting change puts the whole architecture through the cycle again.
+    - Phase H's inputs include three kinds of Change Request (technology, business, lessons learned) and the SIGNED Architecture Contract and Compliance Assessments from Phase G.
+    - Phase H does not itself re-architect; it decides how a change is handled and, for major changes, issues a new Request for Architecture Work.
+    - The Architecture Board assesses and approves Requests for Change (step 6, manage governance process).
+
+- code: REQ
+  name: Requirements Management
+  objective:
+    - Ensure that the Requirements Management process is sustained and operates for all relevant ADM phases
+    - Manage architecture requirements identified during any execution of the ADM cycle or a phase
+    - Ensure that relevant architecture requirements are available for use by each phase as the phase is executed
+  approach: >
+    The circle at the centre of the ADM graphic: a dynamic process, not a static set of
+    requirements, through which requirements and their changes are identified, stored and fed into
+    and out of every phase and between cycles. It does not itself dispose of, address or prioritize
+    any requirement — that happens within the relevant phase. The Architecture Requirements
+    Repository records all requirements and, unlike the Architecture Requirements Specification and
+    the Requirements Impact Assessment, can hold information from multiple ADM cycles. The first
+    high-level requirements come from the Architecture Vision, via business scenarios.
+  inputs:
+    - A populated Architecture Repository
+    - Organizational Model for Enterprise Architecture
+    - Tailored Architecture Framework
+    - Statement of Architecture Work
+    - Architecture Vision
+    - Architecture requirements, populating an Architecture Requirements Specification
+    - Requirements Impact Assessment
+  steps:
+    - "Step 1 (ADM phase): identify requirements and document them in the Architecture Requirements Specification and Requirements Repository"
+    - "Step 2 (Requirements Management): establish baseline requirements — determine priorities, confirm stakeholder agreement, document them"
+    - "Step 3 (Requirements Management): monitor baseline requirements"
+    - "Step 4 (ADM phase): identify new and changed requirements — remove, add, modify, re-assess priorities"
+    - "Step 5 (Requirements Management): identify changed requirements and record priorities; identify and manage conflicts; generate the Requirements Impact Assessment"
+    - "Step 6 (ADM phase): assess the impact of changed requirements on the current and previous phases; decide whether to implement or defer; issue Requirements Impact Assessment version n+1"
+    - "Step 7 (ADM phase): implement requirements arising from Phase H"
+    - "Step 8 (Requirements Management): update the Architecture Requirements Repository with the changes requested, including stakeholder views affected"
+    - "Step 9 (ADM phase): implement change in the current phase"
+    - "Step 10 (ADM phase): assess and revise gap analysis for past phases; gap requirements are recorded in the Repository and the Target Architecture revised"
+  outputs:
+    - Requirements Impact Assessment
+    - Updated Architecture Requirements Specification, if necessary
+  artefacts: [REQUIREMENTS_CATALOG]
+  deliverables: [Requirements Impact Assessment, Architecture Requirements Specification]
+  refs: ["ADM §13", "ADM §13.1", "ADM §13.2", "ADM §13.3", "ADM §13.4", "ADM §13.5"]
+  traps:
+    - Requirements Management is a continuous PROCESS at the centre of the cycle, not a phase in the sequence, and it does not dispose of, address or prioritize requirements itself.
+    - The steps table has two columns — six of the ten steps are done by the ADM phase, four by the Requirements Management process.
+    - Only two outputs are listed (Requirements Impact Assessment; updated Architecture Requirements Specification); the Architecture Requirements Repository is updated as part of the process but the standard does not list it as an output.
+    - The Requirements Impact Assessment identifies which ADM phases need to be revisited; it is both an input and an output of this process.
+    - A "gap requirement" is something eliminated from the Target by accident during gap analysis, and it requires a change to the Target Architecture (step 10).

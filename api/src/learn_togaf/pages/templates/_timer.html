@@ -1,0 +1,20 @@
+{# Server-side clock (§4.6): remaining = started_at + time_limit_s − now, re-fetched every 15 s.
+   The browser only counts down between polls; when the server says 0 the attempt is finished. #}
+{% set done = attempt.finished_at is not none %}
+<div id="timer" data-testid="timer" data-remaining="{{ remaining_s if remaining_s is not none else '' }}"
+     {% if attempt.time_limit_s and not done %}hx-get="/attempt/{{ attempt.id }}/timer" hx-trigger="every 15s" hx-swap="outerHTML"{% endif %}
+     class="flex items-center gap-2">
+  {% if attempt.time_limit_s is none %}
+  <span class="badge badge-ghost"><i class="mdi mdi-timer-off-outline mr-1"></i> untimed</span>
+  {% elif done %}
+  <span class="badge badge-neutral">finished</span>
+  {% elif remaining_s <= 0 %}
+  <span class="badge badge-error" hx-post="/attempt/{{ attempt.id }}/finish" hx-trigger="load" hx-swap="none">Time is up — submitting…</span>
+  {% else %}
+  <span class="badge {% if remaining_s < 300 %}badge-error{% elif remaining_s < 900 %}badge-warning{% else %}badge-neutral{% endif %} font-mono text-sm"
+        x-data="{ r: {{ remaining_s }} }" x-init="setInterval(() => { if (r > 0) r-- }, 1000)">
+    <i class="mdi mdi-timer-outline mr-1"></i>
+    <span x-text="String(Math.floor(r / 60)).padStart(2, '0') + ':' + String(r % 60).padStart(2, '0')">{{ remaining_s | duration }}</span>
+  </span>
+  {% endif %}
+</div>

@@ -1,0 +1,11 @@
+<form class="flex flex-col gap-2" hx-post="/note" hx-target="this" hx-swap="outerHTML">
+  <input type="hidden" name="ref_kind" value="{{ ref_kind }}">
+  <input type="hidden" name="ref_id" value="{{ ref_id }}">
+  <textarea name="body_md" rows="4" class="textarea textarea-bordered textarea-sm w-full" placeholder="Markdown; saved per {{ ref_kind | lower }}">{{ note.body_md if note else '' }}</textarea>
+  <div class="flex items-center gap-2">
+    <button type="submit" class="btn btn-xs btn-primary">Save note</button>
+    {% if saved %}<span class="badge badge-success badge-xs">saved</span>{% endif %}
+    {% if note %}<span class="text-xs text-base-content/60">{{ note.updated_at | fmt_dt }}</span>{% endif %}
+  </div>
+  {% if note and note.body_md %}<div class="prose-lesson text-sm border-t border-base-300 pt-2">{{ note.body_md | markdown }}</div>{% endif %}
+</form>

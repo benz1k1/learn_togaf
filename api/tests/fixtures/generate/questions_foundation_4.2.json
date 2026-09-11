@@ -1,0 +1,56 @@
+{
+  "questions": [
+    {
+      "stem": "Which of the following is an output of Phase A of the fixture method?",
+      "options": [
+        {"key": "A", "text": "Request for fixture work", "correct": false, "why": "An input to Phase A, not an output"},
+        {"key": "B", "text": "Approved statement of fixture work", "correct": true, "why": ""},
+        {"key": "C", "text": "Fixture principles", "correct": false, "why": "An input, established before Phase A"},
+        {"key": "D", "text": "Populated fixture repository", "correct": false, "why": "An input"}
+      ],
+      "explanation": "Phase A ends with the approved statement of work and the vision. A, C and D are all listed as inputs.",
+      "refs": ["ADM §3.3", "ADM §3.5"],
+      "difficulty": 2,
+      "tags": ["outputs", "phase-a"]
+    },
+    {
+      "stem": "Which step of Phase A comes first?",
+      "options": [
+        {"key": "A", "text": "Define scope", "correct": false, "why": "Third step"},
+        {"key": "B", "text": "Develop the vision", "correct": false, "why": "Last step"},
+        {"key": "C", "text": "Establish the project", "correct": true, "why": ""},
+        {"key": "D", "text": "Identify stakeholders", "correct": false, "why": "Second step"}
+      ],
+      "explanation": "The ordered steps start with establishing the project.",
+      "refs": ["ADM §3.4"],
+      "difficulty": 1,
+      "tags": ["steps"]
+    },
+    {
+      "stem": "A question that cites a section it was not given",
+      "options": [
+        {"key": "A", "text": "x", "correct": true, "why": ""},
+        {"key": "B", "text": "y", "correct": false, "why": "wrong"},
+        {"key": "C", "text": "z", "correct": false, "why": "wrong"},
+        {"key": "D", "text": "w", "correct": false, "why": "wrong"}
+      ],
+      "explanation": "Cites INTRO §2, which is outside the input for objective 4.2.",
+      "refs": ["INTRO §2"],
+      "difficulty": 1,
+      "tags": []
+    },
+    {
+      "stem": "A question with two correct options",
+      "options": [
+        {"key": "A", "text": "x", "correct": true, "why": ""},
+        {"key": "B", "text": "y", "correct": true, "why": ""},
+        {"key": "C", "text": "z", "correct": false, "why": "wrong"},
+        {"key": "D", "text": "w", "correct": false, "why": "wrong"}
+      ],
+      "explanation": "Invalid: the content model requires exactly one correct option.",
+      "refs": ["ADM §3.4"],
+      "difficulty": 1,
+      "tags": []
+    }
+  ]
+}

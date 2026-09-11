@@ -1,0 +1,116 @@
+{# Step 2 of the import wizard (§4.7): what will land, what will not, and the confirm form.
+   The parsed payload stays server-side under setting import_pending:<token>; only the token
+   and the unit mapping travel back. #}
+<div class="divider my-1"></div>
+<div class="flex flex-wrap items-center gap-2 text-sm">
+  <span class="badge badge-neutral">{{ preview.format }}</span>
+  <span class="font-medium">{{ preview.file_name }}</span>
+  <span>→ set <code>{{ preview.set_code }}</code> · {{ preview.name }} · {{ preview.exam | lower }}</span>
+  <span class="ml-auto flex gap-1">
+    <span class="badge badge-success">{{ preview.importable }} valid</span>
+    <span class="badge {% if preview.errors %}badge-error{% else %}badge-ghost{% endif %}">{{ preview.errors | length }} invalid</span>
+    <span class="badge {% if preview.duplicates %}badge-warning{% else %}badge-ghost{% endif %}">{{ preview.duplicates | length }} duplicate</span>
+    {% if preview.unverified_ids %}<span class="badge badge-warning">{{ preview.unverified_ids | length }} unit guessed</span>{% endif %}
+  </span>
+</div>
+
+{% for error in preview.set_errors %}
+<div class="alert alert-error mt-2 py-2 text-sm"><i class="mdi mdi-alert-circle-outline"></i><span>{{ error }}</span></div>
+{% endfor %}
+
+<form method="post" action="/import/confirm" hx-post="/import/confirm" class="mt-3 flex flex-col gap-3">
+  {% include "_csrf.html" %}
+  <input type="hidden" name="token" value="{{ preview.token }}">
+
+  {% if preview.groups %}
+  <div>
+    <h3 class="text-sm font-semibold mb-1">Unit mapping</h3>
+    <p class="text-xs text-base-content/60 mb-1">Rows are grouped by the unit value the file carried. A guessed unit is chosen by keyword against unit names and objective texts and imported with a <span class="badge badge-warning badge-xs">unit-unverified</span> tag; pick one here to confirm it.</p>
+    <table class="table table-xs">
+      <thead><tr><th>In the file</th><th class="text-right">Rows</th><th>Imported as</th></tr></thead>
+      <tbody>
+      {% for group in preview.groups %}
+      <tr>
+        <td>{% if group.key %}<code>{{ group.key }}</code>{% else %}<span class="italic text-base-content/60">no unit</span>{% endif %}</td>
+        <td class="text-right">{{ group.count }}</td>
+        <td>
+          <select name="unit_map:{{ group.key }}" class="select select-bordered select-xs">
+            <option value="" {% if group.guessed %}selected{% endif %}>guess per row{% if group.guessed and group.unit %} (mostly {{ group.unit }}){% endif %}</option>
+            {% for code, name in unit_choices %}
+            <option value="{{ code }}" {% if not group.guessed and group.unit == code %}selected{% endif %}>{{ code }} · {{ name }}</option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  {% if preview.errors %}
+  <div>
+    <h3 class="text-sm font-semibold mb-1 text-error">Rows that fail validation ({{ preview.errors | length }})</h3>
+    <table class="table table-xs">
+      <thead><tr><th>#</th><th>Id</th><th>Stem</th><th>Errors</th></tr></thead>
+      <tbody>
+      {% for row in preview.errors %}
+      <tr>
+        <td>{{ row.index }}</td><td><code>{{ row.id }}</code></td><td class="max-w-xs truncate">{{ row.stem }}</td>
+        <td><ul class="list-disc ml-4 text-xs">{% for error in row.errors %}<li>{{ error }}</li>{% endfor %}</ul></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  {% if preview.duplicates %}
+  <div>
+    <h3 class="text-sm font-semibold mb-1 text-warning">Duplicates — reported, not imported ({{ preview.duplicates | length }})</h3>
+    <table class="table table-xs">
+      <thead><tr><th>#</th><th>Id</th><th>Stem</th><th>Duplicate of</th></tr></thead>
+      <tbody>
+      {% for row in preview.duplicates %}
+      <tr><td>{{ row.index }}</td><td><code>{{ row.id }}</code></td><td class="max-w-xs truncate">{{ row.stem }}</td><td><code>{{ row.duplicate_of }}</code></td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  <div>
+    <h3 class="text-sm font-semibold mb-1">Valid rows ({{ preview.importable }})</h3>
+    {% if preview.valid %}
+    <div class="max-h-96 overflow-auto">
+    <table class="table table-xs">
+      <thead><tr><th>Id</th><th>Unit</th><th>Obj.</th><th>Stem / question</th><th>Refs</th></tr></thead>
+      <tbody>
+      {% for row in preview.valid %}
+      <tr>
+        <td><code>{{ row.id }}</code></td>
+        <td>{{ row.unit }}{% if row.id in preview.unverified_ids %} <span class="badge badge-warning badge-xs" title="unit or objective guessed">?</span>{% endif %}</td>
+        <td>{{ row.objective }}</td>
+        <td class="max-w-md truncate" title="{{ row.stem or row.question }}">{{ row.stem or row.question }}</td>
+        <td class="text-xs">{{ row.refs | join(", ") }}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    {% else %}
+    <p class="text-sm text-base-content/60">Nothing valid to import.</p>
+    {% endif %}
+  </div>
+
+  <div class="flex flex-wrap items-center gap-3">
+    <label class="label cursor-pointer gap-2">
+      <input type="checkbox" name="import_partial" class="checkbox checkbox-sm" {% if not preview.errors %}disabled{% endif %}>
+      <span class="label-text text-sm">Import what validates{% if preview.errors %} (skip the {{ preview.errors | length }} invalid row(s)){% endif %}</span>
+    </label>
+    <button type="submit" class="btn btn-primary btn-sm" {% if not preview.valid or preview.set_errors %}disabled{% endif %}>
+      <i class="mdi mdi-check"></i> Confirm import of {{ preview.importable }} question(s)
+    </button>
+    <span class="text-xs text-base-content/60">Step 2 of 2. Writes <code>content/questions/imported/{{ preview.set_code }}.yaml</code> too.</span>
+  </div>
+</form>

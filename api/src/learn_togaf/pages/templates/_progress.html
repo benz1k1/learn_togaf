@@ -1,0 +1,8 @@
+<div id="lesson-progress" class="join">
+  {% for option in states %}
+  <button type="button" class="btn btn-xs join-item {{ 'btn-primary' if option == state else '' }}"
+          hx-post="/lesson-progress/{{ lesson_id }}" hx-vals='{"state": "{{ option }}"}' hx-target="#lesson-progress" hx-swap="outerHTML">
+    {{ option | lower }}
+  </button>
+  {% endfor %}
+</div>

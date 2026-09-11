@@ -1,0 +1,18 @@
+{
+  "questions": [
+    {
+      "scenario": "Fixture Utilities has 1,400 staff and a sponsor who has sent a request for fixture work asking for a target design for billing. The fixture principles are approved and the repository is populated. The Head of Billing wants a like-for-like replacement; the Head of Digital wants a mobile-first channel; the CFO controls the budget and has not been consulted. The horizon is 18 months. You are the lead architect and the sponsor asks what you will do first.",
+      "question": "Refer to the scenario. Based on the fixture method, which of the following is the best answer?",
+      "answers": [
+        {"key": "A", "points": 5, "text": "Establish the project, identify the stakeholders including the CFO and their concerns using a stakeholder map, define the scope, then develop the vision and the statement of work for approval.", "why": "Phase A's steps in order, starting from the request, with the missing stakeholder found before scope is set [ADM §3.4]."},
+        {"key": "B", "points": 3, "text": "Draft the vision from the request and circulate it, then define scope and write the statement of work.", "why": "Right deliverables, but the vision is written before the stakeholders and concerns are identified, out of the stated order [ADM §3.4]."},
+        {"key": "C", "points": 1, "text": "Define the scope with the Head of Billing and proceed to design the target architecture.", "why": "Skips stakeholder identification and produces no statement of work, so the phase has no approval [ADM §3.5]."},
+        {"key": "D", "points": 0, "text": "Treat the request as the approved statement of work and start the design.", "why": "Contradicts the inputs and outputs: the request is an input and the approved statement is the output [ADM §3.3]."}
+      ],
+      "refs": ["ADM §3", "ADM §3.3", "ADM §3.4", "ADM §3.5"],
+      "open_book_hint": "Where to look: ADM §3.3 for the inputs, §3.4 for the ordered steps, §3.5 for the outputs.",
+      "difficulty": 2,
+      "tags": ["phase-a", "stakeholders"]
+    }
+  ]
+}

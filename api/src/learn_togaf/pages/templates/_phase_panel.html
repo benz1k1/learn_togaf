@@ -1,0 +1,33 @@
+<div class="flex items-center justify-between gap-2">
+  <h2 class="card-title text-sm"><span class="badge badge-neutral">{{ phase.code }}</span>{{ phase.name }}</h2>
+  <div class="flex gap-1">
+    <a class="btn btn-xs btn-primary" href="/practice?phase={{ phase.code }}&kind=io">Quiz me</a>
+    <a class="btn btn-xs" href="/adm/{{ phase.code }}">Full page <i class="mdi mdi-arrow-right"></i></a>
+  </div>
+</div>
+<div class="text-xs text-base-content/60 flex gap-2">
+  {% if previous %}<a class="link" hx-get="/adm-panel/{{ previous.code }}" hx-target="#phase-panel" href="/adm/{{ previous.code }}">← {{ previous.code }}</a>{% endif %}
+  {% if following %}<a class="link" hx-get="/adm-panel/{{ following.code }}" hx-target="#phase-panel" href="/adm/{{ following.code }}">{{ following.code }} →</a>{% endif %}
+</div>
+<h3 class="text-xs uppercase text-base-content/60 mt-2">Objectives</h3>
+<ul class="list-disc ml-5 text-sm">{% for item in phase.objective %}<li>{{ item }}</li>{% endfor %}</ul>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+  <div>
+    <h3 class="text-xs uppercase text-base-content/60">Inputs</h3>
+    <ul class="list-disc ml-5 text-sm">{% for item in phase.inputs %}<li>{{ item }}</li>{% endfor %}</ul>
+  </div>
+  <div>
+    <h3 class="text-xs uppercase text-base-content/60">Outputs</h3>
+    <ul class="list-disc ml-5 text-sm">{% for item in phase.outputs %}<li>{{ item }}</li>{% endfor %}</ul>
+  </div>
+</div>
+<h3 class="text-xs uppercase text-base-content/60 mt-2">Steps</h3>
+<ol class="list-decimal ml-5 text-sm">{% for item in phase.steps %}<li>{{ item }}</li>{% endfor %}</ol>
+{% if artefacts %}
+<h3 class="text-xs uppercase text-base-content/60 mt-2">Artefacts</h3>
+<div class="flex flex-wrap gap-1">{% for artefact in artefacts %}<a class="badge badge-outline badge-sm" href="/artefact?phase={{ artefact.phase_code }}">{{ artefact.name }}</a>{% endfor %}</div>
+{% endif %}
+{% if phase.traps %}
+<h3 class="text-xs uppercase text-base-content/60 mt-2">Exam traps</h3>
+<ul class="text-sm flex flex-col gap-1">{% for item in phase.traps %}<li class="alert alert-warning py-1 px-2 text-xs"><i class="mdi mdi-alert-outline"></i><span>{{ item }}</span></li>{% endfor %}</ul>
+{% endif %}

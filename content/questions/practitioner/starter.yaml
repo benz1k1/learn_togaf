@@ -1,0 +1,86 @@
+# Authored starter scenarios (learn_togaf.md §2). Short; real Part 2 scenarios run 600–900 words.
+code: P_STARTER
+exam: PRACTITIONER
+name: Practitioner starter set
+kind: DRILL
+source: authored
+questions:
+  - id: P3-001
+    unit: P3
+    objective: "P3.1"
+    scenario: |
+      Northwind Utilities is a regional water company with 1,400 staff. Its board has approved a
+      strategy to replace a 20-year-old billing platform and to offer customers a digital
+      self-service channel within two years. The CIO has set up an Enterprise Architecture team
+      six months ago; the Preliminary Phase is complete and a set of architecture principles has
+      been approved. A Request for Architecture Work has arrived from the Chief Customer Officer,
+      who is the sponsor. It asks the EA team to "define the target architecture for customer
+      billing and self-service".
+
+      In an early meeting, the Head of Billing Operations says the current system's failure modes
+      are well understood and the priority is a like-for-like replacement. The Head of Digital
+      wants a mobile-first experience and is worried the billing programme will consume the whole
+      budget. The regulator requires that any change to billing calculations be auditable. The
+      CFO has not been consulted and controls the capital budget.
+
+      You are the lead architect. The sponsor asks what you will do first.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: "Start Phase A: establish the architecture project; identify the stakeholders, including the CFO and the regulator, and their concerns; use a business scenario to capture the business problem and the desired outcome from the sponsor, Billing Operations and Digital; assess business transformation readiness; confirm the principles and define the scope; then produce an Architecture Vision and a Statement of Architecture Work for the sponsor to approve."
+        why: "This is Phase A executed in order: stakeholders and concerns first (the CFO and the regulator are missing), the business scenario to reconcile the conflicting views into requirements, readiness and risk, scope, then the Vision and the Statement of Architecture Work, which is the phase's approval gate."
+      - key: B
+        points: 3
+        text: "Start Phase A by drafting the Architecture Vision from the strategy document, then circulate it to the sponsor, Billing Operations and Digital for comments, and produce the Statement of Architecture Work once the comments are in."
+        why: "Right phase and right deliverables, but it skips stakeholder identification and the business scenario, so the CFO and the regulator are missed and the Vision is written before the concerns are understood."
+      - key: C
+        points: 1
+        text: "Proceed directly to Phase B and develop the Baseline and Target Business Architecture for billing, since the Preliminary Phase is complete and the principles are approved."
+        why: "Skips Phase A entirely: there is no agreed scope, no Statement of Architecture Work and no sponsor approval, so the work has no mandate. The principles being approved does not substitute for a Vision."
+      - key: D
+        points: 0
+        text: "Ask the Head of Billing Operations to produce a requirements document for the like-for-like replacement, and use it to select a billing product in Phase E."
+        why: "Takes one stakeholder's position as the requirement, ignores the sponsor's request and the other stakeholders, and jumps to product selection with no architecture."
+    refs: ["ADM §3", "TECH §3", "TECH §5", "TECH §9"]
+    open_book_hint: "ADM, Phase A: objectives, approach and steps. ADM Techniques: Stakeholder Management, Business Scenarios, Business Transformation Readiness Assessment."
+    difficulty: 2
+    tags: [phase-a, stakeholders]
+  - id: P6-001
+    unit: P6
+    objective: "P6.1"
+    scenario: |
+      Meridian Retail deployed its target architecture for order management eighteen months ago
+      through three Transition Architectures. Phase G closed with a compliance assessment and the
+      Architecture Contract was fulfilled. The architecture is now in Phase H.
+
+      Three change requests have arrived in the same week. First, the operations team asks to
+      retire a legacy reporting module that nobody uses since the new dashboard went live. Second,
+      the marketing director wants to add a loyalty points field to the order record and expose it
+      in the customer app. Third, the board has agreed to acquire a competitor whose stores use an
+      entirely different order and inventory platform, and wants the two businesses to operate as
+      one within a year.
+
+      The Architecture Board asks you how each request should be handled.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: "Classify each request: the reporting module retirement is a simplification change, handled through change management with an architecture update; the loyalty field is an incremental change, handled as a bounded change within the current architecture under governance; the acquisition is a re-architecting change, so recommend a new Request for Architecture Work to start a fresh ADM cycle, and record the classification and decisions in the governance repository."
+        why: "Phase H's job is to classify change and decide the route: simplification and incremental changes stay in change management, re-architecting change starts a new cycle. All three are classified correctly and the governance record is kept."
+      - key: B
+        points: 3
+        text: "Treat all three as incremental changes and schedule them into the next release under the existing Architecture Contract, since the architecture is still current."
+        why: "Uses the right mechanism for two of the requests but mis-classifies the acquisition: integrating a whole second platform is a re-architecting change, and the existing contract does not cover it."
+      - key: C
+        points: 1
+        text: "Start a new ADM cycle for all three requests together, so that the acquisition, the loyalty field and the retirement are designed as one target architecture."
+        why: "Recognises that the acquisition needs a new cycle but drags two small changes into it, delaying them for no architectural reason; the standard reserves the full cycle for re-architecting change."
+      - key: D
+        points: 0
+        text: "Decline the requests until the next scheduled architecture review, because Phase H has completed and the architecture is under maintenance."
+        why: "Phase H is exactly the phase that receives and assesses change requests; refusing them misreads the ADM."
+    refs: ["ADM §12"]
+    open_book_hint: "ADM, Phase H: approach — drivers for change, the three change classes, and when a new cycle starts."
+    difficulty: 2
+    tags: [phase-h, change]

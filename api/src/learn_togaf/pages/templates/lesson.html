@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}{{ lesson.title }} · Learn TOGAF{% endblock %}
+{% block heading %}<a href="/unit" class="link link-hover">Lessons</a> › <a href="/unit/{{ unit.code }}" class="link link-hover">{{ unit.code }} {{ unit.name }}</a> › {{ lesson.title }}{% endblock %}
+{% block header_actions %}
+{% if lesson.status == 'draft' %}<span class="badge badge-warning badge-sm">draft</span>{% endif %}
+<span class="text-xs text-base-content/60">{{ lesson.reading_minutes }} min</span>
+{% endblock %}
+{% block content %}
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+  <div class="lg:col-span-3 flex flex-col gap-4">
+    <article class="card bg-base-100 shadow-sm">
+      <div class="card-body p-5">
+        <h1 class="text-xl font-bold">{{ lesson.title }}</h1>
+        <div class="prose-lesson">{{ body_html }}</div>
+      </div>
+    </article>
+    <section class="card bg-base-100 shadow-sm" id="check-yourself">
+      <div class="card-body p-4">
+        <div class="flex items-center justify-between">
+          <h2 class="card-title text-sm">Check yourself</h2>
+          <button type="button" class="btn btn-xs btn-ghost" hx-get="/lesson-check/{{ lesson.id }}" hx-target="#check-questions" hx-swap="innerHTML"><i class="mdi mdi-refresh"></i> New questions</button>
+        </div>
+        <div id="check-questions" hx-get="/lesson-check/{{ lesson.id }}" hx-trigger="load" hx-swap="innerHTML">
+          <span class="loading loading-dots loading-sm"></span>
+        </div>
+      </div>
+    </section>
+    <div class="flex justify-between">
+      {% if prev %}<a class="btn btn-sm" href="/lesson/{{ prev.id }}"><i class="mdi mdi-chevron-left"></i> {{ prev.title }}</a>{% else %}<span></span>{% endif %}
+      {% if next %}<a class="btn btn-sm" href="/lesson/{{ next.id }}">{{ next.title }} <i class="mdi mdi-chevron-right"></i></a>{% endif %}
+    </div>
+  </div>
+  <aside class="flex flex-col gap-4">
+    <div class="card bg-base-100 shadow-sm">
+      <div class="card-body p-4">
+        <h2 class="card-title text-sm">Progress</h2>
+        {% include "_progress.html" %}
+      </div>
+    </div>
+    <div class="card bg-base-100 shadow-sm">
+      <div class="card-body p-4">
+        <h2 class="card-title text-sm">Objectives</h2>
+        <ul class="flex flex-col gap-2 text-sm">
+          {% for objective in objectives %}
+          <li><span class="badge badge-outline badge-sm mr-1">{{ objective.code }}</span>{{ objective.text }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="card bg-base-100 shadow-sm">
+      <div class="card-body p-4">
+        <h2 class="card-title text-sm">References</h2>
+        {% if refs %}
+        <ul class="flex flex-col gap-1 text-sm">
+          {% for ref in refs %}<li><a class="link link-primary" href="/source/{{ ref | urlencode }}">{{ ref }}</a></li>{% endfor %}
+        </ul>
+        {% else %}<p class="text-xs text-base-content/60">No section references recorded.</p>{% endif %}
+      </div>
+    </div>
+    <div class="card bg-base-100 shadow-sm">
+      <div class="card-body p-4">
+        <h2 class="card-title text-sm">Your note</h2>
+        {% with ref_kind = "LESSON", ref_id = lesson.id %}{% include "_note.html" %}{% endwith %}
+      </div>
+    </div>
+  </aside>
+</div>
+{% endblock %}

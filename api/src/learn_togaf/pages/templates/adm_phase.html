@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}{{ phase.name }} · Learn TOGAF{% endblock %}
+{% block heading %}<a href="/adm" class="link link-hover">ADM</a> › {{ phase.name }}{% endblock %}
+{% block header_actions %}
+<a class="btn btn-sm btn-primary" href="/practice?phase={{ phase.code }}&kind=io"><i class="mdi mdi-clipboard-check-outline"></i> Quiz me on this phase</a>
+{% endblock %}
+{% block content %}
+{# Hand-off strip: what the previous phase hands over, this phase, what the next phase expects. #}
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+  <div class="card bg-base-100 shadow-sm">
+    <div class="card-body p-4">
+      {% if previous %}
+      <h2 class="card-title text-xs uppercase text-base-content/60">← <a class="link" href="/adm/{{ previous.code }}">{{ previous.name }}</a> outputs</h2>
+      <ul class="list-disc ml-4 text-sm">{% for item in previous.outputs %}<li>{{ item }}</li>{% endfor %}</ul>
+      {% else %}<p class="text-xs text-base-content/60">{{ 'Requirements Management runs alongside every phase.' if phase.code == 'REQ' else 'Nothing precedes the Preliminary Phase.' }}</p>{% endif %}
+    </div>
+  </div>
+  <div class="card bg-primary/10 border border-primary shadow-sm">
+    <div class="card-body p-4">
+      <h2 class="card-title text-sm"><span class="badge badge-primary">{{ phase.code }}</span>{{ phase.name }}</h2>
+      <h3 class="text-xs uppercase text-base-content/60">Inputs</h3>
+      <ul class="list-disc ml-4 text-sm">{% for item in phase.inputs %}<li>{{ item }}</li>{% endfor %}</ul>
+      <h3 class="text-xs uppercase text-base-content/60 mt-2">Outputs</h3>
+      <ul class="list-disc ml-4 text-sm">{% for item in phase.outputs %}<li>{{ item }}</li>{% endfor %}</ul>
+    </div>
+  </div>
+  <div class="card bg-base-100 shadow-sm">
+    <div class="card-body p-4">
+      {% if following %}
+      <h2 class="card-title text-xs uppercase text-base-content/60"><a class="link" href="/adm/{{ following.code }}">{{ following.name }}</a> inputs →</h2>
+      <ul class="list-disc ml-4 text-sm">{% for item in following.inputs %}<li>{{ item }}</li>{% endfor %}</ul>
+      {% else %}<p class="text-xs text-base-content/60">No single successor.</p>{% endif %}
+    </div>
+  </div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+  <div class="lg:col-span-2 flex flex-col gap-4">
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Objectives</h2>
+      <ul class="list-disc ml-5 text-sm">{% for item in phase.objective %}<li>{{ item }}</li>{% endfor %}</ul>
+      {% if phase.approach %}<h2 class="card-title text-sm mt-3">Approach</h2><div class="prose-lesson text-sm">{{ phase.approach | markdown }}</div>{% endif %}
+      <h2 class="card-title text-sm mt-3">Steps</h2>
+      <ol class="list-decimal ml-5 text-sm">{% for item in phase.steps %}<li>{{ item }}</li>{% endfor %}</ol>
+    </div></div>
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Artefacts and deliverables</h2>
+      {% if artefacts %}
+      <table class="table table-xs">
+        <thead><tr><th>Artefact</th><th>Kind</th><th>Domain</th></tr></thead>
+        <tbody>{% for artefact in artefacts %}
+          <tr><td><a class="link" href="/artefact?phase={{ artefact.phase_code }}&kind={{ artefact.kind }}">{{ artefact.name }}</a></td><td>{{ artefact.kind | lower }}</td><td>{{ artefact.domain | lower }}</td></tr>
+        {% endfor %}</tbody>
+      </table>
+      {% else %}<p class="text-sm text-base-content/60">No artefacts catalogued for this phase.</p>{% endif %}
+      {% if phase.deliverables %}
+      <h3 class="text-xs uppercase text-base-content/60 mt-2">Deliverables</h3>
+      <ul class="list-disc ml-5 text-sm">{% for item in phase.deliverables %}<li>{{ item }}</li>{% endfor %}</ul>
+      {% endif %}
+    </div></div>
+    {% if figures %}
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Figures from the standard</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {% for figure in figures %}
+        <figure><img src="/figure/{{ figure.id }}" alt="{{ figure.caption }}" class="border border-base-300 rounded"><figcaption class="text-xs text-base-content/70 mt-1">{{ figure.caption }}</figcaption></figure>
+        {% endfor %}
+      </div>
+    </div></div>
+    {% endif %}
+  </div>
+  <aside class="flex flex-col gap-4">
+    {% if phase.traps %}
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Exam traps</h2>
+      <ul class="flex flex-col gap-1">{% for item in phase.traps %}<li class="alert alert-warning py-1 px-2 text-xs"><i class="mdi mdi-alert-outline"></i><span>{{ item }}</span></li>{% endfor %}</ul>
+    </div></div>
+    {% endif %}
+    {% if techniques %}
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Techniques used here</h2>
+      <div class="flex flex-wrap gap-1">{% for technique in techniques %}<a class="badge badge-outline" href="/adm/technique/{{ technique.code }}">{{ technique.name }}</a>{% endfor %}</div>
+    </div></div>
+    {% endif %}
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">References</h2>
+      {% if phase.refs %}<ul class="text-sm">{% for ref in phase.refs %}<li><a class="link link-primary" href="/source/{{ ref | urlencode }}">{{ ref }}</a></li>{% endfor %}</ul>
+      {% else %}<p class="text-xs text-base-content/60">None recorded.</p>{% endif %}
+    </div></div>
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Your note</h2>
+      {% with ref_kind = "PHASE", ref_id = phase.code %}{% include "_note.html" %}{% endwith %}
+    </div></div>
+  </aside>
+</div>
+{% endblock %}
