@@ -1,0 +1,110 @@
+# The braid (learn_sabsa_archimate.md §3.2, §4.6): sixteen weeks, one enterprise question a
+# week, answered by TOGAF, ArchiMate and SABSA together. This file IS the study order: the
+# plan page spreads lessons in this order, and tests/test_content.py fails if a lesson is not
+# placed. `lessons:` names ids explicitly (they win, whatever week their unit sits in);
+# `units:` sweeps every not-yet-placed lesson of the unit in ordinal order. Each week ends with
+# the same three exercises: draw it (Archi), justify it (SABSA cells), drill it (check-yourself).
+- week: 1
+  theme: "What is architecture, and what is a framework?"
+  units: [F1, F2, A1, S1]
+  exercises:
+    draw: "Open Archi; draw the ArchiMate full-framework grid from memory (aspects across, layers down) and label where Northgate Bank's mobile-payments work will sit"
+    justify: "Write one paragraph for the Contextual × Assets cell: what Northgate Bank is, in its own terms"
+- week: 2
+  theme: "Who cares, and why?"
+  lessons: [F5/03_stakeholder_management]
+  units: [F3, A2, S2]
+  exercises:
+    draw: "Stakeholder map of Northgate Bank's Digital Channels programme as a Motivation view: Stakeholder, Driver, Assessment, Goal"
+    justify: "Contextual × People and Contextual × Motivation cells for the programme"
+- week: 3
+  theme: "What must be true? Principles and requirements"
+  lessons: [F5/02_architecture_principles, F4/12_requirements_management]
+  units: [P7, S3]
+  exercises:
+    draw: "The Architecture Principles catalog as Principle elements, each realizing a Goal and influencing a Requirement"
+    justify: "A Business Attributes Profile for the programme: six attributes with metric, measurement approach and target"
+- week: 4
+  theme: "What can we do? Strategy and capability"
+  lessons: [F5/07_business_scenarios_and_capability_planning]
+  units: [G_BUSINESS_ARCH, G_BUSINESS_SCENARIOS, A3, F5]
+  exercises:
+    draw: "The Business Capability Map as a Capability Map viewpoint, with the Value Stream and a Course of Action realizing an Outcome"
+    justify: "Conceptual × Motivation and Conceptual × Process cells: risk appetite and the security strategy"
+- week: 5
+  theme: "How is the work run?"
+  lessons: [F4/01_preliminary_and_phase_a, F4/02_phases_b_to_h, F4/03_preliminary_phase, F4/04_phase_a_architecture_vision]
+  units: [F6, P1, P3, G_LEADERS, G_PRACTITIONERS, A9, S6, X2]
+  exercises:
+    draw: "The Solution Concept diagram as a Layered viewpoint sketch: one element per layer, Serving relationships between them"
+    justify: "Map each ADM phase of the programme to the SABSA Lifecycle stage it belongs to (W117)"
+- week: 6
+  theme: "The business layer"
+  lessons: [F4/05_phase_b_business_architecture]
+  units: [P4, A4, S4]
+  exercises:
+    draw: "The Organization Decomposition and Process Flow diagrams as an Organization view and a Business Process Cooperation view"
+    justify: "Logical × Location: the security domain model for the programme, with policy authorities and trust relationships"
+- week: 7
+  theme: "The information and application layers"
+  lessons: [F4/06_phase_c_information_systems]
+  units: [A5]
+  exercises:
+    draw: "The Application Communication diagram as an Application Cooperation view; the Data Entity catalog as Data Objects accessed by Application Functions"
+    justify: "Logical × Assets: the information assets and their classification attributes"
+- week: 8
+  theme: "The technology layer"
+  lessons: [F4/07_phase_d_technology_architecture]
+  units: [A6, S5, G_REFERENCE_MODELS]
+  exercises:
+    draw: "The Platform Decomposition and Networked Computing diagrams as a Technology view with Nodes, Devices, System Software and Artifacts"
+    justify: "Physical × Assets and Component × Assets: mechanisms and products for the top three security services"
+- week: 9
+  theme: "Relationships and derivation — consolidation week"
+  units: [F7, A7, S7]
+  exercises:
+    draw: "Redraw week 7's view with every relationship named; then derive three relationships that are not drawn and check each against the relationship table"
+    justify: "Trace one control top-down to its business attribute and one attribute bottom-up to every control that covers it"
+- week: 10
+  theme: "Where are the gaps, and how do we get there?"
+  lessons: [F4/08_phase_e_opportunities_and_solutions, F4/09_phase_f_migration_planning, F5/05_gap_analysis_and_interoperability, F5/08_migration_planning_techniques]
+  units: [A8]
+  exercises:
+    draw: "The Architecture Roadmap as a Migration view: Baseline and Target Plateaus, the two Transition Architectures, Gaps between them"
+    justify: "Design → Implement: a control gap analysis for the two transition architectures"
+- week: 11
+  theme: "Risk"
+  lessons: [F5/06_readiness_and_risk]
+  units: [G_RISK_SECURITY, X3]
+  exercises:
+    draw: "A risk and security view per W172: asset (Business Object), threat (Driver), vulnerability (Assessment), risk (Assessment), control (Requirement realized by a Course of Action)"
+    justify: "Two-sided risk for mobile payments: one threat, one opportunity, each with enhance/protect/detect/recover/correct controls"
+- week: 12
+  theme: "Governance and operations"
+  lessons: [F4/10_phase_g_implementation_governance, F4/11_phase_h_architecture_change_management]
+  units: [F8, P5, P6, P9, G_GOVERNANCE, G_DIGITAL_AGILE]
+  exercises:
+    draw: "The Implementation and Migration Plan as an Implementation and Migration view: Work Packages, Deliverables, Implementation Events"
+    justify: "Service Management × Process and × Time: incident, change and assurance for the live payments service"
+- week: 13
+  theme: "Views, viewpoints and the audience"
+  units: [P2, F4]
+  exercises:
+    draw: "Pick a stakeholder from week 2 and choose the one example viewpoint that answers their concern; draw it"
+    justify: "The Matrix as a viewpoint catalogue: which cell answers each stakeholder of week 2"
+- week: 14
+  theme: "TOGAF mock week"
+  exercises:
+    draw: "Sit OGEA-101 and OGEA-102 mocks; redraw every scenario's planted concern as a Motivation element"
+    justify: "SCF drill on the F1 module (S1–S3)"
+- week: 15
+  theme: "ArchiMate mock week"
+  exercises:
+    draw: "Sit OGA-031 and OGA-032 mocks; redraw the Practitioner scenarios in Archi"
+    justify: "SCF drill on the F2 module (S4–S7)"
+- week: 16
+  theme: "Integration week"
+  units: [P8, X1]
+  exercises:
+    draw: "Model the P-scenarios end to end: Motivation, Strategy, Layered, Migration views of one scenario"
+    justify: "SCF full mock; the W117 crosswalk drill (ADM phase → Matrix cell) from memory"

@@ -1,0 +1,1133 @@
+# S3 Business Attributes and the Risk Model bank (learn_sabsa_archimate.md §4.3). Authored, original
+# paraphrase of the SABSA framework; refs name the SABSA White Paper sections and are to be verified once
+# the PDF is registered. status: draft until reviewed.
+code: S3_BANK
+exam: SCF
+name: "S3 Business Attributes and Risk Model bank"
+kind: DRILL
+source: authored
+questions:
+  # ---------------------------------------------------------------- S3.1 the profile and its families
+  - id: S3-101
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "What is a business attribute in SABSA?"
+    options:
+      - {key: A, text: "A quality the business needs its information, systems or services to possess, stated in the business's own words", correct: true}
+      - {key: B, text: "A technical control selected from a standard", why: "Controls are below attributes in the trace."}
+      - {key: C, text: "A field in a database schema", why: "Physical-layer data content."}
+      - {key: D, text: "A threat scenario", why: "Threats are assessed against attributes."}
+    explanation: "Attributes such as available, confidential and reputable are the business's requirements as adjectives."
+    refs: ["SABSA §3.3"]
+    difficulty: 1
+    tags: [attributes, definitions]
+  - id: S3-102
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "What is the Business Attributes Profile?"
+    options:
+      - {key: A, text: "The full published taxonomy of attributes", why: "The taxonomy is the menu; the profile is the selection."}
+      - {key: B, text: "The set of attributes selected for a scope, each with a metric, a measurement approach and a performance target", correct: true}
+      - {key: C, text: "A list of threats ranked by likelihood", why: "That is a risk register."}
+      - {key: D, text: "A catalogue of security products", why: "Component-layer content."}
+    explanation: "The profile is the selected, measurable attribute set at Conceptual × Assets."
+    refs: ["SABSA §3.3"]
+    difficulty: 1
+    tags: [attributes, profile]
+  - id: S3-103
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Which family does the attribute 'reputable' belong to?"
+    options:
+      - {key: A, text: "User", why: "User attributes concern the experience of using systems."}
+      - {key: B, text: "Risk management", why: "Risk-management attributes are the classic security qualities."}
+      - {key: C, text: "Business strategy", correct: true}
+      - {key: D, text: "Legal and regulatory", why: "Reputation is not a legal obligation."}
+    explanation: "Reputable, brand-enhancing and credible are business-strategy attributes."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [attributes, families]
+  - id: S3-104
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Which family does 'available' belong to?"
+    options:
+      - {key: A, text: "Operational", correct: true}
+      - {key: B, text: "Risk management", why: "Availability is grouped with the operational qualities in SABSA's taxonomy."}
+      - {key: C, text: "Management", why: "Management attributes concern administration."}
+      - {key: D, text: "Technical strategy", why: "Those concern the long-term technology shape."}
+    explanation: "Available, detectable, error-free, interoperable, productive and recoverable are operational attributes."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [attributes, families]
+  - id: S3-105
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Which family does 'confidential' belong to?"
+    options:
+      - {key: A, text: "Risk management", correct: true}
+      - {key: B, text: "Operational", why: "Operational holds availability and recoverability."}
+      - {key: C, text: "User", why: "User attributes concern the user's experience."}
+      - {key: D, text: "Business strategy", why: "Strategy attributes are about the long-term business."}
+    explanation: "The risk-management family holds the classic security qualities: confidential, integrity-assured, authenticated, auditable and so on."
+    refs: ["SABSA §3.4"]
+    difficulty: 1
+    tags: [attributes, families]
+  - id: S3-106
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Which family does 'compliant' belong to?"
+    options:
+      - {key: A, text: "Legal and regulatory", correct: true}
+      - {key: B, text: "Management", why: "Management is about running systems."}
+      - {key: C, text: "Risk management", why: "Compliance is an external obligation, grouped with legal attributes."}
+      - {key: D, text: "User", why: "Not a user-experience quality."}
+    explanation: "Admissible, compliant, enforceable, insurable, legal, liability-managed, regulated, resolvable and time-bound are legal and regulatory attributes."
+    refs: ["SABSA §3.4"]
+    difficulty: 1
+    tags: [attributes, families]
+  - id: S3-107
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Which family does 'usable' belong to?"
+    options:
+      - {key: A, text: "User", correct: true}
+      - {key: B, text: "Operational", why: "Operational is service delivery, not user experience."}
+      - {key: C, text: "Technical strategy", why: "Not about the technology's long-term shape."}
+      - {key: D, text: "Business strategy", why: "Not a business-level strategic quality."}
+    explanation: "Usable, accessible, responsive, supported and informed are user attributes."
+    refs: ["SABSA §3.4"]
+    difficulty: 1
+    tags: [attributes, families]
+  - id: S3-108
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Which family does 'scalable' belong to?"
+    options:
+      - {key: A, text: "Technical strategy", correct: true}
+      - {key: B, text: "Operational", why: "Scalability is a long-term technology quality, not day-to-day delivery."}
+      - {key: C, text: "Management", why: "Not an administration quality."}
+      - {key: D, text: "Legal and regulatory", why: "No legal element."}
+    explanation: "Scalable, extendible, future-proof, migratable and standards-compliant are technical-strategy attributes."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [attributes, families]
+  - id: S3-109
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Which family does 'cost-effective' belong to?"
+    options:
+      - {key: A, text: "Management", correct: true}
+      - {key: B, text: "Business strategy", why: "Return on investment is strategy; cost-effective operation is management."}
+      - {key: C, text: "User", why: "Not a user-experience quality."}
+      - {key: D, text: "Risk management", why: "Not a security quality."}
+    explanation: "Automated, change-managed, controlled, cost-effective, efficient, maintainable, measured and supportable are management attributes."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [attributes, families]
+  - id: S3-110
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "How many attribute families does SABSA's taxonomy use?"
+    options:
+      - {key: A, text: "Three", why: "Confidentiality, integrity and availability are three attributes, not families."}
+      - {key: B, text: "Seven", correct: true}
+      - {key: C, text: "Six, one per Matrix column", why: "Families are not aligned to columns."}
+      - {key: D, text: "Twelve", why: "Not the taxonomy's count."}
+    explanation: "User, management, operational, risk management, legal and regulatory, technical strategy and business strategy."
+    refs: ["SABSA §3.4"]
+    difficulty: 1
+    tags: [attributes, families]
+  - id: S3-111
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "What is the relationship between the taxonomy and a profile?"
+    options:
+      - {key: A, text: "They are the same thing", why: "The taxonomy is the vocabulary; the profile is a selection from it."}
+      - {key: B, text: "The taxonomy is a standard menu of attributes; a profile selects and weights those a scope needs, adding any missing", correct: true}
+      - {key: C, text: "The profile is the taxonomy plus threats", why: "Threats are not part of the profile."}
+      - {key: D, text: "The taxonomy is derived from each profile", why: "Reversed."}
+    explanation: "A shared taxonomy with per-scope profiles keeps profiles comparable."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [attributes, taxonomy]
+  - id: S3-112
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Why is the Business Attributes Profile called the hinge of the framework?"
+    options:
+      - {key: A, text: "Because it is the first Matrix cell", why: "It is Conceptual, not the first cell."}
+      - {key: B, text: "Because every driver above maps down to an attribute and every control below traces up to one", correct: true}
+      - {key: C, text: "Because it is owned by the SABSA Institute", why: "Irrelevant."}
+      - {key: D, text: "Because it lists every product", why: "Products are Component content."}
+    explanation: "The profile is the abstraction layer between business needs and technical controls."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [attributes, traceability]
+  - id: S3-113
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Which attribute is in the risk-management family?"
+    options:
+      - {key: A, text: "Recoverable", why: "Operational."}
+      - {key: B, text: "Auditable", correct: true}
+      - {key: C, text: "Maintainable", why: "Management."}
+      - {key: D, text: "Insurable", why: "Legal and regulatory."}
+    explanation: "Auditable, accountable, authenticated, authorised and non-repudiable are risk-management attributes."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [attributes, families]
+  - id: S3-114
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Which attribute is in the operational family?"
+    options:
+      - {key: A, text: "Recoverable", correct: true}
+      - {key: B, text: "Confidential", why: "Risk management."}
+      - {key: C, text: "Reputable", why: "Business strategy."}
+      - {key: D, text: "Legal", why: "Legal and regulatory."}
+    explanation: "Recoverable sits with available, detectable, error-free, interoperable and productive."
+    refs: ["SABSA §3.4"]
+    difficulty: 1
+    tags: [attributes, families]
+  - id: S3-115
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "What does the profile give business people and engineers that they lacked?"
+    options:
+      - {key: A, text: "A shared vocabulary: the business states the quality it needs and engineers design to it without either side learning the other's language", correct: true}
+      - {key: B, text: "A list of vendors", why: "Not the point."}
+      - {key: C, text: "A budget", why: "Budgets follow; the profile is a requirement set."}
+      - {key: D, text: "A network diagram", why: "Physical content."}
+    explanation: "The attribute is the word both sides agree on; that is the abstraction layer's value."
+    refs: ["SABSA §3.3"]
+    difficulty: 1
+    tags: [attributes]
+  - id: S3-116
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "A profile contains attributes from only one family. What does SABSA suggest about it?"
+    options:
+      - {key: A, text: "It is well focused", why: "The opposite."}
+      - {key: B, text: "The Contextual layer was read narrowly and other business concerns were missed", correct: true}
+      - {key: C, text: "It is complete for a small system", why: "Size does not excuse a single-family profile."}
+      - {key: D, text: "It should be split into sub-domains", why: "Unrelated."}
+    explanation: "Families prompt breadth: usability, cost, legal exposure and strategy, not only classic security."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [attributes, families]
+  - id: S3-117
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Which family gives a first cut at ownership of attributes, for example legal attributes to the compliance function?"
+    options:
+      - {key: A, text: "The families themselves, feeding the Conceptual × People cell", correct: true}
+      - {key: B, text: "The Lifecycle phases", why: "Process, not ownership."}
+      - {key: C, text: "The control types", why: "Those classify controls."}
+      - {key: D, text: "The trust relationships", why: "Logical-layer content."}
+    explanation: "User attributes belong to process owners, legal to compliance, technical strategy to the CTO, and so on."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [attributes, families, ownership]
+  - id: S3-118
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "In the Matrix, how does the profile relate to the Logical × Assets cell?"
+    options:
+      - {key: A, text: "It replaces it", why: "Each layer has its own Assets cell."}
+      - {key: B, text: "The Logical information-asset inventory classifies each asset by the attributes it needs from the profile", correct: true}
+      - {key: C, text: "They are unrelated", why: "Traceability connects them."}
+      - {key: D, text: "The Logical cell holds the taxonomy", why: "The taxonomy is Conceptual."}
+    explanation: "Classification in SABSA is attaching attributes and targets to information assets."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [attributes, classification]
+  - id: S3-119
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Where does the TOGAF guide place the Business Attribute Profile?"
+    options:
+      - {key: A, text: "Requirements Management", correct: true}
+      - {key: B, text: "Phase D", why: "Technology architecture."}
+      - {key: C, text: "Phase G", why: "Implementation governance."}
+      - {key: D, text: "The Architecture Repository's Standards Information Base", why: "Standards, not requirements."}
+    explanation: "The profile is the requirement set every phase consumes, so it lives with Requirements Management."
+    refs: ["GUIDE:integrating-risk-and-security §5.10"]
+    difficulty: 1
+    tags: [attributes, togaf]
+  - id: S3-120
+    unit: S3
+    objective: "S3.1"
+    lesson: S3/01_the_business_attributes_profile
+    stem: "Which attribute is in the business-strategy family?"
+    options:
+      - {key: A, text: "Providing return on investment", correct: true}
+      - {key: B, text: "Cost-effective", why: "Management."}
+      - {key: C, text: "Standards-compliant", why: "Technical strategy."}
+      - {key: D, text: "Timely", why: "User."}
+    explanation: "Return on investment, investment re-use, governable, brand-enhancing and reputable are business-strategy attributes."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [attributes, families]
+  # ---------------------------------------------------------------- S3.2 metrics, measurement, targets
+  - id: S3-121
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "What three things does SABSA record against each attribute to make it measurable?"
+    options:
+      - {key: A, text: "Metric type, measurement approach, performance target", correct: true}
+      - {key: B, text: "Threat, vulnerability, impact", why: "Those are risk-assessment inputs."}
+      - {key: C, text: "Owner, custodian, user", why: "Those are Conceptual × People roles."}
+      - {key: D, text: "Service, mechanism, component", why: "Those are the three lower layers."}
+    explanation: "Type says what kind of measure, approach says how it is obtained, target says what level is good enough."
+    refs: ["SABSA §3.5"]
+    difficulty: 1
+    tags: [metrics]
+  - id: S3-122
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "What is a hard metric?"
+    options:
+      - {key: A, text: "A quantitative, objective measure counted or timed from records", correct: true}
+      - {key: B, text: "A measure that is difficult to obtain", why: "Hard means objective, not difficult."}
+      - {key: C, text: "A survey score", why: "That is a soft metric."}
+      - {key: D, text: "An expert's opinion", why: "That is a soft metric."}
+    explanation: "Two observers would agree on a hard metric's value; soft metrics are qualitative and subjective."
+    refs: ["SABSA §3.5"]
+    difficulty: 1
+    tags: [metrics, hard-soft]
+  - id: S3-123
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "What is a soft metric?"
+    options:
+      - {key: A, text: "A metric that has no target", why: "Soft metrics still carry targets."}
+      - {key: B, text: "A qualitative, subjective measure assessed by judgement, survey or review", correct: true}
+      - {key: C, text: "A metric measured less than monthly", why: "Frequency is part of the approach, not the type."}
+      - {key: D, text: "A metric for opportunities only", why: "Type is independent of the risk side."}
+    explanation: "Soft metrics are declared as such so a survey score is not mistaken for an audit count."
+    refs: ["SABSA §3.5"]
+    difficulty: 1
+    tags: [metrics, hard-soft]
+  - id: S3-124
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "'Availability is the percentage of one-minute intervals per month in which the synthetic probe succeeded, reported by operations on the first working day of the next month.' What is this?"
+    options:
+      - {key: A, text: "A metric type", why: "Type would be 'hard'."}
+      - {key: B, text: "A measurement approach", correct: true}
+      - {key: C, text: "A performance target", why: "No threshold is stated."}
+      - {key: D, text: "A control objective", why: "It says how to measure, not what to achieve."}
+    explanation: "Source, method, frequency and owner make up the measurement approach."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [metrics, approach]
+  - id: S3-125
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "'99.95 % of one-minute intervals per month.' What is this?"
+    options:
+      - {key: A, text: "A performance target", correct: true}
+      - {key: B, text: "A metric type", why: "Type would be hard or soft."}
+      - {key: C, text: "A measurement approach", why: "No method or frequency is stated, only a level."}
+      - {key: D, text: "A business driver", why: "Drivers are business needs in business words."}
+    explanation: "A level on a metric is the target."
+    refs: ["SABSA §3.3"]
+    difficulty: 1
+    tags: [metrics, targets]
+  - id: S3-126
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "Which attribute would most naturally use a soft metric?"
+    options:
+      - {key: A, text: "Available", why: "Uptime is counted: hard."}
+      - {key: B, text: "Usable", correct: true}
+      - {key: C, text: "Accurate", why: "Reconciliation errors are counted: hard."}
+      - {key: D, text: "Compliant", why: "Findings against a rule set are counted: hard."}
+    explanation: "Usability is assessed by survey or task-completion study, a judgement-based measure."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [metrics, hard-soft]
+  - id: S3-127
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "Who agrees the performance target for an attribute?"
+    options:
+      - {key: A, text: "The architect, from best practice", why: "The target is a business decision."}
+      - {key: B, text: "The business, because the target is a statement of risk appetite", correct: true}
+      - {key: C, text: "The vendor", why: "Never."}
+      - {key: D, text: "The operations team", why: "Operations measures against it."}
+    explanation: "The gap between target and perfection is the shortfall the business tolerates: appetite in disguise."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [metrics, targets, appetite]
+  - id: S3-128
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "In which Lifecycle phase and Matrix layer are the targets actually measured?"
+    options:
+      - {key: A, text: "Strategy and Planning; Conceptual", why: "That is where they are set."}
+      - {key: B, text: "Manage and Measure; Service Management", correct: true}
+      - {key: C, text: "Design; Logical", why: "Design uses them; it does not measure them."}
+      - {key: D, text: "Implement; Physical", why: "Implementation builds to them."}
+    explanation: "Targets are set at the Conceptual layer and measured operationally, the same attribute seen twice."
+    refs: ["SABSA §5.1"]
+    difficulty: 2
+    tags: [metrics, lifecycle]
+  - id: S3-129
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "What makes a measurement approach a good one?"
+    options:
+      - {key: A, text: "It is repeatable by someone other than its author and affordable at the stated frequency", correct: true}
+      - {key: B, text: "It always produces a percentage", why: "Units depend on the metric."}
+      - {key: C, text: "It is performed by the architect", why: "Ownership varies; repeatability matters."}
+      - {key: D, text: "It requires no data source", why: "An approach without a source is not a measurement."}
+    explanation: "Source, method, frequency and owner, stated so that another person could run it."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [metrics, approach]
+  - id: S3-130
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "Which statement about hard and soft metrics is correct?"
+    options:
+      - {key: A, text: "Hard metrics are always better", why: "Neither is better; the type must be declared."}
+      - {key: B, text: "Neither is better; declaring the type prevents a survey score being mistaken for an audit count", correct: true}
+      - {key: C, text: "Soft metrics cannot carry a target", why: "They can: 'mean score 4.2 of 5'."}
+      - {key: D, text: "Hard metrics apply only to the risk-management family", why: "Any family may use either."}
+    explanation: "The type is a declaration of the kind of evidence, not a ranking."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [metrics, hard-soft]
+  - id: S3-131
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "'Mean customer satisfaction score 4.2 of 5 or above, from a survey after each release.' Which parts are target and approach?"
+    options:
+      - {key: A, text: "Target: 4.2 of 5 or above; approach: survey after each release", correct: true}
+      - {key: B, text: "Target: survey after each release; approach: 4.2 of 5", why: "Reversed."}
+      - {key: C, text: "Both are the metric type", why: "The type would be 'soft'."}
+      - {key: D, text: "Both are the target", why: "The survey describes how, not what level."}
+    explanation: "Level is target; method and frequency are approach; the type here is soft."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [metrics, targets, approach]
+  - id: S3-132
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "Why does SABSA say an attribute without metric, approach and target is a slogan?"
+    options:
+      - {key: A, text: "Because it cannot be designed to, tested against or reported on", correct: true}
+      - {key: B, text: "Because it is not in the taxonomy", why: "Taxonomy membership is separate."}
+      - {key: C, text: "Because it has no owner", why: "Ownership is a People-cell concern."}
+      - {key: D, text: "Because it is not a threat", why: "Unrelated."}
+    explanation: "Measurability is what turns an adjective into a requirement."
+    refs: ["SABSA §3.3"]
+    difficulty: 1
+    tags: [metrics]
+  - id: S3-133
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "How does a control objective relate to an attribute's target?"
+    options:
+      - {key: A, text: "The objective is derived from the attribute together with its target, which gives the designer a level to design to", correct: true}
+      - {key: B, text: "The objective replaces the target", why: "Both persist."}
+      - {key: C, text: "They are unrelated", why: "The target gives the objective its threshold."}
+      - {key: D, text: "The target is derived from the objective", why: "Reversed."}
+    explanation: "'Confidential' alone gives no guidance; 'confidential with zero exposures, verified quarterly' does."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [metrics, targets, objectives]
+  - id: S3-134
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "Which is a hard metric with a hard proxy for a soft attribute?"
+    options:
+      - {key: A, text: "Training completion rate as a proxy for 'educated and aware'", correct: true}
+      - {key: B, text: "Uptime as a proxy for 'available'", why: "Uptime is the direct hard metric for available, not a proxy."}
+      - {key: C, text: "Survey score as a proxy for 'usable'", why: "A survey is the soft metric itself."}
+      - {key: D, text: "Audit findings as a proxy for 'compliant'", why: "Direct hard metric."}
+    explanation: "Awareness is judged; completion is counted and stands in for it."
+    refs: ["SABSA §3.5"]
+    difficulty: 3
+    tags: [metrics, hard-soft]
+  - id: S3-135
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "When must performance targets be revisited?"
+    options:
+      - {key: A, text: "Never; they are fixed at design time", why: "They change with appetite."}
+      - {key: B, text: "Whenever the risk appetite changes, and at each Manage and Measure feedback into planning", correct: true}
+      - {key: C, text: "Only when a product is replaced", why: "Component changes do not drive targets."}
+      - {key: D, text: "Only after a breach", why: "A breach may prompt it, but appetite review is the rule."}
+    explanation: "Targets express appetite; measured results re-baseline them in the next planning cycle."
+    refs: ["SABSA §5.1"]
+    difficulty: 2
+    tags: [metrics, targets, lifecycle]
+  - id: S3-136
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "Which is NOT a typical measurement approach?"
+    options:
+      - {key: A, text: "Reading monitoring data", why: "Common approach."}
+      - {key: B, text: "Independent audit or penetration test", why: "Common approach."}
+      - {key: C, text: "Selecting a vendor product", correct: true}
+      - {key: D, text: "User survey", why: "Common soft approach."}
+    explanation: "Approaches gather evidence; product selection does not."
+    refs: ["SABSA §3.5"]
+    difficulty: 1
+    tags: [metrics, approach]
+  - id: S3-137
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "In the TOGAF guide, in which phase does the security audit verify the attributes?"
+    options:
+      - {key: A, text: "Phase G", correct: true}
+      - {key: B, text: "Phase A", why: "Phase A sets the requirements."}
+      - {key: C, text: "Phase B", why: "Phase B designs policy and domains."}
+      - {key: D, text: "Preliminary Phase", why: "Capability and principles."}
+    explanation: "Implementation governance in Phase G includes the security audit against the attributes and the Architecture Contract."
+    refs: ["GUIDE:integrating-risk-and-security §5.8"]
+    difficulty: 2
+    tags: [metrics, togaf]
+  - id: S3-138
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "'Quantitative' or 'qualitative' describes which of the three columns?"
+    options:
+      - {key: A, text: "Metric type", correct: true}
+      - {key: B, text: "Measurement approach", why: "Approach is how and how often."}
+      - {key: C, text: "Performance target", why: "Target is the level."}
+      - {key: D, text: "Attribute family", why: "Families group attributes, not measures."}
+    explanation: "Hard is quantitative, soft is qualitative: the metric type."
+    refs: ["SABSA §3.5"]
+    difficulty: 1
+    tags: [metrics, hard-soft]
+  - id: S3-139
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "Which is a well-formed target for 'non-repudiable'?"
+    options:
+      - {key: A, text: "100 % of sampled transactions carry a verifiable signature", correct: true}
+      - {key: B, text: "Use digital signatures", why: "A mechanism, not a target."}
+      - {key: C, text: "Non-repudiation is essential", why: "A priority statement."}
+      - {key: D, text: "Quarterly audit", why: "Part of the approach."}
+    explanation: "A target is a level on a metric that a test can confirm."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [metrics, targets]
+  - id: S3-140
+    unit: S3
+    objective: "S3.2"
+    lesson: S3/02_metrics_measurement_and_performance_targets
+    stem: "A requirement without a measure cannot be governed. Which TOGAF concept is the nearest to SABSA's performance target?"
+    options:
+      - {key: A, text: "A Measure attached to a Requirement or Objective in the content metamodel", correct: true}
+      - {key: B, text: "A Solution Building Block", why: "A solution, not a measure."}
+      - {key: C, text: "A Transition Architecture", why: "A state, not a measure."}
+      - {key: D, text: "A viewpoint", why: "A perspective, not a measure."}
+    explanation: "TOGAF measures on requirements and objectives play the part of SABSA's targets."
+    refs: ["GUIDE:integrating-risk-and-security §5.10", "SABSA §3.5"]
+    difficulty: 2
+    tags: [metrics, togaf, confusables]
+  # ---------------------------------------------------------------- S3.3 two-sided risk and control types
+  - id: S3-141
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "How does SABSA define risk?"
+    options:
+      - {key: A, text: "The chance of loss only", why: "SABSA's risk includes the upside."}
+      - {key: B, text: "Uncertainty of outcome, which may be worse (threat) or better (opportunity) than expected", correct: true}
+      - {key: C, text: "The number of vulnerabilities in a system", why: "A count, not risk."}
+      - {key: D, text: "The cost of controls", why: "Unrelated."}
+    explanation: "Two-sided risk is SABSA's distinctive position."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [risk, two-sided]
+  - id: S3-142
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "What is an opportunity in SABSA's risk model?"
+    options:
+      - {key: A, text: "The absence of a threat", why: "It is a positive uncertainty, not a negation."}
+      - {key: B, text: "The possibility that an outcome is better than expected", correct: true}
+      - {key: C, text: "A weaker control", why: "Controls are not opportunities."}
+      - {key: D, text: "A residual risk", why: "Residual risk is what remains after treatment."}
+    explanation: "Threat and opportunity are the two sides of the same uncertainty."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [risk, opportunity]
+  - id: S3-143
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "What are the five SABSA control types?"
+    options:
+      - {key: A, text: "Enhance, protect, detect, recover, correct", correct: true}
+      - {key: B, text: "Identify, protect, detect, respond, recover", why: "NIST framework functions."}
+      - {key: C, text: "Avoid, transfer, mitigate, accept, exploit", why: "Risk treatment options."}
+      - {key: D, text: "Plan, build, run, monitor, improve", why: "Not the SABSA list."}
+    explanation: "One opportunity-side type (enhance) and four threat-side types ordered by when they act."
+    refs: ["SABSA §4.2"]
+    difficulty: 1
+    tags: [controls, types]
+  - id: S3-144
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "Which control type acts on the opportunity side?"
+    options:
+      - {key: A, text: "Protect", why: "Threat side, before the event."}
+      - {key: B, text: "Enhance", correct: true}
+      - {key: C, text: "Detect", why: "Threat side, during."}
+      - {key: D, text: "Correct", why: "Threat side, after."}
+    explanation: "Enhance increases the likelihood or value of a good outcome."
+    refs: ["SABSA §4.2"]
+    difficulty: 1
+    tags: [controls, enhance]
+  - id: S3-145
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "Backup and failover are controls of which type?"
+    options:
+      - {key: A, text: "Protect", why: "They do not reduce the likelihood of the event."}
+      - {key: B, text: "Detect", why: "They do not discover the event."}
+      - {key: C, text: "Recover", correct: true}
+      - {key: D, text: "Correct", why: "They restore state; they do not remove the cause."}
+    explanation: "Recover restores the service or asset to its required state after the event."
+    refs: ["SABSA §4.2"]
+    difficulty: 1
+    tags: [controls, recover]
+  - id: S3-146
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "Patching the vulnerability that was exploited and changing the policy that allowed it are controls of which type?"
+    options:
+      - {key: A, text: "Recover", why: "Recovery restores state; this removes the cause."}
+      - {key: B, text: "Correct", correct: true}
+      - {key: C, text: "Detect", why: "Detection discovers; this changes the architecture."}
+      - {key: D, text: "Enhance", why: "Threat side, not opportunity."}
+    explanation: "Correct removes the cause so the event does not recur."
+    refs: ["SABSA §4.2"]
+    difficulty: 2
+    tags: [controls, correct]
+  - id: S3-147
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "Intrusion detection and reconciliation are controls of which type?"
+    options:
+      - {key: A, text: "Detect", correct: true}
+      - {key: B, text: "Protect", why: "They do not prevent."}
+      - {key: C, text: "Recover", why: "They do not restore."}
+      - {key: D, text: "Enhance", why: "Threat side."}
+    explanation: "Detect discovers that a bad outcome is occurring or has occurred, and notifies."
+    refs: ["SABSA §4.2"]
+    difficulty: 1
+    tags: [controls, detect]
+  - id: S3-148
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "Access control, encryption and segregation of duties are controls of which type?"
+    options:
+      - {key: A, text: "Protect", correct: true}
+      - {key: B, text: "Detect", why: "They do not discover events."}
+      - {key: C, text: "Recover", why: "They do not restore."}
+      - {key: D, text: "Correct", why: "They do not remove a cause after the fact."}
+    explanation: "Protect reduces the likelihood of a bad outcome by deterring or preventing it."
+    refs: ["SABSA §4.2"]
+    difficulty: 1
+    tags: [controls, protect]
+  - id: S3-149
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "A single sign-on service that lets customers onboard in minutes and opens a new sales channel is a control of which type?"
+    options:
+      - {key: A, text: "Protect", why: "It also authenticates, but the described effect is increased value."}
+      - {key: B, text: "Enhance", correct: true}
+      - {key: C, text: "Detect", why: "It discovers nothing."}
+      - {key: D, text: "Recover", why: "It restores nothing."}
+    explanation: "Any control described as increasing value, speed, reach or revenue is enhance."
+    refs: ["SABSA §4.2"]
+    difficulty: 2
+    tags: [controls, enhance]
+  - id: S3-150
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "Why is a design with only protective controls incomplete?"
+    options:
+      - {key: A, text: "Because protection is too expensive", why: "Cost is not the argument."}
+      - {key: B, text: "Because it has no way of knowing it has failed, no way to restore and no way to prevent recurrence", correct: true}
+      - {key: C, text: "Because protection is a Physical-layer concern only", why: "Control types apply at every layer."}
+      - {key: D, text: "Because regulators require detection", why: "Some do, but the SABSA reason is layered strategy."}
+    explanation: "Prevent what you can, detect what you cannot prevent, recover from what you detect, correct so it does not recur."
+    refs: ["SABSA §4.2"]
+    difficulty: 2
+    tags: [controls, layered]
+  - id: S3-151
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "What does the older Blue Book multi-tiered control strategy (deter, prevent, contain, detect and notify, evidence and track, recover and restore, assure) relate to?"
+    options:
+      - {key: A, text: "It is a finer-grained version of the threat-side sequence protect, detect, recover, correct", correct: true}
+      - {key: B, text: "It replaces the five control types", why: "It elaborates them."}
+      - {key: C, text: "It is the list of attribute families", why: "Unrelated."}
+      - {key: D, text: "It is the Lifecycle", why: "Unrelated."}
+    explanation: "Deter and prevent are protect; detect and notify is detect; recover and restore is recover; evidence, track and assure support correction and assurance."
+    refs: ["SABSA §4.2"]
+    difficulty: 3
+    tags: [controls, multi-tiered]
+  - id: S3-152
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "Which control type acts during the event?"
+    options:
+      - {key: A, text: "Protect", why: "Before."}
+      - {key: B, text: "Detect", correct: true}
+      - {key: C, text: "Recover", why: "After."}
+      - {key: D, text: "Correct", why: "After."}
+    explanation: "The four threat-side types are ordered by timing: protect before, detect during, recover and correct after."
+    refs: ["SABSA §4.2"]
+    difficulty: 2
+    tags: [controls, timing]
+  - id: S3-153
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "What are the risk treatment options SABSA recognises?"
+    options:
+      - {key: A, text: "Avoid, transfer, mitigate, accept, plus exploit on the opportunity side", correct: true}
+      - {key: B, text: "Protect, detect, recover", why: "Control types, not treatment options."}
+      - {key: C, text: "Ignore, delay, escalate", why: "Not the SABSA list."}
+      - {key: D, text: "Insure only", why: "Insurance is one form of transfer."}
+    explanation: "The conventional four with a symmetrical fifth for opportunities."
+    refs: ["SABSA §4.1"]
+    difficulty: 2
+    tags: [risk, treatment]
+  - id: S3-154
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "How does SABSA relate risk appetite, control-objective threshold and performance target?"
+    options:
+      - {key: A, text: "They are the same decision in three vocabularies; changing one must change the others", correct: true}
+      - {key: B, text: "They are set by three different bodies and may disagree", why: "They must agree."}
+      - {key: C, text: "Appetite applies only to opportunities", why: "It applies to both sides."}
+      - {key: D, text: "Targets are technical and unrelated to appetite", why: "A target is an appetite statement."}
+    explanation: "A 99.95 % target is an appetite of 0.05 % outage and a threshold for the availability objective."
+    refs: ["SABSA §4.1"]
+    difficulty: 2
+    tags: [risk, appetite]
+  - id: S3-155
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "What does SABSA add to the conventional risk model?"
+    options:
+      - {key: A, text: "Opportunity and enablement, with the enhance control type", correct: true}
+      - {key: B, text: "A larger threat catalogue", why: "Not the contribution."}
+      - {key: C, text: "Quantitative-only assessment", why: "SABSA allows soft metrics."}
+      - {key: D, text: "A ban on accepting risk", why: "Acceptance is a valid treatment."}
+    explanation: "Two-sided risk is what distinguishes SABSA's model."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [risk, two-sided]
+  - id: S3-156
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "How does the TOGAF risk and security guide define risk?"
+    options:
+      - {key: A, text: "The effect of uncertainty on objectives, which may be positive or negative", correct: true}
+      - {key: B, text: "The probability of a breach", why: "Too narrow."}
+      - {key: C, text: "Loss expressed in money", why: "Not the guide's definition."}
+      - {key: D, text: "A control gap", why: "A gap is a finding, not risk."}
+    explanation: "The guide's definition, aligned with ISO 31000, agrees with SABSA's two-sided view."
+    refs: ["GUIDE:integrating-risk-and-security §3.1.1"]
+    difficulty: 2
+    tags: [risk, togaf]
+  - id: S3-157
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "Root-cause analysis and lessons-learned changes to the architecture are of which control type?"
+    options:
+      - {key: A, text: "Correct", correct: true}
+      - {key: B, text: "Recover", why: "They do not restore state."}
+      - {key: C, text: "Detect", why: "They follow detection."}
+      - {key: D, text: "Protect", why: "They are after the event, though they may produce new protective controls."}
+    explanation: "Correction removes the cause and adjusts the architecture."
+    refs: ["SABSA §4.2"]
+    difficulty: 2
+    tags: [controls, correct]
+  - id: S3-158
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "In the TOGAF guide, where is the risk mitigation plan produced?"
+    options:
+      - {key: A, text: "Phase E", correct: true}
+      - {key: B, text: "Phase A", why: "Phase A does initial assessment."}
+      - {key: C, text: "Phase H", why: "Change management."}
+      - {key: D, text: "Preliminary Phase", why: "Capability and principles."}
+    explanation: "The guide places the risk mitigation plan in Phase E, Opportunities and Solutions."
+    refs: ["GUIDE:integrating-risk-and-security §5.6"]
+    difficulty: 2
+    tags: [risk, togaf]
+  - id: S3-159
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "Which TOGAF risk-technique concepts correspond to SABSA's threat-side ratings before and after treatment?"
+    options:
+      - {key: A, text: "Initial risk and residual risk", correct: true}
+      - {key: B, text: "Baseline and target architecture", why: "Architecture states, not risk ratings."}
+      - {key: C, text: "Gap and roadmap", why: "Migration concepts."}
+      - {key: D, text: "Principle and rationale", why: "Principle parts."}
+    explanation: "TOGAF's Phase A technique assesses initial risk and residual risk after mitigation."
+    refs: ["SABSA §4", "GUIDE:integrating-risk-and-security §3.1"]
+    difficulty: 2
+    tags: [risk, togaf, confusables]
+  - id: S3-160
+    unit: S3
+    objective: "S3.3"
+    lesson: S3/03_two_sided_risk_and_control_types
+    stem: "Which control types together form SABSA's layered threat-side strategy?"
+    options:
+      - {key: A, text: "Protect, detect, recover, correct", correct: true}
+      - {key: B, text: "Enhance, protect", why: "Enhance is opportunity side."}
+      - {key: C, text: "Detect only", why: "One layer is not layered."}
+      - {key: D, text: "Avoid, transfer, accept", why: "Treatment options."}
+    explanation: "No single type suffices; the four together cover before, during and after the event."
+    refs: ["SABSA §4.2"]
+    difficulty: 1
+    tags: [controls, layered]
+  # ---------------------------------------------------------------- S3.4 operational risk and assessment
+  - id: S3-161
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "How is operational risk defined?"
+    options:
+      - {key: A, text: "The risk of loss or missed gain from inadequate or failed processes, people and systems, or from external events", correct: true}
+      - {key: B, text: "The risk of a network outage", why: "One example, not the definition."}
+      - {key: C, text: "Market and credit risk", why: "Different risk categories."}
+      - {key: D, text: "The cost of running security operations", why: "Not a risk definition."}
+    explanation: "SABSA adopts the regulators' definition so security sits where the business already accounts for risk."
+    refs: ["SABSA §4.3"]
+    difficulty: 1
+    tags: [operational-risk, definitions]
+  - id: S3-162
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "In which Matrix cell is operational risk management?"
+    options:
+      - {key: A, text: "Service Management × Motivation", correct: true}
+      - {key: B, text: "Contextual × Motivation", why: "Business risk."}
+      - {key: C, text: "Logical × Motivation", why: "Policies."}
+      - {key: D, text: "Service Management × Process", why: "Process delivery management."}
+    explanation: "The bottom of the Motivation column: assessment, monitoring, reporting and treatment while services run."
+    refs: ["SABSA §2.2"]
+    difficulty: 1
+    tags: [operational-risk, cells]
+  - id: S3-163
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "What are the stages of SABSA's operational risk management loop?"
+    options:
+      - {key: A, text: "Identify, assess, treat, monitor, report", correct: true}
+      - {key: B, text: "Design, build, test, deploy", why: "A delivery lifecycle."}
+      - {key: C, text: "Protect, detect, recover, correct", why: "Control types."}
+      - {key: D, text: "Plan, design, implement, manage", why: "The SABSA Lifecycle, not the risk loop."}
+    explanation: "The loop runs at the Service Management layer and feeds back to Strategy and Planning."
+    refs: ["SABSA §4.3"]
+    difficulty: 2
+    tags: [operational-risk, loop]
+  - id: S3-164
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "What is distinctive about the SABSA risk assessment compared with a conventional threat assessment?"
+    options:
+      - {key: A, text: "It is centred on the business attributes an asset needs, with impact assessed in business terms, and it covers opportunity as well as threat", correct: true}
+      - {key: B, text: "It uses only quantitative data", why: "Soft measures are allowed."}
+      - {key: C, text: "It ignores likelihood", why: "Likelihood is a step."}
+      - {key: D, text: "It is performed only by auditors", why: "Not a SABSA rule."}
+    explanation: "The question is 'what could stop each attribute being true, and how bad would that be for the business?'"
+    refs: ["SABSA §4.4"]
+    difficulty: 2
+    tags: [assessment]
+  - id: S3-165
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "Against what is impact assessed in a SABSA risk assessment?"
+    options:
+      - {key: A, text: "The technical value of the asset", why: "Leaves the business out."}
+      - {key: B, text: "The business attribute, in business units such as fines, lost customers and reputation", correct: true}
+      - {key: C, text: "The number of records", why: "A technical count."}
+      - {key: D, text: "The replacement cost of hardware", why: "Not the business impact."}
+    explanation: "Impact is measured against the attribute because that is what the drivers trace to."
+    refs: ["SABSA §4.4"]
+    difficulty: 2
+    tags: [assessment, impact]
+  - id: S3-166
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "Which is the correct order of the SABSA risk assessment steps?"
+    options:
+      - {key: A, text: "Asset and attribute; threat or opportunity; vulnerability; impact; likelihood; rating; compare with appetite", correct: true}
+      - {key: B, text: "Vulnerability; asset; rating; impact", why: "Asset and attribute come first; rating follows impact and likelihood."}
+      - {key: C, text: "Likelihood; impact; asset; treatment", why: "Asset first."}
+      - {key: D, text: "Compare with appetite; then identify assets", why: "Appetite comparison is last."}
+    explanation: "Start from the asset and the attributes it needs; end by comparing the rating with the target and appetite."
+    refs: ["SABSA §4.4"]
+    difficulty: 2
+    tags: [assessment, procedure]
+  - id: S3-167
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "How are impact and likelihood combined?"
+    options:
+      - {key: A, text: "Into a risk rating, typically on a matrix, that gives priority", correct: true}
+      - {key: B, text: "They are reported separately and never combined", why: "Rating combines them."}
+      - {key: C, text: "Only impact is used", why: "Both are steps."}
+      - {key: D, text: "They are multiplied by the number of controls", why: "Not the method."}
+    explanation: "Rating gives a priority to compare with appetite."
+    refs: ["SABSA §4.4"]
+    difficulty: 1
+    tags: [assessment, rating]
+  - id: S3-168
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "What is a key risk indicator in SABSA's terms?"
+    options:
+      - {key: A, text: "The measured value of an attribute's metric, used as an early warning", correct: true}
+      - {key: B, text: "A threat listed in the register", why: "A threat, not an indicator."}
+      - {key: C, text: "The number of controls deployed", why: "Not an indicator of risk."}
+      - {key: D, text: "The audit schedule", why: "Assurance planning."}
+    explanation: "A falling availability figure or a rising failed-login count is the operational-risk warning for the attribute."
+    refs: ["SABSA §4.3"]
+    difficulty: 2
+    tags: [operational-risk, kri]
+  - id: S3-169
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "What does assurance check?"
+    options:
+      - {key: A, text: "That the indicators are honest and the controls exist and work as designed", correct: true}
+      - {key: B, text: "That the budget was spent", why: "Financial control, not assurance."}
+      - {key: C, text: "That vendors are certified", why: "Not the meaning."}
+      - {key: D, text: "That the Matrix has 36 cells", why: "Trivial."}
+    explanation: "Audit, testing and independent review are the assurance activities."
+    refs: ["SABSA §4.3"]
+    difficulty: 1
+    tags: [assurance]
+  - id: S3-170
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "Which Lifecycle phase does the operational risk loop correspond to?"
+    options:
+      - {key: A, text: "Manage and Measure", correct: true}
+      - {key: B, text: "Design", why: "Design uses the assessment."}
+      - {key: C, text: "Strategy and Planning", why: "Receives the reports."}
+      - {key: D, text: "Implement", why: "Builds and deploys."}
+    explanation: "The loop's reports are what Strategy and Planning re-reads to re-baseline the profile."
+    refs: ["SABSA §5.1"]
+    difficulty: 1
+    tags: [operational-risk, lifecycle]
+  - id: S3-171
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "Where does the TOGAF guide place the risk assessment that produces the business risk model or risk register?"
+    options:
+      - {key: A, text: "Phase B", correct: true}
+      - {key: B, text: "Phase D", why: "Technology."}
+      - {key: C, text: "Phase G", why: "Governance."}
+      - {key: D, text: "Phase F", why: "Migration planning."}
+    explanation: "Phase B: risk assessment producing the business risk model or register with security classification."
+    refs: ["GUIDE:integrating-risk-and-security §5.3.4"]
+    difficulty: 2
+    tags: [assessment, togaf]
+  - id: S3-172
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "Where does the TOGAF guide place key risk areas and business impact analysis?"
+    options:
+      - {key: A, text: "Preliminary Phase", correct: true}
+      - {key: B, text: "Phase C", why: "Information systems."}
+      - {key: C, text: "Phase E", why: "Opportunities and solutions."}
+      - {key: D, text: "Phase H", why: "Change management."}
+    explanation: "They are the first pass of Identify and Assess, done in the Preliminary Phase."
+    refs: ["GUIDE:integrating-risk-and-security §5.1.4"]
+    difficulty: 2
+    tags: [assessment, togaf]
+  - id: S3-173
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "A risk assessment rates losses thoroughly but never considers gains. In SABSA's terms it is what?"
+    options:
+      - {key: A, text: "Complete", why: "It omits the opportunity side."}
+      - {key: B, text: "Incomplete, because SABSA's assessment covers opportunity as well as threat", correct: true}
+      - {key: C, text: "A Component-layer assessment", why: "Layer is irrelevant."}
+      - {key: D, text: "An assurance report", why: "Not what assurance means."}
+    explanation: "Two-sided risk applies to assessment as well as to control types."
+    refs: ["SABSA §4.4"]
+    difficulty: 2
+    tags: [assessment, two-sided]
+  - id: S3-174
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "In the risk assessment, what is the role of the vulnerability step?"
+    options:
+      - {key: A, text: "To identify the weaknesses that would let a threat succeed, or the enablers that would let an opportunity be taken", correct: true}
+      - {key: B, text: "To count the products installed", why: "Not the step."}
+      - {key: C, text: "To set the performance target", why: "Targets are set in the profile."}
+      - {key: D, text: "To assign owners", why: "People-cell work."}
+    explanation: "Vulnerability is what makes a threat or an opportunity realisable."
+    refs: ["SABSA §4.4"]
+    difficulty: 2
+    tags: [assessment, vulnerability]
+  - id: S3-175
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "What does the Report stage of the operational risk loop feed?"
+    options:
+      - {key: A, text: "Governance and the appetite review in the next planning cycle", correct: true}
+      - {key: B, text: "Product procurement", why: "Not the feed."}
+      - {key: C, text: "The network diagram", why: "Physical content."}
+      - {key: D, text: "Nothing; reports are archived", why: "The loop closes on the report."}
+    explanation: "Measured performance against target returns to Strategy and Planning."
+    refs: ["SABSA §4.3", "SABSA §5.1"]
+    difficulty: 2
+    tags: [operational-risk, loop]
+  - id: S3-176
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "Why does SABSA place information security inside operational risk rather than in a separate risk universe?"
+    options:
+      - {key: A, text: "So that security is accounted for where the board already tracks risk, beside fraud, process failure and supplier failure", correct: true}
+      - {key: B, text: "Because regulators forbid separate security risk registers", why: "Not the reason."}
+      - {key: C, text: "Because security risks are always small", why: "Not a SABSA claim."}
+      - {key: D, text: "Because operational risk has no appetite", why: "It does."}
+    explanation: "Security is a contributor to operational risk, in the business's existing vocabulary."
+    refs: ["SABSA §4.3"]
+    difficulty: 2
+    tags: [operational-risk]
+  - id: S3-177
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "In the SABSA assessment, what determines whether a rated risk needs treatment?"
+    options:
+      - {key: A, text: "Whether it exceeds the attribute's target or the stated appetite", correct: true}
+      - {key: B, text: "Whether a product exists to treat it", why: "Availability of products is not the criterion."}
+      - {key: C, text: "Whether the auditor noticed it", why: "Not the criterion."}
+      - {key: D, text: "Whether it is a threat rather than an opportunity", why: "Both may need treatment (or exploitation)."}
+    explanation: "The last step compares the rating with target and appetite."
+    refs: ["SABSA §4.4"]
+    difficulty: 2
+    tags: [assessment, appetite]
+  - id: S3-178
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "Which core concepts does the TOGAF guide's enterprise risk management section share with SABSA's assessment?"
+    options:
+      - {key: A, text: "Asset, threat, vulnerability, impact, likelihood, appetite, treatment", correct: true}
+      - {key: B, text: "Plateau, gap, work package", why: "Migration concepts."}
+      - {key: C, text: "Viewpoint, view, stakeholder", why: "Architecture description concepts."}
+      - {key: D, text: "Principle, rationale, implication", why: "Principle parts."}
+    explanation: "The guide's ERM concepts match SABSA's; SABSA adds attribute-centred impact and the opportunity side."
+    refs: ["GUIDE:integrating-risk-and-security §3.1.2"]
+    difficulty: 2
+    tags: [assessment, togaf]
+  - id: S3-179
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "Which ADM phases correspond to SABSA's operational risk management?"
+    options:
+      - {key: A, text: "Phases G and H", correct: true}
+      - {key: B, text: "Phases A and B", why: "Assessment and design."}
+      - {key: C, text: "Phases C and D", why: "Design."}
+      - {key: D, text: "Phase E", why: "Opportunities and solutions."}
+    explanation: "Service Management is the Phase G–H governance and change loop."
+    refs: ["GUIDE:integrating-risk-and-security §5.3.4", "SABSA §2.2"]
+    difficulty: 1
+    tags: [operational-risk, togaf]
+  - id: S3-180
+    unit: S3
+    objective: "S3.4"
+    lesson: S3/04_operational_risk_and_risk_assessment
+    stem: "In the SABSA assessment, what supplies the units in which impact is expressed?"
+    options:
+      - {key: A, text: "The attribute's metric", correct: true}
+      - {key: B, text: "The product price list", why: "Not a business measure."}
+      - {key: C, text: "The number of servers", why: "Technical count."}
+      - {key: D, text: "The audit schedule", why: "Assurance planning."}
+    explanation: "Impact on 'available' is measured in outage minutes and their business cost because that is the attribute's metric."
+    refs: ["SABSA §4.4"]
+    difficulty: 2
+    tags: [assessment, impact, metrics]

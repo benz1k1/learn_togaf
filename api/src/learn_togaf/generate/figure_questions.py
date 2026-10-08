@@ -126,7 +126,7 @@ def run(
         if request.custom_id not in responses:
             continue
         accepted, next_index = questions_from_response(
-            responses[request.custom_id], "foundation", grounding, next_index
+            responses[request.custom_id], "OGEA-101", grounding, next_index
         )
         for question in accepted:
             question["figure"] = figure.id
@@ -136,7 +136,7 @@ def run(
     code = f"G_FIG_{today()}"
     data = {
         "code": code,
-        "exam": "FOUNDATION",
+        "exam": "OGEA-101",
         "name": f"Generated figure questions, {today()}",
         "kind": "FIGURE",
         "source": "generated",

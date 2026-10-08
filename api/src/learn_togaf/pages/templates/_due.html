@@ -6,11 +6,14 @@
         <div class="stat-value text-2xl"><a href="/review" class="link link-hover">{{ cards_due }}</a></div>
       </div>
       <div class="stat p-2">
-        <div class="stat-title text-xs">Days to exam</div>
-        <div class="stat-value text-2xl">
-          {% if days_to_exam is none %}<a href="/plan" class="link link-hover text-base">set a date</a>{% else %}{{ days_to_exam }}{% endif %}
-        </div>
-        {% if exam_date %}<div class="stat-desc">{{ exam_date | fmt_date }}</div>{% endif %}
+        <div class="stat-title text-xs">Next exam</div>
+        {% set dated = exams | selectattr('days_to_exam', 'ne', none) | sort(attribute='days_to_exam') | list %}
+        {% if dated %}
+        <div class="stat-value text-2xl">{{ dated[0].days_to_exam }} <span class="text-sm font-normal">days</span></div>
+        <div class="stat-desc">{{ dated[0].code }} · {{ dated[0].exam_date | fmt_date }}{% if dated | length > 1 %} · then {{ dated[1].code }} in {{ dated[1].days_to_exam }}{% endif %}</div>
+        {% else %}
+        <div class="stat-value text-2xl"><a href="/plan" class="link link-hover text-base">set a date</a></div>
+        {% endif %}
       </div>
     </div>
     <div>

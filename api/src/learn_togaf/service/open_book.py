@@ -23,21 +23,6 @@ def search(connection: sqlite3.Connection, query: str, limit: int = MAX_RESULTS)
     pattern = _like(term)
     results: list[dict[str, Any]] = []
     for row in connection.execute(
-        "SELECT id, document_code, heading_path, pdf_page, substr(text, 1, 200) AS snippet FROM source_section"
-        " WHERE heading_path LIKE ? OR text LIKE ? ORDER BY document_code, ordinal LIMIT ?",
-        (pattern, pattern, limit),
-    ):
-        results.append(
-            {
-                "kind": "section",
-                "title": row["heading_path"],
-                "subtitle": f"{row['document_code']}"
-                + (f" · PDF p.{row['pdf_page']}" if row["pdf_page"] else ""),
-                "snippet": row["snippet"],
-                "href": f"/source/{row['id']}",
-            }
-        )
-    for row in connection.execute(
         "SELECT id, term, definition, document, section FROM glossary_term WHERE term LIKE ? OR definition LIKE ?"
         " ORDER BY term LIMIT ?",
         (pattern, pattern, limit),
@@ -88,6 +73,23 @@ def search(connection: sqlite3.Connection, query: str, limit: int = MAX_RESULTS)
                 "subtitle": f"{row['kind'].title()} · Phase {row['phase_code']}",
                 "snippet": row["purpose"][:200],
                 "href": f"/artefact#{row['code']}",
+            }
+        )
+    # Sections last: a common word matches hundreds of them, and the glossary and ADM hits are
+    # the ones the open-book panel exists to surface first.
+    for row in connection.execute(
+        "SELECT id, document_code, heading_path, pdf_page, substr(text, 1, 200) AS snippet FROM source_section"
+        " WHERE heading_path LIKE ? OR text LIKE ? ORDER BY document_code, ordinal LIMIT ?",
+        (pattern, pattern, limit),
+    ):
+        results.append(
+            {
+                "kind": "section",
+                "title": row["heading_path"],
+                "subtitle": f"{row['document_code']}"
+                + (f" · PDF p.{row['pdf_page']}" if row["pdf_page"] else ""),
+                "snippet": row["snippet"],
+                "href": f"/source/{row['id']}",
             }
         )
     return results[:limit]

@@ -206,7 +206,7 @@ def test_content_refs_that_name_fixture_sections_resolve(connection: sqlite3.Con
     for lesson in load_lessons(CONTENT_DIR, blueprint):
         refs.update(lesson.front.refs)
     for question_set in load_question_sets(CONTENT_DIR, blueprint):
-        for question in [*question_set.foundation, *question_set.practitioner]:
+        for question in question_set.questions():
             refs.update(question.refs)
     fixture_refs = {
         index.section_ref(row["document_code"], row["heading_path"])
@@ -232,16 +232,14 @@ def test_text_files(connection: sqlite3.Connection, tmp_path: Path):
         "# ADM › 3. Phase A: Fixture Vision › 3.3 Inputs\n\n- id: ADM:sec-3-3\n- ref: ADM §3.3\n"
     )
     assert "- pdf_page: 42" in text and "- Request for fixture work" in text
-    assert (
-        tmp_path / "text" / "business-scenarios" / "GUIDE:business-scenarios:chap-01.md"
-    ).is_file()
+    assert (tmp_path / "text" / "business-scenarios" / "GUIDE:business-scenarios:chap-01.md").is_file()
 
 
 # ---------------------------------------------------------------- objective mapping
 def test_objective_mapping_starter_loads_and_applies(connection: sqlite3.Connection):
     mapping = index.load_objective_mapping(SOURCES_DIR / index.OBJECTIVE_MAPPING_FILE)
     blueprint = load_blueprint(CONTENT_DIR)
-    foundation = {o.code for u in blueprint.units if u.exam == "FOUNDATION" for o in u.objectives}
+    foundation = {o.code for u in blueprint.units if u.exam == "OGEA-101" for o in u.objectives}
     assert foundation <= set(mapping), (
         f"Foundation objectives missing from the starter: {sorted(foundation - set(mapping))}"
     )

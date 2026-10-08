@@ -1,0 +1,740 @@
+# A5 Application Layer drill bank (learn_sabsa_archimate.md §4.3). Every question is original,
+# cites the entailing ArchiMate 3.2 section, and is status: draft until reviewed. Ids A5-101 upward.
+code: A5_BANK
+exam: OGA-031
+name: A5 Application Layer bank
+kind: DRILL
+source: authored
+questions:
+  # ------------------------------------------------------------ A5.1 active structure
+  - id: A5-101
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "To which aspect does the Application Component element belong?"
+    options:
+      - {key: A, text: "Active structure", correct: true}
+      - {key: B, text: "Behaviour", why: "The component performs behaviour; it is not behaviour itself."}
+      - {key: C, text: "Passive structure", why: "The passive element of the Application Layer is the data object."}
+      - {key: D, text: "Composite", why: "Composite elements are grouping and location, and the product."}
+    explanation: "The application component is the main active-structure element of the Application Layer; its behaviour is attached through an explicit relationship."
+    refs: ["ARCHIMATE §9.2", "ARCHIMATE §9.2.1"]
+    difficulty: 1
+    tags: [application, aspect, component]
+  - id: A5-102
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "Which element represents an encapsulation of application functionality aligned to implementation structure, which is modular and replaceable?"
+    options:
+      - {key: A, text: "Application Function", why: "A function is automated behaviour, not the modular structural unit."}
+      - {key: B, text: "Application Component", correct: true}
+      - {key: C, text: "Application Interface", why: "An interface is the point of access to a component's services."}
+      - {key: D, text: "Artifact", why: "An artifact is the physical file that may realize a component."}
+    explanation: "That is the specification's definition of the application component."
+    refs: ["ARCHIMATE §9.2.1"]
+    difficulty: 1
+    tags: [application, definition, component]
+  - id: A5-103
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "Which relationship links an Application Component to the Application Function it performs?"
+    options:
+      - {key: A, text: "Realization", why: "Realization links a function to a service, not a component to a function."}
+      - {key: B, text: "Assignment", correct: true}
+      - {key: C, text: "Serving", why: "Serving is a dependency from a service or interface to its user."}
+      - {key: D, text: "Access", why: "Access links behaviour to passive structure."}
+    explanation: "A component is assigned to one or more application functions, meaning it performs them."
+    refs: ["ARCHIMATE §9.2.1", "ARCHIMATE §9.3.1"]
+    difficulty: 1
+    tags: [application, assignment, component]
+  - id: A5-104
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "According to the specification, an Application Interface is a point of access where application services are made available to which consumers?"
+    options:
+      - {key: A, text: "A user, another application component, or a node", correct: true}
+      - {key: B, text: "Other application components only", why: "Users and nodes are named consumers too."}
+      - {key: C, text: "Business actors only", why: "The definition also names other components and nodes."}
+      - {key: D, text: "Data objects", why: "A data object is passive and does not consume services."}
+    explanation: "The definition names three consumers: a user, another application component, or a node."
+    refs: ["ARCHIMATE §9.2.3"]
+    difficulty: 2
+    tags: [application, interface, definition]
+  - id: A5-105
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "Which statement about Application Collaboration is correct?"
+    options:
+      - {key: A, text: "It usually models a logical or temporary cooperation that does not exist as a separate entity", correct: true}
+      - {key: B, text: "It is a behaviour element describing the joint work of components", why: "The joint behaviour is the application interaction; the collaboration is active structure."}
+      - {key: C, text: "It must always be realized by an artifact", why: "No such requirement exists; collaborations are usually logical groupings."}
+      - {key: D, text: "It aggregates exactly two components", why: "It aggregates two or more components or other collaborations."}
+    explanation: "An application collaboration typically models a logical or temporary collaboration of components and does not exist as a separate entity in the enterprise."
+    refs: ["ARCHIMATE §9.2.2"]
+    difficulty: 2
+    tags: [application, collaboration]
+  - id: A5-106
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "Which relationship connects an Application Interface to the Application Service it exposes?"
+    options:
+      - {key: A, text: "Assignment", correct: true}
+      - {key: B, text: "Realization", why: "Services are realized by functions or processes, not by interfaces."}
+      - {key: C, text: "Composition", why: "Composition links an interface to the component it is part of."}
+      - {key: D, text: "Flow", why: "Flow is a dynamic relationship between behaviour elements."}
+    explanation: "An application interface can be assigned to application services, meaning it exposes those services to the environment."
+    refs: ["ARCHIMATE §9.2.3"]
+    difficulty: 2
+    tags: [application, interface, assignment]
+  - id: A5-107
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "A model needs to show that a more concrete Application Component implements a more abstract one. Which relationship is correct?"
+    options:
+      - {key: A, text: "Application component realizes application component", correct: true}
+      - {key: B, text: "Application component serves application component", why: "Serving expresses use, not implementation."}
+      - {key: C, text: "Application component accesses application component", why: "Access links behaviour to passive structure."}
+      - {key: D, text: "This cannot be modelled in ArchiMate", why: "The specification explicitly says components can realize other components."}
+    explanation: "Application components can realize other application components, as explained in the section on abstraction levels."
+    refs: ["ARCHIMATE §9.2.1", "ARCHIMATE §3.6"]
+    difficulty: 3
+    tags: [application, component, realization]
+  - id: A5-108
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "In the notation, which icon marks the Application Component?"
+    options:
+      - {key: A, text: "A component symbol with two small tabs on its left edge", correct: true}
+      - {key: B, text: "A stick figure", why: "That marks a business actor."}
+      - {key: C, text: "A lollipop", why: "That marks an interface."}
+      - {key: D, text: "A three-dimensional box", why: "That marks a node."}
+    explanation: "The application component uses the UML-style component icon with two small rectangles on the left."
+    refs: ["ARCHIMATE §9.2.1", "ARCHIMATE §9.5"]
+    difficulty: 1
+    tags: [application, notation, component]
+  - id: A5-109
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "An application-to-business interface, such as a user interface, exposes which kind of application service?"
+    options:
+      - {key: A, text: "Internal application services", why: "Internal services are exposed through application-to-application interfaces."}
+      - {key: B, text: "External application services", correct: true}
+      - {key: C, text: "Technology services", why: "An application interface exposes application services."}
+      - {key: D, text: "Business services", why: "Business services are exposed by business interfaces."}
+    explanation: "Application-to-business interfaces, including user interfaces, offer external application services; application-to-application interfaces offer internal ones."
+    refs: ["ARCHIMATE §9.2"]
+    difficulty: 2
+    tags: [application, interface, external]
+  - id: A5-110
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "What may an Application Component be used to model?"
+    options:
+      - {key: A, text: "Only reusable software components that are parts of applications", why: "It also models complete applications and information systems."}
+      - {key: B, text: "Reusable components, complete applications, sub-applications and information systems", correct: true}
+      - {key: C, text: "Only deployed executables", why: "Executables are artifacts; the component is the logical structural unit."}
+      - {key: D, text: "System software such as operating systems", why: "That is the technology-layer system software element."}
+    explanation: "The component models any structural entity in the Application Layer, from reusable components to whole applications and information systems."
+    refs: ["ARCHIMATE §9.2"]
+    difficulty: 2
+    tags: [application, component]
+  - id: A5-111
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "In the specification's example, 'Online Travel Insurance Sales' aggregates the 'Quotation' and 'Purchase' components and provides a 'Web Services Interface'. What is 'Online Travel Insurance Sales'?"
+    options:
+      - {key: A, text: "Application Collaboration", correct: true}
+      - {key: B, text: "Application Interaction", why: "The interaction is the behaviour; what aggregates the components is the collaboration."}
+      - {key: C, text: "Application Service", why: "A service is behaviour and does not aggregate components."}
+      - {key: D, text: "Node", why: "A node is a technology-layer element."}
+    explanation: "An application collaboration aggregates two or more components and may be composed of interfaces."
+    refs: ["ARCHIMATE §9.2", "ARCHIMATE §9.2.2"]
+    difficulty: 2
+    tags: [application, collaboration, example]
+  - id: A5-112
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "What does the specification say an Application Interface amounts to for the component that provides it?"
+    options:
+      - {key: A, text: "A contract the component must fulfil, possibly including parameters, protocols and data formats", correct: true}
+      - {key: B, text: "A record of the component's internal data structures", why: "Data structures are modelled by data objects."}
+      - {key: C, text: "The physical deployment location of the component", why: "Deployment is expressed with artifacts and nodes."}
+      - {key: D, text: "A list of the business processes the component supports", why: "That is shown by serving relationships from services, not by the interface itself."}
+    explanation: "An interface specifies a contract the providing component must fulfil, including parameters, protocols, pre- and post-conditions and data formats."
+    refs: ["ARCHIMATE §9.2.3"]
+    difficulty: 2
+    tags: [application, interface, contract]
+  - id: A5-113
+    unit: A5
+    objective: "A5.1"
+    lesson: A5/01_application_active_structure
+    stem: "Which of the following is NOT an active structure element of the Application Layer?"
+    options:
+      - {key: A, text: "Application Component", why: "The component is the main active-structure element."}
+      - {key: B, text: "Application Collaboration", why: "Collaboration is an internal active-structure element."}
+      - {key: C, text: "Application Interface", why: "Interface is the external active-structure element."}
+      - {key: D, text: "Application Service", correct: true}
+    explanation: "Component, collaboration and interface are active structure; the service is the external behaviour element."
+    refs: ["ARCHIMATE §9.2", "ARCHIMATE §9.3"]
+    difficulty: 1
+    tags: [application, negative, active-structure]
+  # ------------------------------------------------------------ A5.2 behaviour
+  - id: A5-114
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "Which element represents automated behaviour that can be performed by an Application Component?"
+    options:
+      - {key: A, text: "Application Function", correct: true}
+      - {key: B, text: "Application Service", why: "A service is exposed behaviour, not the internal automated behaviour a component performs."}
+      - {key: C, text: "Application Event", why: "An event is a state change."}
+      - {key: D, text: "Technology Function", why: "That is the technology-layer counterpart."}
+    explanation: "The application function is defined as automated behaviour that can be performed by an application component."
+    refs: ["ARCHIMATE §9.3.1"]
+    difficulty: 1
+    tags: [application, definition, function]
+  - id: A5-115
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "Which elements may realize an Application Service?"
+    options:
+      - {key: A, text: "Application function or process", correct: true}
+      - {key: B, text: "Application component", why: "The component is assigned to the function; it does not realize the service directly."}
+      - {key: C, text: "Application interface", why: "The interface is assigned to the service to expose it."}
+      - {key: D, text: "Data object", why: "A data object is passive and is accessed by the service."}
+    explanation: "An application function or process may realize an application service; the interface exposes it and the component performs the function."
+    refs: ["ARCHIMATE §9.3.5"]
+    difficulty: 2
+    tags: [application, service, realization]
+  - id: A5-116
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "The functionality an interactive program offers through its user interface is modelled how?"
+    options:
+      - {key: A, text: "As an application service exposed by an application-to-business interface", correct: true}
+      - {key: B, text: "As a business service realized by the application component", why: "The specification models it as an application service, not a business service."}
+      - {key: C, text: "As an application interface only, with no service", why: "The interface exposes a service; the functionality is the service."}
+      - {key: D, text: "As a representation of the screen", why: "A representation is a business passive element."}
+    explanation: "Functionality provided through a user interface is also modelled as an application service, exposed by an application-to-business interface representing the user interface."
+    refs: ["ARCHIMATE §9.3"]
+    difficulty: 2
+    tags: [application, service, user-interface]
+  - id: A5-117
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "What does the specification advise about modelling the internal behaviour of an Application Component in an architecture description?"
+    options:
+      - {key: A, text: "It should be decomposed to individual operations", why: "The specification warns that this leads into detailed design."}
+      - {key: B, text: "It is usually not modelled in much detail, because that leads into detailed design issues", correct: true}
+      - {key: C, text: "It must be modelled with UML sequence diagrams inside the ArchiMate model", why: "UML is suggested for later design, not inside the architecture model."}
+      - {key: D, text: "It may not be modelled at all", why: "Functions and processes are precisely the elements for internal behaviour."}
+    explanation: "In most cases the internal behaviour of a component is not modelled in too much detail, since that confronts the architect with detailed design issues."
+    refs: ["ARCHIMATE §9.3"]
+    difficulty: 2
+    tags: [application, function, detail]
+  - id: A5-118
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "Which element is the Application Layer counterpart of a business process, modelling an ordering of application behaviour?"
+    options:
+      - {key: A, text: "Application Function", why: "A function groups behaviour; it does not model ordering."}
+      - {key: B, text: "Application Process", correct: true}
+      - {key: C, text: "Application Interaction", why: "An interaction is collective behaviour of a collaboration."}
+      - {key: D, text: "Application Event", why: "An event is instantaneous."}
+    explanation: "An application process models an ordering of application behaviour as the counterpart of a business process."
+    refs: ["ARCHIMATE §9.3", "ARCHIMATE §9.3.3"]
+    difficulty: 1
+    tags: [application, process]
+  - id: A5-119
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "What may be assigned to an Application Interaction?"
+    options:
+      - {key: A, text: "A single application component", why: "An interaction is collective behaviour and needs a collaboration or two or more components."}
+      - {key: B, text: "An application collaboration of two or more components", correct: true}
+      - {key: C, text: "An application interface", why: "Interfaces are assigned to services, not to interactions."}
+      - {key: D, text: "A data object", why: "Data objects are accessed, not assigned."}
+    explanation: "An application collaboration of two or more individual components may be assigned to an application interaction."
+    refs: ["ARCHIMATE §9.3.2"]
+    difficulty: 2
+    tags: [application, interaction, assignment]
+  - id: A5-120
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "Which statement about an Application Event is correct?"
+    options:
+      - {key: A, text: "It has a duration equal to the processing it triggers", why: "An event is instantaneous."}
+      - {key: B, text: "It may carry a time attribute, for example to trigger a daily batch process", correct: true}
+      - {key: C, text: "It can only be raised by a business event", why: "Events are triggered or raised by application functions, processes or interactions."}
+      - {key: D, text: "It cannot access a data object", why: "An application event may access a data object."}
+    explanation: "An application event may have a time attribute to model schedules such as a daily batch trigger; it has no duration and may access data objects."
+    refs: ["ARCHIMATE §9.3.4"]
+    difficulty: 2
+    tags: [application, event]
+  - id: A5-121
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "Which relationship runs from an Application Service to the Business Process that uses it?"
+    options:
+      - {key: A, text: "Serving", correct: true}
+      - {key: B, text: "Realization", why: "Realization from application to business is between processes/functions, not from a service to a process."}
+      - {key: C, text: "Assignment", why: "Assignment links active structure to behaviour."}
+      - {key: D, text: "Triggering", why: "Triggering is a dynamic relationship, not the support relationship."}
+    explanation: "An application service may serve business, application and technology behaviour or active-structure elements."
+    refs: ["ARCHIMATE §9.3.5"]
+    difficulty: 1
+    tags: [application, service, serving]
+  - id: A5-122
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "The preferred name form for an Application Function is which of the following?"
+    options:
+      - {key: A, text: "A noun, e.g. 'accounts'", why: "Nouns are for structure elements."}
+      - {key: B, text: "A verb ending in '-ing', e.g. 'accounting'", correct: true}
+      - {key: C, text: "A perfect-tense verb, e.g. 'account posted'", why: "That is the guidance for events."}
+      - {key: D, text: "The name of the file it runs from", why: "That is the guidance for artifacts."}
+    explanation: "Application function names should preferably be verbs ending in '-ing', such as 'accounting'."
+    refs: ["ARCHIMATE §9.3.1"]
+    difficulty: 1
+    tags: [application, naming]
+  - id: A5-123
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "What must an Application Service provide, according to the specification?"
+    options:
+      - {key: A, text: "A unit of behaviour that is useful in its own right to its users, with a purpose modelled as an associated value", correct: true}
+      - {key: B, text: "A one-to-one mapping to a single application function", why: "A service may be realized by one or more functions."}
+      - {key: C, text: "An exposed database schema", why: "Schemas belong to artifacts and data objects."}
+      - {key: D, text: "A user interface", why: "Some services are internal, exposed application-to-application."}
+    explanation: "A service should be meaningful to its environment and useful in itself, with its purpose expressed as a value element associated with it."
+    refs: ["ARCHIMATE §9.3.5"]
+    difficulty: 2
+    tags: [application, service, value]
+  - id: A5-124
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "In the specification's example, an event 'Request for a Quotation' triggers 'Obtain Travel Insurance', which is served by two application services. What element type is 'Obtain Travel Insurance'?"
+    options:
+      - {key: A, text: "Application Process", correct: true}
+      - {key: B, text: "Application Service", why: "It is served by services; it is the internal process that uses them."}
+      - {key: C, text: "Application Component", why: "A component is structure; it is not triggered by an event."}
+      - {key: D, text: "Business Process", why: "The example stays within the Application Layer."}
+    explanation: "The example has an application event triggering an application process that the two application services serve."
+    refs: ["ARCHIMATE §9.3"]
+    difficulty: 2
+    tags: [application, process, example]
+  - id: A5-125
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "Which of the following may serve an Application Function?"
+    options:
+      - {key: A, text: "Application services of other functions and technology services", correct: true}
+      - {key: B, text: "Data objects", why: "Data objects are accessed by functions, not serving them."}
+      - {key: C, text: "Application components", why: "Components are assigned to functions; interfaces and services serve."}
+      - {key: D, text: "Business roles", why: "Roles are business active structure and do not serve application functions."}
+    explanation: "Application services of other functions and technology services may serve an application function."
+    refs: ["ARCHIMATE §9.3.1"]
+    difficulty: 2
+    tags: [application, function, serving]
+  - id: A5-126
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    stem: "Which of the following is NOT an internal behaviour element of the Application Layer?"
+    options:
+      - {key: A, text: "Application Function", why: "Function is internal behaviour."}
+      - {key: B, text: "Application Process", why: "Process is internal behaviour."}
+      - {key: C, text: "Application Service", correct: true}
+      - {key: D, text: "Application Interaction", why: "Interaction is internal behaviour."}
+    explanation: "Function, process and interaction are internal behaviour; the application service is the external behaviour element."
+    refs: ["ARCHIMATE §9.3"]
+    difficulty: 1
+    tags: [application, negative, behaviour]
+  # ------------------------------------------------------------ A5.3 data object and access
+  - id: A5-127
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "Which element represents data structured for automated processing?"
+    options:
+      - {key: A, text: "Business Object", why: "A business object is a concept used in a business domain."}
+      - {key: B, text: "Data Object", correct: true}
+      - {key: C, text: "Artifact", why: "An artifact is the physical piece of data used or produced by an IT system."}
+      - {key: D, text: "Representation", why: "A representation is a perceptible form of a business object."}
+    explanation: "That is the definition of the data object, the passive-structure element of the Application Layer."
+    refs: ["ARCHIMATE §9.4.1"]
+    difficulty: 1
+    tags: [application, definition, data-object]
+  - id: A5-128
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "Which relationship runs from a Data Object to the Business Object it is the digital form of?"
+    options:
+      - {key: A, text: "Realization", correct: true}
+      - {key: B, text: "Association", why: "The specification states realization for this link, not association."}
+      - {key: C, text: "Serving", why: "Serving is between behaviour or interfaces and their users."}
+      - {key: D, text: "Access", why: "Access links behaviour to passive structure; both ends here are passive."}
+    explanation: "A data object may realize a business object, meaning it is the digital representation of it."
+    refs: ["ARCHIMATE §9.4.1", "ARCHIMATE §11.1"]
+    difficulty: 1
+    tags: [application, data-object, realization]
+  - id: A5-129
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "Which of the following can access a Data Object?"
+    options:
+      - {key: A, text: "Application component", why: "The component is active structure; it reaches data through the function it performs."}
+      - {key: B, text: "Application function, interaction or service", correct: true}
+      - {key: C, text: "Application interface", why: "An interface exposes services; it does not access data."}
+      - {key: D, text: "Node", why: "A node may be assigned to an artifact, but does not access a data object."}
+    explanation: "A data object can be accessed by an application function, application interaction or application service (and a process, which operates on data objects)."
+    refs: ["ARCHIMATE §9.4.1"]
+    difficulty: 2
+    tags: [application, access, data-object]
+  - id: A5-130
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "By which element may a Data Object be realized?"
+    options:
+      - {key: A, text: "Business object", why: "The realization runs the other way: the data object realizes the business object."}
+      - {key: B, text: "Artifact", correct: true}
+      - {key: C, text: "Application component", why: "Components are realized by artifacts; they do not realize data objects."}
+      - {key: D, text: "Representation", why: "A representation realizes a business object, not a data object."}
+    explanation: "A data object may be realized by an artifact, such as a physical data file or database table."
+    refs: ["ARCHIMATE §9.4.1"]
+    difficulty: 1
+    tags: [application, data-object, artifact]
+  - id: A5-131
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "What does the specification say about a 'layer' for information in ArchiMate?"
+    options:
+      - {key: A, text: "There is a dedicated Information Layer between Business and Application", why: "No such layer is defined."}
+      - {key: B, text: "No specific information layer is defined; business objects and data objects represent the information entities", correct: true}
+      - {key: C, text: "Information is modelled only in the Technology Layer as artifacts", why: "Business and data objects carry information at the business and application levels."}
+      - {key: D, text: "Information is modelled with motivation elements", why: "Meaning is a motivation element, but information entities are passive structure."}
+    explanation: "The language defines no information layer; business objects and data objects represent information entities and the logical data components that realize them."
+    refs: ["ARCHIMATE §9.4"]
+    difficulty: 2
+    tags: [application, information, data-object]
+  - id: A5-132
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "What quality should a Data Object have, according to the specification?"
+    options:
+      - {key: A, text: "It should be meaningful only at the application level", why: "It should have clear meaning to the business, not just the application level."}
+      - {key: B, text: "It should be a self-contained piece of information with a clear meaning to the business", correct: true}
+      - {key: C, text: "It should correspond to exactly one database table", why: "Tables are artifacts; a data object is a logical type."}
+      - {key: D, text: "It should represent a single instance rather than a type", why: "Data objects typically model logical types."}
+    explanation: "A data object should be self-contained and have a clear meaning to the business, not only to the application."
+    refs: ["ARCHIMATE §9.4.1"]
+    difficulty: 2
+    tags: [application, data-object]
+  - id: A5-133
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "Which relationships may a Data Object have with other Data Objects?"
+    options:
+      - {key: A, text: "Association, specialization, aggregation and composition", correct: true}
+      - {key: B, text: "Serving and realization only", why: "Serving is not a relationship between passive elements."}
+      - {key: C, text: "Access only", why: "Access is between behaviour and passive structure."}
+      - {key: D, text: "Triggering and flow", why: "Dynamic relationships link behaviour elements."}
+    explanation: "A data object may have association, specialization, aggregation or composition relationships with other data objects."
+    refs: ["ARCHIMATE §9.4.1"]
+    difficulty: 2
+    tags: [application, data-object, relationships]
+  - id: A5-134
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "A data object is described as being 'a representation of a business object'. Which Business Layer element is it the counterpart of?"
+    options:
+      - {key: A, text: "Representation", correct: true}
+      - {key: B, text: "Contract", why: "A contract is a kind of business object, not a counterpart of the data object."}
+      - {key: C, text: "Product", why: "A product is a composite element."}
+      - {key: D, text: "Business Interface", why: "An interface is active structure."}
+    explanation: "The specification says a data object can be seen as a representation of a business object, as a counterpart of the representation element in the Business Layer."
+    refs: ["ARCHIMATE §9.4"]
+    difficulty: 3
+    tags: [application, data-object, representation]
+  - id: A5-135
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "In the notation of the access relationship, what does an arrowhead pointing towards the passive element indicate?"
+    options:
+      - {key: A, text: "Read access", why: "Read is shown with the arrowhead pointing towards the behaviour element."}
+      - {key: B, text: "Write access", correct: true}
+      - {key: C, text: "Undirected access", why: "Undirected access has no arrowhead."}
+      - {key: D, text: "Realization", why: "Realization uses a dashed line with a hollow triangle, not the dotted access line."}
+    explanation: "Access is drawn as a dotted line; an arrowhead at the passive element means write, at the behaviour element means read, both ends read-write, and none for undirected access."
+    refs: ["ARCHIMATE §9.4.1"]
+    difficulty: 2
+    tags: [application, access, notation]
+  - id: A5-136
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "Which basic viewpoint contains business object, representation, data object, artifact and meaning?"
+    options:
+      - {key: A, text: "Application Structure", why: "That viewpoint has component, interface, collaboration and data object only."}
+      - {key: B, text: "Information Structure", correct: true}
+      - {key: C, text: "Application Cooperation", why: "That viewpoint is limited to Application Layer elements."}
+      - {key: D, text: "Product", why: "The product viewpoint includes services and value, not meaning."}
+    explanation: "The information structure viewpoint shows the structure of information across layers with exactly those five elements."
+    refs: ["ARCHIMATE §C.1.3"]
+    difficulty: 2
+    tags: [viewpoint, information-structure]
+  - id: A5-137
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "In the specification's example, 'Auto Insurance Quotation' and 'Travel Insurance Quotation' are related to 'Online Insurance Quotation' how?"
+    options:
+      - {key: A, text: "They are specializations of it", correct: true}
+      - {key: B, text: "They realize it", why: "Realization is not used between data objects in the example."}
+      - {key: C, text: "They access it", why: "Access is between behaviour and passive structure."}
+      - {key: D, text: "They are composed of it", why: "The composition in the example is the other way: the quotation is composed of price, terms and certificate."}
+    explanation: "The two are specializations of the generic 'Online Insurance Quotation' data object."
+    refs: ["ARCHIMATE §9.4"]
+    difficulty: 2
+    tags: [application, data-object, example]
+  - id: A5-138
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    stem: "Which chain of realization correctly links the three passive structure elements of the core layers?"
+    options:
+      - {key: A, text: "Business object realizes data object, which realizes artifact", why: "This reverses the direction; realization runs upward from the concrete."}
+      - {key: B, text: "Artifact realizes data object, which realizes business object", correct: true}
+      - {key: C, text: "Representation realizes data object, which realizes artifact", why: "A representation realizes a business object; the artifact is at the bottom of the chain."}
+      - {key: D, text: "Data object realizes artifact, which realizes business object", why: "The artifact realizes the data object, not the reverse."}
+    explanation: "An artifact may realize a data object and a data object may realize a business object, so the artifact indirectly realizes the business object."
+    refs: ["ARCHIMATE §9.4.1", "ARCHIMATE §11.2"]
+    difficulty: 2
+    tags: [application, realization, chain]
+  # ------------------------------------------------------------ A5.4 alignment and viewpoints
+  - id: A5-139
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "Which two main types of relationship does the specification identify between the Business Layer and the layers below it?"
+    options:
+      - {key: A, text: "Serving and realization", correct: true}
+      - {key: B, text: "Triggering and flow", why: "These are dynamic relationships, not the alignment relationships of Chapter 11."}
+      - {key: C, text: "Assignment and access", why: "These operate within a layer between aspects."}
+      - {key: D, text: "Influence and association", why: "Influence is a motivation relationship."}
+    explanation: "Serving relationships express support of the business by applications; realization relationships express that lower elements are concrete forms of business elements."
+    refs: ["ARCHIMATE §11.1"]
+    difficulty: 1
+    tags: [cross-layer, serving, realization]
+  - id: A5-140
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "Why does the specification say there is no realization of a Business Actor or Role by an application or technology element?"
+    options:
+      - {key: A, text: "Because people cannot be realized by applications or technology", correct: true}
+      - {key: B, text: "Because actors belong to the strategy layer", why: "Actors are Business Layer elements."}
+      - {key: C, text: "Because realization only exists within a single layer", why: "Realization crosses layers, for example data object to business object."}
+      - {key: D, text: "Because actors are passive structure", why: "Actors are active structure."}
+    explanation: "People cannot be realized by software; instead the behaviour of those actors is realized by application behaviour, to which application components are assigned."
+    refs: ["ARCHIMATE §11.1"]
+    difficulty: 2
+    tags: [cross-layer, realization, actor]
+  - id: A5-141
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "Which cross-layer relationship is permitted from an Application Interface?"
+    options:
+      - {key: A, text: "Application interface serves business role", correct: true}
+      - {key: B, text: "Application interface realizes business interface", why: "No such realization is defined between interfaces."}
+      - {key: C, text: "Application interface accesses business object", why: "Access is from behaviour, not from an interface."}
+      - {key: D, text: "Application interface triggers business process", why: "Triggering is between behaviour elements and events."}
+    explanation: "Serving relationships exist between application interface and business role, expressing the structural side of application support for the business."
+    refs: ["ARCHIMATE §11.1", "ARCHIMATE §8.2.2"]
+    difficulty: 2
+    tags: [cross-layer, interface, serving]
+  - id: A5-142
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "A business process is automated by an application. Which is the direct relationship the specification names between them?"
+    options:
+      - {key: A, text: "Application process or function realizes business process or function", correct: true}
+      - {key: B, text: "Application component realizes business process", why: "Components are assigned to application behaviour, which realizes the business behaviour."}
+      - {key: C, text: "Business process serves application process", why: "This reverses the usual support direction and is not the realization the question asks about."}
+      - {key: D, text: "Data object realizes business process", why: "A data object realizes a business object, not a process."}
+    explanation: "Realization relationships run from an application process or function to a business process or function."
+    refs: ["ARCHIMATE §11.1"]
+    difficulty: 2
+    tags: [cross-layer, realization, process]
+  - id: A5-143
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "Which relationship may exist between a Product and an Application Service?"
+    options:
+      - {key: A, text: "Aggregation, to show the service is offered directly to the customer as part of the product", correct: true}
+      - {key: B, text: "Realization from the service to the product", why: "Services are aggregated in a product, not realizing it."}
+      - {key: C, text: "Serving from the product to the service", why: "A product is not behaviour and does not serve."}
+      - {key: D, text: "None; products may contain only business services", why: "Products may aggregate application and technology services."}
+    explanation: "A product may aggregate an application or technology service, or a data or technology passive element, offered directly to the customer."
+    refs: ["ARCHIMATE §11.1"]
+    difficulty: 3
+    tags: [cross-layer, product, aggregation]
+  - id: A5-144
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "What is the stated scope of the Application Cooperation viewpoint?"
+    options:
+      - {key: A, text: "Multiple layers, multiple aspects", why: "That is the scope of application usage."}
+      - {key: B, text: "Application layer, multiple aspects", correct: true}
+      - {key: C, text: "Single layer, single aspect", why: "That is the organization viewpoint."}
+      - {key: D, text: "Multiple layers, single aspect", why: "That is the information structure viewpoint."}
+    explanation: "Application cooperation is confined to the Application Layer across its aspects."
+    refs: ["ARCHIMATE §C.1", "ARCHIMATE §C.1.11"]
+    difficulty: 2
+    tags: [viewpoint, application-cooperation]
+  - id: A5-145
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "Which viewpoint is typically used to create an overview of the application landscape of an organisation?"
+    options:
+      - {key: A, text: "Application Usage", why: "Usage shows how the business uses applications, not the landscape of applications."}
+      - {key: B, text: "Application Cooperation", correct: true}
+      - {key: C, text: "Application Structure", why: "Structure shows the inside of one or more applications."}
+      - {key: D, text: "Implementation and Deployment", why: "That maps applications onto technology."}
+    explanation: "The application cooperation viewpoint describes the relationships between components and is typically used for an application landscape overview."
+    refs: ["ARCHIMATE §C.1.11"]
+    difficulty: 1
+    tags: [viewpoint, application-cooperation]
+  - id: A5-146
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "Which viewpoint describes how applications are used to support business processes and how they are used by other applications?"
+    options:
+      - {key: A, text: "Application Usage", correct: true}
+      - {key: B, text: "Application Cooperation", why: "Cooperation contains no business elements."}
+      - {key: C, text: "Organization", why: "Organization shows structure only."}
+      - {key: D, text: "Technology Usage", why: "Technology usage shows how technology supports applications."}
+    explanation: "The application usage viewpoint relates applications to their use in business processes and by other applications."
+    refs: ["ARCHIMATE §C.1.8"]
+    difficulty: 1
+    tags: [viewpoint, application-usage]
+  - id: A5-147
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "Which of the following elements appears in the Application Usage viewpoint but NOT in the Application Cooperation viewpoint?"
+    options:
+      - {key: A, text: "Application Service", why: "Both viewpoints include application service."}
+      - {key: B, text: "Business Process", correct: true}
+      - {key: C, text: "Data Object", why: "Both viewpoints include data object."}
+      - {key: D, text: "Application Interface", why: "Both viewpoints include application interface."}
+    explanation: "Application usage adds business actor, role, collaboration, process/function/interaction, event and object; application cooperation stays within the Application Layer."
+    refs: ["ARCHIMATE §C.1.8", "ARCHIMATE §C.1.11"]
+    difficulty: 2
+    tags: [viewpoint, comparison]
+  - id: A5-148
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "Which element is listed in the Application Cooperation viewpoint although it is not an Application Layer element?"
+    options:
+      - {key: A, text: "Location", correct: true}
+      - {key: B, text: "Business Role", why: "Business roles are not in the application cooperation viewpoint."}
+      - {key: C, text: "Node", why: "Nodes are not in the application cooperation viewpoint."}
+      - {key: D, text: "Value", why: "Value appears in the product viewpoint."}
+    explanation: "The application cooperation viewpoint lists location alongside the application elements."
+    refs: ["ARCHIMATE §C.1.11"]
+    difficulty: 3
+    tags: [viewpoint, application-cooperation, location]
+  - id: A5-149
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "To which viewpoint category does the Application Usage viewpoint belong?"
+    options:
+      - {key: A, text: "Composition", why: "Composition viewpoints show internal structure."}
+      - {key: B, text: "Support", correct: true}
+      - {key: C, text: "Cooperation", why: "Cooperation is application cooperation and business process cooperation."}
+      - {key: D, text: "Realization", why: "Realization is service realization and implementation and deployment."}
+    explanation: "Product, application usage and technology usage form the support category, looking upward at what supports what."
+    refs: ["ARCHIMATE §C.1"]
+    difficulty: 2
+    tags: [viewpoint, category]
+  - id: A5-150
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "An operational manager wants to know which applications a business process depends on. Which viewpoint does the specification say may be useful for this?"
+    options:
+      - {key: A, text: "Application Usage", correct: true}
+      - {key: B, text: "Application Structure", why: "Structure shows the inside of an application, not process dependencies."}
+      - {key: C, text: "Organization", why: "Organization shows actors and roles only."}
+      - {key: D, text: "Information Structure", why: "That viewpoint shows the structure of information."}
+    explanation: "Because it identifies the dependencies of business processes upon applications, application usage may be useful to operational managers responsible for those processes."
+    refs: ["ARCHIMATE §C.1.8"]
+    difficulty: 2
+    tags: [viewpoint, application-usage, stakeholder]
+  - id: A5-151
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "Which of the following is a valid serving relationship from the Business Layer downward, according to the specification?"
+    options:
+      - {key: A, text: "Business service serves application behaviour", correct: true}
+      - {key: B, text: "Business object serves data object", why: "Passive elements do not serve; the data object realizes the business object."}
+      - {key: C, text: "Business actor serves application component", why: "The specification names business interface, not actor, serving a component."}
+      - {key: D, text: "Business event serves application event", why: "Events do not serve one another."}
+    explanation: "Vice versa relationships exist: a business service may serve application behaviour and a business interface may serve an application component."
+    refs: ["ARCHIMATE §11.1"]
+    difficulty: 3
+    tags: [cross-layer, serving]
+  - id: A5-152
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    stem: "What is the purpose classification of the Application Cooperation viewpoint?"
+    options:
+      - {key: A, text: "Designing", correct: true}
+      - {key: B, text: "Designing, deciding", why: "That is the classification of application usage."}
+      - {key: C, text: "Informing", why: "Informing is not listed for this viewpoint."}
+      - {key: D, text: "Deciding, informing", why: "Neither is listed for application cooperation."}
+    explanation: "Application cooperation is classified for designing only; application usage adds deciding."
+    refs: ["ARCHIMATE §C.1.11", "ARCHIMATE §C.1.8"]
+    difficulty: 3
+    tags: [viewpoint, purpose]

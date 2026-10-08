@@ -1,0 +1,823 @@
+# F6 Applying the ADM bank (learn_togaf.md §2, §6). Authored, original paraphrase; every item cites the
+# 10th Edition section it is grounded on. status: draft until reviewed.
+code: F6_BANK
+exam: OGEA-101
+name: F6 Applying the ADM
+kind: DRILL
+source: authored
+questions:
+  # ---------------------------------------------------------------- 6.1 Iteration
+  - id: F6-101
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "The Applying the ADM document says the ADM graphic and the ordered phase descriptions can be read as implying which of the following, and that in practice two concepts manage complexity instead?"
+    options:
+      - {key: A, text: "A deterministic waterfall; in practice iteration and levels are used", correct: true}
+      - {key: B, text: "An agile sprint model; in practice governance and contracts are used"}
+      - {key: C, text: "A single pass; in practice partitions and domains are used"}
+      - {key: D, text: "A continuous loop; in practice checkpoints and budgets are used"}
+    explanation: "The presentation can imply a deterministic waterfall; iteration and levels — tightly linked — are the concepts used in practice. The pairings in B, C and D are not what the standard names."
+    refs: ["APPLY §2.1"]
+    difficulty: 1
+    tags: [iteration]
+  - id: F6-102
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "Which of the following is NOT one of the three concepts the standard characterises as 'iteration'?"
+    options:
+      - {key: A, text: "Describing a comprehensive Architecture Landscape through multiple ADM cycles"}
+      - {key: B, text: "The integrated process within one ADM cycle where phases interact"}
+      - {key: C, text: "Managing change to the organisation's Architecture Capability"}
+      - {key: D, text: "Re-running the Practitioner exam until a pass is achieved", correct: true}
+    explanation: "The three are landscape iteration across cycles, iteration within a cycle, and iteration to manage the Architecture Capability. D is not part of the standard."
+    refs: ["APPLY §2.1"]
+    difficulty: 1
+    tags: [iteration]
+  - id: F6-103
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "When iterating to develop a comprehensive Architecture Landscape, what bounds each cycle of the ADM?"
+    options:
+      - {key: A, text: "The annual budget"}
+      - {key: B, text: "A Request for Architecture Work", correct: true}
+      - {key: C, text: "An Architecture Contract"}
+      - {key: D, text: "A Transition Architecture"}
+    explanation: "Each ADM cycle is bound by a Request for Architecture Work, and its output populates or changes the landscape. A contract governs implementation, a Transition Architecture is a state, and budgets are not what the standard names."
+    refs: ["APPLY §2.1"]
+    difficulty: 2
+    tags: [iteration]
+  - id: F6-104
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "Which iteration cycle supports the creation of formal change roadmaps for a defined architecture?"
+    options:
+      - {key: A, text: "Architecture Capability"}
+      - {key: B, text: "Architecture Development"}
+      - {key: C, text: "Transition Planning", correct: true}
+      - {key: D, text: "Architecture Governance"}
+    explanation: "Transition Planning iterations create formal change roadmaps. Capability iterations establish the architecture approach, Development iterations create content, Governance iterations govern change activity."
+    refs: ["APPLY §2.2"]
+    difficulty: 1
+    tags: [iteration, cycles]
+  - id: F6-105
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "Which statement about Architecture Development iterations is correct?"
+    options:
+      - {key: A, text: "They are confined strictly to Phases B, C and D"}
+      - {key: B, text: "They create content by cycling through or integrating the Business, Information Systems and Technology phases, with broader stakeholder reviews, and extend into Opportunities & Solutions and Migration Planning as they converge", correct: true}
+      - {key: C, text: "They are used only to establish the Architecture Capability"}
+      - {key: D, text: "They replace the need for a Request for Architecture Work"}
+    explanation: "Development iterations cycle through B, C and D and, as they converge, extend into E and F so implementability is considered. A is too narrow, C describes Capability iterations, D contradicts the binding of every cycle to a Request."
+    refs: ["APPLY §2.2"]
+    difficulty: 2
+    tags: [iteration, cycles]
+  - id: F6-106
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "The Architecture Capability iteration cycle includes which of the following activities?"
+    options:
+      - {key: A, text: "Establishing or adjusting the architecture approach, principles, scope, vision and governance", correct: true}
+      - {key: B, text: "Assigning business value to work packages"}
+      - {key: C, text: "Performing compliance reviews of implementation projects"}
+      - {key: D, text: "Consolidating gap analysis results from Phases B to D"}
+    explanation: "Capability iterations mobilise the architecture activity by establishing or adjusting approach, principles, scope, vision and governance. B is Phase F, C Phase G, D Phase E."
+    refs: ["APPLY §2.2"]
+    difficulty: 2
+    tags: [iteration, cycles]
+  - id: F6-107
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "Which three areas of engagement for architects does the standard identify?"
+    options:
+      - {key: A, text: "Identification of required change; definition of change; implementation of change", correct: true}
+      - {key: B, text: "Business, data and application"}
+      - {key: C, text: "Strategy, tactics and operations"}
+      - {key: D, text: "Planning, building and running"}
+    explanation: "The three areas are identification, definition and implementation of change, each with its own engagement classes. B lists domains, C and D generic management layers."
+    refs: ["APPLY §2.3"]
+    difficulty: 1
+    tags: [iteration, engagement]
+  - id: F6-108
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "A change initiative arises from a prior architectural strategy or vision, and the desired outcome is already understood and agreed. Which class of engagement is this, and which iteration cycle and approach does it focus on?"
+    options:
+      - {key: A, text: "Foundational change initiative; Architecture Capability and baseline-first Development"}
+      - {key: B, text: "Bounded change initiative; target-first Architecture Development and Transition Planning", correct: true}
+      - {key: C, text: "Supporting business strategy; Architecture Capability and baseline-first Development"}
+      - {key: D, text: "Governance of change implementation; Architecture Governance"}
+    explanation: "A bounded change initiative has an agreed outcome and elaborates the target first, then plans the transition. Foundational initiatives have a known objective but no agreed vision and go baseline first; supporting strategy is broad and shallow; governance of implementation is a different area of engagement."
+    refs: ["APPLY §2.3"]
+    difficulty: 3
+    tags: [iteration, engagement]
+  - id: F6-109
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "Which engagement class focuses on projects, project dependencies and landscape impacts in order to sequence projects in an architecturally optimised way?"
+    options:
+      - {key: A, text: "Architectural Portfolio Management of Projects", correct: true}
+      - {key: B, text: "Architectural Portfolio Management of the Landscape"}
+      - {key: C, text: "Supporting Business Strategy"}
+      - {key: D, text: "Architectural Definition of Foundational Change Initiatives"}
+    explanation: "Portfolio management of projects focuses on Transition Planning and Governance cycles to sequence projects. Landscape portfolio management assesses baseline applications and infrastructure, supporting strategy answers a strategic question broadly, and foundational change elaborates a vision from the baseline."
+    refs: ["APPLY §2.3"]
+    difficulty: 3
+    tags: [iteration, engagement]
+  - id: F6-110
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "When is the Baseline First approach to architecture development most suitable?"
+    options:
+      - {key: A, text: "When the target state is agreed at a high level"}
+      - {key: B, text: "When the baseline is complex, not clearly understood or not agreed upon, as is common where units have had high autonomy", correct: true}
+      - {key: C, text: "When the enterprise wants to avoid perpetuating sub-optimal architectures"}
+      - {key: D, text: "When no Request for Architecture Work exists"}
+    explanation: "Baseline First suits a complex, poorly understood or disputed baseline. A and C describe the conditions for Target First; D is not a condition the standard gives, and every cycle needs a Request."
+    refs: ["APPLY §2.4"]
+    difficulty: 2
+    tags: [iteration, approaches]
+  - id: F6-111
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "The baseline landscape is broadly understood. According to the standard, where should the architecture team focus to obtain higher value?"
+    options:
+      - {key: A, text: "On the target first, then the baseline only to the extent needed to identify changes", correct: true}
+      - {key: B, text: "On documenting the baseline in full before any target work"}
+      - {key: C, text: "On both states in parallel with equal priority"}
+      - {key: D, text: "On the Transition Architectures before either state"}
+    explanation: "If the baseline is broadly understood, focus on the target first and the baseline as needed. B is baseline-first, C contradicts the advice to prioritise one state, D skips the states the transitions are defined between."
+    refs: ["APPLY §2.4"]
+    difficulty: 2
+    tags: [iteration, approaches]
+  - id: F6-112
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "How does the expected level of stakeholder involvement affect the placement of checkpoints in an iterative process?"
+    options:
+      - {key: A, text: "High involvement suits very frequent, informal checkpoints; low involvement suits less frequent but more formal ones", correct: true}
+      - {key: B, text: "High involvement removes the need for any checkpoints"}
+      - {key: C, text: "Low involvement suits very frequent, informal checkpoints"}
+      - {key: D, text: "Checkpoints are fixed by the standard at the end of every phase regardless of involvement"}
+    explanation: "The standard pairs high involvement with frequent informal checkpoints and low involvement with rarer formal ones. B and C reverse or remove the guidance; D invents a fixed rule."
+    refs: ["APPLY §2.5"]
+    difficulty: 2
+    tags: [iteration]
+  - id: F6-113
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "In iteration between ADM cycles, where each iteration completes a cycle at a single level of description, which phase is used to initiate new, more detailed architecture development projects?"
+    options:
+      - {key: A, text: "Phase A"}
+      - {key: B, text: "Phase F: Migration Planning", correct: true}
+      - {key: C, text: "Phase H: Architecture Change Management"}
+      - {key: D, text: "The Preliminary Phase"}
+    explanation: "Phase F initiates the more detailed projects, with the higher-level architecture guiding and constraining them. Phase A starts a cycle but is not named as the initiator here; H manages change; the Preliminary Phase sets up the capability."
+    refs: ["APPLY §2.5.1"]
+    difficulty: 3
+    tags: [iteration]
+  - id: F6-114
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "In the activity-by-iteration figures, what three levels of activity are distinguished for each phase within an iteration cycle?"
+    options:
+      - {key: A, text: "Core, light, and informal", correct: true}
+      - {key: B, text: "Mandatory, optional, and forbidden"}
+      - {key: C, text: "Strategic, segment, and capability"}
+      - {key: D, text: "Baseline, target, and transition"}
+    explanation: "Activity is core (primary focus), light (secondary focus) or informal (may be carried out but not explicitly mentioned). C lists landscape levels, D architecture states, B is invented."
+    refs: ["APPLY §2.5.2"]
+    difficulty: 2
+    tags: [iteration]
+  - id: F6-115
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "In a Baseline First Architecture Development cycle, what is the purpose of Iteration 2?"
+    options:
+      - {key: A, text: "Define the Baseline Architecture"}
+      - {key: B, text: "Define the Target Architecture and analyse gaps against the baseline", correct: true}
+      - {key: C, text: "Mobilise governance and change management processes"}
+      - {key: D, text: "Agree a set of improvement opportunities against a provisional Transition Architecture"}
+    explanation: "Baseline First runs baseline in Iteration 1, then target and gaps in Iteration 2, then refinement. C is the first Governance iteration and D the first Transition Planning iteration."
+    refs: ["APPLY §2.5.2"]
+    difficulty: 2
+    tags: [iteration, cycles]
+  - id: F6-116
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "What does the initial iteration of the Transition Planning cycle seek to achieve?"
+    options:
+      - {key: A, text: "Buy-in to a portfolio of solution opportunities in Phase E and a provisional Migration Plan", correct: true}
+      - {key: B, text: "A finalised Architecture Contract with each implementation project"}
+      - {key: C, text: "Definition of the Baseline Architecture"}
+      - {key: D, text: "Adjustment of the Architecture Capability after a Change Request"}
+    explanation: "The first Transition Planning iteration gains buy-in to opportunities in Opportunities & Solutions and delivers a provisional Migration Plan; later iterations refine it. B is governance, C a Development iteration, D a Capability iteration."
+    refs: ["APPLY §2.5.2"]
+    difficulty: 3
+    tags: [iteration, cycles]
+  - id: F6-117
+    unit: F6
+    objective: "6.1"
+    lesson: F6/02_iteration
+    stem: "Which of the following is listed as an organisational factor influencing how the ADM's iterative process is exercised?"
+    options:
+      - {key: A, text: "Attitude to risk — whether the culture reacts negatively to partially complete work products being circulated", correct: true}
+      - {key: B, text: "The number of pages in the Architecture Definition Document"}
+      - {key: C, text: "The version of the modelling tool in use"}
+      - {key: D, text: "The blueprint weight of the exam unit"}
+    explanation: "Attitude to risk is one of the listed factors, alongside process checkpoints, stakeholder involvement, number of teams, solution maturity and class of engagement. B, C and D are not in the list."
+    refs: ["APPLY §2.6"]
+    difficulty: 2
+    tags: [iteration]
+  # ---------------------------------------------------------------- 6.2 Landscape and partitioning
+  - id: F6-118
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "Which Architecture Landscape level provides an organising framework and effective architecture roadmaps at a program or portfolio level?"
+    options:
+      - {key: A, text: "Strategic Architecture"}
+      - {key: B, text: "Segment Architecture", correct: true}
+      - {key: C, text: "Capability Architecture"}
+      - {key: D, text: "Solution Architecture"}
+    explanation: "Segment Architecture works at program or portfolio level. Strategic is the executive-level direction-setting level, Capability delivers capability increments, and Solution Architecture is not a landscape level."
+    refs: ["APPLY §3.2"]
+    difficulty: 1
+    tags: [landscape]
+  - id: F6-119
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "Which level of the Architecture Landscape provides an organising framework for change activity and roadmaps that realise capability increments?"
+    options:
+      - {key: A, text: "Capability Architecture", correct: true}
+      - {key: B, text: "Segment Architecture"}
+      - {key: C, text: "Strategic Architecture"}
+      - {key: D, text: "Transition Architecture"}
+    explanation: "Capability Architecture realises capability increments. Segment operates at portfolio level, Strategic at executive level, and a Transition Architecture is a state between baseline and target, not a landscape level."
+    refs: ["APPLY §3.2"]
+    difficulty: 1
+    tags: [landscape]
+  - id: F6-120
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "What does the Architecture Continuum add to the levels of the Architecture Landscape?"
+    options:
+      - {key: A, text: "A way of dividing each level by abstraction, from foundation elements to organisation-specific architecture, helping discover commonality and eliminate redundancy", correct: true}
+      - {key: B, text: "A timeline of Transition Architectures"}
+      - {key: C, text: "A list of stakeholders for each level"}
+      - {key: D, text: "The budget allocated to each level"}
+    explanation: "The Continuum divides each level by abstraction and is a tool for finding commonality and removing redundancy. B, C and D are not what it provides."
+    refs: ["APPLY §3.2"]
+    difficulty: 2
+    tags: [landscape, continuum]
+  - id: F6-121
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "Which statement about organising the Architecture Landscape reflects the standard?"
+    options:
+      - {key: A, text: "The standard prescribes a single definitive organising model for all enterprises"}
+      - {key: B, text: "There is no definitive organising model; each enterprise should adopt one that reflects its own operating model", correct: true}
+      - {key: C, text: "The landscape must be organised by architecture domain only"}
+      - {key: D, text: "Only the Strategic level needs to be organised"}
+    explanation: "The standard is explicit that there is no definitive model and the choice should reflect the operating model. A, C and D impose constraints the standard does not."
+    refs: ["APPLY §3.2"]
+    difficulty: 1
+    tags: [landscape]
+  - id: F6-122
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "What two strategies does the standard give for developing architectures at different levels using the ADM?"
+    options:
+      - {key: A, text: "Iterations within a single ADM cycle, or a hierarchy of ADM processes executed concurrently", correct: true}
+      - {key: B, text: "Baseline First or Target First"}
+      - {key: C, text: "Federated or centralised repositories"}
+      - {key: D, text: "Agile or waterfall delivery"}
+    explanation: "Different levels are developed either through iterations within one cycle or a hierarchy of concurrent ADM processes, usually blended. B is the approach to a single development cycle, C concerns repository organisation, D delivery style."
+    refs: ["APPLY §3.3"]
+    difficulty: 2
+    tags: [landscape, iteration]
+  - id: F6-123
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "Which characteristic is generally the primary one used to organise an Architecture Landscape?"
+    options:
+      - {key: A, text: "Breadth (subject matter)", correct: true}
+      - {key: B, text: "Depth"}
+      - {key: C, text: "Time"}
+      - {key: D, text: "Recency"}
+    explanation: "Breadth — the subject matter area — is generally the primary organising characteristic, with architectures decomposed into subject areas or segments. Depth, time and recency are the other three characteristics but are not the primary one."
+    refs: ["APPLY §3.4"]
+    difficulty: 2
+    tags: [landscape]
+  - id: F6-124
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "According to the 'Time' characteristic of the Architecture Landscape, which architectures are generally valid for longer periods?"
+    options:
+      - {key: A, text: "Narrow and highly detailed architectures"}
+      - {key: B, text: "Broader and less detailed architectures", correct: true}
+      - {key: C, text: "Architectures developed most recently"}
+      - {key: D, text: "Architectures at the Capability level"}
+    explanation: "Broader, less detailed architectures stay valid longer and can give a vision further into the future. A and D are the detailed end of the scale; C confuses time with recency."
+    refs: ["APPLY §3.4"]
+    difficulty: 2
+    tags: [landscape]
+  - id: F6-125
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "What does the 'Recency' characteristic say happens to an architecture after it is approved?"
+    options:
+      - {key: A, text: "It becomes permanently accurate"}
+      - {key: B, text: "It begins to decrease in accuracy unless it is actively maintained", correct: true}
+      - {key: C, text: "It is automatically moved to the Reference Library"}
+      - {key: D, text: "It is deleted after one ADM cycle"}
+    explanation: "An architecture gains accuracy until approval and then loses accuracy if not maintained; recency may be used to organise historic architectures. A, C and D are not what the standard says."
+    refs: ["APPLY §3.4"]
+    difficulty: 2
+    tags: [landscape]
+  - id: F6-126
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "Which of the following is one of the reasons the standard gives for partitioning architectures?"
+    options:
+      - {key: A, text: "Different teams need to work on different elements of the architecture at the same time, and partitions let specific groups own specific elements", correct: true}
+      - {key: B, text: "To reduce the number of stakeholders who must be consulted"}
+      - {key: C, text: "To eliminate the need for Architecture Governance"}
+      - {key: D, text: "Because the ADM requires exactly one partition per phase"}
+    explanation: "Partitioning addresses conflicting unit architectures, parallel work by different teams, and re-use of modular segments. B is not a stated reason; C is backwards — partitions lie at the foundation of governance; D is invented."
+    refs: ["APPLY §4.1"]
+    difficulty: 1
+    tags: [partitioning]
+  - id: F6-127
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "How does the standard relate partitions to levels and the Architecture Continuum?"
+    options:
+      - {key: A, text: "Partitions are the same thing as levels"}
+      - {key: B, text: "Partitions are distinct from levels and from the organising concepts of the Architecture Continuum, and lie at the foundation of Architecture Governance", correct: true}
+      - {key: C, text: "Partitions are a subset of the Architecture Continuum"}
+      - {key: D, text: "Partitions replace the Architecture Repository"}
+    explanation: "The standard states partitions are distinct from levels and the Continuum and are foundational to governance. A, C and D each conflate partitions with another concept."
+    refs: ["APPLY §4.1"]
+    difficulty: 2
+    tags: [partitioning]
+  - id: F6-128
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "Which three classification criteria does the standard use to support partitioning of solutions?"
+    options:
+      - {key: A, text: "Subject matter (breadth), time, and maturity/volatility", correct: true}
+      - {key: B, text: "Business, data, and technology"}
+      - {key: C, text: "Power, interest, and commitment"}
+      - {key: D, text: "Cost, risk, and value"}
+    explanation: "Solutions are partitioned by subject matter, time and maturity/volatility; architectures additionally by depth. B lists domains, C stakeholder dimensions, D prioritisation criteria."
+    refs: ["APPLY §4.2"]
+    difficulty: 2
+    tags: [partitioning]
+  - id: F6-129
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "For architecture partitioning, why does the standard say the level of detail (depth) is a useful criterion?"
+    options:
+      - {key: A, text: "Because depth has a strong correlation with the stakeholder groups interested — less detail for executives, more for implementation and operational personnel", correct: true}
+      - {key: B, text: "Because deeper architectures are always more valuable"}
+      - {key: C, text: "Because the ADM limits each partition to three levels of detail"}
+      - {key: D, text: "Because depth determines the budget"}
+    explanation: "Depth correlates with audience: executives want summaries, implementers want detail. B, C and D are not the standard's reasoning."
+    refs: ["APPLY §4.2"]
+    difficulty: 2
+    tags: [partitioning]
+  - id: F6-130
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "Which characteristic does the standard say is generally NOT used to partition an Architecture Landscape?"
+    options:
+      - {key: A, text: "Subject matter"}
+      - {key: B, text: "Abstraction, because landscape architectures are generally not abstract", correct: true}
+      - {key: C, text: "Time"}
+      - {key: D, text: "Depth"}
+    explanation: "Landscape architectures are generally not abstract, and volatility also prevents defining architectures far into the future. Subject matter, time and depth are all used."
+    refs: ["APPLY §4.2"]
+    difficulty: 3
+    tags: [partitioning]
+  - id: F6-131
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "When establishing the Architecture Capability in the Preliminary Phase, why does the standard recommend applying partitioning until each architecture has one owning team?"
+    options:
+      - {key: A, text: "Because when more than one team works on a single architecture, the precise responsibilities of each are difficult to establish", correct: true}
+      - {key: B, text: "Because the Architecture Board can only meet with one team"}
+      - {key: C, text: "Because the ADM forbids more than one team per enterprise"}
+      - {key: D, text: "Because a single team reduces the number of viewpoints required"}
+    explanation: "Shared ownership blurs responsibilities, so partition until ownership is singular. B, C and D are not reasons the standard gives."
+    refs: ["APPLY §4.2.1"]
+    difficulty: 2
+    tags: [partitioning, preliminary]
+  - id: F6-132
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "Which of the following is one of the Preliminary Phase steps that support architecture partitioning?"
+    options:
+      - {key: A, text: "Determine the responsibilities for each standing architecture team, including subject matter, level of detail, time periods and stakeholders", correct: true}
+      - {key: B, text: "Assign a business value to each work package"}
+      - {key: C, text: "Consolidate and reconcile interoperability requirements"}
+      - {key: D, text: "Perform gap analysis"}
+    explanation: "The Preliminary Phase steps are determining the organisation structure, the responsibilities of each team (which partitions the enterprise), and the relationships between architectures. B is Phase F, C Phase E, D a domain-phase step."
+    refs: ["APPLY §4.2.1"]
+    difficulty: 2
+    tags: [partitioning, preliminary]
+  - id: F6-133
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "How should temporary architecture teams mobilised for a particular change initiative be handled, according to the partitioning guidance?"
+    options:
+      - {key: A, text: "They should be exempt from governance for the duration of the initiative"}
+      - {key: B, text: "Each should come under the governance of a standing architecture team, with a process in their ADM cycle to establish appropriate partitioning", correct: true}
+      - {key: C, text: "They should own the Strategic Architecture"}
+      - {key: D, text: "They should be disbanded before Phase A begins"}
+    explanation: "Temporary teams sit under the governance of a standing team and establish their partitioning within their ADM cycle. A removes governance, C gives them the wrong scope, D makes no sense for a team formed to do the work."
+    refs: ["APPLY §4.2.1"]
+    difficulty: 3
+    tags: [partitioning, preliminary]
+  - id: F6-134
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "In which kinds of organisation does the standard say federated architectures — independently developed and managed, then integrated within an integration framework — are typical?"
+    options:
+      - {key: A, text: "Governments and conglomerates", correct: true}
+      - {key: B, text: "Start-ups"}
+      - {key: C, text: "Single-product software vendors"}
+      - {key: D, text: "Organisations with fewer than 100 employees"}
+    explanation: "Federated architectures are typical of governments and conglomerates whose separate units need separate architectures. The other options describe small or unified organisations where federation is unlikely."
+    refs: ["APPLY §4.3"]
+    difficulty: 2
+    tags: [partitioning, integration]
+  - id: F6-135
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "What risk does partitioning create, and how does the standard suggest mitigating it?"
+    options:
+      - {key: A, text: "A fragmented, disjointed collection of architectures; mitigate by defining content integration standards and making integration a condition of compliance in Architecture Governance", correct: true}
+      - {key: B, text: "Excessive documentation; mitigate by limiting each partition to one diagram"}
+      - {key: C, text: "Loss of stakeholder interest; mitigate with more frequent demos"}
+      - {key: D, text: "Duplicate budgets; mitigate by merging all partitions"}
+    explanation: "The risk is fragmentation that cannot be integrated into a big picture; the mitigation is content integration standards enforced through governance, using a content framework such as a shared process catalog. B, C and D are not the standard's risk or remedy."
+    refs: ["APPLY §4.3"]
+    difficulty: 2
+    tags: [partitioning, integration]
+  - id: F6-136
+    unit: F6
+    objective: "6.2"
+    lesson: F6/03_landscape_and_partitioning
+    stem: "Which of the following is one of the dimensions from which the standard says architecture integration can be addressed?"
+    options:
+      - {key: A, text: "Integration across the architecture domains, giving a cross-domain view of a segment at a point in time", correct: true}
+      - {key: B, text: "Integration across exam units"}
+      - {key: C, text: "Integration of vendor licence agreements"}
+      - {key: D, text: "Integration of the Architecture Board with the finance committee"}
+    explanation: "Integration is addressed across domains, across the organisational scope (cross-segment), and through the Architecture Vision summarising Architecture Definitions and Transition Architectures. B, C and D are not dimensions the standard names."
+    refs: ["APPLY §4.3"]
+    difficulty: 2
+    tags: [partitioning, integration]
+  # ---------------------------------------------------------------- 6.3 Security and agile
+  - id: F6-137
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "How does the Series Guide on integrating risk and security position Security Architecture in relation to the four architecture domains?"
+    options:
+      - {key: A, text: "As a fifth architecture domain alongside Business, Data, Application and Technology"}
+      - {key: B, text: "As a cross-cutting concern that interacts with and informs all four domains", correct: true}
+      - {key: C, text: "As part of the Technology Architecture only"}
+      - {key: D, text: "As a replacement for the Data Architecture"}
+    explanation: "Security Architecture is cross-cutting, pervasive through the whole Enterprise Architecture and impacting all four domains. A adds a domain the standard does not define; C and D confine it wrongly."
+    refs: ["GUIDE:integrating-risk-and-security §4"]
+    difficulty: 1
+    tags: [security]
+  - id: F6-138
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "Which definition of 'risk' does the Series Guide on integrating risk and security adopt, and what does it imply?"
+    options:
+      - {key: A, text: "The ISO 31000 definition — the effect that uncertainty has on the achievement of business objectives — which covers positive opportunities as well as negative consequences", correct: true}
+      - {key: B, text: "A threat-bound definition in which risk is always a negative attribute"}
+      - {key: C, text: "The probability of a security incident multiplied by its cost"}
+      - {key: D, text: "The residual risk remaining after mitigation"}
+    explanation: "The guide uses ISO 31000's uncertainty-of-outcomes definition, balancing positive and negative outcomes. B is the narrower security-practitioner view the guide contrasts with, C is a formula the guide does not adopt, D is a risk level from the ADM Techniques document."
+    refs: ["GUIDE:integrating-risk-and-security §1.2"]
+    difficulty: 2
+    tags: [security, risk, definitions]
+  - id: F6-139
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "How does the guide describe the scope of risk management in the TOGAF Standard compared with Enterprise Risk Management?"
+    options:
+      - {key: A, text: "The TOGAF Standard primarily addresses architecture project risk, whereas ERM is much broader, including business, system, information, privacy, compliance and organisational change risk", correct: true}
+      - {key: B, text: "The two scopes are identical"}
+      - {key: C, text: "The TOGAF Standard covers all enterprise risk and ERM is a subset"}
+      - {key: D, text: "Neither addresses operational risk"}
+    explanation: "TOGAF risk management focuses on architecture project risk; ERM is broader and the guide concentrates on operational risk downstream of architecture work. B, C and D misstate the relationship."
+    refs: ["GUIDE:integrating-risk-and-security §1.2"]
+    difficulty: 2
+    tags: [security, risk]
+  - id: F6-140
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "In the guide's architecture approach, security controls are bundled into security services. How are these positioned?"
+    options:
+      - {key: A, text: "As Architecture Building Blocks that guide the development of Solution Building Blocks, described in a Security Services Catalog and positioned in the logical layer developed in Phase C", correct: true}
+      - {key: B, text: "As a checklist of controls selected in Phase G"}
+      - {key: C, text: "As Solution Building Blocks chosen from vendor catalogs in Phase E only"}
+      - {key: D, text: "As principles defined in the Preliminary Phase"}
+    explanation: "Security services are ABBs recorded in a Security Services Catalog and belong to the logical layer developed in Phase C; the guide explicitly rejects the checklist view. B is the rejected approach, C misplaces them as SBBs only, D confuses services with Security Principles."
+    refs: ["GUIDE:integrating-risk-and-security §1.3"]
+    difficulty: 3
+    tags: [security]
+  - id: F6-141
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "Which security artifacts does the guide say should be determined in the Preliminary Phase to establish the security context?"
+    options:
+      - {key: A, text: "Security-relevant business drivers, Security Principles, risk appetite, key risk areas or business impact analysis, and a security resource plan", correct: true}
+      - {key: B, text: "Security audit results and penetration test reports"}
+      - {key: C, text: "The Security Services Catalog and security classifications"}
+      - {key: D, text: "A migration Risk Mitigation Plan and regression plan"}
+    explanation: "The Preliminary Phase establishes drivers, Security Principles, risk appetite, key risk areas and the resource plan. B belongs to Phase G, C to Phase C, D to Phase F."
+    refs: ["GUIDE:integrating-risk-and-security §5.1"]
+    difficulty: 3
+    tags: [security, preliminary]
+  - id: F6-142
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "What does the guide say about identifying stakeholders in Phase A from a security perspective?"
+    options:
+      - {key: A, text: "Only the Chief Information Security Officer should be treated as a security stakeholder"}
+      - {key: B, text: "All stakeholders have security and risk concerns, so separating out 'security stakeholders' would make the architecture address only a subset of stakeholders and requirements", correct: true}
+      - {key: C, text: "Security stakeholders are identified in Phase G, not Phase A"}
+      - {key: D, text: "Security concerns are handled entirely by the Technology Architecture team"}
+    explanation: "The guide insists every stakeholder has security concerns and warns against splitting off a security-stakeholder group. A, C and D each narrow the responsibility in ways the guide argues against."
+    refs: ["GUIDE:integrating-risk-and-security §5.2"]
+    difficulty: 2
+    tags: [security, phase-a]
+  - id: F6-143
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "Which security-related artifacts does the guide associate with Phase B: Business Architecture?"
+    options:
+      - {key: A, text: "Security policy architecture, security domain model, trust framework, risk assessment, business risk model or risk register, and registers of applicable laws, regulations and control frameworks", correct: true}
+      - {key: B, text: "Security training and awareness plans"}
+      - {key: C, text: "Network security diagrams and firewall rules"}
+      - {key: D, text: "The Security Services Catalog"}
+    explanation: "Phase B security elements are business-level trust, risk and controls, independent of specific IT. B belongs to Phase G, C to technology detail, D to Phase C."
+    refs: ["GUIDE:integrating-risk-and-security §5.3"]
+    difficulty: 3
+    tags: [security, phase-b]
+  - id: F6-144
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "According to the guide, what security considerations apply in Phase F: Migration Planning?"
+    options:
+      - {key: A, text: "None — security is complete by the end of Phase D"}
+      - {key: B, text: "Migration is itself a business process to be secured: the strategy includes a risk assessment and a Risk Mitigation Plan limited to the transition, regression planning to reverse a failed migration, and a security impact analysis", correct: true}
+      - {key: C, text: "Only the selection of a security vendor"}
+      - {key: D, text: "A full re-run of the Preliminary Phase security context"}
+    explanation: "Phase F treats migration as a process to secure, with transition-scoped risk mitigation, regression planning and impact analysis. A contradicts the guide's every-phase approach; C and D are not what it says."
+    refs: ["GUIDE:integrating-risk-and-security §5.7"]
+    difficulty: 2
+    tags: [security, phase-f]
+  - id: F6-145
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "What does the guide say Phase H contributes from a security and risk perspective?"
+    options:
+      - {key: A, text: "Tangible security deliverables such as the Security Services Catalog"}
+      - {key: B, text: "No tangible security outputs, but two essential processes — Enterprise Risk Management and architecture governance — and the recognition that a small security change can trigger a new ADM cycle", correct: true}
+      - {key: C, text: "Penetration testing of the implemented solution"}
+      - {key: D, text: "Definition of the risk appetite"}
+    explanation: "Phase H defines the ERM and governance processes rather than artifacts, and warns that a change in risk appetite or threat can trigger a new cycle. A belongs to Phase C, C to Phase G security audit, D to the Preliminary Phase."
+    refs: ["GUIDE:integrating-risk-and-security §5.9"]
+    difficulty: 2
+    tags: [security, phase-h]
+  - id: F6-146
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "Which of the following does the Enabling Enterprise Agility guide say the TOGAF ADM does NOT do?"
+    options:
+      - {key: A, text: "Mandate that the steps are performed in the sequence shown, mandate a waterfall process, or specify the duration of any phase", correct: true}
+      - {key: B, text: "Provide a repeatable process for developing architectures"}
+      - {key: C, text: "Support architects in understanding, specifying and governing"}
+      - {key: D, text: "Recommend that the ADM be adapted to the needs of the enterprise"}
+    explanation: "The guide lists three things the ADM does not mandate: sequence, waterfall completion of phases, and duration. B, C and D are all things the guide says the ADM does do."
+    refs: ["GUIDE:enabling-enterprise-agility §3"]
+    difficulty: 1
+    tags: [agile]
+  - id: F6-147
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "How does the Enabling Enterprise Agility guide define a Minimum Viable Architecture?"
+    options:
+      - {key: A, text: "An architecture with just enough content to deliver product features in a given phase and satisfy known requirements, especially quality attribute requirements, and no more", correct: true}
+      - {key: B, text: "The smallest possible product outcome that generates acceptable learning"}
+      - {key: C, text: "The Strategic Architecture reduced to one page"}
+      - {key: D, text: "An architecture that has passed a single compliance review"}
+    explanation: "An MVA is just enough architecture to deploy features and meet known requirements. B is the definition of a Minimum Viable Product; C and D are not definitions from the guide."
+    refs: ["GUIDE:enabling-enterprise-agility §2.4"]
+    difficulty: 2
+    tags: [agile, definitions]
+  - id: F6-148
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "According to the Enabling Enterprise Agility guide, which architecture level is most commonly associated with delivery sprints, and how should its increments be scoped?"
+    options:
+      - {key: A, text: "Enterprise Strategic Architecture; increments should cover the whole enterprise"}
+      - {key: B, text: "Capability Architecture; increments should be tightly scoped to be achievable within sprint time boxes", correct: true}
+      - {key: C, text: "Segment Architecture; increments should span several years"}
+      - {key: D, text: "Technology Architecture; increments should align to vendor releases"}
+    explanation: "Sprints can occur at any level but are most commonly tied to capabilities or capability increments, scoped to fit the sprint time box. A and C describe the higher, broader levels; D names a domain rather than a level."
+    refs: ["GUIDE:enabling-enterprise-agility §4.1"]
+    difficulty: 2
+    tags: [agile, landscape]
+  - id: F6-149
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "The Enabling Enterprise Agility guide warns that the three levels of detail (Strategic, Segment, Capability) must not be confused with:"
+    options:
+      - {key: A, text: "The architecture domains, since Business, Data, Application and Technology Architectures may exist at all levels", correct: true}
+      - {key: B, text: "The ADM phases"}
+      - {key: C, text: "The four iteration cycles"}
+      - {key: D, text: "The Architecture Repository partitions"}
+    explanation: "The levels are orthogonal to the domains, which exist at every level. The guide does not draw the confusion with phases, cycles or repository partitions at this point."
+    refs: ["GUIDE:enabling-enterprise-agility §4.1"]
+    difficulty: 2
+    tags: [agile, landscape]
+  - id: F6-150
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "In an agile context, how does the Enabling Enterprise Agility guide describe a Transition Architecture?"
+    options:
+      - {key: A, text: "A formal description of one state of the architecture at an architecturally significant point in time, usually including several capability increments, related to releases of business value and helping to manage risk", correct: true}
+      - {key: B, text: "A temporary architecture that is discarded after each sprint"}
+      - {key: C, text: "A sprint backlog item"}
+      - {key: D, text: "The final Target Architecture"}
+    explanation: "A Transition Architecture is a stable intermediate state, related to a release, containing capability increments usually implemented in sprints. B, C and D misdescribe it as disposable, a backlog item, or the end state."
+    refs: ["GUIDE:enabling-enterprise-agility §4.2"]
+    difficulty: 2
+    tags: [agile, transition-architecture]
+  - id: F6-151
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "The Enabling Enterprise Agility guide says pushing forward beyond the end of the 'runway' defined by the Capability Architecture stores up which problem, and where should it be addressed?"
+    options:
+      - {key: A, text: "Technical debt; addressed in Phase H: Architecture Change Management", correct: true}
+      - {key: B, text: "Scope creep; addressed in the Preliminary Phase"}
+      - {key: C, text: "Vendor lock-in; addressed in Phase E"}
+      - {key: D, text: "Budget overrun; addressed in Phase F"}
+    explanation: "Poorly documented or architecturally dislocated products are a form of technical debt, to be managed in Phase H. B, C and D name different problems and phases."
+    refs: ["GUIDE:enabling-enterprise-agility §4.5"]
+    difficulty: 3
+    tags: [agile, phase-h]
+  - id: F6-152
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "Which of the following delivery styles does the Enabling Enterprise Agility guide list as accommodated by the TOGAF ADM?"
+    options:
+      - {key: A, text: "Rapid (solution–iteration), Agile (backlog–sprint), robust smaller-scale (PRINCE project–stage) and robust larger-scale (MSP program–project)", correct: true}
+      - {key: B, text: "Agile only"}
+      - {key: C, text: "Waterfall only"}
+      - {key: D, text: "Kanban, Scrum, XP and Crystal"}
+    explanation: "The guide names rapid, agile and two robust styles, noting some programs are not suited to agile delivery. B and C are too narrow; D lists agile frameworks, not the guide's style categories."
+    refs: ["GUIDE:enabling-enterprise-agility §4.7"]
+    difficulty: 3
+    tags: [agile]
+  - id: F6-153
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "Which four collaboration patterns does the Applying the ADM using Agile Sprints guide describe?"
+    options:
+      - {key: A, text: "Enterprise Architecture development agility, solution collaboration, cross-development collaboration, cross-functional agility", correct: true}
+      - {key: B, text: "Plan, build, run, retire"}
+      - {key: C, text: "Baseline first, target first, hybrid, federated"}
+      - {key: D, text: "Demo, outcome management, retrospective, planning"}
+    explanation: "The four patterns range from EA delivered in sprints to fully mixed cross-functional teams. D is DORP, the end-of-sprint activity set; B and C are not the guide's patterns."
+    refs: ["GUIDE:agile-sprints §3.3"]
+    difficulty: 2
+    tags: [agile, sprints]
+  - id: F6-154
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "According to the Agile Sprints guide, how does Phase G Implementation Governance differ when working in sprints?"
+    options:
+      - {key: A, text: "Compliance reviews become an ongoing process rather than a gate at a specific point, and short cycles allow early discovery of non-compliant solutions", correct: true}
+      - {key: B, text: "Compliance reviews are abolished"}
+      - {key: C, text: "Compliance reviews are held only at the end of the whole program"}
+      - {key: D, text: "Phase G is replaced by the Preliminary Phase"}
+    explanation: "Governance becomes continuous and less formal, with a solution increment deployable after each approved demo. B and C remove or delay compliance, D is nonsensical."
+    refs: ["GUIDE:agile-sprints §4.4"]
+    difficulty: 2
+    tags: [agile, phase-g]
+  - id: F6-155
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "What sprint length does the Agile Sprints guide say is generally believed appropriate, and what property should sprints have?"
+    options:
+      - {key: A, text: "Two weeks, within a one-to-four-week range, and sprints should be fixed in length for predictable planning", correct: true}
+      - {key: B, text: "Six months, varying with each release"}
+      - {key: C, text: "One day, fixed"}
+      - {key: D, text: "One quarter, varying with team velocity"}
+    explanation: "Sprints run one to four weeks — generally two — and should be fixed in length so the team can plan reliably. B, C and D give durations or variability the guide does not endorse."
+    refs: ["GUIDE:agile-sprints §5.3"]
+    difficulty: 2
+    tags: [agile, sprints]
+  - id: F6-156
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "In the Agile Sprints guide, what is a 'DORP'?"
+    options:
+      - {key: A, text: "The four activities at the end of each sprint: demonstration, outcome management, retrospective, and planning for the next sprint", correct: true}
+      - {key: B, text: "A document recording the Definition Of Required Partitions"}
+      - {key: C, text: "The Deliverable, Output, Risk and Priority of a work package"}
+      - {key: D, text: "A governance body that approves sprint scope"}
+    explanation: "DORP is demo, outcome management, retrospective and planning. B, C and D are invented expansions."
+    refs: ["GUIDE:agile-sprints §2"]
+    difficulty: 2
+    tags: [agile, sprints, definitions]
+  - id: F6-157
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "How does the Agile Sprints guide suggest architecture governance changes in an agile world?"
+    options:
+      - {key: A, text: "Governance moves into the sprint process and becomes a way of collaborating, delegating and governing each other through accountability; decisions that can be rolled back are delegated to teams, while irreversible ones involve the wider stakeholder group", correct: true}
+      - {key: B, text: "Governance is removed entirely to avoid slowing sprints"}
+      - {key: C, text: "Every decision is escalated to the Architecture Board"}
+      - {key: D, text: "Governance is applied only after all sprints are complete"}
+    explanation: "Governance becomes mutual accountability within sprints, with reversible decisions delegated. B abolishes it, C centralises everything, D defers it — none is the guide's position."
+    refs: ["GUIDE:agile-sprints §5.4"]
+    difficulty: 3
+    tags: [agile, governance]
+  - id: F6-158
+    unit: F6
+    objective: "6.3"
+    lesson: F6/04_security_and_agile
+    stem: "Which reason does the Agile Sprints guide give for using sprints with the TOGAF Standard?"
+    options:
+      - {key: A, text: "Short cycles of work are a way to deal with unpredictability and risk such as late-arriving information", correct: true}
+      - {key: B, text: "Sprints remove the need for an Architecture Vision"}
+      - {key: C, text: "Sprints guarantee that Phases B to D complete in sequence"}
+      - {key: D, text: "Sprints are mandatory in the 10th Edition"}
+    explanation: "Short cycles absorb unpredictability and late information, among other listed reasons. B contradicts the guide's evolutionary treatment of Phase A, C contradicts its statement that B to E need not be sequential, D is false — the guide is an adaptation, not a mandate."
+    refs: ["GUIDE:agile-sprints §3.1"]
+    difficulty: 2
+    tags: [agile, sprints]

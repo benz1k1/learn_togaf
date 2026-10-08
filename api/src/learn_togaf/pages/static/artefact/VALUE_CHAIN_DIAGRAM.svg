@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 246" font-family="sans-serif" font-size="12" role="img" aria-label="Example Value Chain Diagram for a fictional retail bank, an original study illustration">
+<defs><marker id="arr-value-chain-diagram" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="760" height="246" fill="#fff"/>
+<text x="10" y="20" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Example: Value Chain Diagram — retail bank</text>
+<text x="750" y="20" text-anchor="end" font-size="11" fill="#666" font-style="italic">diagram: presentational, Phase A</text>
+<text x="380" y="44" text-anchor="middle" font-size="11" fill="#345">Northgate Bank — how value flows from the market to the customer</text>
+<polygon points="90,60 194,60 208,82.0 194,104 90,104" fill="#fff1d6" stroke="#e0b060"/><text x="149.0" y="86.0" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Attract customers</text>
+<polygon points="206,60 310,60 324,82.0 310,104 206,104 220,82.0" fill="#e0ecff" stroke="#7aa2e3"/><text x="270.0" y="86.0" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Onboarding</text>
+<polygon points="322,60 426,60 440,82.0 426,104 322,104 336,82.0" fill="#e3f5e1" stroke="#7fbf7a"/><text x="386.0" y="86.0" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Payments</text>
+<polygon points="438,60 542,60 556,82.0 542,104 438,104 452,82.0" fill="#f3e3f7" stroke="#b58ac9"/><text x="502.0" y="86.0" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Lending</text>
+<polygon points="554,60 658,60 672,82.0 658,104 554,104 568,82.0" fill="#fff1d6" stroke="#e0b060"/><text x="618.0" y="86.0" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Service and retain</text>
+<rect x="90" y="118" width="580" height="26" rx="4" fill="#f2f2f2" stroke="#999" stroke-width="1"/><text x="380" y="135" text-anchor="middle" font-size="11" fill="#222">Risk and compliance (KYC, fraud, regulatory reporting)</text>
+<rect x="90" y="150" width="580" height="26" rx="4" fill="#f2f2f2" stroke="#999" stroke-width="1"/><text x="380" y="167" text-anchor="middle" font-size="11" fill="#222">Technology (Core Banking, Mobile App, Card Switch) and people</text>
+<text x="380" y="191" text-anchor="middle" font-size="10" fill="#666" font-style="italic">supporting activities</text>
+<rect x="6" y="60" width="76" height="44" rx="6" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="44.0" y="78.7" text-anchor="middle" font-size="11" fill="#222">Customers</text>
+<text x="44.0" y="92.7" text-anchor="middle" font-size="11" fill="#222">(market)</text><line x1="82" y1="82" x2="90" y2="82" stroke="#555" marker-end="url(#arr-value-chain-diagram)"/>
+<rect x="680" y="60" width="76" height="44" rx="6" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="718.0" y="78.7" text-anchor="middle" font-size="11" fill="#222">Customers</text>
+<text x="718.0" y="92.7" text-anchor="middle" font-size="11" fill="#222">(served)</text><line x1="670" y1="82" x2="680" y2="82" stroke="#555" marker-end="url(#arr-value-chain-diagram)"/>
+<rect x="6" y="118" width="76" height="58" rx="6" fill="#fde2e1" stroke="#d9776f" stroke-width="1"/>
+<text x="44.0" y="150.7" text-anchor="middle" font-size="11" fill="#222">Regulator</text><line x1="82" y1="140" x2="90" y2="140" stroke="#555" marker-end="url(#arr-value-chain-diagram)"/>
+<rect x="680" y="118" width="76" height="58" rx="6" fill="#f3e3f7" stroke="#b58ac9" stroke-width="1"/>
+<text x="718.0" y="143.7" text-anchor="middle" font-size="11" fill="#222">Card</text>
+<text x="718.0" y="157.7" text-anchor="middle" font-size="11" fill="#222">network</text><line x1="680" y1="140" x2="670" y2="140" stroke="#555" marker-end="url(#arr-value-chain-diagram)"/>
+<text x="380" y="218" text-anchor="middle" font-size="10" fill="#345">Primary activities run left to right; outside parties sit at the edges. Orientation only — the formal organisation map comes in Phase B.</text>
+<text x="10" y="238" text-anchor="start" font-size="11" fill="#666">Original illustration for study; the artifact is defined in CONTENT §3.6.3</text>
+</svg>

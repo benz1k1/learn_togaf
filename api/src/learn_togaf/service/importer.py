@@ -31,7 +31,13 @@ from loguru import logger
 from pydantic import ValidationError
 
 from learn_togaf.config import CONTENT_DIR
-from learn_togaf.content.loader import ContentError, insert_question_set, parse_question_set
+from learn_togaf.content.loader import (
+    ContentError,
+    assign_lessons,
+    insert_question_set,
+    lesson_keys,
+    parse_question_set,
+)
 from learn_togaf.content.models import Blueprint, FoundationQuestion, PractitionerQuestion
 from learn_togaf.db import transaction
 from learn_togaf.importers import ImportParseError, normalise, parse_file
@@ -186,7 +192,7 @@ def _row_errors(exc: ValidationError) -> list[str]:
 
 
 def _validate_row(row: dict[str, Any], exam: str, blueprint: Blueprint) -> tuple[Any, list[str]]:
-    model = FoundationQuestion if exam == "FOUNDATION" else PractitionerQuestion
+    model = PractitionerQuestion if blueprint.exam(exam).scoring == "gradient" else FoundationQuestion
     try:
         question = model.model_validate(row)
     except ValidationError as exc:
@@ -341,8 +347,8 @@ def build_preview(
     unit_overrides: dict[str, str],
 ) -> Preview:
     exam = exam.strip().upper()
-    if exam not in ("FOUNDATION", "PRACTITIONER"):
-        raise ContentError(f"exam must be FOUNDATION or PRACTITIONER, got {exam!r}")
+    if exam not in blueprint.exams:
+        raise ContentError(f"exam must be one of {', '.join(blueprint.exams)}, got {exam!r}")
     mapping = load_mapping(connection, file_name)
     try:
         parsed = parse_file(text, file_name, mapping["columns"])
@@ -353,7 +359,7 @@ def build_preview(
         raise ContentError(f"{file_name} says exam {header_exam}, the form says {exam}")
     code = sanitise_code(set_code or str(parsed.header.get("code", "")), file_name)
     set_name = name.strip() or str(parsed.header.get("name", "")).strip() or Path(file_name).stem
-    rows = normalise(parsed.rows, exam, code)
+    rows = normalise(parsed.rows, blueprint.exam(exam).scoring, code)
     if not rows:
         raise ContentError(f"{file_name}: no questions found ({parsed.format})")
     token = secrets.token_urlsafe(16)
@@ -413,8 +419,15 @@ def confirm_import(
     question_set = parse_question_set(document, Path(preview.file_name), blueprint)
     target_dir = CONTENT_DIR / "questions" / "imported"
     target = target_dir / f"{preview.set_code}.yaml"
+    lesson_of, lesson_warnings = assign_lessons(
+        lesson_keys(connection), question_set.questions(), target
+    )
+    for warning in lesson_warnings:
+        logger.warning(warning)
     with transaction(connection):
-        insert_question_set(connection, question_set, file_name=preview.file_name, imported_at=imported_at)
+        insert_question_set(
+            connection, question_set, lesson_of, file_name=preview.file_name, imported_at=imported_at
+        )
         for question_id in preview.unverified_ids:
             connection.execute("UPDATE question SET unit_unverified = 1 WHERE id = ?", (question_id,))
         save_mapping(connection, preview.file_name, pending.get("column_map", {}), unit_overrides)
@@ -463,4 +476,6 @@ def remove_set(connection: sqlite3.Connection, set_code: str) -> bool:
 
 
 def unit_choices(blueprint: Blueprint, exam: str) -> list[tuple[str, str]]:
-    return [(spec.code, spec.name) for spec in blueprint.units if spec.exam == exam]
+    """Units a question of ``exam`` may belong to: every unit of the exam's track that has one."""
+    track = blueprint.exam(exam).track
+    return [(spec.code, spec.name) for spec in blueprint.units if spec.exam and spec.track == track]

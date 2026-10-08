@@ -1,0 +1,41 @@
+# Northgate Bank — Implementation and Migration Plan (Phase F) as an Implementation and Migration
+# view: five Work Packages in their triggering order, the Deliverables they realize, the two
+# transition Implementation Events, and the Plateaus the deliverables realize.
+id: northgate_implementation_migration
+title: "Northgate Bank — Implementation and Migration Plan as an Implementation and Migration view"
+viewpoint: Implementation and Migration
+elements:
+  - {id: p_t1, type: plateau, name: "Transition 1 — Q2 2027", col: 0, row: 0, w: 2}
+  - {id: p_t2, type: plateau, name: "Transition 2 — Q4 2027", col: 3, row: 0, w: 2}
+  - {id: p_target, type: plateau, name: "Target — mid-2028", col: 5, row: 0}
+  - {id: d1, type: deliverable, name: "Payments and Card Management APIs", col: 0, row: 1}
+  - {id: d3, type: deliverable, name: "Mobile App v4; SMS gateway retired", col: 1, row: 1}
+  - {id: d2, type: deliverable, name: "Identity Verification service", col: 3, row: 1}
+  - {id: d4, type: deliverable, name: "Fraud Engine scoring before authorisation", col: 4, row: 1}
+  - {id: wp1, type: work_package, name: "WP-1 Platform and API layer, Oct 26 - Mar 27", col: 0, row: 2}
+  - {id: wp3, type: work_package, name: "WP-3 Mobile payments, Nov 26 - Jun 27", col: 1, row: 2}
+  - {id: ev_t1, type: implementation_event, name: "Transition 1 complete 30 Jun 2027", col: 2, row: 2}
+  - {id: wp2, type: work_package, name: "WP-2 Digital onboarding, Jan 27 - Nov 27", col: 3, row: 2}
+  - {id: ev_t2, type: implementation_event, name: "Transition 2 complete 15 Dec 2027", col: 5, row: 2}
+  - {id: wp5, type: work_package, name: "WP-5 Dual-homing and pre-prod, Nov 26 - Feb 27", col: 1, row: 3}
+  - {id: wp4, type: work_package, name: "WP-4 Fraud scoring, Jan 27 - Dec 27", col: 4, row: 3}
+  - {id: d5, type: deliverable, name: "Dual-homed card link; pre-prod environment", col: 2, row: 4}
+relations:
+  - {from: p_t1, to: p_t2, type: triggering}
+  - {from: p_t2, to: p_target, type: triggering}
+  - {from: d1, to: p_t1, type: realization}
+  - {from: d3, to: p_t1, type: realization}
+  - {from: d2, to: p_t2, type: realization}
+  - {from: d4, to: p_t2, type: realization}
+  - {from: wp1, to: d1, type: realization}
+  - {from: wp3, to: d3, type: realization}
+  - {from: wp2, to: d2, type: realization}
+  - {from: wp4, to: d4, type: realization}
+  - {from: wp5, to: d5, type: realization}
+  - {from: wp1, to: wp3, type: triggering}
+  - {from: wp1, to: wp5, type: triggering}
+  - {from: wp3, to: ev_t1, type: triggering}
+  - {from: ev_t1, to: wp2, type: triggering}
+  - {from: wp5, to: wp4, type: triggering}
+  - {from: wp2, to: ev_t2, type: triggering}
+  - {from: wp4, to: ev_t2, type: triggering}

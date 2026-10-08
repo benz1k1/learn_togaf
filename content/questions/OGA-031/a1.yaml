@@ -1,0 +1,614 @@
+# A1 Language Overview drill bank (learn_sabsa_archimate.md §4.3). Original questions, each
+# citing the entailing ArchiMate 3.2 section; status: draft until reviewed. Ids A1-101 upward.
+code: A1_BANK
+exam: OGA-031
+name: A1 Language Overview bank
+kind: DRILL
+source: authored
+questions:
+  # ------------------------------------------------------------ A1.1 purpose, design goals, generic metamodel
+  - id: A1-101
+    unit: A1
+    objective: "A1.1"
+    lesson: A1/01_purpose_and_generic_metamodel
+    stem: "Which of the following best describes what the ArchiMate Specification defines?"
+    options:
+      - {key: A, text: "A method for developing an Enterprise Architecture in phases", why: "That is the TOGAF ADM; ArchiMate is a language, not a method."}
+      - {key: B, text: "A visual modelling language with a set of elements, relationships and default icons for describing Enterprise Architectures", correct: true}
+      - {key: C, text: "A reference model of business, application and technology components", why: "The language offers element types, not a reference model of an enterprise's components."}
+      - {key: D, text: "A governance framework for architecture compliance", why: "Governance is a TOGAF concern; the specification defines no governance framework."}
+    explanation: "The objective of the standard is the specification of a visual Enterprise Architecture modelling language with default iconography. It is neither a method, a reference model nor a governance framework."
+    refs: ["ARCHIMATE §1.1"]
+    difficulty: 1
+    tags: [purpose, definition]
+  - id: A1-102
+    unit: A1
+    objective: "A1.1"
+    lesson: A1/01_purpose_and_generic_metamodel
+    stem: "What is the most important design restriction placed on the ArchiMate language?"
+    options:
+      - {key: A, text: "It must accommodate the modelling needs of every possible user", why: "The specification says this is what many other languages try to do, and ArchiMate deliberately does not."}
+      - {key: B, text: "It must be as small as possible while still usable for most Enterprise Architecture modelling tasks", correct: true}
+      - {key: C, text: "It must be fully compatible with UML class diagrams", why: "Some concepts derive from UML, but compatibility is not the design restriction."}
+      - {key: D, text: "It must provide one element for every TOGAF metamodel entity", why: "The mapping to TOGAF is approximate and is not a design goal of the language."}
+    explanation: "The language was explicitly designed to be as small as possible yet sufficient for the proverbial 80% of practical cases, in the interest of simplicity of learning and use."
+    refs: ["ARCHIMATE §3.1"]
+    difficulty: 1
+    tags: [design-goals]
+  - id: A1-103
+    unit: A1
+    objective: "A1.1"
+    lesson: A1/01_purpose_and_generic_metamodel
+    stem: "According to the top-level structure of the language, a concept is either:"
+    options:
+      - {key: A, text: "A layer or an aspect", why: "Layers and aspects classify elements in the framework; they are not concepts in the top-level hierarchy."}
+      - {key: B, text: "A view or a viewpoint", why: "Views and viewpoints belong to the viewpoint mechanism, not the concept hierarchy."}
+      - {key: C, text: "An element or a relationship", correct: true}
+      - {key: D, text: "A structure element or a behaviour element", why: "Those are two of the four kinds of element; motivation and composite elements exist too, and relationships are concepts as well."}
+    explanation: "A model is a collection of concepts, and a concept is either an element or a relationship. An element is then a behaviour, structure, motivation or composite element."
+    refs: ["ARCHIMATE §3.2"]
+    difficulty: 1
+    tags: [top-level-structure]
+  - id: A1-104
+    unit: A1
+    objective: "A1.1"
+    lesson: A1/01_purpose_and_generic_metamodel
+    stem: "Which of the following is NOT one of the four kinds of element in the top-level hierarchy of ArchiMate concepts?"
+    options:
+      - {key: A, text: "Behaviour element", why: "Behaviour element is one of the four."}
+      - {key: B, text: "Composite element", why: "Composite element is one of the four."}
+      - {key: C, text: "Relationship connector", correct: true}
+      - {key: D, text: "Motivation element", why: "Motivation element is one of the four."}
+    explanation: "The four kinds of element are behaviour, structure, motivation and composite. A relationship connector (junction) is on the relationship side of the hierarchy, not an element."
+    refs: ["ARCHIMATE §3.2"]
+    difficulty: 2
+    tags: [top-level-structure, negative]
+  - id: A1-105
+    unit: A1
+    objective: "A1.1"
+    lesson: A1/01_purpose_and_generic_metamodel
+    stem: "In the generic metamodel, an external active structure element is called:"
+    options:
+      - {key: A, text: "A service", why: "A service is the external behaviour element."}
+      - {key: B, text: "An interface", correct: true}
+      - {key: C, text: "A collaboration", why: "A collaboration is an aggregate of internal active structure elements."}
+      - {key: D, text: "An event", why: "An event is a behaviour element representing a state change."}
+    explanation: "Active structure splits into internal active structure elements and external ones, which are interfaces: points of access where services are exposed to the environment."
+    refs: ["ARCHIMATE §4.1", "ARCHIMATE §4.1.1"]
+    difficulty: 1
+    tags: [generic-metamodel, interface]
+  - id: A1-106
+    unit: A1
+    objective: "A1.1"
+    lesson: A1/01_purpose_and_generic_metamodel
+    stem: "Which generic element represents explicitly defined behaviour that is exposed to the environment?"
+    options:
+      - {key: A, text: "Interface", why: "An interface is structure: the point of access through which the behaviour is reached."}
+      - {key: B, text: "Function", why: "A function is internal behaviour grouped by criteria such as resources or skills."}
+      - {key: C, text: "Service", correct: true}
+      - {key: D, text: "Interaction", why: "An interaction is collective internal behaviour performed by two or more active structure elements."}
+    explanation: "The external behaviour element is the service: the externally visible behaviour of a providing system, accessible through interfaces."
+    refs: ["ARCHIMATE §4.1.2"]
+    difficulty: 1
+    tags: [generic-metamodel, service]
+  - id: A1-107
+    unit: A1
+    objective: "A1.1"
+    lesson: A1/01_purpose_and_generic_metamodel
+    stem: "How does the generic metamodel distinguish a process from a function?"
+    options:
+      - {key: A, text: "A process is performed by people and a function by software", why: "Both are internal behaviour that any active structure element may perform; the distinction is not who performs it."}
+      - {key: B, text: "A process is a sequence of behaviours achieving a result; a function is behaviour grouped by criteria such as skills, resources or location and managed as a whole", correct: true}
+      - {key: C, text: "A process is external behaviour and a function is internal behaviour", why: "Both are internal behaviour; the external behaviour element is the service."}
+      - {key: D, text: "A function can be decomposed and a process cannot", why: "Processes and functions can both be composed of, or aggregate, other internal behaviour, in either direction."}
+    explanation: "A process is a sequence of behaviours that achieves a specific result; a function is a collection of behaviour based on criteria such as required resources, competencies or location, managed, performed or implemented as a whole."
+    refs: ["ARCHIMATE §4.2"]
+    difficulty: 2
+    tags: [generic-metamodel, process, function]
+  - id: A1-108
+    unit: A1
+    objective: "A1.1"
+    lesson: A1/01_purpose_and_generic_metamodel
+    stem: "Which statement about the Grouping element is correct?"
+    options:
+      - {key: A, text: "A grouping provides a separate visualization of the concepts it contains, like a view", why: "The specification explicitly says grouping is not to be confused with a view; it adds structure within a view but is not a separate visualization."}
+      - {key: B, text: "A concept may belong to at most one grouping", why: "Concepts may be aggregated by multiple, overlapping groups."}
+      - {key: C, text: "A grouping may aggregate or compose elements and relationships of the same or different types", correct: true}
+      - {key: D, text: "A grouping may only contain elements from a single layer", why: "Composite elements may combine concepts from multiple aspects or layers."}
+    explanation: "Grouping aggregates or composes an arbitrary set of concepts, elements and/or relationships, of the same or different types, with overlapping groups allowed. It is not a view."
+    refs: ["ARCHIMATE §4.5.1"]
+    difficulty: 2
+    tags: [composite, grouping]
+  - id: A1-109
+    unit: A1
+    objective: "A1.1"
+    lesson: A1/01_purpose_and_generic_metamodel
+    stem: "Which relationship is used from a Location to the structure elements located there?"
+    options:
+      - {key: A, text: "Assignment", why: "Assignment allocates responsibility or execution; location uses aggregation."}
+      - {key: B, text: "Aggregation", correct: true}
+      - {key: C, text: "Serving", why: "Serving models service provision, not placement."}
+      - {key: D, text: "Association", why: "Association is the generic fallback; the metamodel specifies aggregation for location."}
+    explanation: "A location aggregates the (active and passive) structure elements located there, and may also aggregate behaviour elements to show where behaviour is performed."
+    refs: ["ARCHIMATE §4.5.2"]
+    difficulty: 2
+    tags: [composite, location, relationship]
+  - id: A1-110
+    unit: A1
+    objective: "A1.1"
+    lesson: A1/01_purpose_and_generic_metamodel
+    stem: "Which of the following does the ArchiMate language intentionally NOT support?"
+    options:
+      - {key: A, text: "The distinction between an external (black-box) and internal (white-box) view", why: "This distinction is explicitly supported through services and interfaces."}
+      - {key: B, text: "The distinction between types and instances", correct: true}
+      - {key: C, text: "Conceptual, logical and physical levels of abstraction", why: "Business object, data object and artifact linked by realization give exactly these levels."}
+      - {key: D, text: "Realization between application components", why: "Realization between application components, and between nodes, is explicitly allowed."}
+    explanation: "At the Enterprise Architecture level, types and exemplars are modelled rather than instances; a business process does not describe one execution of it."
+    refs: ["ARCHIMATE §3.6"]
+    difficulty: 2
+    tags: [abstraction, negative]
+  - id: A1-111
+    unit: A1
+    objective: "A1.1"
+    lesson: A1/01_purpose_and_generic_metamodel
+    stem: "In the generic metamodel, which element represents a unit of collective behaviour that must be performed by two or more internal active structure elements?"
+    options:
+      - {key: A, text: "Collaboration", why: "A collaboration is the aggregate of active structure elements that performs the behaviour, not the behaviour itself."}
+      - {key: B, text: "Interaction", correct: true}
+      - {key: C, text: "Service", why: "A service is exposed behaviour, not necessarily collective."}
+      - {key: D, text: "Junction", why: "A junction is a relationship connector, not an element."}
+    explanation: "An interaction is collective internal behaviour performed by two or more active structure elements, either assigned directly or aggregated in a collaboration."
+    refs: ["ARCHIMATE §4.2"]
+    difficulty: 2
+    tags: [generic-metamodel, interaction, collaboration]
+  # ------------------------------------------------------------ A1.2 aspects, layers, framework
+  - id: A1-112
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    stem: "Which aspect of the ArchiMate Core Framework represents the subjects of activity, such as business actors, application components and devices?"
+    options:
+      - {key: A, text: "Behaviour", why: "Behaviour is what the subjects do: processes, functions, events, services."}
+      - {key: B, text: "Passive structure", why: "Passive structure is what behaviour is performed on."}
+      - {key: C, text: "Active structure", correct: true}
+      - {key: D, text: "Motivation", why: "Motivation is not one of the three core aspects and represents reasons, not subjects."}
+    explanation: "Active structure elements are the subjects of the sentence: the actors, components and devices that display behaviour."
+    refs: ["ARCHIMATE §3.4"]
+    difficulty: 1
+    tags: [aspects, active-structure]
+  - id: A1-113
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    stem: "A Business Object belongs to which aspect?"
+    options:
+      - {key: A, text: "Active structure", why: "A business object cannot perform behaviour."}
+      - {key: B, text: "Passive structure", correct: true}
+      - {key: C, text: "Behaviour", why: "It is a noun, not a verb; nothing happens in a business object."}
+      - {key: D, text: "Composite", why: "Composite elements such as Grouping span aspects; a business object sits in one."}
+    explanation: "Passive structure represents the objects on which behaviour is performed, usually information objects in the Business Layer."
+    refs: ["ARCHIMATE §3.4", "ARCHIMATE §4.1.3"]
+    difficulty: 1
+    tags: [aspects, passive-structure]
+  - id: A1-114
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    stem: "How many cells does the ArchiMate Core Framework contain, and what are its dimensions?"
+    options:
+      - {key: A, text: "Six cells: two aspects by three layers", why: "There are three aspects, not two."}
+      - {key: B, text: "Nine cells: three aspects by three layers", correct: true}
+      - {key: C, text: "Twelve cells: four aspects by three layers", why: "Motivation is added only in the Full Framework, not the core."}
+      - {key: D, text: "Fifteen cells: three aspects by five layers", why: "Strategy and Implementation & Migration are Full Framework additions."}
+    explanation: "The Core Framework is a nine-cell grid: the Business, Application and Technology layers against the passive structure, behaviour and active structure aspects."
+    refs: ["ARCHIMATE §3.4"]
+    difficulty: 1
+    tags: [core-framework]
+  - id: A1-115
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    stem: "Which relationship is described as the most important one between the core layers, in line with service orientation?"
+    options:
+      - {key: A, text: "Realization", why: "Realization is the second type of inter-layer link, e.g. a data object realizing a business object."}
+      - {key: B, text: "Serving", correct: true}
+      - {key: C, text: "Assignment", why: "Assignment links active structure to behaviour within a layer, not layers to each other."}
+      - {key: D, text: "Triggering", why: "Triggering is a dynamic relationship between behaviour elements, not the inter-layer link."}
+    explanation: "Serving (formerly 'used by') shows how the elements of one layer are served by the services of another; realization is the second cross-layer link."
+    refs: ["ARCHIMATE §3.3"]
+    difficulty: 1
+    tags: [layers, serving]
+  - id: A1-116
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    stem: "Which of the following is added by the Full Framework but is NOT part of the Core Framework?"
+    options:
+      - {key: A, text: "The Technology Layer", why: "Technology is one of the three core layers."}
+      - {key: B, text: "The passive structure aspect", why: "Passive structure is one of the three core aspects."}
+      - {key: C, text: "The Strategy layer", correct: true}
+      - {key: D, text: "The behaviour aspect", why: "Behaviour is one of the three core aspects."}
+    explanation: "The Full Framework adds the Motivation aspect and the Strategy, Physical and Implementation & Migration elements to the core's three layers and three aspects."
+    refs: ["ARCHIMATE §3.5"]
+    difficulty: 1
+    tags: [full-framework]
+  - id: A1-117
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    stem: "Where do the physical elements (Equipment, Facility, Distribution Network, Material) sit in the Full Framework?"
+    options:
+      - {key: A, text: "In a separate Physical layer below Technology", why: "There is no separate physical layer; the physical elements are included in the Technology Layer."}
+      - {key: B, text: "In the Technology Layer, as core elements", correct: true}
+      - {key: C, text: "In the Implementation & Migration layer", why: "Implementation & Migration holds work packages, deliverables, plateaus and gaps."}
+      - {key: D, text: "In the Strategy layer as resources", why: "Physical assets may realize a Resource, but the physical elements themselves are Technology Layer elements."}
+    explanation: "The physical elements are included in the Technology Layer for modelling facilities, equipment, distribution networks and materials, and as such are core elements."
+    refs: ["ARCHIMATE §3.5"]
+    difficulty: 2
+    tags: [full-framework, physical]
+  - id: A1-118
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    stem: "Which statement about an 'information layer' in ArchiMate is correct?"
+    options:
+      - {key: A, text: "The Full Framework defines an Information layer between Business and Application", why: "No such layer exists."}
+      - {key: B, text: "Information is modelled only in the Application Layer as data objects", why: "Business objects and artifacts model information in the other layers too."}
+      - {key: C, text: "There is no specific information layer; passive structure elements represent information across the layers", correct: true}
+      - {key: D, text: "Information is modelled with the Meaning element in the motivation aspect", why: "Meaning captures interpretation, not the information entity itself."}
+    explanation: "The language does not define a layer for information; business objects, data objects and artifacts represent information entities in their respective layers."
+    refs: ["ARCHIMATE §3.5"]
+    difficulty: 2
+    tags: [full-framework, information]
+  - id: A1-119
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    stem: "In the standard notation, what does a box with rounded corners indicate?"
+    options:
+      - {key: A, text: "A structure element", why: "Structure elements have square corners."}
+      - {key: B, text: "A behaviour element", correct: true}
+      - {key: C, text: "A motivation element", why: "Motivation elements have diagonal corners."}
+      - {key: D, text: "An abstract (non-instantiable) concept", why: "Abstract concepts are shown in white with italic labels in metamodel figures, not by corner shape."}
+    explanation: "Square corners denote structure, round corners behaviour, and diagonal corners motivation elements."
+    refs: ["ARCHIMATE §3.9"]
+    difficulty: 1
+    tags: [notation, corners]
+  - id: A1-120
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    stem: "What formal meaning does the colour of an element carry in an ArchiMate model?"
+    options:
+      - {key: A, text: "Yellow formally denotes the Business Layer", why: "That is a convention used in the specification's examples, not a formal rule."}
+      - {key: B, text: "Colour distinguishes aspects: light grey passive, dark grey active", why: "Shades of grey are used in the metamodel figures of the standard, not as semantics of models."}
+      - {key: C, text: "None; colours have no formal semantics and their use is left to the modeller", correct: true}
+      - {key: D, text: "Colour indicates whether an element is baseline or target", why: "The language attaches no such meaning to colour."}
+    explanation: "In ArchiMate models there are no formal semantics assigned to colours. The yellow/blue/green layer convention is just that, a convention."
+    refs: ["ARCHIMATE §3.9"]
+    difficulty: 2
+    tags: [notation, colour]
+  - id: A1-121
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    stem: "A letter in the top-left corner of an element may be used as a notational cue. What does the letter 'P' denote?"
+    options:
+      - {key: A, text: "Process", why: "The letters denote framework parts, not element types."}
+      - {key: B, text: "Physical element", correct: true}
+      - {key: C, text: "Passive structure", why: "Aspects are not marked by letters; layers and the motivation aspect are."}
+      - {key: D, text: "Plateau", why: "Plateau is an Implementation & Migration element, marked 'I'."}
+    explanation: "The optional letters M, S, B, A, T, P and I denote Motivation, Strategy, Business, Application, Technology, Physical and Implementation & Migration elements."
+    refs: ["ARCHIMATE §3.9"]
+    difficulty: 2
+    tags: [notation, cues]
+  - id: A1-122
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    stem: "Which of the following pairs is an example of the realization link between core layers given in the specification?"
+    options:
+      - {key: A, text: "A business process realizes an application service", why: "Realization across layers goes from lower to higher: application realizes business, not the reverse."}
+      - {key: B, text: "A data object realizes a business object", correct: true}
+      - {key: C, text: "A business actor realizes an application component", why: "Actors do not realize components; the direction and the element pair are both wrong."}
+      - {key: D, text: "A technology service realizes a business role", why: "Services serve; a role is active structure and is not realized by a technology service."}
+    explanation: "Elements in lower layers may realize comparable elements in higher layers, e.g. a data object realizing a business object or an artifact realizing a data object or application component."
+    refs: ["ARCHIMATE §3.3"]
+    difficulty: 2
+    tags: [layers, realization]
+  # ------------------------------------------------------------ A1.3 relationship to TOGAF and other standards
+  - id: A1-123
+    unit: A1
+    objective: "A1.3"
+    lesson: A1/03_archimate_and_other_standards
+    stem: "How does the ArchiMate Specification describe its relationship to the TOGAF framework?"
+    options:
+      - {key: A, text: "ArchiMate replaces the TOGAF Content Framework", why: "The two complement each other; nothing is replaced."}
+      - {key: B, text: "ArchiMate is a framework that competes with the ADM", why: "The specification reiterates that ArchiMate is a modelling language, not a framework."}
+      - {key: C, text: "The two complement each other: TOGAF defines an architecture development process, ArchiMate a modelling language", correct: true}
+      - {key: D, text: "ArchiMate is a subset of the TOGAF standard", why: "They are separate Open Group standards."}
+    explanation: "The standards complement each other with respect to the definition of an architecture development process and of a modelling language, overlap in viewpoints and repository, and can be used together."
+    refs: ["ARCHIMATE §D.1"]
+    difficulty: 1
+    tags: [togaf]
+  - id: A1-124
+    unit: A1
+    objective: "A1.3"
+    lesson: A1/03_archimate_and_other_standards
+    stem: "The three core layers of ArchiMate correspond most closely to which part of the TOGAF ADM?"
+    options:
+      - {key: A, text: "The Preliminary Phase and Phase A", why: "Those are covered approximately by the motivation and strategy elements."}
+      - {key: B, text: "Phases B, C and D: Business, Information Systems and Technology Architecture", correct: true}
+      - {key: C, text: "Phases E and F", why: "Opportunities & Solutions and Migration Planning map to the Implementation & Migration elements."}
+      - {key: D, text: "Requirements Management only", why: "Requirements Management maps to the motivation elements."}
+    explanation: "The structure of the core language closely corresponds with the three main architectures addressed in the ADM; the strategy, motivation and implementation & migration elements map approximately onto the rest."
+    refs: ["ARCHIMATE §D.1"]
+    difficulty: 1
+    tags: [togaf, adm]
+  - id: A1-125
+    unit: A1
+    objective: "A1.3"
+    lesson: A1/03_archimate_and_other_standards
+    stem: "Which statement about ArchiMate viewpoints and TOGAF viewpoints is correct?"
+    options:
+      - {key: A, text: "There is a one-to-one mapping between them", why: "The specification says explicitly that there is no one-to-one mapping."}
+      - {key: B, text: "ArchiMate viewpoint definitions are more detailed, so TOGAF viewpoints require some interpretation to express in ArchiMate", correct: true}
+      - {key: C, text: "TOGAF viewpoints cannot be expressed in ArchiMate at all", why: "The viewpoint mechanism lends itself well to defining TOGAF viewpoints with ArchiMate concepts."}
+      - {key: D, text: "ArchiMate has no viewpoint concept; only TOGAF does", why: "Both use views and viewpoints; ArchiMate adds a viewpoint mechanism."}
+    explanation: "Because ArchiMate is a language, its viewpoints specify stakeholders, concerns, abstraction level and entity types precisely, whereas TOGAF presents them more generally; some transformation is required."
+    refs: ["ARCHIMATE §D.1"]
+    difficulty: 2
+    tags: [togaf, viewpoints]
+  - id: A1-126
+    unit: A1
+    objective: "A1.3"
+    lesson: A1/03_archimate_and_other_standards
+    stem: "Which BIZBOK core domains does the specification say are explicitly covered by ArchiMate's Business Layer and strategy elements?"
+    options:
+      - {key: A, text: "Capabilities, value streams, organization and information", correct: true}
+      - {key: B, text: "Policies, metrics, initiatives and products", why: "These are the other BIZBOK domains, which can also be described but are not the core four."}
+      - {key: C, text: "Processes, data, applications and technology", why: "Those are TOGAF architecture domains, not BIZBOK's core domains."}
+      - {key: D, text: "Stakeholders, strategies and courses of action", why: "Stakeholders and strategies are among the other BIZBOK domains."}
+    explanation: "The BIZBOK core domains of capabilities, value streams, organization and information are explicitly covered; the other domains can also be described with appropriate concepts."
+    refs: ["ARCHIMATE §D.2"]
+    difficulty: 2
+    tags: [bizbok]
+  - id: A1-127
+    unit: A1
+    objective: "A1.3"
+    lesson: A1/03_archimate_and_other_standards
+    stem: "How does the specification characterize the role of an ArchiMate model relative to detailed BPMN or UML models?"
+    options:
+      - {key: A, text: "As a replacement for them at the same level of detail", why: "ArchiMate is not intended for detailed workflow or software design."}
+      - {key: B, text: "As a high-level umbrella that ties the detailed models together through shared concepts", correct: true}
+      - {key: C, text: "As an executable specification generated from them", why: "ArchiMate is not executable; BPMN can be."}
+      - {key: D, text: "As entirely disjoint, with no overlapping concepts", why: "Overlap is the deliberate design: shared concepts bridge the languages."}
+    explanation: "ArchiMate deliberately overlaps with other languages; shared concepts bridge them so the ArchiMate model works as an umbrella over more detailed models."
+    refs: ["ARCHIMATE §D.3"]
+    difficulty: 1
+    tags: [other-languages]
+  - id: A1-128
+    unit: A1
+    objective: "A1.3"
+    lesson: A1/03_archimate_and_other_standards
+    stem: "Which of the following is a correct comparison of ArchiMate and BPMN?"
+    options:
+      - {key: A, text: "ArchiMate supports detailed sub-process and task modelling; BPMN gives the enterprise context", why: "It is the other way round."}
+      - {key: B, text: "ArchiMate is for high-level processes in their enterprise context; BPMN for detailed workflow down to executable level", correct: true}
+      - {key: C, text: "Both languages have the same fine-grained set of event and gateway types", why: "ArchiMate has one process element and junctions; BPMN has many event, task and gateway types."}
+      - {key: D, text: "Neither language has a concept of event", why: "Both share the concepts of process and event."}
+    explanation: "ArchiMate is typically used for high-level processes and their relations to the enterprise context; BPMN supports detailed workflow modelling but lacks the broader context."
+    refs: ["ARCHIMATE §D.4"]
+    difficulty: 1
+    tags: [bpmn]
+  - id: A1-129
+    unit: A1
+    objective: "A1.3"
+    lesson: A1/03_archimate_and_other_standards
+    stem: "A BPMN participant (pool) corresponds to which ArchiMate concept(s)?"
+    options:
+      - {key: A, text: "Business process", why: "The BPMN process corresponds to the ArchiMate business process; the participant is who performs it."}
+      - {key: B, text: "Business role or business actor, or an application component for automated processes", correct: true}
+      - {key: C, text: "Business service", why: "A pool is a performer, not an exposed behaviour."}
+      - {key: D, text: "Junction", why: "A junction combines relationships; it has nothing to do with participants."}
+    explanation: "The specification maps the BPMN participant to the ArchiMate business role or actor, or to an application component when the process is automated."
+    refs: ["ARCHIMATE §D.4"]
+    difficulty: 2
+    tags: [bpmn]
+  - id: A1-130
+    unit: A1
+    objective: "A1.3"
+    lesson: A1/03_archimate_and_other_standards
+    stem: "Why is the ArchiMate serving relationship NOT equivalent to a UML dependency, despite similar notation?"
+    options:
+      - {key: A, text: "Serving is only allowed between layers, whereas UML dependency is within a layer", why: "Serving may also be used within a layer."}
+      - {key: B, text: "Their directions differ: serving points in the direction of service delivery, regardless of who calls whom", correct: true}
+      - {key: C, text: "Serving is a structural relationship and UML dependency is dynamic", why: "Serving is a dependency relationship in ArchiMate; the difference is direction and meaning, not category."}
+      - {key: D, text: "UML has no dependency relationship", why: "It does; that is the point of the comparison."}
+    explanation: "UML dependency often models calls; ArchiMate serving denotes the direction of service delivery independent of whether the service is called or offered proactively."
+    refs: ["ARCHIMATE §D.5"]
+    difficulty: 2
+    tags: [uml, serving]
+  - id: A1-131
+    unit: A1
+    objective: "A1.3"
+    lesson: A1/03_archimate_and_other_standards
+    stem: "Which ArchiMate element corresponds to the UML execution environment?"
+    options:
+      - {key: A, text: "Node", why: "Node corresponds to the UML node."}
+      - {key: B, text: "Device", why: "Device corresponds to the UML device."}
+      - {key: C, text: "System Software", correct: true}
+      - {key: D, text: "Artifact", why: "Artifact corresponds to the UML artifact."}
+    explanation: "Node, artifact, device, system software and path have direct UML counterparts; system software is called execution environment in UML."
+    refs: ["ARCHIMATE §D.5"]
+    difficulty: 2
+    tags: [uml]
+  - id: A1-132
+    unit: A1
+    objective: "A1.3"
+    lesson: A1/03_archimate_and_other_standards
+    stem: "Which ArchiMate element corresponds to the 'influencer' concept of the Business Motivation Model (BMM)?"
+    options:
+      - {key: A, text: "Goal", why: "BMM ends map onto Goal."}
+      - {key: B, text: "Driver", correct: true}
+      - {key: C, text: "Principle", why: "BMM directives map onto Principle, Requirement and Constraint."}
+      - {key: D, text: "Stakeholder", why: "Stakeholder is not the BMM influencer counterpart."}
+    explanation: "BMM influencers correspond to Driver, its assessments map directly onto Assessment, ends map onto Goal, directives onto Principle/Requirement/Constraint, and course of action onto Course of Action."
+    refs: ["ARCHIMATE §D.6"]
+    difficulty: 2
+    tags: [bmm]
+  - id: A1-133
+    unit: A1
+    objective: "A1.3"
+    lesson: A1/03_archimate_and_other_standards
+    stem: "Which difference between UML and ArchiMate does the specification highlight regarding services and interfaces?"
+    options:
+      - {key: A, text: "UML has a service element but no interface element", why: "It is the reverse: UML has interfaces but no separate service concept."}
+      - {key: B, text: "ArchiMate separates a service from the interface that offers it, so one service can be offered through several interfaces; UML encapsulates the behaviour within the interface", correct: true}
+      - {key: C, text: "An ArchiMate application interface is exactly a UML interface", why: "The specification says an ArchiMate application interface does not equate directly with a UML interface."}
+      - {key: D, text: "ArchiMate services can only be offered through one interface", why: "The separation exists precisely so that a service can be offered via multiple interfaces."}
+    explanation: "UML has no separate service concept; ArchiMate distinguishes interfaces from the services they provide, which is why an ArchiMate application interface is not a UML interface."
+    refs: ["ARCHIMATE §D.5"]
+    difficulty: 3
+    tags: [uml, service, interface]
+  # ------------------------------------------------------------ A1.4 customization, exchange format, conformance
+  - id: A1-134
+    unit: A1
+    objective: "A1.4"
+    lesson: A1/04_customization_exchange_and_conformance
+    stem: "Which two customization mechanisms does the ArchiMate language define?"
+    options:
+      - {key: A, text: "Adding new layers and adding new aspects", why: "Layers and aspects are fixed by the framework; customization does not add them."}
+      - {key: B, text: "Adding attributes to concepts (profiles) and specialization of concepts", correct: true}
+      - {key: C, text: "Defining new relationship categories and new junction types", why: "New relationships come only through specialization of existing ones."}
+      - {key: D, text: "Nesting and colour coding", why: "Those are notational options, not customization mechanisms."}
+    explanation: "Chapter 14 defines two mechanisms: adding attributes through profiles, and specialization of elements and relationships. Neither extends the metamodel, which is why the chapter was renamed from 'extension'."
+    refs: ["ARCHIMATE §14", "ARCHIMATE §14.1", "ARCHIMATE §14.2"]
+    difficulty: 1
+    tags: [customization]
+  - id: A1-135
+    unit: A1
+    objective: "A1.4"
+    lesson: A1/04_customization_exchange_and_conformance
+    stem: "What is a profile in the ArchiMate customization mechanism?"
+    options:
+      - {key: A, text: "A named viewpoint restricted to a stakeholder", why: "That is a viewpoint, defined by the viewpoint mechanism in chapter 13."}
+      - {key: B, text: "A data structure of typed attributes, defined separately from the language and dynamically coupled to concepts", correct: true}
+      - {key: C, text: "A colour scheme applied to a layer", why: "Colour has no formal meaning and is not a profile."}
+      - {key: D, text: "A subset of the metamodel a tool chooses to implement", why: "Conformance requires the whole language; a profile enriches concepts with attributes."}
+    explanation: "A profile is a set of typed attributes, each possibly with a default, that the user may assign to a model concept when needed; it may be pre-defined or user-defined."
+    refs: ["ARCHIMATE §14.1"]
+    difficulty: 1
+    tags: [customization, profile]
+  - id: A1-136
+    unit: A1
+    objective: "A1.4"
+    lesson: A1/04_customization_exchange_and_conformance
+    stem: "Which of the following is NOT listed among the basic attribute data types allowed in a profile?"
+    options:
+      - {key: A, text: "Currency", why: "Currency is a listed basic type."}
+      - {key: B, text: "URL", why: "URL is a listed basic type."}
+      - {key: C, text: "Enumeration", correct: true}
+      - {key: D, text: "Boolean", why: "Boolean is a listed basic type."}
+    explanation: "The basic types are string, integer, real, boolean, currency, date and URL; the complex types are structure and list. Enumeration is not listed."
+    refs: ["ARCHIMATE §14.1"]
+    difficulty: 3
+    tags: [customization, profile, negative]
+  - id: A1-137
+    unit: A1
+    objective: "A1.4"
+    lesson: A1/04_customization_exchange_and_conformance
+    stem: "What does a specialized element inherit from the element it specializes?"
+    options:
+      - {key: A, text: "Nothing; it is a new element with its own definition", why: "Specialization is defined by inheritance; that is its point."}
+      - {key: B, text: "Its properties, including the relationships allowed for it, with possible further restrictions", correct: true}
+      - {key: C, text: "Only its notation", why: "Notation may even differ; the inherited part is the properties and permitted relationships."}
+      - {key: D, text: "Its instances", why: "The language has no type/instance distinction."}
+    explanation: "Specialized elements inherit the properties of their generalized elements including the permitted relationships, though some relationships allowed for the specialization need not be allowed for the parent."
+    refs: ["ARCHIMATE §14.2"]
+    difficulty: 2
+    tags: [customization, specialization]
+  - id: A1-138
+    unit: A1
+    objective: "A1.4"
+    lesson: A1/04_customization_exchange_and_conformance
+    stem: "What is the default notation for a specialized concept?"
+    options:
+      - {key: A, text: "A different corner shape", why: "Corner shapes distinguish structure, behaviour and motivation, not specializations."}
+      - {key: B, text: "The UML stereotype notation with guillemets, e.g. «specialization name»", correct: true}
+      - {key: C, text: "A letter in the top-left corner", why: "Letters cue framework parts such as M, S, B, A, T, P, I."}
+      - {key: D, text: "A dashed border", why: "Not a defined convention."}
+    explanation: "The default is the UML guillemet stereotype notation; specific icons, colours, fonts or symbols may be used instead, and several specializations are listed comma-separated."
+    refs: ["ARCHIMATE §14.2"]
+    difficulty: 2
+    tags: [customization, notation]
+  - id: A1-139
+    unit: A1
+    objective: "A1.4"
+    lesson: A1/04_customization_exchange_and_conformance
+    stem: "In the informative examples, 'Risk' and 'Vulnerability' from the Risk and Security Overlay are specializations of which element?"
+    options:
+      - {key: A, text: "Driver", why: "Driver is specialized as Metric in the examples."}
+      - {key: B, text: "Assessment", correct: true}
+      - {key: C, text: "Constraint", why: "No such specialization is listed."}
+      - {key: D, text: "Goal", why: "Goal is specialized as Business Objective and Control Objective."}
+    explanation: "Table 16 specializes Assessment as Vulnerability and Risk; Driver as Metric; Goal as Business Objective and Control Objective; Principle as Business Policy; Requirement as Business Rule and Control Measure."
+    refs: ["ARCHIMATE §14.2.5"]
+    difficulty: 2
+    tags: [customization, specialization, motivation]
+  - id: A1-140
+    unit: A1
+    objective: "A1.4"
+    lesson: A1/04_customization_exchange_and_conformance
+    stem: "'Logical Application Component' and 'Physical Application Component' are shown as specializations of which element?"
+    options:
+      - {key: A, text: "Application Function", why: "Functions may model logical components, but the listed specializations are of the component element."}
+      - {key: B, text: "Node", why: "Node is specialized as Logical/Physical Technology Component."}
+      - {key: C, text: "Application Component", correct: true}
+      - {key: D, text: "Grouping", why: "Grouping is specialized as Data Store together with other elements, not as logical/physical components."}
+    explanation: "Both are specializations of Application Component, which is how the TOGAF ABB/SBB distinction can be carried into ArchiMate."
+    refs: ["ARCHIMATE §14.2.2"]
+    difficulty: 2
+    tags: [customization, specialization, application]
+  - id: A1-141
+    unit: A1
+    objective: "A1.4"
+    lesson: A1/04_customization_exchange_and_conformance
+    stem: "What is the ArchiMate Model Exchange File Format?"
+    options:
+      - {key: A, text: "A binary format for storing diagrams in a single tool", why: "It is an XML format for exchange between tools."}
+      - {key: B, text: "An XML-based format for exchanging models and diagrams between tools", correct: true}
+      - {key: C, text: "An alternative graphical notation", why: "It is a file format, not a notation."}
+      - {key: D, text: "A profile definition language", why: "It defines how attribute types are encoded, but it is not the profile definition language itself."}
+    explanation: "The ecosystem supports an XML exchange format that allows model and diagram exchange between tools; it also defines how profile attribute types are encoded."
+    refs: ["ARCHIMATE §1.1", "ARCHIMATE §14.1"]
+    difficulty: 1
+    tags: [exchange-format]
+  - id: A1-142
+    unit: A1
+    objective: "A1.4"
+    lesson: A1/04_customization_exchange_and_conformance
+    stem: "Which of the following is OPTIONAL for a conforming implementation of the ArchiMate language?"
+    options:
+      - {key: A, text: "The viewpoint mechanism of chapter 13", why: "Mandatory: a conforming implementation shall support it."}
+      - {key: B, text: "The example viewpoints of Appendix C", correct: true}
+      - {key: C, text: "The relationship tables of Appendix B", why: "Mandatory: shall support the relationships between elements as specified in Appendix B."}
+      - {key: D, text: "The standard iconography summarized in Appendix A", why: "Mandatory."}
+    explanation: "Every item in the conformance list is 'shall' except the example viewpoints in Appendix C, which a conforming implementation 'may' support."
+    refs: ["ARCHIMATE §1.3"]
+    difficulty: 2
+    tags: [conformance]
+  - id: A1-143
+    unit: A1
+    objective: "A1.4"
+    lesson: A1/04_customization_exchange_and_conformance
+    stem: "How must a conforming implementation support the language customization mechanisms of chapter 14?"
+    options:
+      - {key: A, text: "It need not support them at all", why: "Support is required."}
+      - {key: B, text: "In an implementation-defined manner", correct: true}
+      - {key: C, text: "Exactly as specified, using the guillemet notation only", why: "The manner is left to the implementation; other notations are allowed."}
+      - {key: D, text: "Only for pre-defined profiles", why: "User-defined profiles are part of the mechanism."}
+    explanation: "The conformance clause says a conforming implementation shall support the customization mechanisms of chapter 14 in an implementation-defined manner."
+    refs: ["ARCHIMATE §1.3"]
+    difficulty: 2
+    tags: [conformance, customization]

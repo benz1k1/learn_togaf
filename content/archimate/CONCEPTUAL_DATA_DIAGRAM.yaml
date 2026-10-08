@@ -1,0 +1,24 @@
+# Northgate Bank — Conceptual Data Diagram (Phase C) redrawn as an Information Structure view.
+# Same five entities as the TOGAF drawing; cardinalities become association labels, the
+# two payment kinds become specializations of Transaction.
+id: CONCEPTUAL_DATA_DIAGRAM
+title: "Northgate Bank — Conceptual Data Diagram as an Information Structure view"
+viewpoint: Information Structure
+elements:
+  - {id: customer, type: business_object, name: "Customer", col: 0, row: 0}
+  - {id: account, type: business_object, name: "Account", col: 1, row: 0}
+  - {id: card, type: business_object, name: "Card", col: 2, row: 0}
+  - {id: loan, type: business_object, name: "Loan", col: 0, row: 1}
+  - {id: txn, type: business_object, name: "Transaction", col: 2, row: 1}
+  - {id: transfer, type: business_object, name: "Transfer", col: 1, row: 2}
+  - {id: cardpay, type: business_object, name: "Card Payment", col: 3, row: 2}
+relations:
+  - {from: customer, to: account, type: aggregation, label: "holds 1..*"}
+  - {from: account, to: card, type: aggregation, label: "linked to 0..*"}
+  - {from: card, to: txn, type: association, label: "records 0..*"}
+  - {from: customer, to: loan, type: association, label: "borrows 0..*"}
+  - {from: loan, to: account, type: association, label: "repaid from 1"}
+  - {from: transfer, to: txn, type: specialization}
+  - {from: cardpay, to: txn, type: specialization}
+notes:
+  - {text: "Entities only: no attributes, no keys. Cardinalities are the association labels.", col: 0, row: 2, w: 1, h: 1}

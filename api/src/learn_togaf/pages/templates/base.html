@@ -58,7 +58,7 @@
       {% endfor %}
     </ul>
     <div class="px-3 py-2 text-xs text-base-content/50" x-show="!sidebarCollapsed">
-      {% if exam_date %}<i class="mdi mdi-calendar"></i> exam {{ exam_date | fmt_date }}{% endif %}
+      {% if next_exam %}<i class="mdi mdi-calendar"></i> {{ next_exam[0] }} {{ next_exam[1] | fmt_date }}{% endif %}
     </div>
   </nav>
 

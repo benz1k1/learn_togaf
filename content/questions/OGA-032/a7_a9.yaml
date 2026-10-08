@@ -1,0 +1,432 @@
+# ArchiMate Part 2 scenarios for A7–A9 (learn_sabsa_archimate.md §4.3). Authored, original;
+# each situation is a fictional enterprise described in prose, gradient-scored 5/3/1/0.
+code: A7_A9_SCENARIOS
+exam: OGA-032
+name: "ArchiMate Part 2 scenarios, A7–A9"
+kind: DRILL
+source: authored
+questions:
+  - id: A7-S01
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    scenario: |
+      Halvard Freight is a mid-sized logistics company running a road network across three
+      countries. Its enterprise architecture team keeps a single ArchiMate model in a shared
+      repository, and the model is detailed: every application function, every application
+      service and every business process is present.
+
+      The operations director has asked for a one-page picture of "which systems the Dispatch
+      process actually relies on". She does not want functions or services on the page. The
+      architect, Ruth, opens the model and finds the following chain for the dispatch area:
+
+      The application component "Route Planner" is assigned to the application function
+      "Compute Routes". "Compute Routes" is composed of the sub-function "Optimise Sequence".
+      "Optimise Sequence" realizes the application service "Routing Service". "Routing Service"
+      serves the business process "Dispatch Loads". Separately, "Dispatch Loads" is performed by
+      the business role "Dispatcher", to which the business actor "Regional Control Centre" is
+      assigned.
+
+      Ruth wants to draw a single relationship from "Route Planner" to "Dispatch Loads" so that
+      the director's page contains only the component, the process and the actor. A junior
+      colleague objects that a component "cannot serve a process, only a service can", and
+      suggests drawing an association instead so that "nobody can say it is wrong". A second
+      colleague suggests drawing a realization from the component to the process, reasoning that
+      "the component ultimately realizes what the process does". Ruth must decide what to draw and
+      be able to justify it from the derivation rules, because the model is subject to a
+      quarterly conformance review that rejects relationships the rules do not support.
+    question: "Which relationship should Ruth draw from 'Route Planner' to 'Dispatch Loads', and what is the justification?"
+    answers:
+      - key: A
+        points: 5
+        text: "A serving relationship. Assignment, composition and realization collapse under DR 2 to a realization from the component to the service (realization is the weakest link); DR 3 then transfers the source of the serving back along that structural relationship, giving component serves process — a valid derivation that may be drawn directly."
+        why: "Applies DR 2 for the structural chain and DR 3 for the structural-then-dependency join, names the weakest-link rule, and correctly classifies the result as valid rather than potential."
+      - key: B
+        points: 3
+        text: "A serving relationship, because the derivation rules allow the endpoints of a dependency to be moved back along a chain of structural relationships, so the serving from the service can start from the component."
+        why: "Right relationship and the right informal reading of DR 3, but does not show the DR 2 collapse of the three structural relationships first or state that the result is valid, which the conformance review requires."
+      - key: C
+        points: 1
+        text: "An association relationship, since association is always allowed between any two elements and cannot be challenged in review."
+        why: "Legal but throws away the information the director asked for; the derivation rules support a stronger, valid serving relationship, and derivation exists precisely so summaries make true statements."
+      - key: D
+        points: 0
+        text: "A realization relationship from the component to the process, because the component realizes the behaviour the process performs."
+        why: "No rule produces a realization here: the chain ends in a dependency, and DR 3 carries the dependency type through. Realization from an application component to a business process is not what the chain states."
+    open_book_hint: "Appendix B.2.2 (DR 2, strength ordering) and B.2.3 (DR 3); §5.7 for drawing derived relationships directly."
+    refs: ["ARCHIMATE §B.2.2", "ARCHIMATE §B.2.3", "ARCHIMATE §5.7"]
+    difficulty: 2
+    tags: [derivation, DR2, DR3]
+  - id: A7-S02
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    scenario: |
+      Merrow Health Trust operates four hospitals. Its architecture repository is reviewed by a
+      modelling standards board, which uses the Appendix B relationship tables as the sole
+      arbiter of whether a relationship may exist between two element types.
+
+      A newly seconded modeller, Dev, has submitted a view of the pharmacy area for approval. The
+      board's reviewer lists the relationships in the view as follows:
+
+      1. Business process "Dispense Medication" has an access relationship to business object
+         "Prescription", drawn with the arrowhead at the process end.
+      2. Business object "Prescription" has an access relationship to business process "Verify
+         Prescription", drawn with the arrowhead at the process end, which Dev explains means
+         "the prescription is read by verification".
+      3. Data object "Prescription Record" realizes business object "Prescription".
+      4. Application component "Pharmacy System" serves business process "Dispense Medication".
+      5. Business service "Medication Dispensing Service" realizes business process "Dispense
+         Medication", which Dev explains means "the service is what the process delivers".
+      6. Application service "Stock Check" is assigned to business process "Dispense Medication",
+         which Dev explains means "the process uses the service".
+      7. A grouping "Controlled Drugs Domain" composes the access relationship in item 1.
+
+      The reviewer's job is to say which relationships are permitted as drawn, which have the
+      correct type but the wrong direction, and which have the wrong type altogether. The board
+      does not accept "the tool let me draw it" as evidence, and it expects the reviewer to cite
+      the reason each disallowed relationship fails — the direction of the table lookup, the
+      passive-structure restrictions, or the always-allowed rules.
+    question: "Which assessment of the seven relationships is correct?"
+    answers:
+      - key: A
+        points: 5
+        text: "1, 3, 4 and 7 are permitted as drawn (a read access from process to object; a data object realizing a business object; a component serving a process, derivable through function, service and serving; a grouping composing a relationship). 2 is wrong in direction: the source of an access is always the behaviour element, so the object cannot be the source however the arrowhead is drawn. 5 is reversed: the process realizes the service. 6 is the wrong type: an application service serves a process, it is not assigned to it."
+        why: "Every item is judged correctly with the right reason: access direction independent of the arrowhead, realization from concrete to abstract, serving not assignment for a service supporting a process, and the composite element's power to compose a relationship."
+      - key: B
+        points: 3
+        text: "1, 3, 4 and 7 are permitted; 2, 5 and 6 are not. Item 2 fails because a business object is passive and cannot be a source of access; items 5 and 6 fail because they use the wrong relationship types."
+        why: "The verdicts are right and item 2's reason is right, but item 5 is a direction error with the correct type, not a type error, and the review requires that distinction."
+      - key: C
+        points: 1
+        text: "1, 2, 3 and 4 are permitted because access can be drawn in either direction to show read or write; 5 and 6 are permitted because the tool allows them; 7 is not permitted because relationships cannot be grouped."
+        why: "Misreads the access arrowhead as changing the source, accepts a reversed realization and a mistyped assignment, and denies the grouping its explicit power to compose relationships."
+      - key: D
+        points: 0
+        text: "All seven are permitted: association is always allowed between any two concepts, so any relationship the modeller draws is acceptable in a first draft."
+        why: "The always-allowed rule applies to association only; the view uses access, realization, serving and assignment, each governed by the table."
+    open_book_hint: "Appendix B.5 legend and tables; B.6 for grouping and relationships; §5.2.2 for the access direction note; §5.1.4 for the direction of realization."
+    refs: ["ARCHIMATE §B.5", "ARCHIMATE §B.6", "ARCHIMATE §5.2.2", "ARCHIMATE §5.1.4"]
+    difficulty: 3
+    tags: [relationship-table, direction, passive]
+  - id: A7-S03
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    scenario: |
+      Tessaly Mutual is an insurance company that has just refined a coarse ArchiMate model into a
+      finer one. Last year the application component "Policy Suite" was drawn as served by two
+      technology services, "Application Hosting" and "Document Storage". This year the team split
+      "Policy Suite" into two composed components, "Policy Front-end" and "Policy Back-end", and
+      added a specialization: "Motor Policy Suite" is a specialization of "Policy Suite" used by
+      the motor line of business.
+
+      Nobody revisited the serving relationships when the split was made. A newly bought analysis
+      tool now reports a list of "derived relationships available", including:
+
+      (i) "Application Hosting" serves "Policy Front-end";
+      (ii) "Document Storage" serves "Policy Front-end";
+      (iii) "Application Hosting" serves "Policy Back-end";
+      (iv) "Document Storage" serves "Policy Back-end";
+      (v) "Application Hosting" serves "Motor Policy Suite";
+      (vi) "Motor Policy Suite" is composed of "Policy Front-end".
+
+      The head of architecture, Imre, is being pressed by the tool vendor to "accept all derived
+      relationships into the model to keep it complete". The infrastructure team says that in
+      fact the front-end is a static web bundle that uses neither hosting service directly and
+      that only the back-end stores documents. Imre needs to explain to the steering group what
+      the tool is doing, which of the six relationships the language treats as certain and which
+      as merely candidates, and what he intends to do with them. He also wants to make the point
+      that the language distinguishes between the two kinds and that this distinction is exactly
+      why a modeller, not a tool, must make the final call.
+    question: "Which explanation and decision is the best?"
+    answers:
+      - key: A
+        points: 5
+        text: "All six are potential derivations, not valid ones: (i)–(iv) come from PDR 5 (a dependency on the whole might apply to a part), (v) and (vi) from the specialization rules PDR 1 and PDR 2 (a specialized element might inherit the general element's relationships). The specification says such derivations may be right or wrong depending on the model and leaves the decision to the modeller. Accept (iv) and, on the infrastructure team's evidence, reject (i)–(iii); accept (v) and (vi) as the almost-certain kind — composition and serving inherited by a specialization — after confirming them."
+        why: "Correctly classifies every item as potential, names the rules, applies the specification's guidance that the modeller decides, and uses the facts given to accept or reject each candidate."
+      - key: B
+        points: 3
+        text: "The relationships are potential derivations produced by the rules for specialization and for moving a dependency onto a part, so they are not certain; Imre should review each one with the infrastructure team rather than accept them wholesale."
+        why: "Right classification and right process, but does not commit to decisions on the six items the steering group is asking about or distinguish the near-certain specialization inheritances from the doubtful PDR 5 ones."
+      - key: C
+        points: 1
+        text: "The relationships are valid derivations under DR 3 and DR 4, because a dependency's endpoints can be moved along structural relationships; Imre should accept all six to keep the model consistent with the rules."
+        why: "DR 3 and DR 4 move endpoints toward the source of a structural relationship, i.e. from part to whole; moving them onto the parts is PDR 5 and is potential. Accepting all six contradicts the infrastructure facts."
+      - key: D
+        points: 0
+        text: "Derived relationships should never be added to a model because derivation is only for producing summary views; Imre should delete the split and restore the single 'Policy Suite' component so the tool stops reporting them."
+        why: "Derived relationships are valid model content, and undoing a legitimate refinement to silence a tool discards real architectural knowledge."
+    open_book_hint: "Appendix B.3 (the Suite example), B.3.1 (PDR 1–4 and the likelihood discussion), B.3.2 (PDR 5–6)."
+    refs: ["ARCHIMATE §B.3", "ARCHIMATE §B.3.1", "ARCHIMATE §B.3.2"]
+    difficulty: 3
+    tags: [derivation, potential, PDR5, specialization]
+  - id: A7-S04
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    scenario: |
+      Orrin Water is a regional utility. Its customer-connections process is being modelled for
+      the first time so that a new case-management system can be specified against it. The
+      process analyst has produced the following description in prose and asked the enterprise
+      architect, Sana, to turn it into an ArchiMate business-layer view:
+
+      "A connection request arrives (an event). It starts 'Assess Request'. When assessment is
+      complete, one of two things happens depending on the site survey: either 'Quote Standard
+      Connection' or 'Quote Complex Connection', never both. Whichever quote is produced, the
+      quote is passed to 'Issue Offer', which cannot begin until the quote exists. 'Issue Offer'
+      also receives the customer's credit rating from the separate 'Credit Check' function; the
+      offer is not held up waiting for the rating — if it is late, the offer goes out and the
+      rating is applied afterwards. Two departments, 'Networks' and 'Customer Services', must both
+      sign off before the offer is issued; either one alone is not sufficient."
+
+      Sana's first draft uses a triggering relationship for every arrow, including two separate
+      triggerings from 'Assess Request' to the two quote processes and a triggering from 'Credit
+      Check' to 'Issue Offer', and shows the two departments each assigned directly to 'Issue
+      Offer'. The process analyst reads it back and says it now claims that both quotes are always
+      produced, that the offer waits for the credit rating, and that either department alone can
+      issue the offer. Sana agrees the draft is wrong and must correct it using only the
+      relationship types and connectors the language provides, without inventing labels that
+      carry meaning the language does not define.
+    question: "Which correction produces a model that states exactly what the analyst described?"
+    answers:
+      - key: A
+        points: 5
+        text: "Triggering from the event to 'Assess Request'; triggering from 'Assess Request' into an or-junction with a triggering out to each quote process; triggering from each quote process to 'Issue Offer'; a flow (not a triggering) from 'Credit Check' to 'Issue Offer'; and the two departments each assigned into an and-junction whose single outgoing assignment goes to 'Issue Offer'."
+        why: "The or-junction expresses exclusive choice, the flow carries the rating without imposing precedence, and the and-junction on assignments states that both performers are needed together."
+      - key: B
+        points: 3
+        text: "Use an or-junction for the choice between quotes and a flow from 'Credit Check' to 'Issue Offer'; keep both departments assigned directly to 'Issue Offer' and add a note saying both must sign off."
+        why: "Fixes the choice and the non-blocking rating, but two direct assignments still mean either department alone can perform the behaviour; the joint requirement needs an and-junction (or a collaboration), not a note."
+      - key: C
+        points: 1
+        text: "Keep triggering everywhere but label the two triggerings from 'Assess Request' with 'standard' and 'complex', and label the credit-check triggering 'optional'."
+        why: "Labels on triggerings are informal and carry no semantics; two unjunctioned triggerings still say both successors are triggered, and a triggering still imposes precedence whatever it is labelled."
+      - key: D
+        points: 0
+        text: "Replace all the dynamic relationships with flow, since flow does not imply causality and so cannot overstate the process."
+        why: "Flow drops the precedence the analyst explicitly described between assessment, quoting and issuing, so the model would understate the process as badly as the draft overstated it."
+    open_book_hint: "§5.5.1 (junctions: and/or, use on triggering, informal labels), §5.3.1–5.3.2 (triggering versus flow), §5.1.3 (multiple assignments)."
+    refs: ["ARCHIMATE §5.5.1", "ARCHIMATE §5.3.1", "ARCHIMATE §5.3.2", "ARCHIMATE §5.1.3"]
+    difficulty: 2
+    tags: [junction, triggering, flow, assignment]
+  - id: A8-S01
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    scenario: |
+      Calder Retail Group is replacing its point-of-sale estate across 400 stores over two years.
+      The programme board has approved a plan with three stages: a pilot in 20 stores, a regional
+      rollout, and completion. The architecture team has agreed with the programme office that
+      the plan will be held in the ArchiMate repository so that the architecture and the plan stay
+      in step, and the programme office has sent over what it wants modelled:
+
+      - Three architecture states: today's estate, the estate after the pilot, and the final
+        estate.
+      - What is different between each pair of states (the programme office calls these "the
+        deltas").
+      - A programme containing three projects: "POS Pilot", "Regional Rollout" and "Estate
+        Completion", each producing outputs — the pilot produces a "Pilot Evaluation Report" and
+        a "Store Build Standard"; the rollout produces "Regional Go-Live Packs".
+      - Milestones: "Programme approved" (which starts the pilot), "Pilot accepted" (which ends the
+        pilot and starts the rollout), "Rollout complete".
+      - The fact that the "Programme Director" role is accountable for the programme and a
+        "Rollout Manager" role for the rollout project.
+      - A requirement, "All stores on the new estate by financial year end", that only applies to
+        the final state.
+
+      A contractor has drafted the model. The draft represents the three states as deliverables,
+      the deltas as work packages named "Delta 1" and "Delta 2", the milestones as work packages
+      with a one-day duration, the projects' outputs by realization from each project to its
+      outputs, the roles by association to the projects, and the requirement by association to the
+      "final estate" deliverable. The lead architect, Bea, has to send it back with a corrected
+      mapping that the programme office can also read, because the office will maintain the plan
+      side of the model itself from now on.
+    question: "Which mapping of the programme office's items to ArchiMate elements and relationships should Bea specify?"
+    answers:
+      - key: A
+        points: 5
+        text: "States are plateaus, triggering one another in sequence; each delta is a gap associated with the two plateaus it separates; the programme and the three projects are work packages, the programme composed of the projects, in a triggering sequence; outputs are deliverables accessed by their work packages (the old realization being deprecated) and realizing the plateau they bring about; milestones are implementation events, without duration, triggering and triggered by the work packages; the roles are assigned to the work packages; the requirement is aggregated in the final plateau."
+        why: "Every item lands on the element defined for it, the relationships are the ones the metamodel gives, and the deprecated work-package-to-deliverable realization is avoided."
+      - key: B
+        points: 3
+        text: "States are plateaus and deltas are gaps; programme and projects are work packages; outputs are deliverables realized by the work packages; milestones are implementation events; roles are assigned to the work packages; the requirement is associated with the final plateau."
+        why: "The element choices are right, but realization from work package to deliverable is deprecated in favour of access, and the requirement's applicability to one state is expressed by aggregation in the plateau rather than a bare association."
+      - key: C
+        points: 1
+        text: "Keep the contractor's states as deliverables and deltas as work packages, since a state is an output of the programme and a delta is work to be done, but change the milestones to implementation events."
+        why: "Fixes only the milestones; a state of the architecture is a plateau, not an output, and a delta is a statement of difference (a gap), not the work that closes it."
+      - key: D
+        points: 0
+        text: "Model everything as a single Project view using work packages only, with the states and milestones as attributes on the work packages, because the programme office will maintain it and should not have to learn five element types."
+        why: "Throws away plateau, gap, deliverable and event, so the architecture and the plan cannot be kept in step, which was the whole purpose of holding the plan in the repository."
+    open_book_hint: "§12.2.1–12.2.5 (definitions), §12.1 (the deprecated realization), §12.5 (roles to work packages, plateau aggregating motivation elements), §12.2.6 (the worked example)."
+    refs: ["ARCHIMATE §12.2.4", "ARCHIMATE §12.2.5", "ARCHIMATE §12.1", "ARCHIMATE §12.5", "ARCHIMATE §12.2.6"]
+    difficulty: 2
+    tags: [implementation-migration, plateau, gap, deliverable]
+  - id: A8-S02
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    scenario: |
+      Fenwick Shipping runs a fleet of forty vessels and a port-agency business. A transformation
+      programme has eight projects in flight, and the board has three separate complaints about
+      the architecture team's reporting.
+
+      The chief operating officer says she cannot tell "which of the eight projects are treading
+      on each other's toes" — last month two projects both changed the crew-scheduling
+      application in incompatible ways and neither knew about the other.
+
+      The head of the transformation office says his steering committee needs to see the eight
+      projects, their milestones and who is accountable for each, together with the strategic
+      goals each project is meant to serve, "so we can spot a project with no goal behind it and
+      a goal with no project".
+
+      The chief architect wants a picture of the four architecture states the programme moves
+      through and what is different between each pair, "with no projects on it at all, because
+      the states are what we are designing and the projects keep changing".
+
+      The architecture team has one model and a tool that can produce any view from it. The
+      lead modeller, Kwame, proposes to answer all three with the Implementation and Migration
+      viewpoint because "it contains everything the other two contain and more, so one view
+      satisfies everyone". A colleague argues that the three stakeholders have different concerns
+      and purposes and that the viewpoint mechanism exists precisely to give each stakeholder the
+      view their concern needs, and that a view containing everything will satisfy nobody. The
+      chief architect has asked for a recommendation that names a viewpoint for each stakeholder,
+      says what each view will contain, and explains why one view for all three is wrong.
+    question: "Which recommendation is the best?"
+    answers:
+      - key: A
+        points: 5
+        text: "COO: an Implementation and Migration view, because it alone relates work packages to the core elements they affect and so exposes two projects touching the same application. Transformation office: a Project view — work packages, implementation events, business roles, goals and outcomes — which is the viewpoint the specification pairs with portfolio management for checking goal coverage. Chief architect: a Migration view of plateaus and gaps only, whose purpose includes designing and whose element list excludes work packages. One view for all three fails because a viewpoint is selected by the stakeholder's concern and purpose; a view that shows everything obscures each concern."
+        why: "Matches each concern to the viewpoint whose element list and purpose fit it, cites the specification's own pairing of Project and Implementation and Migration for portfolio analysis, and grounds the rejection of one-view-for-all in the viewpoint mechanism."
+      - key: B
+        points: 3
+        text: "COO and transformation office: an Implementation and Migration view, since it includes work packages, goals and core elements; chief architect: a Migration view of plateaus and gaps."
+        why: "Right for the COO and the chief architect, but the steering committee's concern — projects, milestones, accountability and goal coverage without architecture detail — is the Project viewpoint, and the answer does not explain why a single view is wrong."
+      - key: C
+        points: 1
+        text: "Produce a Layered view for the COO, a Project view for the transformation office, and a Migration view for the chief architect."
+        why: "Two of three are right, but a Layered view shows the architecture's layers, not which projects change which elements; the overlap question needs work packages related to core elements."
+      - key: D
+        points: 0
+        text: "Accept Kwame's proposal: one Implementation and Migration view for everyone, since its scope is multiple layers and multiple aspects and it contains every element the other two viewpoints list."
+        why: "Containment of elements is not the criterion; relevance to each stakeholder's concern is, and the chief architect explicitly asked for a view with no projects on it."
+    open_book_hint: "Appendix C.4.1–C.4.3 (element lists, purposes, the portfolio-management pairing); §13.3 (relevance to concerns as the selection criterion)."
+    refs: ["ARCHIMATE §C.4.1", "ARCHIMATE §C.4.2", "ARCHIMATE §C.4.3", "ARCHIMATE §13.3"]
+    difficulty: 2
+    tags: [viewpoint-choice, migration, project]
+  - id: A9-S01
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    scenario: |
+      Brandt & Sølvberg is a Nordic engineering consultancy of 2,000 staff. Its new chief
+      information officer has a specific worry: the firm depends on a handful of shared platforms
+      — an identity service, a document platform, a project-accounting system — and she wants to
+      know, for any one of them, "which client-facing services stop if it fails". She has made
+      clear that she will not read a diagram with more than a dozen boxes, that she wants to be
+      able to sort and filter, and that the answer must cover every layer from the servers to the
+      services the firm sells.
+
+      The architecture team keeps an ArchiMate model that already contains technology services,
+      the application components they serve, the application services those realize, the business
+      processes served, and the business services those processes realize. Three proposals are on
+      the table.
+
+      The infrastructure architect proposes handing the CIO the team's existing Layered view of
+      the whole firm — around 300 elements — because "it already shows every dependency she is
+      asking about".
+
+      A business analyst proposes a Technology Usage view of each platform, showing the
+      applications it serves, because "that is the layer that fails".
+
+      The lead architect, Pia, proposes defining a new viewpoint for the CIO using the viewpoint
+      mechanism: select technology service, application component, application service, business
+      process and business service with the serving and realization relationships between them,
+      derive the end-to-end dependency from platform to business service, and present it as a
+      sortable cross-reference table — platform against business service — rather than as a
+      diagram. She argues that a viewpoint is chosen by the stakeholder's purpose and content, that
+      the CIO's purpose is deciding and her content is an overview across all layers, and that the
+      specification explicitly allows a viewpoint's representation to be a matrix rather than a
+      diagram. The infrastructure architect objects that "a table is not an ArchiMate view".
+    question: "Which proposal best applies the viewpoint mechanism to the CIO's concern?"
+    answers:
+      - key: A
+        points: 5
+        text: "Pia's. The mechanism's two steps are to select the relevant concepts for the stakeholder's concern and then define a representation suited to them; the specification names cross-reference tables as a typical representation for the deciding purpose and states a view need not be graphical. The CIO's purpose is deciding and her content is overview, and the derived serving relationships from platform to business service are valid, so the table is a legitimate ArchiMate view."
+        why: "Applies both steps of the mechanism, classifies purpose and content correctly, and answers the objection with the specification's own statement that a view need not be a diagram."
+      - key: B
+        points: 3
+        text: "Pia's, because the CIO asked for something sortable and filterable, and the table meets that request while the diagrams do not."
+        why: "Right choice, but justified only by the CIO's preference rather than by the mechanism — purpose, content and the two steps — which is what the objection has to be answered with."
+      - key: C
+        points: 1
+        text: "The business analyst's Technology Usage views, because the platforms are technology and the viewpoint's concern is dependencies."
+        why: "Technology Usage stops at the applications a platform serves; the CIO's concern is the client-facing business services, which are two layers further up, so the view does not answer her question."
+      - key: D
+        points: 0
+        text: "The infrastructure architect's Layered view, because it is a standard ArchiMate viewpoint that already contains every dependency and any subset would lose information."
+        why: "The Layered view is a designing view for architects; a 300-element diagram fails the CIO's stated constraints, and what a view shows is decided by relevance to the stakeholder's concern, not by completeness."
+    open_book_hint: "§13.4 (the two steps), §13.4.1 (purpose and content categories, typical representations), §13.4.2 (a view need not be graphical), §13.3 (relevance as the selection criterion)."
+    refs: ["ARCHIMATE §13.4", "ARCHIMATE §13.4.1", "ARCHIMATE §13.4.2", "ARCHIMATE §13.3"]
+    difficulty: 2
+    tags: [viewpoint-mechanism, purpose, content, representation]
+  - id: A9-S02
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    scenario: |
+      Ashcombe District Council is a local authority that has adopted the TOGAF ADM and has just
+      decided to keep its architecture in ArchiMate. The council's architecture practice runs a
+      full ADM cycle each year, and the head of practice wants a written standard saying, for each
+      ADM phase, which ArchiMate viewpoints the phase's views are drawn with and which elements
+      carry its main deliverables, so that new staff produce consistent models.
+
+      A working group has drafted the standard. Its draft says:
+
+      - Preliminary Phase: Motivation and Organization views; principles as Principle elements,
+        the architecture team as Business Actors and Roles.
+      - Phase A: Stakeholder, Goal Realization, Motivation and Strategy views; stakeholders,
+        drivers, assessments, goals, outcomes, principles, requirements, capabilities and courses
+        of action.
+      - Phase B: Organization, Business Process Cooperation, Product, Capability Map and Value
+        Stream views.
+      - Phase C: the Migration viewpoint for Data Architecture and the Application Structure
+        viewpoint for Application Architecture.
+      - Phase D: Technology, Technology Usage, Physical and Layered views.
+      - Phase E: Project views only, since E identifies projects.
+      - Phase F: Migration views of plateaus and gaps, since F plans the migration.
+      - Phase G: Implementation and Migration and Project views; the Architecture Contract as a
+        Contract element.
+      - Phase H: Motivation and Migration views; a change request as a new Driver or Assessment
+        with its impact as a Gap.
+      - Requirements Management: Requirements Realization and Motivation views.
+
+      The head of practice has asked a senior architect, Tomasz, to review the draft against the
+      specification's TOGAF appendix and the example viewpoints before it is issued. He has been
+      told that the Preliminary, A, B, D, G, H and Requirements Management rows have already been
+      checked and agreed, and that his review should concentrate on whether the remaining rows
+      are right and, where they are wrong, what they should say and why.
+    question: "Which review of the draft's Phase C, E and F rows is correct?"
+    answers:
+      - key: A
+        points: 5
+        text: "Phase C is wrong: Data Architecture is the Information Structure viewpoint (business objects, data objects, artifacts, representations) and Application Architecture the Application Cooperation and Application Usage viewpoints; Migration is an implementation viewpoint and Application Structure looks inside a single application. Phases E and F are swapped in emphasis: E defines Transition Architectures as plateaus and consolidated gaps, so it draws Migration and Implementation and Migration views; F sequences work packages, deliverables and implementation events under named roles, so it draws Implementation and Migration and Project views."
+        why: "Identifies each error, gives the correct viewpoints, and grounds the E/F correction in what the plateau and work-package elements were defined to model."
+      - key: B
+        points: 3
+        text: "Phase C should use Information Structure for data and Application Cooperation for applications; Phase E should include Migration views as well as Project views; Phase F is acceptable as drafted."
+        why: "Fixes C and improves E, but F planned as Migration views alone omits the Project and Implementation and Migration views that carry the plan's work packages, events and responsibilities."
+      - key: C
+        points: 1
+        text: "Phase C should replace Migration with Layered for data; Phases E and F are acceptable because the choice between Migration and Project views is a matter of house style."
+        why: "Layered is a multi-layer overview, not the data viewpoint; and the E/F mapping follows from what plateaus, gaps and work packages model, not from style."
+      - key: D
+        points: 0
+        text: "All three rows are acceptable: the specification says there is no one-to-one mapping between TOGAF and ArchiMate viewpoints, so any reasonable choice is defensible."
+        why: "The absence of a one-to-one mapping between TOGAF's own viewpoints and ArchiMate's does not make every choice equal; the plateau and gap elements were defined for Phase E's transition architectures and the Information Structure viewpoint for information models."
+    open_book_hint: "Appendix D.1 (the correspondence), C.1.3 and C.1.11 (Information Structure, Application Cooperation), C.4 (the three implementation viewpoints), §12.2.4 (plateau and the ADM phases)."
+    refs: ["ARCHIMATE §D.1", "ARCHIMATE §C.1", "ARCHIMATE §C.4", "ARCHIMATE §12.2.4"]
+    difficulty: 3
+    tags: [togaf-mapping, phases, viewpoints]

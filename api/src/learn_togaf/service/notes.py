@@ -6,7 +6,7 @@ from typing import Any
 
 import orjson
 
-NOTE_KINDS = ("LESSON", "TERM", "PHASE", "QUESTION")
+NOTE_KINDS = ("LESSON", "TERM", "PHASE", "QUESTION", "EXAMPLE")
 EXPORT_VERSION = 1
 
 

@@ -1,0 +1,844 @@
+# Authored Practitioner scenarios for unit P5, Implementing the Architecture (Phases E, F, G).
+# Shape per learn_togaf.md §2; grounded on ADM chapters 9-11, GOV chapters 3-6, TECH 6-8, CONTENT 3-4.
+code: P5_BANK
+exam: OGEA-102
+name: P5 Implementing the Architecture, authored bank
+kind: DRILL
+source: authored
+questions:
+  - id: P5-101
+    unit: P5
+    objective: "P5.1"
+    lesson: P5/01_phase_e_from_gaps_to_a_roadmap
+    scenario: |
+      Halden Logistics is a national parcel carrier with 6,200 staff, 41 depots and a hub-and-spoke
+      network that it has grown through two acquisitions. Its board has approved a three-year
+      strategy to offer same-day delivery in the six largest cities and to give business customers a
+      single tracking view across all services. The Enterprise Architecture team was set up two years
+      ago; the Preliminary Phase is complete, principles are approved and the Architecture Board
+      meets monthly. The Chief Operating Officer is the sponsor of the current architecture cycle.
+
+      Phases B, C and D have finished. The approved Target Architecture defines a single order and
+      shipment data model, a customer-facing tracking service, a route-planning capability that
+      replaces three depot-level systems, and an event platform to carry shipment status. Gap
+      analysis in each domain has produced long lists: eleven business gaps, fourteen data gaps,
+      nine application gaps and six technology gaps. Several gaps overlap. Two lines of business,
+      Retail Parcels and Business Freight, have each raised a requirement for a returns service, and
+      each expects its own solution.
+
+      Two facts complicate the picture. First, the Business Freight unit acquired last year runs a
+      commercial transport management package whose embedded booking process assumes a booking is
+      immutable once confirmed; the Target Architecture's tracking service assumes a shipment can be
+      re-routed after booking. The package vendor has confirmed the process cannot be configured
+      differently. Second, the Business Transformation Readiness Assessment carried out in Phase A
+      rated "IT capacity to execute" as Low and "Enterprise ability to implement and operate" as Fair,
+      with an action to recruit and train depot supervisors before any depot system is replaced.
+      Nobody has looked at those findings since Phase A.
+
+      The Chief Operating Officer wants to move quickly. She has asked the architecture team to
+      "give me the list of projects and a date for each" by the end of the month, and the Head of
+      the Programme Management Office has offered to start the route-planning replacement
+      immediately because a vendor is available. The Chief Financial Officer has said funding will be
+      released only against a plan that shows value delivered within the first year, and the Head of
+      Depot Operations has warned that no depot can absorb a system change during the November to
+      January peak.
+
+      The gap analysis results themselves are uneven. The business gaps were written by the Business
+      Architect as capability statements ("no ability to promise a delivery window"); the data gaps by the
+      data team as entity-level items ("no shipment-event entity"); the application gaps as a list of
+      interfaces missing between named systems; and the technology gaps as a hardware inventory of what
+      must be retired. Three of the data gaps and two of the application gaps describe the same missing
+      event platform from different angles. The Head of Business Freight has said that his unit's
+      requirements were "never properly heard" in Phase B and that he expects his returns solution to be
+      delivered by his own IT team, which reports to him rather than to the Chief Information Officer.
+
+      The Architecture Board's last minutes record two decisions that bear on the work. The Board agreed
+      that the architecture team would bring it "an Architecture Roadmap and a draft Implementation and
+      Migration Plan" before any implementation project is chartered, and it agreed that the Phase A
+      readiness actions would be tracked as risks "through to implementation". Neither decision has been
+      acted on since; the readiness actions do not appear in any current risk log. The Board's chair, the
+      Chief Information Officer, has told you privately that she expects the Board to hold the line on
+      the first decision even under pressure from the Chief Operating Officer, but that she needs a plan
+      she can defend on the value question the Chief Financial Officer has raised.
+
+      Two further practicalities have been mentioned in passing and may matter. The tracking service can
+      be delivered on the existing customer portal with modest change, which the Head of Digital believes
+      would be visible to customers within months, and which depends only on the event platform being
+      available in a basic form. The depot route-planning replacement, by contrast, depends on the depot
+      supervisors, on the peak season, on decommissioning three systems and on the transport package
+      conflict being resolved, since the Business Freight depots run on that package. The enterprise's
+      maturity assessment from the Preliminary Phase rated its Enterprise Architecture process as "under
+      development" and noted that previous change programmes had "started projects before agreeing what
+      they were for".
+
+      You are the lead Enterprise Architect. The Architecture Board has asked you to describe how you
+      will take the work from the completed Target Architectures to an Architecture Roadmap and an
+      Implementation and Migration Plan, and how you will deal with the transport package conflict
+      and the readiness findings.
+    question: "Refer to the scenario. You have been asked to describe how you will proceed from the completed Target Architectures. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Run Phase E in order. Confirm the corporate change attributes and record the peak-season
+          constraint, the readiness ratings and the depot-supervisor action in an Implementation
+          Factor catalog. Consolidate the forty gaps from Phases B to D into a Consolidated Gaps,
+          Solutions, and Dependencies matrix, identifying Solution Building Blocks that address several
+          gaps at once, and review the consolidated requirements so the two returns requests become one
+          shared returns service. Reconcile the interoperability conflict in the architecture, either by
+          specifying a building block that translates between the package's immutable booking and the
+          re-routable shipment or by changing the specification of the conflicting building block, and
+          have the change to business interoperability signed off in a revised Statement of
+          Architecture Work. Refine dependencies, confirm readiness and risk from the Phase A
+          assessment, agree an evolutionary Implementation and Migration Strategy with a quick-win
+          increment for the tracking view, group work packages and classify current systems as
+          mainstream, contain or replace, identify Transition Architectures that each deliver
+          measurable value with the depot replacements scheduled after the supervisors are trained and
+          outside peak, and produce the draft Architecture Roadmap and draft Implementation and
+          Migration Plan for Phase F.
+        why: >-
+          This is the Phase E step sequence of ADM §9.3: change attributes and constraints into the
+          Implementation Factor catalog (§9.3.1, §9.3.2), consolidation into the matrix with SBBs
+          against ABBs (§9.3.3), shared services across business functions (§9.3.4), interoperability
+          conflicts resolved in the architecture by a translating building block or a specification
+          change (§9.3.5) with the Statement of Architecture Work revised for a business interoperability
+          change (TECH §6.6), readiness confirmed from Phase A (§9.3.7, TECH §7.5), the strategy agreed
+          (§9.3.8), work packages and system classification (§9.3.9), value-bearing Transition
+          Architectures with difficult activities placed later (§9.3.10), and a draft roadmap and plan
+          that Phase F completes (§9.3.11, §9.5). It addresses every planted fact: the COO's speed, the
+          CFO's first-year value, the peak-season constraint and the stale readiness findings.
+      - key: B
+        points: 3
+        text: >-
+          Take the four domain gap lists as they stand and turn each gap into a work package, then group
+          the work packages into three projects, one per acquired platform, and lay them on a timeline
+          that avoids the November to January peak. Ask the transport package vendor and the tracking
+          service team to agree an interface during their projects. Present the resulting Architecture
+          Roadmap and Implementation and Migration Plan to the Board as final so that funding can be
+          released.
+        why: >-
+          The outputs are the right ones and the peak-season constraint is respected, but the gaps are
+          never consolidated, so the overlapping gaps, the shared returns service and the dependencies
+          are missed (ADM §9.3.3, §9.3.4, §9.3.6); the interoperability conflict is left to the projects
+          instead of being resolved in the architecture (ADM §9.3.5); the readiness findings are
+          ignored; and the plan is presented as final when Phase E produces a draft that Phase F
+          completes (ADM §9.5).
+      - key: C
+        points: 1
+        text: >-
+          Run a procurement for the route-planning replacement and the event platform now, since
+          vendors are available, and build the roadmap around the vendors' committed delivery dates.
+          Treat the transport package conflict as a data-mapping task for the integration vendor and
+          ask Human Resources to run the supervisor training in parallel.
+        why: >-
+          Phase E selects solutions after the strategy, dependencies and readiness are understood, not
+          before, and the ADM Techniques document says interoperability conflicts introduced by COTS
+          products must be addressed in the architecture across all domains, with business
+          interoperability changes signed off by the sponsors (TECH §6.6, ADM §9.3.5). Letting vendor
+          dates drive the roadmap inverts the relationship between the Architecture Roadmap and the
+          projects (ADM §9.3.11).
+      - key: D
+        points: 0
+        text: >-
+          Accept the Programme Management Office's offer and start the route-planning replacement
+          immediately in the depots that are least busy, because the Target Architecture is approved
+          and the sponsor wants speed. Produce the roadmap once the first project has shown what is
+          feasible.
+        why: >-
+          This contradicts the purpose of Phase E: the roadmap and the readiness and risk confirmation
+          come before work is committed, and the readiness assessment explicitly requires the
+          supervisor action before any depot system is replaced (ADM §9.3.7, §9.5, TECH §7.5). Starting
+          implementation without a roadmap also bypasses the Board's governance of the transition.
+    refs: ["ADM §9.3", "ADM §9.3.5", "ADM §9.3.10", "ADM §9.5", "TECH §6.6", "TECH §7.5"]
+    open_book_hint: "Where to look: ADM chapter 9, Phase E, section 9.3 for the eleven steps in order, 9.3.5 for interoperability conflicts, 9.3.8 for the strategy options, 9.3.10 for Transition Architectures and 9.5 for the approach; ADM Techniques 6.6 for reconciling interoperability with COTS and 7.5 for readiness in migration planning; Architecture Content 3.6.8 for the Phase E artefacts."
+    difficulty: 2
+    tags: [phase-e, roadmap, interoperability, readiness]
+    status: draft
+
+  - id: P5-102
+    unit: P5
+    objective: "P5.1"
+    lesson: P5/02_phase_f_finalising_the_plan
+    scenario: |
+      Coralbank is a mid-sized retail bank with 3.4 million customers, 240 branches and a
+      technology estate that grew around a core banking platform installed in 2004. Its board has
+      approved a strategy to become "digital by default" for everyday banking within four years while
+      keeping branches for advice and complex products. The bank has an established Enterprise
+      Architecture function reporting to the Chief Information Officer, a Portfolio Office reporting
+      to the Chief Operating Officer, and an Architecture Board chaired by the Chief Technology
+      Officer with representation from Retail, Operations, Risk and Finance.
+
+      The current architecture cycle has completed Phase E. The draft Architecture Roadmap contains
+      nine work packages: a new digital onboarding capability, a payments hub, a customer data
+      platform, a branch appointment service, decommissioning of two legacy card systems, a
+      regulatory reporting refresh, an identity service, an events platform and a data warehouse
+      migration. Three Transition Architectures have been identified at roughly twelve-month
+      intervals. The draft Implementation and Migration Plan records an evolutionary strategy with
+      parallel running of the old and new card systems for six months.
+
+      The picture in Phase F is contested. The Portfolio Office maintains a three-year change
+      calendar that already commits most of next year's delivery capacity to a regulatory programme
+      run under the bank's own project method, and its head says the architecture plan "will have to
+      fit around us". The Finance Director will not approve any project without a return-on-investment
+      case and has said that in his experience "architecture projects never pay back". The Head of
+      Retail wants the digital onboarding capability first because it is visible to customers; the
+      Chief Risk Officer wants the regulatory reporting refresh first because a regulator deadline
+      falls in eighteen months; the Head of Operations wants the card decommissioning first because it
+      removes a licence cost. Each has told you privately that their item is "obviously" the priority.
+
+      Two further facts matter. The identity service delivers little visible benefit on its own but
+      every customer-facing work package depends on it. The data warehouse migration carries a high
+      technical risk that the Phase E matrix rates as High, with a mitigation that reduces it to
+      Moderate at significant cost.
+
+      The draft Architecture Roadmap describes each work package with a name, objectives, the gaps it
+      closes, its dependencies and a preliminary statement of business value written by the architects.
+      The Consolidated Gaps, Solutions, and Dependencies matrix from Phase E records twenty-three risks,
+      each classified by effect and frequency; nine of them are attached to the data warehouse migration
+      and the customer data platform. The Phase E Implementation Factor catalog records the regulatory
+      deadline, the bank's annual budget cycle, the Portfolio Office's capacity limit and the fact that
+      the core banking platform's vendor will not support integration changes during its own upgrade
+      window next spring. None of this has yet been reconciled with the Portfolio Office's calendar,
+      which is maintained in a project tool the architecture team cannot see.
+
+      The bank's project method defines gates at business case approval, design approval and go-live,
+      each requiring a Finance sign-off. The Operations directorate runs a separate operational readiness
+      process for anything that touches branch systems, and its head has said that parallel running of
+      the card systems will require additional staff in the service desk for six months, a cost nobody
+      has estimated. The Head of Business Planning, who owns the bank's strategic plan, has not been
+      involved in the architecture work at all and was surprised to learn that a roadmap existed. The
+      Chief Technology Officer has said that the Board will not accept a plan that "the rest of the bank
+      finds out about afterwards".
+
+      Two facts about value are on record. The digital onboarding capability has a benefits case written
+      by Retail that counts new-customer acquisition; the card decommissioning has a licence saving that
+      Operations has quantified; the regulatory refresh has no benefits case because it is mandatory; the
+      identity service, the events platform and the customer data platform have no benefits cases at all,
+      because they are enablers. The Finance Director's team has proposed a single payback-period measure
+      for ranking everything. An internal audit report from the previous programme criticised the bank
+      for approving projects "on sponsor enthusiasm rather than agreed criteria" and for never revisiting
+      risks once approved.
+
+      The Chief Technology Officer has asked you, as lead Enterprise Architect, to run Phase F and
+      bring an Implementation and Migration Plan to the Architecture Board that the Portfolio Office
+      and Finance will accept.
+    question: "Refer to the scenario. The CTO has asked you to run Phase F and bring an acceptable Implementation and Migration Plan to the Architecture Board. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Begin by confirming how the Implementation and Migration Plan interacts with the bank's
+          management frameworks, business planning, Enterprise Architecture, portfolio and project
+          management under the bank's own method, and operations management, and agree that the plan
+          will be inserted in summary into the Portfolio Office's change calendar rather than sit
+          beside it. With the Finance Director and the executives, define what business value means
+          and the criteria to measure it: performance evaluation criteria, return-on-investment
+          criteria, critical success factors, measures of effectiveness and strategic fit, and get the
+          Business Value and Risk matrix criteria and weights approved before the work packages are
+          scored. Assign business value and aggregated risk to each work package, estimate resources
+          and costs split into capital and operations, prioritise by cost and benefit and risk and win
+          stakeholder consensus on the list, noting that the identity service earns a high priority
+          because it is on the path to the customer-facing benefits and that the data warehouse
+          residual risk must be understood against the funding line. Confirm the roadmap and the
+          spacing of the three Transition Architectures with a Transition Architecture State Evolution
+          table, update the Architecture Definition Document, complete the plan with the transitions as
+          portfolio milestones, and close the cycle with lessons learned and an Implementation
+          Governance Model.
+        why: >-
+          This follows the Phase F steps in order: management framework interactions first (ADM
+          §10.3.1), value defined before it is assigned with the named criteria (§10.3.2) and the
+          Business Value and Risk matrix criteria approved before options are known (CONTENT §3.6.9),
+          capital and operations costs (§10.3.3), prioritisation by net benefit and risk with
+          stakeholder consensus, including the rule that a project can rank high for enabling a large
+          benefit and the review of residual risk against funding (§10.3.4), the State Evolution table
+          and ADD update (§10.3.5), transitions as milestones (§10.3.6) and cycle closure with lessons
+          and a governance model (§10.3.7). It resolves the Portfolio Office, Finance and priority
+          conflicts with the standard's mechanisms rather than by fiat.
+      - key: B
+        points: 3
+        text: >-
+          Score the nine work packages against a return-on-investment model agreed with the Finance
+          Director, rank them by payback, place the regulatory refresh first because of the deadline
+          and the identity service last because it has no direct return, then present the ranked list
+          to the Board as the Implementation and Migration Plan and ask the Portfolio Office to
+          schedule it into free capacity.
+        why: >-
+          Value is assigned and Finance is engaged, but the plan is never co-ordinated with the four
+          management frameworks and is handed to the Portfolio Office to fit in, which is the reverse
+          of ADM §10.3.1; return on investment is only one of the value criteria (§10.3.2); and ranking
+          the identity service last ignores the rule that a project earns a high priority when it
+          provides a critical deliverable on the path to a large benefit (§10.3.4). Prioritisation must
+          also be agreed by the stakeholders, not decided by a model (§10.3.4).
+      - key: C
+        points: 1
+        text: >-
+          Reopen the domain architectures to re-validate the gaps and the work package boundaries with
+          each executive, since they disagree about priorities, and only then build the plan. Ask each
+          executive to sponsor the work package they favour so that funding follows sponsorship.
+        why: >-
+          Phase F finalises the roadmap and plan produced in Phase E; it does not redo gap analysis or
+          reopen the domain architectures, and disagreement about priority is resolved through the
+          cost, benefit and risk assessment and stakeholder consensus, not by re-scoping (ADM §10.3.4,
+          §10.5). Funding by sponsor preference also bypasses the value criteria the standard requires
+          (§10.3.2).
+      - key: D
+        points: 0
+        text: >-
+          Adopt the Portfolio Office's change calendar as the Implementation and Migration Plan, slot
+          the nine work packages into whatever capacity remains after the regulatory programme, and
+          drop the Transition Architectures because the calendar already has its own milestones.
+        why: >-
+          This abandons the architecture's role in Phase F: value, cost and risk are never assigned or
+          agreed (ADM §10.3.2, §10.3.4), the roadmap is not confirmed (§10.3.5), and Transition
+          Architectures, which the standard says act as portfolio milestones in the completed plan, are
+          discarded (§10.3.6).
+    refs: ["ADM §10.3.1", "ADM §10.3.2", "ADM §10.3.4", "ADM §10.3.5", "ADM §10.3.6", "CONTENT §3.6.9"]
+    open_book_hint: "Where to look: ADM chapter 10, Phase F: 10.3.1 for the four management frameworks, 10.3.2 for the business value criteria, 10.3.4 for prioritisation and consensus, 10.3.5 and 10.3.6 for confirming the roadmap and completing the plan; Architecture Content 3.6.9 for the Transition Architecture State Evolution table and the Business Value and Risk matrix."
+    difficulty: 3
+    tags: [phase-f, migration-plan, business-value, prioritisation]
+    status: draft
+
+  - id: P5-103
+    unit: P5
+    objective: "P5.2"
+    lesson: P5/03_phase_g_contracts_and_compliance
+    scenario: |
+      Meridian Health Trust runs four hospitals and sixty community clinics for a population of
+      1.9 million. After a two-year architecture cycle it has an approved Target Architecture for a
+      shared electronic patient record, a clinical messaging service, an appointment and referral
+      platform and a consolidated identity and access service. Phase F closed three months ago with
+      an approved Implementation and Migration Plan of three Transition Architectures, a finalised
+      Architecture Definition Document and an Implementation Governance Model that names an
+      Architecture Review Co-ordinator and a checkpoint at each project's initiation and initial
+      design.
+
+      The Trust has outsourced the build of the first transition to a systems integrator under a
+      commercial contract negotiated by Procurement. The integrator's programme director has arrived
+      with a delivery plan, a team of forty and a strong preference for a patient-record product
+      that is not the one selected in the Target Architecture; she argues it is "functionally
+      equivalent" and that her team knows it. The Trust's in-house development function will build
+      the appointment platform in parallel. The Chief Clinical Information Officer, who sponsors the
+      programme, is anxious about clinical safety and wants "no surprises". The Head of Procurement
+      considers the commercial contract sufficient and sees no need for "another contract with the
+      architects".
+
+      The Enterprise Architecture team consists of a lead Enterprise Architect (you), two domain
+      architects and a solution architect seconded to the integrator. The Architecture Board meets
+      every six weeks. Two weeks into mobilisation the integrator has produced a high-level design
+      that uses the alternative patient-record product and a point-to-point interface to the
+      appointment platform instead of the clinical messaging service. The in-house team has asked
+      whether it may follow the same interface approach "for consistency".
+
+      The programme's structure adds to the difficulty. Under the commercial contract the integrator is
+      responsible for delivering "a patient-record capability meeting the Trust's functional
+      specification", a document written by Procurement from the Architecture Definition Document but
+      which does not mention the selected product, the clinical messaging service or the conformance
+      requirements. The integrator's high-level design was produced in ten days without any contact with
+      the Trust's architecture team, and its programme director has said that architecture "review
+      cycles" were not priced into the bid. The in-house development function, which built the Trust's
+      existing appointment system, has never worked under an Architecture Contract and regards the
+      architecture team as "the people who write the diagrams".
+
+      The Trust's Architecture Board, chaired by the Chief Information Officer, approved the Target
+      Architecture and the Implementation and Migration Plan and minuted that "conformance to the Target
+      Architecture is a condition of every implementation project". The Implementation Governance Model
+      names the Architecture Review Co-ordinator, a business-oriented manager in the Chief Clinical
+      Information Officer's office, defines review checkpoints at project initiation and initial design,
+      and states that the Lead Enterprise Architect tailors the checklists for each review. It says
+      nothing about outsourced suppliers because, when it was written, the build was expected to be
+      in-house. The Governance Repository holds the Board's decision log, the Phase F risk assessment and
+      a calendar of reviews that currently shows no entries for either project.
+
+      Clinical safety is the sponsor's overriding concern. The clinical messaging service in the Target
+      Architecture was selected in Phase C precisely because it carries safety-critical acknowledgements
+      between the patient record and the appointment platform; a point-to-point interface would bypass
+      those acknowledgements. The Chief Clinical Information Officer does not know this detail; she knows
+      only that the integrator "seems confident" and that Procurement "seems satisfied". The integrator's
+      alternative patient-record product has not been assessed against the Trust's data standards or the
+      identity and access service. Two clinicians on the programme board have asked why the Trust chose a
+      product and then let a supplier choose a different one.
+
+      The Chief Clinical Information Officer has asked you what the architecture function must put in
+      place now, at the start of implementation, so that the two delivery teams conform to the Target
+      Architecture, and how the alternative product and the interface should be handled.
+    question: "Refer to the scenario. The sponsor has asked what the architecture function must put in place at the start of implementation and how the deviations should be handled. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Enter Phase G by confirming scope and priorities for deployment with both development
+          managements and identifying the resources and skills each team needs, then document an
+          Architecture Contract between the architecture function and each implementing organisation,
+          the integrator and the in-house function, covering the scope of the architecture, the
+          principles and requirements, the conformance requirements, the process and roles, the target
+          measures, phased deliverables, time windows and metrics, and obtain signatures from the
+          developing organisations and the sponsoring organisation. Record each project's scope,
+          strategic requirements, conformance rules and roadmap timeline in an impact analysis. Treat
+          the high-level design as the initial-design checkpoint: hold an Architecture Compliance
+          review led by the lead Enterprise Architect with clinical and technical domain experts using
+          tailored checklists, and if the assessment is rejected require the integrator either to
+          realign to the selected product and the clinical messaging service or to request a
+          time-bound dispensation with enforced criteria, or, if the integrator believes the
+          architecture itself is wrong, to submit a Change Request with an impact assessment to the
+          Architecture Board. Apply the same review to the in-house team, record the assessment and any
+          dispensation in the repository, and report the position to the sponsor.
+        why: >-
+          Phase G establishes the connection between architecture and implementation through the
+          Architecture Contract, signed by all developing organisations and the sponsor (ADM §11.3.3,
+          §11.5), and a Phase G contract is drawn up at the start of the phase between the architecture
+          function and the implementer, including an outsourced contractor, with the design and
+          development contents listed in GOV §5.1 and §5.2.2. The compliance review at initiation and
+          initial design, led by the lead Enterprise Architect with domain experts, catches errors early
+          (GOV §6.3.1, §6.3.2, §6.3.3); a rejected assessment leads to realignment or a time-bound
+          dispensation (GOV §3.2.1); and a project that thinks the architecture is wrong raises a Change
+          Request with an impact assessment (CONTENT §4.2.11, ADM §11.4).
+      - key: B
+        points: 3
+        text: >-
+          Rely on the commercial contract that Procurement has signed, since it obliges the integrator
+          to deliver the specified scope, and focus the architecture team on reviewing the high-level
+          design. Accept the alternative patient-record product as functionally equivalent on the
+          integrator's assurance, but insist that both teams use the clinical messaging service, and
+          brief the Board at its next meeting.
+        why: >-
+          The compliance review is held and the interface deviation is caught, but there is no
+          Architecture Contract between the architecture function and the implementers, which is the
+          mechanism Phase G uses to govern conformance and which a commercial contract negotiated by
+          Procurement does not replace (ADM §11.5, GOV §5.1); and the product deviation is accepted on
+          assurance rather than through a compliance assessment, a dispensation or a Change Request
+          (GOV §3.2.1, CONTENT §4.2.11).
+      - key: C
+        points: 1
+        text: >-
+          Update the Target Architecture and the Architecture Definition Document to adopt the
+          integrator's product and the point-to-point interface, since the integrator's team knows the
+          product and the sponsor wants no surprises, then let both teams proceed against the revised
+          architecture.
+        why: >-
+          This changes the architecture by a project's preference rather than through governance: a
+          deviation must go through a compliance assessment and, if the architecture is to change, a
+          Change Request with an impact assessment considered by the Board (CONTENT §4.2.11, ADM §11.4).
+          Adopting a point-to-point interface in place of the messaging service also abandons a
+          selected building block without any impact analysis (ADM §11.3.3).
+      - key: D
+        points: 0
+        text: >-
+          Let the integrator proceed with its design because delaying a forty-person team is expensive,
+          and schedule the first compliance review for the go-live milestone, when there will be
+          something complete to assess.
+        why: >-
+          The standard says the first purpose of a compliance review is to catch errors early, while
+          there is still time to correct them, and it names project initiation and initial design as
+          review points; reviewing only at go-live contradicts both (GOV §6.3.1, §6.3.2). It also leaves
+          the deployment with no contract and no governance of the deviation (ADM §11.1).
+    refs: ["ADM §11.3.3", "ADM §11.5", "GOV §5.1", "GOV §5.2.2", "GOV §6.3.2", "GOV §3.2.1"]
+    open_book_hint: "Where to look: ADM chapter 11, Phase G: 11.3 for the steps, 11.3.3 for documenting and signing the Architecture Contract, 11.5 for the approach; EA Capability and Governance 5.1 for when contracts arise (including the start of Phase G and outsourced partners), 5.2.2 for contract contents, 6.3 for review purpose, timing and personnel, 3.2.1 for compliance and dispensation; Architecture Content 4.2.11 for the Change Request."
+    difficulty: 2
+    tags: [phase-g, architecture-contract, compliance-review, dispensation]
+    status: draft
+
+  - id: P5-104
+    unit: P5
+    objective: "P5.2"
+    lesson: P5/03_phase_g_contracts_and_compliance
+    scenario: |
+      Tessera Insurance is a general insurer operating in three countries with 4,800 staff. Its
+      Enterprise Architecture function has been in place for five years and its governance is
+      mature: an Architecture Board of six executives meets monthly with an executive sponsor on the
+      group board, principles are published, a Governance Repository holds decision logs and
+      compliance assessments, and every project above a size threshold is subject to compliance
+      reviews at initiation, initial design and major design change.
+
+      A claims-modernisation programme is in Phase G. Its Architecture Contract, signed at the start
+      of the phase by the programme director, the in-house delivery function and the sponsor, commits
+      the programme to the Target Architecture's claims data model, the group's integration standard
+      and a shared document service. Two Transition Architectures have been delivered; the third,
+      which introduces automated claims triage, is in build.
+
+      At the major-design-change checkpoint the review team finds three things. First, the triage
+      component stores claim documents in its own repository rather than the shared document service,
+      because the shared service cannot meet the triage team's latency requirement; the team asks to
+      keep its own store for twelve months until the shared service is upgraded. Second, the programme
+      has added a fraud-scoring feature that was not in the Architecture Definition Document, using a
+      new external data provider, and argues that this is "just a project detail". Third, the
+      programme's project plan shows the third transition going live during a period in which the
+      group's regulatory reporting freeze applies, and the programme says the date is fixed by a
+      commercial commitment.
+
+      The programme director, under pressure from the Chief Claims Officer to deliver, has asked the
+      Architecture Board to "approve the design as built" so that the go-live date holds. The Chief
+      Risk Officer, who sits on the Board, is uneasy about the external data provider. The Head of
+      the Shared Services team, who owns the document service, says an upgrade could be delivered in
+      nine months if funded.
+
+      The Governance Repository holds the programme's full history. The initiation and initial-design
+      compliance assessments were accepted with recommendations that were closed on time. The decision
+      log records the Board's approval of the third Transition Architecture and the rationale for the
+      shared document service: a group-wide policy that claims documents must be retained under one
+      records-management regime for regulatory and litigation reasons, with the document service as the
+      control. The Board's terms of reference give it authority to grant dispensations "for a defined
+      period and against defined criteria" and require that any dispensation be reviewed before it
+      expires. The Board's minutes from six months ago record a similar request from another programme
+      for a separate document store, which was refused.
+
+      The review team's report, prepared by the Lead Enterprise Architect with a claims domain expert and
+      a data-protection specialist, states the levels of conformance found: the triage design is
+      conformant on the claims data model and the integration standard, non-conformant on the document
+      service, and the fraud-scoring feature is outside the scope of the approved Architecture Definition
+      Document altogether. The report notes that the external data provider has not been assessed by
+      Information Security or by Legal, that the provider is in a jurisdiction not covered by the group's
+      data-transfer arrangements, and that the fraud-scoring feature would introduce a new data flow into
+      the claims data model. The report also notes that the go-live date conflicts with the regulatory
+      reporting freeze published by the Chief Financial Officer's office, during which no change to
+      systems feeding regulatory returns is permitted.
+
+      The programme director's position, stated in writing to the Board, is that the triage store is a
+      "temporary technical measure", that fraud scoring is "within the spirit" of the programme's
+      mandate, and that the go-live date "was agreed with the business". The Chief Claims Officer, who
+      sponsors the programme and sits on the Board, is torn between the commercial commitment and the
+      Chief Risk Officer's unease. The Head of Shared Services has confirmed that a nine-month upgrade of
+      the document service would meet the latency requirement and has asked whether the programme's
+      budget could contribute to it. The Board meets in five days and has asked for a written
+      recommendation before then.
+
+      You are the lead Enterprise Architect who co-ordinated the review. The Board has asked for your
+      recommendation on each of the three findings.
+    question: "Refer to the scenario. The Architecture Board has asked for your recommendation on the three findings. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Present the Architecture Compliance review report against the contract's conformance
+          requirements and recommend three different outcomes. For the document store, recommend that
+          the Board grant a dispensation for a defined period with enforced criteria, for example nine
+          to twelve months, a migration to the shared service once it is upgraded, and interim service
+          and operational criteria, and record it in the repository so that its expiry triggers the next
+          compliance activity. For the fraud-scoring feature, treat it as an implementation-driven
+          deviation and scope extension and require a Change Request with an impact assessment covering
+          the new provider's data, security and requirements implications, for the Board to decide
+          whether it warrants an architecture update or further architecture work; involve the Chief
+          Risk Officer's concern in that assessment. For the go-live date, record the conflict with the
+          regulatory freeze as a non-conformance to the roadmap timeline in the contract and escalate
+          it through the Board's dispute resolution rather than approving the plan as built. Keep the
+          risk worksheet updated in Phase G and present the whole position to the sponsor.
+        why: >-
+          A rejected compliance assessment leads either to realignment or to a dispensation that is
+          time-bound with service and operational criteria, never indefinite, and whose expiry is a
+          trigger in the compliance cycle (GOV §3.2.1); dispensations and compliance assessments are
+          standing Architecture Board agenda items and disputes not resolved through them go to dispute
+          resolution (GOV §4.4.3). A scope extension or deviation from the Definition Document is the
+          defined case for a Change Request with an impact assessment (CONTENT §4.2.11), which is a Phase
+          G output (ADM §11.4). The contract fixes conformance requirements and the roadmap timeline
+          (ADM §11.3.3), and risk worksheets are governance artefacts maintained in Phase G (TECH §8.7).
+      - key: B
+        points: 3
+        text: >-
+          Recommend that the Board approve the document store as a permanent exception, since the
+          latency requirement is genuine, accept the fraud-scoring feature as within the programme's
+          remit provided the Chief Risk Officer signs off the provider, and ask the programme to move
+          the go-live date out of the freeze.
+        why: >-
+          The date conflict is handled and the review is used, but a permanent exception is not a
+          dispensation as the standard defines one, which must be time-bound with criteria (GOV
+          §3.2.1); and accepting a scope extension on a sign-off from one executive bypasses the Change
+          Request and impact assessment the standard requires before the architecture is extended
+          (CONTENT §4.2.11).
+      - key: C
+        points: 1
+        text: >-
+          Recommend that the Board decline all three findings and require the programme to realign
+          fully to the contract: use the shared document service at its current latency, remove the
+          fraud-scoring feature, and reschedule go-live; any change to the architecture can be
+          considered in the next architecture cycle.
+        why: >-
+          Realignment is one valid outcome, but the standard also provides dispensations for interim
+          conformance where a subject area cannot immediately comply, and Change Requests so that
+          implementation learning and new opportunities can extend the architecture without waiting
+          for a new cycle (GOV §3.2.1, GOV §6.3.1, CONTENT §4.2.11). Treating governance as pure
+          refusal loses the mechanism that makes the architecture dynamic (GOV §5.1).
+      - key: D
+        points: 0
+        text: >-
+          Recommend that the Board approve the design as built and note the three findings for
+          consideration in Phase H, since the programme has a signed contract, a commercial commitment
+          and executive pressure to deliver.
+        why: >-
+          Approving a non-compliant design because of schedule pressure contradicts the purpose of
+          Phase G, which is to ensure conformance with the Target Architecture and to govern
+          implementation-driven changes (ADM §11.1); the findings are exactly what the compliance review
+          exists to catch before completion (GOV §6.3.2), and deferring them to Phase H leaves the
+          deviations ungoverned during implementation.
+    refs: ["GOV §3.2.1", "GOV §4.4.3", "GOV §6.3.1", "CONTENT §4.2.11", "ADM §11.4", "TECH §8.7"]
+    open_book_hint: "Where to look: EA Capability and Governance 3.2.1 for compliance and dispensation (time-bound, criteria, trigger), 4.4.3 for the Board agenda including dispensations, compliance assessments and dispute resolution, 6.3 for review purpose and timing; Architecture Content 4.2.11 for the Change Request and its impact assessment; ADM 11.4 for Phase G outputs; ADM Techniques 8.7 for risk monitoring in Phase G."
+    difficulty: 3
+    tags: [phase-g, dispensation, change-request, compliance]
+    status: draft
+
+  - id: P5-105
+    unit: P5
+    objective: "P5.1"
+    lesson: P5/01_phase_e_from_gaps_to_a_roadmap
+    scenario: |
+      Northgate University is a public university with 28,000 students, 3,900 staff and eleven
+      faculties that have historically run their own student-facing systems. A new Vice-Chancellor
+      has set a strategy to give every student one digital experience for enrolment, timetabling,
+      assessment and support, and to reduce the number of student-record systems from seven to one
+      within three years. The Chief Operating Officer sponsors the architecture work. The university's
+      Enterprise Architecture team is small, two architects and a manager, and was established
+      eighteen months ago; the Preliminary Phase produced principles and a tailored method.
+
+      Phase A was completed with a business scenario and a Business Transformation Readiness
+      Assessment. The assessment rated "Desire, willingness and resolve" as Fair with the note that
+      three faculties openly oppose losing their systems, "Funding" as Good, "Governance" as Low
+      because faculties have a history of ignoring central decisions, and "Enterprise capacity to
+      execute" as Low with no recent comparable change. Phases B, C and D have now delivered Target
+      Architectures for a single student-record capability, a student identity service, an
+      integration layer and a set of retired faculty systems. Gap analysis is complete in each domain.
+
+      In Phase E, two options for the Implementation and Migration Strategy are on the table. The
+      Chief Operating Officer favours a "switch on, switch off" approach: build the new student-record
+      system over eighteen months, migrate all faculties in one summer vacation, and decommission the
+      seven systems at once, because the vacation is the only period in which the change can happen
+      without disrupting teaching. The Registrar favours a faculty-by-faculty convergence over three
+      years, starting with the two faculties that support the strategy, because it lets the university
+      learn and because the opposing faculties may change their view once they see results.
+
+      The Director of Finance points out that the budget was approved on the assumption of visible
+      progress within twelve months. The Dean of one opposing faculty has said that any migration of
+      his faculty in the first year "will not happen". The Head of IT Operations notes that the
+      operations team has never run a parallel-running period and would need to recruit.
+
+      The Target Architectures are more detailed than the university has had before. The Business
+      Architecture defines a single "Student Lifecycle" value stream with stages from enquiry to
+      graduation and maps it to the capabilities of a central Student Services function that does not
+      yet exist; the faculties currently run those capabilities themselves with 140 administrative staff.
+      The Data Architecture defines one student record with the faculties' records migrated in a
+      defined order because of cross-references between them. The Application Architecture selects a
+      commercial student-record product, already used by two peer universities, and specifies an
+      integration layer through which faculty timetabling and assessment tools will connect. The
+      Technology Architecture is cloud-hosted and the university has no cloud operations experience.
+
+      The gap analysis has produced thirty-one gaps, of which the largest are organisational: the Student
+      Services function, the administrative role changes in the faculties, and a data governance role
+      that nobody currently holds. The Phase A business scenario recorded that the eleven faculties have
+      "very different levels of trust in central services" and that the opposing three had refused to
+      take part in the scenario workshop. The Registrar has since held individual conversations with
+      those deans; one is willing to be "last, not never", one wants a guarantee that his faculty's
+      assessment rules will not change, and one has not replied.
+
+      The Architecture Board that will decide the strategy consists of the Chief Operating Officer, the
+      Registrar, the Director of Finance, the Director of IT and two deans, one supportive and one
+      opposed. Its terms of reference require the Implementation and Migration Strategy to be agreed by
+      the Board before Phase F begins. The university's own project method requires a benefits case per
+      project with a benefits review at twelve months. The Director of IT has pointed out that the
+      student-record vendor's own implementation method assumes a single go-live and that the vendor's
+      quotation is priced on that basis; a phased approach would need a revised quotation. The Chief
+      Operating Officer regards that as "the vendor's problem".
+
+      You are the lead Enterprise Architect. The Architecture Board has asked you to recommend an
+      Implementation and Migration Strategy and to explain how the readiness findings should shape
+      the roadmap.
+    question: "Refer to the scenario. You have been asked to recommend an Implementation and Migration Strategy and to explain how the readiness findings should shape the roadmap. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Review the Phase A readiness findings in Phase E and record their impact in the
+          Implementation Factor catalog and the Consolidated Gaps, Solutions, and Dependencies matrix,
+          classifying the governance and capacity risks and defining mitigation actions such as a
+          governance charter agreed with the deans and recruitment for the operations team. Recommend
+          an evolutionary Implementation and Migration Strategy using a phased convergence rather than a
+          revolutionary switch-over, with a quick-win method: the first Transition Architecture delivers
+          the student identity service and migrates the two supportive faculties within twelve months
+          to give the visible progress Finance expects, later transitions take the remaining faculties
+          with the opposing ones last, and each transition is defined to deliver measurable business
+          value. Agree the strategy with the sponsor and the Registrar, work the readiness actions into
+          the draft Implementation and Migration Plan as critical-path activities, and note that the
+          plan must carry a Communications Plan for the affected faculties.
+        why: >-
+          Phase E confirms readiness and risk from the Phase A assessment and records them in the matrix
+          (ADM §9.3.7); the readiness actions must be worked into the E and F plans, be checked for the
+          critical path, and be part of a Communications Plan (TECH §7.5, §7.6). The strategy step offers
+          greenfield, revolutionary and evolutionary approaches and quick win, achievable targets and
+          value chain methods and ends in agreement (ADM §9.3.8); Transition Architectures must deliver
+          measurable value and the difficult activities go after those that most easily deliver missing
+          capability (ADM §9.3.10). With governance and capacity rated Low and open opposition, an
+          evolutionary approach with a quick win matches every planted fact, including the twelve-month
+          expectation.
+      - key: B
+        points: 3
+        text: >-
+          Recommend the faculty-by-faculty convergence the Registrar proposes, starting with the two
+          supportive faculties, and draft a roadmap of transitions on that basis. Note the readiness
+          ratings in the Architecture Vision as context, and leave the governance and operations
+          recruitment issues to the Programme Board to handle once the programme is mobilised.
+        why: >-
+          The evolutionary choice is right and the sequencing follows the standard's guidance on
+          difficult activities, but the readiness findings are not confirmed in Phase E or turned into
+          mitigation actions in the plan, which is exactly what ADM §9.3.7 and TECH §7.5 require;
+          leaving the Low-rated governance and capacity factors to a later programme board risks
+          deploying capability the enterprise cannot absorb (TECH §7.5).
+      - key: C
+        points: 1
+        text: >-
+          Recommend the Chief Operating Officer's single summer migration because it is the only
+          window without teaching disruption and because a single cut-over avoids the parallel-running
+          skills the operations team lacks; define one Transition Architecture at the end of the
+          eighteen-month build.
+        why: >-
+          A revolutionary approach is a valid option in the standard, but choosing it against readiness
+          findings of Low governance, Low capacity and open faculty opposition ignores the requirement
+          to base the strategy and the transitions on the enterprise's capacity for creating and
+          absorbing change (ADM §9.3.10) and to mitigate the risks the readiness assessment raised
+          (TECH §7.4.3, TECH §7.5). A single transition at month eighteen also fails the Finance
+          Director's twelve-month expectation, which a quick-win increment would meet (ADM §9.3.8).
+      - key: D
+        points: 0
+        text: >-
+          Defer the strategy decision until the opposing faculties agree, and in the meantime let the
+          two supportive faculties begin building on the new student-record product so that the
+          project shows progress within twelve months.
+        why: >-
+          Starting implementation with no agreed Implementation and Migration Strategy, no roadmap and
+          no treatment of the readiness risks contradicts Phase E, whose strategy step terminates with
+          agreement and which produces the roadmap that frames migration planning (ADM §9.3.8, §9.3.11,
+          §9.5). Waiting for opposing stakeholders to agree while building anyway is neither governance
+          nor planning.
+    refs: ["ADM §9.3.7", "ADM §9.3.8", "ADM §9.3.10", "TECH §7.4.3", "TECH §7.5", "TECH §7.6"]
+    open_book_hint: "Where to look: ADM chapter 9, sections 9.3.7 (confirm readiness and risk), 9.3.8 (the three approaches and three methods of the Implementation and Migration Strategy) and 9.3.10 (Transition Architectures and where the difficult activities go); ADM Techniques chapter 7, sections 7.4.3, 7.5 and 7.6 for readiness actions, migration planning and the Communications Plan."
+    difficulty: 2
+    tags: [phase-e, migration-strategy, readiness, transition-architectures]
+    status: draft
+
+  - id: P5-106
+    unit: P5
+    objective: "P5.2"
+    lesson: P5/03_phase_g_contracts_and_compliance
+    scenario: |
+      Aurora Energy is an electricity distribution company serving 2.6 million connections. It is
+      implementing a Target Architecture for smart-meter data collection, outage management and a
+      customer self-service portal, approved after a full ADM cycle. Phase F produced an approved
+      Implementation and Migration Plan with four Transition Architectures over thirty months and an
+      Implementation Governance Model, and a lessons-learned record noting that in the previous
+      programme "risks were listed at the start and never looked at again".
+
+      The programme is now eight months into Phase G. The Architecture Contract is signed by the
+      programme director, the outsourced integrator and the sponsoring Chief Operating Officer.
+      Compliance reviews at initiation and initial design have passed for the meter-data collection
+      project, with two minor recommendations. The risk identification and mitigation assessment
+      worksheet produced in Phase E and refined in Phase F listed fourteen risks; the largest,
+      "meter-data volumes exceed the platform's throughput at full roll-out", was rated Extremely
+      High initially and Moderate after a mitigation that required a load test at fifty percent of
+      connections before the second transition.
+
+      Three things have changed. The load test was descoped by the integrator to save six weeks and
+      replaced by a vendor's benchmark paper; the programme's risk register, kept by the project
+      office, now shows the throughput risk as "closed". The regulator has announced a new
+      requirement for half-hourly settlement data, which the programme director says can be absorbed
+      by configuration. And the outage-management project, run by a different vendor, has not yet
+      requested an initiation review because it "does not touch the architecture", although its
+      design introduces a second event bus alongside the one in the Target Architecture.
+
+      The programme's governance arrangements are documented. The Implementation Governance Model
+      defines the Architecture Board as the body that accepts compliance assessments and grants
+      dispensations, an Architecture Review Co-ordinator in the Chief Operating Officer's office, and a
+      rule that "every project delivering a component of the Target Architecture" is subject to review at
+      initiation, initial design and major design change. The outage-management project was chartered by
+      the same programme and delivers the outage component named in the Target Architecture, but its
+      vendor was appointed under a separate contract by the network directorate, and its project manager
+      was not present when the governance model was briefed. The Governance Repository's calendar shows
+      the meter-data project's reviews and nothing for outage management.
+
+      The risk position is recorded in two places that no longer agree. The architecture team's risk
+      identification and mitigation assessment worksheet, held in the Governance Repository, still shows
+      the throughput risk at its residual rating of Moderate with the load test as the mitigation and a
+      note that residual risk was accepted by the Chief Operating Officer on that basis. The project
+      office's register, maintained by the integrator's programme management, shows the risk as closed
+      with the comment "vendor benchmark demonstrates capacity". The Chief Operating Officer signed the
+      acceptance of the residual risk in Phase F without, she now says, understanding that acceptance was
+      conditional on the mitigation being carried out.
+
+      The regulator's announcement is precise. Half-hourly settlement will require every meter reading
+      to be time-stamped, validated and forwarded to a central settlement body within a defined window,
+      with penalties for late or missing data; the current Target Architecture's data platform validates
+      readings daily. The programme director's statement that the change "can be absorbed by
+      configuration" has not been examined by the architecture team or by the Head of Data, who has said
+      privately that the validation change is "not trivial". The Head of Network Operations, who owns
+      outage management, has meanwhile told the integrator that the second event bus is "our decision"
+      because outage events are operational rather than customer-facing. The Architecture Board meets
+      in ten days.
+
+      The Chief Operating Officer has been told by the programme director that "all risks are
+      managed and we are green". She has asked you, the lead Enterprise Architect, whether the
+      architecture function agrees, and what governance actions Phase G requires now.
+    question: "Refer to the scenario. The sponsor has asked whether the architecture function agrees that all risks are managed and what governance actions Phase G requires. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Report that the architecture function does not agree. Explain that the throughput risk was
+          reduced to Moderate only on the assumption that the mitigation, the load test, would be
+          carried out; with the test descoped the residual risk has not been reduced and must be
+          re-assessed and re-accepted through the governance framework, and the risk identification and
+          mitigation worksheet, which is a governance artefact maintained in Phase G, must be updated
+          rather than treated as closed by the project office. Require the outage-management project to
+          request an Architecture Compliance review at initiation, because a second event bus is a
+          deviation from the Target Architecture that must be assessed, realigned, given a time-bound
+          dispensation, or raised as a Change Request. Treat the regulator's half-hourly settlement
+          requirement as a Change Request with an impact assessment through Requirements Management
+          rather than accepting "configuration" on assertion. Record all three in the Governance
+          Repository and bring them to the Architecture Board, noting that a critical risk that is not
+          being mitigated may require a partial ADM cycle.
+        why: >-
+          Residual risk is what remains after mitigation is actually executed; the residual risks are
+          approved by the governance framework, the execution of mitigating actions must be monitored
+          so the enterprise is dealing with residual rather than initial risk, the worksheets are kept up
+          to date in Phase G, and implementation governance can identify critical unmitigated risks that
+          need another full or partial cycle (TECH §8.6, §8.7). Phase G's objectives cover conformance of
+          all implementation projects and governance of implementation-driven Change Requests (ADM
+          §11.1), the compliance review is requested at initiation for every project in scope (GOV
+          §6.3.2, §6.4.3), and a deviation ends in realignment, dispensation or Change Request (GOV
+          §3.2.1, CONTENT §4.2.11). Decisions and assessments belong in the Governance Repository
+          (CONTENT §7.5).
+      - key: B
+        points: 3
+        text: >-
+          Report that the programme is broadly on track but ask the integrator to reinstate the load
+          test before the second transition, and note the regulator's requirement for the next
+          Architecture Board. Accept the outage-management project's view that it does not touch the
+          architecture, since its vendor is contracted separately.
+        why: >-
+          Reinstating the mitigation is right, but the risk position is not re-assessed and re-accepted
+          through governance and the worksheet remains marked closed (TECH §8.7); and the outage project
+          is exempted from review on its own assertion although a second event bus is precisely the
+          kind of deviation from the Target Architecture that Phase G exists to catch, for other ongoing
+          projects as well as the main ones (ADM §11.5, GOV §6.3.2).
+      - key: C
+        points: 1
+        text: >-
+          Report that all three items are project-management matters: the throughput risk sits in the
+          project's register, the regulator change is configuration, and the outage vendor is
+          contractually responsible for its design. Recommend that the architecture function focuses on
+          the third and fourth transitions.
+        why: >-
+          Enterprise Architecture risks are corporate risks and the risk worksheets are governance
+          artefacts owned in Phase G, not solely the project office's register (TECH §8.2, §8.7); a
+          regulatory change to what the target must deliver is a Change Request to be assessed, not
+          configuration by assertion (CONTENT §4.2.11); and contractual responsibility does not remove a
+          vendor's design from Architecture Compliance (GOV §6.1).
+      - key: D
+        points: 0
+        text: >-
+          Agree with the programme director that the programme is green, because the compliance
+          reviews passed, the contract is signed and the risk register shows the largest risk as closed.
+        why: >-
+          This mistakes initial risk for residual risk: closing a risk without executing its mitigation
+          is exactly the failure the standard warns against, and the lessons-learned record from the
+          previous programme described the same error (TECH §8.6, §8.7). It also ignores an ungoverned
+          deviation and an unassessed regulatory requirement, contradicting Phase G's objectives (ADM
+          §11.1).
+    refs: ["TECH §8.6", "TECH §8.7", "ADM §11.1", "GOV §6.3.2", "GOV §3.2.1", "CONTENT §7.5"]
+    open_book_hint: "Where to look: ADM Techniques chapter 8, especially 8.6 (residual risk) and 8.7 (risk monitoring and governance in Phase G); ADM 11.1 and 11.5 for Phase G objectives and the requirement that other ongoing projects also comply; EA Capability and Governance 6.3.2 for review timing and 3.2.1 for dispensation; Architecture Content 4.2.11 for the Change Request and 7.5 for the Governance Repository."
+    difficulty: 3
+    tags: [phase-g, risk-monitoring, residual-risk, compliance]
+    status: draft

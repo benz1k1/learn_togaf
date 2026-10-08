@@ -55,7 +55,8 @@ async def import_page(request: Request, connection: sqlite3.Connection = Depends
             request,
             connection,
             sets=importer_service.list_imported_sets(connection),
-            units=[(unit.code, unit.exam, unit.name) for unit in blueprint.units],
+            units=[(unit.code, unit.exam, unit.name) for unit in blueprint.units if unit.exam],
+            exams=list(blueprint.exams.values()),
         ),
     )
 
@@ -82,7 +83,8 @@ async def preview(
         preview=result,
         unit_choices=importer_service.unit_choices(blueprint, result.exam),
         sets=importer_service.list_imported_sets(connection),
-        units=[(unit.code, unit.exam, unit.name) for unit in blueprint.units],
+        units=[(unit.code, unit.exam, unit.name) for unit in blueprint.units if unit.exam],
+        exams=list(blueprint.exams.values()),
     )
     template = "_import_preview.html" if request.headers.get("hx-request") else "import.html"
     return templates.TemplateResponse(request, template, context)

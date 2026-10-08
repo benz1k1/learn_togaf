@@ -1,0 +1,558 @@
+# Authored ArchiMate Part 2 scenarios for units A1–A3 (learn_sabsa_archimate.md §4.3). Gradient
+# scoring 5/3/1/0; open-book hints point at the ArchiMate 3.2 section to consult.
+code: A1_A3_SCENARIOS
+exam: OGA-032
+name: "ArchiMate Part 2 scenarios, A1–A3"
+kind: DRILL
+source: authored
+questions:
+  - id: A1-S01
+    unit: A1
+    objective: "A1.2"
+    lesson: A1/02_aspects_layers_and_the_framework
+    figure: ARCHIMATE:fig-3
+    scenario: |
+      Halvard Logistics runs a parcel network across four countries, with 3,200 staff, 40 depots
+      and a fleet of 900 vehicles. Its architecture team has adopted the ArchiMate 3.2 language and
+      is building its first repository model. The team lead has asked three architects to classify a
+      first batch of elements against the Full Framework before any diagrams are drawn, so that
+      the repository folders and the tool's colour scheme are set up consistently.
+
+      The batch contains the following: the "Depot Supervisor" role; the "Sort Parcels" process; the
+      "Consignment" record that the sorting process updates; the "Route Optimizer" software that
+      plans vehicle rounds; the "Route Plan" data that it produces; the "Sorting Conveyor" machine
+      in each depot; the "Depot Building" itself; the board's aim to "Cut delivery cost per parcel
+      by 15 %"; the "Last-Mile Delivery" ability the company wants to strengthen; and the "Depot
+      Consolidation" transition state planned for next year, in which two depots close.
+
+      Architect one proposes a grouping into three folders — Business, Application and Technology
+      — with everything else placed in a fourth folder called "Information", on the grounds that
+      the consignment record, the route plan and the cost target are all "data about the business".
+      She proposes colouring the Information folder purple so that it stands out, and says the
+      language requires that colour scheme.
+
+      Architect two proposes folders per aspect only — Active Structure, Behaviour, Passive
+      Structure — and argues that layers are a presentation choice, so the cost target should be
+      filed as behaviour because "it drives what we do", and the depot building as passive
+      structure because "nothing happens in it".
+
+      Architect three proposes classifying by both layer and aspect using the Full Framework: the
+      role as Business active structure, the process as Business behaviour, the consignment as
+      Business passive structure, the Route Optimizer as Application active structure, the route
+      plan as Application passive structure, the conveyor and the depot building as physical
+      elements within the Technology Layer, the cost target as a motivation element, Last-Mile
+      Delivery as a Strategy element, and Depot Consolidation as an Implementation & Migration
+      element. He notes that colours are a convention the team may choose, not a rule.
+
+      The team lead wants a classification that will survive the next two years of modelling and
+      that matches what the specification actually says.
+    question: "Refer to the scenario. Which of the following is the best classification approach for Halvard Logistics, according to the ArchiMate 3.2 Specification?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Adopt architect three's classification. The Full Framework classifies elements by layer
+          and aspect together; there is no information layer, so consignment and route plan are
+          passive structure in the Business and Application layers respectively; equipment and
+          facilities are physical elements inside the Technology Layer; the cost target is a
+          motivation element, the ability is a Strategy-layer Capability, and the transition state
+          is an Implementation & Migration Plateau. Colour is a convention the team may choose.
+        why: "This matches §3.4 and §3.5 exactly: nine core cells plus motivation, strategy, physical-in-technology and implementation & migration; no information layer; colours have no formal semantics (§3.9)."
+      - key: B
+        points: 3
+        text: >-
+          Adopt architect three's layer-and-aspect classification for the core elements, but file
+          the depot building and the conveyor in a separate Physical layer beneath Technology,
+          since the Full Framework figure shows physical elements as a distinct band.
+        why: "The core classification is right, but the specification places physical elements within the Technology Layer as core elements, not in a separate layer (§3.5)."
+      - key: C
+        points: 1
+        text: >-
+          Adopt architect one's approach, since grouping the consignment, route plan and cost
+          target as information keeps data concerns together, and use purple for that folder.
+        why: "There is no information layer in the language; passive structure elements represent information within their layers (§3.5), a goal is not information, and colour is not required by the language (§3.9)."
+      - key: D
+        points: 0
+        text: >-
+          Adopt architect two's aspect-only approach and classify the cost target as behaviour
+          because it drives activity, and the depot building as passive structure.
+        why: "A goal is a motivation element, not behaviour (§4.4); a facility is an active structure physical element (§3.5); and layers are part of the framework's classification, not a presentation choice (§3.4)."
+    refs: ["ARCHIMATE §3.4", "ARCHIMATE §3.5", "ARCHIMATE §3.9", "ARCHIMATE §4.4"]
+    open_book_hint: "Look in ARCHIMATE §3.4 (Core Framework) and §3.5 (Full Framework), and §3.9 for what colours mean."
+    difficulty: 2
+    tags: [framework, aspects, layers, classification]
+  - id: A1-S02
+    unit: A1
+    objective: "A1.4"
+    lesson: A1/04_customization_exchange_and_conformance
+    scenario: |
+      Merrow Mutual is a regional insurer with 1,900 employees that has modelled its architecture
+      in ArchiMate for three years. Its risk function now wants the architecture model to carry
+      the results of an annual risk assessment: for every application component, a "risk rating"
+      of low, medium or high and an "annual loss expectancy" in currency; for every business event
+      that could harm an asset, a marker that it is a "threat event"; and for every mitigating
+      requirement, a marker that it is a "control measure" with an owner and a review date.
+
+      The risk manager has asked for "risk-specific ArchiMate elements" and has sent a sketch in
+      which she has invented three new shapes: a red octagon for "Threat", a shield for "Control"
+      and a gauge for "Exposure", each with its own set of allowed relationships that she wrote
+      down from scratch. She wants the modelling tool vendor to add these to the tool and the
+      exchange file so the model can be sent to the group's reinsurer, who uses a different tool.
+
+      The lead architect points out that the company's tool conforms to the ArchiMate 3.2
+      specification and that the reinsurer's tool does too, and that anything the model relies on
+      must therefore be expressible in the language and in the Model Exchange File Format. He also
+      notes that the specification contains informative examples of exactly this kind of risk and
+      security overlay.
+
+      An external consultant suggests a shortcut: keep everything in a spreadsheet keyed by element
+      name and leave the model untouched, since "ArchiMate does not do attributes".
+
+      The architecture board wants a proposal that keeps the model exchangeable with the reinsurer,
+      lets existing analysis and views continue to work, and captures the risk data with the least
+      invention.
+    question: "Refer to the scenario. Which of the following is the best way for Merrow Mutual to capture the risk assessment in its ArchiMate model?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Use the two customization mechanisms. Define a profile with typed attributes (risk
+          rating as string, annual loss expectancy as currency, owner as string, review date as
+          date) and assign it to application components and requirements as needed; define
+          "Threat Event" as a specialization of Business Event and "Control Measure" as a
+          specialization of Requirement, shown with the «stereotype» notation or an added icon,
+          inheriting the parents' permitted relationships. Both are carried by the Model Exchange
+          File Format, so the reinsurer's conforming tool can read them.
+        why: "Attributes via profiles (§14.1) and specialization of existing concepts (§14.2) are the language's customization mechanisms; the informative examples name Threat Event as a Business Event specialization and Control Measure as a Requirement specialization (§14.2.1, §14.2.5); profile types are encoded in the exchange format (§14.1)."
+      - key: B
+        points: 3
+        text: >-
+          Define specializations for Threat Event and Control Measure as in answer A, but record
+          the risk rating, loss expectancy, owner and review date in a linked spreadsheet, since
+          those are numbers rather than architecture.
+        why: "Specialization is right, but the language explicitly supports typed attributes through profiles, including currency and date types, and keeping them outside the model loses exchangeability and model-based analysis (§14.1)."
+      - key: C
+        points: 1
+        text: >-
+          Ask the tool vendor to implement the risk manager's three new elements with their own
+          relationship rules and to extend the exchange format to carry them.
+        why: "New element types with self-invented relationship rules are not a customization mechanism; the language is tailored by attributes and specialization without extending the metamodel (§14), and a non-standard exchange format would not be read by another conforming tool (§1.3)."
+      - key: D
+        points: 0
+        text: >-
+          Follow the consultant: keep the model unchanged and hold all risk data in a spreadsheet
+          keyed by element name, because the language has no attribute mechanism.
+        why: "Every concept in an ArchiMate model can carry attributes through the profile mechanism (§14.1); the premise is false and the model would not carry the risk view at all."
+    refs: ["ARCHIMATE §14", "ARCHIMATE §14.1", "ARCHIMATE §14.2", "ARCHIMATE §14.2.5", "ARCHIMATE §1.3"]
+    open_book_hint: "Look in ARCHIMATE §14.1 (attributes and profiles) and §14.2 (specialization), and the examples in §14.2.1 and §14.2.5."
+    difficulty: 2
+    tags: [customization, profile, specialization, exchange-format]
+  - id: A2-S01
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    figure: ARCHIMATE:fig-34
+    scenario: |
+      Tessaly Energy is a mid-sized electricity retailer with 800,000 household customers. A new
+      Chief Customer Officer has commissioned a Stakeholder view to explain why a two-year
+      customer-service programme is needed, and has given the architect her notes.
+
+      The notes say: the CCO and the Chief Financial Officer both care about customer churn; the
+      CFO also cares about cost to serve. The regulator, an external body, cares about complaint
+      handling times. A recent review found that "churn has risen from 9 % to 14 % in two years",
+      that "average complaint resolution takes 21 days against a regulatory limit of 10", and that
+      "the online account portal is rated highly by users". The CCO wants to "reduce churn" and
+      to "resolve complaints faster"; the CFO wants to "reduce cost to serve". The CCO adds that
+      by the end of next year she expects to be able to say "churn below 10 % achieved" and
+      "complaints resolved within 10 days achieved", and warns that the programme could also mean
+      "call-centre headcount increased by 60", which the CFO will not like.
+
+      A junior modeller has produced a first draft in which every note is a Goal: "Customer churn",
+      "Churn has risen to 14 %", "Reduce churn", "Churn below 10 % achieved" and "Call-centre
+      headcount increased by 60" are all drawn as Goals in a single column, connected in a chain
+      of triggering relationships to show cause and effect. The regulator is drawn as a Business
+      Actor. The three stakeholders are linked to the goals with serving relationships.
+
+      The lead architect wants a Stakeholder view that uses the right motivation element for each
+      note, links stakeholders, drivers and assessments with permitted relationships, and shows the
+      expected end results, including the unwanted one, distinctly from the intentions.
+    question: "Refer to the scenario. Which of the following is the best remodelling of Tessaly Energy's Stakeholder view?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Model the CCO, CFO and Regulator as Stakeholders; "Customer churn", "Cost to serve" and
+          "Complaint handling time" as Drivers associated with the stakeholders concerned; the three
+          review findings as Assessments associated with their drivers; "Reduce churn", "Resolve
+          complaints faster" and "Reduce cost to serve" as Goals; and "Churn below 10 % achieved",
+          "Complaints resolved within 10 days achieved" and "Call-centre headcount increased by 60"
+          as Outcomes, with the first two realizing their goals and the headcount outcome negatively
+          influencing the cost-to-serve goal. Use influence from assessments to goals, not
+          triggering.
+        why: "Each element matches its definition (§6.2.1–§6.3.2): stakeholders and drivers are associated, assessments are the results of analysing drivers, goals are qualitative intentions, outcomes are achieved or expected end results including unwanted ones (§6.3.2); triggering and serving are not motivation relationships (§6.1)."
+      - key: B
+        points: 3
+        text: >-
+          As in answer A, but model the expected end results and the headcount increase as further
+          Goals aggregated under the main goals, since they are all things the programme is aiming
+          at.
+        why: "The stakeholder, driver and assessment modelling is right, but a headcount increase is not desired and goals cannot model unwanted effects; the tangible, time-related results are Outcomes (§6.3.2)."
+      - key: C
+        points: 1
+        text: >-
+          Keep the regulator as a Business Actor because it is an external organization, model the
+          three findings as Drivers, and connect stakeholders to goals with association.
+        why: "A stakeholder is a role that may be external; the regulator holds interests in the architecture's effects and is a Stakeholder (§6.2.1). The findings are results of analysis, i.e. Assessments, not Drivers (§6.2.3)."
+      - key: D
+        points: 0
+        text: >-
+          Accept the junior draft, since all the notes express what the company wants and
+          triggering shows the causal order clearly.
+        why: "Drivers, assessments, goals and outcomes are distinct elements (§6.5); triggering is a dynamic relationship between behaviour elements and is not permitted between motivation elements, nor is serving (§6.1)."
+    refs: ["ARCHIMATE §6.2", "ARCHIMATE §6.2.1", "ARCHIMATE §6.2.3", "ARCHIMATE §6.3.1", "ARCHIMATE §6.3.2", "ARCHIMATE §C.2.1"]
+    open_book_hint: "Look in ARCHIMATE §6.2 and §6.3 for the definitions, §6.2.4 for the worked example, and §C.2.1 for the Stakeholder viewpoint."
+    difficulty: 2
+    tags: [stakeholder, driver, assessment, goal, outcome]
+  - id: A2-S02
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    scenario: |
+      Brightwater Utilities supplies water to 1.1 million properties. Its architecture board has
+      approved two enterprise principles: "Customer data is held once and shared" and "Field
+      operations must work offline". A programme to replace the field-service application is
+      starting, and the programme's business analyst has drafted a "requirements register" that
+      she wants the architect to put into the motivation model under a Goal Realization view.
+
+      The register contains, among forty items: "Improve first-time fix rate" (the programme's
+      aim); "Engineers can view a property's full history on site"; "The app must synchronise
+      when connectivity returns"; "The new app must use the corporate customer master, not its
+      own copy"; "The replacement must go live before the winter peak in November"; "Only the
+      vendor's platform already licensed by the group may be used"; and "Personal data must not
+      leave the national jurisdiction".
+
+      The analyst has entered all forty items as Requirements, and has drawn a realization from
+      each of the two enterprise principles to every requirement, "because the principles come
+      first and generate the requirements". She has also drawn the aim "Improve first-time fix
+      rate" as a Requirement realized by the other thirty-nine.
+
+      A programme manager objects that the November deadline and the licensed-platform rule are
+      "not requirements, they are just facts of life" and wants them removed from the model
+      entirely, since "ArchiMate only models what the system must do".
+
+      The lead architect wants a Goal Realization view that distinguishes the aim from the means,
+      records the restrictions on how and when the solution may be built, and uses the realization
+      relationship in the direction the specification defines.
+    question: "Refer to the scenario. Which of the following is the best way to model Brightwater's register?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Model "Improve first-time fix rate" as a Goal. Model items that prescribe functionality
+          of the new application — view history on site, synchronise on reconnection, use the
+          corporate customer master — as Requirements that realize the Goal. Model the November
+          deadline, the licensed-platform rule and the data-jurisdiction rule as Constraints, since
+          they restrict the implementation process, the implementation and the functioning without
+          prescribing function. Draw realization from the specific requirements and constraints to
+          the enterprise Principles they conform to, not from the principles down.
+        why: "Goals are ends and requirements the means (§6.3.4); constraints restrict implementation, the implementation process, or functioning (§6.3.5); the more specific element realizes the more general one, so requirements realize principles (§6.3.3, §3.6)."
+      - key: B
+        points: 3
+        text: >-
+          As in answer A for the goal and requirements, but keep the deadline and platform rule as
+          Requirements, since Constraint is a subtype of Requirement and the distinction makes no
+          difference to the view.
+        why: "Constraint is indeed a subtype (§4.4), but the specification defines it precisely for restrictions that prescribe no functionality (§6.3.5); modelling them as plain Requirements loses the distinction the Goal Realization viewpoint lists explicitly (§C.2.2)."
+      - key: C
+        points: 1
+        text: >-
+          Accept the analyst's model but reverse nothing: principles realize requirements because
+          they are defined first, and the aim is the top-level requirement.
+        why: "Realization runs from the specific requirement to the general principle (§6.3.3); an aim expressed as 'improve' is a Goal, not a Requirement (§6.3.1)."
+      - key: D
+        points: 0
+        text: >-
+          Follow the programme manager and remove the deadline, platform rule and jurisdiction
+          rule from the model, since the language models only what a system must do.
+        why: "Restrictions on time, budget, technology and legal functioning are exactly what the Constraint element exists to capture (§6.3.5); removing them loses traceability the motivation model is for (§6.6)."
+    refs: ["ARCHIMATE §6.3", "ARCHIMATE §6.3.1", "ARCHIMATE §6.3.3", "ARCHIMATE §6.3.4", "ARCHIMATE §6.3.5", "ARCHIMATE §C.2.2"]
+    open_book_hint: "Look in ARCHIMATE §6.3.3 to §6.3.5 for the three definitions, and §C.2.2 for the Goal Realization viewpoint."
+    difficulty: 2
+    tags: [principle, requirement, constraint, goal-realization]
+  - id: A2-S03
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    figure: ARCHIMATE:fig-45
+    scenario: |
+      Orrin Foods is a grocery wholesaler serving 2,400 independent shops. It is replacing the
+      nightly order confirmation, a printed fax, with an "Order Status" push notification sent from
+      the new ordering platform. The Head of Trading wants the architecture model to show why the
+      change matters to each party, and the compliance officer wants the model to show that the
+      notification meets the trading-standards rule that order changes are confirmed in writing.
+
+      Facts gathered by the architect: the notification has three variants — "Order Received",
+      "Substitution Made" and "Dispatched". To a shopkeeper, "Substitution Made" means "a product
+      I ordered has been replaced and I may refuse it"; to Orrin's own dispatch team the same
+      message means "the pick list has been amended". Shopkeepers say the notifications give them
+      "certainty about tomorrow's stock"; Orrin's finance team values "fewer disputed invoices".
+      The compliance officer has an explicit requirement, "Order changes are confirmed in writing
+      to the customer", which realizes the enterprise principle "Trade transparently". The
+      notification service is implemented by the "Order Status Notifier" application component.
+      The Head of Trading, who chairs the trading committee, is a Business Role in the model and
+      should also be visible as a stakeholder of this change.
+
+      A first draft models "certainty about tomorrow's stock" and "fewer disputed invoices" as
+      Goals realized by the notification service; models "pick list has been amended" as a
+      Business Object; draws a serving relationship from the Order Status Notifier component to
+      the compliance requirement; and creates a second, separate Stakeholder element named "Head
+      of Trading" with no link to the Business Role.
+
+      The lead architect wants the model to use Meaning and Value correctly, to show which core
+      element realizes the compliance requirement with the right relationship, to distinguish
+      critical from contributory relationships, and to show that the Head of Trading role is a
+      stakeholder without duplicating the person.
+    question: "Refer to the scenario. Which of the following is the best remodelling for Orrin Foods?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Model "certainty about tomorrow's stock" and "fewer disputed invoices" as Values, each
+          associated with the notification service and with the Stakeholder (shopkeeper, finance)
+          it applies to. Model the interpretations of "Substitution Made" as two Meanings associated
+          with that message and with the stakeholder holding each interpretation. Replace the
+          serving relationship with a realization from the Order Status Notifier component to the
+          requirement "Order changes are confirmed in writing", which realizes the principle. Keep
+          one Stakeholder "Head of Trading" and assign the existing Business Role to it.
+        why: "Value is worth for a stakeholder and Meaning is interpretation in a context, both associated with any concept and optionally with a stakeholder (§6.4.1, §6.4.2); a core element realizes a requirement, serving is not permitted toward motivation elements (§6.6); a business role may be assigned to a stakeholder (§6.6)."
+      - key: B
+        points: 3
+        text: >-
+          As in answer A for Value and Meaning and the stakeholder assignment, but connect the Order
+          Status Notifier to the compliance requirement with an influence relationship, since
+          the component contributes to compliance.
+        why: "Influence is for contributions that are not critical; the notifier is the component that actually delivers the written confirmation, so realization is the correct, stronger relationship (§5.2.3, §6.6)."
+      - key: C
+        points: 1
+        text: >-
+          Keep the two benefits as Goals, but change "pick list has been amended" to a Meaning
+          and add the role-to-stakeholder assignment.
+        why: "The meaning and assignment corrections are right, but 'certainty' and 'fewer disputes' are benefits perceived by parties, i.e. Values, not intentions of the organization (§6.4.2); the serving relationship to the requirement remains wrong (§6.6)."
+      - key: D
+        points: 0
+        text: >-
+          Accept the draft: goals capture benefits, the serving relationship shows the component
+          supports compliance, and a separate Stakeholder element is the correct way to show the
+          Head of Trading's interest.
+        why: "Benefits to parties are Values (§6.4.2), serving is not permitted from a core element to a requirement (§6.6), and a duplicate element instead of an assignment breaks the link between the operational role and the stakeholder (§6.6)."
+    refs: ["ARCHIMATE §6.4.1", "ARCHIMATE §6.4.2", "ARCHIMATE §6.4.3", "ARCHIMATE §6.6", "ARCHIMATE §5.2.3"]
+    open_book_hint: "Look in ARCHIMATE §6.4 for Meaning and Value, §6.6 for relationships with core elements, and §5.2.3 for when to use influence rather than realization."
+    difficulty: 3
+    tags: [meaning, value, realization, influence, assignment]
+  - id: A3-S01
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    figure: ARCHIMATE:fig-46
+    scenario: |
+      Copperfield Pharma is a generics manufacturer with three plants and 4,500 staff. Its board
+      has adopted a three-year strategy called "Faster to Market", with two strands: "Standardize
+      Batch Release" across the plants and "Outsource Stability Testing". The strategy office has
+      asked the enterprise architect for a single strategy view that the board can read, and has
+      supplied a list of what should appear on it.
+
+      The list: the strategy and its two strands; "Increase share of first-to-file launches", the
+      board's aim; "Regulatory Submission" and "Quality Assurance", two things the company is able
+      to do and wants to strengthen; "Bring Generic to Market", the end-to-end chain of
+      value-adding stages from molecule selection to first shipment; the "Regulatory Affairs
+      Team", the "Laboratory Information System" and the plants' "Validated Equipment", three
+      assets the company controls; "Release batch" and "Compile dossier", two operational,
+      time-ordered procedures run daily; and "Six launches per year achieved", the result the
+      board expects to be able to report.
+
+      The strategy office's own sketch draws "Faster to Market" as a Goal, its two strands as
+      Business Processes, "Regulatory Submission" and "Quality Assurance" as Business Functions,
+      "Bring Generic to Market" as a Business Process with the two daily procedures as its steps,
+      the three assets as Business Actors, and "Six launches per year achieved" as a Goal. The
+      office says the Business Layer is "what the tool offered" and asks whether it matters.
+
+      The lead architect points out that the specification defines a small Strategy layer for
+      exactly this content, that it deliberately has no service or interface elements, and that
+      the choice of element changes what the board can read from the view.
+    question: "Refer to the scenario. Which of the following is the best choice of elements for Copperfield Pharma's strategy view?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Model "Faster to Market" and its two strands as Courses of Action (strategy and
+          tactics, decomposed with aggregation); "Increase share of first-to-file launches" as a
+          Goal; "Regulatory Submission" and "Quality Assurance" as Capabilities; "Bring Generic to
+          Market" as a Value Stream composed of value stream stages; the team, the laboratory
+          system and the validated equipment as Resources; "Six launches per year achieved" as an
+          Outcome; and keep "Release batch" and "Compile dossier" as Business Processes that
+          realize value stream stages, off the board's view.
+        why: "Courses of action are what the enterprise decided to do (§7.3.3); capabilities are abilities named as gerunds or compound nouns (§7.3.1); a value stream is the strategic chain of value-adding stages, distinct from operational processes (§7.3.2); assets are resources (§7.2.1); an expected result is an Outcome (§6.3.2)."
+      - key: B
+        points: 3
+        text: >-
+          As in answer A, but model the three assets as Business Actor, Application Component
+          and Equipment respectively, placed directly on the strategy view, since that is what
+          they physically are.
+        why: "Those core elements may realize resources, but on a strategy view the asset the strategy depends on is the Resource; the core elements belong beneath it via realization (§7.2.1, §7.6)."
+      - key: C
+        points: 1
+        text: >-
+          Model the strategy and strands as Goals and the rest as in answer A, since a strategy
+          is a high-level statement of direction.
+        why: "A goal is a desired end state; a strategy is a chosen approach for configuring capabilities and resources to reach it, i.e. a Course of Action (§7.3.3); conflating them loses the ends/means distinction the strategy view exists to show."
+      - key: D
+        points: 0
+        text: >-
+          Accept the office's Business Layer sketch, since the elements are available in the tool
+          and the board will read the labels rather than the icons.
+        why: "Business Layer elements model the operational organization; strategy elements model direction and choices at a more abstract level (§7). Modelling the value stream as a process with daily steps and assets as actors misstates what the board is looking at (§7.3.2)."
+    refs: ["ARCHIMATE §7", "ARCHIMATE §7.2.1", "ARCHIMATE §7.3.1", "ARCHIMATE §7.3.2", "ARCHIMATE §7.3.3", "ARCHIMATE §6.3.2"]
+    open_book_hint: "Look in ARCHIMATE §7.2 and §7.3 for the four strategy elements and §7.3.2 for value stream versus business process."
+    difficulty: 2
+    tags: [resource, capability, value-stream, course-of-action]
+  - id: A3-S02
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    figure: ARCHIMATE:fig-51
+    scenario: |
+      Kestrel Airways is a regional carrier with 38 aircraft. Its strategy view already contains
+      the Course of Action "Grow Ancillary Revenue", the Capabilities "Ancillary Product
+      Management" and "Customer Data Analytics", the Value Stream "Sell Seat and Extras" with the
+      stages "Search", "Book", "Add Extras" and "Check In", the Resources "Passenger Data Set" and
+      "Revenue Team", the Requirement "Offer personalised extras at booking", and the Outcome
+      "Ancillary revenue per passenger up 20 % achieved".
+
+      The architect must now add the relationships, and three team members have each drawn a
+      version. The operations analyst has connected the four stages with triggering "because they
+      happen in order", drawn assignment from each Capability to the stage it supports, drawn
+      serving from each Resource to the Capability that uses it, and drawn a realization from the
+      Goal "Increase profit" down to the Course of Action "because the goal produces the
+      strategy". The data lead has drawn a realization from the "Passenger Data Set" resource to
+      the "Customer Data Analytics" capability, arguing that the data makes the analytics possible,
+      and a realization from the "Booking Engine" Application Component directly to the "Ancillary
+      Product Management" capability. The revenue manager has drawn associations everywhere and
+      says the tool will sort it out.
+
+      Below the strategy view, the model has the Business Process "Handle booking" and the
+      Application Function "Recommend extras", performed by the "Booking Engine" component, and the
+      Business Actor "Revenue Management Department".
+
+      The lead architect wants a version that uses the relationships the strategy metamodel
+      defines among the four strategy elements, connects them to the requirement and outcome in
+      the permitted direction, and connects the core elements to the strategy elements with
+      realization in the way the specification allows.
+    question: "Refer to the scenario. Which of the following is the best set of relationships for Kestrel Airways' strategy model?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Compose the Value Stream of its four stages and connect the stages with flow. Draw serving
+          from each Capability to the stage(s) it enables. Draw assignment from "Passenger Data
+          Set" and "Revenue Team" to the Capabilities they support. Draw realization from the
+          Capabilities to the Course of Action, and from the Course of Action to the Outcome, with
+          the Outcome realizing the Goal. Draw realization (or influence) from the Capabilities and
+          Course of Action to the Requirement. Beneath, let "Handle booking" and "Recommend extras"
+          realize the Value Stream stage and the Capability respectively, let "Revenue Management
+          Department" and the customer database realize the Resources, and keep "Booking Engine"
+          assigned to "Recommend extras" rather than realizing the Capability directly.
+        why: "Stages are value streams linked by flow (§7.3.2); capabilities serve value streams; resources are assigned to capabilities (§7.3.2); capabilities realize courses of action (§7.4); strategy elements realize or influence requirements and a course of action realizes or influences an outcome (§7.6); behaviour realizes capabilities and value streams, structure realizes resources (§7.6)."
+      - key: B
+        points: 3
+        text: >-
+          As in answer A, but keep the data lead's direct realization from the "Booking Engine"
+          Application Component to the "Ancillary Product Management" capability, since the
+          component is what delivers it.
+        why: "Capabilities are realized by behaviour elements; a component is active structure and is assigned to the function that realizes the capability. A derived relationship may be drawn only if the chain is valid, and the direct pair is not the metamodel's (§7.6, §5.7)."
+      - key: C
+        points: 1
+        text: >-
+          Accept the operations analyst's version: triggering between stages, assignment from
+          capabilities to stages, serving from resources to capabilities, and realization from the
+          goal to the course of action.
+        why: "Every one of these is the wrong relationship or the wrong direction: stages use flow, capabilities serve stages, resources are assigned to capabilities (§7.3.2), and strategy elements realize motivation elements, not the reverse (§7.6)."
+      - key: D
+        points: 0
+        text: >-
+          Use associations throughout, as the revenue manager suggests, since association is
+          always permitted and the meaning is clear from the labels.
+        why: "Association is a placeholder for an unspecified relationship to be refined later (§5.2.4); the strategy metamodel defines specific relationships and a view built only on associations supports no analysis or derivation (§7.1, §5.7)."
+    refs: ["ARCHIMATE §7.1", "ARCHIMATE §7.3.2", "ARCHIMATE §7.4", "ARCHIMATE §7.6", "ARCHIMATE §5.7", "ARCHIMATE §5.2.4"]
+    open_book_hint: "Look in ARCHIMATE §7.6 (relationships with motivation and core elements), §7.3.2 for value stream relationships, and the example in §7.4."
+    difficulty: 3
+    tags: [relationships, capability, value-stream, resource, realization]
+  - id: A3-S03
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    scenario: |
+      Lindqvist Retail operates 210 home-furnishing stores and an online channel. Its executive
+      committee has asked the architecture team for four deliverables over the next quarter, each
+      to be produced as an ArchiMate view under one of the specification's example viewpoints, so
+      that the tool's viewpoint filters can be used and the views stay consistent.
+
+      Deliverable one: a single page for the CEO and the executive committee showing the three
+      strategic themes the board has chosen — "Omnichannel First", "Own-Brand Growth" and "Store
+      Estate Rationalisation" — with the capabilities, the value streams and the key assets that
+      each theme relies on, and the results the board expects from each.
+
+      Deliverable two: a levelled map of the company's capabilities, three levels deep, coloured by
+      the finance director to show where investment is planned and where capability is weak, so
+      that the committee can argue about priorities.
+
+      Deliverable three: a page showing the "Furnish a Home" value stream from inspiration to
+      delivery, stage by stage, with the capabilities that enable each stage, the value each stage
+      creates and the customer segments involved.
+
+      Deliverable four: for the audit committee, a page tracing the result "Returns rate below 4 %
+      achieved" down through the capabilities that produce it to the actual processes, applications
+      and teams that realize those capabilities, including what the result is worth to the customer
+      and to finance.
+
+      A newly certified modeller has proposed the Motivation viewpoint for deliverable one because
+      "it has outcomes in it", the Resource Map viewpoint for deliverable two because "assets and
+      capabilities are the same thing to the board", the Business Process Cooperation viewpoint for
+      deliverable three because "a value stream is a big process", and the Capability Map
+      viewpoint for deliverable four because "it allows outcomes".
+
+      The lead architect wants each deliverable assigned the viewpoint whose defined purpose,
+      concern and element list actually contain what the page must show.
+    question: "Refer to the scenario. Which of the following is the best assignment of viewpoints to Lindqvist Retail's four deliverables?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Deliverable one: Strategy viewpoint (courses of action, capabilities, value streams,
+          resources, outcomes; for CxOs). Deliverable two: Capability Map viewpoint (levelled
+          capabilities used as a heat map). Deliverable three: Value Stream viewpoint (value
+          stream, capabilities, outcomes, stakeholders). Deliverable four: Outcome Realization
+          viewpoint (outcome traced through capabilities to core elements, with value and meaning).
+        why: "Each matches the viewpoint's stated purpose and element list in §C.3.1 to §C.3.4: only Strategy admits courses of action; Capability Map is the heat map; Value Stream shows stages with enabling capabilities and stakeholders; only Outcome Realization admits core elements and value."
+      - key: B
+        points: 3
+        text: >-
+          As in answer A for deliverables one to three, but use the Capability Map viewpoint for
+          deliverable four, adding the processes and applications as annotations, since the
+          Capability Map may show outcomes delivered by capabilities.
+        why: "The Capability Map admits outcome, capability and resource only; the audit committee's trace down to processes, applications and teams, with the value to stakeholders, is precisely what the Outcome Realization viewpoint is defined for (§C.3.2, §C.3.4)."
+      - key: C
+        points: 1
+        text: >-
+          Use the Strategy viewpoint for all four deliverables, since it is the broadest of the
+          strategy viewpoints and the committee will see everything in one style.
+        why: "The Strategy viewpoint admits no core elements, value, meaning or stakeholders, so deliverables three and four cannot be drawn under it; the specification defines separate viewpoints because each selects a different subset (§C.3)."
+      - key: D
+        points: 0
+        text: >-
+          Accept the modeller's proposal: Motivation, Resource Map, Business Process Cooperation
+          and Capability Map.
+        why: "The Motivation viewpoint has no strategy elements (§C.2.4); the Resource Map is about resources, not a capability heat map (§C.3.5); a value stream is not a business process and the Value Stream viewpoint exists for deliverable three (§7.3.2, §C.3.3); the Capability Map admits no core elements (§C.3.2)."
+    refs: ["ARCHIMATE §C.3", "ARCHIMATE §C.3.1", "ARCHIMATE §C.3.2", "ARCHIMATE §C.3.3", "ARCHIMATE §C.3.4", "ARCHIMATE §C.3.5"]
+    open_book_hint: "Look in ARCHIMATE §C.3.1 to §C.3.5 and compare each viewpoint's element list against what each page must show."
+    difficulty: 2
+    tags: [viewpoints, strategy, capability-map, value-stream, outcome-realization]

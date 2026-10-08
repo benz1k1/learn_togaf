@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 346" font-family="sans-serif" font-size="12" role="img" aria-label="Example Logical Data Diagram for a fictional retail bank, an original study illustration">
+<defs><marker id="arr-logical-data-diagram" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="760" height="346" fill="#fff"/>
+<text x="10" y="20" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Example: Logical Data Diagram — retail bank</text>
+<text x="750" y="20" text-anchor="end" font-size="11" fill="#666" font-style="italic">diagram: Phase C data</text>
+<rect x="20" y="40" width="180" height="103" rx="2" fill="#fff" stroke="#7aa2e3" stroke-width="1"/>
+<rect x="20" y="40" width="180" height="22" rx="2" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="110.0" y="55" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Customer</text>
+<text x="28" y="77" text-anchor="start" font-size="10" fill="#222">customer_id  PK</text>
+<text x="28" y="92" text-anchor="start" font-size="10" fill="#345">full_name</text>
+<text x="28" y="107" text-anchor="start" font-size="10" fill="#345">date_of_birth</text>
+<text x="28" y="122" text-anchor="start" font-size="10" fill="#345">kyc_status</text>
+<text x="28" y="137" text-anchor="start" font-size="10" fill="#345">created_at</text>
+<rect x="290" y="40" width="180" height="103" rx="2" fill="#fff" stroke="#7aa2e3" stroke-width="1"/>
+<rect x="290" y="40" width="180" height="22" rx="2" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="380.0" y="55" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Account</text>
+<text x="298" y="77" text-anchor="start" font-size="10" fill="#222">account_id  PK</text>
+<text x="298" y="92" text-anchor="start" font-size="10" fill="#222">customer_id  FK</text>
+<text x="298" y="107" text-anchor="start" font-size="10" fill="#345">product_type</text>
+<text x="298" y="122" text-anchor="start" font-size="10" fill="#345">currency</text>
+<text x="298" y="137" text-anchor="start" font-size="10" fill="#345">balance</text>
+<rect x="560" y="40" width="180" height="103" rx="2" fill="#fff" stroke="#7aa2e3" stroke-width="1"/>
+<rect x="560" y="40" width="180" height="22" rx="2" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="650.0" y="55" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Card</text>
+<text x="568" y="77" text-anchor="start" font-size="10" fill="#222">card_id  PK</text>
+<text x="568" y="92" text-anchor="start" font-size="10" fill="#222">account_id  FK</text>
+<text x="568" y="107" text-anchor="start" font-size="10" fill="#345">pan_token</text>
+<text x="568" y="122" text-anchor="start" font-size="10" fill="#345">expiry_month</text>
+<text x="568" y="137" text-anchor="start" font-size="10" fill="#345">status</text>
+<rect x="290" y="200" width="180" height="103" rx="2" fill="#fff" stroke="#7aa2e3" stroke-width="1"/>
+<rect x="290" y="200" width="180" height="22" rx="2" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="380.0" y="215" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Transaction</text>
+<text x="298" y="237" text-anchor="start" font-size="10" fill="#222">txn_id  PK</text>
+<text x="298" y="252" text-anchor="start" font-size="10" fill="#222">account_id  FK</text>
+<text x="298" y="267" text-anchor="start" font-size="10" fill="#222">card_id  FK (nullable)</text>
+<text x="298" y="282" text-anchor="start" font-size="10" fill="#345">amount</text>
+<text x="298" y="297" text-anchor="start" font-size="10" fill="#345">posted_at</text>
+<line x1="200" y1="62" x2="290" y2="62" stroke="#333" stroke-width="1"/><text x="208" y="56" text-anchor="middle" font-size="10" fill="#222">1</text><line x1="290" y1="62" x2="302" y2="55" stroke="#333" stroke-width="1"/>
+<line x1="290" y1="62" x2="302" y2="62" stroke="#333" stroke-width="1"/>
+<line x1="290" y1="62" x2="302" y2="69" stroke="#333" stroke-width="1"/><text x="245" y="56" text-anchor="middle" font-size="10" fill="#345">holds</text>
+<line x1="470" y1="62" x2="560" y2="62" stroke="#333" stroke-width="1"/><text x="478" y="56" text-anchor="middle" font-size="10" fill="#222">1</text><line x1="560" y1="62" x2="572" y2="55" stroke="#333" stroke-width="1"/>
+<line x1="560" y1="62" x2="572" y2="62" stroke="#333" stroke-width="1"/>
+<line x1="560" y1="62" x2="572" y2="69" stroke="#333" stroke-width="1"/><text x="515" y="56" text-anchor="middle" font-size="10" fill="#345">0..*</text>
+<line x1="380" y1="143" x2="380" y2="200" stroke="#333" stroke-width="1"/><text x="388" y="157" text-anchor="middle" font-size="10" fill="#222">1</text><line x1="380" y1="200" x2="372" y2="188" stroke="#333" stroke-width="1"/><line x1="380" y1="200" x2="388" y2="188" stroke="#333" stroke-width="1"/><text x="420" y="178" text-anchor="middle" font-size="10" fill="#345">0..*</text>
+<path d="M650 143 L650 250 L470 250" fill="none" stroke="#333" stroke-dasharray="5 4" marker-end="url(#arr-logical-data-diagram)"/>
+<text x="560" y="244" text-anchor="middle" font-size="10" fill="#345">0..1 card per transaction</text>
+<text x="380" y="320" text-anchor="middle" font-size="10" fill="#345">For developers and DB designers: keys, attributes and cardinalities. Physical types and indexes are left to the physical model.</text>
+<text x="10" y="338" text-anchor="start" font-size="11" fill="#666">Original illustration for study; the artifact is defined in CONTENT §3.6.5</text>
+</svg>

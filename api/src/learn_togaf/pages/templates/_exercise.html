@@ -1,0 +1,3 @@
+{# One braided-week exercise checkbox; expects week, kind (draw|justify), done. Swapped in place on toggle. #}
+<input type="checkbox" class="checkbox checkbox-sm" name="done" id="exercise-{{ week }}-{{ kind }}" {% if done %}checked{% endif %}
+       hx-post="/plan/exercise/{{ week }}/{{ kind }}" hx-trigger="change" hx-swap="outerHTML" hx-vals='js:{done: event.target.checked ? "on" : ""}'>

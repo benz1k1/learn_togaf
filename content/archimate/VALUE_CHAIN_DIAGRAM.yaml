@@ -1,0 +1,40 @@
+# Value Chain Diagram (Phase A) as a Value Stream view: the primary activities are the stages of one
+# Value Stream, the support activities are Capabilities that serve them, and the outside parties are
+# Business Actors at the edges (ARCHIMATE §7.3).
+id: VALUE_CHAIN_DIAGRAM
+title: "Northgate Bank — Value Chain Diagram as a Value Stream view"
+viewpoint: Value Stream
+elements:
+  - {id: market, type: business_actor, name: "Customers (market)", col: 0, row: 0}
+  - {id: chain, type: value_stream, name: "Serve a retail customer", col: 1, row: 0, w: 3}
+  - {id: served, type: business_actor, name: "Customers (served)", col: 4, row: 0}
+  - {id: attract, type: value_stream, name: "Attract customers", col: 0, row: 1}
+  - {id: onboard, type: value_stream, name: "Onboarding", col: 1, row: 1}
+  - {id: pay, type: value_stream, name: "Payments", col: 2, row: 1}
+  - {id: lend, type: value_stream, name: "Lending", col: 3, row: 1}
+  - {id: retain, type: value_stream, name: "Service and retain", col: 4, row: 1}
+  - {id: risk, type: capability, name: "Risk and compliance (KYC, fraud, regulatory reporting)", col: 1, row: 2, w: 2}
+  - {id: tech, type: capability, name: "Technology and people (Core Banking, Mobile App, Card Switch)", col: 3, row: 2, w: 2}
+  - {id: regulator, type: business_actor, name: "Regulator", col: 1, row: 3}
+  - {id: cardnet, type: business_actor, name: "Card network", col: 4, row: 3}
+relations:
+  - {from: chain, to: attract, type: composition}
+  - {from: chain, to: onboard, type: composition}
+  - {from: chain, to: pay, type: composition}
+  - {from: chain, to: lend, type: composition}
+  - {from: chain, to: retain, type: composition}
+  - {from: attract, to: onboard, type: triggering}
+  - {from: onboard, to: pay, type: triggering}
+  - {from: pay, to: lend, type: triggering}
+  - {from: lend, to: retain, type: triggering}
+  - {from: risk, to: onboard, type: serving}
+  - {from: risk, to: pay, type: serving}
+  - {from: tech, to: pay, type: serving}
+  - {from: tech, to: lend, type: serving}
+  - {from: tech, to: retain, type: serving}
+  - {from: market, to: attract, type: association}
+  - {from: retain, to: served, type: association}
+  - {from: regulator, to: risk, type: association}
+  - {from: cardnet, to: tech, type: association}
+notes:
+  - {text: "Orientation only: primary activities left to right, support capabilities beneath. Onboarding, Payments and the risk capability are what the Digital Channels programme changes.", col: 2, row: 3, w: 2}

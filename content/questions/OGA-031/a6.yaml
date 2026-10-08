@@ -1,0 +1,726 @@
+# A6 Technology and Physical Layers drill bank (learn_sabsa_archimate.md §4.3). Every question is
+# original, cites the entailing ArchiMate 3.2 section, and is status: draft until reviewed. Ids A6-101 upward.
+code: A6_BANK
+exam: OGA-031
+name: A6 Technology and Physical Layers bank
+kind: DRILL
+source: authored
+questions:
+  # ------------------------------------------------------------ A6.1 active structure
+  - id: A6-101
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "Which element represents a computational or physical resource that hosts, manipulates, or interacts with other computational or physical resources?"
+    options:
+      - {key: A, text: "Device", why: "A device is specifically a physical IT resource with processing capability."}
+      - {key: B, text: "Node", correct: true}
+      - {key: C, text: "System Software", why: "System software is an execution environment, not the generic resource."}
+      - {key: D, text: "Equipment", why: "Equipment is physical machinery that processes material."}
+    explanation: "That is the definition of the node, the main active-structure element of the Technology Layer."
+    refs: ["ARCHIMATE §10.2.1"]
+    difficulty: 1
+    tags: [technology, definition, node]
+  - id: A6-102
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "A modeller needs an element for a JEE application server on which application artifacts run. Which element fits?"
+    options:
+      - {key: A, text: "Device", why: "A device is the hardware; the application server is a software environment."}
+      - {key: B, text: "System Software", correct: true}
+      - {key: C, text: "Application Component", why: "The application server is infrastructure, not an application of the enterprise."}
+      - {key: D, text: "Technology Service", why: "The server is structure; the behaviour it offers would be a service."}
+    explanation: "System software models the environment in which artifacts run — operating systems, JEE servers, database systems, workflow engines and middleware."
+    refs: ["ARCHIMATE §10.2.3"]
+    difficulty: 2
+    tags: [technology, system-software, which-element]
+  - id: A6-103
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "Which statement about a Device is correct?"
+    options:
+      - {key: A, text: "It cannot represent virtualised hardware", why: "The specification says device may model virtualised hardware, for example in IaaS."}
+      - {key: B, text: "It is a physical IT resource on which system software and artifacts may be stored or deployed", correct: true}
+      - {key: C, text: "It is a behaviour element of the Technology Layer", why: "A device is active structure."}
+      - {key: D, text: "It always contains a node", why: "It is the other way round: a node typically consists of a device plus system software."}
+    explanation: "A device is a physical IT resource with processing capability upon which system software and artifacts may be deployed; it may be virtualised hardware."
+    refs: ["ARCHIMATE §10.2.2"]
+    difficulty: 2
+    tags: [technology, device]
+  - id: A6-104
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "What is the relationship between a Path and a Communication Network?"
+    options:
+      - {key: A, text: "A path realizes a communication network", why: "This is reversed; the physical network realizes the logical path."}
+      - {key: B, text: "A communication network realizes a path", correct: true}
+      - {key: C, text: "A path is a specialization of communication network", why: "They are distinct elements with a realization relationship."}
+      - {key: D, text: "A communication network is assigned to a path", why: "Assignment is not the relationship the specification defines here."}
+    explanation: "A path is the logical link; it is realized by one or more communication networks, which are the physical communication links."
+    refs: ["ARCHIMATE §10.2.6", "ARCHIMATE §10.2.7"]
+    difficulty: 2
+    tags: [technology, path, network, realization]
+  - id: A6-105
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "Which element represents a point of access where technology services offered by a node can be accessed?"
+    options:
+      - {key: A, text: "Technology Service", why: "The service is the behaviour offered; the access point is the interface."}
+      - {key: B, text: "Technology Interface", correct: true}
+      - {key: C, text: "Path", why: "A path is a link between nodes for exchanging data."}
+      - {key: D, text: "Communication Network", why: "A network connects devices physically; it is not the access point to services."}
+    explanation: "The technology interface is the external active-structure element where a node's services can be reached."
+    refs: ["ARCHIMATE §10.2.5"]
+    difficulty: 1
+    tags: [technology, interface]
+  - id: A6-106
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "According to the specification, what does a Node typically consist of?"
+    options:
+      - {key: A, text: "A device and system software, such as a server and its operating system", correct: true}
+      - {key: B, text: "Only artifacts", why: "Artifacts are deployed on a node; they are not what it consists of."}
+      - {key: C, text: "Application components", why: "Application components are realized by artifacts deployed on nodes; they are not parts of a node."}
+      - {key: D, text: "A communication network and a path", why: "Networks and paths connect nodes; they are not sub-nodes."}
+    explanation: "A node typically consists of sub-nodes such as a device (the server) and system software (its operating system)."
+    refs: ["ARCHIMATE §10.2"]
+    difficulty: 1
+    tags: [technology, node, composition]
+  - id: A6-107
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "Which relationship expresses that an Artifact is deployed on a Node?"
+    options:
+      - {key: A, text: "Realization", why: "Realization is what the artifact does to an application component or data object."}
+      - {key: B, text: "Assignment", correct: true}
+      - {key: C, text: "Access", why: "Access is used by technology behaviour, not by a node."}
+      - {key: D, text: "Serving", why: "Serving is a dependency from services or interfaces."}
+    explanation: "A node may be assigned to an artifact to model that the artifact is deployed on it; it may also be drawn nested inside the node."
+    refs: ["ARCHIMATE §10.2.1"]
+    difficulty: 1
+    tags: [technology, node, artifact, assignment]
+  - id: A6-108
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "Which element models the logical relation between nodes through which they exchange data, energy or material?"
+    options:
+      - {key: A, text: "Communication Network", why: "The network is the physical realization of the logical relation."}
+      - {key: B, text: "Path", correct: true}
+      - {key: C, text: "Technology Interaction", why: "An interaction is collective behaviour, not a link."}
+      - {key: D, text: "Distribution Network", why: "The distribution network is the physical realization for material and energy."}
+    explanation: "A path is the logical communication or distribution relation between technology internal active-structure elements."
+    refs: ["ARCHIMATE §10.2.6"]
+    difficulty: 1
+    tags: [technology, path, definition]
+  - id: A6-109
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "Which of the following may a Communication Network aggregate?"
+    options:
+      - {key: A, text: "Devices and system software that make up routers, switches and firewalls", correct: true}
+      - {key: B, text: "Application components deployed on it", why: "Application components are not aggregated in a network."}
+      - {key: C, text: "Business actors who use it", why: "Actors are business elements and not part of a network."}
+      - {key: D, text: "Technology services", why: "Services are behaviour and are not aggregated in a network."}
+    explanation: "A communication network can consist of sub-networks and aggregate devices and system software that form the network infrastructure."
+    refs: ["ARCHIMATE §10.2.7"]
+    difficulty: 2
+    tags: [technology, network, aggregation]
+  - id: A6-110
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "System Software may be assigned to which of the following, to model layering of software environments?"
+    options:
+      - {key: A, text: "Other system software, such as a database running on an operating system", correct: true}
+      - {key: B, text: "A business role", why: "Roles are business elements; no such assignment is defined."}
+      - {key: C, text: "A technology service", why: "System software realizes behaviour indirectly through functions; assignment is to behaviour or artifacts."}
+      - {key: D, text: "A path", why: "Paths connect nodes; they are not assigned system software."}
+    explanation: "A device or system software can be assigned to other system software to model layers of software running on top of each other."
+    refs: ["ARCHIMATE §10.2.3"]
+    difficulty: 2
+    tags: [technology, system-software, assignment]
+  - id: A6-111
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "In the notation, which element is drawn as a three-dimensional box?"
+    options:
+      - {key: A, text: "Node", correct: true}
+      - {key: B, text: "Device", why: "A device carries a monitor-like icon."}
+      - {key: C, text: "Artifact", why: "An artifact carries a page icon with a folded corner."}
+      - {key: D, text: "System Software", why: "System software carries a disc icon."}
+    explanation: "The node is drawn as a 3-D box; the other technology elements use a rectangle with their own icon."
+    refs: ["ARCHIMATE §10.2.1", "ARCHIMATE §10.9"]
+    difficulty: 1
+    tags: [technology, notation, node]
+  - id: A6-112
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "Which properties does the specification say a Communication Network has?"
+    options:
+      - {key: A, text: "Bandwidth and latency", correct: true}
+      - {key: B, text: "Cost and owner", why: "These are not the properties the specification names."}
+      - {key: C, text: "Version and vendor", why: "These are not named for a network."}
+      - {key: D, text: "Read and write access modes", why: "Access modes belong to the access relationship."}
+    explanation: "A network has properties such as bandwidth and latency; a path's properties are usually aggregated from its networks."
+    refs: ["ARCHIMATE §10.2.7", "ARCHIMATE §10.2.6"]
+    difficulty: 2
+    tags: [technology, network, properties]
+  - id: A6-113
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "In the specification's example, two 'Blade System' devices and a 'Data Center Switch' node each have a 'Management Interface'. What element type is the management interface?"
+    options:
+      - {key: A, text: "Technology Interface", correct: true}
+      - {key: B, text: "Application Interface", why: "The management interface belongs to infrastructure elements, so it is a technology interface."}
+      - {key: C, text: "Technology Service", why: "The interface is the access point, not the behaviour."}
+      - {key: D, text: "Path", why: "A path links nodes; it is not an interface."}
+    explanation: "A technology interface is composed in a device or node and exposes its technology services."
+    refs: ["ARCHIMATE §10.2", "ARCHIMATE §10.2.5"]
+    difficulty: 2
+    tags: [technology, interface, example]
+  - id: A6-114
+    unit: A6
+    objective: "A6.1"
+    lesson: A6/01_technology_active_structure
+    stem: "Which of the following is NOT a technology internal active structure element?"
+    options:
+      - {key: A, text: "Node", why: "Node is an internal active-structure element."}
+      - {key: B, text: "Technology Collaboration", why: "Collaboration is an internal active-structure element."}
+      - {key: C, text: "Technology Interface", correct: true}
+      - {key: D, text: "System Software", why: "System software is an internal active-structure element."}
+    explanation: "Node, device, system software and technology collaboration are internal; the technology interface is the external active-structure element."
+    refs: ["ARCHIMATE §10.2"]
+    difficulty: 2
+    tags: [technology, negative, active-structure]
+  # ------------------------------------------------------------ A6.2 behaviour
+  - id: A6-115
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "Which element represents a collection of technology behaviour that can be performed by a technology internal active structure element?"
+    options:
+      - {key: A, text: "Technology Function", correct: true}
+      - {key: B, text: "Technology Process", why: "A process is a sequence achieving a result, not a collection."}
+      - {key: C, text: "Technology Service", why: "A service is exposed behaviour."}
+      - {key: D, text: "Technology Event", why: "An event is a state change."}
+    explanation: "That is the definition of the technology function."
+    refs: ["ARCHIMATE §10.3.1"]
+    difficulty: 1
+    tags: [technology, definition, function]
+  - id: A6-116
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "Which of the following may a Technology Service serve?"
+    options:
+      - {key: A, text: "Application components only", why: "A technology service may also serve business elements and technology behaviour or active structure."}
+      - {key: B, text: "Business elements, application components, and technology behaviour or active structure", correct: true}
+      - {key: C, text: "Technology functions only", why: "The list is broader than technology behaviour."}
+      - {key: D, text: "Artifacts", why: "A service accesses artifacts; it does not serve them."}
+    explanation: "A technology service may serve business elements, application components, and technology behaviour or active-structure elements."
+    refs: ["ARCHIMATE §10.3.5"]
+    difficulty: 2
+    tags: [technology, service, serving]
+  - id: A6-117
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "Which relationship links a Technology Function to the Technology Service it provides?"
+    options:
+      - {key: A, text: "Realization", correct: true}
+      - {key: B, text: "Assignment", why: "Assignment links a node to the function, or an interface to the service."}
+      - {key: C, text: "Serving", why: "Serving runs from the service to its users."}
+      - {key: D, text: "Composition", why: "Composition links elements of the same type."}
+    explanation: "A technology service is realized by a technology function, process or interaction."
+    refs: ["ARCHIMATE §10.3.5", "ARCHIMATE §10.3.1"]
+    difficulty: 1
+    tags: [technology, realization, service]
+  - id: A6-118
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "Which passive elements may a Technology Event access?"
+    options:
+      - {key: A, text: "An artifact or material", correct: true}
+      - {key: B, text: "A data object", why: "Data objects are accessed by application behaviour."}
+      - {key: C, text: "A business object", why: "Business objects are accessed by business behaviour."}
+      - {key: D, text: "None; events cannot access passive elements", why: "The specification explicitly allows a technology event to access an artifact or material."}
+    explanation: "A technology event may access an artifact or material, and may be composed of other technology events."
+    refs: ["ARCHIMATE §10.3.4"]
+    difficulty: 2
+    tags: [technology, event, access]
+  - id: A6-119
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "Which of the following are named as typical Technology Services?"
+    options:
+      - {key: A, text: "Messaging, storage, naming and directory services", correct: true}
+      - {key: B, text: "Claims processing and customer management", why: "Those are business services or functions."}
+      - {key: C, text: "Quotation and purchase", why: "Those are application-level services in the specification's examples."}
+      - {key: D, text: "Assembly and shipping", why: "Those are physical behaviour, not typical technology services."}
+    explanation: "The specification lists messaging, storage, naming and directory services as typical technology services."
+    refs: ["ARCHIMATE §10.3.5"]
+    difficulty: 1
+    tags: [technology, service, examples]
+  - id: A6-120
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "What may be assigned to a Technology Interaction?"
+    options:
+      - {key: A, text: "A technology collaboration, or two or more nodes", correct: true}
+      - {key: B, text: "A single device", why: "An interaction is collective behaviour and needs two or more active elements or a collaboration."}
+      - {key: C, text: "A technology interface", why: "Interfaces are assigned to services."}
+      - {key: D, text: "An artifact", why: "Artifacts are accessed by interactions, not assigned to them."}
+    explanation: "A technology collaboration, or two or more nodes, may be assigned to a technology interaction."
+    refs: ["ARCHIMATE §10.3.3"]
+    difficulty: 2
+    tags: [technology, interaction, assignment]
+  - id: A6-121
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "A recurring infrastructure job such as a nightly backup is best triggered by which element?"
+    options:
+      - {key: A, text: "A technology event with a time attribute", correct: true}
+      - {key: B, text: "A technology interface", why: "An interface is an access point, not a trigger."}
+      - {key: C, text: "A business event", why: "The backup is technology behaviour; the specification's example uses a technology event."}
+      - {key: D, text: "A path", why: "A path is a link between nodes."}
+    explanation: "A technology event may have a time attribute, for example to trigger a recurring function such as a daily backup."
+    refs: ["ARCHIMATE §10.3.4"]
+    difficulty: 1
+    tags: [technology, event, time]
+  - id: A6-122
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "Which statement about a Technology Process is correct?"
+    options:
+      - {key: A, text: "It is visible to the users of the node that performs it", why: "For the user of the element the process is invisible; only services are exposed."}
+      - {key: B, text: "It can take technology passive elements as input and transform them into other passive elements as output", correct: true}
+      - {key: C, text: "It cannot be served by technology services", why: "Other technology services may serve a technology process."}
+      - {key: D, text: "It is a specialization of technology function", why: "Process and function are distinct internal behaviour elements."}
+    explanation: "A technology process is invisible internal behaviour that may access passive elements as input and produce other passive elements as output."
+    refs: ["ARCHIMATE §10.3.2"]
+    difficulty: 2
+    tags: [technology, process]
+  - id: A6-123
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "In the specification's example a service 'Database Update Replication' is realized by 'Database Replication', which is composed of four sub-elements. What type is 'Database Replication'?"
+    options:
+      - {key: A, text: "Technology Function", correct: true}
+      - {key: B, text: "Technology Service", why: "It realizes the service; it is not the service."}
+      - {key: C, text: "System Software", why: "It is behaviour, not an execution environment."}
+      - {key: D, text: "Technology Event", why: "The event in the example is 'Database Update'."}
+    explanation: "The example has a technology function composed of four technology functions realizing the service."
+    refs: ["ARCHIMATE §10.3"]
+    difficulty: 2
+    tags: [technology, function, example]
+  - id: A6-124
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "How is a Technology Service exposed by a Node?"
+    options:
+      - {key: A, text: "By assigning technology interfaces to the service", correct: true}
+      - {key: B, text: "By the node realizing the service directly", why: "Realization is from function, process or interaction."}
+      - {key: C, text: "By the service accessing an artifact on the node", why: "Access concerns passive elements, not exposure."}
+      - {key: D, text: "By a path connecting the node to its users", why: "Paths are for exchanging data between nodes, not for exposing services."}
+    explanation: "A technology service is exposed by a technology internal active-structure element by assigning technology interfaces to it."
+    refs: ["ARCHIMATE §10.3.5"]
+    difficulty: 2
+    tags: [technology, service, interface]
+  - id: A6-125
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "What is the scope of the Technology viewpoint?"
+    options:
+      - {key: A, text: "Single layer, multiple aspects", correct: true}
+      - {key: B, text: "Multiple layers, multiple aspects", why: "That is the scope of technology usage and the physical viewpoint."}
+      - {key: C, text: "Single layer, single aspect", why: "That is the organization viewpoint."}
+      - {key: D, text: "Multiple layers, single aspect", why: "That is the information structure viewpoint."}
+    explanation: "The technology viewpoint covers the infrastructure elements of one layer across active, behaviour and passive aspects."
+    refs: ["ARCHIMATE §C.1.4"]
+    difficulty: 2
+    tags: [viewpoint, technology]
+  - id: A6-126
+    unit: A6
+    objective: "A6.2"
+    lesson: A6/02_technology_behaviour
+    stem: "Which of the following is NOT an internal behaviour element of the Technology Layer?"
+    options:
+      - {key: A, text: "Technology Function", why: "Function is internal behaviour."}
+      - {key: B, text: "Technology Process", why: "Process is internal behaviour."}
+      - {key: C, text: "Technology Interaction", why: "Interaction is internal behaviour."}
+      - {key: D, text: "Technology Service", correct: true}
+    explanation: "Function, process and interaction are the internal behaviour elements; the service is the external behaviour element."
+    refs: ["ARCHIMATE §10.3"]
+    difficulty: 1
+    tags: [technology, negative, behaviour]
+  # ------------------------------------------------------------ A6.3 artifact and alignment
+  - id: A6-127
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "Which element represents a piece of data used or produced in a software development process, or by deployment and operation of an IT system?"
+    options:
+      - {key: A, text: "Data Object", why: "A data object is logical data structured for automated processing."}
+      - {key: B, text: "Artifact", correct: true}
+      - {key: C, text: "Representation", why: "A representation is a business-level document or message."}
+      - {key: D, text: "Material", why: "Material is physical matter or energy."}
+    explanation: "That is the definition of the artifact, the technology-layer passive element for files, executables, tables and similar."
+    refs: ["ARCHIMATE §10.4.1"]
+    difficulty: 1
+    tags: [technology, definition, artifact]
+  - id: A6-128
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "Which relationship runs from an Artifact to the Application Component it implements?"
+    options:
+      - {key: A, text: "Assignment", why: "Assignment links the artifact to the device or system software it is deployed on."}
+      - {key: B, text: "Realization", correct: true}
+      - {key: C, text: "Serving", why: "Serving is from technology services and interfaces to application elements."}
+      - {key: D, text: "Access", why: "Access links behaviour to passive structure."}
+    explanation: "An artifact may realize an application component, meaning the physical file is an executable implementing the logical application."
+    refs: ["ARCHIMATE §10.4.1", "ARCHIMATE §11.2"]
+    difficulty: 1
+    tags: [technology, artifact, realization]
+  - id: A6-129
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "What are the two typical uses of the Artifact element named by the specification?"
+    options:
+      - {key: A, text: "Execution component and data file", correct: true}
+      - {key: B, text: "Message and document", why: "Both are examples of artifacts, but the two named uses are execution component and data file."}
+      - {key: C, text: "Hardware and software", why: "Hardware is a device; artifacts are data."}
+      - {key: D, text: "Source and target", why: "The specification does not use these terms."}
+    explanation: "An artifact is typically used as an execution component (realizing a component or system software) or as a data file (realizing a data object)."
+    refs: ["ARCHIMATE §10.4.1"]
+    difficulty: 2
+    tags: [technology, artifact, uses]
+  - id: A6-130
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "Which relationship expresses that a copy of an Artifact is deployed on a Device or System Software?"
+    options:
+      - {key: A, text: "Realization from the device to the artifact", why: "Deployment is assignment; realization is from the artifact upward."}
+      - {key: B, text: "Assignment from the device or system software to the artifact", correct: true}
+      - {key: C, text: "Composition of the artifact in the device", why: "The specification names assignment, though nesting may be used to draw it."}
+      - {key: D, text: "Serving from the device to the artifact", why: "Serving is not used for deployment."}
+    explanation: "An instance of an artifact deployed on a device or system software is modelled with an assignment relationship."
+    refs: ["ARCHIMATE §10.4.1", "ARCHIMATE §10.4"]
+    difficulty: 2
+    tags: [technology, artifact, assignment, deployment]
+  - id: A6-131
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "Which serving relationship exists between the Technology and Application Layers, according to the specification?"
+    options:
+      - {key: A, text: "Technology interface serves application component", correct: true}
+      - {key: B, text: "Node serves data object", why: "Data objects are passive and are not served."}
+      - {key: C, text: "Artifact serves application function", why: "An artifact is passive; it realizes rather than serves."}
+      - {key: D, text: "Communication network serves application service", why: "The specification names technology service and interface as the serving elements."}
+    explanation: "Serving relationships run from technology service to application behaviour and from technology interface to application component."
+    refs: ["ARCHIMATE §11.2"]
+    difficulty: 2
+    tags: [cross-layer, serving, technology]
+  - id: A6-132
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "Which realization relationship between the Technology and Application Layers is permitted?"
+    options:
+      - {key: A, text: "Technology function realizes application function", correct: true}
+      - {key: B, text: "Application component realizes node", why: "Realization runs upward from technology to application, and nodes are not realized by components."}
+      - {key: C, text: "Data object realizes artifact", why: "This is reversed; the artifact realizes the data object."}
+      - {key: D, text: "Technology interface realizes application interface", why: "No such realization is defined."}
+    explanation: "Realization relationships run from technology process or function to application process or function, and from artifact to data object or application component."
+    refs: ["ARCHIMATE §11.2"]
+    difficulty: 2
+    tags: [cross-layer, realization, technology]
+  - id: A6-133
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "A business object is realized by a data object, which is realized by an artifact. What does the specification say about relating the artifact directly to the business object?"
+    options:
+      - {key: A, text: "It is forbidden; layers may only be related pairwise", why: "Derived relationships permit direct business-to-technology links."}
+      - {key: B, text: "The artifact indirectly realizes the business object, and the derived relationship may be drawn", correct: true}
+      - {key: C, text: "The relationship must be association", why: "The derived relationship is realization, following the chain."}
+      - {key: D, text: "It requires a product element between them", why: "No product is needed; derivation handles it."}
+    explanation: "Due to derivation, relationships may be drawn directly between Business and Technology Layers: the artifact indirectly realizes the business object."
+    refs: ["ARCHIMATE §11.2", "ARCHIMATE §5.7"]
+    difficulty: 2
+    tags: [cross-layer, derivation]
+  - id: A6-134
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "Which viewpoint shows how applications are realized on the infrastructure, mapping components onto artifacts and information onto storage?"
+    options:
+      - {key: A, text: "Technology Usage", why: "Technology usage shows how technology serves applications, not how they are mapped onto artifacts."}
+      - {key: B, text: "Implementation and Deployment", correct: true}
+      - {key: C, text: "Application Cooperation", why: "That viewpoint stays within the Application Layer."}
+      - {key: D, text: "Physical", why: "The physical viewpoint covers equipment and distribution networks."}
+    explanation: "The implementation and deployment viewpoint comprises the mapping of applications onto artifacts and of their information onto the storage infrastructure."
+    refs: ["ARCHIMATE §C.1.13"]
+    difficulty: 2
+    tags: [viewpoint, implementation-deployment]
+  - id: A6-135
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "Which viewpoint does the specification say plays an important role in the analysis of performance and scalability?"
+    options:
+      - {key: A, text: "Technology Usage", correct: true}
+      - {key: B, text: "Organization", why: "Organization shows actors and roles."}
+      - {key: C, text: "Information Structure", why: "That viewpoint shows the structure of information."}
+      - {key: D, text: "Service Realization", why: "That viewpoint shows how business services are realized."}
+    explanation: "Technology usage relates the physical infrastructure to the logical world of applications, which is why it matters for performance and scalability analysis."
+    refs: ["ARCHIMATE §C.1.9"]
+    difficulty: 2
+    tags: [viewpoint, technology-usage]
+  - id: A6-136
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "What is the preferred name for an Artifact?"
+    options:
+      - {key: A, text: "The name of the file it represents, e.g. 'order.jar'", correct: true}
+      - {key: B, text: "A verb ending in '-ing'", why: "That is the guidance for services and functions."}
+      - {key: C, text: "A perfect-tense verb", why: "That is the guidance for events."}
+      - {key: D, text: "The name of the node it runs on", why: "Nodes have their own names; the artifact is named as the file."}
+    explanation: "The name of an artifact should preferably be the name of the file it represents."
+    refs: ["ARCHIMATE §10.4.1"]
+    difficulty: 1
+    tags: [technology, artifact, naming]
+  - id: A6-137
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "Which statement about technology passive structure elements is correct?"
+    options:
+      - {key: A, text: "The generic technology passive structure element is abstract and only artifact and material are instantiated", correct: true}
+      - {key: B, text: "They can only be accessed by technology functions", why: "Functions, processes, interactions, events and services may all access them."}
+      - {key: C, text: "They may not be assigned any active structure element", why: "A device may be assigned to an artifact to model deployment."}
+      - {key: D, text: "Only artifacts, not material, are technology passive structure", why: "Both artifact and material are technology passive-structure elements."}
+    explanation: "The technology passive structure element is abstract; its concrete forms are artifact and material, accessed by all technology behaviour and assignable from active elements."
+    refs: ["ARCHIMATE §10.4"]
+    difficulty: 2
+    tags: [technology, passive]
+  - id: A6-138
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    stem: "Which of the following may an Artifact realize?"
+    options:
+      - {key: A, text: "An application component, system software, or a data object", correct: true}
+      - {key: B, text: "A node or device", why: "Nodes and devices are assigned to artifacts; they are not realized by them."}
+      - {key: C, text: "A business role", why: "Active business structure is never realized by technology elements."}
+      - {key: D, text: "A technology service", why: "Services are realized by technology behaviour, not by artifacts."}
+    explanation: "An application component or system software may be realized by artifacts, and a data object may be realized by artifacts."
+    refs: ["ARCHIMATE §10.4.1"]
+    difficulty: 2
+    tags: [technology, artifact, realization]
+  # ------------------------------------------------------------ A6.4 physical elements
+  - id: A6-139
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "Which element represents one or more physical machines, tools or instruments that can create, use, store, move or transform materials?"
+    options:
+      - {key: A, text: "Device", why: "A device is a physical IT resource that processes artifacts, not material."}
+      - {key: B, text: "Equipment", correct: true}
+      - {key: C, text: "Facility", why: "A facility is the structure or environment that houses equipment."}
+      - {key: D, text: "Node", why: "Node is the generic resource; equipment is the specific physical machinery element."}
+    explanation: "That is the definition of equipment, the main physical active-structure element."
+    refs: ["ARCHIMATE §10.6.1"]
+    difficulty: 1
+    tags: [physical, definition, equipment]
+  - id: A6-140
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "What does the specification say about behaviour elements in the physical extension?"
+    options:
+      - {key: A, text: "It defines physical process and physical function", why: "No specific physical behaviour elements are defined."}
+      - {key: B, text: "No specific physical behaviour elements are defined; only active and passive structure elements are", correct: true}
+      - {key: C, text: "Physical behaviour is modelled with business processes", why: "Physical behaviour uses the ordinary technology behaviour elements."}
+      - {key: D, text: "Physical behaviour cannot be modelled", why: "It is modelled with the technology behaviour elements."}
+    explanation: "The physical elements include only active and passive structure; behaviour uses the existing technology behaviour elements."
+    refs: ["ARCHIMATE §10"]
+    difficulty: 2
+    tags: [physical, behaviour]
+  - id: A6-141
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "Which element represents a physical network used to transport materials or energy?"
+    options:
+      - {key: A, text: "Communication Network", why: "A communication network transmits data between devices."}
+      - {key: B, text: "Distribution Network", correct: true}
+      - {key: C, text: "Path", why: "A path is the logical link; the distribution network is its physical realization."}
+      - {key: D, text: "Facility", why: "A facility is a structure, not a network."}
+    explanation: "A distribution network models the physical distribution or transportation infrastructure — rail, road, water, power or gas networks."
+    refs: ["ARCHIMATE §10.6.3"]
+    difficulty: 1
+    tags: [physical, definition, distribution-network]
+  - id: A6-142
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "Which relationship models where Material is stored, as in 'the sand is in the dump truck'?"
+    options:
+      - {key: A, text: "Equipment accesses material", why: "Access models the material being used or transformed, such as 'poured into the mixer'."}
+      - {key: B, text: "Equipment is assigned to material", correct: true}
+      - {key: C, text: "Material realizes equipment", why: "Realization is permitted but expresses something else, not storage."}
+      - {key: D, text: "Material serves equipment", why: "Material is passive and does not serve."}
+    explanation: "Equipment may be assigned to material to model where it is stored; access models use or transformation."
+    refs: ["ARCHIMATE §10.7.1", "ARCHIMATE §10.6.1"]
+    difficulty: 2
+    tags: [physical, material, assignment]
+  - id: A6-143
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "Which element represents tangible physical matter or energy, such as raw materials or electricity?"
+    options:
+      - {key: A, text: "Artifact", why: "An artifact is data, not matter or energy."}
+      - {key: B, text: "Material", correct: true}
+      - {key: C, text: "Resource", why: "Resource is a strategy element."}
+      - {key: D, text: "Equipment", why: "Equipment is the machinery that processes material."}
+    explanation: "Material is the physical passive-structure element for raw materials, physical products and energy sources."
+    refs: ["ARCHIMATE §10.7.1"]
+    difficulty: 1
+    tags: [physical, definition, material]
+  - id: A6-144
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "Which statement about Facility is correct?"
+    options:
+      - {key: A, text: "It is a composite element like Location", why: "Facility is a technology-layer physical active-structure element; location is a composite element."}
+      - {key: B, text: "It represents a physical structure or environment, such as a factory or warehouse, and may be aggregated in a location", correct: true}
+      - {key: C, text: "It can only house devices, not equipment", why: "A facility is defined as housing equipment."}
+      - {key: D, text: "It is a passive structure element", why: "Facility is active structure."}
+    explanation: "A facility is a physical structure or environment that houses equipment; it may be composite, connected by distribution networks and aggregated in a location."
+    refs: ["ARCHIMATE §10.6.2"]
+    difficulty: 2
+    tags: [physical, facility]
+  - id: A6-145
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "Which relationship exists between a Distribution Network and a Path?"
+    options:
+      - {key: A, text: "A distribution network may realize one or more paths", correct: true}
+      - {key: B, text: "A path realizes a distribution network", why: "This is reversed; the physical network realizes the logical path."}
+      - {key: C, text: "A distribution network is a specialization of path", why: "They are distinct elements."}
+      - {key: D, text: "There is no relationship; paths are IT-only", why: "The path element models logistics relations too, and networks realize it."}
+    explanation: "A distribution network connects facilities and may realize one or more paths, just as a communication network does for data."
+    refs: ["ARCHIMATE §10.6.3", "ARCHIMATE §10.2.6"]
+    difficulty: 2
+    tags: [physical, distribution-network, path]
+  - id: A6-146
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "Which of the following may Equipment serve?"
+    options:
+      - {key: A, text: "Other equipment and active structure elements such as business roles and actors", correct: true}
+      - {key: B, text: "Material", why: "Material is passive; equipment accesses it or is assigned to it."}
+      - {key: C, text: "Only technology services", why: "Equipment is structure and does not serve services."}
+      - {key: D, text: "Nothing; equipment cannot serve", why: "The specification says equipment can serve other equipment and other active-structure elements."}
+    explanation: "Equipment can serve other equipment as well as other active-structure elements such as business roles and actors."
+    refs: ["ARCHIMATE §10.6.1"]
+    difficulty: 2
+    tags: [physical, equipment, serving]
+  - id: A6-147
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "In the specification's example, 'Overseas Shipping' and 'Local Trucking' together realize 'Intermodal Freight'. What element types are these?"
+    options:
+      - {key: A, text: "Two distribution networks realizing a path", correct: true}
+      - {key: B, text: "Two paths realizing a distribution network", why: "This reverses the realization direction."}
+      - {key: C, text: "Two facilities realizing a communication network", why: "Facilities are structures; freight modes are networks."}
+      - {key: D, text: "Two technology services realizing a process", why: "The example uses physical structure elements, not behaviour."}
+    explanation: "The two distribution networks connect the facilities and together realize the logical path 'Intermodal Freight'."
+    refs: ["ARCHIMATE §10.6", "ARCHIMATE §10.6.3"]
+    difficulty: 2
+    tags: [physical, example, path]
+  - id: A6-148
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "Which of the following is NOT an element of the Physical viewpoint?"
+    options:
+      - {key: A, text: "Equipment", why: "Equipment is central to the physical viewpoint."}
+      - {key: B, text: "Distribution Network", why: "Distribution network is listed."}
+      - {key: C, text: "Application Component", correct: true}
+      - {key: D, text: "Device", why: "Device is listed alongside node."}
+    explanation: "The physical viewpoint contains location, node, device, equipment, facility, path, communication network, distribution network and material — no application elements."
+    refs: ["ARCHIMATE §C.1.6"]
+    difficulty: 2
+    tags: [viewpoint, physical, negative]
+  - id: A6-149
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "How may an integrated piece of operational and information technology, such as an MRI scanner with its control system, be modelled?"
+    options:
+      - {key: A, text: "As a node combining IT elements such as devices and system software with equipment", correct: true}
+      - {key: B, text: "Only as equipment, since IT elements cannot mix with physical ones", why: "The specification explicitly allows physical and IT elements in the same node."}
+      - {key: C, text: "As a facility containing an application component", why: "A facility houses equipment; the integrated system is a node."}
+      - {key: D, text: "As material with an assigned device", why: "Material is passive matter, not a machine."}
+    explanation: "Physical technology elements can be combined with other technology elements such as devices in the same node to model integrated operational and information technology."
+    refs: ["ARCHIMATE §10", "ARCHIMATE §10.6.1"]
+    difficulty: 2
+    tags: [physical, node, equipment]
+  - id: A6-150
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "What may a Distribution Network aggregate, according to the specification?"
+    options:
+      - {key: A, text: "Facilities and equipment, such as railway stations and trains in a rail network", correct: true}
+      - {key: B, text: "Devices and system software", why: "Those are aggregated by a communication network."}
+      - {key: C, text: "Business actors", why: "Actors are business elements and not part of a distribution network."}
+      - {key: D, text: "Artifacts", why: "Artifacts are data and are not aggregated by a distribution network."}
+    explanation: "A distribution network can consist of sub-networks and aggregate facilities and equipment to model stations and trains that are part of a rail network."
+    refs: ["ARCHIMATE §10.6.3"]
+    difficulty: 2
+    tags: [physical, distribution-network, aggregation]
+  - id: A6-151
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    stem: "Which is the stated concern of the Physical viewpoint?"
+    options:
+      - {key: A, text: "Relationships and dependencies of the physical environment and how it relates to IT infrastructure", correct: true}
+      - {key: B, text: "Structure of application platforms", why: "That is the concern of implementation and deployment."}
+      - {key: C, text: "Competencies, authority and responsibilities", why: "That is the concern of the organization viewpoint."}
+      - {key: D, text: "Performance and scalability", why: "Those are concerns of technology usage."}
+    explanation: "The physical viewpoint addresses the relationships and dependencies of the physical environment and its relation to IT infrastructure."
+    refs: ["ARCHIMATE §C.1.6"]
+    difficulty: 2
+    tags: [viewpoint, physical, concern]

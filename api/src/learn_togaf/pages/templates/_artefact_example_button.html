@@ -1,0 +1,2 @@
+{# "Example" button for an artefact row; expects `code`. Targets the sibling example row's cell. #}
+<button type="button" class="btn btn-xs btn-outline" hx-get="/artefact/{{ code }}/example" hx-target="#artefact-example-{{ code }}" hx-swap="innerHTML"><i class="mdi mdi-image-outline"></i> Example</button>

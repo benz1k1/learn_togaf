@@ -3,28 +3,62 @@
 {% block heading %}Study plan{% endblock %}
 {% block content %}
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-  <div class="card bg-base-100 shadow-sm h-fit"><div class="card-body p-4">
-    <h2 class="card-title text-sm">Exam date and daily budget</h2>
-    <form method="post" action="/plan" class="flex flex-col gap-3">
-      {% include "_csrf.html" %}
-      <label class="form-control">
-        <span class="label-text text-xs">Exam date</span>
-        <input type="date" name="exam_date" value="{{ exam_date }}" required class="input input-bordered input-sm">
-      </label>
-      <label class="form-control">
-        <span class="label-text text-xs">Daily flashcard cap</span>
-        <input type="number" name="daily_card_cap" value="{{ daily_card_cap }}" min="5" max="500" required class="input input-bordered input-sm">
-      </label>
-      <button type="submit" class="btn btn-sm btn-primary">{{ 'Regenerate plan' if has_plan else 'Generate plan' }}</button>
-      <p class="text-xs text-base-content/60">Unread lessons are spread over the days until the exam — Foundation units first, weighted by the blueprint, then Practitioner, then the guides — with a mock every seven days. Missed lessons roll forward.</p>
-    </form>
-  </div></div>
+  <div class="flex flex-col gap-4">
+    <div class="card bg-base-100 shadow-sm h-fit"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Exam dates and daily budget</h2>
+      <form method="post" action="/plan" class="flex flex-col gap-3">
+        {% include "_csrf.html" %}
+        {% for exam in exams %}
+        <label class="form-control">
+          <span class="label-text text-xs"><span class="badge badge-ghost badge-xs mr-1">{{ exam.track | lower }}</span>{{ exam.label }}</span>
+          <input type="date" name="exam_date:{{ exam.code }}" value="{{ exam.date }}" class="input input-bordered input-sm">
+        </label>
+        {% endfor %}
+        <label class="form-control">
+          <span class="label-text text-xs">Daily flashcard cap</span>
+          <input type="number" name="daily_card_cap" value="{{ daily_card_cap }}" min="5" max="500" required class="input input-bordered input-sm">
+        </label>
+        <button type="submit" class="btn btn-sm btn-primary">{{ 'Regenerate plan' if has_plan else 'Generate plan' }}</button>
+        <p class="text-xs text-base-content/60">Unread lessons are spread over the days until the last exam date, in the braid's order — one theme a week across TOGAF, ArchiMate and SABSA — weighted by the blueprint, with a mock every seven days. Leave a date blank for an exam you are not sitting. Missed lessons roll forward.</p>
+      </form>
+    </div></div>
+    {% if weeks %}
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">The braid — 16 weeks, three frameworks</h2>
+      <p class="text-xs text-base-content/60">Every week ends with the same three exercises: <em>draw it</em> in Archi, <em>justify it</em> in the SABSA cells, <em>drill it</em> on all three tracks. Tick the first two here; the third is the check-yourself on each lesson.</p>
+      <ol class="flex flex-col gap-2 mt-2">
+        {% for week in weeks %}
+        <li class="border border-base-300 rounded-lg p-2" id="week-{{ week.week }}">
+          <div class="flex items-center gap-2">
+            <span class="badge badge-neutral badge-sm">W{{ week.week }}</span>
+            <span class="font-medium text-sm">{{ week.theme }}</span>
+            <span class="ml-auto text-xs text-base-content/60">{{ week.lessons | selectattr('state') | list | length }}/{{ week.lessons | length }} read</span>
+          </div>
+          <details class="text-xs mt-1">
+            <summary class="cursor-pointer text-base-content/60">{{ week.lessons | length }} lessons · {% for track in ['TOGAF', 'ARCHIMATE', 'SABSA', 'CROSSWALK'] %}{% set n = week.lessons | selectattr('track', 'equalto', track) | list | length %}{% if n %}{{ track | lower }} {{ n }} {% endif %}{% endfor %}</summary>
+            <ul class="ml-4 mt-1 list-disc">
+              {% for lesson in week.lessons %}<li><a class="link link-hover" href="/lesson/{{ lesson.id }}">{{ lesson.unit_code }} · {{ lesson.title }}</a>{% if lesson.state %} <span class="badge badge-xs badge-info">{{ lesson.state | lower }}</span>{% endif %}</li>{% endfor %}
+            </ul>
+          </details>
+          {% if week.exercise_draw or week.exercise_justify %}
+          <div class="flex flex-col gap-1 mt-1 text-xs">
+            {% if week.exercise_draw %}<label class="flex items-start gap-2 cursor-pointer">{% with kind = 'draw', week = week.week, done = exercises.get(week.week ~ ':draw', false) %}{% include "_exercise.html" %}{% endwith %}<span><strong>Draw it:</strong> {{ week.exercise_draw }}</span></label>{% endif %}
+            {% if week.exercise_justify %}<label class="flex items-start gap-2 cursor-pointer">{% with kind = 'justify', week = week.week, done = exercises.get(week.week ~ ':justify', false) %}{% include "_exercise.html" %}{% endwith %}<span><strong>Justify it:</strong> {{ week.exercise_justify }}</span></label>{% endif %}
+          </div>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ol>
+    </div></div>
+    {% endif %}
+  </div>
   <div class="lg:col-span-2 flex flex-col gap-2">
     {% if not has_plan %}
-    <div class="alert"><i class="mdi mdi-information-outline"></i><span>No plan yet. Set an exam date to generate one.</span></div>
+    <div class="alert"><i class="mdi mdi-information-outline"></i><span>No plan yet. Set at least one exam date to generate one.</span></div>
     {% elif not days %}
     <div class="alert"><i class="mdi mdi-information-outline"></i><span>The plan has run its course — every scheduled day is behind you. Regenerate it with a new date.</span></div>
     {% endif %}
+    {% set ns = namespace(week=none) %}
     {% for day in days %}
     <div class="card bg-base-100 shadow-sm {{ 'border border-primary' if day.date == today else '' }}"><div class="card-body p-3">
       <div class="flex items-center gap-2">
@@ -33,6 +67,10 @@
       </div>
       <ul class="text-sm flex flex-col gap-1">
         {% for item in day['items'] %}
+        {% if item.kind == 'LESSON' and item.week is defined and item.week != ns.week %}
+          {% set ns.week = item.week %}
+          <li class="text-xs uppercase text-base-content/60 mt-1"><a class="link link-hover" href="#week-{{ item.week }}">Week {{ item.week }} · {{ item.theme }}</a></li>
+        {% endif %}
         <li class="flex items-center gap-2">
           {% if item.kind == 'LESSON' %}<i class="mdi mdi-book-open-page-variant-outline text-primary"></i><a class="link link-hover" href="/lesson/{{ item.ref }}">{{ item.title }}</a>
           {% elif item.kind == 'MOCK' %}<i class="mdi mdi-clipboard-check-outline text-secondary"></i><a class="link link-hover" href="/practice?exam={{ item.ref }}&mode=MOCK">{{ item.title }}</a>

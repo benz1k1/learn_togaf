@@ -1,0 +1,28 @@
+# Northgate Bank — Architecture Roadmap (Phase E) as a Migration view: four Plateaus in sequence,
+# a Gap between each pair, a note with what each plateau contains.
+id: northgate_migration
+title: "Northgate Bank — Architecture Roadmap as a Migration view"
+viewpoint: Migration
+elements:
+  - {id: p_base, type: plateau, name: "Baseline — 2026", col: 0, row: 0}
+  - {id: p_t1, type: plateau, name: "Transition 1 — Q2 2027", col: 2, row: 0}
+  - {id: p_t2, type: plateau, name: "Transition 2 — Q4 2027", col: 4, row: 0}
+  - {id: p_target, type: plateau, name: "Target — mid-2028", col: 4, row: 2}
+  - {id: gap1, type: gap, name: "No API layer; app cannot pay; single-homed card link", col: 1, row: 1}
+  - {id: gap2, type: gap, name: "No verification or scoring application", col: 3, row: 1}
+  - {id: gap3, type: gap, name: "Analyst-in-the-loop; online site still live", col: 5, row: 1}
+relations:
+  - {from: p_base, to: p_t1, type: triggering}
+  - {from: p_t1, to: p_t2, type: triggering}
+  - {from: p_t2, to: p_target, type: triggering}
+  - {from: gap1, to: p_base, type: association}
+  - {from: gap1, to: p_t1, type: association}
+  - {from: gap2, to: p_t1, type: association}
+  - {from: gap2, to: p_t2, type: association}
+  - {from: gap3, to: p_t2, type: association}
+  - {from: gap3, to: p_target, type: association}
+notes:
+  - {text: "11 point-to-point interfaces; Mobile App v3 balances only; fraud reviewed next morning", col: 0, row: 1, w: 1, h: 1}
+  - {text: "WP-1 APIs; WP-3 Mobile App v4; SMS gateway retired; WP-5 dual-homing, pre-prod", col: 2, row: 1, w: 1, h: 1}
+  - {text: "WP-2 onboarding in app and at counter; WP-4 scoring before authorisation", col: 5, row: 0, w: 1, h: 1}
+  - {text: "Automatic blocking; online banking site retired; Lending on the API layer", col: 5, row: 2, w: 1, h: 1}

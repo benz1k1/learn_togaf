@@ -8,7 +8,6 @@ is empty. Because ``lifespan=`` is set, ``@app.on_event`` does not run — start
 
 import sys
 from contextlib import asynccontextmanager
-from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
@@ -20,11 +19,9 @@ from learn_togaf.config import CONTENT_DIR, LOG_DIR, LOG_LEVEL, SOURCES_DIR
 from learn_togaf.content.loader import ContentError, load_all
 from learn_togaf.db import apply_schema, connect
 from learn_togaf.pages.security import CsrfMiddleware
-from learn_togaf.pages.static_files import CachedStaticFiles
+from learn_togaf.pages.static_files import STATIC_DIR, CachedStaticFiles
 from learn_togaf.pages.templating import templates
 from learn_togaf.pages.urls import register_page_routes
-
-_STATIC_DIR = Path(__file__).with_name("pages") / "static"
 
 
 def _configure_logging() -> None:
@@ -57,7 +54,7 @@ def _wants_html(request: Request) -> bool:
 
 def create_app() -> FastAPI:
     app = FastAPI(title="Learn TOGAF", lifespan=lifespan, docs_url=None, redoc_url=None)
-    app.mount("/static", CachedStaticFiles(directory=str(_STATIC_DIR)), name="static")
+    app.mount("/static", CachedStaticFiles(directory=str(STATIC_DIR)), name="static")
     register_page_routes(app)
 
     @app.exception_handler(ContentError)

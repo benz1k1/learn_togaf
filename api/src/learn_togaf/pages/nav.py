@@ -19,6 +19,7 @@ _ITEMS = (
     ("Lessons", "/unit", "mdi-book-open-page-variant-outline", "Study"),
     ("ADM explorer", "/adm", "mdi-sync-circle", "Study"),
     ("Artefacts", "/artefact", "mdi-file-tree-outline", "Study"),
+    ("Worked examples", "/example", "mdi-file-document-multiple-outline", "Study"),
     ("Glossary", "/glossary", "mdi-alphabetical-variant", "Study"),
     ("Flashcards", "/review", "mdi-cards-outline", "Drill"),
     ("Practice", "/practice", "mdi-clipboard-check-outline", "Drill"),

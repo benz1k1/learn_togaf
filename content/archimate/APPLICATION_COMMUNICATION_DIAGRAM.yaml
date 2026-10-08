@@ -1,0 +1,32 @@
+# Northgate Bank — Application Communication Diagram (Phase C, baseline) as an Application
+# Cooperation view: the six components of the TOGAF drawing, the interfaces IF-01..IF-06 as
+# labelled Flows, the entities they carry as Data Objects.
+id: APPLICATION_COMMUNICATION_DIAGRAM
+title: "Northgate Bank — Application Communication Diagram as an Application Cooperation view"
+viewpoint: Application Cooperation
+elements:
+  - {id: mobile, type: application_component, name: "Mobile App", col: 0, row: 1}
+  - {id: core, type: application_component, name: "Core Banking", col: 2, row: 1}
+  - {id: dwh, type: application_component, name: "Data Warehouse", col: 4, row: 1}
+  - {id: network, type: application_component, name: "Card network (external)", col: 0, row: 3}
+  - {id: switch, type: application_component, name: "Card Switch", col: 2, row: 3}
+  - {id: fraud, type: application_component, name: "Fraud Engine", col: 4, row: 3}
+  - {id: txn, type: data_object, name: "Transaction", col: 3, row: 2}
+  - {id: card, type: data_object, name: "Card", col: 1, row: 4}
+  - {id: scoring_if, type: application_interface, name: "Scoring API (REST) of Fraud Engine", col: 3, row: 4}
+relations:
+  - {from: mobile, to: core, type: flow, label: "IF-01 REST: balance, transfer"}
+  - {from: core, to: mobile, type: flow, label: "IF-05 push: transaction alert", via: [[1, 0]]}
+  - {from: mobile, to: switch, type: flow, label: "freeze card"}
+  - {from: core, to: dwh, type: flow, label: "IF-03 batch: transaction file"}
+  - {from: switch, to: core, type: flow, label: "IF-02 queue: authorisation, settlement"}
+  - {from: network, to: switch, type: flow, label: "IF-06 ISO 8583: authorisation"}
+  - {from: switch, to: fraud, type: flow, label: "IF-04 REST: card transaction"}
+  - {from: scoring_if, to: switch, type: serving}
+  - {from: core, to: txn, type: access, access: write}
+  - {from: switch, to: txn, type: access, access: write}
+  - {from: fraud, to: txn, type: access, access: read}
+  - {from: dwh, to: txn, type: access, access: read}
+  - {from: switch, to: card, type: access, access: readwrite}
+notes:
+  - {text: "Flows are labelled with the Interface catalog id and the data carried. The Scoring API is the one interface drawn: it is the boundary the 150 ms latency budget is measured at.", col: 5, row: 3, w: 1, h: 2}

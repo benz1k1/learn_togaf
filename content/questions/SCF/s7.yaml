@@ -1,0 +1,852 @@
+# S7 Traceability and Assurance bank (SCF). Authored from the SABSA framework as published by the
+# SABSA Institute; SABSA section numbers refer to the White Paper and are to be verified against
+# the registered PDF. status: draft until reviewed.
+code: S7_BANK
+exam: SCF
+name: S7 Traceability and Assurance bank
+kind: DRILL
+source: authored
+questions:
+  # ---------------------------------------------------------------- S7.1 Two-way traceability
+  - id: S7-101
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "What question does top-down traceability answer?"
+    options:
+      - {key: A, text: "Why does this control exist?", correct: true}
+      - {key: B, text: "Is every requirement met?", why: "That is the bottom-up question."}
+      - {key: C, text: "Which product should we buy?", why: "A Component-layer decision, not a traceability question."}
+      - {key: D, text: "How much risk will we accept?", why: "That is risk appetite."}
+    explanation: "Top-down walks from a control up to the business driver that justifies it."
+    refs: ["SABSA §6"]
+    difficulty: 1
+    tags: [traceability, top-down]
+  - id: S7-102
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "What question does bottom-up traceability answer?"
+    options:
+      - {key: A, text: "Is every business attribute actually delivered and measured?", correct: true}
+      - {key: B, text: "Why does this control exist?", why: "Top-down."}
+      - {key: C, text: "Who is the policy authority?", why: "A domain-model question."}
+      - {key: D, text: "Which layer is complete?", why: "Completeness is per attribute, not per layer."}
+    explanation: "Bottom-up starts from each attribute and walks down to an operational measurement."
+    refs: ["SABSA §6"]
+    difficulty: 1
+    tags: [traceability, bottom-up]
+  - id: S7-103
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "Which failure does top-down traceability catch?"
+    options:
+      - {key: A, text: "Controls with no business reason: legacy products, checklist items, gold-plating", correct: true}
+      - {key: B, text: "Attributes with no control", why: "Bottom-up catches that."}
+      - {key: C, text: "Missing performance targets", why: "A profile-quality issue, caught when metrics are defined."}
+      - {key: D, text: "Incorrect vendor selection", why: "Not a traceability failure."}
+    explanation: "Top-down inspects what exists and asks whether it is justified."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [traceability, top-down]
+  - id: S7-104
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "Which failure does bottom-up traceability catch?"
+    options:
+      - {key: A, text: "Requirements agreed but never delivered, and targets nothing measures", correct: true}
+      - {key: B, text: "Unjustified controls", why: "Top-down."}
+      - {key: C, text: "Duplicate products", why: "Not a traceability concern as such."}
+      - {key: D, text: "Undefined business drivers", why: "A Contextual-layer gap, upstream of the check."}
+    explanation: "Bottom-up inspects what was asked for and asks whether it was done."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [traceability, bottom-up]
+  - id: S7-105
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "Why is a top-down check alone insufficient?"
+    options:
+      - {key: A, text: "It only inspects what exists, so it can pass an architecture that omits half its attributes", correct: true}
+      - {key: B, text: "It is too expensive", why: "Cost is not the reason."}
+      - {key: C, text: "It only inspects requirements", why: "That describes bottom-up."}
+      - {key: D, text: "It cannot be automated", why: "Automation is irrelevant to the logic."}
+    explanation: "Each direction has a blind spot; two-way covers both."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [traceability, trap]
+  - id: S7-106
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "The bottom-up walk always starts from:"
+    options:
+      - {key: A, text: "The Business Attributes Profile", correct: true}
+      - {key: B, text: "The Component layer", why: "That is where top-down starts."}
+      - {key: C, text: "The product inventory", why: "Not a requirement source."}
+      - {key: D, text: "The audit report", why: "Audit examines evidence; it does not define requirements."}
+    explanation: "Completeness is checked per attribute because that is where the business's requirements are."
+    refs: ["SABSA §5", "SABSA §6"]
+    difficulty: 1
+    tags: [traceability, attributes]
+  - id: S7-107
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "Where must a bottom-up walk end for an attribute to count as complete?"
+    options:
+      - {key: A, text: "At an operational measurement in the Service Management layer", correct: true}
+      - {key: B, text: "At the Logical service", why: "A service alone is a design, not delivery."}
+      - {key: C, text: "At a named component", why: "Delivered but unproven without measurement."}
+      - {key: D, text: "At the business driver", why: "That is the top, not the bottom."}
+    explanation: "An attribute that reaches a component but not a measurement is delivered but unproven."
+    refs: ["SABSA §6", "SABSA §3.6"]
+    difficulty: 2
+    tags: [traceability, measurement]
+  - id: S7-108
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "A learner says 'we have a full Physical layer, so Recoverable is covered'. What is wrong?"
+    options:
+      - {key: A, text: "Completeness is checked per attribute, not per layer; a full layer says nothing about one attribute", correct: true}
+      - {key: B, text: "Recoverable is not a business attribute", why: "It is a common one."}
+      - {key: C, text: "The Physical layer cannot contain recovery mechanisms", why: "It can."}
+      - {key: D, text: "Nothing; that is the completeness rule", why: "It is not."}
+    explanation: "Bottom-up traceability starts from each attribute."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [traceability, trap]
+  - id: S7-109
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "A control that cannot be traced to a business driver should be:"
+    options:
+      - {key: A, text: "Linked to the driver it serves if one exists, otherwise removed", correct: true}
+      - {key: B, text: "Kept, because all controls add security", why: "Unjustified controls are cost without reason."}
+      - {key: C, text: "Moved to the Contextual layer", why: "Layers do not fix missing justification."}
+      - {key: D, text: "Given its own attribute retroactively", why: "That reverses business-driven into control-driven."}
+    explanation: "Top-down traceability either finds the justification or removes the control."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [traceability, top-down]
+  - id: S7-110
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "In the TOGAF risk and security guide, what corresponds to SABSA's business attribute with a target?"
+    options:
+      - {key: A, text: "A requirement from Business Attribute Profiling, with metric and target", correct: true}
+      - {key: B, text: "A Solution Building Block", why: "That corresponds to a component."}
+      - {key: C, text: "A compliance review", why: "That corresponds to measurement."}
+      - {key: D, text: "A control objective", why: "That corresponds to a security service."}
+    explanation: "The guide's Requirements Management section translates drivers into requirements with metrics."
+    refs: ["GUIDE:integrating-risk-and-security §5.10.1"]
+    difficulty: 2
+    tags: [traceability, togaf]
+  - id: S7-111
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "In the guide, control objectives are derived from:"
+    options:
+      - {key: A, text: "Business objectives, so each control traces to something the business wanted", correct: true}
+      - {key: B, text: "Vendor recommendations", why: "That would be control-driven."}
+      - {key: C, text: "The Technology Architecture", why: "Objectives precede technology."}
+      - {key: D, text: "Audit findings only", why: "Findings may refine them but do not originate them."}
+    explanation: "Control objectives from business objectives is the guide's statement of top-down justification."
+    refs: ["GUIDE:integrating-risk-and-security §5.10.2"]
+    difficulty: 2
+    tags: [traceability, togaf]
+  - id: S7-112
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "A new regulation arrives. Which traceability walk shows which controls it touches?"
+    options:
+      - {key: A, text: "Top-down from the driver through attributes, services and controls", correct: true}
+      - {key: B, text: "Bottom-up from the product inventory", why: "Products are not where a driver enters."}
+      - {key: C, text: "Neither; regulations are handled by audit", why: "Audit examines evidence; impact is a traceability query."}
+      - {key: D, text: "A row-coherence check", why: "That checks consistency within a layer."}
+    explanation: "Changes at the top are walked down; changes at the bottom are walked up."
+    refs: ["SABSA §6", "SABSA §4"]
+    difficulty: 2
+    tags: [traceability, change]
+  - id: S7-113
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "A product is retired. Which walk shows what must be replaced before it goes?"
+    options:
+      - {key: A, text: "Bottom-up from the attributes its mechanisms served", correct: true}
+      - {key: B, text: "Top-down from the business driver", why: "The change enters at the bottom."}
+      - {key: C, text: "No walk; retirement is purely operational", why: "It may break attribute coverage."}
+      - {key: D, text: "A viewpoint selection", why: "Unrelated."}
+    explanation: "Coverage of every attribute the product served must be re-established."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [traceability, change]
+  - id: S7-114
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "How does SABSA expect the traceability chain to be recorded?"
+    options:
+      - {key: A, text: "Written down, in a traceability matrix, a requirements repository with parent links or a model; not held in an architect's head", correct: true}
+      - {key: B, text: "In a specific mandated tool", why: "SABSA mandates no tool."}
+      - {key: C, text: "Only in the audit report", why: "The record must exist before audit."}
+      - {key: D, text: "It need not be recorded", why: "Unrecorded links cannot be checked."}
+    explanation: "Any durable form will do; the point is that the links are explicit."
+    refs: ["SABSA §6"]
+    difficulty: 1
+    tags: [traceability, recording]
+  - id: S7-115
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "In an ArchiMate model, the traceability chain is drawn as:"
+    options:
+      - {key: A, text: "Requirement elements realized by the core elements that satisfy them", correct: true}
+      - {key: B, text: "Business Actors assigned to Nodes", why: "Not a traceability pattern."}
+      - {key: C, text: "Plateaus in sequence", why: "That is migration."}
+      - {key: D, text: "Groupings of Locations", why: "That is the domain model."}
+    explanation: "Unit X3 draws exactly this."
+    refs: ["SABSA §6"]
+    difficulty: 3
+    tags: [traceability, archimate]
+  - id: S7-116
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "SABSA says a security architecture is traceable when:"
+    options:
+      - {key: A, text: "The chain runs unbroken from the Contextual layer to the Component and Service Management layers, readable in both directions", correct: true}
+      - {key: B, text: "Every cell has a document", why: "Population is not linkage."}
+      - {key: C, text: "An external audit has been passed", why: "Audit confirms; it does not constitute traceability."}
+      - {key: D, text: "All products are from one vendor", why: "Irrelevant."}
+    explanation: "Traceability is about links between layers."
+    refs: ["SABSA §6", "SABSA §3.3"]
+    difficulty: 2
+    tags: [traceability, definition]
+  - id: S7-117
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "Which is the correct top-down chain?"
+    options:
+      - {key: A, text: "Component → mechanism → service → attribute → driver", correct: true}
+      - {key: B, text: "Driver → attribute → service → mechanism → component", why: "That is the bottom-up direction."}
+      - {key: C, text: "Attribute → driver → service", why: "The driver is above the attribute."}
+      - {key: D, text: "Service → component → mechanism", why: "Mechanism sits between service and component."}
+    explanation: "Top-down starts at the control and asks 'because of what?' up to the driver."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [traceability, chain]
+  - id: S7-118
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "Top-down traceability is SABSA's answer to which management question?"
+    options:
+      - {key: A, text: "'Why does security cost so much?' — every cost line has a business reason attached", correct: true}
+      - {key: B, text: "'Which vendor is cheapest?'", why: "Not a traceability question."}
+      - {key: C, text: "'When is the audit?'", why: "Scheduling."}
+      - {key: D, text: "'How many layers are there?'", why: "Trivia."}
+    explanation: "Justification in business terms is the value of top-down traceability."
+    refs: ["SABSA §6", "SABSA §5"]
+    difficulty: 2
+    tags: [traceability, business]
+  - id: S7-119
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "Which SABSA term matches the guide's 'security service as an ABB'?"
+    options:
+      - {key: A, text: "Security service at the Logical layer / control objective", correct: true}
+      - {key: B, text: "Business attribute", why: "That matches the requirement."}
+      - {key: C, text: "Component", why: "That matches the SBB."}
+      - {key: D, text: "Business driver", why: "That matches the business objective."}
+    explanation: "The guide's and SABSA's chains line up level by level."
+    refs: ["GUIDE:integrating-risk-and-security §5.10.2", "SABSA §6"]
+    difficulty: 2
+    tags: [traceability, togaf]
+  - id: S7-120
+    unit: S7
+    objective: "S7.1"
+    lesson: S7/01_two_way_traceability
+    stem: "A Phase H change request's impact, in traceability terms, is:"
+    options:
+      - {key: A, text: "The set of chain links it breaks", correct: true}
+      - {key: B, text: "The number of products affected", why: "Products are one link; the impact is the whole chain."}
+      - {key: C, text: "Undefined until the next lifecycle", why: "The chain makes it a query."}
+      - {key: D, text: "Always a new ADM cycle", why: "Governance decides minor versus new cycle."}
+    explanation: "With the chain recorded, impact analysis is a lookup rather than an investigation."
+    refs: ["SABSA §6", "GUIDE:integrating-risk-and-security §5.9"]
+    difficulty: 2
+    tags: [traceability, change]
+  # ---------------------------------------------------------------- S7.2 Assurance framework
+  - id: S7-121
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "What is the SABSA assurance framework?"
+    options:
+      - {key: A, text: "The activities that produce evidence that controls exist, work as designed, meet their targets and continue to do so", correct: true}
+      - {key: B, text: "An insurance policy against breaches", why: "Risk transfer, not assurance."}
+      - {key: C, text: "The list of approved vendors", why: "Component-layer content."}
+      - {key: D, text: "The set of business drivers", why: "Contextual-layer content."}
+    explanation: "Traceability is a claim; assurance is the proof."
+    refs: ["SABSA §6"]
+    difficulty: 1
+    tags: [assurance, definition]
+  - id: S7-122
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "Which lifecycle phases does assurance span?"
+    options:
+      - {key: A, text: "Design, Implement and Manage and Measure", correct: true}
+      - {key: B, text: "Manage and Measure only", why: "It begins in Design with traceability checks."}
+      - {key: C, text: "Strategy and Planning only", why: "Assurance needs something designed to assure."}
+      - {key: D, text: "Implement only", why: "Verification at build is one of four questions."}
+    explanation: "Design completeness, build verification, performance and continued truth."
+    refs: ["SABSA §6", "SABSA §4"]
+    difficulty: 2
+    tags: [assurance, lifecycle]
+  - id: S7-123
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "Which evidence answers 'was it built as designed'?"
+    options:
+      - {key: A, text: "Implementation verification: configuration review, code review, testing", correct: true}
+      - {key: B, text: "The traceability matrix", why: "That answers 'is the design complete'."}
+      - {key: C, text: "Monthly uptime figures", why: "That answers 'does it perform'."}
+      - {key: D, text: "The Business Attributes Profile", why: "That is the requirement."}
+    explanation: "A penetration test of the deployed mechanism against its specification is the model example."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [assurance, evidence]
+  - id: S7-124
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "An inventory listing the log-management product is offered as assurance that the attribute Auditable is met. This is:"
+    options:
+      - {key: A, text: "Evidence of existence, not of performance; the measured log-completeness figure is needed", correct: true}
+      - {key: B, text: "Sufficient assurance", why: "Existence is not performance."}
+      - {key: C, text: "Evidence of design completeness", why: "An inventory is not a traceability record."}
+      - {key: D, text: "An audit", why: "An inventory is not independent examination."}
+    explanation: "Evidence that a control exists is not evidence that it performs."
+    refs: ["SABSA §6", "SABSA §5"]
+    difficulty: 2
+    tags: [assurance, trap]
+  - id: S7-125
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "Why can the assurance framework not work without the profile's metrics?"
+    options:
+      - {key: A, text: "Assurance collects the measures the business agreed to; without a metric and target there is nothing to assure", correct: true}
+      - {key: B, text: "Because metrics are required by law", why: "Not the reason."}
+      - {key: C, text: "Because auditors only read numbers", why: "Soft metrics exist too."}
+      - {key: D, text: "It can; assurance invents its own measures", why: "That would disconnect evidence from the business requirement."}
+    explanation: "An attribute without a target is incomplete in SABSA for exactly this reason."
+    refs: ["SABSA §5", "SABSA §6"]
+    difficulty: 2
+    tags: [assurance, metrics]
+  - id: S7-126
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "Which of these is a 'soft' metric type?"
+    options:
+      - {key: A, text: "A qualitative rating from a survey or inspection against a target", correct: true}
+      - {key: B, text: "Uptime percentage from automated monitoring", why: "Hard, quantitative."}
+      - {key: C, text: "Conformant / non-conformant from an audit", why: "A compliance metric."}
+      - {key: D, text: "Restore time in hours", why: "Hard."}
+    explanation: "Hard metrics are quantitative, soft are qualitative, compliance metrics are audit verdicts."
+    refs: ["SABSA §5"]
+    difficulty: 2
+    tags: [assurance, metrics]
+  - id: S7-127
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "'An annual external audit provides our assurance.' What is wrong with this statement?"
+    options:
+      - {key: A, text: "Audit independently confirms assurance evidence that must already exist; it does not replace the framework", correct: true}
+      - {key: B, text: "Nothing", why: "Audit and assurance are distinct."}
+      - {key: C, text: "Audits must be internal", why: "Independence, not location, matters."}
+      - {key: D, text: "Audits must be monthly", why: "Frequency is not the issue."}
+    explanation: "Self-produced evidence without audit drifts; audit without assurance is a checklist."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [assurance, audit, trap]
+  - id: S7-128
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "In SABSA terms, a TOGAF Architecture Compliance Review is:"
+    options:
+      - {key: A, text: "An assurance activity of the 'built as designed' kind whose finding is evidence to be filed", correct: true}
+      - {key: B, text: "The whole assurance framework", why: "It omits ongoing performance measurement."}
+      - {key: C, text: "A Strategy and Planning activity", why: "It is Phase G."}
+      - {key: D, text: "Irrelevant to SABSA", why: "It is one of the four evidence kinds."}
+    explanation: "SABSA adds that the attribute's target is measured for as long as the control lives."
+    refs: ["GUIDE:integrating-risk-and-security §5.8", "SABSA §6"]
+    difficulty: 2
+    tags: [assurance, togaf]
+  - id: S7-129
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "Which item belongs in a mature assurance framework?"
+    options:
+      - {key: A, text: "A re-assessment trigger: change, incident or elapsed time, whichever comes first", correct: true}
+      - {key: B, text: "A fixed vendor list", why: "Component content."}
+      - {key: C, text: "A single annual snapshot with no follow-up", why: "Assurance is continuous."}
+      - {key: D, text: "A ban on change", why: "Change is managed, not prohibited."}
+    explanation: "The trigger is what makes the lifecycle a loop."
+    refs: ["SABSA §6", "SABSA §4"]
+    difficulty: 2
+    tags: [assurance, framework]
+  - id: S7-130
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "To whom should assurance evidence be reported?"
+    options:
+      - {key: A, text: "The business owner of each attribute, who set the target", correct: true}
+      - {key: B, text: "The vendor", why: "Vendors do not own attributes."}
+      - {key: C, text: "Nobody; it is filed", why: "Evidence must reach whoever set the target."}
+      - {key: D, text: "The tradesman", why: "Component-layer role, not the owner."}
+    explanation: "A reporting line to the attribute owner closes the loop."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [assurance, reporting]
+  - id: S7-131
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "Where does most day-to-day assurance activity live in the Matrix?"
+    options:
+      - {key: A, text: "The Service Management layer", correct: true}
+      - {key: B, text: "The Contextual layer", why: "Business view."}
+      - {key: C, text: "The Component layer", why: "Products are assured, not where assurance runs."}
+      - {key: D, text: "The Conceptual layer", why: "Targets are set there."}
+    explanation: "Monitoring, review and re-assessment are operational."
+    refs: ["SABSA §6", "SABSA §3.6"]
+    difficulty: 1
+    tags: [assurance, service-management]
+  - id: S7-132
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "Which TOGAF Phase G activity is the audit half of the assurance picture?"
+    options:
+      - {key: A, text: "The security audit: reviews of processes, designs, code and configuration, and security testing", correct: true}
+      - {key: B, text: "Signing the Architecture Contract", why: "That fixes commitments."}
+      - {key: C, text: "Producing the Implementation and Migration Plan", why: "Phase F."}
+      - {key: D, text: "Business Attribute Profiling", why: "Requirements Management."}
+    explanation: "The compliance review it feeds is where the assurance evidence is heard."
+    refs: ["GUIDE:integrating-risk-and-security §5.8.1"]
+    difficulty: 2
+    tags: [assurance, audit, togaf]
+  - id: S7-133
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "'Does it still perform?' is answered by:"
+    options:
+      - {key: A, text: "Continuous monitoring, periodic review and re-assessment on change", correct: true}
+      - {key: B, text: "The original design review", why: "That answered 'is the design complete'."}
+      - {key: C, text: "The procurement record", why: "Existence only."}
+      - {key: D, text: "The business case", why: "Justification, not evidence."}
+    explanation: "The fourth assurance question is about continued truth."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [assurance, evidence]
+  - id: S7-134
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "What does the crosswalk place against Phase G on the SABSA side?"
+    options:
+      - {key: A, text: "The assurance framework and compliance evidence", correct: true}
+      - {key: B, text: "The Business Attributes Profile", why: "Phase A and Requirements Management."}
+      - {key: C, text: "The domain model", why: "Phase B."}
+      - {key: D, text: "Security metrics and risk review", why: "Phase H."}
+    explanation: "Compliance reviews are the assurance framework in action."
+    refs: ["GUIDE:integrating-risk-and-security §5.8", "SABSA §6"]
+    difficulty: 2
+    tags: [assurance, crosswalk]
+  - id: S7-135
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "A compliance metric is:"
+    options:
+      - {key: A, text: "An audit verdict against a standard: conformant or non-conformant", correct: true}
+      - {key: B, text: "A time series from monitoring", why: "Hard metric."}
+      - {key: C, text: "A survey rating", why: "Soft metric."}
+      - {key: D, text: "A business driver", why: "Not a metric."}
+    explanation: "Three metric types: hard, soft, compliance."
+    refs: ["SABSA §5"]
+    difficulty: 2
+    tags: [assurance, metrics]
+  - id: S7-136
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "What does SABSA add to TOGAF's compliance scale (irrelevant to fully conformant)?"
+    options:
+      - {key: A, text: "That the review is not the end: the attribute's target is measured for as long as the control lives", correct: true}
+      - {key: B, text: "A seventh compliance level", why: "SABSA does not extend the scale."}
+      - {key: C, text: "Nothing; the two are identical", why: "SABSA adds ongoing measurement."}
+      - {key: D, text: "A requirement for external certification", why: "Not a SABSA rule."}
+    explanation: "Compliance is a verdict on build; assurance continues through operation."
+    refs: ["SABSA §6", "GUIDE:integrating-risk-and-security §5.8"]
+    difficulty: 3
+    tags: [assurance, togaf]
+  - id: S7-137
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "Which evidence answers 'is the design complete'?"
+    options:
+      - {key: A, text: "Traceability records in both directions with no empty rows or unjustified columns", correct: true}
+      - {key: B, text: "Penetration test results", why: "Built as designed."}
+      - {key: C, text: "Uptime against target", why: "Performance."}
+      - {key: D, text: "A recertification result", why: "Continued truth."}
+    explanation: "Design completeness is a traceability question."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [assurance, evidence]
+  - id: S7-138
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "A test and review plan per mechanism exists to show:"
+    options:
+      - {key: A, text: "How 'built as designed' will be demonstrated", correct: true}
+      - {key: B, text: "Which vendor to choose", why: "Component decision."}
+      - {key: C, text: "The business driver", why: "Contextual."}
+      - {key: D, text: "The domain policy", why: "Logical."}
+    explanation: "Each mechanism carries a plan for its own verification."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [assurance, framework]
+  - id: S7-139
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "Assurance and traceability differ in that:"
+    options:
+      - {key: A, text: "Traceability is a statement about the design; assurance is the evidence that the statement holds in reality", correct: true}
+      - {key: B, text: "They are the same thing", why: "One is claim, the other proof."}
+      - {key: C, text: "Assurance is about design, traceability about operation", why: "Reversed."}
+      - {key: D, text: "Traceability is optional under SABSA", why: "It is central."}
+    explanation: "Show me — that is assurance."
+    refs: ["SABSA §6"]
+    difficulty: 1
+    tags: [assurance, traceability]
+  - id: S7-140
+    unit: S7
+    objective: "S7.2"
+    lesson: S7/02_the_assurance_framework
+    stem: "Who produces assurance evidence?"
+    options:
+      - {key: A, text: "Those who design and operate the architecture", correct: true}
+      - {key: B, text: "Only external auditors", why: "Auditors examine it."}
+      - {key: C, text: "The regulator", why: "Regulators consume it."}
+      - {key: D, text: "The vendor", why: "Vendors may supply inputs but do not own assurance."}
+    explanation: "Assurance is owned by the operators; audit is independent."
+    refs: ["SABSA §6", "SABSA §3.6"]
+    difficulty: 1
+    tags: [assurance, roles]
+  # ---------------------------------------------------------------- S7.3 Matrix as viewpoint catalogue
+  - id: S7-141
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "In what sense is each SABSA Matrix row a 'view'?"
+    options:
+      - {key: A, text: "It is a representation of the whole architecture from the perspective of one kind of reader's concerns", correct: true}
+      - {key: B, text: "It is a diagram type", why: "A view is defined by concern, not notation."}
+      - {key: C, text: "It is one of the six interrogatives", why: "Those are the columns."}
+      - {key: D, text: "It is a lifecycle phase", why: "Rows are layers, not phases."}
+    explanation: "SABSA names layers after their readers, matching the ISO 42010 idea of a view."
+    refs: ["SABSA §2", "ARCHIMATE §13.3"]
+    difficulty: 1
+    tags: [matrix, view]
+  - id: S7-142
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "In what sense is each Matrix cell a 'viewpoint'?"
+    options:
+      - {key: A, text: "It specifies what to produce for one reader and one question: the conventions for constructing that view", correct: true}
+      - {key: B, text: "It is a finished document", why: "The produced thing is the view; the cell is the specification."}
+      - {key: C, text: "It is a business attribute", why: "Attributes fill one cell."}
+      - {key: D, text: "It is a control", why: "Controls fill cells; they are not viewpoints."}
+    explanation: "'Logical × Location' says: draw domains, sub-domains, authorities and inter-domain associations."
+    refs: ["SABSA §3", "ARCHIMATE §13.3"]
+    difficulty: 2
+    tags: [matrix, viewpoint]
+  - id: S7-143
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "Which SABSA 'view' answers the builder's questions?"
+    options:
+      - {key: A, text: "The Physical layer", correct: true}
+      - {key: B, text: "The Process column", why: "Columns are interrogatives, the same for every reader."}
+      - {key: C, text: "The Component layer", why: "Tradesman."}
+      - {key: D, text: "The Time column", why: "A column, not a view."}
+    explanation: "Views are rows; columns are the six questions."
+    refs: ["SABSA §3"]
+    difficulty: 1
+    tags: [matrix, trap]
+  - id: S7-144
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "How many cells does the full SABSA Matrix have?"
+    options:
+      - {key: A, text: "Thirty-six", correct: true}
+      - {key: B, text: "Thirty", why: "Six layers including Service Management, times six columns."}
+      - {key: C, text: "Twelve", why: "Six plus six, not six times six."}
+      - {key: D, text: "Forty-two", why: "Not the count."}
+    explanation: "Six layers by six columns."
+    refs: ["SABSA §3"]
+    difficulty: 1
+    tags: [matrix]
+  - id: S7-145
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "Which completeness check reads the Matrix cell by cell and catches unasked questions?"
+    options:
+      - {key: A, text: "Population", correct: true}
+      - {key: B, text: "Upward links", why: "Catches unjustified content."}
+      - {key: C, text: "Downward links", why: "Catches undelivered requirements."}
+      - {key: D, text: "Row coherence", why: "Catches contradictions within a layer."}
+    explanation: "An empty cell is an unanswered question."
+    refs: ["SABSA §3", "SABSA §6"]
+    difficulty: 2
+    tags: [matrix, completeness]
+  - id: S7-146
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "Which check reads a column bottom to top and catches unjustified content?"
+    options:
+      - {key: A, text: "Upward links (top-down justification, column by column)", correct: true}
+      - {key: B, text: "Population", why: "Cell by cell."}
+      - {key: C, text: "Downward links", why: "Top to bottom."}
+      - {key: D, text: "Row coherence", why: "Left to right."}
+    explanation: "Each cell should trace to the cell above in its column."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [matrix, completeness]
+  - id: S7-147
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "A Logical-layer domain model names roles the entity schema does not know. Which check catches this?"
+    options:
+      - {key: A, text: "Row coherence", correct: true}
+      - {key: B, text: "Population", why: "Both cells are populated."}
+      - {key: C, text: "Upward links", why: "The problem is within one layer."}
+      - {key: D, text: "Downward links", why: "Same."}
+    explanation: "Columns within a row must agree."
+    refs: ["SABSA §3"]
+    difficulty: 3
+    tags: [matrix, coherence]
+  - id: S7-148
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "'Every cell has a document.' Does this prove completeness?"
+    options:
+      - {key: A, text: "No: a filled template with no links fails the upward and downward checks", correct: true}
+      - {key: B, text: "Yes: population is the definition of completeness", why: "Population is one of four checks."}
+      - {key: C, text: "Yes, if the documents are approved", why: "Approval is not linkage."}
+      - {key: D, text: "No, because documents must be diagrams", why: "Form is irrelevant."}
+    explanation: "The Matrix checks content and links, not the existence of files."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [matrix, trap]
+  - id: S7-149
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "'Contextual × Time' is empty. What question has gone unasked?"
+    options:
+      - {key: A, text: "When is the business exposed: trading hours, year-end, launches", correct: true}
+      - {key: B, text: "Which products are in use", why: "Component × Assets."}
+      - {key: C, text: "Who is the policy authority", why: "Conceptual/Logical × People."}
+      - {key: D, text: "Which mechanisms run when", why: "Physical × Time."}
+    explanation: "Business time dependence is the Contextual Time cell."
+    refs: ["SABSA §3"]
+    difficulty: 2
+    tags: [matrix, cells]
+  - id: S7-150
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "At the end of Strategy and Planning, which Matrix rows must be complete?"
+    options:
+      - {key: A, text: "Contextual and Conceptual", correct: true}
+      - {key: B, text: "All six", why: "Design rows come later."}
+      - {key: C, text: "Logical only", why: "Design phase."}
+      - {key: D, text: "Service Management", why: "Manage and Measure."}
+    explanation: "The Matrix check fits at the gates of the lifecycle."
+    refs: ["SABSA §4", "SABSA §6"]
+    difficulty: 2
+    tags: [matrix, gates]
+  - id: S7-151
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "At the Phase G compliance review, which Matrix row is compared with what was built?"
+    options:
+      - {key: A, text: "Component", correct: true}
+      - {key: B, text: "Contextual", why: "Business view, not built."}
+      - {key: C, text: "Conceptual", why: "Requirements, not built."}
+      - {key: D, text: "None; Phase G does not use the Matrix", why: "The crosswalk places assurance there."}
+    explanation: "Built components are checked against the designed Component row."
+    refs: ["SABSA §6", "GUIDE:integrating-risk-and-security §5.8"]
+    difficulty: 2
+    tags: [matrix, gates]
+  - id: S7-152
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "Using the Matrix as a catalogue, an architect asked for 'the security architecture' should first ask:"
+    options:
+      - {key: A, text: "For whom and about what, then produce the view for that cell", correct: true}
+      - {key: B, text: "Which vendor", why: "Component decision."}
+      - {key: C, text: "How many pages", why: "Not the point."}
+      - {key: D, text: "Which lifecycle phase is next", why: "A different question."}
+    explanation: "The cell tells you what to produce; the produced thing is the view."
+    refs: ["SABSA §3"]
+    difficulty: 2
+    tags: [matrix, catalogue]
+  - id: S7-153
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "The 'Logical × Location' cell is the viewpoint for which artefact?"
+    options:
+      - {key: A, text: "The security domain model", correct: true}
+      - {key: B, text: "The Business Attributes Profile", why: "Conceptual × Motivation."}
+      - {key: C, text: "The security operations schedule", why: "Service Management × Time."}
+      - {key: D, text: "The platform and network infrastructure", why: "Physical × Location."}
+    explanation: "Domains, sub-domains, authorities and inter-domain associations."
+    refs: ["SABSA §3"]
+    difficulty: 2
+    tags: [matrix, cells]
+  - id: S7-154
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "Which cross-framework mechanism does the same job as a SABSA cell, with a formal template?"
+    options:
+      - {key: A, text: "The ArchiMate viewpoint mechanism", correct: true}
+      - {key: B, text: "The TOGAF Architecture Contract", why: "A governance agreement."}
+      - {key: C, text: "The Solutions Continuum", why: "A classification."}
+      - {key: D, text: "The Deming cycle", why: "Not a viewpoint mechanism."}
+    explanation: "Both specify stakeholders, concerns and element types for a view."
+    refs: ["ARCHIMATE §13.4", "SABSA §3"]
+    difficulty: 2
+    tags: [matrix, archimate]
+  - id: S7-155
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "The TOGAF risk and security guide says the content metamodel can:"
+    options:
+      - {key: A, text: "Carry the SABSA cells as additional entities", correct: true}
+      - {key: B, text: "Replace the SABSA Matrix", why: "It holds, not replaces."}
+      - {key: C, text: "Not be used with SABSA", why: "The guide integrates them."}
+      - {key: D, text: "Only hold TOGAF artefacts", why: "It is extensible."}
+    explanation: "The guide's metamodel section accommodates attributes, control objectives and services."
+    refs: ["GUIDE:integrating-risk-and-security §5.11"]
+    difficulty: 2
+    tags: [matrix, togaf]
+  - id: S7-156
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "Which check reads the Matrix top to bottom in a column and catches undelivered requirements?"
+    options:
+      - {key: A, text: "Downward links (bottom-up completeness)", correct: true}
+      - {key: B, text: "Upward links", why: "Justification."}
+      - {key: C, text: "Population", why: "Unasked questions."}
+      - {key: D, text: "Row coherence", why: "Contradictions."}
+    explanation: "Each attribute should reach a component and a measurement in its column."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [matrix, completeness]
+  - id: S7-157
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "Which reader's concern is 'how is all of it run, measured and kept true'?"
+    options:
+      - {key: A, text: "The facilities manager (Service Management)", correct: true}
+      - {key: B, text: "The designer (Logical)", why: "Services, information, domains, trust."}
+      - {key: C, text: "The business (Contextual)", why: "What are we for."}
+      - {key: D, text: "The architect (Conceptual)", why: "What must be achieved, measured how."}
+    explanation: "Each row is a reader with a concern."
+    refs: ["SABSA §2", "SABSA §3.6"]
+    difficulty: 1
+    tags: [matrix, view]
+  - id: S7-158
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "In Manage and Measure, the Matrix check requires that:"
+    options:
+      - {key: A, text: "The Service Management row is producing measurements for every attribute", correct: true}
+      - {key: B, text: "The Contextual row is rewritten", why: "Only if findings require it."}
+      - {key: C, text: "All products are replaced", why: "Not a check."}
+      - {key: D, text: "The Component row is emptied", why: "Nonsense."}
+    explanation: "The operational row must measure every attribute's target."
+    refs: ["SABSA §4", "SABSA §6"]
+    difficulty: 2
+    tags: [matrix, gates]
+  - id: S7-159
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "The crosswalk panels under /adm express the Matrix check how?"
+    options:
+      - {key: A, text: "Per ADM phase: which cells each phase is expected to fill", correct: true}
+      - {key: B, text: "As a single 36-cell grid on one page", why: "They are per phase."}
+      - {key: C, text: "As product lists", why: "No."}
+      - {key: D, text: "They do not use the Matrix", why: "They name layers and cells."}
+    explanation: "The same completeness check phrased per phase."
+    refs: ["GUIDE:integrating-risk-and-security §5", "SABSA §6"]
+    difficulty: 2
+    tags: [matrix, crosswalk]
+  - id: S7-160
+    unit: S7
+    objective: "S7.3"
+    lesson: S7/03_the_matrix_as_a_viewpoint_catalogue
+    stem: "Which definition of 'view' do SABSA, ArchiMate and TOGAF share?"
+    options:
+      - {key: A, text: "A representation of a system from the perspective of a related set of concerns (ISO 42010)", correct: true}
+      - {key: B, text: "A diagram drawn in a specific notation", why: "Notation is not the definition."}
+      - {key: C, text: "A layer of hardware", why: "No."}
+      - {key: D, text: "A phase of a method", why: "No."}
+    explanation: "One vocabulary works across all three frameworks."
+    refs: ["ARCHIMATE §13.3", "SABSA §2"]
+    difficulty: 1
+    tags: [matrix, view]

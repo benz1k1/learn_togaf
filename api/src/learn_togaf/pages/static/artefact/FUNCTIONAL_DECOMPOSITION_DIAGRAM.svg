@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 318" font-family="sans-serif" font-size="12" role="img" aria-label="Example Functional Decomposition Diagram for a fictional retail bank, an original study illustration">
+<defs><marker id="arr-functional-decomposition-diagram" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="760" height="318" fill="#fff"/>
+<text x="10" y="20" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Example: Functional Decomposition Diagram — retail bank</text>
+<text x="750" y="20" text-anchor="end" font-size="11" fill="#666" font-style="italic">diagram: Phase B</text>
+<rect x="280" y="36" width="200" height="34" rx="6" fill="#fff1d6" stroke="#e0b060" stroke-width="1"/>
+<text x="380.0" y="56.7" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Northgate Bank — Retail</text>
+<line x1="380" y1="70" x2="380" y2="84" stroke="#666" stroke-width="1"/><line x1="140" y1="84" x2="620" y2="84" stroke="#666" stroke-width="1"/><line x1="140" y1="84" x2="140" y2="96" stroke="#666" stroke-width="1"/>
+<rect x="40" y="96" width="200" height="32" rx="6" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="140.0" y="115.7" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Onboarding</text>
+<line x1="50" y1="128" x2="50" y2="221" stroke="#666" stroke-width="1"/>
+<line x1="50" y1="153" x2="60" y2="153" stroke="#666" stroke-width="1"/>
+<rect x="60" y="140" width="160" height="26" rx="6" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="140.0" y="156.3" text-anchor="middle" font-size="10" fill="#222">Identity verification</text>
+<line x1="50" y1="187" x2="60" y2="187" stroke="#666" stroke-width="1"/>
+<rect x="60" y="174" width="160" height="26" rx="6" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="140.0" y="190.3" text-anchor="middle" font-size="10" fill="#222">Account opening</text>
+<line x1="50" y1="221" x2="60" y2="221" stroke="#666" stroke-width="1"/>
+<rect x="60" y="208" width="160" height="26" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="140.0" y="224.3" text-anchor="middle" font-size="10" fill="#222">KYC review</text>
+<line x1="380" y1="70" x2="380" y2="84" stroke="#666" stroke-width="1"/><line x1="140" y1="84" x2="620" y2="84" stroke="#666" stroke-width="1"/><line x1="380" y1="84" x2="380" y2="96" stroke="#666" stroke-width="1"/>
+<rect x="280" y="96" width="200" height="32" rx="6" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="380.0" y="115.7" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Payments</text>
+<line x1="290" y1="128" x2="290" y2="221" stroke="#666" stroke-width="1"/>
+<line x1="290" y1="153" x2="300" y2="153" stroke="#666" stroke-width="1"/>
+<rect x="300" y="140" width="160" height="26" rx="6" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="380.0" y="156.3" text-anchor="middle" font-size="10" fill="#222">Transfers</text>
+<line x1="290" y1="187" x2="300" y2="187" stroke="#666" stroke-width="1"/>
+<rect x="300" y="174" width="160" height="26" rx="6" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="380.0" y="190.3" text-anchor="middle" font-size="10" fill="#222">Card authorisation</text>
+<line x1="290" y1="221" x2="300" y2="221" stroke="#666" stroke-width="1"/>
+<rect x="300" y="208" width="160" height="26" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="380.0" y="224.3" text-anchor="middle" font-size="10" fill="#222">Settlement</text>
+<line x1="380" y1="70" x2="380" y2="84" stroke="#666" stroke-width="1"/><line x1="140" y1="84" x2="620" y2="84" stroke="#666" stroke-width="1"/><line x1="620" y1="84" x2="620" y2="96" stroke="#666" stroke-width="1"/>
+<rect x="520" y="96" width="200" height="32" rx="6" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="620.0" y="115.7" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Lending</text>
+<line x1="530" y1="128" x2="530" y2="221" stroke="#666" stroke-width="1"/>
+<line x1="530" y1="153" x2="540" y2="153" stroke="#666" stroke-width="1"/>
+<rect x="540" y="140" width="160" height="26" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="620.0" y="156.3" text-anchor="middle" font-size="10" fill="#222">Loan origination</text>
+<line x1="530" y1="187" x2="540" y2="187" stroke="#666" stroke-width="1"/>
+<rect x="540" y="174" width="160" height="26" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="620.0" y="190.3" text-anchor="middle" font-size="10" fill="#222">Credit assessment</text>
+<line x1="530" y1="221" x2="540" y2="221" stroke="#666" stroke-width="1"/>
+<rect x="540" y="208" width="160" height="26" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="620.0" y="224.3" text-anchor="middle" font-size="10" fill="#222">Loan servicing</text>
+<rect x="40" y="258" width="14" height="12" rx="2" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/><text x="60" y="268" text-anchor="start" font-size="10" fill="#345">= in scope for change programme phase 1 (heat-map overlay on the decomposition)</text>
+<text x="380" y="292" text-anchor="middle" font-size="10" fill="#345">What the organisation does, not how; one page, three levels.</text>
+<text x="10" y="310" text-anchor="start" font-size="11" fill="#666">Original illustration for study; the artifact is defined in CONTENT §3.6.4</text>
+</svg>

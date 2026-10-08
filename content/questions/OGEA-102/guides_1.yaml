@@ -1,0 +1,1028 @@
+# Authored Practitioner scenarios testing the Series Guide objectives G1.1 to G4.1 (learn_togaf.md §2, §6).
+# Each question's unit is the guide unit its objective belongs to.
+code: G_BANK_1
+exam: OGEA-102
+name: "Series Guides 1: Leader's Guide, Practitioners' Approach, Business Scenarios, Business Architecture"
+kind: DRILL
+source: authored
+questions:
+  - id: G1-101
+    unit: G_LEADERS
+    objective: "G1.1"
+    lesson: G_LEADERS/01_the_leaders_guide
+    scenario: |
+      Penrose Media is a broadcasting and streaming group of 8,000 staff formed from three
+      companies: a public-service broadcaster with a fifty-year history, a streaming start-up it
+      acquired three years ago, and a production company bought last year. Each brought an
+      architecture team. The broadcaster's team of nine is IT-centric, reports to the CIO, and is
+      respected for its standards and technology roadmaps; it publishes a quarterly "technology
+      radar" that the other companies ignore. The streaming team of five sits inside product
+      management, reports to the Chief Product Officer, works in two-week cycles and calls itself
+      "platform architecture"; it has never produced a document longer than a page. The production
+      company's two architects report to its operations director and mostly design studio and
+      post-production workflows; they regard the other two teams as "IT people".
+
+      The group Chief Executive has hired you as Group Head of Architecture "to make architecture
+      work for the group". Her stated problem is that the three companies cannot launch a combined
+      subscription offer — one account, one price, live broadcast plus on-demand plus original
+      production — because every attempt stalls in disagreements about platforms, customer data and
+      content rights, and the board cannot tell whose advice to take. The last attempt produced
+      three incompatible target architectures and a board paper that recommended "further work".
+      The CIO believes the answer is to fold the other two teams into his and adopt his standards
+      group-wide. The Chief Product Officer says his team will leave if that happens, and that the
+      broadcaster's architects "have never shipped anything". The operations director wants to be
+      left alone and says production "is not a technology business".
+
+      In your first month you find: three architecture repositories in three tools, none of which
+      references the others; three sets of principles, two of which contradict each other on data
+      residency for subscriber data; no shared view of the group's capabilities, and three different
+      words for "subscriber"; and no agreed measure of what any of the teams contributes. The
+      broadcaster's team spends most of its time on infrastructure standards and vendor
+      evaluations; the streaming team spends its time in delivery and does the architecture in its
+      head; nobody is doing architecture for the combined offer, which is the board's priority and
+      has a launch window tied to a sports rights deal in fourteen months. The group finance
+      director wants a plan and a budget for the architecture function within eight weeks and has
+      asked, pointedly, "what would we lose if none of these teams existed?" The Chief Executive
+      has said she does not care where the teams report as long as the offer launches and the
+      board gets one answer.
+
+      You have also established what each team is measured on today. The broadcaster's team
+      reports the number of standards published and reviews completed. The streaming team reports
+      release frequency. The production company's architects report nothing. None of the three has
+      ever been asked to provide advice ahead of a board decision; the combined-offer attempts were
+      run by the strategy function, which asked each team for "an architecture" after the
+      commercial terms had been drafted. The group has a single annual planning cycle in which the
+      board approves the following year's programmes in October; it is now March. The sports rights
+      deal that fixes the launch window was signed without any architecture input, and its
+      technical obligations — concurrent viewers, latency, regional rights enforcement — are not
+      yet understood by anyone in the group. The Chief Executive has offered to sponsor whatever
+      governance structure you propose, provided the business leaders of the three companies, not
+      the architects, own the decisions about the offer.
+
+      You must recommend how the group's architecture capability should be organised, aligned and
+      measured, and what it should work on first.
+    question: "Refer to the scenario. Based on the Series Guides and the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Apply the Leader's Guide. Start from the group's context and the capability's
+          purpose: agree with the Chief Executive that the capability's primary purpose is EA to
+          support strategy and portfolio for the combined offer, and that the delivery-level
+          work the streaming team does is EA to support solution delivery, both legitimate at
+          their own depth. Treat the three teams as one EA Capability under one Leader — you —
+          with reporting and funding lines left where they are but alignment and execution
+          against shared objectives, a shared content framework and repository model, and a
+          single reconciled principle set through a governance body in which decision rights
+          over the target sit with the business stakeholders. Define success measures from the
+          purpose — recommendations accepted by the board on the combined offer, risks
+          identified, benefits tracked — so that the finance director's question has an answer.
+          Produce a multi-year EA Capability roadmap with a project manager, sequencing the
+          combined-offer architecture first and the tooling and standards consolidation behind
+          it, and validate the charter with the sponsors each planning cycle.
+        why: >-
+          The guide's central rule is that context and objectives must be explicit and that
+          purpose shapes the organisation model, governance, content and process
+          (GUIDE:togaf-leaders-guide §5); where there are multiple EA teams "there is one EA
+          Capability and there should be one Leader", with reporting and funding separable
+          from alignment and execution (§9.2); measures derive from purpose and answer what the
+          enterprise would do if the capability did not exist (§5.4); decision rights belong to
+          stakeholders (§6.2); and the roadmap is a multi-year plan needing a project manager
+          (§11.1). Teams delivering transformations are more successful than standards-focused
+          ones (§12.3).
+      - key: B
+        points: 3
+        text: >-
+          Establish one EA Capability under one Leader with the three teams aligned to shared
+          objectives and a reconciled principle set, and define measures derived from the
+          purpose. Then, because consistency is the immediate problem, spend the first year
+          consolidating the three repositories into one tool, merging the standards catalogues
+          and documenting a group capability map, before starting architecture for the combined
+          offer in year two.
+        why: >-
+          The organisation, alignment and measures are right, but sequencing a year of
+          tooling and standards before the board's priority repeats the pattern the guide warns
+          about: capabilities that focus on standards, reference architectures and structures
+          are statistically less successful than those delivering key transformations (§12.3),
+          and it delays the value the sponsor and the finance director are asking for (§5.4).
+      - key: C
+        points: 1
+        text: >-
+          Accept the CIO's proposal and merge the streaming and production architects into the
+          IT-centric team, adopt the broadcaster's principles and standards for the group, and
+          have the merged team produce a group technology roadmap; measure success by
+          completion of the roadmap and the number of standards adopted.
+        why: >-
+          An IT-centric alignment constrains support for decisions and governance to the IT
+          domain and is unlikely to fit a strategy-and-portfolio purpose (§5.3; §9.2), measuring
+          by models and standards produced is inadequate to communicate value (§9.3.3), and
+          imposing one team's principles ignores the context-first sequence (§4).
+      - key: D
+        points: 0
+        text: >-
+          Recommend disbanding all three teams and engaging a consultancy to design the
+          combined offer, since the finance director's question implies the teams add nothing
+          and the board needs an answer quickly.
+        why: >-
+          The finance director's question is one the guide poses as a way to define value
+          measures, not a verdict (§5.4). Disbanding the capability discards the group's ability
+          to develop, use and sustain its architecture and govern change (§3.3), and hands the
+          board's most important decision to a party outside any governance.
+    refs: ["GUIDE:togaf-leaders-guide §5", "GUIDE:togaf-leaders-guide §9.2", "GUIDE:togaf-leaders-guide §5.4", "GUIDE:togaf-leaders-guide §6.2", "GUIDE:togaf-leaders-guide §11.1", "GUIDE:togaf-leaders-guide §12.3"]
+    open_book_hint: "Where to look: Leader's Guide §5 (purpose and objectives shape everything), §9.2 (alignment; one capability, one Leader), §5.4 (measures; what if it did not exist), §6.2 (decision rights), §11.1 (roadmap), §12.3 (transformation-focused teams succeed)."
+    difficulty: 2
+    tags: [leaders-guide, organisation-model, alignment, measures]
+  - id: G1-102
+    unit: G_LEADERS
+    objective: "G1.1"
+    lesson: G_LEADERS/01_the_leaders_guide
+    scenario: |
+      Castellan Bank is a commercial bank with 12,000 staff, serving mid-sized companies through
+      payments, lending and trading services, and supervised by a regulator that reviews its
+      governance annually. Its EA Capability is five years old, strategy-centric, and reports to
+      the Chief Strategy Officer; it has fourteen architects and a well-populated repository. Two
+      years ago the bank created an Architecture Governance Board, chaired by the Head of EA, with
+      the bank's domain architects as members and a charter that gives it authority "to approve
+      target architectures and to approve or reject project designs for compliance". The board
+      meets fortnightly and has a backlog of eleven items awaiting decision.
+
+      The board has become a bottleneck and a battleground. Three episodes have been escalated to
+      the Chief Executive in the last quarter. First, the board rejected the payments division's
+      target architecture twice because the architects on the board preferred a different
+      integration pattern; the payments director complains that the board is "designing my
+      business" and that the division's stakeholders — who had approved the target — were never
+      asked. Second, a lending project was found non-compliant with the target's data-residency
+      constraint; the board granted a "temporary" exception eighteen months ago that has never been
+      reviewed, three further projects have since cited it as precedent, and the constraint is now
+      widely ignored. Third, a trading project reasonably interpreted an ambiguous constraint one
+      way, was declared non-compliant by a board member who had written the constraint, and was
+      ordered to re-work at a cost of three months and a missed market window. The Chief Risk
+      Officer notes that none of the board's decisions are visible to the enterprise risk
+      management process, and that the regulator's last review asked how architecture exceptions
+      are tracked. The bank's existing governance already has an investment committee, a risk
+      committee and a change advisory board, none of which the architecture board reports to.
+
+      The Chief Executive has asked you, as an external adviser, whether the board should be given
+      more authority to "make its decisions stick", or less. The Head of EA argues that without
+      the power to approve and reject, governance is meaningless and projects will "do what they
+      like". The payments director argues the board should be abolished and each division left to
+      govern itself. The Chief Risk Officer wants whatever emerges to be visible to her committee.
+      The regulator's next review is in six months and will ask about exception handling.
+
+      You have reviewed the board's records. Of forty decisions in two years, thirty-one concerned
+      the content of targets or designs and nine concerned process. In no case is there a record
+      of the stakeholders of the architecture having approved the views on which the board ruled;
+      in most cases the stakeholders were not present. The exception granted to the lending project
+      has no expiry date and no owner. The trading project's ambiguous constraint has never been
+      clarified in the target. The board's charter was written by the Head of EA and approved by
+      the Chief Strategy Officer without reference to the risk committee. The bank's enterprise risk
+      management framework has a tier for "technology and change risk" that would accept
+      architecture non-compliance reports if any were sent. The investment committee already
+      requires a "confidence statement" for large projects, which the board does not contribute
+      to. The Head of EA is well regarded and has said he would accept a redesign "as long as it
+      does not turn the board into a talking shop".
+
+      You must recommend how architecture governance at Castellan should be designed: who decides
+      what, what the board's role is, how non-compliance and relief are handled, and how it fits
+      the bank's existing governance and risk processes.
+    question: "Refer to the scenario. Based on the Series Guides and the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Redesign the board's role rather than its power. Decision rights over the content of
+          a target architecture, over relief from it, and over enforcement are vested in the
+          architecture's stakeholders — the payments director and his peers — not in the
+          board; the board owns the process and issues a recommendation on the completeness of
+          the work and the confidence stakeholders should have. Give the board the guide's
+          decision-tree checklist for assessing a target: were the correct stakeholders
+          identified, were the constraints of superior architecture respected, do SMEs agree
+          with the facts, do the views reflect the stakeholders' concerns and the underlying
+          models, do the stakeholders understand the value, the work and the limits of
+          confidence, and have they approved the views — and for non-compliance: was the
+          target reasonably interpreted (if so, accept it as compliance and change the
+          architecture), do SMEs agree with the impact assessment, and have the stakeholders
+          approved the recommendation to enforce, grant time-bound relief, or change the target.
+          Make every relief time-bound with scheduled re-assessment, and integrate the process
+          with the bank's existing governance tiers and enterprise risk management so that
+          decisions are visible to the CRO.
+        why: >-
+          The guide names as "a common failure pattern" an EA board that believes it holds
+          decision rights over the target, relief and enforcement; those rights belong to the
+          stakeholders, and the board owns process and a completeness-and-confidence
+          recommendation (GUIDE:togaf-leaders-guide §6.2). The two checklists are the guide's
+          own, including the reasonable-interpretation test and the enforce/relief/change
+          choice, and relief without future re-assessment means the enterprise has changed its
+          architecture without approval (§6.2). Governance must be designed in the context of
+          existing governance, reporting and ERM practices and tiers (§6.2; §6.1).
+      - key: B
+        points: 3
+        text: >-
+          Keep the board's authority to approve targets and designs but change its membership
+          so that business stakeholders sit alongside the architects, reduce its scope to
+          matters of enterprise significance, add a time limit to exceptions, and report its
+          decisions to the enterprise risk process.
+        why: >-
+          Time-bound relief and ERM visibility are right, but keeping content decision rights
+          in the board — even a board with business members — still places approval of the
+          target in a body rather than with the stakeholders of that architecture, which is
+          the failure pattern itself (§6.2). The board's role is to assess completeness and
+          confidence and manage the process, not to approve content.
+      - key: C
+        points: 1
+        text: >-
+          Strengthen the board: give it final authority over targets and compliance, remove the
+          right of divisions to appeal, and require every project to obtain board approval at
+          design and at go-live, so that its decisions stick and the data-residency constraint
+          is enforced.
+        why: >-
+          This deepens the failure pattern the guide describes, embedding in the board rights
+          that must sit with stakeholders (§6.2) and ignoring that reasonable interpretations
+          of the target should be accepted as compliance with issues handled by changing the
+          architecture (§6.2). It also perpetuates the "fixing the blame" style of governance
+          the guide warns against (§6.1).
+      - key: D
+        points: 0
+        text: >-
+          Abolish the board and let each division's architects approve their own targets and
+          judge their own compliance, since the payments director is right that the board
+          designs his business.
+        why: >-
+          The development and use of EA must be governed (§6), and removing the process owner
+          removes the completeness and confidence assessment, the compliance process and any
+          link to enterprise risk management (§6.2). Self-certification is compliance by
+          assertion.
+    refs: ["GUIDE:togaf-leaders-guide §6.2", "GUIDE:togaf-leaders-guide §6.1", "GUIDE:togaf-leaders-guide §6", "GUIDE:adm-practitioners §3.3.3", "GOV §2.3"]
+    open_book_hint: "Where to look: Leader's Guide §6 (governance questions), §6.1 (characteristics; tiers), §6.2 (Essential Governance: who holds decision rights; the target-assessment and non-compliance checklists; time-bound relief); Practitioners' Approach §3.3.3 (compliance decisions are made by stakeholders)."
+    difficulty: 3
+    tags: [leaders-guide, governance, architecture-board, compliance]
+  - id: G2-101
+    unit: G_PRACTITIONERS
+    objective: "G2.1"
+    lesson: G_PRACTITIONERS/01_the_practitioners_approach
+    scenario: |
+      Orrin Logistics is a warehousing and fulfilment provider with 3,900 staff, 22 warehouses
+      and a corporate strategy, approved eighteen months ago, of "one-day delivery anywhere" in its
+      home market. Its EA team of four sits in the IT function and is led by an architect who
+      built the company's first integration platform. Over the past two years the team has been
+      praised by delivery managers: its architects are embedded in projects, choose products, write
+      integration designs, set coding standards and resolve technical problems, and are often the
+      only people who understand how the systems fit together. Project retrospectives describe them
+      as "the reason we ship".
+
+      The Chief Executive has now asked the CIO why, with an architecture team in place, the
+      company's three largest programmes — a warehouse automation rollout, a customer portal, and a
+      transport management replacement — have each been found by internal audit to have no approved
+      target architecture, no traceable link to the corporate strategy of one-day delivery, and no
+      evidence of compliance beyond the architects' own sign-off. The audit also found that the
+      three programmes have made incompatible assumptions about the same order data, and that the
+      automation rollout's chosen system cannot exchange data with the transport system's chosen
+      system without a fourth product that nobody has budgeted for.
+
+      The lead architect's response is that the team "does real architecture, not paperwork": every
+      design decision was made by an architect, the products chosen are good, the programmes are on
+      time, and "the audit is measuring the wrong thing". The programme sponsors — the Chief
+      Operating Officer for automation, the Chief Commercial Officer for the portal, and the Head of
+      Transport — say they have never been asked to approve anything and would not know what they
+      were approving; the COO says she was shown "a diagram with boxes" once. The internal auditor
+      notes that when she asked how the transport replacement conforms to the architecture, the
+      answer was "the architect designed it, so it does", and that when she asked what the
+      architecture was, she was given a set of integration designs. The CIO has asked you, as the
+      incoming Head of EA, to diagnose the situation and propose a remedy without stopping the
+      programmes, which are eight, five and three months from go-live respectively, and without
+      losing the four architects, whose technical knowledge the company depends on.
+
+      You have looked for what an architecture would need to have been. The strategy names three
+      capabilities — "same-day pick", "dynamic carrier allocation" and "customer self-service" —
+      that nobody has mapped to the three programmes. The order data that the programmes have
+      defined differently is the same business information, "order", "consignment" and "delivery
+      slot", used with three meanings. The customer portal's sponsor has a list of what she expects
+      it to do that has never been reconciled with what the automation rollout will change in the
+      warehouse. Each programme has a risk register, none of which mentions the others. The
+      integration platform the lead architect built is the one thing all three depend on and is
+      documented only in his head. The auditor's report gives the company ninety days to respond.
+      The CIO has said he will fund a fifth architect if the remedy needs one, and that he does not
+      want "a documentation exercise that satisfies audit and changes nothing". The three sponsors
+      have agreed to give the EA team a half day each if they are shown "something we can actually
+      decide on", and the auditor has offered to review whatever governance basis is proposed
+      before the ninety days expire.
+
+      You must diagnose what has gone wrong, in the standard's terms, and recommend the change:
+      what the architects must now produce for each programme, for whom, and how the roles they play
+      should be separated.
+    question: "Refer to the scenario. Based on the Series Guides and the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Diagnose the "not doing architecture" failure pattern: the practitioners have been
+          acting as implementers, SMEs and stakeholders' agents, and the architecture was never
+          described and approved by stakeholders, so the only compliance available is by
+          assertion. Remedy it by separating the roles and restoring the products that make
+          governance possible. For each programme, identify the stakeholders with approval
+          rights and their concerns, produce views that show how the candidate target addresses
+          them, and obtain approval; give each implementation team an Architecture Contract
+          equivalent stating project context, the gaps and work packages it is responsible for
+          (and those it is not), and the specifications and controls it will be assessed
+          against, with specifications written as prohibitions and each linked to a requirement;
+          then run Phase G compliance against those, judged by reasonable interpretation. Keep
+          the architects' technical involvement but make explicit when they act as architect,
+          SME or implementer. Trace each target to the one-day-delivery strategy through the
+          requirements repository.
+        why: >-
+          The Practitioners' Approach names "not doing architecture" as the most pernicious
+          practice: practitioners busy as agent, SME and implementer never get the architecture
+          described and approved, leaving compliance by assertion (GUIDE:adm-practitioners §11.3).
+          Without approval the practitioner has "a documented opinion" and no governance is
+          possible (§6.3.5). Implementers are served by context, scope, and conformance through
+          the Architecture Contract, with exclusionary specifications tested by reasonable
+          interpretation and linked to requirements (§3.3.2), and stakeholders approve views
+          that address their concerns (§3.3.1). Traceability from strategy to requirement is
+          the basis of requirements management (§6.1.1).
+      - key: B
+        points: 3
+        text: >-
+          Recognise that the architects have been acting as implementers and pull them out of
+          the programmes into a central team that produces target architectures and reviews
+          designs for compliance; have the CIO approve the targets on behalf of the business so
+          that the programmes are not delayed by sponsor education.
+        why: >-
+          Restoring described architecture and compliance review is right, but approval by the
+          CIO on behalf of the business substitutes a proxy for the stakeholders who hold
+          approval rights; the sponsors' inability to know what they are approving is solved by
+          views that address their concerns, not by bypassing them (§3.3.1; §6.3.5). Withdrawing
+          the architects entirely also loses the legitimate SME role the guide describes (§11.3).
+      - key: C
+        points: 1
+        text: >-
+          Accept the lead architect's position that embedded design is real architecture, and
+          satisfy the auditor by having the architects retrospectively write up the designs
+          they made as target architecture documents and sign them as compliant.
+        why: >-
+          Implementation design, specification and standards produced as the end result of an
+          "architecture project" are not architecture, and writing them up afterwards and
+          self-certifying is exactly compliance by assertion, "rife with personal bias"
+          (GUIDE:adm-practitioners §11.3). Nothing is traced to strategy or approved by
+          stakeholders.
+      - key: D
+        points: 0
+        text: >-
+          Report to the Chief Executive that the audit findings are a documentation issue with
+          no practical consequence, since the programmes are on time and the products are good,
+          and recommend closing the findings.
+        why: >-
+          Without an approved architecture the enterprise has no ability to exercise
+          implementation governance and the value the architecture might enable is fragile,
+          because operational and future teams are unaware of preference, priority or
+          traceability to value (§11.3). Being on time is not evidence of enterprise value
+          (§4.1.3).
+    refs: ["GUIDE:adm-practitioners §11.3", "GUIDE:adm-practitioners §6.3.5", "GUIDE:adm-practitioners §3.3.2", "GUIDE:adm-practitioners §3.3.1", "GUIDE:adm-practitioners §6.1.1", "GUIDE:adm-practitioners §4.1.3"]
+    open_book_hint: "Where to look: Practitioners' Approach §11.3 (Failure Pattern: Not Doing Architecture; compliance by assertion), §6.3.5 (approval), §3.3.1 (stakeholders, concerns, views), §3.3.2 (communicating with implementers: Architecture Contract, exclusionary specifications), §6.1.1, §4.1.3."
+    difficulty: 2
+    tags: [practitioners-approach, roles, compliance, architecture-contract]
+  - id: G2-102
+    unit: G_PRACTITIONERS
+    objective: "G2.1"
+    lesson: G_PRACTITIONERS/01_the_practitioners_approach
+    scenario: |
+      Sable & Rowe is a fashion retailer with 260 stores, a large online business and 8,000 staff,
+      competing on speed of range change. Its portfolio-level target architecture for "seamless
+      customer journey" was approved by the Chief Customer Officer and the Chief Operating Officer
+      six months ago, with a roadmap of five work packages sequenced over three years. The first
+      two — a customer identity service and a unified stock view — have been funded and are about to
+      start implementation: identity with an external systems integrator under a fixed-price
+      contract, and stock with an internal team of twelve. You are the practitioner responsible for
+      both, with one other architect.
+
+      The systems integrator has asked for "the architecture" so that it can finalise its
+      statement of work. The internal stock team has asked "what exactly are we building and how
+      will we be judged?" — its lead has been burned before by a review that "moved the goalposts".
+      The Chief Financial Officer, who chairs the portfolio board, has asked when she will see
+      value, what the trade-offs were between the customer and operations sides, and how confident
+      she should be that the two projects will deliver; she has to defend the spend to the board
+      next quarter. The Chief Customer Officer has asked for a "dashboard view" of how the journey
+      will look for a customer, to use with the store managers.
+
+      The EA team's repository contains: the approved target models in a modelling tool; a
+      stakeholder map with concerns clustered under agility, customer experience and cost; the
+      Architecture Requirements Specification, which currently lists what components "should" use
+      and several requirements written as "the solution must be modern and scalable" and "the
+      platform should be cloud native"; a gap list per domain; a risk register; and the roadmap with
+      work packages described by name only. The team has so far sent the integrator the full model
+      export from the tool and given the stock team the same, plus a copy of the Architecture
+      Definition Document. The integrator has responded with a 40-page "clarifications" list and a
+      request for a change to its fixed price. The stock team lead says he will "just build what
+      makes sense to us and see what the review says". The CFO's office has asked for "a one-page
+      summary", and the CCO's office has asked for "the diagrams".
+
+      You have also examined what the roadmap and repository can support. The roadmap's five work
+      packages are named but their gaps are recorded only in the domain gap lists, not against the
+      work packages; the identity work package's scope therefore includes, by omission, a customer
+      data migration that belongs to the third work package. The Architecture Requirements
+      Specification's "should use" statements were written by an architect who has since left and
+      were never linked to a stakeholder concern; the "modern and scalable" requirement came from
+      the CCO's original brief. The trade-off between the customer side's wish for one identity
+      across channels and the operations side's wish to keep store logins separate was decided by
+      the sponsors in Phase B, and is recorded in a meeting note that neither the CFO nor the
+      implementers have seen. The integrator's clarifications list includes forty questions that a
+      scope statement of gaps and work packages would have answered, and ten that ask which of the
+      "should" statements are mandatory. The stock team's review will be against "the architecture"
+      in general because nothing more specific has been agreed.
+
+      A colleague proposes answering all four parties with one comprehensive architecture pack, on
+      the grounds that everyone then has the same information and nobody can claim they were not
+      told. The programme office supports this because it is one deliverable. You disagree and
+      must set out how each party should be communicated with, what each receives, and what has to
+      change in the Architecture Requirements Specification before the implementers can be held to
+      it.
+    question: "Refer to the scenario. Based on the Series Guides and the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Communicate with each community in the way it uses the architecture. For the two
+          implementation teams, replace the model dumps with an Architecture Contract for each
+          project: the project's context in the roadmap and the value it enables, its scope —
+          the gaps and work packages it is responsible for and the adjacent gaps it is not —
+          and its conformance basis, the specific architecture specifications and controls it
+          will be assessed against. Rewrite the specifications so that they are exclusionary,
+          stating what is prohibited rather than what "should" be used, and link each to the
+          requirement or risk that motivates it, replacing "modern and scalable" with
+          requirements captured as stakeholder scores or testable statements. Tell the teams
+          compliance will be assessed by reasonable interpretation against those pairs. For the
+          CFO, provide "other useful things": timing from the roadmap and Implementation and
+          Migration Plan, the trade-off decisions taken between the stakeholders and why, status,
+          budget, compliance approach and an honest statement of confidence. For the Chief
+          Customer Officer, a view built from the models against her customer-experience concern.
+        why: >-
+          The guide distinguishes three communities: stakeholders get views that address
+          concerns; implementers get context, gap, specification and control through the
+          Architecture Contract, with specifications that are exclusionary, linked to
+          requirements, and assessed by a reasonable-interpretation test; decision-makers get
+          "other useful things" — timing, trade-off, status, budget, compliance and confidence
+          (GUIDE:adm-practitioners §3.3; §3.3.1; §3.3.2; §3.3.3). Requirements for portfolio
+          architecture are commonly captured as scores, and the practitioner must distinguish
+          architecture requirements from implementation design (§5.1.4). Models are poor
+          communication tools and should not be handed over as the deliverable (§3.2.3).
+      - key: B
+        points: 3
+        text: >-
+          Produce an Architecture Contract for each implementation team with context, scope
+          and conformance, and give the CFO a view of the roadmap timeline. Leave the
+          Architecture Requirements Specification as written, since the integrator can
+          clarify "should" statements in its questions list, and answer the Chief Customer
+          Officer with the Architecture Definition Document.
+        why: >-
+          The contracts and the timing are right, but a conformance basis made of "should"
+          statements and "modern and scalable" is not a set of specifications an implementer
+          can be assessed against; specifications must prohibit, be linked to a requirement
+          and be reasonably interpretable (§3.3.2; §5.1.4). The Architecture Definition
+          Document is a description, not a view addressing the CCO's concern (§3.3.1).
+      - key: C
+        points: 1
+        text: >-
+          Send the comprehensive architecture pack to all four, with a covering note for each
+          indicating the relevant sections, and schedule a joint workshop where the integrator
+          and stock team can raise their clarifications and the executives can ask about value.
+        why: >-
+          This treats models as the communication and expects each community to extract
+          what it needs, which the guide says sets implementers up to fail and leaves
+          stakeholders unable to verify their concerns (§3.3.2; §3.3.1). The 40-page
+          clarifications list is the predictable result of handing implementers diagrams
+          instead of gap, specification and control.
+      - key: D
+        points: 0
+        text: >-
+          Let the stock team build what makes sense to it and let the integrator propose its
+          own design, then use the Phase G compliance review to correct whatever diverges from
+          the models; tell the CFO that value will be visible once both projects go live.
+        why: >-
+          Without a contract stating scope and conformance, compliance can only be assessed
+          by assertion or by surprise, and the first Phase G assessment — scope against the
+          gap and work package — is impossible (§5.1.5; §3.3.2). Deferring the CFO's confidence
+          and trade-off questions to go-live removes the decision-maker's ability to direct
+          change (§3.3.3).
+    refs: ["GUIDE:adm-practitioners §3.3", "GUIDE:adm-practitioners §3.3.1", "GUIDE:adm-practitioners §3.3.2", "GUIDE:adm-practitioners §3.3.3", "GUIDE:adm-practitioners §5.1.4", "GUIDE:adm-practitioners §5.1.5", "GUIDE:adm-practitioners §3.2.3"]
+    open_book_hint: "Where to look: Practitioners' Approach §3.3 (three communities), §3.3.1 (stakeholders: concern and view), §3.3.2 (implementers: Architecture Contract; exclusionary specifications; reasonable interpretation), §3.3.3 (decision-makers: timing, trade-off, status, budget, compliance, confidence), §5.1.4 (requirements as scores), §5.1.5, §3.2.3."
+    difficulty: 3
+    tags: [practitioners-approach, communication, architecture-contract, specifications]
+  - id: G3-101
+    unit: G_BUSINESS_SCENARIOS
+    objective: "G3.1"
+    lesson: G_BUSINESS_SCENARIOS/01_business_scenarios_guide
+    scenario: |
+      Lindqvist Ports operates three container terminals with 2,200 staff, handling 1.8 million
+      containers a year for shipping lines, hauliers and freight forwarders. Its Chief Operating
+      Officer has sponsored an architecture engagement whose Phase A has decided to use the
+      Business Scenario method to establish the requirements for "reducing truck turnaround time
+      at the gates", a problem the terminal managers, hauliers, customs and the port authority all
+      describe differently and blame on each other. Average turnaround is 71 minutes against a
+      regional benchmark of 40, and the largest shipping line has threatened to move volume. The
+      premise-formulation phase is done: the premise ("an automated gate system will halve
+      turnaround") is documented with its unstated questions — does the delay actually occur at the
+      gate? — and a list of stakeholders willing to validate it exists. You are the Business
+      Scenario Consultant and must plan the gathering and analysis.
+
+      The programme manager has proposed a single two-hour workshop for sixty people — every gate
+      supervisor, all the hauliers' dispatchers, the customs liaison, the port authority, the IT
+      team and the gate-system vendor — "so that everyone is heard at once", with the vendor
+      demonstrating its product at the start "to focus minds". No pre-reading is planned; the
+      workshop will be minuted by whoever is free; there is no agenda beyond "requirements". The
+      Chief Operating Officer would like the requirements agreed at that meeting so that
+      procurement can start the following week, and has said she will chair it personally.
+
+      Three constraints matter. The hauliers are suspicious that the port will use "requirements"
+      to shift costs to them — a previous "efficiency" change introduced a booking fee — and will not
+      speak openly in front of the port authority; their association has said as much in writing.
+      The terminal managers have already argued in public about which terminal's process is best,
+      and one of them believes the whole problem is customs and has said he will "prove it" in the
+      workshop. The port's strategic plan and last year's gate throughput data, with timestamps for
+      every truck movement, exist but have never been analysed against the turnaround problem;
+      the IT team says the analysis would take a week. The customs liaison can attend only in the
+      morning. The Chief Operating Officer wants to be visibly in charge of the workshop and has
+      asked to present the automated gate concept as the opening item.
+
+      The EA team has three people available for four weeks. The vendor has offered a consultant
+      "at no cost" to write up the results.
+
+      You have already done some of the groundwork the method asks for. The premise-formulation
+      output names a candidate sponsor — the COO — and the capstone question: is the delay at the
+      gate, or before it in documentation and customs, or after it in the yard? It identifies
+      buy-side participants (terminal managers, yard planners, customs, the port authority) and
+      supply-side participants (haulier dispatchers, the shipping lines' agents, the gate-system
+      vendor) by name. A first look at the throughput data shows that trucks spend a median of
+      nine minutes at the gate itself and forty in the queue before it, which nobody in the
+      premise-formulation conversations mentioned. The customs liaison has said privately that
+      half the delays are missing documents that hauliers could have submitted the day before. The
+      port's strategic plan sets a turnaround target of 45 minutes by next year. The hauliers'
+      association has offered to host a session at its own premises. The COO has not seen the
+      throughput analysis.
+
+      You must plan how the business scenario will be gathered, analysed and reviewed: who does
+      what, how many sessions and with whom, what happens before and after them, and what the COO
+      and the vendor should and should not do.
+    question: "Refer to the scenario. Based on the Series Guides, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Plan the iteration as a mini-project with named roles: the COO as sponsor and host
+          who reassures participants and opens the room, a facilitator and a recorder who are
+          not the COO, primary and secondary questioners, and SME contributors chosen by name
+          from the business and technical sides at senior enough level to speak openly. Gather
+          off-line first — analyse the strategic plan and the throughput data and draft a
+          strawman scenario — then run more than one small workshop: separate sessions for the
+          hauliers and for the port and customs side so that each speaks openly, and a
+          business-side and a technical-side session, each with scripted questions that test
+          whether the problem is stated as a what rather than a technology how, and where, when
+          and at what cost it occurs. Exclude the vendor demonstration; vendors contribute later
+          when technical solutions are explored. Analyse by normalising the raw data with
+          affinity analysis and linking business processes to constituencies, actors, issues
+          and objectives in a matrix; where the terminal managers' argument shows bias towards
+          one approach, use alternative analysis with a weighted decision matrix. Then hold a
+          readout with the sponsors and involved parties for buy-in or stop, and iterate.
+        why: >-
+          The planning step configures the team and roles — project manager, consultant,
+          analyst, facilitator, recorders, questioners, host and sponsor — and identifies
+          participants by name (GUIDE:business-scenarios §3.2.1; §10). Gathering favours
+          preprocessing available data off-line, a strawman draft, small and carefully selected
+          workshop groups, and multiple workshops to separate business from technical or to
+          gather from more people (§3.2.2). The questions test what-versus-how and cost
+          (§7.2.1). Vendors contribute in the later stages (§5). Analysis normalises data with
+          affinity analysis and builds the linking matrix (§3.2.3); the decision matrix counters
+          bias (§12.8); the review step seeks buy-in or stop (§3.2.5).
+      - key: B
+        points: 3
+        text: >-
+          Keep one workshop but reduce it to twenty carefully chosen senior people, have a
+          neutral facilitator and recorder, circulate a strawman scenario built from the
+          throughput data beforehand, and drop the vendor demonstration; run the analysis
+          afterwards and send the resulting draft to the COO for approval.
+        why: >-
+          The selection, preparation and facilitation are right and the vendor is correctly
+          removed, but a single mixed workshop ignores the guidance to hold separate sessions
+          where openness requires it — the hauliers will not speak in front of the port
+          authority (§3.2.2) — and approval by the COO alone replaces the review readout with
+          sponsors and involved parties whose shared expectations the step exists to create
+          (§3.2.5).
+      - key: C
+        points: 1
+        text: >-
+          Run the programme manager's sixty-person workshop as proposed, but replace the vendor
+          demonstration with a presentation of the premise by the COO, and capture the
+          requirements list in the meeting for procurement.
+        why: >-
+          Sixty people is not the "select and small group" the guide prescribes, no off-line
+          gathering or strawman precedes it, the COO presenting the premise anchors the room on
+          the solution the scenario is meant to test, and a requirements list captured in one
+          meeting skips analysis, documentation and review (§3.2.2; §3.2.3; §3.2.5).
+      - key: D
+        points: 0
+        text: >-
+          Let the gate-system vendor run the workshop and produce the requirements document,
+          since it knows the domain and has offered to do so at no charge, with the COO
+          endorsing the result.
+        why: >-
+          Vendor involvement is greatest in the later stages when the role of specific
+          technical solutions is explored; business management leads while the problem is
+          being captured (§5). A vendor-written requirements document confirms the premise
+          rather than validating it — the "solution looking for a problem" trigger the method
+          exists to catch (§3.3.1).
+    refs: ["GUIDE:business-scenarios §3.2.1", "GUIDE:business-scenarios §3.2.2", "GUIDE:business-scenarios §3.2.3", "GUIDE:business-scenarios §3.2.5", "GUIDE:business-scenarios §5", "GUIDE:business-scenarios §7.2.1", "GUIDE:business-scenarios §10", "GUIDE:business-scenarios §12.8"]
+    open_book_hint: "Where to look: Series Guide: Business Scenarios §3.2.1 (planning), §3.2.2 (gathering: preprocessing, small workshops, separate sessions), §3.2.3 (analysing: affinity analysis, the linking matrix), §3.2.5 (reviewing: buy-in or stop), §5 (who contributes when), §7.2.1 (questions), §10 (roles), §12.8 (decision matrix)."
+    difficulty: 2
+    tags: [business-scenarios, workshops, roles, gathering]
+  - id: G3-102
+    unit: G_BUSINESS_SCENARIOS
+    objective: "G3.1"
+    lesson: G_BUSINESS_SCENARIOS/01_business_scenarios_guide
+    scenario: |
+      The Northern Water Board is a public utility with 3,100 staff supplying water and
+      wastewater services to 900,000 households, regulated on price and on customer outcomes. It
+      is about to establish an Enterprise Architecture capability for the first time, following a
+      regulator's finding that its investment decisions are not traceable to customer outcomes and
+      a fine for a repeated sewage discharge. The Chief Executive has appointed an EA Leader, who
+      has begun the Preliminary Phase with two seconded staff. At the same time, the Board's
+      largest programme — replacing the systems that plan and schedule mains repairs, worth a
+      tenth of the capital budget — is in Phase B of an architecture engagement run by a
+      consultancy under a contract signed before the EA Leader arrived.
+
+      The EA Leader has attended a Business Scenarios training course and has proposed using the
+      method in three places. First, in the Preliminary Phase, to establish what the new EA
+      capability is for and what "traceable to customer outcomes" would mean in practice, since
+      the Chief Executive, the regulator liaison and the finance director each have a different
+      idea — the Chief Executive thinks it means fewer complaints, the regulator liaison thinks it
+      means a published outcomes framework, and the finance director thinks it means a cost per
+      outcome. Second, in the repairs programme's Phase B, to derive the characteristics of the
+      Business Architecture from the field crews' and dispatchers' real problems, because the
+      consultancy has so far worked from a list of features the previous system had, and the field
+      crews say the previous system "never did what we needed anyway". Third, to replace the
+      programme's forty existing use-cases, which the consultancy has produced for the software team
+      and which the EA Leader regards as duplicating what a business scenario would contain.
+
+      The consultancy's lead objects, in writing, to all three. She says business scenarios are a
+      Phase A technique only and Phase A closed two months ago; that they cannot be used for
+      something as abstract as an EA capability, "which is not a business problem"; that the
+      programme's use-cases already are business scenarios "in a more rigorous form" and that
+      replacing them would delay the software team by two months; and that the method is irrelevant
+      in Phase B because the requirements were fixed at the end of Phase A and any change is a
+      change request. The programme director, who commissioned the consultancy, supports her. The
+      regulator liaison supports the EA Leader. The Chief Executive has asked you, as an independent
+      adviser retained by the board, to arbitrate, and wants an answer that both the EA Leader and
+      the consultancy can act on next week.
+
+      The three proposals have been written up in enough detail to judge. The Preliminary Phase
+      proposal would run two workshops with the Chief Executive, the regulator liaison, the finance
+      director and the heads of the operational directorates, produce a scenario describing the
+      investment-traceability problem, its environment, SMART outcomes such as "every capital
+      project above a threshold states the customer outcome it serves and reports against it", and
+      the human and computing actors — and would use it to define the EA capability's requirements.
+      The Phase B proposal would run workshops with field crews, dispatchers and the repairs
+      planning managers to describe the real repair-scheduling problem and its outcomes, documented
+      in models and text, reviewed with the programme director as sponsor, and placed in the
+      Requirements Repository alongside the consultancy's feature list. The use-case replacement
+      proposal would delete the forty use-cases and give the software team the scenario document
+      instead. The consultancy's Phase A produced a Vision and a Statement of Architecture Work
+      whose requirements section reads "as per the previous system, plus mobile".
+
+      You must say where the method applies, where it does not, and why, in terms both parties can
+      check against the standard.
+    question: "Refer to the scenario. Based on the Series Guides and the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Uphold the first two uses and reject the third. The method figures most prominently
+          in Phase A but is also used in Phase B to derive the characteristics of the
+          architecture directly from the high-level requirements of the business, and it can be
+          used in any phase where requirements need to be derived — including the Preliminary
+          Phase to define requirements for establishing the EA capability, which is precisely
+          the first proposal. The repairs programme's Phase B use is legitimate because its
+          current requirements are a feature list, not a description of real problems,
+          environment, SMART outcomes and actors; a scenario built with the field crews and
+          dispatchers, documented with models and text and reviewed with the sponsors, would
+          give the Business Architecture a whole-problem context and go into the Requirements
+          Repository. But a business scenario is not a use-case: use-cases are more detailed
+          descriptions of human-to-computer interaction used in software development, and the
+          scenario informs them rather than replacing them; keep the forty use-cases and check
+          them against the scenario. Remind both parties that scenarios are a tool, not the
+          objective, and should not be iterated beyond what is fit for purpose.
+        why: >-
+          Business scenarios are used principally in the Preliminary, Architecture Vision and
+          Business Architecture phases and in other phases to derive requirements
+          (GUIDE:business-scenarios §1); they figure most prominently in Phase A, are also used
+          in Phase B to derive the characteristics of the architecture from high-level
+          requirements, and can be used in the Preliminary Phase to define requirements for an
+          EA capability (§6). A scenario is explicitly not a use-case, which is more detailed and
+          software-oriented, nor a business case (§1). Its content is models plus text with a
+          defined structure (§4), and it is placed in the Requirements Repository (§3.3). It is
+          a tool, not the end game (§13).
+      - key: B
+        points: 3
+        text: >-
+          Uphold the Preliminary Phase use and the Phase B use, and also allow the forty
+          use-cases to be replaced, since a business scenario that captures the actors and their
+          interactions in models and text is a richer statement of the same requirements and
+          removing duplication will simplify the programme.
+        why: >-
+          The first two rulings are correct, but the guide draws the line the other way on
+          use-cases: business scenarios are not use-cases, which are more detailed
+          human-to-computer interaction descriptions typically used in software development
+          (§1). A scenario informs downstream artefacts; it does not substitute for engineering
+          specifications or use-cases (§1; §13).
+      - key: C
+        points: 1
+        text: >-
+          Side with the consultancy: business scenarios belong in Phase A, the programme's
+          requirements were fixed at the end of Phase A, and the EA capability is too abstract
+          for the method; the EA Leader should instead define the capability with a business
+          case.
+        why: >-
+          This contradicts the guide on all three points: the method is used in Phase B and in
+          other phases where requirements must be derived (§6), it is explicitly cited for the
+          Preliminary Phase and EA capability requirements (§6), and business requirements are
+          referred to throughout all phases rather than fixed at the end of Phase A (§6). A
+          business case is one of the things a scenario can inform, not a substitute (§1).
+      - key: D
+        points: 0
+        text: >-
+          Rule that the method must be applied everywhere at once: rerun the repairs
+          programme's Phase A with a full business scenario before Phase B continues, replace
+          the use-cases, and iterate the EA capability scenario until every stakeholder agrees
+          on every element.
+        why: >-
+          Iterating unnecessarily and treating the scenario as the end game is the guide's own
+          warning — it is a tool, feature creep must be watched, and refinement continues only
+          until fit for purpose (§1; §13). Restarting a programme in Phase B to redo Phase A is
+          not what "used in Phase B" means, and replacing use-cases contradicts §1.
+    refs: ["GUIDE:business-scenarios §1", "GUIDE:business-scenarios §6", "GUIDE:business-scenarios §4", "GUIDE:business-scenarios §3.3", "GUIDE:business-scenarios §13", "ADM §4.5.1"]
+    open_book_hint: "Where to look: Series Guide: Business Scenarios §1 (where used; what a scenario is not — use-cases, business cases), §6 (Business Scenarios and the ADM: Phase A, Phase B, any phase, Preliminary Phase), §4 (contents), §3.3 (Requirements Repository), §13 (a tool, not the objective); ADM §4.5.1 (business scenarios in Phase B)."
+    difficulty: 2
+    tags: [business-scenarios, adm-placement, use-cases, preliminary-phase]
+  - id: G4-101
+    unit: G_BUSINESS_ARCH
+    objective: "G4.1"
+    lesson: G_BUSINESS_ARCH/01_the_business_architecture_guides
+    scenario: |
+      Fennimore Foods is a regional grocery chain with 92 stores, an online delivery service and
+      7,800 staff, known for fresh produce and local suppliers. Its Chief Executive has sponsored an
+      architecture engagement to respond to a competitor's rapid delivery offer — groceries within
+      an hour — which has taken 4% of Fennimore's online sales in six months. Phase A is complete
+      and Phase B has started with a team of three and ten weeks. In Phase A the team searched the
+      repository and found only an organisation chart and a three-year-old process library. A
+      junior architect has since produced a "business capability map" in a week by copying the
+      organisation chart: its level-1 capabilities are Stores, Online, Buying, Supply Chain,
+      Marketing, Finance, HR and IT, with the departments beneath each as level 2. The Chief
+      Executive liked it because "it looks like the company" and has shown it to the board.
+
+      The Chief Operating Officer says the map is useless for the delivery problem: rapid delivery
+      cuts across Stores, Online and Supply Chain, and the map cannot show where the gaps are; he
+      suspects the gap is in picking and in the last mile, but has no way to demonstrate it. The
+      Head of Online says the real question is how an order gets from a customer's basket to their
+      door and where it slows down; she has drawn a swim-lane process diagram with 140 steps that
+      nobody else can read, and she wants it adopted as "the delivery architecture". The Buying
+      Director says the company's key problem is that nobody agrees what "product" means — the
+      stores, online and buying systems each define it differently, so a "case of apples" is one
+      thing in buying, twelve things in the store and a weight online — and that this, not
+      delivery, is why online stock is wrong and orders are substituted. The Chief Financial Officer
+      wants to know which parts of the business to invest in and has a fixed sum to allocate at the
+      next board meeting. The Head of Stores says her store managers "already do rapid delivery
+      informally" for regular customers and nobody has asked them how.
+
+      The consultancy supporting the programme has proposed to "heat-map the capability map" as it
+      stands, colouring departments red where managers report problems, and to present it to the
+      board as the investment case next month; it has produced a draft in which Online and Supply
+      Chain are red. The lead architect is uneasy: the map is an org chart, the heat map is a
+      complaints chart, the 140-step diagram is not a value stream, and the "product" question has
+      been parked as "a data issue". The Chief Executive has asked why the team "cannot just use
+      what the consultancy has done".
+
+      The lead architect has begun to gather what a proper Phase B would use. The Chief Executive
+      can name the company's 25 or so "things we must be good at" in an hour, and the executive
+      team has agreed to a half-day session if the result is not "another org chart". The Head of
+      Online's 140 steps can be grouped, by her own reckoning, into six stages from "customer
+      places order" to "customer receives goods", each with a clear hand-off and a measurable
+      outcome. The Buying Director has a draft glossary of 40 business terms — product, line, case,
+      unit, range — that he wrote for a systems project that was cancelled. The store managers'
+      informal rapid delivery involves a picker, a driver and a phone call, and takes 50 minutes.
+      The competitor's offer, analysed from its public terms, depends on capabilities Fennimore has
+      in part — picking, routing, customer notification — and one it lacks entirely, local
+      inventory accuracy. The CFO's board paper is due in five weeks; the consultancy's heat map
+      is the only candidate for it so far.
+
+      You must propose how Phase B should build the Business Architecture: which of the guides'
+      constructs to use, how to build each correctly, how they relate to each other, and what
+      answers the COO, the Head of Online, the Buying Director and the CFO each get.
+    question: "Refer to the scenario. Based on the Series Guides and the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Rebuild the business architecture from the four pillars rather than the org chart.
+          Redo the capability map: start top-down with senior leaders on 20 to 30 level-1
+          capabilities named noun-verb around business objects (Product Management, Order
+          Fulfilment, Customer Management, Inventory Management), described as "the ability
+          to…", stratified into strategic, customer-facing and supporting tiers, and explicitly
+          independent of department names — treating the org chart, the business model and the
+          plans as sources, not the frame. Define a "Fulfil Online Order" value stream with the
+          customer as triggering stakeholder, decomposed into stages with entrance and exit
+          criteria and value items, and cross-map each stage to the capabilities that enable it,
+          keeping it at value-stage level rather than the 140-step process. Heat-map the
+          capabilities in the context of that value stream to find where delivery stalls —
+          which gives the CFO investment focus. Build an information map to settle "product"
+          and the other concepts that matter most, cross-mapped to the capabilities that
+          establish and use them, and use the organisation map to show which units and partners
+          participate in each stage.
+        why: >-
+          Transposing the org chart onto the capability map is "a common mistake"; capability
+          names should be noun-verb around business objects and resist department names, the
+          map is built top-down from 20 to 30 level-1 capabilities using structure, business
+          model and plans as sources, and stratified (GUIDE:business-capabilities §3.1.1;
+          §2.1.1; §3.1). Heat mapping identifies gaps and investment priorities, and mapping
+          capabilities to value stream stages shows which are critical to value delivery
+          (§5.1; §5.2.2). A value stream needs a triggering stakeholder, stages with criteria and
+          value items, and is kept concise above process detail (GUIDE:value-streams §2.1;
+          §3.1); heat-mapping capabilities by stage against a stated problem is the guide's
+          worked scenario (§4.3). The information map settles the business vocabulary before
+          data models (GUIDE:information-mapping §2). Phase B applies capability mapping,
+          value streams, organisation and information maps to the project's scope (ADM §4.5.3).
+      - key: B
+        points: 3
+        text: >-
+          Keep the existing map but rename its level-1 entries as capabilities, add a "Rapid
+          Delivery" capability under Online, and heat-map it using the managers' reported
+          problems; adopt the Head of Online's 140-step process diagram as the value stream
+          for delivery, and record the "product" definition problem as a data issue for Phase C.
+        why: >-
+          Renaming departments does not remove the org-chart frame the guide warns against
+          (GUIDE:business-capabilities §3.1.1), a 140-step process diagram is process design
+          rather than a value stream, which stays at value-stage level with a triggering
+          stakeholder (GUIDE:value-streams §3.1), and "product" is a business information
+          concept for the information map in Phase B, not a Phase C data problem
+          (GUIDE:information-mapping §5; §6).
+      - key: C
+        points: 1
+        text: >-
+          Accept the consultancy's proposal: heat-map the departmental map by reported problems
+          and present it to the board as the investment case, since the Chief Executive already
+          recognises the map and time is short against the competitor.
+        why: >-
+          A heat map is only as good as the map beneath it; colouring departments cannot show
+          where a cross-cutting capability gap lies, which is the COO's objection and the
+          reason capability maps are made independent of organisational structure
+          (GUIDE:business-capabilities §3.1; §5.1). No value stream context exists to say which
+          capabilities matter for delivery (§5.2.2).
+      - key: D
+        points: 0
+        text: >-
+          Skip the business architecture pillars altogether and proceed to Phase C to fix the
+          product data definitions, since the Buying Director has identified the root cause and
+          the delivery problem will resolve once online stock is correct.
+        why: >-
+          Business Architecture is a prerequisite for the other domains (ADM §4.5.1), and
+          resolving "product" is an information-mapping task at the business level whose
+          relationships to capabilities must be understood first; limiting concepts to what
+          data models can hold risks solving the wrong problem (GUIDE:information-mapping §5).
+          Adopting one director's diagnosis skips the value stream analysis that would test it.
+    refs: ["GUIDE:business-capabilities §3.1.1", "GUIDE:business-capabilities §2.1.1", "GUIDE:business-capabilities §3.1", "GUIDE:business-capabilities §5.1", "GUIDE:business-capabilities §5.2.2", "GUIDE:value-streams §2.1", "GUIDE:value-streams §3.1", "GUIDE:value-streams §4.3", "GUIDE:information-mapping §2", "ADM §4.5.3"]
+    open_book_hint: "Where to look: Business Capabilities §2.1.1 (naming), §3.1 and §3.1.1 (approach; the org-chart mistake), §5.1 (heat maps), §5.2.2 (capability/value stream mapping); Value Streams §2.1 (elements), §3.1 (principles), §4.3 (heat-mapping scenario); Information Mapping §2; ADM §4.5.3."
+    difficulty: 3
+    tags: [business-capabilities, value-streams, information-map, phase-b]
+  - id: G4-102
+    unit: G_BUSINESS_ARCH
+    objective: "G4.1"
+    lesson: G_BUSINESS_ARCH/01_the_business_architecture_guides
+    scenario: |
+      Hallam Motors is a vehicle manufacturer with 14,000 staff and two assembly plants that sells
+      through 300 independent dealers under franchise agreements. Its board has decided to change
+      its business model: to sell vehicles by subscription directly to customers, with servicing,
+      insurance and charging bundled into one monthly payment, while keeping dealers as service
+      partners rather than sales agents. The Chief Strategy Officer has drawn the future-state
+      business model on a Business Model Canvas, showing new customer segments, a new value
+      proposition, new revenue streams and new key partners, and presented it to the executive,
+      which endorsed it. The Chief Executive has sponsored an architecture engagement and Phase A is
+      under way with a team of five. You are the lead architect.
+
+      In Phase A you have found the following in the repository and the business. There is a
+      detailed organisation chart maintained by HR, current to last month, and a data model for the
+      dealer management system, but no organisation map and no information map; the repository was
+      set up two years ago for an ERP programme and holds little else. The strategy team believes
+      the canvas is the target architecture and wants Phase B to "implement it"; the Chief Strategy
+      Officer has said the canvas "took six months to agree and is not up for debate". The dealers'
+      council has not been consulted and is threatening to withdraw from the network; its
+      relationship to Hallam is contractual, worth a third of Hallam's revenue in parts and
+      servicing, and does not appear on any chart. The insurance and charging partners are new and
+      unknown; one has not yet been selected. The Chief Information Officer's data architects say
+      that "customer" in the dealer system means the dealer, not the driver, that "subscription"
+      does not exist as a data entity anywhere, and that the finance system counts a sale on
+      delivery rather than over a contract term. The Chief Financial Officer wants to know which
+      organisation units the change will affect and what it will cost before approving the
+      Statement of Architecture Work, and has said the canvas "tells me nothing I can budget".
+
+      A consultant engaged by the strategy team has proposed treating the HR organisation chart as
+      the organisation map and the dealer system data model as the information map, "since both
+      already exist and Phase A should reuse what is in the repository", and moving straight to
+      Phase B design of the subscription platform, with the dealers "brought in once the design is
+      stable". The CIO has asked whether the canvas can be handed to Phase C as the data
+      requirements. The Chief Executive wants the Statement of Architecture Work signed within the
+      month.
+
+      You have begun to test what each proposed shortcut would miss. The HR chart shows Sales
+      reporting to the Commercial Director and Aftersales to the Operations Director; it shows no
+      dealers, no insurers, no charging network operator and no customer, and it will not change
+      when the subscription model launches. The dealer system's data model has 300 tables built
+      around the dealer as customer, vehicle as stock, and a sale as a single event; it has no
+      concept of a subscription term, a bundle, or a driver who is not the buyer. The canvas names
+      "subscription customers", "dealers as service partners", "insurance partner" and "charging
+      partner" as elements, and states the value proposition as "mobility without ownership", but
+      says nothing about which units deliver which part of it, what information flows between
+      them, or what the dealers must do differently. The dealers' council has asked for a meeting
+      with the Chief Executive within the month and for "a clear statement of our role". The
+      strategy team has scheduled a Phase B kick-off with the platform vendor's architects for next
+      week.
+
+      You must advise on how the business model, the organisation map and the information map
+      should be used in Phases A and B: what the canvas is and is not, what each map must contain,
+      where each is built, and what the CFO and the dealers' council get from them.
+    question: "Refer to the scenario. Based on the Series Guides and the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Use the canvas as what it is — a high-level sketch of value creation that aligns
+          leadership — and not as the architecture. In Phase A, analyse the business model to
+          identify the partners who are stakeholders in the change (the dealers' council, the
+          insurance and charging partners), verify the goals, drivers and constraints, use
+          capability and value stream mapping to identify the capabilities and value streams the
+          target model requires, scope the Statement of Architecture Work and formulate
+          principles, and anchor the project's value proposition to the model's value
+          proposition — which gives the CFO what he needs to approve. Build an organisation map,
+          distinct from the HR chart: a web of the units, dealers, insurance and charging
+          partners and the customer, with their working relationships and value and information
+          flows, because that is what tells the CFO which units are affected and who must be
+          engaged. Build an information map at the business level — defining Customer as the
+          driver, Subscription, Vehicle, Agreement, Partner — cross-mapped to the capabilities
+          that establish and use each concept, independent of the dealer system's data model,
+          and translate it into data models only in Phase C. Then, in Phase B, break the business
+          model into capabilities, value streams, organisation and information, feeding gaps and
+          conflicts in its assumptions back to the strategy team.
+        why: >-
+          A business model is an abstract sketch sufficient for feasibility and leadership
+          alignment but not for risk assessment or execution; Business Architecture breaks it
+          into capabilities, value streams, organisation and information and can feed back gaps
+          in its assumptions (GUIDE:business-models §4). In the ADM it is a Phase A input to
+          Phase B: identify partners as stakeholders, verify goals and drivers, map capabilities
+          and value streams, scope the Statement of Architecture Work, formulate principles and
+          anchor the value proposition (§5). An organisation map differs from an org chart in
+          scope, complexity, explicitness and lifecycle, includes partners and even customers,
+          and identifies which units a change affects and who must collaborate
+          (GUIDE:organization-mapping §3; §4; §2). An information map is the business vocabulary,
+          not a data model, and is translated into data only in Phases C and D
+          (GUIDE:information-mapping §5; §6).
+      - key: B
+        points: 3
+        text: >-
+          Use the business model in Phase A to identify the new partners as stakeholders and
+          to scope the Statement of Architecture Work, and build a proper organisation map
+          including dealers and partners. To save time, take the dealer system data model as the
+          starting information map and correct its definition of "customer" in Phase C, when
+          the data architects can add "subscription" as an entity.
+        why: >-
+          The business model use and the organisation map are right, but an information map
+          derived from a system's data model inherits that system's view — here the wrong
+          meaning of "customer" — and the guide is explicit that information maps are not data
+          models and that limiting concepts to what existing data models capture leads to gaps
+          and wasted investment; concepts are settled at business level in Phase B before Phase
+          C translates them (GUIDE:information-mapping §5; §6).
+      - key: C
+        points: 1
+        text: >-
+          Adopt the consultant's proposal: use the HR chart as the organisation map and the
+          dealer data model as the information map, since both exist and Phase A should reuse
+          repository assets, and proceed to Phase B design of the subscription platform from
+          the canvas.
+        why: >-
+          An org chart shows reporting lines between named individuals, internally focused
+          and stable; it omits the contractual, partner and customer relationships and the
+          collaborations that the change depends on, which is the whole difference the guide
+          draws (GUIDE:organization-mapping §3). Reusing assets does not mean substituting a
+          different kind of artefact, and treating the canvas as the target skips the Business
+          Architecture that articulates it (GUIDE:business-models §4).
+      - key: D
+        points: 0
+        text: >-
+          Treat the Business Model Canvas as the approved target architecture, since the
+          executive has endorsed it, and instruct Phase B to produce the platform design and
+          Phase C to build the subscription data model, consulting the dealers once the design
+          is complete.
+        why: >-
+          The canvas "does not normally contain sufficient information to perform a risk
+          assessment or to develop a plan to execute the agreed strategy"; that is the role of
+          Business Architecture (GUIDE:business-models §4). Deferring the dealers, who are
+          partners in the value stream and stakeholders identified from the business model,
+          contradicts the first Phase A use of the model (§5) and the organisation map's purpose
+          (GUIDE:organization-mapping §4).
+    refs: ["GUIDE:business-models §4", "GUIDE:business-models §5", "GUIDE:organization-mapping §2", "GUIDE:organization-mapping §3", "GUIDE:organization-mapping §4", "GUIDE:information-mapping §5", "GUIDE:information-mapping §6", "ADM §3.5.2"]
+    open_book_hint: "Where to look: Business Models §4 (business model versus Business Architecture; what the sketch cannot do), §5 (using business models in the TOGAF Standard: Phase A steps); Organization Mapping §2, §3 (map versus chart), §4 (benefits); Information Mapping §5 (not a data model), §6 (Phase A finds, B builds, C translates); ADM §3.5.2."
+    difficulty: 3
+    tags: [business-models, organization-map, information-map, phase-a]

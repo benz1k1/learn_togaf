@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 212" font-family="sans-serif" font-size="12" role="img" aria-label="Example Technology Portfolio Catalog for a fictional retail bank, an original study illustration">
+<defs><marker id="arr-technology-portfolio-catalog" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="760" height="212" fill="#fff"/>
+<text x="10" y="20" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Example: Technology Portfolio Catalog — retail bank</text>
+<text x="750" y="20" text-anchor="end" font-size="11" fill="#666" font-style="italic">catalog: Technology Service and Components</text>
+<rect x="10" y="34" width="150" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="16" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Technology product</text>
+<rect x="160" y="34" width="150" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="166" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Taxonomy class</text>
+<rect x="310" y="34" width="100" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="316" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Version</text>
+<rect x="410" y="34" width="200" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="416" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Used by</text>
+<rect x="610" y="34" width="140" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="616" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Standard compliance</text>
+<rect x="10" y="56" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="71" text-anchor="start" font-size="11" fill="#222">PostgreSQL</text>
+<rect x="160" y="56" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="166" y="71" text-anchor="start" font-size="11" fill="#222">Data management</text>
+<rect x="310" y="56" width="100" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="316" y="71" text-anchor="start" font-size="11" fill="#222">16.2</text>
+<rect x="410" y="56" width="200" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="416" y="71" text-anchor="start" font-size="11" fill="#222">Core Banking, Card Switch</text>
+<rect x="610" y="56" width="140" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="616" y="71" text-anchor="start" font-size="11" fill="#222">compliant</text>
+<rect x="10" y="78" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="93" text-anchor="start" font-size="11" fill="#222">OpenJDK</text>
+<rect x="160" y="78" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="166" y="93" text-anchor="start" font-size="11" fill="#222">Software engineering</text>
+<rect x="310" y="78" width="100" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="316" y="93" text-anchor="start" font-size="11" fill="#222">21.0.3</text>
+<rect x="410" y="78" width="200" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="416" y="93" text-anchor="start" font-size="11" fill="#222">Core Banking, Card Switch</text>
+<rect x="610" y="78" width="140" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="616" y="93" text-anchor="start" font-size="11" fill="#222">compliant</text>
+<rect x="10" y="100" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="115" text-anchor="start" font-size="11" fill="#222">Apache Kafka</text>
+<rect x="160" y="100" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="166" y="115" text-anchor="start" font-size="11" fill="#222">Communication</text>
+<rect x="310" y="100" width="100" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="316" y="115" text-anchor="start" font-size="11" fill="#222">3.7</text>
+<rect x="410" y="100" width="200" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="416" y="115" text-anchor="start" font-size="11" fill="#222">Card Switch, Fraud Engine</text>
+<rect x="610" y="100" width="140" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="616" y="115" text-anchor="start" font-size="11" fill="#222">compliant</text>
+<rect x="10" y="122" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="137" text-anchor="start" font-size="11" fill="#222">Oracle Database</text>
+<rect x="160" y="122" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="166" y="137" text-anchor="start" font-size="11" fill="#222">Data management</text>
+<rect x="310" y="122" width="100" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="316" y="137" text-anchor="start" font-size="11" fill="#222">11g</text>
+<rect x="410" y="122" width="200" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="416" y="137" text-anchor="start" font-size="11" fill="#222">Data Warehouse</text>
+<rect x="610" y="122" width="140" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="616" y="137" text-anchor="start" font-size="11" fill="#222">non-standard, retire</text>
+<rect x="10" y="144" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="159" text-anchor="start" font-size="11" fill="#222">Red Hat Enterprise Linux</text>
+<rect x="160" y="144" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="166" y="159" text-anchor="start" font-size="11" fill="#222">Operating system</text>
+<rect x="310" y="144" width="100" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="316" y="159" text-anchor="start" font-size="11" fill="#222">9.3</text>
+<rect x="410" y="144" width="200" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="416" y="159" text-anchor="start" font-size="11" fill="#222">all servers, Primary and DR DC</text>
+<rect x="610" y="144" width="140" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="616" y="159" text-anchor="start" font-size="11" fill="#222">compliant</text>
+<rect x="10" y="166" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="181" text-anchor="start" font-size="11" fill="#222">Dell PowerEdge R760</text>
+<rect x="160" y="166" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="166" y="181" text-anchor="start" font-size="11" fill="#222">Hardware (server)</text>
+<rect x="310" y="166" width="100" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="316" y="181" text-anchor="start" font-size="11" fill="#222">—</text>
+<rect x="410" y="166" width="200" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="416" y="181" text-anchor="start" font-size="11" fill="#222">Primary DC app and DB tier</text>
+<rect x="610" y="166" width="140" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="616" y="181" text-anchor="start" font-size="11" fill="#222">compliant</text>
+<text x="10" y="204" text-anchor="start" font-size="11" fill="#666">Original illustration for study; the artifact is defined in CONTENT §3.6.7</text>
+</svg>

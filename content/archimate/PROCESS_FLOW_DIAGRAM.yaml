@@ -1,0 +1,41 @@
+# Process Flow Diagram (Phase B) as a Business Process Cooperation view: the steps of "Open an
+# account" chained by triggering, the roles assigned to them, the KYC decision as a junction, and the
+# welcome pack as a flow (ARCHIMATE §8.3).
+id: PROCESS_FLOW_DIAGRAM
+title: "Northgate Bank — Process Flow Diagram (Open an account) as a Business Process Cooperation view"
+viewpoint: Business Process Cooperation
+elements:
+  - {id: e_start, type: business_event, name: "Customer walks in", col: 1, row: 0}
+  - {id: submit, type: business_process, name: "Submit application", col: 2, row: 0}
+  - {id: customer, type: business_role, name: "Customer", col: 3, row: 0}
+  - {id: receive, type: business_process, name: "Receive welcome pack", col: 4, row: 0}
+  - {id: e_open, type: business_event, name: "Account open", col: 5, row: 0}
+  - {id: teller, type: business_role, name: "Branch Teller", col: 2, row: 3}
+  - {id: verify, type: business_process, name: "Verify identity", col: 2, row: 1}
+  - {id: kyc, type: junction, name: "", col: 3, row: 1}
+  - {id: select, type: business_process, name: "Select product", col: 4, row: 2}
+  - {id: issue, type: business_process, name: "Issue card", col: 5, row: 1}
+  - {id: decline, type: business_process, name: "Decline application", col: 3, row: 2}
+  - {id: create, type: business_process, name: "Create account", col: 4, row: 1}
+  - {id: core, type: business_role, name: "Core Banking (automated role)", col: 5, row: 2}
+  - {id: e_declined, type: business_event, name: "Application declined", col: 3, row: 3}
+relations:
+  - {from: e_start, to: submit, type: triggering}
+  - {from: submit, to: verify, type: triggering}
+  - {from: verify, to: kyc, type: triggering}
+  - {from: kyc, to: select, type: triggering, label: "yes"}
+  - {from: kyc, to: decline, type: triggering, label: "no"}
+  - {from: select, to: create, type: triggering}
+  - {from: create, to: issue, type: triggering}
+  - {from: issue, to: receive, type: flow, label: "welcome pack"}
+  - {from: receive, to: e_open, type: triggering}
+  - {from: decline, to: e_declined, type: triggering}
+  - {from: customer, to: submit, type: assignment}
+  - {from: customer, to: receive, type: assignment}
+  - {from: teller, to: verify, type: assignment}
+  - {from: teller, to: select, type: assignment}
+  - {from: teller, to: decline, type: assignment}
+  - {from: core, to: create, type: assignment}
+  - {from: core, to: issue, type: assignment}
+notes:
+  - {text: "The junction is the \"KYC ok?\" decision, taken under the KYC policy control. Swim lanes become explicit assignments from the three roles; the welcome pack is a flow, not a step.", col: 0, row: 3, w: 2}

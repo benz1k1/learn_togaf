@@ -18,10 +18,23 @@ def set_setting(connection: sqlite3.Connection, key: str, value: str) -> None:
     )
 
 
+EXAM_DATE_PREFIX = "exam_date:"
+
+
+def exam_dates(connection: sqlite3.Connection) -> dict[str, str]:
+    """``{"OGEA-101": "2026-11-03", …}`` — one ``exam_date:<code>`` setting per exam the learner dated."""
+    rows = connection.execute(
+        "SELECT key, value FROM setting WHERE key LIKE ? AND value != ''", (f"{EXAM_DATE_PREFIX}%",)
+    ).fetchall()
+    return {row["key"][len(EXAM_DATE_PREFIX) :]: row["value"] for row in rows}
+
+
 def base_context(request: Request, connection: sqlite3.Connection, **extra: Any) -> dict[str, Any]:
+    dates = exam_dates(connection)
     context: dict[str, Any] = {
         "request": request,
-        "exam_date": get_setting(connection, "exam_date"),
+        "exam_dates": dates,
+        "next_exam": min(dates.items(), key=lambda item: item[1]) if dates else None,
         "flash": None,
     }
     flash = request.query_params.get("flash")

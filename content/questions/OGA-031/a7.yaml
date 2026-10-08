@@ -1,0 +1,1133 @@
+# A7 Relationships and Derivation bank (learn_sabsa_archimate.md §4.3). Authored, original
+# paraphrase; every item cites the ArchiMate 3.2 section it is grounded on. status: draft until reviewed.
+code: A7_BANK
+exam: OGA-031
+name: "A7 Relationships and Derivation bank"
+kind: DRILL
+source: authored
+questions:
+  # ---------------------------------------------------------------- A7.1 structural relationships
+  - id: A7-101
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "Which four relationships make up the structural family in ArchiMate?"
+    options:
+      - {key: A, text: "Composition, Aggregation, Assignment, Realization", correct: true}
+      - {key: B, text: "Composition, Aggregation, Serving, Access", why: "Serving and access are dependency relationships."}
+      - {key: C, text: "Assignment, Realization, Triggering, Flow", why: "Triggering and flow are the dynamic relationships."}
+      - {key: D, text: "Composition, Specialization, Assignment, Association", why: "Specialization is the 'other' relationship and association is a dependency."}
+    explanation: "The structural family models static construction: composition, aggregation, assignment and realization. Dependency, dynamic and other relationships are separate families."
+    refs: ["ARCHIMATE §5", "ARCHIMATE §5.1"]
+    difficulty: 1
+    tags: [structural, families]
+  - id: A7-102
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "A modeller draws a line with a filled diamond at the 'Finance Division' end and the plain end at 'Accounts Payable Team'. What does the model claim?"
+    options:
+      - {key: A, text: "Accounts Payable Team is composed in Finance Division and would normally cease to exist if the division were removed", correct: true}
+      - {key: B, text: "Finance Division aggregates Accounts Payable Team, which could belong to other divisions too", why: "A hollow diamond would say that; the filled diamond is composition, which implies an existence dependency."}
+      - {key: C, text: "Finance Division is assigned to Accounts Payable Team", why: "Assignment uses a filled dot and an arrowhead, not a diamond."}
+      - {key: D, text: "Accounts Payable Team realizes Finance Division", why: "Realization is a dotted line with a hollow triangle; a diamond never means realization."}
+    explanation: "A filled diamond at the whole is composition: the part exists only as part of the whole. The hollow diamond is aggregation, which carries no existence dependency."
+    refs: ["ARCHIMATE §5.1.1"]
+    difficulty: 1
+    tags: [composition, notation]
+  - id: A7-103
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "What distinguishes aggregation from composition?"
+    options:
+      - {key: A, text: "Aggregation carries no existence dependency; the aggregated concept can exist without, or belong to more than one, whole", correct: true}
+      - {key: B, text: "Aggregation may only be drawn between elements of different types", why: "Both are always allowed between elements of the same type."}
+      - {key: C, text: "Aggregation is a dependency relationship, composition a structural one", why: "Both are structural."}
+      - {key: D, text: "Aggregation cannot be shown by nesting", why: "All structural relationships may be shown by nesting."}
+    explanation: "The specification defines aggregation as combining concepts without the existence dependency that composition implies."
+    refs: ["ARCHIMATE §5.1.2", "ARCHIMATE §5.1.1"]
+    difficulty: 1
+    tags: [aggregation, composition]
+  - id: A7-104
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "In the ArchiMate core framework, in which direction does an assignment relationship always point?"
+    options:
+      - {key: A, text: "From active structure to behaviour, from behaviour to passive structure, and from active to passive structure", correct: true}
+      - {key: B, text: "From behaviour to active structure, so that a process points at the role that performs it", why: "Reversed: the performer (active structure) is the source."}
+      - {key: C, text: "From the abstract element to the concrete one", why: "That describes the direction of realization read backwards; assignment is about allocation, not abstraction."}
+      - {key: D, text: "In either direction, since assignment is undirected", why: "The two-ball undirected notation is deprecated; assignment is directed."}
+    explanation: "Assignment runs from the performer or holder to what is performed or held: actor to role, component to function, node to artifact. Nesting follows the same direction."
+    refs: ["ARCHIMATE §5.1.3"]
+    difficulty: 2
+    tags: [assignment, direction]
+  - id: A7-105
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "Which pair is a correct use of the assignment relationship?"
+    options:
+      - {key: A, text: "Business Actor assigned to Business Role", correct: true}
+      - {key: B, text: "Business Process assigned to Business Service", why: "A process realizes a service; assignment is not the relationship between internal and external behaviour."}
+      - {key: C, text: "Data Object assigned to Business Object", why: "A data object realizes a business object."}
+      - {key: D, text: "Application Service assigned to Business Process", why: "An application service serves a business process."}
+    explanation: "Assignment links active structure to behaviour, actors to roles they fulfil, and nodes to artifacts they store. The other three options each name a realization or serving pair."
+    refs: ["ARCHIMATE §5.1.3"]
+    difficulty: 2
+    tags: [assignment, which-relationship]
+  - id: A7-106
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "Two business roles are each assigned to the same business process. How should this be read?"
+    options:
+      - {key: A, text: "Either role can perform the whole process on its own", correct: true}
+      - {key: B, text: "Both roles are required together to perform the process", why: "That reading needs an and-junction, a grouping, or a collaboration."}
+      - {key: C, text: "Each role performs half the process", why: "Assignment says the whole of the target is assigned; it does not split it."}
+      - {key: D, text: "The model is invalid because a process can have only one performer", why: "Multiple assignments to one behaviour are legal."}
+    explanation: "The whole or part of the source is assigned the whole of the target, so each assignment independently claims full performance. Joint performance is expressed with an and-junction, grouping or collaboration."
+    refs: ["ARCHIMATE §5.1.3"]
+    difficulty: 2
+    tags: [assignment, semantics]
+  - id: A7-107
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "Which statement about the realization relationship is correct?"
+    options:
+      - {key: A, text: "It runs from a more tangible 'how' element to a more abstract 'what' element", correct: true}
+      - {key: B, text: "It runs from the abstract element to the concrete element that implements it", why: "Reversed: the concrete element is the source and realizes the abstract target."}
+      - {key: C, text: "It may only connect elements within one layer", why: "Realization is the main cross-layer relationship, e.g. data object to business object."}
+      - {key: D, text: "It is a dependency relationship drawn with a dashed line", why: "Realization is structural and drawn with a dotted line and hollow triangle."}
+    explanation: "Realization states that the source plays a critical role in creating or achieving the more abstract target: process realizes service, artifact realizes component, core element realizes requirement."
+    refs: ["ARCHIMATE §5.1.4"]
+    difficulty: 1
+    tags: [realization, direction]
+  - id: A7-108
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "A model shows a dotted line with a hollow triangular arrowhead from 'Paper Invoice' (representation) to 'Billing Data' (business object). What is being stated?"
+    options:
+      - {key: A, text: "The representation realizes the business object", correct: true}
+      - {key: B, text: "The business object is a specialization of the representation", why: "Specialization is a solid line, and the arrow points the other way here."}
+      - {key: C, text: "The representation accesses the business object", why: "Access is a dotted line without the hollow triangle, and a representation is passive and cannot access."}
+      - {key: D, text: "The business object is composed of the representation", why: "Composition uses a filled diamond."}
+    explanation: "Dotted line plus hollow triangle is realization; the source (the representation) realizes the target (the business object), which is the specification's own example."
+    refs: ["ARCHIMATE §5.1.4"]
+    difficulty: 2
+    tags: [realization, notation]
+  - id: A7-109
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "When should influence be used instead of realization toward a motivation element?"
+    options:
+      - {key: A, text: "When the source contributes to the motivation element but is not critical to its achievement", correct: true}
+      - {key: B, text: "Whenever the target is a goal rather than a requirement", why: "Both goals and requirements may be realized or influenced; the criterion is criticality."}
+      - {key: C, text: "When the source is in the technology layer", why: "The layer of the source is irrelevant."}
+      - {key: D, text: "Never — realization is always preferred toward motivation elements", why: "The specification explicitly reserves influence for weaker, non-critical effects."}
+    explanation: "Realization is for relationships critical to the target's existence; influence is for effects that are not critical."
+    refs: ["ARCHIMATE §5.1.4", "ARCHIMATE §5.2.3"]
+    difficulty: 2
+    tags: [realization, influence]
+  - id: A7-110
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "Which structural relationships may alternatively be shown by nesting one element inside another?"
+    options:
+      - {key: A, text: "All four of them", correct: true}
+      - {key: B, text: "Only composition and aggregation", why: "Assignment and realization may also be nested, e.g. a role inside its actor."}
+      - {key: C, text: "Only composition", why: "Nesting is a general alternative for structural relationships."}
+      - {key: D, text: "None — nesting is reserved for grouping", why: "Nesting is explicitly allowed as an alternative notation for structural relationships."}
+    explanation: "Structural relationships may be expressed by nesting the united concept inside the uniting element, with the caveat that the view is ambiguous when several structural relationships are legal between the two."
+    refs: ["ARCHIMATE §5.1", "ARCHIMATE §5.1.3"]
+    difficulty: 2
+    tags: [nesting, notation]
+  - id: A7-111
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "Why can nesting be ambiguous in a view even though it is unambiguous in the model?"
+    options:
+      - {key: A, text: "Because more than one structural relationship may be allowed between the two elements, and nesting does not show which one is meant", correct: true}
+      - {key: B, text: "Because nesting is only defined for the business layer", why: "Nesting applies across the language."}
+      - {key: C, text: "Because the nested element loses its own identity", why: "The nested element remains a full element in the model."}
+      - {key: D, text: "Because nesting reverses the direction of the relationship", why: "Nesting follows the same direction as the relationship."}
+    explanation: "The specification warns that nesting may be ambiguous in a view where several structural relationships are legal between the elements; the model itself records the specific relationship."
+    refs: ["ARCHIMATE §5.1"]
+    difficulty: 2
+    tags: [nesting]
+  - id: A7-112
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "Which structural relationship is always permitted between two elements of the same type, in addition to composition and aggregation?"
+    options:
+      - {key: A, text: "Specialization, although it belongs to the 'other' family", correct: true}
+      - {key: B, text: "Assignment", why: "Assignment between two elements of the same type is not generally permitted."}
+      - {key: C, text: "Realization", why: "Realization between same-type elements is not a general rule."}
+      - {key: D, text: "Serving", why: "Serving is a dependency and is not always allowed between same-type elements."}
+    explanation: "Aggregation, composition and specialization are always permitted between two elements of the same type; association is always permitted between any two elements."
+    refs: ["ARCHIMATE §5"]
+    difficulty: 2
+    tags: [always-allowed]
+  - id: A7-113
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "According to the semantics of structural relationships, what follows if a part of business actor A is assigned to business process B?"
+    options:
+      - {key: A, text: "A itself is also considered to be assigned to B", correct: true}
+      - {key: B, text: "Every part of A is assigned to B", why: "The semantics allow an unmodelled part to do the work; they do not spread it to all parts."}
+      - {key: C, text: "B is composed in A", why: "Assignment does not imply composition."}
+      - {key: D, text: "Nothing — assignment cannot be drawn from a part", why: "Structural relationships apply transitively to parts."}
+    explanation: "Structural relationships apply transitively to possibly unmodelled parts of the source: if a part of A is assigned to B, A is assigned to B, and conversely an assignment from A may be performed by some part of A."
+    refs: ["ARCHIMATE §5.1.5"]
+    difficulty: 3
+    tags: [semantics, structural]
+  - id: A7-114
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "A model needs to state that a specific server type consists of a device type and a system-software type, and that deleting a server instance removes its device and software instances. Which relationship fits?"
+    options:
+      - {key: A, text: "Composition from the node to the device and the system software", correct: true}
+      - {key: B, text: "Aggregation from the node to the device and the system software", why: "Aggregation lacks the existence dependency the scenario demands."}
+      - {key: C, text: "Assignment from the device to the node", why: "Assignment expresses allocation, not whole-part structure."}
+      - {key: D, text: "Realization from the device to the node", why: "Realization expresses abstraction levels, not composition."}
+    explanation: "Composition on categories is read as an existence dependency among their real-world instances — the specification's own server example."
+    refs: ["ARCHIMATE §5.1.1"]
+    difficulty: 2
+    tags: [composition, which-relationship]
+  - id: A7-115
+    unit: A7
+    objective: "A7.1"
+    lesson: A7/01_overview_and_structural_relationships
+    stem: "What restriction applies to a relationship whose target is another relationship?"
+    options:
+      - {key: A, text: "It may only be aggregation, composition or association, and aggregation or composition only from a composite element", correct: true}
+      - {key: B, text: "It may be any structural relationship", why: "Assignment and realization cannot target a relationship."}
+      - {key: C, text: "It is never allowed", why: "Association from any element, and aggregation or composition from a composite, are allowed."}
+      - {key: D, text: "It must be a junction", why: "A junction connects relationships of one type; it is not the mechanism for relating an element to a relationship."}
+    explanation: "The chapter-level restrictions say no relationship may join two relationships, and an element may connect to a relationship only by aggregation, composition (from a composite element) or association."
+    refs: ["ARCHIMATE §5"]
+    difficulty: 3
+    tags: [restrictions, relationships-to-relationships]
+  # ---------------------------------------------------------------- A7.2 dependency relationships
+  - id: A7-116
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "Which line style identifies each dependency relationship?"
+    options:
+      - {key: A, text: "Serving solid, access dotted, influence dashed", correct: true}
+      - {key: B, text: "Serving dashed, access solid, influence dotted", why: "Every pairing here is wrong."}
+      - {key: C, text: "Serving dotted, access dashed, influence solid", why: "Dotted is access and dashed is influence."}
+      - {key: D, text: "All three are solid and differ only by arrowhead", why: "The line styles are the primary distinction."}
+    explanation: "The specification assigns a solid line to serving (control dependency), a dotted line to access (data dependency) and a dashed line to influence (impact dependency)."
+    refs: ["ARCHIMATE §5.2"]
+    difficulty: 1
+    tags: [notation, dependency]
+  - id: A7-117
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "An application service supports the 'Approve Loan' business process. How is the serving relationship drawn?"
+    options:
+      - {key: A, text: "From the application service to the business process, arrowhead at the process", correct: true}
+      - {key: B, text: "From the business process to the application service, arrowhead at the service", why: "That is the UML dependency direction; ArchiMate points from provider to user."}
+      - {key: C, text: "As an undirected line, since serving has no direction", why: "Serving is directed."}
+      - {key: D, text: "As a dotted line from the process to the service", why: "Dotted is access; serving is solid."}
+    explanation: "Serving runs from the element that provides functionality to the element that uses it: the service serves the process."
+    refs: ["ARCHIMATE §5.2.1"]
+    difficulty: 1
+    tags: [serving, direction]
+  - id: A7-118
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "Why do ArchiMate's dependency arrows generally point in the opposite direction to UML's dependency?"
+    options:
+      - {key: A, text: "So that supporting and serving arrows point upward toward the business, and so that delivery is separated from who initiates the interaction", correct: true}
+      - {key: B, text: "Because ArchiMate models data flow, not control", why: "Data transfer is the flow relationship; this is about serving and realizing."}
+      - {key: C, text: "Because ArchiMate relationships are undirected", why: "They are directed; only association is undirected by default."}
+      - {key: D, text: "To stay compatible with BPMN sequence flows", why: "The rationale given concerns readability and initiative, not BPMN."}
+    explanation: "The specification gives two reasons: layered models read upward, and a service is delivered in one direction whether it is pushed or pulled; the initiator is modelled with triggering instead."
+    refs: ["ARCHIMATE §5.2"]
+    difficulty: 2
+    tags: [serving, direction]
+  - id: A7-119
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "What was the serving relationship called before ArchiMate 3, and what is the status of that name?"
+    options:
+      - {key: A, text: "'Used by'; still allowed but deprecated, with unchanged meaning", correct: true}
+      - {key: B, text: "'Uses'; now removed from the language", why: "The old name was 'used by' and it is deprecated, not removed."}
+      - {key: C, text: "'Supports'; now a separate relationship", why: "No such relationship exists."}
+      - {key: D, text: "'Realization'; the two were merged", why: "Realization is a distinct structural relationship."}
+    explanation: "The relationship was renamed from 'used by' to 'serving' so that its direction reads with an active verb; the meaning did not change and the old term is deprecated."
+    refs: ["ARCHIMATE §5.2.1"]
+    difficulty: 1
+    tags: [serving, history]
+  - id: A7-120
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "An access relationship between 'Send Invoice' (process) and 'Invoice' (business object) has its arrowhead at the process end. What does it state?"
+    options:
+      - {key: A, text: "The process reads the invoice", correct: true}
+      - {key: B, text: "The process writes the invoice", why: "Write access has the arrowhead at the object."}
+      - {key: C, text: "The invoice triggers the process", why: "A passive object cannot trigger; triggering is a solid line with a filled arrowhead."}
+      - {key: D, text: "The invoice is the source of the relationship", why: "The source of an access relationship is always the behaviour or active-structure element, regardless of the arrowhead."}
+    explanation: "On an access relationship the arrowhead indicates the kind of access: toward the object is write, toward the accessor is read, both ends is read-write. The metamodel source remains the process."
+    refs: ["ARCHIMATE §5.2.2"]
+    difficulty: 2
+    tags: [access, notation]
+  - id: A7-121
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "Which elements may be the source of an access relationship?"
+    options:
+      - {key: A, text: "Behaviour elements and active structure elements", correct: true}
+      - {key: B, text: "Passive structure elements only", why: "Passive structure is the target of access, never the source."}
+      - {key: C, text: "Any element, since access is undirected", why: "Access is directed at the metamodel level, from accessor to object."}
+      - {key: D, text: "Motivation elements", why: "Motivation elements do not access objects."}
+    explanation: "Access represents the ability of behaviour and active structure elements to observe or act upon passive structure elements."
+    refs: ["ARCHIMATE §5.2.2"]
+    difficulty: 1
+    tags: [access]
+  - id: A7-122
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "Why must care be taken when an access relationship takes part in a derivation?"
+    options:
+      - {key: A, text: "Because the arrowhead shows read or write, not the source-to-target direction the derivation rules use", correct: true}
+      - {key: B, text: "Because access relationships cannot be derived at all", why: "Access can be carried through DR 3 and DR 4 like any dependency."}
+      - {key: C, text: "Because access is the strongest dependency and always wins", why: "Serving is the strongest dependency in the ordering."}
+      - {key: D, text: "Because access may only be derived across layers", why: "No such restriction exists."}
+    explanation: "The specification warns that the arrow on an access relationship has no bearing on its directionality; the source is always the accessor."
+    refs: ["ARCHIMATE §5.2.2"]
+    difficulty: 3
+    tags: [access, derivation]
+  - id: A7-123
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "Which target is legal for an influence relationship?"
+    options:
+      - {key: A, text: "A principle", correct: true}
+      - {key: B, text: "A business process", why: "Influence must target a motivation element."}
+      - {key: C, text: "A data object", why: "A data object is passive structure, not motivation."}
+      - {key: D, text: "A node", why: "A node is technology active structure."}
+    explanation: "Influence represents that an element affects the implementation or achievement of a motivation element, such as a goal, principle or requirement."
+    refs: ["ARCHIMATE §5.2.3"]
+    difficulty: 1
+    tags: [influence, which-relationship]
+  - id: A7-124
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "A requirement 'Assign personal assistant' helps the goal 'Reduce employee workload' but hurts the goal 'Decrease costs'. How is this modelled?"
+    options:
+      - {key: A, text: "Two influence relationships from the requirement, one labelled strongly positive and one strongly negative", correct: true}
+      - {key: B, text: "A realization to the first goal and nothing to the second", why: "Realization is for critical contributions; negative effects need influence with a negative sign."}
+      - {key: C, text: "One aggregation and one association", why: "Neither expresses contribution or its sign."}
+      - {key: D, text: "Two triggering relationships", why: "Triggering is a dynamic relationship between behaviours, not a contribution."}
+    explanation: "Influence can carry a sign and strength attribute such as ++ or −−; the specification's own example is exactly this requirement with opposite effects on two goals."
+    refs: ["ARCHIMATE §5.2.3"]
+    difficulty: 2
+    tags: [influence, sign]
+  - id: A7-125
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "By default, what sign and strength does an influence relationship carry?"
+    options:
+      - {key: A, text: "Unspecified sign and strength", correct: true}
+      - {key: B, text: "Positive, strength 1", why: "No default sign is assumed."}
+      - {key: C, text: "Negative", why: "No default sign is assumed."}
+      - {key: D, text: "Strength 10 on a 0–10 scale", why: "The scale itself is left to the modeller and no default value is set."}
+    explanation: "Attributes may indicate sign and strength, with the scale chosen by the modeller; by default the contribution has unspecified sign and strength."
+    refs: ["ARCHIMATE §5.2.3"]
+    difficulty: 2
+    tags: [influence]
+  - id: A7-126
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "Between which pairs is an association relationship always allowed?"
+    options:
+      - {key: A, text: "Between any two elements, and between any relationship and any element", correct: true}
+      - {key: B, text: "Only between elements of the same layer", why: "Association has no layer restriction."}
+      - {key: C, text: "Only between elements, never involving a relationship", why: "Association may connect a relationship to an element."}
+      - {key: D, text: "Only between two relationships", why: "No relationship may connect two relationships."}
+    explanation: "Association is the always-allowed relationship: any two elements, or a relationship and an element."
+    refs: ["ARCHIMATE §5.2.4", "ARCHIMATE §5"]
+    difficulty: 1
+    tags: [association, always-allowed]
+  - id: A7-127
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "What is the consequence of making an association directed?"
+    options:
+      - {key: A, text: "It can take part in derivations only in that direction", correct: true}
+      - {key: B, text: "It becomes a serving relationship", why: "A directed association is still an association."}
+      - {key: C, text: "It may no longer connect to a relationship", why: "Direction does not change what it may connect."}
+      - {key: D, text: "It gains the semantics of triggering", why: "Association never implies temporal ordering."}
+    explanation: "Association is undirected by default; if it is directed it can only be used in derivations in that direction."
+    refs: ["ARCHIMATE §5.2.4", "ARCHIMATE §5.2.5"]
+    difficulty: 3
+    tags: [association, derivation]
+  - id: A7-128
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "When is association the appropriate relationship to draw?"
+    options:
+      - {key: A, text: "When the relationship is unspecified, or none of the other relationship types expresses it, for example in an early high-level sketch", correct: true}
+      - {key: B, text: "Whenever two elements are in different layers", why: "Cross-layer relationships use serving, realization and others."}
+      - {key: C, text: "When a service provides functionality to a process", why: "That is serving."}
+      - {key: D, text: "When a process reads a business object", why: "That is access."}
+    explanation: "Association models an unspecified relationship or one not represented by another ArchiMate relationship; it is useful when first sketching a model before refining relationship types."
+    refs: ["ARCHIMATE §5.2.4"]
+    difficulty: 1
+    tags: [association]
+  - id: A7-129
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "Business service A serves business process B. What do the dependency semantics allow you to conclude at a finer level of detail?"
+    options:
+      - {key: A, text: "Some unmodelled part of A may serve some unmodelled part of B; no specific detailed dependency is implied", correct: true}
+      - {key: B, text: "Every sub-service of A serves every sub-process of B", why: "Dependency semantics are 'some part', not 'every part'."}
+      - {key: C, text: "B realizes A", why: "Serving implies nothing about realization."}
+      - {key: D, text: "A and B must be in the same layer", why: "Serving commonly crosses layers."}
+    explanation: "Dependency relationships state that a part of the target depends on a part of the source, which lets high-level dependencies be drawn without committing to detail."
+    refs: ["ARCHIMATE §5.2.5"]
+    difficulty: 3
+    tags: [semantics, dependency]
+  - id: A7-130
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "A contract is transferred from process 'Policy Creation' to process 'Policy Management'. How does the specification's example show the contract's involvement in that transfer?"
+    options:
+      - {key: A, text: "A flow relationship between the two processes, with an association from the flow to the contract", correct: true}
+      - {key: B, text: "An access relationship from the contract to the flow", why: "A contract is passive and cannot be the source of access, and access cannot target a relationship."}
+      - {key: C, text: "A triggering from the contract to Policy Management", why: "Passive elements do not trigger."}
+      - {key: D, text: "Composition from the flow to the contract", why: "Only a composite element may compose a relationship, and the direction here is wrong."}
+    explanation: "Association is the relationship that may connect a relationship to an element; the example associates the flow with the contract that travels along it."
+    refs: ["ARCHIMATE §5.2.4"]
+    difficulty: 3
+    tags: [association, flow]
+  - id: A7-131
+    unit: A7
+    objective: "A7.2"
+    lesson: A7/02_dependency_relationships
+    stem: "Which relationship correctly expresses that a business interface is the channel through which a customer actor is reached?"
+    options:
+      - {key: A, text: "Business Interface serves Customer", correct: true}
+      - {key: B, text: "Customer serves Business Interface", why: "Serving goes from the provider to the user."}
+      - {key: C, text: "Business Interface accesses Customer", why: "An actor is active structure, not a passive object."}
+      - {key: D, text: "Business Interface realizes Customer", why: "An interface does not realize an actor."}
+    explanation: "Serving applies to the active-structure aspect as well as behaviour: an interface serves the actor that uses it, mirroring the payment interface example."
+    refs: ["ARCHIMATE §5.2.1"]
+    difficulty: 2
+    tags: [serving, which-relationship]
+  # ---------------------------------------------------------------- A7.3 dynamic, specialization, junction
+  - id: A7-132
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "Which relationship states that 'Assess Claim' must (at least partly) complete before 'Settle Claim' can begin?"
+    options:
+      - {key: A, text: "Triggering from Assess Claim to Settle Claim", correct: true}
+      - {key: B, text: "Flow from Assess Claim to Settle Claim", why: "Flow models transfer and implies no causal or temporal ordering."}
+      - {key: C, text: "Serving from Assess Claim to Settle Claim", why: "Serving is a control dependency between provider and user, not sequence."}
+      - {key: D, text: "Realization from Assess Claim to Settle Claim", why: "Realization is abstraction, not sequence."}
+    explanation: "Triggering represents temporal or causal precedence: some part of the source completes before the target starts."
+    refs: ["ARCHIMATE §5.3.1"]
+    difficulty: 1
+    tags: [triggering, which-relationship]
+  - id: A7-133
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "A 'Scheduling' function sends schedule information to 'Claim Assessment', which does not wait for it. Which relationship is correct?"
+    options:
+      - {key: A, text: "Flow from Scheduling to Claim Assessment", correct: true}
+      - {key: B, text: "Triggering from Scheduling to Claim Assessment", why: "Triggering would claim Claim Assessment cannot start until Scheduling has partly completed."}
+      - {key: C, text: "Access from Scheduling to Claim Assessment", why: "Access targets passive structure, not a function."}
+      - {key: D, text: "Serving from Claim Assessment to Scheduling", why: "Direction and type are both wrong; the scenario describes a transfer."}
+    explanation: "Flow models the transfer of information, goods or money between behaviour elements and does not imply causality — the specification's own scheduling example."
+    refs: ["ARCHIMATE §5.3.2"]
+    difficulty: 2
+    tags: [flow, which-relationship]
+  - id: A7-134
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "How are triggering and flow distinguished in the notation?"
+    options:
+      - {key: A, text: "Both have a filled arrowhead; triggering is a solid line, flow a dashed line", correct: true}
+      - {key: B, text: "Triggering is dashed, flow is solid", why: "Reversed."}
+      - {key: C, text: "Triggering has a hollow arrowhead, flow a filled one", why: "Both use a filled arrowhead."}
+      - {key: D, text: "Flow is dotted with an open arrowhead", why: "Dotted with an open arrowhead resembles access, not flow."}
+    explanation: "The two dynamic relationships share the filled arrowhead and differ by line style: solid for triggering, dashed for flow."
+    refs: ["ARCHIMATE §5.3.1", "ARCHIMATE §5.3.2"]
+    difficulty: 1
+    tags: [notation, dynamic]
+  - id: A7-135
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "Does a triggering relationship require that the source actively starts the target?"
+    options:
+      - {key: A, text: "No — it expresses precedence; the specification's example is a traffic light turning green triggering cars to move", correct: true}
+      - {key: B, text: "Yes — triggering always models an explicit invocation", why: "The specification says triggering does not necessarily represent one element actively starting another."}
+      - {key: C, text: "Yes, unless a junction is used", why: "Junctions do not change the semantics of triggering."}
+      - {key: D, text: "No — triggering has no semantics at all", why: "It has precedence semantics; only labels on junction outputs are informal."}
+    explanation: "Triggering models temporal or causal precedence, not invocation."
+    refs: ["ARCHIMATE §5.3.1"]
+    difficulty: 2
+    tags: [triggering, semantics]
+  - id: A7-136
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "Which relationship families do triggering and flow borrow their semantics from?"
+    options:
+      - {key: A, text: "Triggering follows structural semantics; flow follows dependency semantics", correct: true}
+      - {key: B, text: "Both follow structural semantics", why: "Flow follows dependency semantics: some part of A transfers to some part of B."}
+      - {key: C, text: "Both follow dependency semantics", why: "Triggering follows structural semantics: everything in B is preceded by part of A."}
+      - {key: D, text: "Triggering follows dependency semantics; flow follows structural semantics", why: "Reversed."}
+    explanation: "A triggering from A to B means all of B is preceded by some part of A (structural style); a flow means some part of A transfers something to some part of B (dependency style)."
+    refs: ["ARCHIMATE §5.3.3"]
+    difficulty: 3
+    tags: [semantics, dynamic]
+  - id: A7-137
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "Which statement about the specialization relationship is correct?"
+    options:
+      - {key: A, text: "It states that an element is a particular kind of another element and is always allowed between two elements of the same type", correct: true}
+      - {key: B, text: "It states that a concrete element implements an abstract one", why: "That is realization."}
+      - {key: C, text: "It is a dependency relationship", why: "Specialization is the sole member of the 'other' family."}
+      - {key: D, text: "It may only be drawn between elements of different types", why: "Specialization is always allowed between same-type elements."}
+    explanation: "Specialization, inspired by UML generalization, models a kind-of relationship and is always permitted between two instances of the same element type."
+    refs: ["ARCHIMATE §5.4.1"]
+    difficulty: 1
+    tags: [specialization]
+  - id: A7-138
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "How does the notation of specialization differ from that of realization?"
+    options:
+      - {key: A, text: "Both use a hollow triangular arrowhead, but specialization has a solid line and realization a dotted one", correct: true}
+      - {key: B, text: "Specialization uses a filled arrowhead", why: "The specialization arrowhead is a hollow triangle."}
+      - {key: C, text: "Specialization uses a diamond at the general element", why: "Diamonds are composition and aggregation."}
+      - {key: D, text: "They are drawn identically and distinguished by a label", why: "The line style distinguishes them."}
+    explanation: "Specialization is a solid line with a hollow triangle pointing at the general element; realization is a dotted line with the same arrowhead."
+    refs: ["ARCHIMATE §5.4.1", "ARCHIMATE §5.1.4"]
+    difficulty: 2
+    tags: [notation, specialization]
+  - id: A7-139
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "'Take Out Travel Insurance' is a specific variant of the generic 'Take Out Insurance' process. Which relationship expresses this, and in which direction?"
+    options:
+      - {key: A, text: "Specialization from Take Out Travel Insurance to Take Out Insurance", correct: true}
+      - {key: B, text: "Specialization from Take Out Insurance to Take Out Travel Insurance", why: "The arrowhead points at the general element, so the specific process is the source."}
+      - {key: C, text: "Realization from Take Out Travel Insurance to Take Out Insurance", why: "Both are processes at the same abstraction level; this is a kind-of relationship."}
+      - {key: D, text: "Composition from Take Out Insurance to Take Out Travel Insurance", why: "The variant is not a part of the generic process."}
+    explanation: "The specialized element is the source and the general element the target — the specification's insurance example."
+    refs: ["ARCHIMATE §5.4.1"]
+    difficulty: 2
+    tags: [specialization, direction]
+  - id: A7-140
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "What is a junction?"
+    options:
+      - {key: A, text: "A relationship connector that joins several relationships of the same type, as an 'and' or an 'or'", correct: true}
+      - {key: B, text: "A twelfth relationship type that may connect any two elements", why: "A junction is explicitly not a relationship."}
+      - {key: C, text: "A composite element like grouping", why: "A junction is a connector, not an element."}
+      - {key: D, text: "A shorthand for association", why: "Junctions connect relationships of one type; they have no association semantics."}
+    explanation: "A junction is not a relationship but a connector used to join relationships of the same type, with and/or semantics."
+    refs: ["ARCHIMATE §5.5.1"]
+    difficulty: 1
+    tags: [junction]
+  - id: A7-141
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "Two business functions must together realize a business service; neither suffices alone. How is this drawn?"
+    options:
+      - {key: A, text: "Realization from each function into an and-junction, and one realization from the junction to the service", correct: true}
+      - {key: B, text: "A realization from each function directly to the service", why: "Two direct realizations mean either function alone can realize the whole service."}
+      - {key: C, text: "Realization into an or-junction and out to the service", why: "An or-junction says at least one suffices."}
+      - {key: D, text: "An aggregation from the service to both functions", why: "A service does not aggregate the functions that realize it."}
+    explanation: "The and-junction expresses that all connected elements together participate in the relationship — the specification's Sales-and-Finance invoicing example."
+    refs: ["ARCHIMATE §5.5.1", "ARCHIMATE §5.1.4"]
+    difficulty: 2
+    tags: [junction, realization]
+  - id: A7-142
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "Which of these junction uses is NOT permitted?"
+    options:
+      - {key: A, text: "A junction with a realization coming in and a serving going out", correct: true}
+      - {key: B, text: "A junction with several incoming triggerings and one outgoing triggering", why: "Fan-in of one type is the standard use."}
+      - {key: C, text: "A junction with one incoming and several outgoing triggerings", why: "Fan-out is permitted."}
+      - {key: D, text: "A junction aggregated inside a plateau", why: "A junction may be aggregated or composed in a plateau, grouping or location."}
+    explanation: "All relationships connected to a junction must be of the same type."
+    refs: ["ARCHIMATE §5.5.1", "ARCHIMATE §5"]
+    difficulty: 2
+    tags: [junction, restrictions]
+  - id: A7-143
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "Can a chain of relationships through a junction connect two elements that could not be connected directly by that relationship?"
+    options:
+      - {key: A, text: "No — a path through junctions is only valid where the direct relationship of that type is also permitted", correct: true}
+      - {key: B, text: "Yes — junctions extend the metamodel", why: "The specification says junctions cannot be used to create otherwise disallowed relationships."}
+      - {key: C, text: "Yes, but only for or-junctions", why: "The rule applies to both kinds."}
+      - {key: D, text: "Only if the junction is placed inside a grouping", why: "Containment in a grouping does not change what the junction may connect."}
+    explanation: "Junctions never create new permissions; a chain of one relationship type through junctions is valid only if the direct relationship would be."
+    refs: ["ARCHIMATE §5.5.1", "ARCHIMATE §5"]
+    difficulty: 2
+    tags: [junction, restrictions]
+  - id: A7-144
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "'Assess Request' leads to either 'Accept Request' or 'Reject Request', never both. Which modelling is correct?"
+    options:
+      - {key: A, text: "Triggering from Assess Request into an or-junction, then triggerings out to each outcome, optionally with condition labels", correct: true}
+      - {key: B, text: "Two separate triggerings from Assess Request, one to each outcome", why: "Two separate triggerings are read as both being triggered."}
+      - {key: C, text: "Triggering through an and-junction", why: "An and-junction says both successors follow."}
+      - {key: D, text: "Flow from Assess Request to each outcome", why: "Flow models transfer, not sequence or choice."}
+    explanation: "The or-junction expresses choice on triggering; labels on the outgoing triggerings are informal guards, and the language deliberately defines no execution semantics."
+    refs: ["ARCHIMATE §5.5.1"]
+    difficulty: 2
+    tags: [junction, triggering]
+  - id: A7-145
+    unit: A7
+    objective: "A7.3"
+    lesson: A7/03_dynamic_specialization_and_junction
+    stem: "What does a label such as 'amount > 10,000' on a triggering leaving a junction signify?"
+    options:
+      - {key: A, text: "An informal indication of a condition or guard, with no formal operational semantics", correct: true}
+      - {key: B, text: "A formally executable guard, as in BPMN", why: "ArchiMate deliberately avoids execution semantics so mappings to BPMN and UML are not constrained."}
+      - {key: C, text: "The name of the junction", why: "The label is on the relationship, not the junction."}
+      - {key: D, text: "An access relationship to a data object", why: "Nothing about the label creates an access."}
+    explanation: "Labels on outgoing triggerings of a junction are informal; no operational semantics are defined."
+    refs: ["ARCHIMATE §5.5.1"]
+    difficulty: 2
+    tags: [junction, labels]
+  # ---------------------------------------------------------------- A7.4 derivation rules
+  - id: A7-146
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "What is the purpose of relationship derivation in ArchiMate?"
+    options:
+      - {key: A, text: "To abstract from intermediate elements and still make valid statements, producing summaries of detailed models for impact analysis", correct: true}
+      - {key: B, text: "To infer the detailed elements that must exist behind a high-level relationship", why: "Derivation only goes from more detail to less; it cannot infer detail."}
+      - {key: C, text: "To replace the relationship table", why: "Derivation is one of the inputs used to build the table."}
+      - {key: D, text: "To convert associations into typed relationships", why: "Refining associations is a modelling activity, not derivation."}
+    explanation: "Derivation lets a modeller drop intermediary elements while the remaining relationship stays valid; it always runs from detail toward summary."
+    refs: ["ARCHIMATE §5.7"]
+    difficulty: 1
+    tags: [derivation, purpose]
+  - id: A7-147
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "An application component is assigned to an application function that realizes an application service. Which derived relationship is valid between the component and the service?"
+    options:
+      - {key: A, text: "Realization, the weaker of assignment and realization (DR 2)", correct: true}
+      - {key: B, text: "Assignment, the stronger of the two", why: "A structural chain collapses to the weakest link, and realization is weaker than assignment."}
+      - {key: C, text: "Serving", why: "Serving is a dependency; no dependency is in the chain."}
+      - {key: D, text: "No relationship can be derived", why: "DR 2 applies to any two in-line structural relationships."}
+    explanation: "DR 2: two in-line structural relationships derive the weaker; the strength order is realization < assignment < aggregation < composition."
+    refs: ["ARCHIMATE §B.2.2"]
+    difficulty: 2
+    tags: [derivation, DR2, permitted]
+  - id: A7-148
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "What is the strength ordering of structural relationships used by DR 2?"
+    options:
+      - {key: A, text: "Realization (weakest), assignment, aggregation, composition (strongest)", correct: true}
+      - {key: B, text: "Composition (weakest), aggregation, assignment, realization (strongest)", why: "Reversed."}
+      - {key: C, text: "Assignment (weakest), realization, composition, aggregation", why: "Realization is the weakest and composition the strongest."}
+      - {key: D, text: "Association, influence, access, serving", why: "That is the dependency ordering used by PDR 7."}
+    explanation: "The specification orders the structural relationships from realization (weakest) to composition (strongest); a chain derives the weakest."
+    refs: ["ARCHIMATE §B.2.2"]
+    difficulty: 1
+    tags: [derivation, strength]
+  - id: A7-149
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "Business actor 'Sales' is assigned to process 'Selling', and an application service serves 'Selling'. Which derived relationship is valid?"
+    options:
+      - {key: A, text: "The application service serves 'Sales' (DR 4: a dependency's target moves back along the structural relationship)", correct: true}
+      - {key: B, text: "'Sales' serves the application service", why: "Direction reversed; the service remains the provider."}
+      - {key: C, text: "'Sales' realizes the application service", why: "No realization is in the chain."}
+      - {key: D, text: "None — dependency and structural relationships cannot combine", why: "DR 3 and DR 4 exist precisely to combine them."}
+    explanation: "DR 4: given a –S→ b (structural) and c –T→ b (dependency), derive c –T→ a. The actor is assigned to the process; the service serving the process therefore serves the actor."
+    refs: ["ARCHIMATE §B.2.3"]
+    difficulty: 2
+    tags: [derivation, DR4, permitted]
+  - id: A7-150
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "Application function F realizes application service S, and S serves business process P. Which valid derivation applies and what results?"
+    options:
+      - {key: A, text: "DR 3: F serves P", correct: true}
+      - {key: B, text: "DR 2: F realizes P", why: "DR 2 needs two structural relationships; serving is a dependency."}
+      - {key: C, text: "DR 4: P serves F", why: "DR 4 needs the dependency to target the structural target; here the dependency starts there, so DR 3 applies, and the direction stays provider to user."}
+      - {key: D, text: "PDR 7: F is associated with P", why: "PDR 7 combines two dependencies; only one is present."}
+    explanation: "DR 3: a –S→ b (structural) and b –T→ c (dependency) derive a –T→ c. The function's realization of the service lets the serving start from the function."
+    refs: ["ARCHIMATE §B.2.3"]
+    difficulty: 2
+    tags: [derivation, DR3, permitted]
+  - id: A7-151
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "Which of these derivations is valid rather than merely potential?"
+    options:
+      - {key: A, text: "A triggers B, B triggers C, therefore A triggers C", correct: true}
+      - {key: B, text: "A flows to B, B flows to C, therefore A flows to C", why: "Flow chaining is PDR 10, a potential derivation."}
+      - {key: C, text: "A serves B, B serves C, therefore A serves C", why: "Two dependencies combine only under PDR 7, potentially."}
+      - {key: D, text: "A specializes B, B is served by C, therefore A is served by C", why: "Inheriting a relationship through specialization is PDR 2, potential."}
+    explanation: "DR 8 makes triggering transitive; flow transitivity, dependency chaining and specialization inheritance are all potential rules."
+    refs: ["ARCHIMATE §B.2.4", "ARCHIMATE §B.3.4"]
+    difficulty: 3
+    tags: [derivation, valid-vs-potential]
+  - id: A7-152
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "What distinguishes a valid derivation from a potential derivation?"
+    options:
+      - {key: A, text: "A valid derivation holds in any model where the rules apply; a potential one may or may not hold and the modeller must judge", correct: true}
+      - {key: B, text: "Valid derivations are drawn with solid lines, potential ones with dashed lines", why: "Notation does not distinguish them."}
+      - {key: C, text: "Potential derivations are only allowed in the motivation aspect", why: "Potential rules apply across the language."}
+      - {key: D, text: "Valid derivations must be drawn explicitly; potential ones may be left implicit", why: "Either may be drawn or left implicit."}
+    explanation: "Appendix B distinguishes derivations that are certainly true from those that are potentially true depending on the model's specifics."
+    refs: ["ARCHIMATE §B.1", "ARCHIMATE §B.3"]
+    difficulty: 1
+    tags: [derivation, valid-vs-potential]
+  - id: A7-153
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "Component 'Suite' is served by services 'Website Hosting' and 'Database Hosting'. Suite is later split into composed components 'Front-end' and 'Back-end'. What does PDR 5 offer, and what must the architect do?"
+    options:
+      - {key: A, text: "It offers a serving from each hosting service to each sub-component; the architect decides which of those are real", correct: true}
+      - {key: B, text: "It proves that both sub-components are served by both services", why: "PDR 5 is potential; it discovers candidates, it does not prove them."}
+      - {key: C, text: "It forbids any serving to the sub-components", why: "The rule enables the derivation rather than forbidding it."}
+      - {key: D, text: "It converts the servings into realizations", why: "The relationship type is carried through unchanged."}
+    explanation: "PDR 5 moves a dependency onto the part of a structural relationship, potentially; the specification's own example shows some resulting relationships are valuable and some are not."
+    refs: ["ARCHIMATE §B.3", "ARCHIMATE §B.3.2"]
+    difficulty: 3
+    tags: [derivation, PDR5, potential]
+  - id: A7-154
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "Application service S serves application function A, and A accesses data object D. Under PDR 7, what could be derived between S and D, and why is it only potential?"
+    options:
+      - {key: A, text: "Nothing — two dependency relationships never combine", why: "PDR 7 combines two in-line dependencies, potentially."}
+      - {key: B, text: "S accesses D, potentially: the two dependencies join at A and the weaker type (access is weaker than serving) results", correct: true}
+      - {key: C, text: "S serves D, potentially", why: "The result is the weaker of the two types, and access is weaker than serving."}
+      - {key: D, text: "S realizes D, validly", why: "Realization is not in the chain, and dependency chaining is potential."}
+    explanation: "PDR 7: two in-line dependencies derive the weaker, potentially. The dependency order is association < influence < access < serving, so serving then access yields access. It is potential because the service may not touch the data the function touches."
+    refs: ["ARCHIMATE §B.3.3"]
+    difficulty: 3
+    tags: [derivation, PDR7, potential]
+  - id: A7-155
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "What is the strength ordering of the dependency relationships used by PDR 7?"
+    options:
+      - {key: A, text: "Association (weakest), influence, access, serving (strongest)", correct: true}
+      - {key: B, text: "Serving (weakest), access, influence, association (strongest)", why: "Reversed."}
+      - {key: C, text: "Access, association, serving, influence", why: "Not the specification's ordering."}
+      - {key: D, text: "Realization, assignment, aggregation, composition", why: "That is the structural ordering for DR 2."}
+    explanation: "PDR 7 replaces two in-line dependencies by the weaker, using the order association < influence < access < serving."
+    refs: ["ARCHIMATE §B.3.3"]
+    difficulty: 2
+    tags: [derivation, strength]
+  - id: A7-156
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "'Project Team' aggregates 'Project Manager', and 'IT Project Team' specializes 'Project Team'. Which potential derivation is almost certain?"
+    options:
+      - {key: A, text: "'IT Project Team' aggregates 'Project Manager' (PDR 1, moving the source to the specialized element)", correct: true}
+      - {key: B, text: "'Project Manager' specializes 'IT Project Team'", why: "No rule produces a specialization from an aggregation."}
+      - {key: C, text: "'Project Team' is assigned to 'IT Project Team'", why: "No such rule."}
+      - {key: D, text: "None — specialization takes no part in derivation", why: "PDR 1–4 exist for specialization."}
+    explanation: "Moving a composition or aggregation's source to a specialized element is one of the cases the specification calls almost certain."
+    refs: ["ARCHIMATE §B.3.1"]
+    difficulty: 3
+    tags: [derivation, PDR1, specialization]
+  - id: A7-157
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "'IT Project' specializes 'Project' and writes 'Software Documentation'. Under PDR 3, 'Project' writes 'Software Documentation'. How reliable is this?"
+    options:
+      - {key: A, text: "Low — it is true only for the subset of projects that are IT projects", correct: true}
+      - {key: B, text: "Certain — the general element inherits everything from its specializations", why: "Inheritance runs from general to specialized; the reverse direction is weak."}
+      - {key: C, text: "Invalid — access cannot be derived through specialization", why: "It can be, potentially."}
+      - {key: D, text: "Certain, because access is the strongest dependency", why: "Serving is the strongest, and strength does not confer certainty."}
+    explanation: "The specification notes that moving a relationship from a specialized element to its generalization (PDR 3) is only valid for a subset of the general element's instances."
+    refs: ["ARCHIMATE §B.3.1"]
+    difficulty: 3
+    tags: [derivation, PDR3, specialization]
+  - id: A7-158
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "A derivation would produce an influence relationship from a business process to an application component. Is it permitted?"
+    options:
+      - {key: A, text: "No — a derived influence must target a motivation element", correct: true}
+      - {key: B, text: "Yes, since influence is a dependency and dependencies chain freely", why: "The restrictions in B.4 forbid influence toward anything but motivation."}
+      - {key: C, text: "Yes, if the process and component are in the same plateau", why: "Plateau membership does not lift the restriction."}
+      - {key: D, text: "Only as a potential derivation", why: "The restriction bars it whether valid or potential."}
+    explanation: "Among the restrictions on derived relationships: if S is influence, b must be in the motivation domain."
+    refs: ["ARCHIMATE §B.4"]
+    difficulty: 2
+    tags: [derivation, restrictions, permitted]
+  - id: A7-159
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "Which derived relationship from a core element to a motivation element is NOT permitted by the restrictions?"
+    options:
+      - {key: A, text: "Serving", correct: true}
+      - {key: B, text: "Realization", why: "Realization is one of the four types allowed toward motivation."}
+      - {key: C, text: "Influence", why: "Influence is allowed toward motivation."}
+      - {key: D, text: "Association", why: "Association is always allowed."}
+    explanation: "A derived relationship from core, strategy or implementation-and-migration to motivation must be assignment, realization, influence or association."
+    refs: ["ARCHIMATE §B.4"]
+    difficulty: 3
+    tags: [derivation, restrictions]
+  - id: A7-160
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "A work package (implementation and migration domain) is chained through a deliverable to an application component (core). Which derived relationship types may survive from the work package to the component?"
+    options:
+      - {key: A, text: "Realization or association only", correct: true}
+      - {key: B, text: "Any structural relationship", why: "B.4 limits implementation-and-migration to core derivations to realization and association."}
+      - {key: C, text: "Assignment or association", why: "Assignment is what survives in the opposite direction, core to implementation and migration."}
+      - {key: D, text: "None at all", why: "Realization and association are permitted."}
+    explanation: "Restriction: a in Implementation and Migration, b in Core, S must be realization or association."
+    refs: ["ARCHIMATE §B.4"]
+    difficulty: 3
+    tags: [derivation, restrictions, domains]
+  - id: A7-161
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "Do the restrictions in Appendix B.4 apply to relationships drawn explicitly in the metamodel figures?"
+    options:
+      - {key: A, text: "No — they apply to derived relationships only; metamodel relationships are allowed by definition", correct: true}
+      - {key: B, text: "Yes — every relationship in the language must pass them", why: "The notes state they apply only to derived relationships."}
+      - {key: C, text: "Only in the motivation aspect", why: "No such limitation."}
+      - {key: D, text: "Only for potential derivations", why: "They apply to both valid and potential derivations, but not to explicit metamodel relationships."}
+    explanation: "The restrictions constrain what the derivation rules may produce; relationships shown in the metamodel diagrams are permitted regardless."
+    refs: ["ARCHIMATE §B.4"]
+    difficulty: 2
+    tags: [derivation, restrictions]
+  - id: A7-162
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "Can a modeller draw 'Application Component realizes Application Service' directly, without any function in the model?"
+    options:
+      - {key: A, text: "Yes — a necessarily valid derived relationship may be drawn directly; the intermediate function is assumed to exist", correct: true}
+      - {key: B, text: "No — the function must be modelled first", why: "The specification gives the modeller freedom to choose the level of detail."}
+      - {key: C, text: "Only as an association", why: "The realization itself is legal."}
+      - {key: D, text: "Only inside a grouping", why: "No such requirement."}
+    explanation: "Relationships that are necessarily valid derivations may be created directly; their constituents need not be modelled and cannot be inferred from the summary."
+    refs: ["ARCHIMATE §5.7"]
+    difficulty: 2
+    tags: [derivation, direct]
+  - id: A7-163
+    unit: A7
+    objective: "A7.4"
+    lesson: A7/04_derivation_rules
+    stem: "Business event E triggers process P, and role R is assigned to P. Which derived triggering is valid?"
+    options:
+      - {key: A, text: "E triggers R, validly under DR 7", why: "DR 7 needs the structural relationship to start at the triggered element (P); here it starts at R and ends at P, which is the PDR 11 shape, so the derivation is only potential."}
+      - {key: B, text: "E triggers R, but only as a potential derivation under PDR 11", correct: true}
+      - {key: C, text: "R triggers E, validly", why: "No rule reverses a triggering."}
+      - {key: D, text: "P triggers R, validly", why: "Assignment does not produce a triggering between its own ends."}
+    explanation: "DR 7 needs p(a,b): triggering and q(b,c): structural from b. Here the structural relationship is from R to P (into b), which is the shape of PDR 11, so 'E triggers R' is potential, not valid."
+    refs: ["ARCHIMATE §B.2.4", "ARCHIMATE §B.3.4"]
+    difficulty: 3
+    tags: [derivation, triggering, potential]
+  # ---------------------------------------------------------------- A7.5 the relationship table
+  - id: A7-164
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "In the Appendix B relationship tables, what do the letters 'i' and 'n' stand for?"
+    options:
+      - {key: A, text: "'i' is assignment and 'n' is influence", correct: true}
+      - {key: B, text: "'i' is influence and 'n' is nesting", why: "Influence is 'n'; nesting is not a relationship."}
+      - {key: C, text: "'i' is interface and 'n' is node", why: "The letters denote relationships, not elements."}
+      - {key: D, text: "'i' is influence and 'n' is none", why: "Influence is 'n' and there is no 'none' letter."}
+    explanation: "The legend uses non-initial letters where initials clash: ass(i)gnment, i(n)fluence, ass(o)ciation, ser(v)ing, a(g)gregation."
+    refs: ["ARCHIMATE §B.5"]
+    difficulty: 1
+    tags: [table, legend]
+  - id: A7-165
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "A cell in the relationship table reads 'iorv'. Which relationship is NOT permitted from the row element to the column element?"
+    options:
+      - {key: A, text: "Influence", correct: true}
+      - {key: B, text: "Assignment", why: "'i' is assignment."}
+      - {key: C, text: "Serving", why: "'v' is serving."}
+      - {key: D, text: "Association", why: "'o' is association."}
+    explanation: "'iorv' permits assignment, association, realization and serving; influence would be 'n'."
+    refs: ["ARCHIMATE §B.5"]
+    difficulty: 2
+    tags: [table, legend]
+  - id: A7-166
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "How were the relationship tables in Appendix B constructed?"
+    options:
+      - {key: A, text: "From the metamodel figures of chapters 3 to 12 combined with the derivation rules and their restrictions", correct: true}
+      - {key: B, text: "By listing only the relationships drawn in the metamodel figures", why: "The tables contain derived relationships the figures omit for legibility."}
+      - {key: C, text: "By surveying tool vendors", why: "They are computed from the language definition."}
+      - {key: D, text: "From the example viewpoints in Appendix C", why: "Viewpoints select from the tables; they do not define them."}
+    explanation: "The tables are the result of applying the derivation rules and restrictions to the metamodel, and so contain all allowed relationships."
+    refs: ["ARCHIMATE §B.5", "ARCHIMATE §B.1"]
+    difficulty: 2
+    tags: [table, construction]
+  - id: A7-167
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "Which relationship may connect an application service (source) to a business process (target)?"
+    options:
+      - {key: A, text: "Serving", correct: true}
+      - {key: B, text: "Realization", why: "Realization from application to business runs from application behaviour to business behaviour, not from a service to a process."}
+      - {key: C, text: "Assignment", why: "Assignment is not a cross-layer service-to-process relationship."}
+      - {key: D, text: "Access", why: "A business process is not passive structure."}
+    explanation: "Application services serve business behaviour: the classic upward serving relationship between layers."
+    refs: ["ARCHIMATE §B.5", "ARCHIMATE §5.2.1"]
+    difficulty: 1
+    tags: [table, cross-layer, which-relationship]
+  - id: A7-168
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "Which relationship may connect a data object (source) to a business object (target)?"
+    options:
+      - {key: A, text: "Realization", correct: true}
+      - {key: B, text: "Access", why: "A data object is passive and cannot be the source of access."}
+      - {key: C, text: "Serving", why: "Passive elements do not serve."}
+      - {key: D, text: "Assignment", why: "Passive elements are not assigned to other passive elements."}
+    explanation: "A passive element may reach another passive element only by realization (or association, and the same-type structural set): the data object realizes the business object."
+    refs: ["ARCHIMATE §B.5", "ARCHIMATE §B.4"]
+    difficulty: 1
+    tags: [table, passive, which-relationship]
+  - id: A7-169
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "Which relationships may a business object (source) have toward a business process (target)?"
+    options:
+      - {key: A, text: "Association only (plus none of access, serving or triggering)", correct: true}
+      - {key: B, text: "Access, since the object is read by the process", why: "Access runs from the process to the object; the object is never the source."}
+      - {key: C, text: "Triggering", why: "Passive elements cannot trigger."}
+      - {key: D, text: "Serving", why: "Passive elements cannot serve."}
+    explanation: "A passive source may reach a non-passive target only by realization, influence or association; toward a process, of those only association applies."
+    refs: ["ARCHIMATE §B.4", "ARCHIMATE §5.2.2"]
+    difficulty: 3
+    tags: [table, passive, direction]
+  - id: A7-170
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "Which relationship may connect an artifact (source) to an application component (target)?"
+    options:
+      - {key: A, text: "Realization", correct: true}
+      - {key: B, text: "Assignment", why: "Assignment runs from a node to the artifact it stores, not from an artifact to a component."}
+      - {key: C, text: "Serving", why: "An artifact is passive and cannot serve."}
+      - {key: D, text: "Composition", why: "An artifact is not a part of a component in the composition sense; the relationship is realization."}
+    explanation: "An artifact realizes an application component (and may realize a data object): the physical file realizes the logical component."
+    refs: ["ARCHIMATE §B.5", "ARCHIMATE §5.1.4"]
+    difficulty: 2
+    tags: [table, cross-layer, which-relationship]
+  - id: A7-171
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "Which relationship may connect a node (source) to an artifact (target)?"
+    options:
+      - {key: A, text: "Assignment — the node stores or executes the artifact", correct: true}
+      - {key: B, text: "Realization", why: "Realization runs the other way, from the artifact upward."}
+      - {key: C, text: "Serving", why: "Serving does not target a passive element."}
+      - {key: D, text: "Triggering", why: "Triggering connects behaviours and events, not a node to an artifact."}
+    explanation: "Assignment links nodes, devices and system software to the artifacts they store or execute — one of the three assignment directions."
+    refs: ["ARCHIMATE §5.1.3", "ARCHIMATE §B.5"]
+    difficulty: 2
+    tags: [table, technology, which-relationship]
+  - id: A7-172
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "Which relationships may a grouping element have toward a relationship?"
+    options:
+      - {key: A, text: "Composition, aggregation and association", correct: true}
+      - {key: B, text: "Association only", why: "That is the limit for an ordinary element; grouping, location and plateau may also compose or aggregate a relationship."}
+      - {key: C, text: "Any relationship at all", why: "Only c, g and o; a grouping cannot, for example, realize a relationship."}
+      - {key: D, text: "None", why: "Groupings are explicitly allowed to aggregate or compose relationships."}
+    explanation: "Grouping, location and plateau may aggregate or compose any concept including relationships; any element may associate with a relationship."
+    refs: ["ARCHIMATE §B.6", "ARCHIMATE §5"]
+    difficulty: 2
+    tags: [table, grouping]
+  - id: A7-173
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "May a grouping element be the source of a serving relationship to a business process?"
+    options:
+      - {key: A, text: "Yes — a grouping may be the source of any relationship with any element, provided the element is a possible target of that relationship", correct: true}
+      - {key: B, text: "No — a grouping may only aggregate and compose", why: "Aggregation and composition are the containment relationships; groupings may also relate to elements in any way the target permits."}
+      - {key: C, text: "Only if the grouping contains a service", why: "The rule does not depend on the group's contents."}
+      - {key: D, text: "Only as an association", why: "Association is always allowed but is not the limit for a grouping."}
+    explanation: "Appendix B.6 lets a grouping be the source or target of any relationship with any element, subject to that element being a valid other end."
+    refs: ["ARCHIMATE §B.6"]
+    difficulty: 2
+    tags: [table, grouping]
+  - id: A7-174
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "Which relationship may connect an application component (source) directly to an application service (target), and why is it in the table although the metamodel figure does not draw it?"
+    options:
+      - {key: A, text: "Realization, because it is a valid derivation through an application function and the tables include derived relationships", correct: true}
+      - {key: B, text: "Serving, because components serve services", why: "A service serves users; a component realizes a service."}
+      - {key: C, text: "Assignment, because components are assigned to services", why: "Components are assigned to functions; the service is realized."}
+      - {key: D, text: "None — only metamodel-drawn relationships are in the table", why: "The tables contain all derived relationships too."}
+    explanation: "Component assigned to function realizing service collapses under DR 2 to component realizes service, which the table therefore lists."
+    refs: ["ARCHIMATE §5.7", "ARCHIMATE §B.5"]
+    difficulty: 2
+    tags: [table, derived]
+  - id: A7-175
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "Which relationship may connect a deliverable (source) to an application component (target)?"
+    options:
+      - {key: A, text: "Realization", correct: true}
+      - {key: B, text: "Assignment", why: "Assignment to core elements is not available from a deliverable."}
+      - {key: C, text: "Serving", why: "A deliverable is passive and does not serve."}
+      - {key: D, text: "Triggering", why: "A deliverable is not behaviour."}
+    explanation: "A deliverable may realize any core element, expressing that it implements that part of the architecture."
+    refs: ["ARCHIMATE §12.5", "ARCHIMATE §B.4"]
+    difficulty: 2
+    tags: [table, implementation-migration]
+  - id: A7-176
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "Which relationship may connect a business role (source) to a work package (target)?"
+    options:
+      - {key: A, text: "Assignment — the role is responsible for the work package", correct: true}
+      - {key: B, text: "Realization", why: "A role does not realize a work package; and derived core-to-I&M relationships are limited to assignment and association."}
+      - {key: C, text: "Serving", why: "Not permitted from core to implementation and migration."}
+      - {key: D, text: "Composition", why: "Different element types; composition is not available."}
+    explanation: "A business internal active structure element may be assigned to a work package, e.g. a project manager role; core-to-I&M derivations are otherwise limited to assignment and association."
+    refs: ["ARCHIMATE §12.5", "ARCHIMATE §B.4"]
+    difficulty: 2
+    tags: [table, implementation-migration]
+  - id: A7-177
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "What is the first thing to establish before reading a cell in the relationship table?"
+    options:
+      - {key: A, text: "Which element is the source, because the table is directional and (X, Y) differs from (Y, X)", correct: true}
+      - {key: B, text: "Which layer the elements are in, because the table is per layer", why: "There is one table across all element types."}
+      - {key: C, text: "Whether the elements are in the same viewpoint", why: "Viewpoints do not affect permitted relationships."}
+      - {key: D, text: "Whether the relationship is deprecated", why: "Deprecation is noted separately and does not change the lookup."}
+    explanation: "The cell for (Business Process, Business Service) holds realization; the reverse cell holds serving. Direction decides the row."
+    refs: ["ARCHIMATE §B.5"]
+    difficulty: 1
+    tags: [table, direction]
+  - id: A7-178
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "Which letters will always appear in a cell whose row and column are the same element type?"
+    options:
+      - {key: A, text: "c, g, s and o", correct: true}
+      - {key: B, text: "i and r", why: "Assignment and realization are not generally allowed between same-type elements."}
+      - {key: C, text: "v and t", why: "Serving and triggering depend on the element type."}
+      - {key: D, text: "Only o", why: "Composition, aggregation and specialization are also always allowed between same-type elements."}
+    explanation: "Composition, aggregation and specialization are always permitted between two elements of the same type, and association between any two elements."
+    refs: ["ARCHIMATE §5", "ARCHIMATE §B.5"]
+    difficulty: 2
+    tags: [table, always-allowed]
+  - id: A7-179
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "Which relationship may connect a technology service (source) to an application component (target)?"
+    options:
+      - {key: A, text: "Serving", correct: true}
+      - {key: B, text: "Realization", why: "Technology behaviour may realize application behaviour, but a technology service does not realize a component."}
+      - {key: C, text: "Assignment", why: "Assignment does not run from a service to a component."}
+      - {key: D, text: "Access", why: "A component is active structure, not passive."}
+    explanation: "Technology services serve application components and behaviour — the technology-to-application counterpart of application services serving business."
+    refs: ["ARCHIMATE §B.5", "ARCHIMATE §5.2.1"]
+    difficulty: 1
+    tags: [table, cross-layer, which-relationship]
+  - id: A7-180
+    unit: A7
+    objective: "A7.5"
+    lesson: A7/05_the_relationship_table
+    stem: "May a plateau aggregate a relationship between two core elements?"
+    options:
+      - {key: A, text: "Yes — plateau, grouping and location may aggregate or compose relationships and relationship connectors", correct: true}
+      - {key: B, text: "No — only groupings may contain relationships", why: "Location and plateau share that power."}
+      - {key: C, text: "No — plateaus may only aggregate motivation elements", why: "Plateaus may aggregate any core concept and relationships."}
+      - {key: D, text: "Only through an association", why: "Aggregation and composition are permitted directly."}
+    explanation: "B.6 lists grouping, plateau and location as the sources that may compose or aggregate a relationship; every other element may only associate with one."
+    refs: ["ARCHIMATE §B.6"]
+    difficulty: 3
+    tags: [table, plateau]

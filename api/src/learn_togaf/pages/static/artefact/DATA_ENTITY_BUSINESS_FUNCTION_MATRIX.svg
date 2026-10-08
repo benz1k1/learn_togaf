@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 270" font-family="sans-serif" font-size="12" role="img" aria-label="Example Data Entity/Business Function Matrix for a fictional retail bank, an original study illustration">
+<defs><marker id="arr-data-entity-business-function-matrix" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="760" height="270" fill="#fff"/>
+<text x="10" y="20" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Example: Data Entity/Business Function Matrix — retail bank</text>
+<text x="750" y="20" text-anchor="end" font-size="11" fill="#666" font-style="italic">matrix: Data Entity × Business Function</text>
+<rect x="10" y="34" width="140" height="32" rx="0" fill="#f2f2f2" stroke="#999" stroke-width="1"/>
+<text x="144" y="46" text-anchor="end" font-size="10" fill="#345" font-style="italic">Business Function →</text>
+<text x="16" y="60" text-anchor="start" font-size="10" fill="#345" font-style="italic">Data Entity ↓</text>
+<rect x="150" y="34" width="120" height="32" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="210.0" y="51" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Onboarding</text>
+<rect x="270" y="34" width="120" height="32" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="330.0" y="51" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Payments</text>
+<rect x="390" y="34" width="120" height="32" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="450.0" y="51" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Lending</text>
+<rect x="510" y="34" width="120" height="32" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="570.0" y="45" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Cards</text>
+<text x="570.0" y="58" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Operations</text>
+<rect x="630" y="34" width="120" height="32" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="690.0" y="45" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Risk and</text>
+<text x="690.0" y="58" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Compliance</text>
+<rect x="10" y="66" width="140" height="32" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="83" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Customer</text>
+<rect x="150" y="66" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="210.0" y="83" text-anchor="middle" font-size="10" fill="#222">owner</text>
+<rect x="270" y="66" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="330.0" y="83" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="390" y="66" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="450.0" y="83" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="510" y="66" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="570.0" y="83" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="630" y="66" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="690.0" y="83" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="10" y="98" width="140" height="32" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="115" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Account</text>
+<rect x="150" y="98" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="210.0" y="115" text-anchor="middle" font-size="10" fill="#222">creates</text>
+<rect x="270" y="98" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="330.0" y="115" text-anchor="middle" font-size="10" fill="#222">owner</text>
+<rect x="390" y="98" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="450.0" y="115" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="510" y="98" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="570.0" y="115" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="630" y="98" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="690.0" y="115" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="10" y="130" width="140" height="32" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="147" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Card</text>
+<rect x="150" y="130" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<rect x="270" y="130" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="330.0" y="147" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="390" y="130" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<rect x="510" y="130" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="570.0" y="147" text-anchor="middle" font-size="10" fill="#222">owner</text>
+<rect x="630" y="130" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="690.0" y="147" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="10" y="162" width="140" height="32" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="179" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Transaction</text>
+<rect x="150" y="162" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<rect x="270" y="162" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="330.0" y="179" text-anchor="middle" font-size="10" fill="#222">owner</text>
+<rect x="390" y="162" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="450.0" y="179" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="510" y="162" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="570.0" y="179" text-anchor="middle" font-size="10" fill="#222">creates</text>
+<rect x="630" y="162" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="690.0" y="179" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="10" y="194" width="140" height="32" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="211" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Loan</text>
+<rect x="150" y="194" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<rect x="270" y="194" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="330.0" y="211" text-anchor="middle" font-size="10" fill="#222">uses</text>
+<rect x="390" y="194" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="450.0" y="211" text-anchor="middle" font-size="10" fill="#222">owner</text>
+<rect x="510" y="194" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<rect x="630" y="194" width="120" height="32" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="690.0" y="211" text-anchor="middle" font-size="10" fill="#222">uses</text><text x="10" y="242" text-anchor="start" font-size="10" fill="#345">&#x27;owner&#x27; = the function whose organisation unit owns the entity and is its data steward; &#x27;uses&#x27; / &#x27;creates&#x27; = other functions touching it.</text>
+<text x="10" y="262" text-anchor="start" font-size="11" fill="#666">Original illustration for study; the artifact is defined in CONTENT §3.6.5</text>
+</svg>

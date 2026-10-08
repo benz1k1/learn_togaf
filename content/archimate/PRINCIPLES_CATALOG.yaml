@@ -1,0 +1,35 @@
+# Principles Catalog (PRELIM) drawn as an ArchiMate Motivation view: each principle realizes the
+# goal it serves and is realized by the requirement its implication becomes (ARCHIMATE §6.4).
+id: PRINCIPLES_CATALOG
+title: "Northgate Bank — Principles Catalog as a Motivation view"
+viewpoint: Motivation
+elements:
+  - {id: g_comply, type: goal, name: "Stay compliant", col: 0, row: 0}
+  - {id: g_cost, type: goal, name: "Lower cost to serve", col: 1, row: 0}
+  - {id: g_mobile, type: goal, name: "Grow mobile adoption", col: 2, row: 0}
+  - {id: g_fraud, type: goal, name: "Reduce fraud losses", col: 3, row: 0}
+  - {id: p1, type: principle, name: "PR-01 Data is an asset", col: 0, row: 1}
+  - {id: p2, type: principle, name: "PR-02 One customer record", col: 1, row: 1}
+  - {id: p3, type: principle, name: "PR-03 Buy before build", col: 2, row: 1}
+  - {id: p5, type: principle, name: "PR-05 Channel independence", col: 3, row: 1}
+  - {id: p4, type: principle, name: "PR-04 Security by design", col: 4, row: 1}
+  - {id: r1, type: requirement, name: "Every data entity has a steward", col: 0, row: 2}
+  - {id: r2, type: requirement, name: "Core Banking masters the customer record", col: 1, row: 2}
+  - {id: r3, type: requirement, name: "Build only the Mobile App", col: 2, row: 2}
+  - {id: r5, type: requirement, name: "One API per service, used by every channel", col: 3, row: 2}
+  - {id: r4, type: requirement, name: "Threat model per change", col: 4, row: 2}
+relations:
+  - {from: p1, to: g_comply, type: realization}
+  - {from: p2, to: g_cost, type: realization}
+  - {from: p2, to: g_comply, type: influence, label: "+"}
+  - {from: p3, to: g_cost, type: realization}
+  - {from: p5, to: g_mobile, type: realization}
+  - {from: p5, to: g_fraud, type: influence, label: "+"}
+  - {from: p4, to: g_fraud, type: realization}
+  - {from: r1, to: p1, type: realization}
+  - {from: r2, to: p2, type: realization}
+  - {from: r3, to: p3, type: realization}
+  - {from: r5, to: p5, type: realization}
+  - {from: r4, to: p4, type: realization}
+notes:
+  - {text: "Read bottom-up: an implication (Requirement) realizes its Principle, which realizes the Goal it serves. Statement and rationale stay in the catalog's documentation fields.", col: 0, row: 3, w: 3}

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" font-family="sans-serif" font-size="12" role="img" aria-label="Example Principles Catalog for a fictional retail bank, an original study illustration">
+<defs><marker id="arr-principles-catalog" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="760" height="260" fill="#fff"/>
+<text x="10" y="20" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Example: Principles Catalog — retail bank</text>
+<text x="750" y="20" text-anchor="end" font-size="11" fill="#666" font-style="italic">catalog: one row per Principle</text>
+<rect x="10" y="34" width="150" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="16" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Principle</text>
+<rect x="160" y="34" width="200" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="166" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Statement</text>
+<rect x="360" y="34" width="190" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="366" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Rationale</text>
+<rect x="550" y="34" width="200" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="556" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Implications</text>
+<rect x="10" y="56" width="150" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="71" text-anchor="start" font-size="11" fill="#222">PR-01 Data is</text>
+<text x="16" y="85" text-anchor="start" font-size="11" fill="#222">an asset</text>
+<rect x="160" y="56" width="200" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="166" y="71" text-anchor="start" font-size="11" fill="#222">Data is owned, valued and</text>
+<text x="166" y="85" text-anchor="start" font-size="11" fill="#222">managed like any other asset</text>
+<rect x="360" y="56" width="190" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="366" y="71" text-anchor="start" font-size="11" fill="#222">Decisions depend on trusted</text>
+<text x="366" y="85" text-anchor="start" font-size="11" fill="#222">customer and account data</text>
+<rect x="550" y="56" width="200" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="556" y="71" text-anchor="start" font-size="11" fill="#222">Every entity has a steward;</text>
+<text x="556" y="85" text-anchor="start" font-size="11" fill="#222">quality is measured</text>
+<rect x="10" y="92" width="150" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="107" text-anchor="start" font-size="11" fill="#222">PR-02 One customer</text>
+<text x="16" y="121" text-anchor="start" font-size="11" fill="#222">record</text>
+<rect x="160" y="92" width="200" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="166" y="107" text-anchor="start" font-size="11" fill="#222">A customer is held once and</text>
+<text x="166" y="121" text-anchor="start" font-size="11" fill="#222">referenced everywhere</text>
+<rect x="360" y="92" width="190" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="366" y="107" text-anchor="start" font-size="11" fill="#222">Duplicate records cause failed</text>
+<text x="366" y="121" text-anchor="start" font-size="11" fill="#222">KYC and mis-sent statements</text>
+<rect x="550" y="92" width="200" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="556" y="107" text-anchor="start" font-size="11" fill="#222">Core Banking is the master;</text>
+<text x="556" y="121" text-anchor="start" font-size="11" fill="#222">Mobile App reads only</text>
+<rect x="10" y="128" width="150" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="143" text-anchor="start" font-size="11" fill="#222">PR-03 Buy before</text>
+<text x="16" y="157" text-anchor="start" font-size="11" fill="#222">build</text>
+<rect x="160" y="128" width="200" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="166" y="143" text-anchor="start" font-size="11" fill="#222">Prefer proven packages over</text>
+<text x="166" y="157" text-anchor="start" font-size="11" fill="#222">bespoke development</text>
+<rect x="360" y="128" width="190" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="366" y="143" text-anchor="start" font-size="11" fill="#222">Lower delivery risk and cost</text>
+<rect x="550" y="128" width="200" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="556" y="143" text-anchor="start" font-size="11" fill="#222">Build only where the bank</text>
+<text x="556" y="157" text-anchor="start" font-size="11" fill="#222">differentiates (Mobile App)</text>
+<rect x="10" y="164" width="150" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="179" text-anchor="start" font-size="11" fill="#222">PR-04 Security by</text>
+<text x="16" y="193" text-anchor="start" font-size="11" fill="#222">design</text>
+<rect x="160" y="164" width="200" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="166" y="179" text-anchor="start" font-size="11" fill="#222">Controls are designed in,</text>
+<text x="166" y="193" text-anchor="start" font-size="11" fill="#222">not bolted on</text>
+<rect x="360" y="164" width="190" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="366" y="179" text-anchor="start" font-size="11" fill="#222">Card and payment data attract</text>
+<text x="366" y="193" text-anchor="start" font-size="11" fill="#222">regulatory duty</text>
+<rect x="550" y="164" width="200" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="556" y="179" text-anchor="start" font-size="11" fill="#222">Threat model per change;</text>
+<text x="556" y="193" text-anchor="start" font-size="11" fill="#222">no shared credentials</text>
+<rect x="10" y="200" width="150" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="215" text-anchor="start" font-size="11" fill="#222">PR-05 Channel</text>
+<text x="16" y="229" text-anchor="start" font-size="11" fill="#222">independence</text>
+<rect x="160" y="200" width="200" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="166" y="215" text-anchor="start" font-size="11" fill="#222">Any service works from any</text>
+<text x="166" y="229" text-anchor="start" font-size="11" fill="#222">channel: branch, mobile, card</text>
+<rect x="360" y="200" width="190" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="366" y="215" text-anchor="start" font-size="11" fill="#222">Customers switch channels</text>
+<text x="366" y="229" text-anchor="start" font-size="11" fill="#222">mid-journey</text>
+<rect x="550" y="200" width="200" height="36" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="556" y="215" text-anchor="start" font-size="11" fill="#222">Services expose one API used</text>
+<text x="556" y="229" text-anchor="start" font-size="11" fill="#222">by every channel</text>
+<text x="10" y="252" text-anchor="start" font-size="11" fill="#666">Original illustration for study; the artifact is defined in CONTENT §3.6.2</text>
+</svg>

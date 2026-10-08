@@ -23,8 +23,28 @@ def connect(path: Path = DB_PATH) -> sqlite3.Connection:
     return connection
 
 
+# Columns added after a table first shipped. ``CREATE TABLE IF NOT EXISTS`` leaves an existing
+# table alone, so each is added here when missing; the content loader then rebuilds the rows.
+_ADDED_COLUMNS: tuple[tuple[str, str, str], ...] = (
+    ("learning_unit", "track", "TEXT NOT NULL DEFAULT 'TOGAF'"),
+    ("learning_unit", "scoring", "TEXT NOT NULL DEFAULT ''"),
+    ("question", "track", "TEXT NOT NULL DEFAULT 'TOGAF'"),
+    ("question", "scoring", "TEXT NOT NULL DEFAULT 'single'"),
+    ("adm_phase", "crosswalk", "TEXT NOT NULL DEFAULT ''"),
+    ("adm_artefact", "archimate", "TEXT NOT NULL DEFAULT ''"),
+    ("example_document", "track", "TEXT NOT NULL DEFAULT 'TOGAF'"),
+    ("example_document", "figure", "TEXT NOT NULL DEFAULT ''"),
+    ("example_document", "viewpoint", "TEXT NOT NULL DEFAULT ''"),
+    ("example_document", "artefacts", "TEXT NOT NULL DEFAULT '[]'"),
+)
+
+
 def apply_schema(connection: sqlite3.Connection) -> None:
     connection.executescript(_SCHEMA_PATH.read_text(encoding="utf-8"))
+    for table, column, definition in _ADDED_COLUMNS:
+        present = {row["name"] for row in connection.execute(f"PRAGMA table_info({table})")}
+        if column not in present:
+            connection.execute(f"ALTER TABLE {table} ADD COLUMN {column} {definition}")
 
 
 @contextmanager

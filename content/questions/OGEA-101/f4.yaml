@@ -1,0 +1,1832 @@
+# F4 ADM Phases drill bank (learn_togaf.md §2, §6). Every question is original, cites the
+# entailing ADM section, and is status: draft until reviewed. Ids F4-101 upward; F4-001..011
+# live in starter.yaml.
+code: F4_BANK
+exam: OGEA-101
+name: F4 ADM Phases bank
+kind: DRILL
+source: authored
+questions:
+  # ------------------------------------------------------------ 4.1 Preliminary Phase
+  - id: F4-101
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "Which of the following is one of the two objectives of the Preliminary Phase?"
+    options:
+      - {key: A, text: "Develop a high-level aspirational vision of the capabilities to be delivered"}
+      - {key: B, text: "Determine the Architecture Capability desired by the organization", correct: true}
+      - {key: C, text: "Finalize the Architecture Roadmap and the Implementation and Migration Plan"}
+      - {key: D, text: "Ensure that the Architecture Governance Framework is executed"}
+    explanation: "The Preliminary Phase determines and establishes the Architecture Capability. A is the first objective of Phase A, C is Phase F, D is Phase H."
+    refs: ["ADM §2.1"]
+    difficulty: 1
+    tags: [preliminary, objectives]
+  - id: F4-102
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "The standard summarizes the Preliminary Phase as being about defining which of the following?"
+    options:
+      - {key: A, text: "The Baseline and Target Architectures for each domain"}
+      - {key: B, text: "The work packages and Transition Architectures"}
+      - {key: C, text: "Where, what, why, who and how architecture is done in the enterprise", correct: true}
+      - {key: D, text: "The value realization process for the deployed architecture"}
+    explanation: "The approach section opens with 'where, what, why, who, and how we do architecture'. A is the work of Phases B to D, B is Phase E, D is Phase H step 1."
+    refs: ["ADM §2.5"]
+    difficulty: 1
+    tags: [preliminary, approach]
+  - id: F4-103
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "Which of the following is NOT listed as a main aspect of the Preliminary Phase approach?"
+    options:
+      - {key: A, text: "Defining the enterprise"}
+      - {key: B, text: "Performing gap analysis between the Baseline and Target Architectures", correct: true}
+      - {key: C, text: "Defining the Architecture Principles that will inform any architecture work"}
+      - {key: D, text: "Evaluating the Enterprise Architecture maturity"}
+    explanation: "Gap analysis is a step of the development phases B, C and D, not a Preliminary aspect. A, C and D are all in the approach's list of main aspects."
+    refs: ["ADM §2.5"]
+    difficulty: 2
+    tags: [preliminary, approach]
+  - id: F4-104
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "According to the Preliminary Phase approach, who must be appointed at this stage so that the activity has resources and clear support of business management?"
+    options:
+      - {key: A, text: "A sponsor", correct: true}
+      - {key: B, text: "The Architecture Board"}
+      - {key: C, text: "The Solution Architects"}
+      - {key: D, text: "A portfolio manager"}
+    explanation: "The enterprise-scope discussion says it is imperative that a sponsor is appointed at this stage. The Architecture Board is a governance body described in the Governance document, Solution Architects appear in Phase G, and portfolio managers co-operate in Phase F."
+    refs: ["ADM §2.5.1"]
+    difficulty: 2
+    tags: [preliminary, approach]
+  - id: F4-105
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "Which set of management frameworks does the standard say the TOGAF framework should be co-ordinated with?"
+    options:
+      - {key: A, text: "ITIL, PRINCE2, COBIT and CMMI"}
+      - {key: B, text: "Business, Data, Application and Technology"}
+      - {key: C, text: "Strategy, Segment and Capability Architecture"}
+      - {key: D, text: "Business Capability Management, Project/Portfolio Management, Operations Management and Solution Development Methods", correct: true}
+    explanation: "The four are named in the management frameworks discussion. A lists specific products and methods the standard only mentions as examples; B lists the architecture domains; C lists the Architecture Landscape levels."
+    refs: ["ADM §2.5.5"]
+    difficulty: 2
+    tags: [preliminary, approach]
+  - id: F4-106
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "Which statement about revisiting the Preliminary Phase is correct?"
+    options:
+      - {key: A, text: "It is executed once per enterprise and never revisited"}
+      - {key: B, text: "It may be revisited from Phase A to ensure the Architecture Capability is suitable for a specific architecture problem", correct: true}
+      - {key: C, text: "It is repeated at the start of every ADM phase"}
+      - {key: D, text: "It may only be revisited from Phase H"}
+    explanation: "The approach states the Preliminary Phase may be revisited from the Architecture Vision phase. A and C are extremes the standard does not state; D confuses this with Phase H, which issues a new Request for Architecture Work for a new cycle."
+    refs: ["ADM §2.5"]
+    difficulty: 2
+    tags: [preliminary, approach]
+  - id: F4-107
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "What does the standard recommend for evaluating Enterprise Architecture maturity in the Preliminary Phase?"
+    options:
+      - {key: A, text: "Take an existing Capability Maturity Model and customize it as required", correct: true}
+      - {key: B, text: "Derive a completely new set of maturity factors for the enterprise"}
+      - {key: C, text: "Use the Capability Assessment produced in Phase A"}
+      - {key: D, text: "Defer maturity evaluation until Phase H"}
+    explanation: "The planning section recommends customizing an existing model such as NASCIO or the US DoC ACMM. B is explicitly discouraged, C reverses the order (the Capability Assessment is a Phase A output), D is wrong because maturity is a Preliminary concern (though Phase H monitors it)."
+    refs: ["ADM §2.5.7"]
+    difficulty: 2
+    tags: [preliminary, approach]
+  - id: F4-108
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "Which of the following belongs to the objective 'Establish the Architecture Capability' rather than 'Determine the Architecture Capability'?"
+    options:
+      - {key: A, text: "Establish a Capability Maturity target"}
+      - {key: B, text: "Review the organizational context for conducting Enterprise Architecture"}
+      - {key: C, text: "Define and establish the Organizational Model for Enterprise Architecture", correct: true}
+      - {key: D, text: "Identify the established frameworks, methods and processes that intersect with the capability"}
+    explanation: "Defining the Organizational Model, the governance process, the tools and the principles are the 'establish' bullets. A, B and D are all 'determine' bullets."
+    refs: ["ADM §2.1"]
+    difficulty: 3
+    tags: [preliminary, objectives]
+  - id: F4-109
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "Tailoring the TOGAF framework in the Preliminary Phase considers which three kinds of tailoring?"
+    options:
+      - {key: A, text: "Terminology, process and content", correct: true}
+      - {key: B, text: "Breadth, depth and time period"}
+      - {key: C, text: "Business, data and technology"}
+      - {key: D, text: "Strategic, interim and tactical"}
+    explanation: "The tailoring step names terminology, process and content tailoring. B lists the scoping dimensions used in Phase A, C is a subset of the domains, D describes business objectives mentioned in the approach, not tailoring."
+    refs: ["ADM §2.3.5"]
+    difficulty: 2
+    tags: [preliminary, steps]
+  - id: F4-110
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "What does the Preliminary Phase approach say about defining business principles?"
+    options:
+      - {key: A, text: "The architecture function defines them in the Preliminary Phase"}
+      - {key: B, text: "They are defined in Phase B as part of the Business Architecture"}
+      - {key: C, text: "They are derived from the Technology Architecture"}
+      - {key: D, text: "Defining them normally lies outside the scope of the architecture function; Architecture Principles may restate or cross-refer to them", correct: true}
+    explanation: "The principles section says business principles are normally defined elsewhere in the enterprise and the Architecture Principles may restate or cross-refer to them. A, B and C all place business principle definition inside the architecture work."
+    refs: ["ADM §2.5.4"]
+    difficulty: 2
+    tags: [preliminary, approach]
+  - id: F4-111
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "Which body is normally responsible for approving the Architecture Principles?"
+    options:
+      - {key: A, text: "The sponsor of the Phase A project"}
+      - {key: B, text: "The body responsible for Architecture Governance", correct: true}
+      - {key: C, text: "The Solution Architects"}
+      - {key: D, text: "Operations Management"}
+    explanation: "The principles section links principles to governance: the governance body approves the principles and resolves architecture issues. A confuses this with signing the Statement of Architecture Work, C is a Phase G role, D is one of the co-ordinated management frameworks."
+    refs: ["ADM §2.5.4"]
+    difficulty: 2
+    tags: [preliminary, approach]
+  - id: F4-112
+    unit: F4
+    objective: "4.1"
+    lesson: F4/03_preliminary_phase
+    stem: "Which of the following is listed as an area to consider when reviewing the organizational context in the Preliminary Phase?"
+    options:
+      - {key: A, text: "The commercial models and budgetary plans for Enterprise Architecture activity", correct: true}
+      - {key: B, text: "The data migration requirements for replaced applications"}
+      - {key: C, text: "The work package portfolio and its dependencies"}
+      - {key: D, text: "The terms of the Architecture Contract"}
+    explanation: "Commercial models and budget plans open the organizational context list. B is a Phase C Data Architecture consideration, C is Phase E, D is Phase G."
+    refs: ["ADM §2.5.2"]
+    difficulty: 2
+    tags: [preliminary, approach]
+  # ------------------------------------------------------------ 4.2 Phase A
+  - id: F4-113
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "Which of the following is an objective of Phase A, Architecture Vision?"
+    options:
+      - {key: A, text: "Develop the Target Business Architecture"}
+      - {key: B, text: "Establish the Architecture Capability"}
+      - {key: C, text: "Obtain approval for a Statement of Architecture Work that defines a program of works", correct: true}
+      - {key: D, text: "Generate the initial complete version of the Architecture Roadmap"}
+    explanation: "Phase A's second objective is approval of the Statement of Architecture Work. A is Phase B, B is the Preliminary Phase, D is Phase E."
+    refs: ["ADM §3.1"]
+    difficulty: 1
+    tags: [phase-a, objectives]
+  - id: F4-114
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "Phase A starts with the receipt of which document, and from whom?"
+    options:
+      - {key: A, text: "A Request for Architecture Work, from the sponsoring organization", correct: true}
+      - {key: B, text: "A Statement of Architecture Work, from the Architecture Board"}
+      - {key: C, text: "An Architecture Contract, from the implementation organization"}
+      - {key: D, text: "A Requirements Impact Assessment, from the Requirements Management process"}
+    explanation: "The approach says Phase A starts with receipt of a Request for Architecture Work from the sponsoring organization. B is Phase A's own output, C is a Phase G deliverable, D is a Requirements Management output."
+    refs: ["ADM §3.5.1"]
+    difficulty: 1
+    tags: [phase-a, approach]
+  - id: F4-115
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "Scoping decisions made in Phase A are constrained by what?"
+    options:
+      - {key: A, text: "The Implementation and Migration Plan"}
+      - {key: B, text: "The overall scope for architecture activity established in the Preliminary Phase and embodied in the architecture framework", correct: true}
+      - {key: C, text: "The signed Architecture Contract"}
+      - {key: D, text: "The Target Technology Architecture"}
+    explanation: "Phase A scoping is restricted to this cycle's objectives and constrained by the overall scope set in the Preliminary Phase. A and C do not exist yet (Phases F and G), D is developed later in Phase D."
+    refs: ["ADM §3.5.1"]
+    difficulty: 2
+    tags: [phase-a, approach]
+  - id: F4-116
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "During Phase A it becomes clear that the architecture framework in place cannot achieve the desired Architecture Vision. What does the standard say to do?"
+    options:
+      - {key: A, text: "Proceed to Phase B and address the framework later"}
+      - {key: B, text: "Raise a Change Request for Phase H"}
+      - {key: C, text: "Revisit the Preliminary Phase and extend the overall architecture framework", correct: true}
+      - {key: D, text: "Abandon the ADM cycle"}
+    explanation: "The approach states that where the framework is not appropriate, revisit the Preliminary Phase and extend the framework. A ignores the problem, B misuses Phase H (which handles change after deployment), D is not an option the standard offers."
+    refs: ["ADM §3.5.1"]
+    difficulty: 2
+    tags: [phase-a, approach]
+  - id: F4-117
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "The Architecture Vision provides the sponsor with a key tool to do what?"
+    options:
+      - {key: A, text: "Sign the Architecture Contract with the implementing organization"}
+      - {key: B, text: "Prioritize the migration projects"}
+      - {key: C, text: "Govern the implementation projects"}
+      - {key: D, text: "Sell the benefits of the proposed capability to stakeholders and decision makers", correct: true}
+    explanation: "The vision is described as the sponsor's tool to sell the benefits of the proposed capability. A is Phase G, B is Phase F, C is Phase G."
+    refs: ["ADM §3.5.2"]
+    difficulty: 1
+    tags: [phase-a, approach]
+  - id: F4-118
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "Which three Business Architecture concepts does Phase A search for existing materials on?"
+    options:
+      - {key: A, text: "Data entities, logical data components and physical data components"}
+      - {key: B, text: "Business capabilities, value streams and organization maps", correct: true}
+      - {key: C, text: "Work packages, Transition Architectures and the Architecture Roadmap"}
+      - {key: D, text: "Catalogs, matrices and diagrams"}
+    explanation: "The approach names business capabilities, value streams and organization maps, each with its Series Guide. A is the Data Architecture metamodel set, C is Phase E vocabulary, D is the artifact classification of the Content Framework."
+    refs: ["ADM §3.5.2"]
+    difficulty: 2
+    tags: [phase-a, approach]
+  - id: F4-119
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "The Architecture Vision provides a first-cut, high-level description of what?"
+    options:
+      - {key: A, text: "The Baseline and Target Architectures covering the Business, Data, Application and Technology domains", correct: true}
+      - {key: B, text: "The Target Business Architecture only"}
+      - {key: C, text: "The Transition Architectures and work packages"}
+      - {key: D, text: "The Implementation and Migration Plan"}
+    explanation: "The vision covers Baseline and Target across all four domains at a high level; the detail is developed in later phases. B is too narrow (that is Phase B's job), C is Phase E, D is Phases E and F."
+    refs: ["ADM §3.5.2"]
+    difficulty: 2
+    tags: [phase-a, approach]
+  - id: F4-120
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "In Phase A, what represents the consensus that the Architecture Vision has been accepted?"
+    options:
+      - {key: A, text: "The Architecture Board approving the Architecture Contract"}
+      - {key: B, text: "Approval of the Implementation and Migration Plan"}
+      - {key: C, text: "The sponsoring organization signing the Statement of Architecture Work", correct: true}
+      - {key: D, text: "Sign-off of the Compliance Assessment"}
+    explanation: "The approach says the consensus is represented by the sponsoring organization signing the Statement of Architecture Work. A and D belong to Phase G, B to Phase F."
+    refs: ["ADM §3.5.2"]
+    difficulty: 2
+    tags: [phase-a, approach]
+  - id: F4-121
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "Which technique does the standard describe as appropriate and useful to discover and document business requirements and to articulate an Architecture Vision that responds to them?"
+    options:
+      - {key: A, text: "Gap analysis"}
+      - {key: B, text: "Business scenarios", correct: true}
+      - {key: C, text: "The Business Value and Risk Matrix"}
+      - {key: D, text: "The Consolidated Gaps, Solutions and Dependencies matrix"}
+    explanation: "Business scenarios are named in the Develop Architecture Vision step. A is a Phase B to D step, C is a Phase F technique, D is a Phase E technique."
+    refs: ["ADM §3.3.8"]
+    difficulty: 1
+    tags: [phase-a, steps]
+  - id: F4-122
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "What does Phase A normally do with the business principles, business goals and strategic drivers of the organization?"
+    options:
+      - {key: A, text: "Ensure the existing definitions are current and clarify any ambiguity, defining them for the first time only if they do not exist", correct: true}
+      - {key: B, text: "Replace them with Architecture Principles"}
+      - {key: C, text: "Defer their definition to Phase B"}
+      - {key: D, text: "Hand them to Requirements Management to define"}
+    explanation: "The approach says these are normally already defined elsewhere; Phase A verifies and clarifies, otherwise defines them for the first time. B confuses two different sets of principles, C and D move the work to the wrong place."
+    refs: ["ADM §3.5.1"]
+    difficulty: 2
+    tags: [phase-a, approach]
+  - id: F4-123
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "Beyond the four basic domains, which of the following are given as example domains the Architecture Vision may explore?"
+    options:
+      - {key: A, text: "Baseline, Target and Transition"}
+      - {key: B, text: "Strategy, Segment and Capability"}
+      - {key: C, text: "Security, Digital, Knowledge and Partnership", correct: true}
+      - {key: D, text: "Catalog, Matrix and Diagram"}
+    explanation: "The approach lists information, security, digital, network management, knowledge, industry-specific, services, partnership and cybersecurity as example domains. A are architecture states, B are Landscape levels, D are artifact kinds."
+    refs: ["ADM §3.5.2"]
+    difficulty: 2
+    tags: [phase-a, approach]
+  - id: F4-124
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "What does the 'business assessment' conducted in the Architecture Vision phase involve?"
+    options:
+      - {key: A, text: "Consolidating the gap analysis results from the domain architectures"}
+      - {key: B, text: "Documenting critical factors, assessing various courses of action and selecting the best one as the basis for the vision", correct: true}
+      - {key: C, text: "Prioritizing projects by cost/benefit and risk"}
+      - {key: D, text: "Reviewing implementation projects for architecture compliance"}
+    explanation: "The approach describes a business assessment (for example with business scenarios) that assesses courses of action and selects the best. A is Phase E, C is Phase F, D is Phase G."
+    refs: ["ADM §3.5.2"]
+    difficulty: 2
+    tags: [phase-a, approach]
+  - id: F4-125
+    unit: F4
+    objective: "4.2"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "According to the first step of Phase A, how should each cycle of the ADM normally be handled?"
+    options:
+      - {key: A, text: "As a Transition Architecture"}
+      - {key: B, text: "As a Change Request managed in Phase H"}
+      - {key: C, text: "As a stand-alone activity outside the enterprise's governance"}
+      - {key: D, text: "As a project, using the project management framework of the enterprise", correct: true}
+    explanation: "Establishing the architecture project means running the cycle as a project under the enterprise's project management framework. A is a Phase E concept, B is Phase H, C contradicts the step's call for corporate and line management endorsement."
+    refs: ["ADM §3.3.1"]
+    difficulty: 2
+    tags: [phase-a, steps]
+  # ------------------------------------------------------------ 4.3 inputs, steps, outputs
+  # Preliminary
+  - id: F4-126
+    unit: F4
+    objective: "4.3"
+    lesson: F4/03_preliminary_phase
+    stem: "Which of the following is listed as a non-architectural input to the Preliminary Phase?"
+    options:
+      - {key: A, text: "Architecture Vision"}
+      - {key: B, text: "Statement of Architecture Work"}
+      - {key: C, text: "Partnership and contract agreements", correct: true}
+      - {key: D, text: "Draft Architecture Definition Document"}
+    explanation: "Partnership and contract agreements are in the non-architectural list along with strategies, plans and governance frameworks. A and B are Phase A outputs, D first appears from Phase A onwards; none can enter the Preliminary Phase."
+    refs: ["ADM §2.2.2"]
+    difficulty: 2
+    tags: [preliminary, inputs]
+  - id: F4-127
+    unit: F4
+    objective: "4.3"
+    lesson: F4/03_preliminary_phase
+    stem: "Which output of the Preliminary Phase does the standard mark as optional?"
+    options:
+      - {key: A, text: "Request for Architecture Work", correct: true}
+      - {key: B, text: "Organizational Model for Enterprise Architecture"}
+      - {key: C, text: "Tailored Architecture Framework"}
+      - {key: D, text: "Initial Architecture Repository"}
+    explanation: "The Request for Architecture Work is listed with '(optional)'; it may instead come from the sponsor to trigger Phase A. B, C and D are the core Preliminary outputs."
+    refs: ["ADM §2.4"]
+    difficulty: 1
+    tags: [preliminary, outputs]
+  - id: F4-128
+    unit: F4
+    objective: "4.3"
+    lesson: F4/03_preliminary_phase
+    stem: "In the Preliminary Phase, which step follows 'Define and establish the Enterprise Architecture team and organization'?"
+    options:
+      - {key: A, text: "Scope the enterprise organizations impacted"}
+      - {key: B, text: "Identify and establish Architecture Principles", correct: true}
+      - {key: C, text: "Tailor the TOGAF framework and, if any, other selected architecture frameworks"}
+      - {key: D, text: "Develop a strategy and implementation plan for tools and techniques"}
+    explanation: "The six steps run scope, governance, team, principles, tailor, tools. A is step 1, C is step 5, D is step 6."
+    refs: ["ADM §2.3"]
+    difficulty: 2
+    tags: [preliminary, steps]
+  - id: F4-129
+    unit: F4
+    objective: "4.3"
+    lesson: F4/03_preliminary_phase
+    stem: "Which of the following is listed as a reference material external to the enterprise for the Preliminary Phase?"
+    options:
+      - {key: A, text: "Product information on candidate products"}
+      - {key: B, text: "Planning methodologies"}
+      - {key: C, text: "Governance models and frameworks"}
+      - {key: D, text: "The TOGAF Library", correct: true}
+    explanation: "The Preliminary Phase's external references are the TOGAF Library and other architecture frameworks. A is a Phase D external reference, B is a Phase E non-architectural input, C is a Phase E and F architectural input."
+    refs: ["ADM §2.2.1"]
+    difficulty: 3
+    tags: [preliminary, inputs]
+  # Phase A
+  - id: F4-130
+    unit: F4
+    objective: "4.3"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "Which of the following is NOT an output of Phase A?"
+    options:
+      - {key: A, text: "Communications Plan"}
+      - {key: B, text: "Capability Assessment"}
+      - {key: C, text: "Draft Architecture Requirements Specification", correct: true}
+      - {key: D, text: "Architecture Vision"}
+    explanation: "The Architecture Requirements Specification first appears as a draft output of Phase B. The Communications Plan, Capability Assessment and Architecture Vision are all produced in Phase A."
+    refs: ["ADM §3.4", "ADM §4.4"]
+    difficulty: 2
+    tags: [phase-a, outputs]
+  - id: F4-131
+    unit: F4
+    objective: "4.3"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "Which of the following is an architectural input to Phase A?"
+    options:
+      - {key: A, text: "Populated Architecture Repository", correct: true}
+      - {key: B, text: "Draft Architecture Requirements Specification"}
+      - {key: C, text: "Architecture Roadmap"}
+      - {key: D, text: "Implementation Governance Model"}
+    explanation: "Phase A's architectural inputs are the Organizational Model, the Tailored Architecture Framework and the populated Architecture Repository. B first exists after Phase B, C after Phase E, D after Phase F."
+    refs: ["ADM §3.2.3"]
+    difficulty: 2
+    tags: [phase-a, inputs]
+  - id: F4-132
+    unit: F4
+    objective: "4.3"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "In Phase A, which step comes immediately after 'Assess readiness for business transformation'?"
+    options:
+      - {key: A, text: "Evaluate capabilities"}
+      - {key: B, text: "Identify stakeholders, concerns and business requirements"}
+      - {key: C, text: "Develop Architecture Vision"}
+      - {key: D, text: "Define scope", correct: true}
+    explanation: "Readiness is step 5 and Define scope is step 6. A is step 4 (before), B is step 2, C is step 8."
+    refs: ["ADM §3.3"]
+    difficulty: 2
+    tags: [phase-a, steps]
+  - id: F4-133
+    unit: F4
+    objective: "4.3"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "The stakeholder map produced in Phase A step 2 is used to support which outputs?"
+    options:
+      - {key: A, text: "Architecture Definition Document, Architecture Requirements Specification and Architecture Roadmap"}
+      - {key: B, text: "Architecture Vision, Communications Plan and Statement of Architecture Work", correct: true}
+      - {key: C, text: "Architecture Contract and Compliance Assessments"}
+      - {key: D, text: "Requirements Impact Assessment and Architecture Requirements Repository"}
+    explanation: "The step says the map identifies the concerns and viewpoints for the Architecture Vision, the stakeholders for the Communications Plan and the roles for the Statement of Architecture Work. A are Phase B to F deliverables, C Phase G, D Requirements Management."
+    refs: ["ADM §3.3.2"]
+    difficulty: 2
+    tags: [phase-a, steps]
+  - id: F4-134
+    unit: F4
+    objective: "4.3"
+    lesson: F4/04_phase_a_architecture_vision
+    stem: "Phase A step 10 distinguishes which two levels of risk?"
+    options:
+      - {key: A, text: "Initial level of risk and residual level of risk", correct: true}
+      - {key: B, text: "Strategic risk and tactical risk"}
+      - {key: C, text: "Business risk and technical risk"}
+      - {key: D, text: "Inherent risk and accepted risk"}
+    explanation: "The step defines the initial level (before mitigation) and the residual level (after mitigation). B, C and D are plausible risk vocabularies but not the standard's."
+    refs: ["ADM §3.3.10"]
+    difficulty: 2
+    tags: [phase-a, steps]
+  # Phase B
+  - id: F4-135
+    unit: F4
+    objective: "4.3"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "Which input is listed for Phase B but NOT for Phase A?"
+    options:
+      - {key: A, text: "Request for Architecture Work"}
+      - {key: B, text: "Organizational Model for Enterprise Architecture"}
+      - {key: C, text: "Capability Assessment", correct: true}
+      - {key: D, text: "Tailored Architecture Framework"}
+    explanation: "The Capability Assessment is produced in Phase A, so it can only be an input from Phase B onwards. A, B and D are inputs to both phases."
+    refs: ["ADM §4.2.2", "ADM §3.2"]
+    difficulty: 3
+    tags: [phase-b, inputs]
+  - id: F4-136
+    unit: F4
+    objective: "4.3"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "Which of the following is NOT an input to Phase B?"
+    options:
+      - {key: A, text: "Enterprise Continuum"}
+      - {key: B, text: "Draft Architecture Requirements Specification", correct: true}
+      - {key: C, text: "Architecture Vision"}
+      - {key: D, text: "Communications Plan"}
+    explanation: "Phase B produces the first draft Architecture Requirements Specification, so it is not among its inputs. The Enterprise Continuum, Architecture Vision and Communications Plan are all listed."
+    refs: ["ADM §4.2.3", "ADM §4.4"]
+    difficulty: 3
+    tags: [phase-b, inputs]
+  - id: F4-137
+    unit: F4
+    objective: "4.3"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "In Phase B, which step immediately follows 'Perform gap analysis'?"
+    options:
+      - {key: A, text: "Define candidate roadmap components", correct: true}
+      - {key: B, text: "Resolve impacts across the Architecture Landscape"}
+      - {key: C, text: "Develop Target Business Architecture Description"}
+      - {key: D, text: "Conduct formal stakeholder review"}
+    explanation: "Gap analysis is step 4 and candidate roadmap components step 5. B is step 6, C is step 3, D is step 7."
+    refs: ["ADM §4.3"]
+    difficulty: 1
+    tags: [phase-b, steps]
+  - id: F4-138
+    unit: F4
+    objective: "4.3"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "The draft Architecture Requirements Specification output by Phase B includes which of the following?"
+    options:
+      - {key: A, text: "Transition Architectures"}
+      - {key: B, text: "The Implementation Factor catalog"}
+      - {key: C, text: "Gap analysis results", correct: true}
+      - {key: D, text: "Compliance Assessments"}
+    explanation: "Phase B's specification carries gap analysis results, technical requirements and updated business requirements. A and B are Phase E, D is Phase G."
+    refs: ["ADM §4.4"]
+    difficulty: 2
+    tags: [phase-b, outputs]
+  - id: F4-139
+    unit: F4
+    objective: "4.3"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "What is the final step of Phase B?"
+    options:
+      - {key: A, text: "Finalize the Business Architecture"}
+      - {key: B, text: "Conduct formal stakeholder review"}
+      - {key: C, text: "Resolve impacts across the Architecture Landscape"}
+      - {key: D, text: "Create/Update the Architecture Definition Document", correct: true}
+    explanation: "Step 9 creates or updates the Architecture Definition Document; the wording is 'Create/Update' because Phase A may have started it. A is step 8, B step 7, C step 6."
+    refs: ["ADM §4.3"]
+    difficulty: 1
+    tags: [phase-b, steps]
+  # Phase C
+  - id: F4-140
+    unit: F4
+    objective: "4.3"
+    lesson: F4/06_phase_c_information_systems
+    stem: "Which input is specific to the Data Architecture part of Phase C?"
+    options:
+      - {key: A, text: "Technology principles, if existing"}
+      - {key: B, text: "Data principles, if existing", correct: true}
+      - {key: C, text: "Product information on candidate products"}
+      - {key: D, text: "Planning methodologies"}
+    explanation: "The Data part lists data principles among its architectural inputs. A is Phase D, C is a Phase D external reference, D is a Phase E non-architectural input."
+    refs: ["ADM §6.2.3"]
+    difficulty: 2
+    tags: [phase-c, inputs]
+  - id: F4-141
+    unit: F4
+    objective: "4.3"
+    lesson: F4/06_phase_c_information_systems
+    stem: "Which item does the Phase C (Data Architecture) draft Architecture Requirements Specification include?"
+    options:
+      - {key: A, text: "Constraints on the Technology Architecture about to be designed", correct: true}
+      - {key: B, text: "The Consolidated Gaps, Solutions and Dependencies Assessment"}
+      - {key: C, text: "The Implementation and Migration Strategy"}
+      - {key: D, text: "The Requirements Impact Assessment"}
+    explanation: "The Data part's specification adds data interoperability requirements and constraints on the Technology Architecture. B is Phase E's specification content, C is in Phase E's draft plan, D is a Requirements Management output."
+    refs: ["ADM §6.4"]
+    difficulty: 2
+    tags: [phase-c, outputs]
+  - id: F4-142
+    unit: F4
+    objective: "4.3"
+    lesson: F4/06_phase_c_information_systems
+    stem: "In the Data Architecture 'Conduct formal stakeholder review' step, the impact analysis identifies where which architectures may need to change?"
+    options:
+      - {key: A, text: "The Technology Architecture only"}
+      - {key: B, text: "The Business and Application Architectures", correct: true}
+      - {key: C, text: "The Transition Architectures"}
+      - {key: D, text: "The Requirements Repository"}
+    explanation: "The step checks whether the Business and Application Architectures must change to cater for the Data Architecture, and identifies constraints on the Technology Architecture about to be designed. A is a constraint, not a change target; C is Phase E; D is not an architecture."
+    refs: ["ADM §6.3.7"]
+    difficulty: 3
+    tags: [phase-c, steps]
+  - id: F4-143
+    unit: F4
+    objective: "4.3"
+    lesson: F4/06_phase_c_information_systems
+    stem: "The draft Architecture Requirements Specification input to the Application Architecture part of Phase C includes gap analysis results from which architectures?"
+    options:
+      - {key: A, text: "Business Architecture and Data Architecture, if available", correct: true}
+      - {key: B, text: "Technology Architecture only"}
+      - {key: C, text: "All four architecture domains"}
+      - {key: D, text: "None; gap analysis has not yet started"}
+    explanation: "The Application part receives gap results from Business and, if already done, Data. B is wrong because Technology comes after Phase C, C describes Phase E's input, D ignores Phase B."
+    refs: ["ADM §7.2.3"]
+    difficulty: 2
+    tags: [phase-c, inputs]
+  - id: F4-144
+    unit: F4
+    objective: "4.3"
+    lesson: F4/06_phase_c_information_systems
+    stem: "Which phase produces the Data Architecture components of an Architecture Roadmap?"
+    options:
+      - {key: A, text: "Phase B"}
+      - {key: B, text: "Phase C", correct: true}
+      - {key: C, text: "Phase D"}
+      - {key: D, text: "Phase E"}
+    explanation: "The Data Architecture part of Phase C outputs them. Phase B produces the Business components, Phase D the Technology components, and Phase E consolidates all candidates into the initial complete roadmap."
+    refs: ["ADM §6.4"]
+    difficulty: 1
+    tags: [phase-c, outputs]
+  # Phase D
+  - id: F4-145
+    unit: F4
+    objective: "4.3"
+    lesson: F4/07_phase_d_technology_architecture
+    stem: "Which reference material external to the enterprise is listed for Phase D but not for Phase B?"
+    options:
+      - {key: A, text: "Architecture reference materials"}
+      - {key: B, text: "The TOGAF Library"}
+      - {key: C, text: "Product information on candidate products", correct: true}
+      - {key: D, text: "Governance models and frameworks"}
+    explanation: "Phase D adds product information on candidate products. A is common to both, B is a Preliminary input, D is an architectural input to Phases E and F."
+    refs: ["ADM §8.2.1"]
+    difficulty: 2
+    tags: [phase-d, inputs]
+  - id: F4-146
+    unit: F4
+    objective: "4.3"
+    lesson: F4/07_phase_d_technology_architecture
+    stem: "The Phase D draft Architecture Definition Document includes which of the following?"
+    options:
+      - {key: A, text: "The Data Entity/Business Function matrix"}
+      - {key: B, text: "The work package portfolio"}
+      - {key: C, text: "The business data model"}
+      - {key: D, text: "Environments and locations, grouping the required technology into computing environments", correct: true}
+    explanation: "Environments and locations are part of the Target Technology Architecture content. A and C are Phase C Data Architecture content, B is in Phase E's Architecture Roadmap."
+    refs: ["ADM §8.4"]
+    difficulty: 2
+    tags: [phase-d, outputs]
+  - id: F4-147
+    unit: F4
+    objective: "4.3"
+    lesson: F4/07_phase_d_technology_architecture
+    stem: "Which phase's draft Architecture Requirements Specification is described as including 'requirements output from Phases B and C'?"
+    options:
+      - {key: A, text: "Phase B"}
+      - {key: B, text: "Phase D", correct: true}
+      - {key: C, text: "Phase E"}
+      - {key: D, text: "Phase F"}
+    explanation: "Phase D's specification carries forward the requirements from B and C plus updated technology requirements. Phase B starts the specification, Phase E adds the consolidated gaps assessment, Phase F finalizes it."
+    refs: ["ADM §8.4"]
+    difficulty: 2
+    tags: [phase-d, outputs]
+  - id: F4-148
+    unit: F4
+    objective: "4.3"
+    lesson: F4/07_phase_d_technology_architecture
+    stem: "Which Phase D step converts the description of the existing environment into the organization's taxonomy of technology services and components, such as the Technical Reference Model?"
+    options:
+      - {key: A, text: "Select reference models, viewpoints and tools"}
+      - {key: B, text: "Develop Target Technology Architecture Description"}
+      - {key: C, text: "Develop Baseline Technology Architecture Description", correct: true}
+      - {key: D, text: "Finalize the Technology Architecture"}
+    explanation: "The Baseline step begins by converting the existing environment into the taxonomy. A selects the taxonomy and tools, B conceptualizes ABBs for the target, D selects standards and documents building blocks."
+    refs: ["ADM §8.3.2"]
+    difficulty: 3
+    tags: [phase-d, steps]
+  # Phase E
+  - id: F4-149
+    unit: F4
+    objective: "4.3"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "Which of the following is listed as an input to Phase E?"
+    options:
+      - {key: A, text: "Candidate Architecture Roadmap components from Phases B, C and D", correct: true}
+      - {key: B, text: "Architecture Contract (signed)"}
+      - {key: C, text: "Implementation Governance Model"}
+      - {key: D, text: "Compliance Assessments"}
+    explanation: "The candidate components from the three development phases are the raw material for the roadmap. B and D are Phase G outputs consumed by Phase H, C is a Phase F output consumed by G and H."
+    refs: ["ADM §9.2.3"]
+    difficulty: 1
+    tags: [phase-e, inputs]
+  - id: F4-150
+    unit: F4
+    objective: "4.3"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "Which of the following is an output of Phase E?"
+    options:
+      - {key: A, text: "Implementation and Migration Plan, Approved"}
+      - {key: B, text: "Finalized Architecture Roadmap"}
+      - {key: C, text: "Implementation and Migration Plan, Draft", correct: true}
+      - {key: D, text: "Architecture Contract (signed)"}
+    explanation: "Phase E outputs a draft plan including the Implementation and Migration Strategy. A and B are Phase F outputs, D is Phase G."
+    refs: ["ADM §9.4"]
+    difficulty: 1
+    tags: [phase-e, outputs]
+  - id: F4-151
+    unit: F4
+    objective: "4.3"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "In Phase E, which step comes immediately after 'Formulate Implementation and Migration Strategy'?"
+    options:
+      - {key: A, text: "Identify Transition Architectures"}
+      - {key: B, text: "Refine and validate dependencies"}
+      - {key: C, text: "Create the Architecture Roadmap and Implementation and Migration Plan"}
+      - {key: D, text: "Identify and group major work packages", correct: true}
+    explanation: "Strategy is step 8 and work packages step 9. A is step 10, B is step 6, C is step 11."
+    refs: ["ADM §9.3"]
+    difficulty: 2
+    tags: [phase-e, steps]
+  - id: F4-152
+    unit: F4
+    objective: "4.3"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "In which Phase E step is the Implementation Factor catalog created?"
+    options:
+      - {key: A, text: "Determine/confirm key corporate change attributes", correct: true}
+      - {key: B, text: "Review and consolidate gap analysis results from Phases B to D"}
+      - {key: C, text: "Identify and group major work packages"}
+      - {key: D, text: "Determine business constraints for implementation"}
+    explanation: "Step 1 creates the catalog as the repository of implementation and migration decisions. B creates the Consolidated Gaps, Solutions and Dependencies matrix, C uses both together, D reviews business drivers that constrain sequencing."
+    refs: ["ADM §9.3.1"]
+    difficulty: 2
+    tags: [phase-e, steps]
+  - id: F4-153
+    unit: F4
+    objective: "4.3"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "The draft Architecture Requirements Specification output by Phase E includes which of the following?"
+    options:
+      - {key: A, text: "Gap analysis results from the Business Architecture only"}
+      - {key: B, text: "The Consolidated Gaps, Solutions and Dependencies Assessment", correct: true}
+      - {key: C, text: "The Requirements Impact Assessment"}
+      - {key: D, text: "Architecture compliance recommendations and dispensations"}
+    explanation: "Phase E's specification content is the consolidated assessment. A describes Phase B's specification, C is a Requirements Management output, D is in Phase G's deployed-solutions output."
+    refs: ["ADM §9.4"]
+    difficulty: 2
+    tags: [phase-e, outputs]
+  # Phase F
+  - id: F4-154
+    unit: F4
+    objective: "4.3"
+    lesson: F4/09_phase_f_migration_planning
+    stem: "Which input arrives in Phase F as an output of Phase E?"
+    options:
+      - {key: A, text: "Finalized Architecture Roadmap"}
+      - {key: B, text: "Architecture Roadmap, Draft, including the Implementation Factor catalog", correct: true}
+      - {key: C, text: "Architecture Contract (signed)"}
+      - {key: D, text: "Requirements Impact Assessment"}
+    explanation: "Phase F receives the draft roadmap with its work packages, Transition Architectures and Implementation Factor catalog. A is Phase F's own output, C is Phase G's, D is Requirements Management's."
+    refs: ["ADM §10.2.3"]
+    difficulty: 2
+    tags: [phase-f, inputs]
+  - id: F4-155
+    unit: F4
+    objective: "4.3"
+    lesson: F4/09_phase_f_migration_planning
+    stem: "Which of the following is an output of Phase F?"
+    options:
+      - {key: A, text: "Implementation Factor catalog"}
+      - {key: B, text: "Compliance Assessments"}
+      - {key: C, text: "Implementation Governance Model (if any)", correct: true}
+      - {key: D, text: "Architecture Vision"}
+    explanation: "The Implementation Governance Model may be produced in Phase F's last step. A is created in Phase E, B in Phase G, D in Phase A."
+    refs: ["ADM §10.4"]
+    difficulty: 2
+    tags: [phase-f, outputs]
+  - id: F4-156
+    unit: F4
+    objective: "4.3"
+    lesson: F4/09_phase_f_migration_planning
+    stem: "In Phase F, which step follows 'Assign a business value to each work package'?"
+    options:
+      - {key: A, text: "Confirm management framework interactions for the Implementation and Migration Plan"}
+      - {key: B, text: "Estimate resource requirements, project timings and availability/delivery vehicle", correct: true}
+      - {key: C, text: "Prioritize the migration projects by conducting a cost/benefit assessment and risk assessment"}
+      - {key: D, text: "Complete the Implementation and Migration Plan"}
+    explanation: "Business value is step 2 and estimation step 3. A is step 1, C is step 4, D is step 6."
+    refs: ["ADM §10.3"]
+    difficulty: 2
+    tags: [phase-f, steps]
+  - id: F4-157
+    unit: F4
+    objective: "4.3"
+    lesson: F4/09_phase_f_migration_planning
+    stem: "In which Phase F step may an Implementation Governance Model be produced?"
+    options:
+      - {key: A, text: "Confirm management framework interactions for the Implementation and Migration Plan"}
+      - {key: B, text: "Complete the Implementation and Migration Plan"}
+      - {key: C, text: "Confirm Architecture Roadmap and update Architecture Definition Document"}
+      - {key: D, text: "Complete the architecture development cycle and document lessons learned", correct: true}
+    explanation: "Step 7 transitions governance from development to realization and may produce the model if the capability's maturity warrants. A co-ordinates frameworks, B assembles the plan, C uses the state evolution and increments tables."
+    refs: ["ADM §10.3.7"]
+    difficulty: 3
+    tags: [phase-f, steps]
+  - id: F4-158
+    unit: F4
+    objective: "4.3"
+    lesson: F4/09_phase_f_migration_planning
+    stem: "Which document does Phase F output with the status 'Approved'?"
+    options:
+      - {key: A, text: "Implementation and Migration Plan", correct: true}
+      - {key: B, text: "Architecture Definition Document"}
+      - {key: C, text: "Architecture Contract"}
+      - {key: D, text: "Statement of Architecture Work"}
+    explanation: "The plan is output as 'Implementation and Migration Plan, Approved'. The Architecture Definition Document is output 'Finalized', the contract is signed in Phase G, and the Statement of Architecture Work is approved in Phase A."
+    refs: ["ADM §10.4"]
+    difficulty: 2
+    tags: [phase-f, outputs]
+  # Phase G
+  - id: F4-159
+    unit: F4
+    objective: "4.3"
+    lesson: F4/10_phase_g_implementation_governance
+    stem: "In what form does the Architecture Contract enter Phase G as an input?"
+    options:
+      - {key: A, text: "Signed"}
+      - {key: B, text: "As a standard", correct: true}
+      - {key: C, text: "Updated"}
+      - {key: D, text: "As a Compliance Assessment"}
+    explanation: "Phase G's input is 'Architecture Contract (standard)'; the signed contract is its output, the updated contract is a Phase H output, and a Compliance Assessment is a separate Phase G output."
+    refs: ["ADM §11.2.3"]
+    difficulty: 2
+    tags: [phase-g, inputs]
+  - id: F4-160
+    unit: F4
+    objective: "4.3"
+    lesson: F4/10_phase_g_implementation_governance
+    stem: "Which of the following is an output of Phase G?"
+    options:
+      - {key: A, text: "Implementation and Migration Plan, Approved"}
+      - {key: B, text: "New Request for Architecture Work to move to another cycle"}
+      - {key: C, text: "Requirements Impact Assessment"}
+      - {key: D, text: "Compliance Assessments", correct: true}
+    explanation: "Compliance Assessments, Change Requests and the signed Architecture Contract are the Phase G outputs. A is Phase F, B is Phase H, C is Requirements Management."
+    refs: ["ADM §11.4"]
+    difficulty: 1
+    tags: [phase-g, outputs]
+  - id: F4-161
+    unit: F4
+    objective: "4.3"
+    lesson: F4/10_phase_g_implementation_governance
+    stem: "In which Phase G step is the Architecture Contract documented and signed by the developing and sponsoring organizations?"
+    options:
+      - {key: A, text: "Confirm scope and priorities for deployment with development management"}
+      - {key: B, text: "Guide development of solutions deployment", correct: true}
+      - {key: C, text: "Perform Enterprise Architecture Compliance reviews"}
+      - {key: D, text: "Perform post-implementation review and close the implementation"}
+    explanation: "Step 3 includes documenting the contract and obtaining signatures. A produces the gap analysis report, C reviews compliance per building block, D closes the projects."
+    refs: ["ADM §11.3.3"]
+    difficulty: 3
+    tags: [phase-g, steps]
+  - id: F4-162
+    unit: F4
+    objective: "4.3"
+    lesson: F4/10_phase_g_implementation_governance
+    stem: "In Phase G, which step immediately follows 'Perform Enterprise Architecture Compliance reviews'?"
+    options:
+      - {key: A, text: "Guide development of solutions deployment"}
+      - {key: B, text: "Identify deployment resources and skills"}
+      - {key: C, text: "Implement business and IT operations", correct: true}
+      - {key: D, text: "Perform post-implementation review and close the implementation"}
+    explanation: "Compliance reviews are step 4 and operations step 5. A is step 3, B is step 2, D is step 6."
+    refs: ["ADM §11.3"]
+    difficulty: 2
+    tags: [phase-g, steps]
+  - id: F4-163
+    unit: F4
+    objective: "4.3"
+    lesson: F4/10_phase_g_implementation_governance
+    stem: "Which Phase A deliverable is an input to Phases B through F but is NOT listed as an input to Phase G?"
+    options:
+      - {key: A, text: "Capability Assessment"}
+      - {key: B, text: "Architecture Vision"}
+      - {key: C, text: "Statement of Architecture Work"}
+      - {key: D, text: "Communications Plan", correct: true}
+    explanation: "Phase G's non-architectural inputs are only the Request for Architecture Work and the Capability Assessment; the Communications Plan drops out. A, B and C are all listed for Phase G."
+    refs: ["ADM §11.2.2", "ADM §11.2.3"]
+    difficulty: 3
+    tags: [phase-g, inputs]
+  # Phase H
+  - id: F4-164
+    unit: F4
+    objective: "4.3"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "Which of the following is listed as an input to Phase H?"
+    options:
+      - {key: A, text: "Architecture Contract (standard)"}
+      - {key: B, text: "Architecture Contract (signed)", correct: true}
+      - {key: C, text: "Implementation and Migration Plan, Draft"}
+      - {key: D, text: "Candidate Architecture Roadmap components from Phases B, C and D"}
+    explanation: "Phase H receives the contract signed in Phase G. A is the Phase G input form, C is a Phase F input, D is a Phase E input."
+    refs: ["ADM §12.2.3"]
+    difficulty: 2
+    tags: [phase-h, inputs]
+  - id: F4-165
+    unit: F4
+    objective: "4.3"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "Which of the following is an output of Phase H?"
+    options:
+      - {key: A, text: "Changes to architecture framework and principles, for maintenance changes", correct: true}
+      - {key: B, text: "Architecture Roadmap"}
+      - {key: C, text: "Architecture-compliant solutions deployed"}
+      - {key: D, text: "Transition Architectures"}
+    explanation: "Phase H outputs architecture updates and framework/principle changes for maintenance changes, plus a new Request for Architecture Work for major ones. B is Phase E (finalized in F), C is Phase G, D is Phase E."
+    refs: ["ADM §12.4"]
+    difficulty: 2
+    tags: [phase-h, outputs]
+  - id: F4-166
+    unit: F4
+    objective: "4.3"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "Which Phase H step produces a new Request for Architecture Work and a request for investment?"
+    options:
+      - {key: A, text: "Establish value realization process"}
+      - {key: B, text: "Deploy monitoring tools"}
+      - {key: C, text: "Manage governance process"}
+      - {key: D, text: "Activate the process to implement change", correct: true}
+    explanation: "Step 7 activates the architecture process to implement change. A influences business projects, B sets up monitoring, C arranges the Architecture Board meeting that decides how to handle changes."
+    refs: ["ADM §12.3.7"]
+    difficulty: 2
+    tags: [phase-h, steps]
+  - id: F4-167
+    unit: F4
+    objective: "4.3"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "In Phase H, which step follows 'Manage risks'?"
+    options:
+      - {key: A, text: "Deploy monitoring tools"}
+      - {key: B, text: "Provide analysis for architecture change management", correct: true}
+      - {key: C, text: "Develop change requirements to meet performance targets"}
+      - {key: D, text: "Manage governance process"}
+    explanation: "Manage risks is step 3 and analysis step 4. A is step 2, C is step 5, D is step 6."
+    refs: ["ADM §12.3"]
+    difficulty: 2
+    tags: [phase-h, steps]
+  # Requirements Management
+  - id: F4-168
+    unit: F4
+    objective: "4.3"
+    lesson: F4/12_requirements_management
+    stem: "Which of the following is an input to the Requirements Management process?"
+    options:
+      - {key: A, text: "Architecture Contract"}
+      - {key: B, text: "Implementation and Migration Plan"}
+      - {key: C, text: "Requirements Impact Assessment", correct: true}
+      - {key: D, text: "Compliance Assessments"}
+    explanation: "The Requirements Impact Assessment is both an input and an output of the process. A and D are Phase G outputs consumed by Phase H, B is a Phase F output consumed by G and H."
+    refs: ["ADM §13.2"]
+    difficulty: 2
+    tags: [requirements-management, inputs]
+  - id: F4-169
+    unit: F4
+    objective: "4.3"
+    lesson: F4/12_requirements_management
+    stem: "Which pair are the outputs listed for the Requirements Management process?"
+    options:
+      - {key: A, text: "Architecture Definition Document and Architecture Roadmap"}
+      - {key: B, text: "Requirements Impact Assessment and updated Architecture Requirements Specification", correct: true}
+      - {key: C, text: "Architecture Contract and Compliance Assessments"}
+      - {key: D, text: "Request for Architecture Work and Statement of Architecture Work"}
+    explanation: "Only those two are listed; the Architecture Requirements Repository is updated but not listed as an output. A are development-phase deliverables, C Phase G, D Preliminary/Phase A."
+    refs: ["ADM §13.4"]
+    difficulty: 1
+    tags: [requirements-management, outputs]
+  - id: F4-170
+    unit: F4
+    objective: "4.3"
+    lesson: F4/12_requirements_management
+    stem: "In the Requirements Management steps table, which step is performed by the Requirements Management process rather than by the ADM phase?"
+    options:
+      - {key: A, text: "Identify requirements and document them in the Architecture Requirements Specification"}
+      - {key: B, text: "Implement change in the current phase"}
+      - {key: C, text: "Establish baseline requirements", correct: true}
+      - {key: D, text: "Assess and revise gap analysis for past phases"}
+    explanation: "Step 2, establishing the baseline, sits in the Requirements Management column, as do monitoring (3), recording changed priorities (5) and updating the repository (8). A is step 1, B step 9 and D step 10, all in the ADM phase column."
+    refs: ["ADM §13.3"]
+    difficulty: 3
+    tags: [requirements-management, steps]
+  - id: F4-171
+    unit: F4
+    objective: "4.3"
+    lesson: F4/12_requirements_management
+    stem: "In which Requirements Management step is the Requirements Impact Assessment generated?"
+    options:
+      - {key: A, text: "Step 1, identify requirements"}
+      - {key: B, text: "Step 5, identify changed requirements and record priorities", correct: true}
+      - {key: C, text: "Step 8, update the Architecture Requirements Repository"}
+      - {key: D, text: "Step 10, assess and revise gap analysis for past phases"}
+    explanation: "Step 5 generates the Requirements Impact Assessment for steering the architecture team; step 6 then issues version n+1. A identifies requirements, C updates the repository, D handles gap requirements."
+    refs: ["ADM §13.3"]
+    difficulty: 3
+    tags: [requirements-management, steps]
+  # ------------------------------------------------------------ 4.4 Phases B, C, D
+  - id: F4-172
+    unit: F4
+    objective: "4.4"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "Which of the following is an objective of Phase B?"
+    options:
+      - {key: A, text: "Generate the initial complete version of the Architecture Roadmap"}
+      - {key: B, text: "Identify candidate Architecture Roadmap components based upon gaps between the Baseline and Target Business Architectures", correct: true}
+      - {key: C, text: "Develop the Target Data Architecture"}
+      - {key: D, text: "Finalize the Architecture Definition Document"}
+    explanation: "Each development phase identifies candidate roadmap components from its gaps. A is Phase E, C is Phase C, D is Phase F."
+    refs: ["ADM §4.1"]
+    difficulty: 1
+    tags: [phase-b, objectives]
+  - id: F4-173
+    unit: F4
+    objective: "4.4"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "Why does the standard say Business Architecture is the first architecture activity to be undertaken?"
+    options:
+      - {key: A, text: "Because knowledge of it is a prerequisite for work in the other domains and it demonstrates the business value of subsequent work", correct: true}
+      - {key: B, text: "Because it is the least expensive domain to model"}
+      - {key: C, text: "Because the phases must be executed in alphabetical order"}
+      - {key: D, text: "Because Requirements Management requires business requirements first"}
+    explanation: "The approach gives both reasons: prerequisite and demonstration of value to stakeholders. B, C and D are not reasons the standard gives."
+    refs: ["ADM §4.5.1"]
+    difficulty: 2
+    tags: [phase-b, approach]
+  - id: F4-174
+    unit: F4
+    objective: "4.4"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "The scope of work in Phase B is primarily determined by what?"
+    options:
+      - {key: A, text: "The Implementation and Migration Plan"}
+      - {key: B, text: "The Architecture Contract"}
+      - {key: C, text: "The Architecture Vision as set out in Phase A", correct: true}
+      - {key: D, text: "The Target Technology Architecture"}
+    explanation: "The approach states the scope is primarily determined by the Architecture Vision. A is Phases E and F, B is Phase G, D is Phase D."
+    refs: ["ADM §4.5.1"]
+    difficulty: 2
+    tags: [phase-b, approach]
+  - id: F4-175
+    unit: F4
+    objective: "4.4"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "How does the standard describe Business Architecture in the Phase B approach?"
+    options:
+      - {key: A, text: "The taxonomy of technology services and logical technology components"}
+      - {key: B, text: "Holistic, multi-dimensional business views of capabilities, end-to-end value delivery, information and organizational structure, and their relationships", correct: true}
+      - {key: C, text: "The inventory of applications and their interfaces"}
+      - {key: D, text: "Data at rest, in motion and in use"}
+    explanation: "B is the approach's definition. A is Phase D vocabulary, C is the Application Architecture portfolio, D is the Data Architecture structure."
+    refs: ["ADM §4.5"]
+    difficulty: 2
+    tags: [phase-b, approach]
+  - id: F4-176
+    unit: F4
+    objective: "4.4"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "In Phase B, what is heat mapping used to show?"
+    options:
+      - {key: A, text: "Network latency between technology components"}
+      - {key: B, text: "The risk of each migration project"}
+      - {key: C, text: "A range of perspectives, such as maturity, effectiveness, performance and value or cost, on the same set of business capabilities", correct: true}
+      - {key: D, text: "Data migration volumes between applications"}
+    explanation: "Heat mapping colours capabilities by attributes such as maturity or cost. A is a Phase D concern, B is Phase F, D is a Phase C data migration concern."
+    refs: ["ADM §4.5.3"]
+    difficulty: 2
+    tags: [phase-b, approach]
+  - id: F4-177
+    unit: F4
+    objective: "4.4"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "How does an organization map differ from an organizational chart?"
+    options:
+      - {key: A, text: "It depicts the working relationships between organizational units, partners and stakeholder groups, not only hierarchical reporting", correct: true}
+      - {key: B, text: "It lists the applications each unit uses"}
+      - {key: C, text: "There is no difference"}
+      - {key: D, text: "It is a Phase D artifact showing technology locations"}
+    explanation: "The approach contrasts the map's web of relationships with a chart's reporting lines. B confuses it with an application/organization matrix, D with the Environments and Locations diagram."
+    refs: ["ADM §4.5.5"]
+    difficulty: 2
+    tags: [phase-b, approach]
+  - id: F4-178
+    unit: F4
+    objective: "4.4"
+    lesson: F4/05_phase_b_business_architecture
+    stem: "According to the Phase B approach, what do value streams provide in relation to business capabilities?"
+    options:
+      - {key: A, text: "Value streams replace business capabilities in the Target Business Architecture"}
+      - {key: B, text: "Value streams give the context of why capabilities are needed; capabilities give what the organization needs for a value stage to succeed", correct: true}
+      - {key: C, text: "Value streams are the technology services that realize capabilities"}
+      - {key: D, text: "Value streams are the work packages in which capabilities are delivered"}
+    explanation: "The approach pairs the why (value streams) with the what (capabilities). A, C and D misplace value streams as replacements, technology or Phase E work packages."
+    refs: ["ADM §4.5.4"]
+    difficulty: 2
+    tags: [phase-b, approach]
+  - id: F4-179
+    unit: F4
+    objective: "4.4"
+    lesson: F4/06_phase_c_information_systems
+    stem: "Phase C consists of what?"
+    options:
+      - {key: A, text: "Data Architecture followed strictly by Application Architecture"}
+      - {key: B, text: "Application Architecture followed strictly by Data Architecture"}
+      - {key: C, text: "Data, Application and Technology Architecture"}
+      - {key: D, text: "Some combination of Data and Application Architecture, in either order", correct: true}
+    explanation: "The approach says either order is valid and advocates exist for both. A and B impose an order the standard does not, C adds Technology, which is Phase D."
+    refs: ["ADM §5.2"]
+    difficulty: 1
+    tags: [phase-c, approach]
+  - id: F4-180
+    unit: F4
+    objective: "4.4"
+    lesson: F4/06_phase_c_information_systems
+    stem: "Which of the following is an objective of Phase C?"
+    options:
+      - {key: A, text: "Develop the Target Information Systems Architectures, describing how they will enable the Business Architecture and the Architecture Vision", correct: true}
+      - {key: B, text: "Develop the Target Business Architecture"}
+      - {key: C, text: "Define the overall Solution Building Blocks"}
+      - {key: D, text: "Ensure conformance with the Target Architecture by implementation projects"}
+    explanation: "A is Phase C's first objective. B is Phase B, C is Phase E's third objective, D is Phase G."
+    refs: ["ADM §5.1"]
+    difficulty: 1
+    tags: [phase-c, objectives]
+  - id: F4-181
+    unit: F4
+    objective: "4.4"
+    lesson: F4/06_phase_c_information_systems
+    stem: "According to the Data Architecture approach, a Data Architecture should be able to handle which types of data?"
+    options:
+      - {key: A, text: "Public, private and confidential data"}
+      - {key: B, text: "Baseline, target and transition data"}
+      - {key: C, text: "Data at rest, data in motion, data in use and open data", correct: true}
+      - {key: D, text: "Conceptual, logical and physical data"}
+    explanation: "The data structure section names the four. A is a classification scheme the standard does not use here, B applies architecture states to data, D confuses the types with the three metamodel entities."
+    refs: ["ADM §6.5.1"]
+    difficulty: 2
+    tags: [phase-c, approach]
+  - id: F4-182
+    unit: F4
+    objective: "4.4"
+    lesson: F4/06_phase_c_information_systems
+    stem: "Which three metamodel entities are used to create a Data Architecture?"
+    options:
+      - {key: A, text: "Data entity, logical data component and physical data component", correct: true}
+      - {key: B, text: "Business service, business function and business process"}
+      - {key: C, text: "Application component, interface and application service"}
+      - {key: D, text: "Technology service, logical technology component and physical technology component"}
+    explanation: "The data structure section names the three data entities. B is Business Architecture vocabulary, C Application, D the Technology Architecture catalog decomposition."
+    refs: ["ADM §6.5.1"]
+    difficulty: 2
+    tags: [phase-c, approach]
+  - id: F4-183
+    unit: F4
+    objective: "4.4"
+    lesson: F4/06_phase_c_information_systems
+    stem: "Which three dimensions does the Data Architecture approach list under data governance?"
+    options:
+      - {key: A, text: "Confidentiality, integrity and availability"}
+      - {key: B, text: "Structure, management system and people", correct: true}
+      - {key: C, text: "Baseline, target and transition"}
+      - {key: D, text: "Strategy, segment and capability"}
+    explanation: "Data governance considers structure, management system and people. A is a security triad, C are architecture states, D are Landscape levels."
+    refs: ["ADM §6.5.2"]
+    difficulty: 2
+    tags: [phase-c, approach]
+  - id: F4-184
+    unit: F4
+    objective: "4.4"
+    lesson: F4/07_phase_d_technology_architecture
+    stem: "Which of the following is an objective of Phase D?"
+    options:
+      - {key: A, text: "Define the overall Solution Building Blocks to finalize the Target Architecture"}
+      - {key: B, text: "Develop the Target Application Architecture"}
+      - {key: C, text: "Develop the Target Technology Architecture that enables the Architecture Vision and the target business, data and application building blocks to be delivered through technology components and technology services", correct: true}
+      - {key: D, text: "Establish the Architecture Capability"}
+    explanation: "C is Phase D's first objective. A is Phase E, B is Phase C, D is the Preliminary Phase."
+    refs: ["ADM §8.1"]
+    difficulty: 1
+    tags: [phase-d, objectives]
+  - id: F4-185
+    unit: F4
+    objective: "4.4"
+    lesson: F4/07_phase_d_technology_architecture
+    stem: "What does the Phase D approach say about technology change and the ADM?"
+    options:
+      - {key: A, text: "Technology change is handled only through Phase H Change Requests"}
+      - {key: B, text: "Technology change is outside the scope of Enterprise Architecture"}
+      - {key: C, text: "Technology must always follow business requirements and never drive them"}
+      - {key: D, text: "The ADM's flexibility lets technology change be a driver and strategic resource rather than only a recipient of Change Requests", correct: true}
+    explanation: "The emerging technologies section says the Technology Architecture may both drive business capabilities and respond to information system requirements. A, B and C each deny that."
+    refs: ["ADM §8.5.1"]
+    difficulty: 2
+    tags: [phase-d, approach]
+  - id: F4-186
+    unit: F4
+    objective: "4.4"
+    lesson: F4/06_phase_c_information_systems
+    stem: "Which statement describes the application-driven approach to Phase C?"
+    options:
+      - {key: A, text: "Key applications such as ERP or CRM are treated as the core underpinning of mission-critical processes, and their implementation and integration is the primary focus", correct: true}
+      - {key: B, text: "Data models are developed first, following Enterprise Architecture Planning"}
+      - {key: C, text: "Technology platforms are selected before any applications"}
+      - {key: D, text: "Data Architecture is omitted entirely"}
+    explanation: "A paraphrases the approach. B describes the data-driven approach, C would put Phase D first, D contradicts Phase C's scope."
+    refs: ["ADM §5.2"]
+    difficulty: 2
+    tags: [phase-c, approach]
+  - id: F4-187
+    unit: F4
+    objective: "4.4"
+    lesson: F4/06_phase_c_information_systems
+    stem: "Which reference model does the Application Architecture approach name as focusing on the application-level components and services for an integrated information infrastructure?"
+    options:
+      - {key: A, text: "The Technical Reference Model (TRM)"}
+      - {key: B, text: "The Integrated Information Infrastructure Reference Model (III-RM)", correct: true}
+      - {key: C, text: "The Zachman Framework"}
+      - {key: D, text: "The Enterprise Metamodel"}
+    explanation: "The III-RM is named in the Application Architecture repository section. The TRM is referenced in Phase D, Zachman is cited as an example of requirement primitives in Phase B, the Enterprise Metamodel belongs to the Content document."
+    refs: ["ADM §7.5.1"]
+    difficulty: 2
+    tags: [phase-c, approach]
+  # ------------------------------------------------------------ 4.5 Phases E, F
+  - id: F4-188
+    unit: F4
+    objective: "4.5"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "Which of the following is an objective of Phase E?"
+    options:
+      - {key: A, text: "Finalize the Architecture Roadmap"}
+      - {key: B, text: "Ensure that the business value and cost of work packages is understood by key stakeholders"}
+      - {key: C, text: "Determine whether an incremental approach is required and, if so, identify Transition Architectures that deliver continuous business value", correct: true}
+      - {key: D, text: "Perform Architecture Governance functions for the solution"}
+    explanation: "C is Phase E's second objective. A and B are Phase F objectives, D is Phase G."
+    refs: ["ADM §9.1"]
+    difficulty: 1
+    tags: [phase-e, objectives]
+  - id: F4-189
+    unit: F4
+    objective: "4.5"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "What is the third objective of Phase E?"
+    options:
+      - {key: A, text: "Define the Architecture Building Blocks for each domain"}
+      - {key: B, text: "Define the overall Solution Building Blocks to finalize the Target Architecture based on the ABBs", correct: true}
+      - {key: C, text: "Sign the Architecture Contract"}
+      - {key: D, text: "Prioritize the migration projects"}
+    explanation: "Defining the SBBs is the objective most often forgotten. A is done in Phases B to D, C is Phase G, D is a Phase F step."
+    refs: ["ADM §9.1"]
+    difficulty: 2
+    tags: [phase-e, objectives]
+  - id: F4-190
+    unit: F4
+    objective: "4.5"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "According to its approach, Phase E concentrates on what?"
+    options:
+      - {key: A, text: "How to deliver the architecture", correct: true}
+      - {key: B, text: "What the Target Architecture should be"}
+      - {key: C, text: "Whether the implementation conforms to the architecture"}
+      - {key: D, text: "Maintaining the architecture development cycle"}
+    explanation: "The approach opens by saying Phase E concentrates on how to deliver the architecture. B is Phases B to D, C is Phase G, D is Phase H."
+    refs: ["ADM §9.5"]
+    difficulty: 1
+    tags: [phase-e, approach]
+  - id: F4-191
+    unit: F4
+    objective: "4.5"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "Which four concepts does the standard call key to transitioning from developing to delivering a Target Architecture?"
+    options:
+      - {key: A, text: "Catalogs, matrices, diagrams and views"}
+      - {key: B, text: "Architecture Roadmap, work packages, Transition Architectures and the Implementation and Migration Plan", correct: true}
+      - {key: C, text: "Request for Architecture Work, Statement of Architecture Work, Architecture Vision and Architecture Contract"}
+      - {key: D, text: "Baseline Architecture, Target Architecture, gap analysis and building blocks"}
+    explanation: "The Phase E approach lists exactly those four. A are artifact kinds, C are governance deliverables from A and G, D are development-phase concepts."
+    refs: ["ADM §9.5"]
+    difficulty: 1
+    tags: [phase-e, approach]
+  - id: F4-192
+    unit: F4
+    objective: "4.5"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "How does the standard define a Transition Architecture?"
+    options:
+      - {key: A, text: "The final Target Architecture agreed with the sponsor"}
+      - {key: B, text: "A logical group of changes necessary to realize the Target Architecture"}
+      - {key: C, text: "A description of the enterprise at an architecturally significant state between the Baseline and Target Architectures", correct: true}
+      - {key: D, text: "A schedule of the projects that will realize the Target Architecture"}
+    explanation: "C is the definition. B defines a work package, D defines the Implementation and Migration Plan, A is simply the Target."
+    refs: ["ADM §9.5"]
+    difficulty: 1
+    tags: [phase-e, approach]
+  - id: F4-193
+    unit: F4
+    objective: "4.5"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "Which phase is the initial step in creating the Implementation and Migration Plan, and which phase completes it?"
+    options:
+      - {key: A, text: "Phase D initial, Phase E completes"}
+      - {key: B, text: "Phase E initial, Phase G completes"}
+      - {key: C, text: "Phase F initial, Phase G completes"}
+      - {key: D, text: "Phase E initial, Phase F completes", correct: true}
+    explanation: "The approach says Phase E is the initial step and Phase F completes the plan. A starts too early, B and C run into Phase G, which governs implementation rather than plans it."
+    refs: ["ADM §9.5"]
+    difficulty: 1
+    tags: [phase-e, approach]
+  - id: F4-194
+    unit: F4
+    objective: "4.5"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "When formulating the Implementation and Migration Strategy in Phase E, which three basic strategic approaches does the standard list?"
+    options:
+      - {key: A, text: "Greenfield, revolutionary and evolutionary", correct: true}
+      - {key: B, text: "Quick win, achievable targets and value chain"}
+      - {key: C, text: "Simplification, incremental and re-architecting"}
+      - {key: D, text: "Mainstream, contain and replace"}
+    explanation: "The three approaches are greenfield, revolutionary and evolutionary. B are the implementation methodologies named in the same step, C are Phase H change categories, D are the Phase E system classifications."
+    refs: ["ADM §9.3.8"]
+    difficulty: 2
+    tags: [phase-e, steps]
+  - id: F4-195
+    unit: F4
+    objective: "4.5"
+    lesson: F4/08_phase_e_opportunities_and_solutions
+    stem: "When grouping work packages in Phase E, every current system under consideration is classified as one of which three?"
+    options:
+      - {key: A, text: "Greenfield, revolutionary or evolutionary"}
+      - {key: B, text: "Mainstream, contain or replace", correct: true}
+      - {key: C, text: "Simplification, incremental or re-architecting"}
+      - {key: D, text: "Baseline, transition or target"}
+    explanation: "Mainstream (part of the future), contain (to be replaced or modified in the horizon) and replace. A are strategy approaches, C are Phase H change types, D are architecture states."
+    refs: ["ADM §9.3.9"]
+    difficulty: 2
+    tags: [phase-e, steps]
+  - id: F4-196
+    unit: F4
+    objective: "4.5"
+    lesson: F4/09_phase_f_migration_planning
+    stem: "Which of the following is an objective of Phase F?"
+    options:
+      - {key: A, text: "Generate the initial complete version of the Architecture Roadmap"}
+      - {key: B, text: "Ensure that the Implementation and Migration Plan is co-ordinated with the enterprise's approach to managing and implementing change in its overall change portfolio", correct: true}
+      - {key: C, text: "Identify Transition Architectures"}
+      - {key: D, text: "Ensure conformance with the Target Architecture by implementation projects"}
+    explanation: "B is Phase F's second objective. A and C are Phase E, D is Phase G."
+    refs: ["ADM §10.1"]
+    difficulty: 1
+    tags: [phase-f, objectives]
+  - id: F4-197
+    unit: F4
+    objective: "4.5"
+    lesson: F4/09_phase_f_migration_planning
+    stem: "According to its approach, what is the focus of Phase F?"
+    options:
+      - {key: A, text: "Developing the Target Technology Architecture"}
+      - {key: B, text: "Signing the Architecture Contract with the implementation organization"}
+      - {key: C, text: "Creating the Implementation and Migration Plan in co-operation with the project and portfolio managers", correct: true}
+      - {key: D, text: "Monitoring business and technology change"}
+    explanation: "C is the stated focus. A is Phase D, B is Phase G, D is Phase H."
+    refs: ["ADM §10.5"]
+    difficulty: 1
+    tags: [phase-f, approach]
+  - id: F4-198
+    unit: F4
+    objective: "4.5"
+    lesson: F4/09_phase_f_migration_planning
+    stem: "According to the Phase F approach, what does Phase E hand over to Phase F?"
+    options:
+      - {key: A, text: "An incomplete Architecture Roadmap and Implementation and Migration Plan that address the Statement of Architecture Work", correct: true}
+      - {key: B, text: "A finalized Architecture Definition Document"}
+      - {key: C, text: "A signed Architecture Contract"}
+      - {key: D, text: "Compliance Assessments for each project"}
+    explanation: "The approach says Phase E provides an incomplete roadmap and plan that Phase F integrates with other change activity. B is Phase F's own output, C and D are Phase G outputs."
+    refs: ["ADM §10.5"]
+    difficulty: 2
+    tags: [phase-f, approach]
+  - id: F4-199
+    unit: F4
+    objective: "4.5"
+    lesson: F4/09_phase_f_migration_planning
+    stem: "In Phase F step 1, which four management frameworks typically have to work closely together for the Implementation and Migration Plan to succeed?"
+    options:
+      - {key: A, text: "Business Capability Management, Project/Portfolio Management, Operations Management and Solution Development Methods"}
+      - {key: B, text: "Business Planning, Enterprise Architecture, Project/Portfolio Management and Operations Management", correct: true}
+      - {key: C, text: "ITIL, PRINCE2, IT4IT and ISO/IEC 20000"}
+      - {key: D, text: "Business, Data, Application and Technology"}
+    explanation: "B is the Phase F list. A is the similar but different list from the Preliminary Phase approach, C are example standards, D are the architecture domains."
+    refs: ["ADM §10.3.1"]
+    difficulty: 3
+    tags: [phase-f, steps]
+  - id: F4-200
+    unit: F4
+    objective: "4.5"
+    lesson: F4/09_phase_f_migration_planning
+    stem: "In Phase F, how should the costs estimated for each project be broken down?"
+    options:
+      - {key: A, text: "Fixed and variable"}
+      - {key: B, text: "Direct and indirect"}
+      - {key: C, text: "Capital, and operations and maintenance", correct: true}
+      - {key: D, text: "Business and IT"}
+    explanation: "Step 3 splits costs into capital (to create the capability) and operations and maintenance (to run it). A, B and D are accounting distinctions the standard does not use here."
+    refs: ["ADM §10.3.3"]
+    difficulty: 2
+    tags: [phase-f, steps]
+  - id: F4-201
+    unit: F4
+    objective: "4.5"
+    lesson: F4/09_phase_f_migration_planning
+    stem: "Which technique does Phase F use to estimate the business value of each project?"
+    options:
+      - {key: A, text: "The Consolidated Gaps, Solutions and Dependencies matrix"}
+      - {key: B, text: "The stakeholder map"}
+      - {key: C, text: "The Benefits diagram"}
+      - {key: D, text: "The Business Value and Risk Matrix", correct: true}
+    explanation: "Step 2 names the Business Value and Risk Matrix. A is the Phase E matrix from which risks are aggregated, B is a Phase A product, C is an artifact rather than the named technique."
+    refs: ["ADM §10.3.2"]
+    difficulty: 2
+    tags: [phase-f, steps]
+  # ------------------------------------------------------------ 4.6 Phases G, H
+  - id: F4-202
+    unit: F4
+    objective: "4.6"
+    lesson: F4/10_phase_g_implementation_governance
+    stem: "Which of the following is an objective of Phase G?"
+    options:
+      - {key: A, text: "Ensure conformance with the Target Architecture by implementation projects", correct: true}
+      - {key: B, text: "Ensure that the architecture development cycle is maintained"}
+      - {key: C, text: "Finalize the Architecture Roadmap"}
+      - {key: D, text: "Determine the Architecture Capability desired by the organization"}
+    explanation: "A is Phase G's first objective. B is Phase H, C is Phase F, D is the Preliminary Phase."
+    refs: ["ADM §11.1"]
+    difficulty: 1
+    tags: [phase-g, objectives]
+  - id: F4-203
+    unit: F4
+    objective: "4.6"
+    lesson: F4/10_phase_g_implementation_governance
+    stem: "Through which deliverable does Phase G establish the connection between the architecture and the implementation organization?"
+    options:
+      - {key: A, text: "The Statement of Architecture Work"}
+      - {key: B, text: "The Architecture Contract", correct: true}
+      - {key: C, text: "The Compliance Assessment"}
+      - {key: D, text: "The Implementation and Migration Plan"}
+    explanation: "The approach states the connection is made through the Architecture Contract. A connects sponsor and architects in Phase A, C is a Phase G output but not the connecting agreement, D is the Phase F plan."
+    refs: ["ADM §11.5"]
+    difficulty: 1
+    tags: [phase-g, approach]
+  - id: F4-204
+    unit: F4
+    objective: "4.6"
+    lesson: F4/10_phase_g_implementation_governance
+    stem: "What is the favored approach in Phase G for deploying the Target Architecture?"
+    options:
+      - {key: A, text: "A single big-bang deployment after all development is complete"}
+      - {key: B, text: "A pilot only, with full deployment deferred to the next ADM cycle"}
+      - {key: C, text: "A series of transitions, each an incremental step that delivers business benefit in its own right", correct: true}
+      - {key: D, text: "Deployment only after Phase H approves it"}
+    explanation: "The approach favors a series of transitions to realize value early and reduce risk. A contradicts that, B and D are not in the standard."
+    refs: ["ADM §11.5"]
+    difficulty: 2
+    tags: [phase-g, approach]
+  - id: F4-205
+    unit: F4
+    objective: "4.6"
+    lesson: F4/10_phase_g_implementation_governance
+    stem: "Compliance with the defined architecture in Phase G applies to which projects?"
+    options:
+      - {key: A, text: "Only the implementation projects in the Architecture Roadmap"}
+      - {key: B, text: "Only IT projects"}
+      - {key: C, text: "Only projects with a signed Architecture Contract"}
+      - {key: D, text: "The implementation projects and also other ongoing projects within the enterprise", correct: true}
+    explanation: "The approach says a key aspect is compliance not only by the implementation projects but also by other ongoing projects. A, B and C narrow the scope."
+    refs: ["ADM §11.5"]
+    difficulty: 2
+    tags: [phase-g, approach]
+  - id: F4-206
+    unit: F4
+    objective: "4.6"
+    lesson: F4/10_phase_g_implementation_governance
+    stem: "What happens in parallel with Phase G?"
+    options:
+      - {key: A, text: "The execution of an organization-specific development process, where the actual development happens", correct: true}
+      - {key: B, text: "Phase H runs concurrently"}
+      - {key: C, text: "Phase A of the next cycle begins"}
+      - {key: D, text: "The Requirements Management process is suspended"}
+    explanation: "The approach notes that actual development happens in a parallel, organization-specific development process. B and C are sequencing errors, D contradicts Requirements Management operating for all phases."
+    refs: ["ADM §11.5"]
+    difficulty: 2
+    tags: [phase-g, approach]
+  - id: F4-207
+    unit: F4
+    objective: "4.6"
+    lesson: F4/10_phase_g_implementation_governance
+    stem: "When does Phase G close?"
+    options:
+      - {key: A, text: "When the Architecture Contract is signed"}
+      - {key: B, text: "When the Architecture Board first meets"}
+      - {key: C, text: "When the solutions are fully deployed once", correct: true}
+      - {key: D, text: "When the Implementation and Migration Plan is approved"}
+    explanation: "The last step says closure on Phase G is when the solutions are fully deployed once. A is step 3, not closure; B is a Phase H step; D is a Phase F output."
+    refs: ["ADM §11.3.6"]
+    difficulty: 2
+    tags: [phase-g, steps]
+  - id: F4-208
+    unit: F4
+    objective: "4.6"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "Which of the following is an objective of Phase H?"
+    options:
+      - {key: A, text: "Ensure conformance with the Target Architecture by implementation projects"}
+      - {key: B, text: "Establish the Architecture Capability"}
+      - {key: C, text: "Obtain approval for a Statement of Architecture Work"}
+      - {key: D, text: "Ensure that the Enterprise Architecture Capability meets current requirements", correct: true}
+    explanation: "D is Phase H's third objective. A is Phase G, B is the Preliminary Phase, C is Phase A."
+    refs: ["ADM §12.1"]
+    difficulty: 1
+    tags: [phase-h, objectives]
+  - id: F4-209
+    unit: F4
+    objective: "4.6"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "What is the goal of the architecture change management process?"
+    options:
+      - {key: A, text: "To ensure that the architecture achieves its original target business value", correct: true}
+      - {key: B, text: "To reject all changes to the deployed architecture"}
+      - {key: C, text: "To finalize the Architecture Roadmap"}
+      - {key: D, text: "To replace the ADM with a change management method"}
+    explanation: "The approach opens with that goal and adds managing change in a cohesive, architected way. B contradicts the dynamic architecture aim, C is Phase F, D is not in the standard."
+    refs: ["ADM §12.5"]
+    difficulty: 1
+    tags: [phase-h, approach]
+  - id: F4-210
+    unit: F4
+    objective: "4.6"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "Into which three categories does the Phase H approach classify required architectural changes?"
+    options:
+      - {key: A, text: "Corrective, adaptive and perfective"}
+      - {key: B, text: "Simplification, incremental and re-architecting", correct: true}
+      - {key: C, text: "Greenfield, revolutionary and evolutionary"}
+      - {key: D, text: "Mainstream, contain and replace"}
+    explanation: "B is the Phase H classification. A is software maintenance vocabulary, C are Phase E strategy approaches, D are Phase E system classifications."
+    refs: ["ADM §12.5.2"]
+    difficulty: 1
+    tags: [phase-h, approach]
+  - id: F4-211
+    unit: F4
+    objective: "4.6"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "Which category of change requires putting the whole architecture through the architecture development cycle again?"
+    options:
+      - {key: A, text: "Simplification change"}
+      - {key: B, text: "Incremental change"}
+      - {key: C, text: "Re-architecting change", correct: true}
+      - {key: D, text: "Any change approved by the Architecture Board"}
+    explanation: "Only re-architecting change restarts the cycle. Simplification is handled by change management, incremental may be either, and Architecture Board approval does not by itself decide the category."
+    refs: ["ADM §12.5.2"]
+    difficulty: 1
+    tags: [phase-h, approach]
+  - id: F4-212
+    unit: F4
+    objective: "4.6"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "According to the Phase H guideline, a change that impacts two or more stakeholders is likely to require what?"
+    options:
+      - {key: A, text: "Handling under a dispensation"}
+      - {key: B, text: "An architecture redesign and re-entry to the ADM", correct: true}
+      - {key: C, text: "Handling through change management techniques"}
+      - {key: D, text: "No action until the next planned cycle"}
+    explanation: "The guideline says two or more stakeholders points to redesign; one stakeholder or a change allowable under dispensation points to change management (A and C). D is not offered."
+    refs: ["ADM §12.5.3"]
+    difficulty: 2
+    tags: [phase-h, approach]
+  - id: F4-213
+    unit: F4
+    objective: "4.6"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "In the Phase H approach, a simplification change is said to be driven by which requirement?"
+    options:
+      - {key: A, text: "To reduce investment", correct: true}
+      - {key: B, text: "To derive additional value from existing investment"}
+      - {key: C, text: "To increase investment in order to create new value"}
+      - {key: D, text: "To eliminate Architecture Governance"}
+    explanation: "Simplification reduces investment; B is the driver of incremental change and C of re-architecting change. D is not in the standard."
+    refs: ["ADM §12.5.2"]
+    difficulty: 3
+    tags: [phase-h, approach]
+  - id: F4-214
+    unit: F4
+    objective: "4.6"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "According to the Phase H approach, which body assesses and approves Requests for Change?"
+    options:
+      - {key: A, text: "The sponsor of the original Request for Architecture Work"}
+      - {key: B, text: "The Solution Architects"}
+      - {key: C, text: "The Architecture Board", correct: true}
+      - {key: D, text: "The portfolio managers"}
+    explanation: "The drivers-for-change section says the Architecture Board assesses and approves RFCs. A signs the Statement of Architecture Work, B identify SBBs in Phase G, D co-operate on the plan in Phase F."
+    refs: ["ADM §12.5.1"]
+    difficulty: 2
+    tags: [phase-h, approach]
+  - id: F4-215
+    unit: F4
+    objective: "4.6"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "Ten systems are consolidated into one at the infrastructure level; the architecture above the physical layer does not change but the Baseline Technology Architecture description does. How does the standard classify this?"
+    options:
+      - {key: A, text: "A simplification change handled via change management techniques", correct: true}
+      - {key: B, text: "An incremental change requiring partial re-architecting"}
+      - {key: C, text: "A re-architecting change requiring a new ADM cycle"}
+      - {key: D, text: "Not an architectural change at all"}
+    explanation: "This is the standard's own example of a simplification change. B is the example of a new technology refreshing the Technology Architecture, C is the example of a change significant to business strategy, D is wrong because the Baseline description changes."
+    refs: ["ADM §12.5.3"]
+    difficulty: 2
+    tags: [phase-h, approach]
+  - id: F4-216
+    unit: F4
+    objective: "4.6"
+    lesson: F4/11_phase_h_architecture_change_management
+    stem: "What does the Phase H approach say about 'creeping elegance'?"
+    options:
+      - {key: A, text: "It is the name given to incremental change"}
+      - {key: B, text: "The governance body must avoid it and keep looking for changes that relate directly to business value", correct: true}
+      - {key: C, text: "It should be encouraged to keep the architecture current"}
+      - {key: D, text: "It refers to cost overruns in Phase F"}
+    explanation: "The approach says it is especially important to avoid creeping elegance. A, C and D misdefine the term."
+    refs: ["ADM §12.5"]
+    difficulty: 3
+    tags: [phase-h, approach]
+  # ------------------------------------------------------------ 4.7 Requirements Management
+  - id: F4-217
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "Which of the following is an objective of Requirements Management?"
+    options:
+      - {key: A, text: "Dispose of requirements that are no longer needed"}
+      - {key: B, text: "Ensure that relevant architecture requirements are available for use by each phase as the phase is executed", correct: true}
+      - {key: C, text: "Prioritize all requirements centrally on behalf of the phases"}
+      - {key: D, text: "Finalize the Architecture Requirements Specification"}
+    explanation: "B is the third objective. A and C are things the process explicitly does not do (the phase does), D is a Phase F output."
+    refs: ["ADM §13.1"]
+    difficulty: 1
+    tags: [requirements-management, objectives]
+  - id: F4-218
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "What does the Requirements Management circle at the centre of the ADM graphic denote?"
+    options:
+      - {key: A, text: "A static set of requirements agreed in Phase A"}
+      - {key: B, text: "A phase executed after Phase H"}
+      - {key: C, text: "A dynamic process whereby requirements and their changes are identified, stored and fed into and out of the relevant phases", correct: true}
+      - {key: D, text: "The Architecture Board"}
+    explanation: "The approach says the circle denotes a dynamic process, not a static set. A and B misread the diagram, D is a governance body from the Governance document."
+    refs: ["ADM §13.5.1"]
+    difficulty: 1
+    tags: [requirements-management, approach]
+  - id: F4-219
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "Which statement about the Requirements Management process itself is correct?"
+    options:
+      - {key: A, text: "It prioritizes every requirement before a phase can use it"}
+      - {key: B, text: "It does not dispose of, address or prioritize any requirements; that is done within the relevant ADM phase", correct: true}
+      - {key: C, text: "It implements changes in the current phase"}
+      - {key: D, text: "It approves the Statement of Architecture Work"}
+    explanation: "B is the approach's explicit statement. A contradicts it, C is a phase step in the table, D is the sponsor's act in Phase A."
+    refs: ["ADM §13.5.1"]
+    difficulty: 1
+    tags: [requirements-management, approach]
+  - id: F4-220
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "Which of the following can hold requirements information from multiple ADM cycles?"
+    options:
+      - {key: A, text: "The Architecture Requirements Specification"}
+      - {key: B, text: "The Requirements Impact Assessment"}
+      - {key: C, text: "The Statement of Architecture Work"}
+      - {key: D, text: "The Architecture Requirements Repository", correct: true}
+    explanation: "The approach says that, unlike the Specification and the Impact Assessment, the Repository can hold information from multiple cycles. C is a per-cycle Phase A deliverable."
+    refs: ["ADM §13.5.1"]
+    difficulty: 2
+    tags: [requirements-management, approach]
+  - id: F4-221
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "Where do the first high-level architecture requirements come from?"
+    options:
+      - {key: A, text: "The Architecture Vision, generated by means of the business scenario or an analogous technique", correct: true}
+      - {key: B, text: "The Phase B gap analysis"}
+      - {key: C, text: "The Phase H Change Requests"}
+      - {key: D, text: "The Preliminary Phase tools strategy"}
+    explanation: "Requirements development starts in the Architecture Vision. B produces gap requirements later, C produces requirements for a later cycle, D is unrelated."
+    refs: ["ADM §13.5.2"]
+    difficulty: 2
+    tags: [requirements-management, approach]
+  - id: F4-222
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "During a phase, where must new requirements that are outside the scope of the current Statement of Architecture Work be recorded?"
+    options:
+      - {key: A, text: "In the Architecture Requirements Specification"}
+      - {key: B, text: "In the Architecture Requirements Repository, for management through the Requirements Management process", correct: true}
+      - {key: C, text: "As a Change Request to Phase G"}
+      - {key: D, text: "They are discarded"}
+    explanation: "In-scope requirements go into the Specification (A); out-of-scope ones go into the Repository. C misuses Phase G, D contradicts the process."
+    refs: ["ADM §13.5.2"]
+    difficulty: 2
+    tags: [requirements-management, approach]
+  - id: F4-223
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "What does the TOGAF Standard say about requirements management processes and tools?"
+    options:
+      - {key: A, text: "It mandates a specific COTS requirements tool"}
+      - {key: B, text: "It requires the Zachman Framework for requirements"}
+      - {key: C, text: "It does not mandate or recommend any specific process or tool; it states what an effective process should achieve", correct: true}
+      - {key: D, text: "It requires business scenarios and nothing else"}
+    explanation: "The resources section describes the 'requirements for requirements' stance. A, B and D each impose something the standard does not."
+    refs: ["ADM §13.5.3"]
+    difficulty: 2
+    tags: [requirements-management, approach]
+  - id: F4-224
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "Which phases must select the approved requirements for that phase from the Architecture Requirements Repository and Specification?"
+    options:
+      - {key: A, text: "Phases B, C and D only"}
+      - {key: B, text: "Phase A only"}
+      - {key: C, text: "Phases G and H only"}
+      - {key: D, text: "Every phase from the Preliminary Phase to Phase H", correct: true}
+    explanation: "Requirements development says each phase from Preliminary to H selects its approved requirements and updates their status at completion. A, B and C restrict this to subsets."
+    refs: ["ADM §13.5.2"]
+    difficulty: 2
+    tags: [requirements-management, approach]
+  - id: F4-225
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "Which types of requirement should the architect identify in each relevant phase?"
+    options:
+      - {key: A, text: "Functional and non-functional requirements", correct: true}
+      - {key: B, text: "Capital and operational requirements"}
+      - {key: C, text: "Simplification and incremental requirements"}
+      - {key: D, text: "Business requirements only"}
+    explanation: "Functional and non-functional are named. B is a Phase F cost split, C are Phase H change types, D is too narrow."
+    refs: ["ADM §13.5.2"]
+    difficulty: 1
+    tags: [requirements-management, approach]
+  - id: F4-226
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "What does the Requirements Impact Assessment identify?"
+    options:
+      - {key: A, text: "The Solution Building Blocks to procure"}
+      - {key: B, text: "The work packages in the Architecture Roadmap"}
+      - {key: C, text: "The phases of the ADM that need to be revisited to address the changes", correct: true}
+      - {key: D, text: "The compliance status of each implementation project"}
+    explanation: "The outputs section says the assessment identifies the phases to revisit. A and B are Phase E content, D is a Phase G Compliance Assessment."
+    refs: ["ADM §13.4"]
+    difficulty: 1
+    tags: [requirements-management, outputs]
+  - id: F4-227
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "Which technique does the Requirements Management chapter name for analysing how a business goal or objective can be met by a process or value stream?"
+    options:
+      - {key: A, text: "Gap analysis"}
+      - {key: B, text: "Business scenarios", correct: true}
+      - {key: C, text: "Heat mapping"}
+      - {key: D, text: "The Business Value and Risk Matrix"}
+    explanation: "Business scenarios are the named resource. A is a development-phase step, C is a Phase B capability technique, D is a Phase F technique."
+    refs: ["ADM §13.5.3"]
+    difficulty: 2
+    tags: [requirements-management, approach]
+  - id: F4-228
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "In the Requirements Management steps, what is a 'gap requirement'?"
+    options:
+      - {key: A, text: "A requirement with no assigned owner"}
+      - {key: B, text: "A requirement deferred to the next ADM cycle"}
+      - {key: C, text: "A non-functional requirement that has no metric"}
+      - {key: D, text: "Something eliminated from the Target Architecture by accident during gap analysis, which therefore requires a change to the Target Architecture", correct: true}
+    explanation: "Step 10 defines a gap requirement as anything eliminated by accident. A, B and C are invented definitions."
+    refs: ["ADM §13.3"]
+    difficulty: 3
+    tags: [requirements-management, steps]
+  - id: F4-229
+    unit: F4
+    objective: "4.7"
+    lesson: F4/12_requirements_management
+    stem: "In the two-column Requirements Management steps table, in which column does 'Monitor baseline requirements' appear?"
+    options:
+      - {key: A, text: "Requirements Management steps", correct: true}
+      - {key: B, text: "ADM phase steps"}
+      - {key: C, text: "Phase H steps"}
+      - {key: D, text: "Phase G steps"}
+    explanation: "Monitoring the baseline (step 3) is done by the Requirements Management process. B holds the identify, assess and implement steps; C and D are not columns of the table."
+    refs: ["ADM §13.3"]
+    difficulty: 2
+    tags: [requirements-management, steps]

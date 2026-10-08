@@ -142,7 +142,7 @@ def _answers_from_row(row: dict[str, Any]) -> list[dict[str, Any]]:
     return answers
 
 
-def normalise(rows: list[dict[str, Any]], exam: str, set_code: str) -> list[dict[str, Any]]:
+def normalise(rows: list[dict[str, Any]], scoring: str, set_code: str) -> list[dict[str, Any]]:
     """The §2 shape for every row. Keys the models do not know are dropped; nothing is validated."""
     normalised: list[dict[str, Any]] = []
     for index, raw in enumerate(rows, start=1):
@@ -159,7 +159,7 @@ def normalise(rows: list[dict[str, Any]], exam: str, set_code: str) -> list[dict
         }
         if row.get("figure"):
             question["figure"] = str(row["figure"]).strip()
-        if exam == "PRACTITIONER":
+        if scoring == "gradient":
             question["scenario"] = _clean(row.get("scenario", "")) or ""
             question["question"] = _clean(row.get("question", row.get("stem", ""))) or ""
             question["answers"] = _answers_from_row(row)

@@ -1,0 +1,852 @@
+# S6 Lifecycle and Service Management bank (SCF). Authored from the SABSA framework as published by
+# the SABSA Institute; SABSA section numbers refer to the White Paper and are to be verified against
+# the registered PDF. status: draft until reviewed.
+code: S6_BANK
+exam: SCF
+name: S6 Lifecycle and Service Management bank
+kind: DRILL
+source: authored
+questions:
+  # ---------------------------------------------------------------- S6.1 The SABSA Lifecycle
+  - id: S6-101
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "Which is the correct order of the SABSA Lifecycle phases?"
+    options:
+      - {key: A, text: "Strategy and Planning, Design, Implement, Manage and Measure", correct: true}
+      - {key: B, text: "Design, Strategy and Planning, Implement, Manage and Measure", why: "Strategy precedes design."}
+      - {key: C, text: "Strategy and Planning, Implement, Design, Manage and Measure", why: "Design precedes implementation."}
+      - {key: D, text: "Plan, Do, Check, Act", why: "That is the Deming cycle, not SABSA's names."}
+    explanation: "Four phases in a loop, with Manage and Measure feeding back into Strategy and Planning."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [lifecycle]
+  - id: S6-102
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "Which Matrix layers does the Strategy and Planning phase fill?"
+    options:
+      - {key: A, text: "Contextual and Conceptual", correct: true}
+      - {key: B, text: "Contextual only", why: "The Conceptual layer, with the Business Attributes Profile, is also produced here."}
+      - {key: C, text: "Logical and Physical", why: "Those are Design-phase layers."}
+      - {key: D, text: "Service Management", why: "That is Manage and Measure."}
+    explanation: "Strategy and Planning answers the business and architect questions."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [lifecycle, strategy]
+  - id: S6-103
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "Which Matrix layers are covered by the Design phase?"
+    options:
+      - {key: A, text: "Logical, Physical, Component and Service Management", correct: true}
+      - {key: B, text: "Logical only", why: "Physical and Component are still design layers."}
+      - {key: C, text: "Logical and Physical only", why: "Component and the design of Service Management are included."}
+      - {key: D, text: "Contextual and Conceptual", why: "Those are Strategy and Planning."}
+    explanation: "Choosing the product and standard is design; installing it is Implement."
+    refs: ["SABSA §4"]
+    difficulty: 2
+    tags: [lifecycle, design, trap]
+  - id: S6-104
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "What is the signature output of the Strategy and Planning phase?"
+    options:
+      - {key: A, text: "The Business Attributes Profile with performance targets and the risk appetite", correct: true}
+      - {key: B, text: "The security services catalogue", why: "Logical, Design phase."}
+      - {key: C, text: "The product and standards list", why: "Component, Design phase."}
+      - {key: D, text: "Attribute measurement reports", why: "Manage and Measure."}
+    explanation: "Nothing is designed until the business has said what must be protected and enabled, measurably."
+    refs: ["SABSA §4", "SABSA §5"]
+    difficulty: 1
+    tags: [lifecycle, attributes]
+  - id: S6-105
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "In which lifecycle phase are the attribute metrics actually collected and compared with targets?"
+    options:
+      - {key: A, text: "Manage and Measure", correct: true}
+      - {key: B, text: "Strategy and Planning", why: "Metrics are defined there, not collected."}
+      - {key: C, text: "Design", why: "Design decides how they will be measured."}
+      - {key: D, text: "Implement", why: "Implement builds; measurement starts once live."}
+    explanation: "Manage and Measure operates the controls and measures performance against target."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [lifecycle, measure]
+  - id: S6-106
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "Where do the findings of Manage and Measure flow?"
+    options:
+      - {key: A, text: "Back into Strategy and Planning, closing the loop", correct: true}
+      - {key: B, text: "Into an archive; the lifecycle is linear", why: "The lifecycle is a loop."}
+      - {key: C, text: "Directly into Implement", why: "Changes are re-planned first."}
+      - {key: D, text: "Into the Component layer only", why: "Findings may change any layer, starting at strategy."}
+    explanation: "Missed targets and changed threats re-enter Strategy and Planning."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [lifecycle, loop]
+  - id: S6-107
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "In which lifecycle phase is the operational security process DESIGNED?"
+    options:
+      - {key: A, text: "Design", correct: true}
+      - {key: B, text: "Manage and Measure", why: "That is where it is performed."}
+      - {key: C, text: "Implement", why: "Implement builds what was designed."}
+      - {key: D, text: "Strategy and Planning", why: "Strategy sets attributes and appetite."}
+    explanation: "The Service Management layer is designed in Design and executed in Manage and Measure."
+    refs: ["SABSA §4"]
+    difficulty: 2
+    tags: [lifecycle, trap]
+  - id: S6-108
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "What does SABSA insist on during the Implement phase?"
+    options:
+      - {key: A, text: "That what is implemented is verified against the design and hand-over to Service Management is planned", correct: true}
+      - {key: B, text: "That a specific project method is used", why: "SABSA expects the enterprise's own delivery method."}
+      - {key: C, text: "That the Business Attributes Profile is rewritten", why: "The profile is a Strategy output."}
+      - {key: D, text: "That no measurement takes place until a year after go-live", why: "Measurement should begin on day one."}
+    explanation: "Verification against design is the start of assurance; hand-over lets measurement begin."
+    refs: ["SABSA §4", "SABSA §6"]
+    difficulty: 2
+    tags: [lifecycle, implement]
+  - id: S6-109
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "The relationship between the Matrix and the Lifecycle is best described as:"
+    options:
+      - {key: A, text: "The Matrix is the static picture of what to answer; the Lifecycle is the dynamic order in which it is filled, built and revisited", correct: true}
+      - {key: B, text: "They are alternatives; an enterprise uses one or the other", why: "They are deliberately aligned and used together."}
+      - {key: C, text: "The Lifecycle replaces the Service Management layer", why: "Manage and Measure is carried out in that layer."}
+      - {key: D, text: "The Matrix is a lifecycle phase", why: "The Matrix is the whole grid."}
+    explanation: "Each lifecycle phase maps onto a band of Matrix layers."
+    refs: ["SABSA §4", "SABSA §2"]
+    difficulty: 2
+    tags: [lifecycle, matrix]
+  - id: S6-110
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "Which lifecycle phase distinguishes SABSA from a design-only method?"
+    options:
+      - {key: A, text: "Manage and Measure", correct: true}
+      - {key: B, text: "Design", why: "Every method designs."}
+      - {key: C, text: "Implement", why: "Every method implements."}
+      - {key: D, text: "Strategy and Planning", why: "Strategy is where SABSA is business-driven, but the measurement loop is what makes it more than design."}
+    explanation: "Collecting metrics against targets and feeding back is what turns the profile into a checked promise."
+    refs: ["SABSA §4"]
+    difficulty: 2
+    tags: [lifecycle, measure]
+  - id: S6-111
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "A learner maps 'Implement = Physical and Component layers'. What is the error?"
+    options:
+      - {key: A, text: "Physical and Component are design layers; Implement is what happens after all design layers are complete", correct: true}
+      - {key: B, text: "None; that is the SABSA mapping", why: "Design spans Logical to Service Management."}
+      - {key: C, text: "Implement covers only the Component layer", why: "Implement is not a layer at all."}
+      - {key: D, text: "Physical is a Strategy layer", why: "Physical is a design layer."}
+    explanation: "Designing a component (choose product, standard) is Design; installing it is Implement."
+    refs: ["SABSA §4"]
+    difficulty: 2
+    tags: [lifecycle, trap]
+  - id: S6-112
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "What makes the SABSA Lifecycle a loop rather than a line?"
+    options:
+      - {key: A, text: "The feedback of attribute metrics and incidents from Manage and Measure into Strategy and Planning", correct: true}
+      - {key: B, text: "The fact that Design is repeated for each layer", why: "Layer-by-layer design is still one pass."}
+      - {key: C, text: "Its alignment with the ADM circle", why: "The alignment is a consequence, not the cause."}
+      - {key: D, text: "The Implement phase running continuously", why: "Implement is a phase, not the loop."}
+    explanation: "Without the returning arrow, the profile is written once and never tested."
+    refs: ["SABSA §4"]
+    difficulty: 2
+    tags: [lifecycle, loop]
+  - id: S6-113
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "Which conceptual frameworks does Strategy and Planning produce for Design to refine?"
+    options:
+      - {key: A, text: "Domain framework, trust framework and risk-management objectives", correct: true}
+      - {key: B, text: "Product catalogue and standards list", why: "Component-layer content."}
+      - {key: C, text: "Security mechanisms and platforms", why: "Physical-layer content."}
+      - {key: D, text: "Incident and change procedures", why: "Service Management, designed in Design."}
+    explanation: "The Conceptual layer's frameworks are refined at the Logical layer in Design."
+    refs: ["SABSA §4", "SABSA §3"]
+    difficulty: 3
+    tags: [lifecycle, conceptual]
+  - id: S6-114
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "How many phases does the SABSA Lifecycle have?"
+    options:
+      - {key: A, text: "Four", correct: true}
+      - {key: B, text: "Six, one per Matrix layer", why: "Layers are six; lifecycle phases are four."}
+      - {key: C, text: "Nine, like the ADM", why: "That is TOGAF."}
+      - {key: D, text: "Three", why: "Manage and Measure is the fourth."}
+    explanation: "Strategy and Planning, Design, Implement, Manage and Measure."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [lifecycle]
+  - id: S6-115
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "Which TOGAF phase is the closest counterpart of Manage and Measure's closing loop?"
+    options:
+      - {key: A, text: "Phase H, where ERM re-evaluates the architecture and governance decides on a new cycle", correct: true}
+      - {key: B, text: "Phase A", why: "Phase A opens the cycle."}
+      - {key: C, text: "Phase D", why: "Phase D is technology design."}
+      - {key: D, text: "The Preliminary Phase", why: "Preliminary establishes the capability."}
+    explanation: "Both loops end by re-assessing against changed threat and opportunity and deciding whether to start again."
+    refs: ["GUIDE:integrating-risk-and-security §5.9", "SABSA §4"]
+    difficulty: 2
+    tags: [lifecycle, adm]
+  - id: S6-116
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "During Design, at which layer are security services, domains and trust relationships defined?"
+    options:
+      - {key: A, text: "Logical", correct: true}
+      - {key: B, text: "Physical", why: "Physical holds mechanisms and platforms."}
+      - {key: C, text: "Component", why: "Component holds products and standards."}
+      - {key: D, text: "Conceptual", why: "Conceptual holds attributes and frameworks."}
+    explanation: "Design walks Logical, Physical, Component and the Service Management design."
+    refs: ["SABSA §4", "SABSA §3.3"]
+    difficulty: 1
+    tags: [lifecycle, design]
+  - id: S6-117
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "Why does SABSA design the Service Management layer during Design rather than after go-live?"
+    options:
+      - {key: A, text: "So that operations, monitoring and audit exist from day one rather than being invented later", correct: true}
+      - {key: B, text: "Because Service Management is a design layer below Component", why: "It is orthogonal to the design layers."}
+      - {key: C, text: "Because operations staff are the designers", why: "Roles are not the reason."}
+      - {key: D, text: "It does not; Service Management is designed in Manage and Measure", why: "It is executed there, designed earlier."}
+    explanation: "Designing how controls will be run is part of designing the controls."
+    refs: ["SABSA §4"]
+    difficulty: 2
+    tags: [lifecycle, service-management]
+  - id: S6-118
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "'Business-driven' is earned in which lifecycle phase?"
+    options:
+      - {key: A, text: "Strategy and Planning, where the business states requirements in its own vocabulary", correct: true}
+      - {key: B, text: "Implement, where the business pays", why: "Paying is not the SABSA sense."}
+      - {key: C, text: "Design, where architects choose mechanisms", why: "Design is technical refinement."}
+      - {key: D, text: "None; the term describes the Matrix, not the lifecycle", why: "The lifecycle phase that captures business drivers is where it is earned."}
+    explanation: "Nothing is designed until the business has said what must be protected and enabled."
+    refs: ["SABSA §1", "SABSA §4"]
+    difficulty: 2
+    tags: [lifecycle, business-driven]
+  - id: S6-119
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "A performance target is missed during operation. Under the lifecycle, what happens next?"
+    options:
+      - {key: A, text: "The finding flows back into Strategy and Planning and the loop begins again", correct: true}
+      - {key: B, text: "The target is lowered in the Service Management layer", why: "Targets are owned by the business at the Conceptual layer."}
+      - {key: C, text: "The component is replaced without review", why: "Changes are re-planned through the loop."}
+      - {key: D, text: "Nothing, until the next lifecycle starts on schedule", why: "The loop is event-driven as well as scheduled."}
+    explanation: "Manage and Measure reports and feeds back."
+    refs: ["SABSA §4", "SABSA §5"]
+    difficulty: 2
+    tags: [lifecycle, feedback]
+  - id: S6-120
+    unit: S6
+    objective: "S6.1"
+    lesson: S6/01_the_sabsa_lifecycle
+    stem: "Which lifecycle phase includes procurement, configuration, integration and testing?"
+    options:
+      - {key: A, text: "Implement", correct: true}
+      - {key: B, text: "Design", why: "Design selects; Implement procures and configures."}
+      - {key: C, text: "Manage and Measure", why: "That operates what was built."}
+      - {key: D, text: "Strategy and Planning", why: "That sets requirements."}
+    explanation: "Implement builds the design and transitions it into service."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [lifecycle, implement]
+  # ---------------------------------------------------------------- S6.2 Service Management layer
+  - id: S6-121
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "How is the Service Management layer positioned relative to the other five layers?"
+    options:
+      - {key: A, text: "It runs across all of them rather than sitting beneath the Component layer", correct: true}
+      - {key: B, text: "It is the seventh design layer, below Component", why: "It is orthogonal, not a further level of detail."}
+      - {key: C, text: "It sits between Logical and Physical", why: "No layer sits there."}
+      - {key: D, text: "It is the same as the Contextual layer", why: "Contextual is the business view."}
+    explanation: "Operating, monitoring and auditing are needed at every level of abstraction."
+    refs: ["SABSA §3.6"]
+    difficulty: 1
+    tags: [service-management, layers]
+  - id: S6-122
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "Whose view is the Service Management layer?"
+    options:
+      - {key: A, text: "The facilities manager's", correct: true}
+      - {key: B, text: "The tradesman's", why: "Component."}
+      - {key: C, text: "The builder's", why: "Physical."}
+      - {key: D, text: "The architect's", why: "Conceptual."}
+    explanation: "The older name for the layer is the Operational layer."
+    refs: ["SABSA §3.6"]
+    difficulty: 1
+    tags: [service-management]
+  - id: S6-123
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "In the Service Management layer, the Motivation (Why) cell is:"
+    options:
+      - {key: A, text: "Operational risk management: continuous assessment, monitoring, reporting and treatment", correct: true}
+      - {key: B, text: "Security standards", why: "Component × Motivation."}
+      - {key: C, text: "Business risk and opportunity", why: "Contextual × Motivation."}
+      - {key: D, text: "Risk-management policies", why: "Logical × Motivation."}
+    explanation: "The risk process is run continuously in the operational row."
+    refs: ["SABSA §3.6"]
+    difficulty: 2
+    tags: [service-management, risk]
+  - id: S6-124
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "Which pair of processes keeps the architecture true to its design under pressure?"
+    options:
+      - {key: A, text: "Incident management and change management", correct: true}
+      - {key: B, text: "Procurement and budgeting", why: "Not Service Management processes in SABSA."}
+      - {key: C, text: "Strategy and Design", why: "Those are lifecycle phases."}
+      - {key: D, text: "Classification and profiling", why: "Those are Logical and Conceptual activities."}
+    explanation: "Incidents are detected and recovered; changes are assessed for their effect on attributes before being made."
+    refs: ["SABSA §3.6", "GUIDE:integrating-risk-and-security §3.2.4"]
+    difficulty: 1
+    tags: [service-management, incident, change]
+  - id: S6-125
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "What is the difference between assurance and audit?"
+    options:
+      - {key: A, text: "Assurance produces evidence and is owned by those who run the controls; audit is the independent examination of that evidence", correct: true}
+      - {key: B, text: "They are synonyms", why: "SABSA keeps them distinct."}
+      - {key: C, text: "Audit produces evidence; assurance examines it", why: "Reversed."}
+      - {key: D, text: "Assurance is external; audit is internal", why: "Independence, not location, is the distinction."}
+    explanation: "The operations team does not audit its own controls."
+    refs: ["SABSA §3.6", "SABSA §6"]
+    difficulty: 2
+    tags: [service-management, assurance, audit, trap]
+  - id: S6-126
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "Why must a change to a component be assessed in the Service Management layer before it is made?"
+    options:
+      - {key: A, text: "So the traceability chain from attribute to control is not silently broken", correct: true}
+      - {key: B, text: "Because SABSA prohibits change", why: "SABSA manages change; it does not forbid it."}
+      - {key: C, text: "Because only the Component layer may change", why: "Any layer may change, under control."}
+      - {key: D, text: "To update the vendor list", why: "Not the reason."}
+    explanation: "Change management protects the attribute-to-control links."
+    refs: ["SABSA §3.6"]
+    difficulty: 2
+    tags: [service-management, change]
+  - id: S6-127
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "Where are the Business Attributes Profile's metrics actually measured?"
+    options:
+      - {key: A, text: "In the Service Management layer", correct: true}
+      - {key: B, text: "In the Conceptual layer where they are defined", why: "Defined there, measured operationally."}
+      - {key: C, text: "In the Component layer", why: "Components are the things measured, not where measurement is managed."}
+      - {key: D, text: "In the Contextual layer", why: "Contextual is the business view."}
+    explanation: "Uptime, log reviews, recertification and restore tests are operational activities."
+    refs: ["SABSA §3.6", "SABSA §5"]
+    difficulty: 2
+    tags: [service-management, metrics]
+  - id: S6-128
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "The attribute Recoverable is most directly measured by which Service Management activity?"
+    options:
+      - {key: A, text: "Restore-test results against the recovery-time target", correct: true}
+      - {key: B, text: "Log review", why: "That measures Auditable."}
+      - {key: C, text: "Orphan-account counts", why: "That measures Access-controlled."}
+      - {key: D, text: "Uptime monitoring", why: "That measures Available."}
+    explanation: "Each attribute's metric is taken by a matching operational activity."
+    refs: ["SABSA §3.6", "SABSA §5"]
+    difficulty: 2
+    tags: [service-management, metrics]
+  - id: S6-129
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "The Blue Book name for the Service Management layer's Assets (What) cell is:"
+    options:
+      - {key: A, text: "Assurance of operational continuity", correct: true}
+      - {key: B, text: "Operational risk management", why: "That is the Motivation cell."}
+      - {key: C, text: "Security operations schedule", why: "That is the Time cell."}
+      - {key: D, text: "Security of sites, networks and platforms", why: "That is the Location cell."}
+    explanation: "Service delivery management: keeping the services running at the agreed level."
+    refs: ["SABSA §3.6"]
+    difficulty: 3
+    tags: [service-management, cells]
+  - id: S6-130
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "Joiners, movers and leavers handling belongs to which Service Management cell?"
+    options:
+      - {key: A, text: "People: account provisioning and user support", correct: true}
+      - {key: B, text: "Process: management and support of systems", why: "That is operating the mechanisms."}
+      - {key: C, text: "Location: management of environment", why: "Sites and networks."}
+      - {key: D, text: "Time: calendar and timetable", why: "Scheduling."}
+    explanation: "Personnel management is the People column of the operational row."
+    refs: ["SABSA §3.6"]
+    difficulty: 2
+    tags: [service-management, people]
+  - id: S6-131
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "The TOGAF risk and security guide's Phase G security audit corresponds to which Service Management theme?"
+    options:
+      - {key: A, text: "Audit: the independent check of processes, designs, code, configuration and testing", correct: true}
+      - {key: B, text: "Operations", why: "Operations runs the controls."}
+      - {key: C, text: "Change management", why: "Change assesses modifications."}
+      - {key: D, text: "Incident management", why: "Incidents are events, not reviews."}
+    explanation: "The guide's audit is the same activity at implementation time."
+    refs: ["GUIDE:integrating-risk-and-security §5.8.1", "SABSA §3.6"]
+    difficulty: 2
+    tags: [service-management, audit, togaf]
+  - id: S6-132
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "A profile attribute has a target that nothing in the Service Management layer measures. This is:"
+    options:
+      - {key: A, text: "An incomplete architecture, caught by the bottom-up check", correct: true}
+      - {key: B, text: "Normal, since not all attributes are measurable", why: "Every profile attribute carries a metric and target."}
+      - {key: C, text: "A Component-layer omission", why: "The gap is in operational measurement."}
+      - {key: D, text: "A Contextual-layer error", why: "The business driver may be fine; the measurement is missing."}
+    explanation: "A target nothing measures is an unkept promise."
+    refs: ["SABSA §3.6", "SABSA §6"]
+    difficulty: 2
+    tags: [service-management, completeness]
+  - id: S6-133
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "Which of the following is NOT one of the four operational themes the unit names for the Service Management layer?"
+    options:
+      - {key: A, text: "Product selection", correct: true}
+      - {key: B, text: "Operations", why: "A genuine theme."}
+      - {key: C, text: "Incident and change", why: "A genuine theme."}
+      - {key: D, text: "Assurance and audit", why: "Genuine themes."}
+    explanation: "Product selection is Component-layer design, not operation."
+    refs: ["SABSA §3.6"]
+    difficulty: 1
+    tags: [service-management, themes]
+  - id: S6-134
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "The older name for the Service Management layer is:"
+    options:
+      - {key: A, text: "The Operational layer", correct: true}
+      - {key: B, text: "The Governance layer", why: "Not a SABSA layer name."}
+      - {key: C, text: "The Deployment layer", why: "Not a SABSA layer name."}
+      - {key: D, text: "The Technical layer", why: "Not a SABSA layer name."}
+    explanation: "Operational and Service Management name the same row."
+    refs: ["SABSA §3.6"]
+    difficulty: 1
+    tags: [service-management]
+  - id: S6-135
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "Which Service Management activity is in the Time (When) cell?"
+    options:
+      - {key: A, text: "Management of the calendar and timetable of operational tasks and performance against time targets", correct: true}
+      - {key: B, text: "Key-rotation mechanism design", why: "Design of timing is Physical × Time."}
+      - {key: C, text: "Selection of the scheduler product", why: "Component × Time."}
+      - {key: D, text: "Business time dependence", why: "Contextual × Time."}
+    explanation: "Time and performance management is the operational Time cell."
+    refs: ["SABSA §3.6"]
+    difficulty: 2
+    tags: [service-management, time]
+  - id: S6-136
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "Incident management feeds what it learns into:"
+    options:
+      - {key: A, text: "Operational risk management", correct: true}
+      - {key: B, text: "The Component layer's product list", why: "Products may change, but the learning goes to the risk process."}
+      - {key: C, text: "The Contextual layer's business geography", why: "Unrelated."}
+      - {key: D, text: "Nothing; incidents are closed and archived", why: "SABSA loops learning back."}
+    explanation: "Incidents are risk events; the risk process absorbs them."
+    refs: ["SABSA §3.6"]
+    difficulty: 2
+    tags: [service-management, incident]
+  - id: S6-137
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "Which statement best describes 'assurance' in the Service Management layer?"
+    options:
+      - {key: A, text: "Collecting evidence that controls are in place, work and continue to meet their targets", correct: true}
+      - {key: B, text: "Buying insurance against loss", why: "That is a risk-transfer decision, not assurance."}
+      - {key: C, text: "An external certification", why: "Certification is one audit outcome, not assurance itself."}
+      - {key: D, text: "The business's promise to fund security", why: "Not the meaning."}
+    explanation: "Assurance turns 'we run it' into 'we can show it'."
+    refs: ["SABSA §3.6", "SABSA §6"]
+    difficulty: 2
+    tags: [service-management, assurance]
+  - id: S6-138
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "The TOGAF guide expects operational security processes to exist:"
+    options:
+      - {key: A, text: "Before the architecture is called complete", correct: true}
+      - {key: B, text: "Only after the first audit", why: "They are part of the architecture."}
+      - {key: C, text: "Only in regulated industries", why: "The guide applies generally."}
+      - {key: D, text: "Never; they are outside architecture", why: "The guide lists them as security-architecture concerns."}
+    explanation: "Operational security processes are part of information security management in the guide."
+    refs: ["GUIDE:integrating-risk-and-security §3.2.4"]
+    difficulty: 2
+    tags: [service-management, togaf]
+  - id: S6-139
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "A question asks which layer is the 'lowest design layer' and which 'cuts across' the others. The answers are:"
+    options:
+      - {key: A, text: "Component; Service Management", correct: true}
+      - {key: B, text: "Service Management; Component", why: "Reversed."}
+      - {key: C, text: "Physical; Logical", why: "Neither is lowest nor cross-cutting."}
+      - {key: D, text: "Component; Contextual", why: "Contextual is the top, not cross-cutting."}
+    explanation: "Component is the lowest design layer; Service Management is orthogonal."
+    refs: ["SABSA §3.5", "SABSA §3.6"]
+    difficulty: 2
+    tags: [service-management, trap]
+  - id: S6-140
+    unit: S6
+    objective: "S6.2"
+    lesson: S6/02_the_service_management_layer
+    stem: "Which Service Management cell covers physical and network operations and environment monitoring?"
+    options:
+      - {key: A, text: "Location: management of buildings, sites, platforms and networks", correct: true}
+      - {key: B, text: "Assets", why: "Continuity and service delivery."}
+      - {key: C, text: "Process", why: "Systems and service support."}
+      - {key: D, text: "People", why: "Accounts and user support."}
+    explanation: "Security of sites, networks and platforms is the operational Location cell."
+    refs: ["SABSA §3.6"]
+    difficulty: 2
+    tags: [service-management, location]
+  # ---------------------------------------------------------------- S6.3 Lifecycle and the ADM
+  - id: S6-141
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "Which ADM phases correspond to SABSA's Strategy and Planning?"
+    options:
+      - {key: A, text: "Preliminary and A, with Requirements Management", correct: true}
+      - {key: B, text: "B, C and D", why: "Those are Design."}
+      - {key: C, text: "E, F and G", why: "Those are Implement."}
+      - {key: D, text: "G and H", why: "Those are Manage and Measure."}
+    explanation: "Drivers, principles, risk appetite and the Business Attributes Profile as Phase A requirements."
+    refs: ["WP:w117 §4", "SABSA §4"]
+    difficulty: 1
+    tags: [adm, lifecycle]
+  - id: S6-142
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "Which ADM phases correspond to SABSA's Design phase?"
+    options:
+      - {key: A, text: "B, C and D", correct: true}
+      - {key: B, text: "A only", why: "Phase A is Strategy."}
+      - {key: C, text: "E and F", why: "Those are Implement."}
+      - {key: D, text: "H", why: "Phase H is Manage and Measure."}
+    explanation: "The security content of the three architecture domains."
+    refs: ["WP:w117 §4"]
+    difficulty: 1
+    tags: [adm, design]
+  - id: S6-143
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "Phase G belongs to which SABSA lifecycle phase(s)?"
+    options:
+      - {key: A, text: "Both Implement (governed building) and Manage and Measure (the compliance review's first measurement)", correct: true}
+      - {key: B, text: "Implement only", why: "The compliance review is already measurement."}
+      - {key: C, text: "Strategy and Planning", why: "Phase G is late in the cycle."}
+      - {key: D, text: "Design only", why: "Design is B to D."}
+    explanation: "The boundaries are bands, not lines."
+    refs: ["WP:w117 §4", "GUIDE:integrating-risk-and-security §5.8"]
+    difficulty: 2
+    tags: [adm, trap]
+  - id: S6-144
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "Which TOGAF governance element matches SABSA assurance?"
+    options:
+      - {key: A, text: "Architecture Compliance Reviews, with assessments filed in the Governance Log", correct: true}
+      - {key: B, text: "The Request for Architecture Work", why: "That starts a cycle."}
+      - {key: C, text: "The Architecture Vision", why: "That is a Phase A deliverable."}
+      - {key: D, text: "The Solutions Continuum", why: "That classifies solutions."}
+    explanation: "Compliance reviews produce and file the evidence that implementation matches design."
+    refs: ["GUIDE:integrating-risk-and-security §5.8", "SABSA §3.6"]
+    difficulty: 2
+    tags: [adm, assurance]
+  - id: S6-145
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "Which TOGAF process matches SABSA operational risk management?"
+    options:
+      - {key: A, text: "Phase H's enterprise risk management, continuously evaluating the architecture against changed threat and opportunity", correct: true}
+      - {key: B, text: "Phase B's Business Architecture", why: "Phase B designs; it does not continuously monitor."}
+      - {key: C, text: "Phase F's migration planning", why: "Scheduling, not risk monitoring."}
+      - {key: D, text: "The Preliminary Phase's principles", why: "Principles are set once."}
+    explanation: "Both are continuous re-assessment loops."
+    refs: ["GUIDE:integrating-risk-and-security §5.9", "SABSA §3.6"]
+    difficulty: 2
+    tags: [adm, risk]
+  - id: S6-146
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "In SABSA terms, the TOGAF Architecture Contract signed in Phase G is:"
+    options:
+      - {key: A, text: "The point at which designed mechanisms and components become commitments whose performance Service Management will measure", correct: true}
+      - {key: B, text: "The Business Attributes Profile under another name", why: "The profile is a requirement, not a delivery commitment."}
+      - {key: C, text: "A Component-layer purchase order", why: "It is an agreement on deliverables and quality, not a purchase."}
+      - {key: D, text: "Irrelevant to SABSA", why: "It is the commitment the assurance framework measures against."}
+    explanation: "The contract without measurement is a promise; measurement without a contract is unowned data."
+    refs: ["GUIDE:integrating-risk-and-security §5.8", "SABSA §3.6"]
+    difficulty: 3
+    tags: [adm, contract]
+  - id: S6-147
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "According to the TOGAF risk and security guide, what tangible outputs does Phase H produce?"
+    options:
+      - {key: A, text: "None of its own; it runs ERM and governance and decides on minor change or a new cycle", correct: true}
+      - {key: B, text: "The Target Architecture", why: "Phase H does not produce architecture."}
+      - {key: C, text: "The Security Services Catalog", why: "That is Phase C."}
+      - {key: D, text: "The Risk Mitigation Plan", why: "That is Phase E."}
+    explanation: "Phase H and SABSA's Manage and Measure both produce measurements and decisions, not architecture."
+    refs: ["GUIDE:integrating-risk-and-security §5.9"]
+    difficulty: 2
+    tags: [adm, phase-h, trap]
+  - id: S6-148
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "What can trigger a new ADM cycle from the Manage and Measure loop, per the TOGAF guide?"
+    options:
+      - {key: A, text: "A change of risk appetite", correct: true}
+      - {key: B, text: "A routine password reset", why: "Operational, not architectural."}
+      - {key: C, text: "Completion of a compliance review with no findings", why: "No findings means no change."}
+      - {key: D, text: "Publishing the Standards Library", why: "Not a trigger."}
+    explanation: "Security changes are often disruptive, and a changed appetite can require a new iteration."
+    refs: ["GUIDE:integrating-risk-and-security §5.9"]
+    difficulty: 2
+    tags: [adm, phase-h]
+  - id: S6-149
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "What does SABSA add to TOGAF's Phase H change management?"
+    options:
+      - {key: A, text: "Operational risk management as a continuous process and attribute metrics against targets", correct: true}
+      - {key: B, text: "A defined set of steps, inputs and outputs", why: "That is what TOGAF brings."}
+      - {key: C, text: "The Architecture Board", why: "TOGAF's governance body."}
+      - {key: D, text: "The content framework", why: "TOGAF's."}
+    explanation: "TOGAF brings method and bodies; SABSA brings measurable attributes and continuous risk."
+    refs: ["WP:w117 §4", "GUIDE:integrating-risk-and-security §2.8"]
+    difficulty: 2
+    tags: [adm, comparison]
+  - id: S6-150
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "What does TOGAF bring to the combined loop that SABSA does not define?"
+    options:
+      - {key: A, text: "A defined method with steps per phase, a content framework and repository, and governance bodies and contracts", correct: true}
+      - {key: B, text: "The Business Attributes Profile", why: "SABSA's."}
+      - {key: C, text: "Two-way traceability", why: "SABSA's."}
+      - {key: D, text: "The Matrix", why: "SABSA's."}
+    explanation: "The two are complementary: method and governance from TOGAF, requirements form and traceability from SABSA."
+    refs: ["WP:w117 §4"]
+    difficulty: 2
+    tags: [adm, comparison]
+  - id: S6-151
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "Which ADM phases correspond to SABSA's Implement phase?"
+    options:
+      - {key: A, text: "E, F and G", correct: true}
+      - {key: B, text: "B and C", why: "Design."}
+      - {key: C, text: "A and H", why: "Strategy and Manage/Measure."}
+      - {key: D, text: "Preliminary", why: "Strategy."}
+    explanation: "Deciding the work, scheduling it and governing its delivery."
+    refs: ["WP:w117 §4"]
+    difficulty: 1
+    tags: [adm, implement]
+  - id: S6-152
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "How do the SABSA design layers and the ADM architecture domains relate?"
+    options:
+      - {key: A, text: "They cross: a security service may be designed in B or C, a mechanism in C or D, a component in D or E", correct: true}
+      - {key: B, text: "One-to-one: Logical is B, Physical is C, Component is D", why: "The grids cross rather than coincide."}
+      - {key: C, text: "They are unrelated", why: "The crosswalk panels show the cells each phase fills."}
+      - {key: D, text: "All design layers are completed in Phase D", why: "Design spans B to D."}
+    explanation: "SABSA runs down abstraction levels; the ADM runs across domains."
+    refs: ["SABSA §4", "GUIDE:integrating-risk-and-security §5.3", "GUIDE:integrating-risk-and-security §5.5"]
+    difficulty: 3
+    tags: [adm, design]
+  - id: S6-153
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "Which TOGAF element matches SABSA audit?"
+    options:
+      - {key: A, text: "The Phase G security audit, with the Architecture Board as the hearing body", correct: true}
+      - {key: B, text: "The Architecture Roadmap", why: "A planning deliverable."}
+      - {key: C, text: "The Standards Library", why: "A repository section."}
+      - {key: D, text: "The business scenario technique", why: "A requirements technique."}
+    explanation: "Independent examination and a body to hear it."
+    refs: ["GUIDE:integrating-risk-and-security §5.8.1"]
+    difficulty: 2
+    tags: [adm, audit]
+  - id: S6-154
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "Where would TOGAF file SABSA attribute performance measurements?"
+    options:
+      - {key: A, text: "The Governance Repository (Governance Log), among its performance measurements", correct: true}
+      - {key: B, text: "The Reference Library", why: "Templates and patterns."}
+      - {key: C, text: "The Architecture Landscape", why: "Architecture states, not measurements."}
+      - {key: D, text: "The Statement of Architecture Work", why: "Scope and approach."}
+    explanation: "The Governance Log records compliance assessments and performance measurements."
+    refs: ["GUIDE:integrating-risk-and-security §5.8", "SABSA §3.6"]
+    difficulty: 3
+    tags: [adm, repository]
+  - id: S6-155
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "Which document first mapped the SABSA Lifecycle and Matrix onto the ADM?"
+    options:
+      - {key: A, text: "W117, TOGAF and SABSA Integration, jointly with the SABSA Institute", correct: true}
+      - {key: B, text: "The ArchiMate specification's TOGAF appendix", why: "That maps ArchiMate, not SABSA."}
+      - {key: C, text: "W172", why: "That models risk in ArchiMate."}
+      - {key: D, text: "ISO 27001", why: "An ISMS standard."}
+    explanation: "The TOGAF risk and security guide grew from W117."
+    refs: ["WP:w117 §4", "GUIDE:integrating-risk-and-security §2.8"]
+    difficulty: 1
+    tags: [adm, sources]
+  - id: S6-156
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "SABSA's Implement phase contributes what insistence to Phases E–G?"
+    options:
+      - {key: A, text: "That the delivered component is verified against the designed mechanism", correct: true}
+      - {key: B, text: "That vendors be chosen by tender", why: "Not a SABSA rule."}
+      - {key: C, text: "That the Architecture Vision be rewritten", why: "The vision is Phase A."}
+      - {key: D, text: "That no reuse is allowed", why: "Reuse is allowed after verification."}
+    explanation: "Verification is what Phase G's compliance review and security audit do."
+    refs: ["SABSA §4", "GUIDE:integrating-risk-and-security §5.8"]
+    difficulty: 2
+    tags: [adm, implement]
+  - id: S6-157
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "A question insists on a strict one-to-one mapping between lifecycle phases and ADM phases. The correct response is:"
+    options:
+      - {key: A, text: "The mapping is a set of overlapping bands, and W117 presents it that way", correct: true}
+      - {key: B, text: "Strategy = A, Design = B, Implement = C, Manage = D", why: "Wrong on every line."}
+      - {key: C, text: "There is no relationship", why: "There is a published mapping."}
+      - {key: D, text: "SABSA has nine phases to match", why: "SABSA has four."}
+    explanation: "Phase G straddles Implement and Manage and Measure, for example."
+    refs: ["WP:w117 §4"]
+    difficulty: 2
+    tags: [adm, trap]
+  - id: S6-158
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "Which SABSA Service Management activity matches TOGAF's decision between minor change and a new cycle?"
+    options:
+      - {key: A, text: "Change management for controls", correct: true}
+      - {key: B, text: "Account provisioning", why: "People cell, unrelated."}
+      - {key: C, text: "Uptime monitoring", why: "Measurement, not decision."}
+      - {key: D, text: "Key rotation", why: "Operations."}
+    explanation: "Both assess a change's impact before acting."
+    refs: ["GUIDE:integrating-risk-and-security §5.9", "SABSA §3.6"]
+    difficulty: 2
+    tags: [adm, change]
+  - id: S6-159
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "In the crosswalk, which SABSA layer is placed against Phases G and H?"
+    options:
+      - {key: A, text: "Service Management", correct: true}
+      - {key: B, text: "Contextual", why: "Preliminary and A."}
+      - {key: C, text: "Logical", why: "B and C."}
+      - {key: D, text: "Component", why: "D, E and F."}
+    explanation: "Governance and operations are the operational row."
+    refs: ["WP:w117 §4", "GUIDE:integrating-risk-and-security §5.8"]
+    difficulty: 1
+    tags: [adm, crosswalk]
+  - id: S6-160
+    unit: S6
+    objective: "S6.3"
+    lesson: S6/03_lifecycle_and_the_adm
+    stem: "The Preliminary Phase's risk appetite and Security Architect's mandate correspond to which SABSA activity?"
+    options:
+      - {key: A, text: "Strategy and Planning at the Contextual and Conceptual layers", correct: true}
+      - {key: B, text: "Design at the Logical layer", why: "Appetite precedes design."}
+      - {key: C, text: "Implement", why: "Too late."}
+      - {key: D, text: "Manage and Measure", why: "Appetite is set before measurement."}
+    explanation: "Both begin by asking what the business is for and how much risk it accepts."
+    refs: ["GUIDE:integrating-risk-and-security §5.1", "SABSA §4"]
+    difficulty: 2
+    tags: [adm, preliminary]

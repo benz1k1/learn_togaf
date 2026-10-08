@@ -2,7 +2,7 @@
 """
 Start Learn TOGAF locally (learn_togaf.md §5).
 
-    python start.py                    # uvicorn --reload on 5014 (127.0.0.1)
+    python start.py                    # granian --reload on 5014 (127.0.0.1)
     python start.py --load-content     # rebuild the content cache from content/ first
     python start.py --reset-progress   # wipe the learner's state (attempts, cards, notes, plan), keep content
     python start.py --stop             # stop whatever is on the port
@@ -120,13 +120,14 @@ def main() -> None:
     if _pids_on_port(args.port):
         print(f"port {args.port} is busy; stopping the previous server")
         stop(args.port)
+    # Granian (Rust ASGI server). PYTHONPATH already points at api/src via _environment().
     command = [
-        _python(), "-m", "uvicorn", "learn_togaf.main:app",
+        _python(), "-m", "granian", "--interface", "asgi", "learn_togaf.main:app",
         "--host", args.host, "--port", str(args.port),
-        "--app-dir", str(API_DIR / "src"),
     ]
     if not args.no_reload:
-        command += ["--reload", "--reload-dir", str(API_DIR / "src")]
+        # Watches every file under src, so Jinja template edits reload too.
+        command += ["--reload", "--reload-paths", str(API_DIR / "src")]
     print(f"Learn TOGAF on http://{args.host}:{args.port}")
     try:
         subprocess.run(command, cwd=API_DIR, env=environment, check=False)

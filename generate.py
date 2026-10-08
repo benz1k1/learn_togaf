@@ -5,8 +5,7 @@ The generation pipeline CLI (learn_togaf.md §1.5) — drafts into content/revie
     python generate.py lessons <unit>                       # one lesson per objective of the unit
     python generate.py glossary                             # the Definitions sections → glossary draft
     python generate.py adm                                  # parsed phase lists + model-filled traps
-    python generate.py questions foundation <unit> [--batch]
-    python generate.py questions practitioner <unit> [--batch]
+    python generate.py questions <exam code> <unit> [--batch]      # OGEA-101, OGEA-102, OGA-031, OGA-032, SCF
     python generate.py figure-questions [--batch]
     python generate.py verify [--batch]                     # independent judge over content/review/
 
@@ -115,7 +114,7 @@ def main() -> None:
         func=cmd_adm
     )
     questions_parser = sub.add_parser("questions", parents=[common], help="draft a question set for a unit")
-    questions_parser.add_argument("exam", choices=["foundation", "practitioner"])
+    questions_parser.add_argument("exam", help="exam code from content/blueprint.yaml (OGEA-101, OGA-032, SCF, …)")
     questions_parser.add_argument("unit")
     questions_parser.add_argument("--batch", action="store_true", help="use the Message Batches API")
     questions_parser.add_argument(

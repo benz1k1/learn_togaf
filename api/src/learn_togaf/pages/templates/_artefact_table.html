@@ -1,22 +1,31 @@
 <div id="artefact-table" class="card bg-base-100 shadow-sm">
   <div class="card-body p-0 overflow-x-auto">
     <table class="table table-sm">
-      <thead><tr><th>Artefact</th><th>Kind</th><th>Domain</th><th>Phase</th><th>Purpose</th><th>Refs</th></tr></thead>
+      <thead><tr><th>Artefact</th><th>Kind</th><th>Domain</th><th>Phase</th><th>Purpose</th><th>ArchiMate</th><th>Refs</th><th>Example</th></tr></thead>
       <tbody>
         {% for row in rows %}
-        <tr>
+        <tr id="{{ row.code }}">
           <td class="font-medium">{{ row.name }}</td>
           <td><span class="badge badge-ghost badge-sm">{{ row.kind | lower }}</span></td>
           <td>{{ row.domain | lower }}</td>
           <td><a class="link" href="/adm/{{ row.phase_code }}">{{ phase_names.get(row.phase_code, row.phase_code) }}</a></td>
           <td class="text-sm max-w-md">{{ row.purpose }}</td>
-          <td class="text-xs">{% for ref in row.refs | from_json %}<a class="link" href="/source/{{ ref | urlencode }}">{{ ref }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</td>
+          <td class="text-xs max-w-xs" data-testid="archimate-{{ row.code }}">
+            {% if row.archimate %}
+            <span class="badge badge-info badge-sm" title="{{ row.archimate.elements | join(', ') }}">{{ row.archimate.viewpoint }}</span>
+            {% if row.code in views %}<span class="badge badge-outline badge-sm" title="an ArchiMate view of this artefact is in the Example panel"><i class="mdi mdi-vector-square"></i> view</span>{% endif %}
+            <div class="text-base-content/60 mt-0.5">{{ row.archimate.elements | join(', ') }}</div>
+            {% else %}<span class="text-base-content/40">—</span>{% endif %}
+          </td>
+          <td class="text-xs">{% for ref in row.refs %}<a class="link" href="/source/{{ ref | urlencode }}">{{ ref }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</td>
+          <td>{% with code = row.code %}{% include "_artefact_example_button.html" %}{% endwith %}</td>
         </tr>
+        <tr class="artefact-example-row"><td colspan="8" class="p-0 artefact-example" id="artefact-example-{{ row.code }}"></td></tr>
         {% else %}
-        <tr><td colspan="6" class="text-center text-base-content/60">No artefacts match.</td></tr>
+        <tr><td colspan="8" class="text-center text-base-content/60">No artefacts match.</td></tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
-  <div class="px-4 py-2 text-xs text-base-content/60">{{ rows | length }} artefact{{ '' if rows | length == 1 else 's' }}</div>
+  <div class="px-4 py-2 text-xs text-base-content/60">{{ rows | length }} artefact{{ '' if rows | length == 1 else 's' }}{% if views %} · {{ views | length }} with an ArchiMate view{% endif %}</div>
 </div>

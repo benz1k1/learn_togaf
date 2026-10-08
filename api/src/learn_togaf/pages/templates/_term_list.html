@@ -6,6 +6,7 @@
       <div class="flex items-center gap-2 flex-wrap">
         <a class="font-semibold link link-hover" href="/glossary/{{ term.id }}">{{ term.term }}</a>
         <span class="text-xs text-base-content/60">{{ term.document }} §{{ term.section }}</span>
+        {% if term.track != 'TOGAF' %}<span class="badge badge-xs {{ 'badge-info' if term.track == 'ARCHIMATE' else 'badge-secondary' if term.track == 'SABSA' else 'badge-accent' }}">{{ term.track | lower }}</span>{% endif %}
         {% if term.status == 'draft' %}<span class="badge badge-warning badge-xs">draft</span>{% endif %}
         {% for code in term.objectives %}<span class="badge badge-outline badge-xs">{{ code }}</span>{% endfor %}
       </div>

@@ -1,0 +1,36 @@
+{# Example drawings for one artefact; loaded by htmx into the row's example cell. The TOGAF drawing
+   always exists; the ArchiMate view (static/archimate/<CODE>.svg) and the worked-example links appear when there is one. #}
+<div class="border border-base-300 rounded bg-base-100 p-3 my-2" x-data="{ tab: 'togaf' }">
+  <div class="flex flex-wrap items-center gap-2 mb-2 text-xs">
+    <span class="font-medium text-sm">{{ artefact.name }}</span>
+    <span class="badge badge-ghost badge-sm">{{ artefact.kind | lower }}</span>
+    {% if archimate_url %}
+    <div class="join" role="tablist">
+      <button type="button" class="join-item btn btn-xs" :class="tab === 'togaf' ? 'btn-active' : ''" @click="tab = 'togaf'" data-testid="tab-togaf">TOGAF drawing</button>
+      <button type="button" class="join-item btn btn-xs" :class="tab === 'archimate' ? 'btn-active' : ''" @click="tab = 'archimate'" data-testid="tab-archimate"><i class="mdi mdi-vector-square"></i> ArchiMate view</button>
+    </div>
+    {% endif %}
+    <span class="text-base-content/60">Original illustration for study — a fictional retail bank, not a figure from the standard.</span>
+    <span class="grow"></span>
+    <a class="btn btn-xs btn-outline" :href="tab === 'archimate' ? '{{ archimate_url or svg_url }}' : '{{ svg_url }}'" href="{{ svg_url }}" target="_blank" rel="noopener"><i class="mdi mdi-open-in-new"></i> Open / save SVG</a>
+    <a class="btn btn-xs btn-ghost" href="/source/{{ section_ref | urlencode }}">Defined in {{ section_ref }}</a>
+    <button type="button" class="btn btn-xs btn-ghost" hx-on:click="this.closest('.artefact-example').innerHTML = ''"><i class="mdi mdi-close"></i> Close</button>
+  </div>
+  <img src="{{ svg_url }}" alt="Example {{ artefact.name }} for a fictional retail bank" class="w-full max-w-3xl border border-base-200 rounded bg-white" x-show="tab === 'togaf'">
+  {% if archimate_url %}
+  <img src="{{ archimate_url }}" alt="{{ artefact.name }} drawn as an ArchiMate view" class="w-full max-w-3xl border border-base-200 rounded bg-white" x-show="tab === 'archimate'" x-cloak data-testid="archimate-view">
+  {% endif %}
+  {% if artefact.archimate %}
+  <div class="mt-2 text-xs flex flex-wrap items-center gap-2" data-testid="archimate-mapping">
+    <span class="badge badge-info badge-sm">ArchiMate</span>
+    <span><strong>{{ artefact.archimate.viewpoint }}</strong> viewpoint · elements: {{ artefact.archimate.elements | join(', ') }}{% if artefact.archimate.relationships %} · relationships: {{ artefact.archimate.relationships | join(', ') }}{% endif %}</span>
+    <a class="link" href="/source/{{ artefact.archimate.ref | urlencode }}">{{ artefact.archimate.ref }}</a>
+    {% if artefact.archimate.note %}<span class="text-base-content/60 basis-full">{{ artefact.archimate.note }}</span>{% endif %}
+  </div>
+  {% endif %}
+  {% if examples %}
+  <p class="mt-2 text-xs">Worked examples that realise this artefact:
+    {% for item in examples %}<a class="link link-primary mr-2" href="/example/{{ item.id }}">{{ item.title }}{% if item.track != 'TOGAF' %} <span class="badge badge-xs {{ 'badge-info' if item.track == 'ARCHIMATE' else 'badge-secondary' }}">{{ item.track | lower }}</span>{% endif %}</a>{% endfor %}
+  </p>
+  {% endif %}
+</div>

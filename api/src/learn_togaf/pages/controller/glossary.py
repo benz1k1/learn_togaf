@@ -11,8 +11,21 @@ from learn_togaf.pages.templating import templates
 from learn_togaf.service import glossary, notes
 
 
-async def glossary_page(request: Request, q: str = "", connection: sqlite3.Connection = Depends(get_db)):
-    context = base_context(request, connection, q=q, terms=glossary.search(connection, q))
+async def glossary_page(
+    request: Request, q: str = "", track: str = "", connection: sqlite3.Connection = Depends(get_db)
+):
+    track = track.upper()
+    if track and track not in glossary.TRACKS:
+        raise HTTPException(404, f"No glossary track {track}")
+    context = base_context(
+        request,
+        connection,
+        q=q,
+        track=track,
+        tracks=glossary.TRACKS,
+        counts=glossary.track_counts(connection),
+        terms=glossary.search(connection, q, track),
+    )
     template = "_term_list.html" if request.headers.get("HX-Request") else "glossary.html"
     return templates.TemplateResponse(request, template, context)
 

@@ -1,0 +1,889 @@
+# Authored Practitioner scenarios for the guide units G_DIGITAL_AGILE, G_RISK_SECURITY, G_GOVERNANCE and
+# G_REFERENCE_MODELS (objectives G5.1 to G8.1), two per objective. Shape per learn_togaf.md §2.
+code: G_BANK_2
+exam: OGEA-102
+name: Series Guides G5 to G8, authored bank
+kind: DRILL
+source: authored
+questions:
+  - id: G_DIGITAL_AGILE-101
+    unit: G_DIGITAL_AGILE
+    objective: "G5.1"
+    scenario: |
+      Quill Publishing is an educational publisher with 2,900 staff that has moved from printed
+      textbooks to a digital learning platform used by 1.4 million students in twelve countries. Two
+      years ago it reorganised its technology function into agile product teams, each with a product
+      owner, working in two-week sprints on a shared continuous delivery pipeline. The teams are
+      productive and popular with the business. The Enterprise Architecture team of five, which
+      predates the reorganisation, has struggled to find its place: its Architecture Definition
+      Documents take months, the teams have stopped waiting for them, and last year three teams built
+      three different content-tagging services because no shared one existed when they needed it.
+
+      The board has now approved a strategy with three strands: a single learner profile across all
+      products, an adaptive-learning capability that recommends content based on a student's progress,
+      and compliance with new child-data protection rules in four of the twelve countries within
+      fourteen months. The Chief Product Officer sponsors the architecture work and has asked the
+      architecture team to "become part of how the teams deliver" rather than a gate in front of them.
+      Three portfolio programmes have been formed, one per strand, and each will draw on several
+      product teams. The child-data rules are non-negotiable: the Head of Legal has said that any
+      release touching child data must be fully compliant on day one and that "trying things out"
+      with children's data is not an option.
+
+      The architecture team has drafted a proposal. It would run a nine-month Phase A to D cycle to
+      produce a target architecture for all three strands, publish it as the standard the teams must
+      follow, and then review each release for compliance at a monthly Architecture Board. The product
+      owners have read the draft and object that nine months is longer than the child-data deadline
+      allows for design alone, that the adaptive-learning strand cannot be specified in advance
+      because nobody knows which recommendation approaches will work, and that a monthly board will
+      not fit a two-week cadence. One product owner has asked why the architects cannot simply write
+      user stories into the teams' backlogs. The Chief Technology Officer worries that without some
+      enterprise view the tagging duplication will recur at a larger scale.
+
+      The sponsor has asked you, as lead Enterprise Architect, to propose how the architecture work
+      should be structured so that it delivers the three strands at the teams' pace, protects the
+      child-data compliance, prevents duplication, and allows the adaptive-learning strand to be
+      learned rather than specified.
+    question: "Refer to the scenario. The sponsor has asked how the architecture work should be structured to deliver the strategy at the teams' pace while protecting compliance and preventing duplication. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Restructure the architecture work along the Enabling Enterprise Agility guide. Replace the
+          nine-month whole-strategy cycle with three levels: a short Enterprise Strategic Architecture
+          iteration through Phase A and a high-level Phase B that sets the context, the guardrails and
+          the shared capabilities such as learner profile and content tagging; Segment Architectures
+          for each of the three programmes, providing just enough architecture to identify features,
+          epics and KPIs, developed in parallel with the delivery teams engaged; and Capability
+          Architectures delivered just in time as a solution runway that the teams' sprints consume,
+          scoped to sprint time-boxes and fed back upward. Embed governance in the sprints as guardrails
+          and runway with continuous compliance rather than a monthly gate, using retrospectives and
+          planning for review. Select delivery styles per unit of change: an Agile style for the
+          learner-profile work, Robust for the child-data compliance components because the change is
+          high-risk and quality-driven, and for adaptive learning a set-based approach in which several
+          recommendation alternatives are explored in parallel ADM iterations with only enough
+          architecture to compare them, eliminating weaker options over time. Establish the single
+          product owner principle and a product rather than project focus in the Preliminary Phase.
+        why: >-
+          The guide's model partitions architecture into Enterprise Strategic, Segment and Capability
+          levels, with Capability Architectures tightly scoped to sprint time-boxes and delivered just
+          in time as a solution runway with bottom-up feedback (GUIDE:enabling-enterprise-agility §4.1,
+          §4.4.3); a hierarchy of ADM cycles lets segments and capabilities proceed in parallel and
+          balances detail against Big Design Up Front through the Minimum Viable Architecture (§4.3).
+          Governance is a continuous, embedded effort, not deferred to a final iteration (§4.4.4).
+          Delivery styles are chosen per change, with high-risk, quality-driven work in the Robust
+          style (§4.7.1), and Set-Based Concurrent Engineering explores alternatives in parallel ADM
+          iterations (§4.6). The Preliminary Phase shifts to a product focus with a single product owner
+          (§5.1). Every planted fact, pace, compliance, duplication and learning, is answered from the
+          guide.
+      - key: B
+        points: 3
+        text: >-
+          Keep a single architecture cycle but compress it to three months by limiting it to the
+          learner-profile and child-data strands, publish the resulting target architecture as
+          guardrails, have architects attend the teams' sprint reviews to check compliance, and defer
+          the adaptive-learning strand until the teams have experimented on their own.
+        why: >-
+          Compressing the cycle and attending reviews move toward the guide, but a single cycle
+          published as a standard is still the whole-document approach rather than levels with
+          just-in-time Capability Architectures (GUIDE:enabling-enterprise-agility §4.1, §4.3), and
+          leaving adaptive learning to unguided experiment ignores the guide's Set-Based Concurrent
+          Engineering, which keeps alternatives under enough architecture to compare them (§4.6).
+      - key: C
+        points: 1
+        text: >-
+          Adopt the product owner's suggestion and dissolve the architecture cycle into user stories
+          written by the architects into each team's backlog, including the child-data compliance
+          stories, so that the architecture is delivered at exactly the teams' pace.
+        why: >-
+          Writing stories into backlogs without a Strategic or Segment Architecture removes the
+          enterprise view that prevents duplication and the guardrails that governance provides
+          (GUIDE:enabling-enterprise-agility §4.1, §4.4.4), and it treats the child-data compliance
+          work in the Agile style when the guide places high-risk, must-work-first-time change in the
+          Robust style (§4.7.1).
+      - key: D
+        points: 0
+        text: >-
+          Proceed with the nine-month cycle and the monthly board as drafted, since a complete target
+          architecture is the only way to prevent duplication, and ask the board to obtain an extension
+          to the child-data deadline.
+        why: >-
+          This is the Big Design Up Front the guide warns loses the benefit of agile through rework
+          and delay (GUIDE:enabling-enterprise-agility §4.3, §4.4.4), it ignores the guide's levels and
+          just-in-time delivery (§4.1), and it cannot deliver compliance within a non-negotiable
+          deadline; the strategic architecture must itself evolve, not freeze for nine months (§4.1).
+    refs: ["GUIDE:enabling-enterprise-agility §4.1", "GUIDE:enabling-enterprise-agility §4.3", "GUIDE:enabling-enterprise-agility §4.4.3", "GUIDE:enabling-enterprise-agility §4.4.4", "GUIDE:enabling-enterprise-agility §4.6", "GUIDE:enabling-enterprise-agility §4.7.1"]
+    open_book_hint: "Where to look: Series Guide Enabling Enterprise Agility, section 4.1 (three levels of detail), 4.3 (hierarchy of ADM cycles, Minimum Viable Architecture), 4.4 (levels, iterations and governance), 4.6 (Set-Based Concurrent Engineering), 4.7.1 (the three delivery styles and their profiles), 5.1 (Preliminary Phase in agile delivery)."
+    difficulty: 3
+    tags: [agility, architecture-levels, delivery-styles, governance]
+    status: draft
+
+  - id: G_DIGITAL_AGILE-102
+    unit: G_DIGITAL_AGILE
+    objective: "G5.1"
+    scenario: |
+      Tidewater is a digital-native company that started six years ago as two founders building a
+      boat-sharing application and now has 380 staff, eleven product teams, a marketplace serving
+      140,000 boat owners and renters in three countries, and a growing set of adjacent products:
+      insurance, maintenance booking, marina services and a payments wallet. It has never had an
+      architecture function. Its Chief Technology Officer, one of the founders, is proud that the
+      company "ships every day" and suspicious of anything that sounds like a committee. The board,
+      which now includes an investor's representative, has asked for an assessment of the company's
+      technology risks after two incidents: a payments outage traced to three teams depending on an
+      undocumented service, and a privacy complaint in one country because customer data was copied
+      between products without a record of purpose.
+
+      The company's situation has the marks of a particular stage. The eleven teams each own a
+      product and its infrastructure; they coordinate through a weekly leads meeting that has become
+      long and fractious. Four teams have built their own customer-profile stores. The wallet team
+      wants to become a regulated payments institution, which will bring an external audit. The
+      insurance product is a partnership with an insurer whose systems integrate with Tidewater's
+      through an interface nobody owns. The Chief Technology Officer has been told by an adviser that
+      the company needs "enterprise architecture", has read the TOGAF Standard's table of contents,
+      and has concluded that it describes a bureaucracy that would kill the company.
+
+      The Chief Executive has hired you as the company's first architect and asked you to answer the
+      board's request in a way the Chief Technology Officer will accept. She has asked three questions:
+      what stage of organisational development the company is at and what architecture should
+      contribute at that stage; what should be offered to the teams now and what should be prepared
+      for the next stage; and whether the payments regulation changes the answer. She has said the
+      company will not adopt a monthly architecture board or a document-heavy method.
+    question: "Refer to the scenario. The Chief Executive has asked what stage the company is at, what architecture should contribute now and next, and whether the payments regulation changes the answer. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Use the Using the TOGAF Standard in the Digital Enterprise guide's emergence model. Tidewater
+          has moved from the Team context into the Team of Teams context: many teams and products,
+          coordination mechanisms degrading team performance, and a portfolio of products that must
+          interoperate. At this stage architecture's contribution is coordination across teams while
+          minimising their cognitive load: identify the essential interactions and dependencies, such
+          as the undocumented payments service and the four profile stores, model the portfolio view,
+          and provide guardrails for data access and sharing, application portability and
+          interoperability. Offer Enterprise Architecture as services delivered at the teams' tempo:
+          risk management focused on data governance and standards compliance, architecture and
+          standards guidance especially on data access and sharing, architecture integration across
+          the interrelated products, portfolio management support, and Minimum Viable Architecture
+          modelling of the shared customer-profile and payments capabilities. Peek ahead to the
+          Enduring Enterprise context, which the payments regulation will accelerate: prepare
+          compliance criteria development and compliance assessment services, a governance framework
+          for digital governance and information management, and treat the insurer interface as a
+          third-party dependency to be owned. Use the Architecture Repository and Enterprise
+          Continuum as assets the teams draw on, not as gates, and apply the Team of Teams principles
+          of common use applications, data as an asset, technology independence and interoperability
+          as advice grounded in risk.
+        why: >-
+          The DPBoK emergence model has four contexts, and the architect supports the current context
+          while peeking ahead to the next
+          (GUIDE:using-the-togaf-standard-in-the-digital-enterprise §4.2); Team of Teams is where
+          coordination across teams is the main concern, where EA's traditional strengths increase in
+          value by enabling essential interactions while minimising cognitive load, and where the
+          products must interoperate as a portfolio (§4.2.3). The EA services for that context include
+          risk management on data governance and standards compliance, standards guidance on data access
+          and sharing, integration, portfolio support and MVA modelling, delivered at the context's
+          tempo (§4.4, §4.4.3); the Enduring Enterprise context adds governance, risk, security and
+          compliance and third-party handling, with compliance services (§4.2.4, §4.4.4). Principles
+          such as common use applications, data as an asset, technology independence and
+          interoperability are mapped to Team of Teams (§4.3.3), and the repository and continuum are
+          assets for proactive debt management (§2.3).
+      - key: B
+        points: 3
+        text: >-
+          Identify the company as being in the Enduring Enterprise context, since it now has a board,
+          investors and an impending regulator, and establish the governance, risk and compliance
+          framework, information management and portfolio management that the guide assigns to that
+          context, with an Architecture Board meeting monthly to enforce compliance criteria.
+        why: >-
+          The guide's contexts are recognised and the regulation does point toward the next context,
+          but the company's present facts, coordination pain across many teams and a product portfolio
+          that must interoperate, are the Team of Teams context, and the guide's strategy is to support
+          the current context while preparing the next, not to impose the later context's apparatus
+          (GUIDE:using-the-togaf-standard-in-the-digital-enterprise §4.2, §4.2.3, §4.2.4); a monthly
+          enforcement board also ignores the guide's point that in agile environments the board acts as
+          guardrails (§2.3) and the Chief Executive's constraint.
+      - key: C
+        points: 1
+        text: >-
+          Treat the company as still in the Team context because it has no architects and ships daily;
+          offer lightweight, on-demand advice on risk and infrastructure to whichever team asks, and
+          leave cross-team coordination to the weekly leads meeting.
+        why: >-
+          On-demand advice is the Founder and Team pattern, but the scenario's defining feature is the
+          number of teams and products and the failure of their coordination, which the guide places in
+          the Team of Teams context, where architecture's role is precisely the cross-team coordination
+          the leads meeting is failing to provide
+          (GUIDE:using-the-togaf-standard-in-the-digital-enterprise §4.2.2, §4.2.3).
+      - key: D
+        points: 0
+        text: >-
+          Agree with the Chief Technology Officer that the TOGAF Standard describes a bureaucracy
+          unsuited to a company that ships daily, and recommend that the board's risk concerns be
+          addressed by each team adding tests and monitoring to its own product.
+        why: >-
+          The guide's thesis is that the standard supports the digital enterprise by managing
+          technical debt, coordinating teams and enabling operational excellence, right-sized for the
+          context, and that every system has an architecture whether documented or not
+          (GUIDE:using-the-togaf-standard-in-the-digital-enterprise §2.1, §2.4, §2.5). Per-team tests do
+          not address cross-team dependencies or data sharing, which are the incidents' causes.
+    refs: ["GUIDE:using-the-togaf-standard-in-the-digital-enterprise §2.3", "GUIDE:using-the-togaf-standard-in-the-digital-enterprise §4.2", "GUIDE:using-the-togaf-standard-in-the-digital-enterprise §4.2.3", "GUIDE:using-the-togaf-standard-in-the-digital-enterprise §4.2.4", "GUIDE:using-the-togaf-standard-in-the-digital-enterprise §4.3.3", "GUIDE:using-the-togaf-standard-in-the-digital-enterprise §4.4"]
+    open_book_hint: "Where to look: Series Guide Using the TOGAF Standard in the Digital Enterprise, section 4.2 (the four DPBoK contexts and the peek-ahead strategy), 4.2.3 (Team of Teams), 4.2.4 (Enduring Enterprise), 4.3.3 (principles for Team of Teams), 4.4 (Enterprise Architecture capabilities and services per context), 2.3 (proactive debt management, the board as guardrails)."
+    difficulty: 3
+    tags: [digital, dpbok-contexts, ea-services, team-of-teams]
+    status: draft
+
+  - id: G_RISK_SECURITY-101
+    unit: G_RISK_SECURITY
+    objective: "G6.1"
+    scenario: |
+      Ashcombe Water is a regulated water utility serving 3.1 million people with 4,400 staff, whose
+      treatment works and pumping stations are controlled by operational technology that is thirty
+      years old in places. After a national security agency warned utilities about attacks on
+      industrial control systems, the board approved an ADM cycle for a "secure operations" Target
+      Architecture: segmented control networks, a central monitoring capability, remote access for
+      maintenance contractors under strict control, and replacement of the oldest controllers. The
+      Chief Operating Officer sponsors the cycle. The architecture team of six includes a Security
+      Architect from the Chief Information Security Officer's function; risk appetite, key risk areas
+      and security principles were set in the Preliminary Phase, and Phases A to D produced the
+      Target Architecture with a Security Services Catalog and a Business Risk Model in the repository.
+
+      The cycle is now in Phase E moving into Phase F, and the security integration is being tested by
+      hard facts. The Consolidated Gaps, Solutions, and Dependencies matrix identifies forty gaps; the
+      Business Risk Model from Phase B lists twenty-six risks with owners in operations, engineering
+      and IT. Three matters have arisen. First, the sequencing: the Head of Engineering wants the
+      controller replacement first because the controllers are failing anyway, while the Security
+      Architect points out that remote-access control addresses the highest-rated risk and that
+      replacing controllers without segmentation exposes new equipment to the same threat. Second,
+      the migration itself: cutting over a treatment works to a segmented network requires the
+      works to run on manual control for a period, and a failed cut-over could interrupt supply; the
+      operations team has no rollback plan and the Head of Operations says "we will manage on the
+      day". Third, the new architecture creates risks that did not exist before: the central
+      monitoring capability aggregates data that would be valuable to an attacker, and the remote
+      access service, if compromised, gives access to every site.
+
+      The Chief Operating Officer has asked what the architecture must do in Phases E and F so that the
+      roadmap and the migration plan handle security and risk properly, and how the Head of
+      Engineering's sequencing and the Head of Operations' cut-over plan should be treated. The
+      regulator has separately asked how residual operational risk will be evidenced.
+    question: "Refer to the scenario. The COO has asked what the architecture must do in Phases E and F so that the roadmap and migration plan handle security and risk properly. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Apply the Integrating Risk and Security guide's Phase E and F concepts. In Phase E, when the
+          sequence of gaps is determined, evaluate security and risk explicitly: consult the risk
+          owners in operations, engineering and IT, address the stakeholders' security concerns in the
+          analysis, and include security and risk value in each work package's expected value so that
+          remote-access control, which addresses the highest-rated risk, is sequenced ahead of controller
+          replacement, or the two are combined into a transition that segments before it replaces.
+          Convert the security building blocks into Solution Building Blocks, verifying the efficacy
+          of any existing security services earmarked for re-use. Produce a Risk Mitigation Plan that
+          implements a chosen strategy for each risk, increase control, transfer, avoid, delay or
+          compensate, covering the twenty-six risks from the Business Risk Model and the new risks the
+          architecture itself creates in the monitoring aggregation and the remote-access service. In
+          Phase F, treat migration as a business process to be secured: produce a risk assessment and
+          a Risk Mitigation Plan limited to the transition, require regression planning so that a
+          failed cut-over can be reversed rather than "managed on the day", and add a security impact
+          analysis of the target state. Evidence residual operational risk to the regulator through the
+          risk register and mitigation plans, with residual risks accepted through governance and
+          monitored in Phase G.
+        why: >-
+          In Phase E, where the sequence of gaps is determined, security and risk must be evaluated,
+          risk owners consulted and security and risk value included in work package value; security
+          building blocks become SBBs and re-used services must have their efficacy verified
+          (GUIDE:integrating-risk-and-security §5.6). The Risk Mitigation Plan implements a strategy of
+          control, transfer, avoidance, delay or compensation, treats the risks identified in Phase B
+          and must consider risks created by the new architecture (§5.6.1). In Phase F, migration is a
+          business process to secure, with a transition-limited risk assessment and mitigation plan,
+          regression planning to reverse a failed migration, and a security impact analysis (§5.7).
+          Residual risks are approved through governance and monitored in Phase G (TECH §8.7), and the
+          Business Risk Model is the register (§5.3.5).
+      - key: B
+        points: 3
+        text: >-
+          Produce a Risk Mitigation Plan in Phase E for the twenty-six risks in the Business Risk Model
+          and sequence the roadmap by risk rating so that remote access comes first, then hand the plan
+          to the Phase F migration planners to schedule; ask the operations team to document its
+          cut-over procedure.
+        why: >-
+          Sequencing by risk and producing the mitigation plan are right, but the plan omits the risks
+          the new architecture creates, which the guide explicitly requires it to consider
+          (GUIDE:integrating-risk-and-security §5.6.1), and Phase F needs its own transition-limited risk
+          assessment, regression planning and security impact analysis rather than a documented
+          procedure with no rollback (§5.7).
+      - key: C
+        points: 1
+        text: >-
+          Accept the Head of Engineering's sequencing because the controllers are a reliability risk
+          today, and address security by adding the Security Services Catalog's services as
+          requirements on each replacement project; deal with cut-over risk in Phase G through the
+          operations team's incident process.
+        why: >-
+          Sequencing without evaluating security and risk in the roadmap and without consulting risk
+          owners contradicts the Phase E guidance (GUIDE:integrating-risk-and-security §5.6), and
+          leaving migration risk to Phase G incident handling ignores the requirement for a Phase F
+          transition risk assessment, mitigation plan and regression planning (§5.7). Security services
+          are building blocks to be solutioned in Phase E, not a requirements list appended to projects
+          (§5.6, §1.3).
+      - key: D
+        points: 0
+        text: >-
+          Treat the migration risks and the new-architecture risks as operational matters for the
+          Chief Information Security Officer to manage after deployment, since the architecture cycle
+          has already produced a Security Services Catalog and a risk model in Phases B and C.
+        why: >-
+          The guide places explicit security and risk work in Phases E and F, the Risk Mitigation Plan
+          and the secured migration, and says the plan must consider risks that appear as a result of
+          the new architecture (GUIDE:integrating-risk-and-security §5.6.1, §5.7); deferring them to
+          operations after deployment is the bolted-on security the guide was written to end (§1).
+    refs: ["GUIDE:integrating-risk-and-security §5.3.5", "GUIDE:integrating-risk-and-security §5.6", "GUIDE:integrating-risk-and-security §5.6.1", "GUIDE:integrating-risk-and-security §5.7", "TECH §8.7", "ADM §9.3.7"]
+    open_book_hint: "Where to look: Series Guide Integrating Risk and Security, section 5.6 (Phase E: security and risk in sequencing, SBBs, re-use efficacy) and 5.6.1 (Risk Mitigation Plan and strategies), 5.7 (Phase F: transition risk, regression planning, security impact analysis), 5.3.5 (Business Risk Model); ADM Techniques 8.7 for residual risk acceptance and monitoring; ADM 9.3.7."
+    difficulty: 3
+    tags: [risk-security, phase-e, phase-f, risk-mitigation-plan]
+    status: draft
+
+  - id: G_RISK_SECURITY-102
+    unit: G_RISK_SECURITY
+    objective: "G6.1"
+    scenario: |
+      Penrose Clinical Trials is a contract research organisation that runs clinical trials for
+      pharmaceutical companies in nine countries, with 3,600 staff and a data platform that holds
+      trial data subject to regulatory inspection and to the privacy law of every country involved.
+      Three years ago it completed an ADM cycle that produced a Target Architecture for trial data
+      management; the architecture was built with the Integrating Risk and Security guide, so the
+      repository holds a Security Policy Architecture, a Security Domain Model separating sponsor,
+      site and regulator domains, a Trust Framework for the sponsors and sites, a Business Risk Model,
+      the Applicable Law and Regulation Register and a Security Services Catalog. The architecture is
+      deployed and in Phase H; Phase G closed with security audits, penetration testing and training
+      records that the regulator accepted.
+
+      Four changes have reached the Architecture Change Management process in one quarter. A
+      sponsor has asked to run a trial that collects genomic data from participants, a category the
+      Business Risk Model did not consider. A country in which the company runs eleven sites has
+      passed a data-localisation law requiring trial data of its citizens to be stored in-country. A
+      security researcher has disclosed a vulnerability in the identity component of the Security
+      Services Catalog that has a vendor patch. And the company's new Chief Executive has decided,
+      after an investor review, that the company's risk appetite should be substantially lower than
+      before: no trial data may be processed by a third-party service, whereas the current
+      architecture uses two.
+
+      The Architecture Board consists of the Chief Operating Officer, the Chief Information Officer,
+      the Head of Clinical Operations and the Chief Financial Officer; the Chief Information Security
+      Officer attends by invitation when asked. The Head of Clinical Operations wants all four
+      changes handled as "security updates" by the security team so that trials are not delayed. The
+      Chief Information Officer thinks the vulnerability patch is obviously routine and the rest
+      "probably are too". The Chief Information Security Officer, who has read the guide, says the
+      appetite change is not a security update at all.
+
+      As lead Enterprise Architect you have been asked to advise the Board how each of the four
+      changes should be treated in Phase H and what the Board itself must change.
+    question: "Refer to the scenario. You have been asked to advise the Board how the four changes should be treated in Phase H and what the Board itself must change. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Apply the guide's Phase H processes: continuous enterprise risk management to evaluate the
+          existing architecture against each change, and architecture governance to decide between a
+          minor change in the current iteration and a new cycle. Treat the vulnerability patch as a
+          minor change to a security service within the existing architecture, adopted on the value of
+          the change and verified by security audit. Treat the data-localisation law as a change in
+          compliance requirements: update the Applicable Law and Regulation Register, run a security
+          impact analysis, and assess whether in-country storage is an incremental change to the Data
+          and Technology Architectures for that country or larger; expect it to be more disruptive than
+          a simplification or incremental change. Treat the genomic-data trial as a new key risk area
+          requiring a risk assessment against the Business Risk Model and security classification
+          before acceptance, with the Trust Framework and domain model extended if a new party or
+          domain is involved. Treat the lowered risk appetite as the trigger the guide names for a new
+          architecture development cycle, since the current architecture's use of third-party services
+          now exceeds the appetite; issue a Request for Architecture Work. Advise the Board that,
+          because these decisions concern security, the change board must include suitably
+          security-skilled members, so the Chief Information Security Officer should be a member, not
+          an occasional invitee.
+        why: >-
+          Phase H in the guide defines two processes, enterprise risk management that continuously
+          evaluates the architecture against changed opportunity and threat, and architecture
+          governance that decides between minor change in the current iteration and a new iteration;
+          changes in security requirements arise from the threat environment, changed compliance
+          requirements and discovered vulnerabilities, security-related changes are often more
+          disruptive than simplification or incremental change, a change in risk appetite can easily
+          trigger a new cycle, changes in standards or requirements can often be applied within the
+          existing architecture on the value of the change, large changes need a security impact
+          analysis, and the change board must comprise suitably security-skilled individuals
+          (GUIDE:integrating-risk-and-security §5.9). The register, risk model, classification and trust
+          framework are the Phase B and C artefacts to update (§5.3, §5.4), and the new cycle starts
+          with a Request for Architecture Work (ADM §12.5.3).
+      - key: B
+        points: 3
+        text: >-
+          Handle the patch and the data-localisation law as security updates by the security team
+          with a security impact analysis, treat the genomic trial as a Phase B-style risk assessment,
+          and record the risk-appetite change as a new security principle for the next cycle whenever
+          it occurs, keeping the Board's composition as it is.
+        why: >-
+          Three of the four routings are defensible, but the guide is specific that a change in risk
+          appetite can trigger a new architecture cycle, and an architecture that now exceeds appetite
+          cannot wait for an unscheduled "next cycle" (GUIDE:integrating-risk-and-security §5.9); and
+          leaving the CISO outside the Board contradicts the requirement that the change board comprise
+          suitably security-skilled individuals (§5.9).
+      - key: C
+        points: 1
+        text: >-
+          Since all four changes concern security, hand them to the Chief Information Security Officer's
+          function to implement as a security programme outside the architecture change process, and
+          ask the security team to report back when the programme is complete.
+        why: >-
+          The guide's point for Phase H is that risk management and architecture governance are the
+          processes through which security-driven change is decided, with changes related to risk and
+          security an explicit part of the governance framework (GUIDE:integrating-risk-and-security
+          §5.9); moving them outside architecture governance re-creates the separated security
+          discipline the guide exists to integrate (§1, §4).
+      - key: D
+        points: 0
+        text: >-
+          Accept the Head of Clinical Operations' proposal to handle all four as routine security
+          updates so that trials are not delayed, since the architecture's security artefacts were
+          accepted by the regulator and remain valid.
+        why: >-
+          This treats a risk-appetite change that the architecture now violates, a new legal obligation
+          and a new category of sensitive data as routine, contradicting the guide's statements that
+          such changes are often more disruptive and can trigger a new cycle, and that governance must
+          decide the route (GUIDE:integrating-risk-and-security §5.9). Regulatory acceptance of the past
+          architecture says nothing about the changed requirements.
+    refs: ["GUIDE:integrating-risk-and-security §5.3", "GUIDE:integrating-risk-and-security §5.4", "GUIDE:integrating-risk-and-security §5.9", "GUIDE:integrating-risk-and-security §5.1.3", "ADM §12.5.3", "GOV §4.2"]
+    open_book_hint: "Where to look: Series Guide Integrating Risk and Security, section 5.9 (Phase H: the ERM and governance processes, sources of security change, disruption, risk appetite as a trigger, security-skilled change board), 5.1.3 (risk appetite), 5.3 and 5.4 (the registers, risk model, classification and trust framework to update); ADM 12.5.3 for the new Request for Architecture Work; EA Capability and Governance 4.2."
+    difficulty: 3
+    tags: [risk-security, phase-h, risk-appetite, governance]
+    status: draft
+
+  - id: G_GOVERNANCE-101
+    unit: G_GOVERNANCE
+    objective: "G7.1"
+    scenario: |
+      Marram Insurance Services is a specialist insurer with 2,200 staff whose group has mandated
+      that all significant change be run under the group's PRINCE2-based project method, with a
+      project executive, a project board, stage gates and a project management office that reports
+      monthly to the group. The insurer's Enterprise Architecture function of four has completed a
+      Preliminary Phase and now has a Request for Architecture Work from the Chief Underwriting
+      Officer to define a Target Architecture for pricing and underwriting across the company's
+      three product lines, with a roadmap and an implementation plan, within nine months. The
+      Request for Architecture Work does not ask the architecture team to implement anything; two
+      delivery programmes already exist that will build whatever the architecture defines.
+
+      The project management office has asked the architecture team to register the work as a
+      project. Its first questions have caused confusion. Who is the project executive, the Chief
+      Underwriting Officer or the Chief Information Officer to whom the architects report? Is the
+      project manager to be an architect or a professional project manager from the office, and
+      does the standard say? Should the Preliminary Phase already done, the implementation by the
+      two programmes and the later change management be inside the project's scope, since "the
+      ADM has all those phases"? The office's planner has drafted a plan with one stage per ADM
+      phase, fully scheduled for nine months, with a stage gate after each; the lead architect
+      objects that Phases B, C and D will be iterated and cannot be planned in that detail now. The
+      office's risk manager has asked why the architecture team's risk register contains only
+      "risks to the business from the transformation" and none to the project's own schedule and
+      budget. And the planner has asked what the architecture's "work packages" are so that they can
+      be entered into the schedule, having found the term in the Phase E description.
+
+      The Chief Information Officer has asked you, as lead architect, to set out how the architecture
+      work should be defined and managed as a project under the group's method, answering the
+      office's questions, so that the work can be registered and the project management office and
+      the architecture team stop talking past each other.
+    question: "Refer to the scenario. The CIO has asked how the architecture work should be defined and managed as a project under the group's PRINCE2-based method, answering the PMO's questions. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Define the work as an Architecture Project as the Architecture Project Management guide
+          describes it: an endeavour to define and describe the architecture to be implemented,
+          encompassing Phases A to F and Requirements Management for those phases, at the segment
+          level, triggered by the Request for Architecture Work and finished when the Architecture
+          Definition, Roadmap and Implementation and Migration Plan are handed over. Explain that the
+          Preliminary Phase already done, Phase G, which the two delivery programmes will run as
+          separate endeavours, and Phase H, a continuous operational process, are outside the project.
+          Appoint the Chief Underwriting Officer as the Executive, the owner of the business goal and
+          benefits, comparable to the Architecture Sponsor, and appoint a Project Manager who may be an
+          architect or a professional from the office. Map Phase A to PRINCE2's Starting up and
+          Initiation processes, with the approved Statement of Architecture Work becoming part of the
+          Project Initiation Documentation, and treat Phases B to F as work delivery stages planned
+          under Managing a Stage Boundary just before each starts, controlled under Controlling a Stage
+          and delivered under Managing Product Delivery, so that a stage may cover several iterated
+          phases rather than one phase each. Keep both kinds of risk: transformation risk in the
+          architecture's terms and project risk to schedule, budget and quality in the method's terms.
+          Explain that TOGAF work packages are change initiatives the architecture identifies for the
+          roadmap, not the schedule's Project Work Packages.
+        why: >-
+          An Architecture Project encompasses Phases A to F and Requirements Management, excludes the
+          Preliminary Phase, Phase G and Phase H, starts with a Request for Architecture Work, delivers
+          the Definition, Roadmap and Implementation Plan, and covers one architecture level
+          (GUIDE:architecture-project-management §2.1); it is divided into stages planned in detail just
+          before they start, and a stage need not equal a phase (§2.2). The Executive owns the business
+          goal and corresponds to the Architecture Sponsor, the Project Manager may be an architect or
+          a project professional, TOGAF risk differs from project risk, and "work package" means a
+          change initiative in TOGAF but the lowest unit of work in PRINCE2, hence "Project Work
+          Package" (§2.3). Phase A maps to Starting up and Initiation with the Statement of Architecture
+          Work in the Project Initiation Documentation, and Phases B to F are work delivery stages
+          under Managing Stage Boundary, Controlling a Stage and Managing Product Delivery (§4.1.1,
+          §4.1.2).
+      - key: B
+        points: 3
+        text: >-
+          Register the work as a project covering Phases A to F, appoint the Chief Underwriting Officer
+          as executive and an office project manager, and accept the planner's stage-per-phase plan
+          with a gate after each phase, adding project risks to the architecture team's register.
+        why: >-
+          The scope, executive and risk handling are right, but a fully scheduled stage per phase
+          contradicts the guide's advice that stages are planned in detail just before they start and
+          that a stage usually covers several phases executed iteratively, so the plan will not survive
+          the iteration of Phases B to D (GUIDE:architecture-project-management §2.2, §4.1.2). The work
+          package confusion is also left unresolved (§2.3).
+      - key: C
+        points: 1
+        text: >-
+          Register a single project covering every ADM phase from Preliminary to H, since the ADM is
+          one method, with the Chief Information Officer as executive because the architects report
+          to him, and run the two delivery programmes as later stages of the same project.
+        why: >-
+          The guide is explicit that an Architecture Project does not include the Preliminary Phase,
+          Phase G or Phase H, that implementation is a separate project or programme, and that Phase H
+          is operational (GUIDE:architecture-project-management §2.1); the Executive is the owner of the
+          business goal, the Chief Underwriting Officer, not the architects' line manager (§2.3).
+      - key: D
+        points: 0
+        text: >-
+          Decline to register the work as a project on the grounds that the ADM is a self-contained
+          method with its own phases and governance, and ask the project management office to treat
+          the architecture team as an advisory function outside the group's method.
+        why: >-
+          The standard says that execution of ADM cycles should be conducted within the enterprise's
+          project management framework, and the guide exists to show how the ADM maps to PRINCE2 and
+          PMBOK (GUIDE:architecture-project-management §3.1, §2.2); refusing the group's mandated
+          method leaves the architecture work without an executive, stages or controls.
+    refs: ["GUIDE:architecture-project-management §2.1", "GUIDE:architecture-project-management §2.2", "GUIDE:architecture-project-management §2.3", "GUIDE:architecture-project-management §3.1", "GUIDE:architecture-project-management §4.1.1", "GUIDE:architecture-project-management §4.1.2"]
+    open_book_hint: "Where to look: Series Guide Architecture Project Management, section 2.1 (definition of an Architecture Project and what it excludes), 2.2 (lifecycle and stages), 2.3 (the concept table: Executive, Project Manager, phase versus stage, risk, scope, work package), 3.1 (start-up), 4.1.1 and 4.1.2 (PRINCE2 mapping for Phase A and Phases B to F)."
+    difficulty: 2
+    tags: [project-management, prince2, architecture-project, stages]
+    status: draft
+
+  - id: G_GOVERNANCE-102
+    unit: G_GOVERNANCE
+    objective: "G7.1"
+    scenario: |
+      Dunmore Logistics Group is a freight and warehousing group with 7,800 staff formed by the merger
+      of two companies eighteen months ago. Each company had an architecture team: one, from the
+      larger company, of eight people who ran a documented ADM-based practice with a board and a
+      repository; the other, from the smaller company, of three people who worked informally with
+      the development teams and produced little documentation. The merged Chief Information Officer
+      has combined them into one function of eleven under a newly appointed Head of Architecture and
+      has been asked by the group board to report, within six months, on whether the architecture
+      practice is "fit to lead the integration of the two companies' technology estates", which is
+      the group's largest programme.
+
+      The Head of Architecture has found three problems. The eleven people hold seven different job
+      titles across the two legacy grading schemes, from "principal architect" to "technical design
+      lead", and nobody can say which of them are Enterprise Architects and which are Solution
+      Architects; the larger company's practice regards the smaller's people as "not real
+      architects", and the smaller's people regard the larger's as "documentation writers". Second,
+      the two practices' maturity is plainly different, but the Chief Information Officer's first
+      instinct, to declare the combined practice "level 3, defined" because the larger company's
+      process is documented, was challenged by the group's internal audit, which asked for evidence.
+      Third, the integration programme needs a lead architect for each of six segments within three
+      months, and the Head of Architecture does not know whether the combined team can staff them,
+      which skills are missing, or how to develop the smaller company's people, who know the estate
+      best.
+
+      The group's Human Resources director has offered to run a job-evaluation exercise but wants
+      a definition of roles first. The integration programme director wants "the best eleven people
+      for the job, whatever they are called". The Chief Information Officer wants a single answer
+      to the board's question. As Head of Architecture you have been asked to propose how the
+      practice's maturity should be assessed for the board, how its roles and skills should be
+      defined for Human Resources and the programme, and how the two are connected.
+    question: "Refer to the scenario. You have been asked to propose how the practice's maturity should be assessed, how its roles and skills should be defined, and how the two connect. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Use the two governance guides together. Assess the combined practice against a Capability
+          Maturity Model such as the ACMM element by element rather than declaring a level: score the
+          nine elements, from architecture process and development through business linkage, senior
+          management involvement, operating-unit participation, communication, IT security,
+          governance and investment strategy, against the level characteristics, and report the
+          weighted mean and the percentage achieved per element with the evidence internal audit has
+          asked for, so that the board sees which elements need work before the integration
+          programme. In parallel, define the practice's roles using the Architecture Roles and Skills
+          guide: Chief Architect, Enterprise Architect, Segment Architect for the six segments, and
+          Solution Architect, with the activities, stakeholders and KPIs the guide gives each, and map
+          the seven legacy titles to them as jobs, roles and assignments. Define the skill categories
+          and the four proficiency levels, Background, Aware, Knowledgeable, Expert, required per role,
+          assess all eleven people against them, and use the gaps to decide the six segment leads,
+          the recruitment or mentoring needed, and development paths that recognise the smaller
+          company's people's estate knowledge. Connect the two: the skills assessment supplies the
+          evidence for the maturity elements on architecture development and process, and the
+          maturity assessment sets the practice's improvement targets that the development paths serve.
+        why: >-
+          Capability Maturity Models provide a yardstick, organise practices into levels and, through
+          an assessment, show where the organisation stands and which practices give the greatest
+          return (GUIDE:architecture-maturity-models §1.2); the ACMM scores six levels across nine
+          elements with a weighted mean and a percentage per element (§2.2), and the guide points to the
+          skills framework as the closely related tool for planning target skills (§1.3). Setting up a
+          practice needs a clear mandate, defined competencies aligned to tasks, formal recognition and
+          a development path, and defined roles and skills provide consistent assignment decisions and
+          identify staff who might otherwise be overlooked (GUIDE:architecture-roles-and-skills §3); the
+          guide defines Chief, Enterprise, Segment and Solution Architect with activities, stakeholders
+          and KPIs and distinguishes job, role and assignment (§4), and rates skill categories on four
+          proficiency levels per role (§5).
+      - key: B
+        points: 3
+        text: >-
+          Accept the Chief Information Officer's "level 3" for the board on the strength of the
+          documented process, but define the roles properly using the Roles and Skills guide so that
+          Human Resources can grade them and the programme can pick its six segment leads from those
+          rated highest in the larger company's practice.
+        why: >-
+          The role definition is right, but a declared level without an element-by-element assessment
+          is not a maturity assessment and will not satisfy the evidence request; the model exists to
+          find the weak elements (GUIDE:architecture-maturity-models §1.2, §2.2). Picking leads from one
+          legacy practice without assessing all eleven against proficiency levels overlooks staff who
+          might fill roles, which the roles and skills approach is meant to prevent
+          (GUIDE:architecture-roles-and-skills §3).
+      - key: C
+        points: 1
+        text: >-
+          Ask Human Resources to run its job-evaluation exercise on the existing seven titles, adopt
+          the larger company's documented process as the group standard, and report to the board that
+          the practice is fit because it now has one process and one grading scheme.
+        why: >-
+          Job evaluation of titles without defined roles and proficiency levels preserves the ambiguity
+          the skills guides exist to remove (GUIDE:architecture-roles-and-skills §3), and adopting one
+          process is not evidence of maturity across the nine elements the board's question implies
+          (GUIDE:architecture-maturity-models §2.2). The board's question is not answered.
+      - key: D
+        points: 0
+        text: >-
+          Report to the board that the practice is fit because it has eleven experienced people, let
+          the integration programme director choose the six segment leads by interview, and leave
+          maturity and role definition until after the integration programme.
+        why: >-
+          This offers no assessment, no role definition and no development path, contradicting both
+          guides: a maturity assessment is how fitness is shown and improved
+          (GUIDE:architecture-maturity-models §1.2), and defined roles, skills and proficiency levels are
+          the basis of consistent assignment and of a practice at all
+          (GUIDE:architecture-roles-and-skills §3, §5).
+    refs: ["GUIDE:architecture-maturity-models §1.2", "GUIDE:architecture-maturity-models §1.3", "GUIDE:architecture-maturity-models §2.2", "GUIDE:architecture-roles-and-skills §3", "GUIDE:architecture-roles-and-skills §4", "GUIDE:architecture-roles-and-skills §5"]
+    open_book_hint: "Where to look: Series Guide Architecture Maturity Models, section 1.2 (what a CMM assessment gives), 1.3 (link to the skills framework), 2.2 (six levels, nine elements, two scoring methods); Series Guide Architecture Roles and Skills, chapter 3 (setting up a practice, benefits of defined roles), chapter 4 (job, role, assignment; the four roles), chapter 5 (skill categories and the four proficiency levels)."
+    difficulty: 2
+    tags: [maturity-models, roles-and-skills, architecture-practice]
+    status: draft
+
+  - id: G_REFERENCE_MODELS-101
+    unit: G_REFERENCE_MODELS
+    objective: "G8.1"
+    scenario: |
+      Kelso Bank is a corporate bank with 5,100 staff whose core lending and treasury systems are
+      monolithic applications built over two decades. Its board has approved a strategy to open the
+      bank's products to corporate clients' own systems through interfaces, and to shorten the time
+      to launch new products from eighteen months to three. The Chief Technology Officer has
+      concluded that a microservices architecture is the way to do it and has hired a "cloud-native
+      transformation lead" who proposes to decompose the lending monolith into microservices,
+      starting immediately, with each of eight new "squads" free to choose its own languages,
+      databases and cloud services so that they can "move fast". The Chief Information Officer, who
+      sponsors the architecture work, wants the transformation but is uneasy about the plan.
+
+      The bank's Enterprise Architecture function of six has been service-oriented for years: an
+      approved principle of service orientation, an integration standard, an Architecture Review
+      Board that grants waivers, and a repository of enterprise services. It has never done
+      microservices. In workshops the following facts emerged. The bank's teams are organised by
+      technology layer, with separate database, middleware and application groups, and no team owns
+      a service end to end. Change to the lending platform goes through a quarterly release with a
+      central test team. The operations team runs one data centre and a private cloud pilot. The
+      regulator requires that the bank can demonstrate control over changes to production systems
+      that affect customer accounts. Two squads have already started building services with
+      different authentication approaches and no shared API contract, and one has copied customer
+      data into its own store to avoid depending on the monolith.
+
+      The Chief Information Officer has asked you, the lead Enterprise Architect, to propose how the
+      TOGAF Standard should be used to take the bank into a microservices architecture: what must be
+      decided and established before the squads decompose anything, how governance should work for
+          autonomous teams under a regulator, and how the current work by the two squads should be
+      handled.
+    question: "Refer to the scenario. The CIO has asked how the TOGAF Standard should be used to take the bank into a microservices architecture and how the squads' current work should be handled. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Apply the Microservices Architecture guide, starting with the Preliminary Phase, where the
+          guide concentrates the work. Adopt the MSA principles, service independence, single
+          responsibility and self-containment, as architecture principles alongside the existing
+          service-orientation principle, and record them in the Tailored Architecture Framework, so
+          that any squad departing from them needs a waiver from the Architecture Review Board.
+          Assess maturity and readiness: service-orientation maturity, whether teams can be organised
+          to own a microservice for its whole lifecycle rather than by technology layer, and whether
+          Agile and DevOps methods with automated testing and change monitoring can replace the
+          quarterly release, because the regulator's control requirement is met by review before
+          release, least privilege on pipelines, monitoring and automation rather than by the old
+          gate. Confirm a federated governance and support strategy: two parallel tracks in which
+          squads make their own decisions within enterprise guardrails, with enterprise standards in
+          every domain that each squad inherits and extends, a reference architecture for
+          interoperability, visibility, operations and security, and standardised API contracts.
+          Establish the initial repository with a catalog of microservices and their provenance. Then
+          start with a small pilot through a rapid ADM cycle before decomposing widely, and bring the
+          two squads' services into compliance through the review board, including a waiver decision on
+          the copied customer data.
+        why: >-
+          The guide places the heavy lifting in the Preliminary Phase: adopting the MSA principles as
+          architecture principles even in a service-oriented enterprise, with waivers for departures
+          (GUIDE:microservices-architecture §5, §5.1); a maturity and readiness assessment covering
+          service-orientation maturity, team organisation and lifecycle ownership and Agile/DevOps
+          methods, with a small pilot through a rapid TOGAF cycle first (§5.2); a governance and
+          support strategy with two parallel tracks within enterprise guardrails and the governance
+          tools of review before release, least privilege, change monitoring and automation (§5.3);
+          and an initial repository with a microservices catalog (§5.4). Enterprise Architecture in a
+          distributed world provides standards each unit inherits and extends, a reference architecture
+          and federated governance (§3.1), and the organisation must reflect single-team ownership
+          (§10.3).
+      - key: B
+        points: 3
+        text: >-
+          Let the cloud-native lead's squads proceed with decomposition now, but require them to use
+          the bank's existing integration standard and to submit each service to the Architecture
+          Review Board before it goes live, and plan the team reorganisation and DevOps adoption for
+          the following year.
+        why: >-
+          Using the review board and the integration standard is a start, but the guide is explicit
+          that the MSA principles, the readiness of the organisation and the governance approach must
+          be established in the Preliminary Phase before development, and that decomposition without
+          single-team ownership and DevOps-style governance will not be effective
+          (GUIDE:microservices-architecture §5, §5.2, §5.3). Reviewing each service at go-live is the
+          traditional gate, not the continuous, side-by-side governance the guide describes (§5.3).
+      - key: C
+        points: 1
+        text: >-
+          Treat the microservices transformation as a technology-platform purchase: select a cloud
+          container platform in Phase D, give every squad the same platform, and let the platform's
+          tooling enforce consistency; leave principles and team organisation as they are.
+        why: >-
+          MSA is an architecture style, not a product, framework or platform
+          (GUIDE:microservices-architecture §2); the guide's Preliminary Phase work on principles,
+          readiness, team organisation and federated governance is what makes the style succeed, and a
+          shared platform does not create the single-team ownership or the governance tracks it
+          requires (§5, §5.2, §5.3). The prescriptive guidance the guide asks for concerns re-usable
+          assets and guardrails, not one product (§3.1).
+      - key: D
+        points: 0
+        text: >-
+          Accept the cloud-native lead's plan in full, including each squad's freedom to choose its own
+          technologies and data stores without enterprise standards, since autonomy is the point of
+          microservices and governance would slow the squads down.
+        why: >-
+          The guide warns that failure to adhere to enterprise rules risks institutionalising
+          technological chaos and instability, that squads must inherit enterprise standards and extend
+          them, and that governance is needed to prevent arbitrary technology divergence
+          (GUIDE:microservices-architecture §5.3, §3.1, §12.2); the copied customer data and the two
+          authentication approaches are the early symptoms.
+    refs: ["GUIDE:microservices-architecture §2", "GUIDE:microservices-architecture §3.1", "GUIDE:microservices-architecture §5", "GUIDE:microservices-architecture §5.1", "GUIDE:microservices-architecture §5.2", "GUIDE:microservices-architecture §5.3"]
+    open_book_hint: "Where to look: Series Guide Microservices Architecture, chapter 2 (definition and characteristics), section 3.1 (Enterprise Architecture in a distributed world, federated governance), chapter 5 (Preliminary Phase: principles, maturity and readiness, governance and support strategy, initial repository), 10.3 (organisational transformation) and 12.2 (governance approach in Phase G)."
+    difficulty: 2
+    tags: [microservices, preliminary-phase, federated-governance, readiness]
+    status: draft
+
+  - id: G_REFERENCE_MODELS-102
+    unit: G_REFERENCE_MODELS
+    objective: "G8.1"
+    scenario: |
+      The Department of Community Services is a national government department with 11,000 staff
+      responsible for benefits payments, housing support, disability services and community grants,
+      delivered through 180 local offices and an online portal. A new minister has announced a
+      "whole of government" service reform: citizens should be able to deal with the department and
+      with the health, education and revenue departments through common services, and the department
+      must publish a Business Architecture that the other departments can align to within a year. The
+      department's Enterprise Architecture team of nine, established four years ago, has a repository
+      of application and technology architectures but no Business Architecture beyond an
+      organisation chart; each of the four business areas describes itself in its own terms, and a
+      previous attempt to define "what the department does" produced a 300-capability map that
+      nobody could agree.
+
+      The team has also been asked to support three very different changes at once. The first is an
+      emergency change to the benefits calculation to implement a court ruling within six weeks,
+      affecting one system and one team. The second is a new digital grants service for community
+      organisations, to be delivered by an agile team over nine months with an evolving scope. The
+      third is a replacement of the disability-assessment platform, a decade-long undertaking subject
+      to legal, safety and privacy obligations, in which mistakes affect vulnerable people and must be
+      avoided. The team's method, tailored in the Preliminary Phase, treats every change the same
+      way, with the full set of Architecture Content Framework artefacts and deliverables, which the
+      benefits team says is impossible in six weeks and the agile team says is pointless for a scope
+      that changes every sprint.
+
+      The Permanent Secretary, who sponsors the architecture work, has asked you, the Chief
+      Architect, two questions. First, how should the department produce a Business Architecture that
+      other departments can align to, quickly and without re-fighting the capability-map argument?
+      Second, how should the architecture team decide how much architecture, which building blocks
+      and which deliverables each of the three changes needs, so that the emergency change is not
+      strangled and the disability platform is not under-specified?
+    question: "Refer to the scenario. The Permanent Secretary has asked how the department should produce an alignable Business Architecture quickly, and how the team should decide how much architecture each of the three changes needs. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Answer the first question with the Government Reference Model: in Phase B, adopt its
+          exhaustive, mutually exclusive taxonomy of sectors, functions and services as the template for
+          the department's Business Architecture, mapping the department's four business areas to the
+          relevant sectors such as General Government and Local Services, Health and Community
+          Wellbeing, and Financial, at the function and service levels, and customising or extending it
+          where the department is distinctive; because the model is a common language across
+          governments, the other departments can align to it, and its drivers for change give a shared
+          view of the reform's themes. Answer the second question with the Selecting Building Blocks
+          guide: classify each change by profile in Phase A, the court-ruling change as Rapid, the
+          grants service as Functional and the disability platform as Robust, select the metamodel
+          entities and building blocks each profile calls for, from the minimal Rapid set through the
+          Functional additions of capabilities, value streams, services and use cases to the Robust
+          additions of controls, contracts, policies and logical components, and use the guide's
+          checklists for Phases A to F and G to H, which mark which items apply to each profile, so
+          that the emergency change is checked for customer needs, KPIs and sign-off while the
+          disability platform is fully specified and assured; document the reasons for each choice.
+        why: >-
+          The GRM is an exhaustive and mutually exclusive reference model for the public sector giving
+          a common language and taxonomy of sectors, functions and services, usable out of the box,
+          extended or customised, sitting in Phase B and intended to accelerate a Business
+          Architecture that decision-makers can use (GUIDE:government-reference-model §1.2, §1.3, §1.4,
+          §13). The Selecting Building Blocks guide defines Rapid, Functional and Robust change profiles
+          with different risk and integrity concerns, lists the metamodel entities each profile
+          considers, requires the choices and reasons to be documented, and provides checklists per
+          profile for Phases A to F and G to H (GUIDE:selecting-building-blocks §2, §3, §3.1, §9); the
+          profile is chosen in Phase A as part of establishing the context (§5).
+      - key: B
+        points: 3
+        text: >-
+          Adopt the Government Reference Model as the department's Business Architecture in Phase B,
+          but keep the tailored method's full artefact set for all three changes, scaling only the
+          timescale, so that the emergency change gets the same deliverables produced faster and the
+          agile team documents each sprint's scope.
+        why: >-
+          The GRM answer is right, but applying the full artefact and deliverable set to every change
+          ignores the Selecting Building Blocks guide's central point that different change profiles
+          need different entities, building blocks and checklists, and that the standard provides its
+          artefact lists as illustrations rather than mandates (GUIDE:selecting-building-blocks §2, §3,
+          §3.6). The emergency change would still be strangled.
+      - key: C
+        points: 1
+        text: >-
+          Revive the 300-capability map as the Business Architecture, since it already exists, and
+          apply the Rapid profile to all three changes for the year of the reform so that the
+          department can move at the minister's pace, tightening up later.
+        why: >-
+          A contested, department-specific map is not the common language the other departments can
+          align to, which is what the GRM provides (GUIDE:government-reference-model §1.3, §1.4); and
+          applying the Rapid profile to the disability platform contradicts the guide, which reserves
+          Robust change for complex, risk-averse situations where mistakes must be avoided and full
+          assurance is required (GUIDE:selecting-building-blocks §2, §3.4).
+      - key: D
+        points: 0
+        text: >-
+          Decline both requests: tell the Permanent Secretary that a Business Architecture cannot be
+          produced within a year and that the tailored method must be applied in full to every change
+          because that is what the Architecture Content Framework requires.
+        why: >-
+          The GRM exists precisely to accelerate a public-sector Business Architecture
+          (GUIDE:government-reference-model §1.4), and the Content Framework's lists are illustrations
+          of what could be used once the nature of a change is known, not a mandate; the building-block
+          guide shows how to configure them per profile (GUIDE:selecting-building-blocks §3.6, §4).
+    refs: ["GUIDE:government-reference-model §1.2", "GUIDE:government-reference-model §1.3", "GUIDE:government-reference-model §1.4", "GUIDE:selecting-building-blocks §2", "GUIDE:selecting-building-blocks §3", "GUIDE:selecting-building-blocks §9"]
+    open_book_hint: "Where to look: Series Guide Government Reference Model, sections 1.2 to 1.4 (overview, the taxonomy and sectors, placement in Phase B) and chapter 13; Series Guide An Approach to Selecting Building Blocks, chapter 2 (the three change profiles), chapter 3 (entities per profile, configuring viewpoints, documenting choices), chapter 5 (the ten-step table, profile chosen in Phase A), chapter 9 (checklists per profile)."
+    difficulty: 2
+    tags: [government-reference-model, change-profiles, building-blocks, phase-b]
+    status: draft

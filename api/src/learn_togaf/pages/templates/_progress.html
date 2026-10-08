@@ -1,8 +1,9 @@
 <div id="lesson-progress" class="join">
+  {% if not state %}<span class="btn btn-xs join-item btn-ghost no-animation pointer-events-none">unread</span>{% endif %}
   {% for option in states %}
   <button type="button" class="btn btn-xs join-item {{ 'btn-primary' if option == state else '' }}"
           hx-post="/lesson-progress/{{ lesson_id }}" hx-vals='{"state": "{{ option }}"}' hx-target="#lesson-progress" hx-swap="outerHTML">
-    {{ option | lower }}
+    {% if option == "READ" and not state %}mark as read{% else %}{{ option | lower }}{% endif %}
   </button>
   {% endfor %}
 </div>

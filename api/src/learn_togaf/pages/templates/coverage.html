@@ -10,7 +10,7 @@
 </div>
 <div class="card bg-base-100 shadow-sm mb-4"><div class="card-body p-0 overflow-x-auto">
   <table class="table table-xs">
-    <thead><tr><th>Objective</th><th>Unit</th><th class="text-right">Sources</th><th class="text-right">Lessons</th><th class="text-right">Cards</th><th class="text-right">Reviewed F / {{ foundation_floor }}</th><th class="text-right">Reviewed P / {{ practitioner_floor }}</th><th>Flags</th></tr></thead>
+    <thead><tr><th>Objective</th><th>Unit</th><th class="text-right">Sources</th><th class="text-right">Lessons</th><th class="text-right">Cards</th><th class="text-right">Reviewed single / {{ single_floor }}</th><th class="text-right">Reviewed scenarios / {{ gradient_floor }}</th><th>Flags</th></tr></thead>
     <tbody>
       {% for item in objectives %}
       <tr class="{{ 'bg-warning/10' if item.flags else '' }}">
@@ -19,8 +19,8 @@
         <td class="text-right">{{ item.sources }}</td>
         <td class="text-right">{{ item.lessons }}</td>
         <td class="text-right">{{ item.cards }}</td>
-        <td class="text-right">{{ item.reviewed_foundation }}</td>
-        <td class="text-right">{{ item.reviewed_practitioner }}</td>
+        <td class="text-right">{{ item.reviewed_single }}</td>
+        <td class="text-right">{{ item.reviewed_gradient }}</td>
         <td>{% for flag in item.flags %}<span class="badge badge-warning badge-xs mr-1">{{ flag }}</span>{% endfor %}</td>
       </tr>
       {% endfor %}

@@ -46,9 +46,10 @@
       <h2 class="card-title text-sm">Artefacts and deliverables</h2>
       {% if artefacts %}
       <table class="table table-xs">
-        <thead><tr><th>Artefact</th><th>Kind</th><th>Domain</th></tr></thead>
+        <thead><tr><th>Artefact</th><th>Kind</th><th>Domain</th><th>Example</th></tr></thead>
         <tbody>{% for artefact in artefacts %}
-          <tr><td><a class="link" href="/artefact?phase={{ artefact.phase_code }}&kind={{ artefact.kind }}">{{ artefact.name }}</a></td><td>{{ artefact.kind | lower }}</td><td>{{ artefact.domain | lower }}</td></tr>
+          <tr><td><a class="link" href="/artefact?phase={{ artefact.phase_code }}&kind={{ artefact.kind }}">{{ artefact.name }}</a></td><td>{{ artefact.kind | lower }}</td><td>{{ artefact.domain | lower }}</td><td>{% with code = artefact.code %}{% include "_artefact_example_button.html" %}{% endwith %}</td></tr>
+          <tr class="artefact-example-row"><td colspan="4" class="p-0 artefact-example" id="artefact-example-{{ artefact.code }}"></td></tr>
         {% endfor %}</tbody>
       </table>
       {% else %}<p class="text-sm text-base-content/60">No artefacts catalogued for this phase.</p>{% endif %}
@@ -56,7 +57,12 @@
       <h3 class="text-xs uppercase text-base-content/60 mt-2">Deliverables</h3>
       <ul class="list-disc ml-5 text-sm">{% for item in phase.deliverables %}<li>{{ item }}</li>{% endfor %}</ul>
       {% endif %}
+      {% if examples %}
+      <h3 class="text-xs uppercase text-base-content/60 mt-2">Worked examples (Northgate Bank)</h3>
+      <ul class="list-disc ml-5 text-sm">{% for item in examples %}<li><a class="link" href="/example/{{ item.id }}">{{ item.title }}</a>{% if item.track != 'TOGAF' %} <span class="badge badge-xs {{ 'badge-info' if item.track == 'ARCHIMATE' else 'badge-secondary' }}">{{ item.track | lower }}</span>{% endif %}</li>{% endfor %}</ul>
+      {% endif %}
     </div></div>
+    {% include "_crosswalk_panels.html" %}
     {% if figures %}
     <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
       <h2 class="card-title text-sm">Figures from the standard</h2>

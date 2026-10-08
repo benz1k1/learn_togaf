@@ -1,0 +1,29 @@
+# Business Footprint Diagram (Phase B) as a Layered view: one goal, the services that realize it, the
+# functions that realize the services, the unit assigned to them, and the application components
+# serving them (ARCHIMATE §C.1).
+id: BUSINESS_FOOTPRINT_DIAGRAM
+title: "Northgate Bank — Business Footprint Diagram as a Layered view"
+viewpoint: Layered
+elements:
+  - {id: goal, type: goal, name: "Grow mobile adoption: 60% of transfers via the Mobile App by 2027", col: 1, row: 0}
+  - {id: s_open, type: business_service, name: "Open account", col: 0, row: 1}
+  - {id: s_transfer, type: business_service, name: "Transfer funds", col: 2, row: 1}
+  - {id: f_onboard, type: business_function, name: "Onboarding", col: 0, row: 2}
+  - {id: retail, type: business_actor, name: "Retail Banking", col: 1, row: 2}
+  - {id: f_pay, type: business_function, name: "Payments", col: 2, row: 2}
+  - {id: app, type: application_component, name: "Mobile App", col: 0, row: 3}
+  - {id: core, type: application_component, name: "Core Banking", col: 1, row: 3}
+  - {id: switch, type: application_component, name: "Card Switch", col: 2, row: 3}
+relations:
+  - {from: s_open, to: goal, type: realization}
+  - {from: s_transfer, to: goal, type: realization}
+  - {from: f_onboard, to: s_open, type: realization}
+  - {from: f_pay, to: s_transfer, type: realization}
+  - {from: retail, to: f_onboard, type: assignment}
+  - {from: retail, to: f_pay, type: assignment}
+  - {from: app, to: f_onboard, type: serving}
+  - {from: core, to: f_onboard, type: serving}
+  - {from: core, to: f_pay, type: serving}
+  - {from: switch, to: f_pay, type: serving}
+notes:
+  - {text: "The CxO footprint: goal at the top, then the organisation unit and functions that pursue it, the services they realize, and the components that serve them. Key facts only, no detail.", col: 3, row: 0, h: 2}

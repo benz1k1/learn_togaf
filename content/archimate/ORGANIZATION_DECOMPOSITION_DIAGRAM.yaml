@@ -1,0 +1,38 @@
+# Organization Decomposition Diagram (Phase B) as an Organization view: the org chart is a composition
+# tree of Business Actors, each assigned to the Roles it holds, nested in the Location that houses it
+# (ARCHIMATE §C.1).
+id: ORGANIZATION_DECOMPOSITION_DIAGRAM
+title: "Northgate Bank — Organization Decomposition Diagram as an Organization view"
+viewpoint: Organization
+grid: {gap_y: 60}
+elements:
+  - {id: ceo, type: business_role, name: "Chief Executive", col: 0, row: 1}
+  - {id: bank, type: business_actor, name: "Northgate Bank", col: 1, row: 1}
+  - {id: cards, type: business_actor, name: "Cards Operations", col: 3, row: 1}
+  - {id: head_retail, type: business_role, name: "Head of Retail", col: 0, row: 2}
+  - {id: retail, type: business_actor, name: "Retail Banking", col: 1, row: 2}
+  - {id: lending, type: business_actor, name: "Lending", col: 2, row: 2}
+  - {id: analyst, type: business_role, name: "Card Ops Analyst", col: 3, row: 2}
+  - {id: loan_officer, type: business_role, name: "Loan Officer", col: 2, row: 3}
+  - {id: branches, type: business_actor, name: "Branch Network", col: 1, row: 4}
+  - {id: staff, type: business_actor, name: "Branch staff", col: 2, row: 4}
+  - {id: manager, type: business_role, name: "Branch Manager", col: 1, row: 5}
+  - {id: teller, type: business_role, name: "Teller", col: 2, row: 5}
+groups:
+  - {id: head_office, type: location, name: "Head Office", from: [0, 1], to: [2, 3]}
+  - {id: ops_centre, type: location, name: "Operations Centre", from: [3, 1], to: [3, 2]}
+  - {id: branch_sites, type: location, name: "Branch (42 sites)", from: [1, 4], to: [2, 5]}
+relations:
+  - {from: bank, to: retail, type: composition}
+  - {from: bank, to: lending, type: composition}
+  - {from: bank, to: cards, type: composition}
+  - {from: retail, to: branches, type: composition}
+  - {from: branches, to: staff, type: aggregation}
+  - {from: bank, to: ceo, type: assignment}
+  - {from: retail, to: head_retail, type: assignment}
+  - {from: lending, to: loan_officer, type: assignment}
+  - {from: cards, to: analyst, type: assignment}
+  - {from: branches, to: manager, type: assignment}
+  - {from: staff, to: teller, type: assignment}
+notes:
+  - {text: "Nesting inside a Location stands for the aggregation \"site houses unit\"; the chain of command is drawn as composition. Executive board, retail leadership and ops-centre staff are collective actors left out for space.", col: 3, row: 0, w: 2}

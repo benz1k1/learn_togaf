@@ -105,22 +105,30 @@ def _render_question(
     request: Request, connection: sqlite3.Connection, attempt: sqlite3.Row, index: int, reveal: bool = False
 ):
     context = _question_context(connection, attempt, index, reveal)
-    template = "_scenario.html" if context["question"]["exam"] == "PRACTITIONER" else "_question.html"
+    template = "_scenario.html" if context["question"]["scoring"] == "gradient" else "_question.html"
     return templates.TemplateResponse(request, template, base_context(request, connection, **context))
 
 
 # ---------------------------------------------------------------- /practice
 async def practice_page(request: Request, connection: sqlite3.Connection = Depends(get_db)):
     params = request.query_params
+    exams = engine.exams_for_form()
+    codes = [exam["code"] for exam in exams]
     context = {
         "units": engine.units_for_form(connection),
+        "exams": exams,
+        "tracks": sorted({exam["track"] for exam in exams}, key=lambda track: [e["track"] for e in exams].index(track)),
         "recent": engine.recent_attempts(connection),
         "preselect_objective": params.get("objective", ""),
         "preselect_phase": params.get("phase", ""),
         "preselect_kind": params.get("kind", ""),
+        "preselect_mode": "MOCK" if params.get("mode", "").upper() == "MOCK" else "DRILL",
         "modes": engine.MODES,
     }
-    preselect_exam = "FOUNDATION"
+    preselect_exam = params.get("exam", "").upper()
+    if preselect_exam and preselect_exam not in codes:
+        raise HTTPException(status_code=404, detail=f"exam {preselect_exam} is not in the blueprint")
+    preselect_exam = preselect_exam or codes[0]
     if context["preselect_objective"]:
         row = connection.execute(
             "SELECT unit_code FROM objective WHERE code = ?", (context["preselect_objective"],)
@@ -133,7 +141,7 @@ async def practice_page(request: Request, connection: sqlite3.Connection = Depen
         unit = connection.execute(
             "SELECT exam FROM learning_unit WHERE code = ?", (row["unit_code"],)
         ).fetchone()
-        preselect_exam = unit["exam"]
+        preselect_exam = unit["exam"] or preselect_exam
     else:
         context["preselect_unit"] = ""
     context["preselect_exam"] = preselect_exam
@@ -143,7 +151,7 @@ async def practice_page(request: Request, connection: sqlite3.Connection = Depen
 async def start_attempt(
     request: Request,
     mode: str = Form(...),
-    exam: str = Form("FOUNDATION"),
+    exam: str = Form(...),
     units: list[str] = Form(default=[]),
     objectives: list[str] = Form(default=[]),
     count: int = Form(10),
@@ -156,14 +164,13 @@ async def start_attempt(
 ):
     if mode not in engine.MODES:
         raise HTTPException(status_code=422, detail=f"mode must be one of {', '.join(engine.MODES)}")
-    if exam not in ("FOUNDATION", "PRACTITIONER"):
-        raise HTTPException(status_code=422, detail="exam must be FOUNDATION or PRACTITIONER")
+    exam = exam.strip().upper()
+    if exam not in engine.exam_codes():
+        raise HTTPException(status_code=422, detail=f"exam must be one of {', '.join(engine.exam_codes())}")
     draw_seed = int(seed) if seed.strip() else engine.new_seed()
     try:
-        if mode == "FOUNDATION_MOCK":
-            draw = engine.draw_foundation_mock(connection, draw_seed)
-        elif mode == "PRACTITIONER_MOCK":
-            draw = engine.draw_practitioner_mock(connection, draw_seed)
+        if mode == "MOCK":
+            draw = engine.draw_mock(connection, exam, draw_seed)
         elif phase and kind == "io":
             draw = engine.draw_phase_io_drill(connection, phase, count, draw_seed)
         else:

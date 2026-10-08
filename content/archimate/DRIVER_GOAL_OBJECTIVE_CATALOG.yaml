@@ -1,0 +1,34 @@
+# Driver/Goal/Objective Catalog (Phase B) as a Goal Realization view: a Driver influences the Goal
+# it motivates; the measurable objective is an Outcome that realizes the Goal (ARCHIMATE §C.2).
+id: DRIVER_GOAL_OBJECTIVE_CATALOG
+title: "Northgate Bank — Driver/Goal/Objective Catalog as a Goal Realization view"
+viewpoint: Goal Realization
+elements:
+  - {id: d1, type: driver, name: "Customers expect digital banking", col: 0, row: 0}
+  - {id: d2, type: driver, name: "Rising card fraud", col: 0, row: 1}
+  - {id: d3, type: driver, name: "Cost pressure", col: 0, row: 2}
+  - {id: d4, type: driver, name: "New capital rules", col: 0, row: 3}
+  - {id: d5, type: driver, name: "Small-business demand", col: 0, row: 4}
+  - {id: g1, type: goal, name: "Grow mobile adoption", col: 1, row: 0}
+  - {id: g2, type: goal, name: "Reduce fraud losses", col: 1, row: 1}
+  - {id: g3, type: goal, name: "Lower cost to serve", col: 1, row: 2}
+  - {id: g4, type: goal, name: "Stay compliant", col: 1, row: 3}
+  - {id: g5, type: goal, name: "Grow lending", col: 1, row: 4}
+  - {id: o1, type: outcome, name: "60% of transfers in the Mobile App by end 2027", col: 2, row: 0}
+  - {id: o2, type: outcome, name: "Card fraud losses cut 30% within 12 months", col: 2, row: 1}
+  - {id: o3, type: outcome, name: "Branch time on account opening halved", col: 2, row: 2}
+  - {id: o4, type: outcome, name: "Regulatory reports from one data source", col: 2, row: 3}
+  - {id: o5, type: outcome, name: "80% of small loans approved within a day", col: 2, row: 4}
+relations:
+  - {from: d1, to: g1, type: influence, label: "+"}
+  - {from: d2, to: g2, type: influence, label: "+"}
+  - {from: d3, to: g3, type: influence, label: "+"}
+  - {from: d4, to: g4, type: influence, label: "+"}
+  - {from: d5, to: g5, type: influence, label: "+"}
+  - {from: o1, to: g1, type: realization}
+  - {from: o2, to: g2, type: realization}
+  - {from: o3, to: g3, type: realization}
+  - {from: o4, to: g4, type: realization}
+  - {from: o5, to: g5, type: realization}
+notes:
+  - {text: "One catalog row per line. The measure (mobile share of transfers, fraud loss per 1,000 cards, minutes per onboarding, reports with rework, median decision time) is a property of the Outcome; the owning unit (Retail Banking, Cards Operations, Finance, Lending) is a Business Actor in the Organization view, not here.", col: 3, row: 0, w: 2, h: 2}

@@ -20,10 +20,16 @@ _JSON_TECHNIQUE_COLUMNS = ("phases", "artefacts", "traps", "refs")
 CYCLE = ("A", "B", "C", "D", "E", "F", "G", "H")
 
 
+_JSON_OPTIONAL_COLUMNS = ("crosswalk", "archimate")  # JSON object or '' (absent)
+
+
 def _decode(row: sqlite3.Row, columns: tuple[str, ...]) -> dict[str, Any]:
     data = dict(row)
     for column in columns:
         data[column] = orjson.loads(data[column])
+    for column in _JSON_OPTIONAL_COLUMNS:
+        if column in data:
+            data[column] = orjson.loads(data[column]) if data[column] else None
     return data
 
 
@@ -105,8 +111,12 @@ def techniques(connection: sqlite3.Connection) -> list[sqlite3.Row]:
 
 
 def artefacts(
-    connection: sqlite3.Connection, phase_code: str = "", domain: str = "", kind: str = ""
-) -> list[sqlite3.Row]:
+    connection: sqlite3.Connection,
+    phase_code: str = "",
+    domain: str = "",
+    kind: str = "",
+    archimate_only: bool = False,
+) -> list[dict[str, Any]]:
     clauses, params = [], []
     if phase_code:
         clauses.append("phase_code = ?")
@@ -117,10 +127,13 @@ def artefacts(
     if kind:
         clauses.append("kind = ?")
         params.append(kind)
+    if archimate_only:
+        clauses.append("archimate != ''")
     where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
-    return connection.execute(
+    rows = connection.execute(
         f"SELECT * FROM adm_artefact {where} ORDER BY phase_code, kind, name", params
     ).fetchall()
+    return [_decode(row, ("refs",)) for row in rows]
 
 
 def artefact_filters(connection: sqlite3.Connection) -> dict[str, list[str]]:
@@ -170,3 +183,26 @@ def cycle_layout(phase_rows: list[dict[str, Any]]) -> dict[str, Any]:
         "req": {"code": "REQ", "label": names["REQ"], "x": centre_x, "y": centre_y},
         "nodes": nodes,
     }
+
+
+def artefact(connection: sqlite3.Connection, code: str) -> dict[str, Any] | None:
+    row = connection.execute("SELECT * FROM adm_artefact WHERE code = ?", (code,)).fetchone()
+    return _decode(row, ("refs",)) if row else None
+
+
+def artefact_examples(connection: sqlite3.Connection, code: str) -> list[sqlite3.Row]:
+    """Worked examples (any track) that realise this artefact for the case enterprise — the
+    ArchiMate MODEL views in particular, which is how the catalogue shows a diagram in the notation."""
+    return connection.execute(
+        "SELECT id, title, kind, track, viewpoint, figure FROM example_document"
+        " WHERE EXISTS (SELECT 1 FROM json_each(example_document.artefacts) WHERE value = ?) ORDER BY ordinal",
+        (code,),
+    ).fetchall()
+
+
+def crosswalk_rows(connection: sqlite3.Connection) -> list[dict[str, Any]]:
+    """One row per phase for the explorer's crosswalk table (learn_sabsa_archimate.md §4.5)."""
+    return [
+        {"code": phase["code"], "name": phase["name"], "crosswalk": phase["crosswalk"]}
+        for phase in phases(connection)
+    ]

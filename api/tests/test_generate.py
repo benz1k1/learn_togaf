@@ -125,7 +125,7 @@ def test_stage_refuses_unmapped_objective(connection: sqlite3.Connection, conten
     with pytest.raises(GroundingError, match="objective 4.1 .* no objective_source rows.*sources.py index"):
         lessons.run(connection, content_dir, "F4", dry_run=False, limit=None)
     with pytest.raises(GroundingError):
-        questions.run(connection, content_dir, "foundation", "F4", dry_run=True, limit=None, batch=False)
+        questions.run(connection, content_dir, "OGEA-101", "F4", dry_run=True, limit=None, batch=False)
     assert not list((content_dir / "review").rglob("*"))
 
 
@@ -150,7 +150,7 @@ def test_grounding_sends_only_mapped_sections(connection: sqlite3.Connection):
 def test_dry_run_prints_prompt_and_section_ids_without_calling(connection, content_dir, fake, capsys):
     fake_client = fake({})
     result = questions.run(
-        connection, content_dir, "practitioner", "P3", dry_run=True, limit=None, batch=False
+        connection, content_dir, "OGEA-102", "P3", dry_run=True, limit=None, batch=False
     )
     assert result is None and fake_client.requests == []
     out = capsys.readouterr().out
@@ -231,15 +231,15 @@ def test_lessons_run_end_to_end_via_fake_client(connection, content_dir, fake, m
 
 # ---------------------------------------------------------------- questions
 def test_foundation_questions_validate_reject_and_write(connection, content_dir, fake, log_lines):
-    fake({"foundation-4.2": _recorded("questions_foundation_4.2.json")})
+    fake({"OGEA-101-4.2": _recorded("questions_foundation_4.2.json")})
     blueprint = load_blueprint(CONTENT_DIR)
     grounding = index_grounding(connection, blueprint, "4.2")
-    requests = questions.build_requests("foundation", [grounding], blueprint, 3, connection)
+    requests = questions.build_requests("OGEA-101", [grounding], blueprint, 3, connection)
     assert requests[0][1].schema is FOUNDATION_QUESTIONS
     assert "ALREADY IN THE BANK" in requests[0][1].user
     responses = client.complete_many([requests[0][1]], batch=False)
     accepted, next_index = questions.questions_from_response(
-        responses["foundation-4.2"], "foundation", grounding, 1
+        responses["OGEA-101-4.2"], "OGEA-101", grounding, 1
     )
     # four recorded: two good, one cites INTRO §2 (outside the input), one has two correct options
     assert len(accepted) == 2 and next_index == 3
@@ -248,30 +248,30 @@ def test_foundation_questions_validate_reject_and_write(connection, content_dir,
     logged = "\n".join(log_lines)
     assert "outside its input: ['INTRO §2']" in logged
     assert "exactly one correct option" in logged
-    path = questions.write_set(content_dir, "foundation", "F4", accepted, blueprint)
-    assert path.parent == content_dir / "review" / "questions" / "foundation"
+    path = questions.write_set(content_dir, "OGEA-101", "F4", accepted, blueprint)
+    assert path.parent == content_dir / "review" / "questions" / "OGEA-101"
     assert path.name.startswith("G_F4_") and path.suffix == ".yaml"
     data = yaml.safe_load(path.read_text(encoding="utf-8"))
-    assert data["code"].startswith("G_F4_") and data["exam"] == "FOUNDATION" and data["source"] == "generated"
+    assert data["code"].startswith("G_F4_") and data["exam"] == "OGEA-101" and data["source"] == "generated"
     question_set = parse_question_set(data, path, blueprint)  # the loader's validator
-    assert question_set.count() == 2 and question_set.foundation[0].refs == ["ADM §3.3", "ADM §3.5"]
+    assert question_set.count() == 2 and question_set.single[0].refs == ["ADM §3.3", "ADM §3.5"]
 
 
 def test_questions_run_writes_set_for_mapped_unit(connection, content_dir, fake):
-    fake({"practitioner-P3.1": _recorded("questions_practitioner_P3.1.json")})
+    fake({"OGEA-102-P3.1": _recorded("questions_practitioner_P3.1.json")})
     blueprint = load_blueprint(CONTENT_DIR)
     with pytest.raises(GroundingError):  # F4's first objective 4.1 is unmapped, so the unit is refused
-        questions.run(connection, content_dir, "practitioner", "F4", dry_run=False, limit=None, batch=False)
+        questions.run(connection, content_dir, "OGEA-102", "F4", dry_run=False, limit=None, batch=False)
     grounding = index_grounding(connection, blueprint, "P3.1")
-    requests = questions.build_requests("practitioner", [grounding], blueprint, 1, connection)
+    requests = questions.build_requests("OGEA-102", [grounding], blueprint, 1, connection)
     assert requests[0][1].schema is PRACTITIONER_QUESTIONS
     accepted, _ = questions.questions_from_response(
-        client.complete(requests[0][1]), "practitioner", grounding, 1
+        client.complete(requests[0][1]), "OGEA-102", grounding, 1
     )
     assert len(accepted) == 1 and sorted(a["points"] for a in accepted[0]["answers"]) == [0, 1, 3, 5]
-    path = questions.write_set(content_dir, "practitioner", "P3", accepted, blueprint)
+    path = questions.write_set(content_dir, "OGEA-102", "P3", accepted, blueprint)
     parsed = parse_question_set(yaml.safe_load(path.read_text()), path, blueprint)
-    assert parsed.practitioner[0].open_book_hint.startswith("Where to look")
+    assert parsed.gradient[0].open_book_hint.startswith("Where to look")
 
 
 def test_check_refs_gate():
@@ -286,7 +286,7 @@ def test_bad_generated_set_fails_the_loader(content_dir):
     blueprint = load_blueprint(CONTENT_DIR)
     data = {
         "code": "G_X",
-        "exam": "FOUNDATION",
+        "exam": "OGEA-101",
         "name": "x",
         "source": "generated",
         "questions": [
@@ -311,9 +311,9 @@ def test_verify_failure_stays_in_review_and_is_never_moved(connection, content_d
     grounding = index_grounding(connection, blueprint, "4.2")
     lesson_path = lessons.lesson_from_response(_recorded("lesson_4.2.json"), grounding, 1, content_dir)
     accepted, _ = questions.questions_from_response(
-        _recorded("questions_foundation_4.2.json"), "foundation", grounding, 1
+        _recorded("questions_foundation_4.2.json"), "OGEA-101", grounding, 1
     )
-    set_path = questions.write_set(content_dir, "foundation", "F4", accepted, blueprint)
+    set_path = questions.write_set(content_dir, "OGEA-101", "F4", accepted, blueprint)
     ids = [q["id"] for q in accepted]
     set_label = set_path.relative_to(content_dir / "review")
     fake_client = fake(
@@ -345,7 +345,7 @@ def test_verify_failure_stays_in_review_and_is_never_moved(connection, content_d
     front, _ = split_front_matter(lesson_path.read_text(encoding="utf-8"), lesson_path)
     assert front["verify"]["passed"] is True and front["verify"]["at"]
     LessonFrontMatter.model_validate(front)  # the verify block does not break the front matter
-    assert not (content_dir / "questions" / "foundation" / set_path.name).exists()
+    assert not (content_dir / "questions" / "OGEA-101" / set_path.name).exists()
 
 
 def test_verify_dry_run_makes_no_call(connection, content_dir, fake, capsys):

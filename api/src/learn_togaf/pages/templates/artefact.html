@@ -15,7 +15,9 @@
     <option value="">All kinds</option>
     {% for kind in filters.kinds %}<option value="{{ kind }}" {% if selected.kind == kind %}selected{% endif %}>{{ kind | capitalize }}</option>{% endfor %}
   </select>
+  <label class="label cursor-pointer gap-2"><input type="checkbox" name="archimate" value="1" class="checkbox checkbox-sm" {% if selected.archimate == '1' %}checked{% endif %}><span class="label-text text-sm">With an ArchiMate mapping</span></label>
   <a class="btn btn-sm btn-ghost" href="/artefact">Clear</a>
 </form>
+<p class="text-xs text-base-content/60 mb-2">Every artefact has an original drawing for Northgate Bank; the <strong>ArchiMate</strong> column says which viewpoint and elements express it in the language (W14C, the specification's TOGAF appendix), and the Example panel shows the same artefact drawn in ArchiMate notation where a view exists.</p>
 {% include "_artefact_table.html" %}
 {% endblock %}

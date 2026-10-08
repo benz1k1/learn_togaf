@@ -191,12 +191,12 @@ def _accept_questions(content_dir: Path, path: Path, reviewed_at: str) -> tuple[
             question["status"] = "reviewed"
             question["reviewed_at"] = reviewed_at
     exam = str(data.get("exam", "")).upper()
-    if exam not in ("FOUNDATION", "PRACTITIONER"):
-        raise ContentError(f"{path}: exam must be FOUNDATION or PRACTITIONER")
+    if exam not in blueprint.exams:
+        raise ContentError(f"{path}: exam must be one of {', '.join(blueprint.exams)}, got {exam!r}")
     code = str(data.get("code", "")).strip()
     if not code:
         raise ContentError(f"{path}: the set has no code")
-    destination = content_dir / "questions" / exam.lower() / f"{code}.yaml"
+    destination = content_dir / "questions" / exam / f"{code}.yaml"
     previous: str | None = None
     if destination.is_file():
         previous = destination.read_text(encoding="utf-8")

@@ -7,8 +7,9 @@ from starlette.requests import Request
 
 from learn_togaf.deps import get_db
 from learn_togaf.pages.context import base_context
+from learn_togaf.pages.static_files import ARCHIMATE_DIR, ARTEFACT_EXAMPLE_DIR
 from learn_togaf.pages.templating import templates
-from learn_togaf.service import adm, notes
+from learn_togaf.service import adm, examples, notes
 
 
 async def adm_page(request: Request, connection: sqlite3.Connection = Depends(get_db)):
@@ -22,6 +23,7 @@ async def adm_page(request: Request, connection: sqlite3.Connection = Depends(ge
             phases=phases,
             layout=adm.cycle_layout(phases),
             techniques=adm.techniques(connection),
+            crosswalk=adm.crosswalk_rows(connection),
         ),
     )
 
@@ -38,6 +40,7 @@ def _phase_context(connection: sqlite3.Connection, code: str) -> dict:
         "artefacts": adm.phase_artefacts(connection, phase),
         "techniques": adm.phase_techniques(connection, code),
         "figures": adm.phase_figures(connection, phase),
+        "examples": examples.phase_examples(connection, code),
     }
 
 
@@ -67,15 +70,41 @@ async def artefact_page(
     phase: str = "",
     domain: str = "",
     kind: str = "",
+    archimate: str = "",
     connection: sqlite3.Connection = Depends(get_db),
 ):
+    rows = adm.artefacts(connection, phase, domain, kind, archimate_only=archimate == "1")
+    views = {row["code"] for row in rows if (ARCHIMATE_DIR / f"{row['code']}.svg").is_file()}
     context = base_context(
         request,
         connection,
-        rows=adm.artefacts(connection, phase, domain, kind),
+        rows=rows,
+        views=views,
         filters=adm.artefact_filters(connection),
         phase_names={p["code"]: p["name"] for p in adm.phases(connection)},
-        selected={"phase": phase, "domain": domain, "kind": kind},
+        selected={"phase": phase, "domain": domain, "kind": kind, "archimate": archimate},
     )
     template = "_artefact_table.html" if request.headers.get("HX-Request") else "artefact.html"
     return templates.TemplateResponse(request, template, context)
+
+
+async def artefact_example(request: Request, code: str, connection: sqlite3.Connection = Depends(get_db)):
+    """Fragment showing the original example drawing shipped for one artefact under static/artefact/."""
+    artefact = adm.artefact(connection, code)
+    if artefact is None or not (ARTEFACT_EXAMPLE_DIR / f"{code}.svg").is_file():
+        raise HTTPException(404, f"No example drawing for artefact {code}")
+    section_ref = artefact["refs"][0]
+    has_view = (ARCHIMATE_DIR / f"{code}.svg").is_file()
+    return templates.TemplateResponse(
+        request,
+        "_artefact_example.html",
+        base_context(
+            request,
+            connection,
+            artefact=artefact,
+            svg_url=f"/static/artefact/{code}.svg",
+            archimate_url=f"/static/archimate/{code}.svg" if has_view else None,
+            examples=adm.artefact_examples(connection, code),
+            section_ref=section_ref,
+        ),
+    )

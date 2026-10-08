@@ -1,0 +1,41 @@
+{# The phase in the other two frameworks (learn_sabsa_archimate.md §4.5); expects `phase` with a decoded crosswalk. #}
+{% if phase.crosswalk %}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3" data-testid="crosswalk">
+  <div class="card bg-base-100 border border-info/40 shadow-sm"><div class="card-body p-4">
+    <h2 class="card-title text-sm"><span class="badge badge-info badge-sm">ArchiMate</span> How this phase is drawn</h2>
+    {% if phase.crosswalk.archimate.viewpoints %}
+    <h3 class="text-xs uppercase text-base-content/60 mt-1">Viewpoints</h3>
+    <div class="flex flex-wrap gap-1">{% for item in phase.crosswalk.archimate.viewpoints %}<span class="badge badge-outline badge-sm">{{ item }}</span>{% endfor %}</div>
+    {% endif %}
+    {% if phase.crosswalk.archimate.elements %}
+    <h3 class="text-xs uppercase text-base-content/60 mt-2">Elements</h3>
+    <p class="text-sm">{{ phase.crosswalk.archimate.elements | join(', ') }}</p>
+    {% endif %}
+    {% if phase.crosswalk.archimate.note %}<p class="text-xs text-base-content/70 mt-1">{{ phase.crosswalk.archimate.note }}</p>{% endif %}
+    <p class="text-xs mt-2">
+      {% for lesson_id in phase.crosswalk.archimate.lessons %}<a class="link link-primary mr-2" href="/lesson/{{ lesson_id }}"><i class="mdi mdi-book-open-page-variant-outline"></i> {{ lesson_id.split('/')[0] }}</a>{% endfor %}
+      <a class="link" href="/source/{{ phase.crosswalk.archimate.ref | urlencode }}">{{ phase.crosswalk.archimate.ref }}</a>
+    </p>
+  </div></div>
+  <div class="card bg-base-100 border border-secondary/40 shadow-sm"><div class="card-body p-4">
+    <h2 class="card-title text-sm"><span class="badge badge-secondary badge-sm">SABSA</span> Where this phase lands in the Matrix</h2>
+    {% if phase.crosswalk.sabsa.layers %}
+    <h3 class="text-xs uppercase text-base-content/60 mt-1">Layers</h3>
+    <div class="flex flex-wrap gap-1">{% for item in phase.crosswalk.sabsa.layers %}<span class="badge badge-outline badge-sm">{{ item | lower | capitalize }}</span>{% endfor %}</div>
+    {% endif %}
+    {% if phase.crosswalk.sabsa.cells %}
+    <h3 class="text-xs uppercase text-base-content/60 mt-2">Cells</h3>
+    <p class="text-sm">{{ phase.crosswalk.sabsa.cells | join(' · ') }}</p>
+    {% endif %}
+    {% if phase.crosswalk.sabsa.artefacts %}
+    <h3 class="text-xs uppercase text-base-content/60 mt-2">Artefacts</h3>
+    <p class="text-sm">{{ phase.crosswalk.sabsa.artefacts | join(', ') | replace('_', ' ') | lower }}</p>
+    {% endif %}
+    {% if phase.crosswalk.sabsa.note %}<p class="text-xs text-base-content/70 mt-1">{{ phase.crosswalk.sabsa.note }}</p>{% endif %}
+    <p class="text-xs mt-2">
+      {% for lesson_id in phase.crosswalk.sabsa.lessons %}<a class="link link-primary mr-2" href="/lesson/{{ lesson_id }}"><i class="mdi mdi-book-open-page-variant-outline"></i> {{ lesson_id.split('/')[0] }}</a>{% endfor %}
+      <a class="link" href="/source/{{ phase.crosswalk.sabsa.ref | urlencode }}">{{ phase.crosswalk.sabsa.ref }}</a>
+    </p>
+  </div></div>
+</div>
+{% endif %}

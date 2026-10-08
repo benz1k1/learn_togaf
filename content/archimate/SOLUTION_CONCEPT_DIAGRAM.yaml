@@ -1,0 +1,41 @@
+# Solution Concept Diagram (Phase A) as a Layered view: the three business services the customer
+# will get, the application components (new and existing) that realize them, and the nodes they
+# run on, one Grouping per layer (ARCHIMATE §C.1).
+id: SOLUTION_CONCEPT_DIAGRAM
+title: "Northgate Bank — Solution Concept Diagram as a Layered view"
+viewpoint: Layered
+grid: {gap_y: 80}
+elements:
+  - {id: customer, type: business_actor, name: "Customer", col: 1, row: 0}
+  - {id: s_open, type: business_service, name: "Open an account in under 10 minutes", col: 0, row: 1}
+  - {id: s_pay, type: business_service, name: "Pay from the phone", col: 1, row: 1}
+  - {id: s_block, type: business_service, name: "Block a fraudulent card within 5 seconds", col: 2, row: 1}
+  - {id: idv, type: application_component, name: "Identity verification (buy or build?)", col: 0, row: 2}
+  - {id: app, type: application_component, name: "Mobile App (new)", col: 1, row: 2}
+  - {id: fraud, type: application_component, name: "Fraud Engine (new)", col: 2, row: 2}
+  - {id: core, type: application_component, name: "Core Banking (existing, system of record)", col: 0, row: 3}
+  - {id: api, type: application_component, name: "API layer (new)", col: 1, row: 3}
+  - {id: switch, type: application_component, name: "Card Switch (existing)", col: 2, row: 3}
+  - {id: n_main, type: node, name: "Mainframe (existing)", col: 0, row: 4}
+  - {id: n_cloud, type: node, name: "Bank private cloud (new)", col: 1, row: 4}
+  - {id: n_net, type: node, name: "Card network gateway (external)", col: 2, row: 4}
+groups:
+  - {id: g_bus, type: grouping, name: "Business layer", from: [0, 1], to: [2, 1]}
+  - {id: g_app, type: grouping, name: "Application layer", from: [0, 2], to: [2, 3]}
+  - {id: g_tech, type: grouping, name: "Technology layer", from: [0, 4], to: [2, 4]}
+relations:
+  - {from: s_open, to: customer, type: serving}
+  - {from: s_pay, to: customer, type: serving}
+  - {from: s_block, to: customer, type: serving}
+  - {from: idv, to: s_open, type: realization}
+  - {from: app, to: s_open, type: realization}
+  - {from: app, to: s_pay, type: realization}
+  - {from: fraud, to: s_block, type: realization}
+  - {from: api, to: app, type: serving}
+  - {from: idv, to: api, type: serving}
+  - {from: core, to: api, type: serving}
+  - {from: switch, to: api, type: serving}
+  - {from: fraud, to: switch, type: serving}
+  - {from: n_main, to: core, type: serving}
+  - {from: n_cloud, to: api, type: serving}
+  - {from: n_net, to: switch, type: serving}

@@ -1,3 +1,3 @@
 id,exam,unit,objective,stem,option_a,option_b,option_c,option_d,correct,explanation,refs
-,FOUNDATION,F4,4.2,TEST_IMPORT_CSV: which phase produces the Architecture Vision?,Preliminary Phase,Phase A,Phase B,Phase E,B,Phase A produces the Architecture Vision.,ADM §6
-,FOUNDATION,,,TEST_IMPORT_CSV: which phase establishes the architecture capability and its principles?,Phase A,Preliminary Phase,Phase C,Phase G,B,The Preliminary Phase sets up the capability and the principles.,ADM §5;INTRO §2
+,OGEA-101,F4,4.2,TEST_IMPORT_CSV: which phase produces the Architecture Vision?,Preliminary Phase,Phase A,Phase B,Phase E,B,Phase A produces the Architecture Vision.,ADM §6
+,OGEA-101,,,TEST_IMPORT_CSV: which phase establishes the architecture capability and its principles?,Phase A,Preliminary Phase,Phase C,Phase G,B,The Preliminary Phase sets up the capability and the principles.,ADM §5;INTRO §2

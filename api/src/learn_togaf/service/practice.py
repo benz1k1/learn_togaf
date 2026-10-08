@@ -1,14 +1,17 @@
 """
-Practice engine (learn_togaf.md §0, §4.6): one engine for DRILL, FOUNDATION_MOCK and
-PRACTITIONER_MOCK.
+Practice engine (learn_togaf.md §0, §4.6; learn_sabsa_archimate.md §4.7): one engine for a
+DRILL and for a MOCK of any exam in the blueprint.
 
 Draws are seeded (``random.Random(seed)`` over a sorted candidate list) and the drawn ids are
 stored on the attempt in order, so a retake with the same seed is the same paper. The clock is
 ``started_at + time_limit_s`` on the row: a reload asks the server how much is left and an
 answer after the deadline is refused (``AttemptClosed``) and the attempt auto-finished.
 
-Scoring follows §0 exactly: Foundation 1/0 per option, Practitioner the option's 5/3/1/0;
-mocks are out of 40 with the blueprint pass mark; a drill has no pass mark (``passed`` NULL).
+Scoring follows the exam's ``scoring`` in the blueprint: ``single`` is 1/0 per option,
+``gradient`` the option's 5/3/1/0; a mock is out of the exam's ``max_score`` with its
+``pass_mark``; a drill has no pass mark (``passed`` NULL). A single-answer mock draws exactly
+the blueprint weight per unit; a gradient mock draws one scenario per weighted unit of the
+exam's track, then fills the paper from whatever the exam has left.
 """
 
 import random
@@ -21,16 +24,17 @@ import orjson
 
 from learn_togaf.config import CONTENT_DIR
 from learn_togaf.content.loader import load_blueprint
+from learn_togaf.content.models import Blueprint, ExamFormat
 from learn_togaf.service.review import iso, upsert_question_cards
 
-MODES = ("DRILL", "FOUNDATION_MOCK", "PRACTITIONER_MOCK")
+MODES = ("DRILL", "MOCK")
 SOURCE_FILTERS = {
     "all": None,
     "own": ("authored", "generated"),
     "imported": ("imported",),
 }
-MOCK_QUESTION_CARD_THRESHOLD = {"FOUNDATION": 1, "PRACTITIONER": 5}
-PRACTITIONER_MOCK_UNITS = ("P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8")
+PHASE_IO_EXAM = "OGEA-101"
+PHASE_IO_UNIT = "F4"
 
 
 class DrawError(ValueError):
@@ -52,8 +56,16 @@ class Draw:
     short_units: list[str] = field(default_factory=list)
 
 
-def _blueprint():
+def _blueprint() -> Blueprint:
     return load_blueprint(CONTENT_DIR)
+
+
+def exam_format(code: str) -> ExamFormat:
+    return _blueprint().exam(code)
+
+
+def exam_codes() -> list[str]:
+    return list(_blueprint().exams)
 
 
 def new_seed() -> int:
@@ -81,6 +93,7 @@ def draw_drill(
         raise DrawError(f"unknown sources filter {sources!r}")
     if count < 1:
         raise DrawError("a drill needs at least one question")
+    exam_format(exam)  # raises on an unknown code
     sql = "SELECT id FROM question WHERE exam = ?"
     params: list[Any] = [exam]
     if units:
@@ -111,18 +124,18 @@ def draw_drill(
 
 
 def draw_phase_io_drill(connection: sqlite3.Connection, phase_code: str, count: int, seed: int) -> Draw:
-    """Best effort (§4.5 → §4.6 link from the ADM explorer): Foundation questions in unit F4
-    about inputs/outputs, narrowed to the phase when any question names it (tag ``phase-a`` or
-    the phase name in the stem); otherwise every F4 input/output question."""
+    """Best effort (§4.5 → §4.6 link from the ADM explorer): TOGAF Foundation questions in unit
+    F4 about inputs/outputs, narrowed to the phase when any question names it (tag ``phase-a``
+    or the phase name in the stem); otherwise every F4 input/output question."""
     phase = connection.execute("SELECT code, name FROM adm_phase WHERE code = ?", (phase_code,)).fetchone()
     if phase is None:
         raise DrawError(f"unknown ADM phase {phase_code!r}")
     io_sql = (
-        "SELECT id, stem_or_scenario, tags FROM question WHERE exam = 'FOUNDATION' AND unit_code = 'F4'"
+        "SELECT id, stem_or_scenario, tags FROM question WHERE exam = ? AND unit_code = ?"
         " AND (tags LIKE '%\"inputs\"%' OR tags LIKE '%\"outputs\"%'"
         " OR stem_or_scenario LIKE '%input%' OR stem_or_scenario LIKE '%output%')"
     )
-    rows = connection.execute(io_sql).fetchall()
+    rows = connection.execute(io_sql, (PHASE_IO_EXAM, PHASE_IO_UNIT)).fetchall()
     if not rows:
         raise DrawError("no Foundation questions about phase inputs and outputs yet")
     short_name = phase["name"].split(":")[0]  # "Phase A: Architecture Vision" → "Phase A"
@@ -137,7 +150,7 @@ def draw_phase_io_drill(connection: sqlite3.Connection, phase_code: str, count: 
     ids = _shuffled(candidates, rng)[:count]
     filters = {"phase": phase_code, "kind": "io", "phase_specific": bool(matching), "count": count}
     return Draw(
-        exam="FOUNDATION", mode="DRILL", question_ids=ids, seed=seed, time_limit_s=None, filters=filters
+        exam=PHASE_IO_EXAM, mode="DRILL", question_ids=ids, seed=seed, time_limit_s=None, filters=filters
     )
 
 
@@ -163,67 +176,56 @@ def _take_for_unit(
     return chosen, short
 
 
-def draw_foundation_mock(connection: sqlite3.Connection, seed: int) -> Draw:
-    """Exactly the blueprint weight per Foundation unit from reviewed questions. A unit without
-    enough reviewed questions is filled from drafts and named in ``short_units`` so the attempt
-    carries a warning — the paper is never silently smaller than the blueprint."""
-    blueprint = _blueprint()
+def mock_units(connection: sqlite3.Connection, exam: ExamFormat) -> list[sqlite3.Row]:
+    """The units a mock of ``exam`` draws from: its own weighted units for a single-answer paper;
+    for a gradient paper, every weighted unit of the exam's track (the A units carry both the
+    Part 1 bank and the Part 2 scenarios, the way P1–P8 carry the TOGAF scenarios)."""
+    if exam.scoring == "single":
+        return connection.execute(
+            "SELECT code, weight FROM learning_unit WHERE exam = ? AND weight > 0 ORDER BY ordinal", (exam.code,)
+        ).fetchall()
+    return connection.execute(
+        "SELECT code, weight FROM learning_unit WHERE track = ? AND weight > 0"
+        " AND EXISTS (SELECT 1 FROM question q WHERE q.unit_code = learning_unit.code AND q.exam = ?)"
+        " ORDER BY ordinal",
+        (exam.track, exam.code),
+    ).fetchall()
+
+
+def draw_mock(connection: sqlite3.Connection, exam_code: str, seed: int) -> Draw:
+    """A paper at the exam's real format. Single-answer: exactly the blueprint weight per unit
+    from reviewed questions, drafts filling a short unit (named in ``short_units`` so the attempt
+    carries a warning — the paper is never silently smaller than the blueprint). Gradient: one
+    scenario per weighted unit, then the remaining slots from whatever the exam has left."""
+    exam = exam_format(exam_code)
     rng = random.Random(seed)
     ids: list[str] = []
     short_units: list[str] = []
-    units = connection.execute(
-        "SELECT code, weight FROM learning_unit WHERE exam = 'FOUNDATION' AND weight > 0 ORDER BY ordinal"
-    ).fetchall()
-    for unit in units:
-        chosen, short = _take_for_unit(connection, "FOUNDATION", unit["code"], unit["weight"], rng)
+    for unit in mock_units(connection, exam):
+        need = unit["weight"] if exam.scoring == "single" else 1
+        chosen, short = _take_for_unit(connection, exam.code, unit["code"], need, rng)
         ids += chosen
         if short:
             short_units.append(unit["code"])
-    if not ids:
-        raise DrawError("the Foundation bank is empty — load or import questions first")
-    rng.shuffle(ids)
-    return Draw(
-        exam="FOUNDATION",
-        mode="MOCK",
-        question_ids=ids,
-        seed=seed,
-        time_limit_s=blueprint.foundation.time_minutes * 60,
-        filters={"short_units": short_units} if short_units else {},
-        short_units=short_units,
-    )
-
-
-def draw_practitioner_mock(connection: sqlite3.Connection, seed: int) -> Draw:
-    """Eight scenarios across P1–P8: one per unit where possible (reviewed first), then the
-    remaining slots filled from whatever Practitioner questions are left."""
-    blueprint = _blueprint()
-    rng = random.Random(seed)
-    ids: list[str] = []
-    short_units: list[str] = []
-    for unit in PRACTITIONER_MOCK_UNITS:
-        chosen, short = _take_for_unit(connection, "PRACTITIONER", unit, 1, rng)
-        ids += chosen
-        if short:
-            short_units.append(unit)
-    target = blueprint.practitioner.questions
-    if len(ids) < target:
+    if exam.scoring == "gradient" and len(ids) < exam.questions:
         rest = [
             row["id"]
             for row in connection.execute(
-                "SELECT id FROM question WHERE exam = 'PRACTITIONER' ORDER BY CASE status WHEN 'reviewed' THEN 0 ELSE 1 END, id"
+                "SELECT id FROM question WHERE exam = ? ORDER BY CASE status WHEN 'reviewed' THEN 0 ELSE 1 END, id",
+                (exam.code,),
             )
             if row["id"] not in ids
         ]
-        ids += _shuffled(rest, rng)[: target - len(ids)]
+        ids += _shuffled(rest, rng)[: exam.questions - len(ids)]
     if not ids:
-        raise DrawError("the Practitioner bank is empty — load or import scenarios first")
+        raise DrawError(f"the {exam.label} bank is empty — load or import questions first")
     rng.shuffle(ids)
     return Draw(
-        exam="PRACTITIONER",
+        exam=exam.code,
         mode="MOCK",
         question_ids=ids,
         seed=seed,
-        time_limit_s=blueprint.practitioner.time_minutes * 60,
+        time_limit_s=exam.time_minutes * 60,
         filters={"short_units": short_units} if short_units else {},
         short_units=short_units,
     )
@@ -273,8 +275,9 @@ def mode_label(attempt: sqlite3.Row) -> str:
 
 
 def open_book_allowed(attempt: sqlite3.Row) -> bool:
-    """Part 1 is closed book; anything Practitioner has the standard open (§0)."""
-    return attempt["exam"] == "PRACTITIONER"
+    """Whatever the blueprint says for the exam: the Part 1 papers are closed book, the
+    Practitioner papers have the standard open (§0)."""
+    return exam_format(attempt["exam"]).open_book
 
 
 def parse_iso(value: str) -> datetime:
@@ -384,15 +387,14 @@ def score_answers(points: list[int | None]) -> int:
 
 
 def max_score_for(exam: str, mode: str, question_count: int) -> int:
+    fmt = exam_format(exam)
     if mode == "MOCK":
-        blueprint = _blueprint()
-        return blueprint.foundation.max_score if exam == "FOUNDATION" else blueprint.practitioner.max_score
-    return question_count * MOCK_QUESTION_CARD_THRESHOLD[exam]
+        return fmt.max_score
+    return question_count * fmt.max_points
 
 
 def pass_mark_for(exam: str) -> int:
-    blueprint = _blueprint()
-    return blueprint.foundation.pass_mark if exam == "FOUNDATION" else blueprint.practitioner.pass_mark
+    return exam_format(exam).pass_mark
 
 
 def finish_attempt(connection: sqlite3.Connection, attempt: sqlite3.Row, now: datetime) -> sqlite3.Row:
@@ -409,7 +411,7 @@ def finish_attempt(connection: sqlite3.Connection, attempt: sqlite3.Row, now: da
         "UPDATE attempt SET finished_at = ?, score = ?, max_score = ?, passed = ? WHERE id = ?",
         (iso(now), score, max_score, passed, attempt["id"]),
     )
-    threshold = MOCK_QUESTION_CARD_THRESHOLD[attempt["exam"]]
+    threshold = exam_format(attempt["exam"]).max_points
     missed = [qid for qid in ids if qid not in answers or (answers[qid]["points"] or 0) < threshold]
     upsert_question_cards(connection, missed, now)
     refreshed = get_attempt(connection, attempt["id"])
@@ -487,9 +489,30 @@ def recent_attempts(connection: sqlite3.Connection, limit: int = 12) -> list[sql
     ).fetchall()
 
 
+def exams_for_form() -> list[dict[str, Any]]:
+    """Every exam in the blueprint, in blueprint order, with the facts the practice form shows."""
+    return [
+        {
+            "code": exam.code,
+            "track": exam.track,
+            "name": exam.name,
+            "label": exam.label,
+            "questions": exam.questions,
+            "time_minutes": exam.time_minutes,
+            "pass_mark": exam.pass_mark,
+            "max_score": exam.max_score,
+            "open_book": exam.open_book,
+            "scoring": exam.scoring,
+        }
+        for exam in _blueprint().exams.values()
+    ]
+
+
 def units_for_form(connection: sqlite3.Connection) -> list[dict[str, Any]]:
+    """Units with questions to drill on, each tagged with the exams (of its track) its questions
+    belong to. Guide summaries and crosswalk units carry no bank and are left out."""
     units = connection.execute(
-        "SELECT code, exam, name, weight FROM learning_unit WHERE code NOT LIKE 'G_%' ORDER BY ordinal"
+        "SELECT code, exam, track, name, weight FROM learning_unit WHERE code NOT LIKE 'G\\_%' ESCAPE '\\' AND exam != '' ORDER BY ordinal"
     ).fetchall()
     counts = {
         (row["unit_code"], row["status"]): row["n"]
@@ -497,6 +520,9 @@ def units_for_form(connection: sqlite3.Connection) -> list[dict[str, Any]]:
             "SELECT unit_code, status, COUNT(*) AS n FROM question GROUP BY unit_code, status"
         )
     }
+    exams_of_unit: dict[str, set[str]] = {}
+    for row in connection.execute("SELECT DISTINCT unit_code, exam FROM question"):
+        exams_of_unit.setdefault(row["unit_code"], set()).add(row["exam"])
     result = []
     for unit in units:
         objectives = connection.execute(
@@ -506,6 +532,8 @@ def units_for_form(connection: sqlite3.Connection) -> list[dict[str, Any]]:
             {
                 "code": unit["code"],
                 "exam": unit["exam"],
+                "track": unit["track"],
+                "exams": sorted(exams_of_unit.get(unit["code"], set()) | {unit["exam"]}),
                 "name": unit["name"],
                 "weight": unit["weight"],
                 "reviewed": counts.get((unit["code"], "reviewed"), 0),

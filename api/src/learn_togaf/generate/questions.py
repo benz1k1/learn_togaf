@@ -1,6 +1,7 @@
-"""``generate questions foundation|practitioner <unit>`` (learn_togaf.md §1.5): MCQs or
-scenarios per objective, structured output, optionally over the Batches API, written as one
-draft set ``G_<unit>_<date>`` into ``content/review/questions/<exam>/``."""
+"""``generate questions <exam code> <unit>`` (learn_togaf.md §1.5): single-answer questions or
+gradient scenarios per objective — the exam's ``scoring`` in the blueprint decides which —
+structured output, optionally over the Batches API, written as one draft set
+``G_<unit>_<date>`` into ``content/review/questions/<exam code>/``."""
 
 import sqlite3
 from pathlib import Path
@@ -55,16 +56,17 @@ def build_requests(
     per_objective: int,
     connection: sqlite3.Connection,
 ) -> list[tuple[Grounding, client.Request]]:
-    stage = f"questions_{exam}"
+    fmt = blueprint.exam(exam)
+    stage = f"questions_{fmt.scoring}"
     prompt = load_prompt(stage)
     requests = []
     for index, grounding in enumerate(groundings):
         unit = next(u for u in blueprint.units if u.code == grounding.unit_code)
         already = existing_questions(connection, grounding.objective_code)
-        if exam == "foundation":
+        if fmt.scoring == "single":
             user = (
-                f"Write {per_objective} Foundation questions for objective {grounding.objective_code} "
-                f"(unit {unit.code} {unit.name}, blueprint weight {unit.weight} of {blueprint.foundation.questions}): "
+                f"Write {per_objective} single-answer questions for the {fmt.label} exam, objective {grounding.objective_code} "
+                f"(unit {unit.code} {unit.name}, blueprint weight {unit.weight} of {fmt.questions}): "
                 f'"{grounding.objective_text}".\n'
                 f"Refs you may cite (and no others): {', '.join(grounding.refs)}.\n"
                 f"ALREADY IN THE BANK for this objective ({len(already)}):\n"
@@ -74,7 +76,7 @@ def build_requests(
         else:
             industry, size, stage_text = SCENARIO_BRIEFS[index % len(SCENARIO_BRIEFS)]
             user = (
-                f"Write {per_objective} Practitioner scenario question(s) for objective {grounding.objective_code} "
+                f"Write {per_objective} scenario question(s) for the {fmt.label} exam, objective {grounding.objective_code} "
                 f'(unit {unit.code} {unit.name}): "{grounding.objective_text}".\n'
                 f"Scenario brief: industry={industry}; size={size}; stage={stage_text}; horizon=18 months.\n"
                 f"Refs you may cite (and no others): {', '.join(grounding.refs)}.\n"
@@ -103,6 +105,7 @@ def questions_from_response(
 ) -> tuple[list[dict[str, Any]], int]:
     """Validate each generated question with the content model and the ref gate; a question
     that fails is logged and dropped, the rest survive. Returns (question dicts, next index)."""
+    scoring = load_blueprint(config.CONTENT_DIR).exam(exam).scoring
     data = parse_json(text)
     accepted: list[dict[str, Any]] = []
     stamp = today().replace("-", "")[2:]
@@ -120,7 +123,7 @@ def questions_from_response(
         }
         try:
             item["refs"] = check_refs(list(raw.get("refs") or []), grounding.refs, f"question {question_id}")
-            model = FoundationQuestion if exam == "foundation" else PractitionerQuestion
+            model = PractitionerQuestion if scoring == "gradient" else FoundationQuestion
             validated = model.model_validate(item)
         except (RefsOutsideInput, ValidationError) as exc:
             logger.warning(f"question for {grounding.objective_code} rejected: {exc}")
@@ -136,7 +139,7 @@ def write_set(
     code = set_code(unit_code)
     data = {
         "code": code,
-        "exam": exam.upper(),
+        "exam": exam,
         "name": f"Generated {exam} set for {unit_code}, {today()}",
         "kind": "DRILL",
         "source": "generated",
@@ -161,9 +164,9 @@ def run(
     batch: bool,
     per_objective: int = DEFAULT_PER_OBJECTIVE,
 ) -> Path | None:
-    if exam not in ("foundation", "practitioner"):
-        raise SystemExit(f"exam must be foundation or practitioner, not {exam!r}")
     blueprint = load_blueprint(content_dir)
+    if exam not in blueprint.exams:
+        raise SystemExit(f"exam must be one of {', '.join(blueprint.exams)}, not {exam!r}")
     groundings = grounding_for_unit(connection, blueprint, unit_code)[:limit]
     requests = build_requests(exam, groundings, blueprint, per_objective, connection)
     if dry_run:

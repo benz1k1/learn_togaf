@@ -1,0 +1,683 @@
+# Authored Practitioner scenarios for P4, Architecture Development, Phases B, C and D (learn_togaf.md §2, §6).
+code: P4_BANK
+exam: OGEA-102
+name: "P4 Architecture Development (Phases B, C, D)"
+kind: DRILL
+source: authored
+questions:
+  - id: P4-101
+    unit: P4
+    objective: "P4.1"
+    lesson: P4/01_developing_the_domains_b_c_d
+    scenario: |
+      Marlowe & Finch is a professional services firm formed last year by the merger of a
+      1,400-person accountancy practice and a 900-person management consultancy, with offices in
+      six cities and clients ranging from listed companies to family businesses. The merged board
+      has approved an Architecture Vision and a Statement of Architecture Work, sponsored by the
+      Chief Operating Officer, for a target architecture that lets the firm sell and deliver
+      combined engagements — audit, tax and advisory — to the same client through one engagement
+      process, with one engagement code, one resourcing view and one bill. Phase A produced a
+      stakeholder map, a Capability Assessment, and a draft capability map sketched from the two
+      firms' organisation charts. Phase B is starting and you are the lead architect, with a team
+      of four and twelve weeks in the Statement of Architecture Work for Phase B.
+
+      The two legacy firms disagree about the current state. The accountancy side has a documented
+      engagement lifecycle with quality gates required by its regulator, embedded in its practice
+      management system and audited annually; the consultancy side has no documented process and
+      says its partners "run engagements their own way", using a mix of spreadsheets and a project
+      tool. Each side claims its way is the baseline. The consultancy's managing partner says there
+      is no point documenting the baseline because "everything is changing anyway" and the merger
+      is the chance to start afresh. The audit quality director says nothing can change until the
+      regulated gates are preserved in whatever comes next, and that she will not sign off any
+      target that does not show them explicitly.
+
+      The programme office has proposed that Phase B start by documenting every process in both
+      firms in full, using a process modelling consultancy, before any target is drawn; the
+      consultancy estimates five months and has already begun interviewing partners. The Chief
+      Operating Officer wants to see "what the combined firm looks like" within six weeks, because
+      the two partner groups are losing patience with each other. The Chief Financial Officer has
+      already commissioned a finance system consolidation, in flight and funded, that assumes a
+      single engagement code structure nobody has yet defined; its designers have invented one to
+      keep moving. The Head of Client Relationships wants a view of which clients would be affected
+      first, because three large clients have asked what the merger means for them. The Head of
+      Resourcing wants to know which capabilities the combined firm will need that neither has
+      today, because she is about to start the annual hiring round.
+
+      The EA team's own view is divided: two members want to skip the baseline entirely and draw
+      the target from the Vision; one wants to accept the process consultancy's plan; one thinks
+      the accountancy lifecycle should simply be adopted. Nobody has yet selected the viewpoints
+      the Phase B work will need to satisfy the audit quality director, the Head of Client
+      Relationships and the CFO.
+
+      What Phase A left behind is usable but incomplete. The Capability Assessment recorded that
+      the merged firm's capability to run a combined engagement was "not present" and that both
+      legacy firms' architecture capability was minimal. The stakeholder map records the audit
+      quality director's concern as "regulated gates preserved", the CFO's as "one engagement code
+      structure", the Head of Client Relationships' as "client impact by segment", and the Head of
+      Resourcing's as "capability gaps for hiring". The Statement of Architecture Work says Phase B
+      will produce "the target Business Architecture and its gaps" and nothing about a full baseline.
+      The repository holds the accountancy firm's lifecycle as a process model in a tool, and
+      nothing from the consultancy. The finance consolidation's designers have offered to adopt
+      whatever engagement code structure the architecture defines "if it arrives within a month".
+      The process consultancy's contract has a break clause at four weeks. The COO has said she
+      will attend a six-week checkpoint and expects to see the combined firm, not a process
+      inventory.
+
+      You must decide how Phase B should be run: the order of baseline and target, how much
+      baseline to describe, which techniques to use, how the in-flight finance consolidation is
+      handled, and how the phase ends.
+    question: "Refer to the scenario. Based on the TOGAF Standard and the Series Guides, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Follow the Phase B steps and make the sequencing decision explicitly. Select
+          viewpoints from the stakeholder concerns — the regulated quality gates, the affected
+          clients, the engagement code structure — and the reference models and tools to
+          support them. Because the two firms dispute the current state, develop a baseline
+          description, but only to the extent needed to find gaps and to align the parties: use
+          the same techniques at the same level of detail as the target, centred on the "deliver
+          a combined engagement" value stream and the capabilities it needs, with the
+          organisation map showing which units and partners participate; do not commission a
+          full process inventory. Develop the target from the Vision, investigating alternatives
+          with the stakeholders through trade-off, and carry the regulated gates as constraints.
+          Perform gap analysis and define candidate roadmap components. Resolve impacts across
+          the Architecture Landscape against the in-flight finance consolidation, so that the
+          engagement code structure is defined once. Hold the formal stakeholder review against
+          the Statement of Architecture Work, finalise, and update the Architecture Definition
+          Document, Architecture Requirements Specification and roadmap components.
+        why: >-
+          The order of Phase B steps, including whether baseline or target is developed first,
+          is adapted to the situation (ADM §4.3); the baseline is described to the extent
+          necessary to support the target (ADM §4.3.2), and the Practitioners' Approach says a
+          disputed current state justifies describing it to get alignment, using the same
+          techniques as the target (GUIDE:adm-practitioners §6.3.2). Business Architecture is
+          the first domain activity and is built from capabilities, value streams and the
+          organisation map driven by the Phase A scope (ADM §4.5.1; §4.5.4; §4.5.5). Resolving
+          impacts against projects in progress and the formal review are steps 6 and 7
+          (ADM §4.3.6; §4.3.7), and the outputs are the ADD, ARS and roadmap components (ADM §4.4).
+      - key: B
+        points: 3
+        text: >-
+          Given the managing partner's point that everything is changing, skip the baseline
+          and go straight to the target: build the combined-firm capability map and value
+          stream from the Vision, embed the regulated quality gates as constraints, and give
+          the COO the "what it looks like" view in six weeks. Perform gap analysis by
+          comparing the target to each firm's self-description, and then hold the formal
+          review.
+        why: >-
+          Target-first is a legitimate order, but where stakeholders dispute the current
+          state, describing it to get alignment is the guidance, and gaps require baseline and
+          target described with the same technique at the same detail
+          (GUIDE:adm-practitioners §6.3.2; ADM §4.3.4). Comparing the target to two
+          incompatible self-descriptions is not a gap analysis, and the in-flight finance
+          consolidation is never resolved against the landscape (ADM §4.3.6).
+      - key: C
+        points: 1
+        text: >-
+          Adopt the programme office's plan: commission the process modelling consultancy to
+          document every process in both firms in full, so that the baseline is complete and
+          undisputed, and defer the target and the COO's view until that work — estimated at
+          five months — is finished.
+        why: >-
+          Gathering only what allows informed decisions in scope is the rule; a full process
+          inventory when the focus is a new combined engagement process is unnecessary detail
+          (ADM §4.5.1; §4.3.2). It also leaves the finance consolidation to define the
+          engagement code structure alone for five months, the opposite of resolving landscape
+          impacts (ADM §4.3.6).
+      - key: D
+        points: 0
+        text: >-
+          Take the accountancy firm's documented lifecycle as both the baseline and the target
+          for the combined firm, since it is the only documented process and it satisfies the
+          regulator, and instruct the consultancy partners to adopt it; proceed directly to
+          Phase C.
+        why: >-
+          This is not a target architecture but one party's process imposed without
+          stakeholder trade-off or gap analysis, ignoring the Vision's combined-engagement
+          purpose and the objective that the target address the Statement of Architecture Work
+          and stakeholder concerns (ADM §4.1; §4.3.3). Skipping the review and finalisation
+          steps means Phase C has no approved business input.
+    refs: ["ADM §4.3", "ADM §4.3.2", "ADM §4.3.6", "ADM §4.3.7", "ADM §4.5.1", "ADM §4.5.4", "ADM §4.5.5", "ADM §4.4", "GUIDE:adm-practitioners §6.3.2"]
+    open_book_hint: "Where to look: ADM §4.3 (steps; baseline or target first), §4.3.2 (baseline to the extent necessary), §4.3.6 (resolve impacts), §4.3.7 (formal review), §4.4 (outputs), §4.5.1 and §4.5.4 to §4.5.5 (approach: business first; value streams; organisation map); Practitioners' Approach §6.3.2."
+    difficulty: 3
+    tags: [phase-b, baseline, target, merger]
+  - id: P4-102
+    unit: P4
+    objective: "P4.1"
+    lesson: P4/01_developing_the_domains_b_c_d
+    scenario: |
+      Tellus Telecom is a mobile operator with 7 million subscribers and 3,300 staff that has
+      grown into broadband and television through acquisitions. Its target Business Architecture,
+      approved at the end of Phase B, introduces a single customer account across mobile, broadband
+      and television products, with one bill and one set of customer-service processes; the
+      business case rests on fewer calls to customer service and on selling bundles. Today each
+      product has its own billing system and its own customer database, and the same person can be
+      three customers with three addresses. The mobile billing system is being replaced under a
+      separately funded programme that has selected a product and is six months from go-live; that
+      programme's data model has been designed by the vendor for mobile only. Phase C has begun and
+      you are the lead architect, with a Statement of Architecture Work that gives Phase C ten
+      weeks.
+
+      Stakeholder concerns recorded in the stakeholder map include: the Data Protection Officer,
+      who must show the telecoms regulator which roles and which outsourced partners — including two
+      offshore contact centres — can access subscriber records and call data, and who has been
+      fined once already; the Head of Billing, who wants to know which system will be the system of
+      record for the customer account and is worried about migrating twelve years of tariff
+      history, some of it in formats nobody can read; the Head of Customer Service, whose agents
+      currently open three applications to answer one question and whose call-handling time is the
+      worst in the market; and the Chief Financial Officer, who sponsors the mobile billing
+      replacement and does not want it delayed by "the architecture people".
+
+      The EA team is split on how to run Phase C. One group says data must come first, because the
+      customer account is a data problem and the standard "prescribes data-driven architecture";
+      they want to define the customer data model before any application is discussed. Another says
+      the mobile billing product is being implemented now, is the largest application in the
+      estate, and will dictate the customer data model whatever the architects decide, so the
+      application architecture should lead and the data architecture should follow it. The
+      programme manager says the two halves of Phase C should simply be run by two teams in
+      parallel with no dependency, to save time, and reconciled at the end. The CFO has heard the
+      argument and asked why Phase C "cannot just use the vendor's model".
+
+      The Phase B outputs give Phase C something to work from. The Business Architecture defines a
+      "Customer" business object as the person or organisation who holds the account, a "Product
+      Subscription" as the relationship to each product, and a "Bill" as one document; it also
+      records that the Data Protection Officer's concern is a regulatory requirement, not a
+      preference. The mobile billing vendor's data model has a "subscriber" that conflates the
+      person and the mobile line. The broadband and television systems have their own customer
+      tables with different keys. There is no data governance function; data quality is "everyone's
+      job". The Application Portfolio catalog from Phase A lists 41 applications touching customer
+      data. The CFO's billing programme has a formal change process that the architecture team can
+      use, and its steering committee has a seat for the EA team that has never been taken up. The
+      Statement of Architecture Work commits Phase C to a formal stakeholder review at week nine.
+
+      The Data Protection Officer has asked what artefact she will get to show the regulator, and
+      when; her next audit is in four months. The Head of Billing has asked whether the
+      architecture will say anything about data quality, ownership and the migration, or whether
+      that is "left to the project". The Head of Customer Service has asked for a picture of what
+      an agent will see. The lead architect has to set the approach for Phase C, decide the order
+      and the dependency between data and application, name the artefacts, and answer the three
+      questions.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Decide the order on the merits of the situation rather than by rule. Because a core
+          package that will underpin the mission-critical billing process has already been
+          selected and is being implemented, take an application-driven approach: describe the
+          target Application Architecture with the mobile billing product as a given, and then
+          develop the Data Architecture so that the single customer account is defined as the
+          system of record with explicit rules on where entities are created, stored and
+          reported, and with the migration and cleansing requirements for the tariff history and
+          the data governance structure, management system and skills stated. Run the two halves
+          with a dependency, not in isolation. For the Data Protection Officer, produce the Data
+          Security diagram showing which data is accessed by which roles, organisation units,
+          applications and external parties; for the Head of Billing, the Data Entity/Business
+          Function and Application/Data matrices defining the application of record and reference
+          and a Data Migration diagram. At the formal stakeholder review, run the impact analysis
+          on the Business Architecture and on the Technology Architecture about to be designed,
+          and resolve landscape impacts against the billing programme's timeline.
+        why: >-
+          Phase C is some combination of Data and Application Architecture "in either order";
+          the standard describes both the data-driven approach and the application-driven one
+          where core packages such as ERP or CRM form the underpinning of mission-critical
+          processes and their integration is the primary focus (ADM §5.2). The Data Architecture
+          approach requires the system of record, entity lifecycle, migration requirements and
+          data governance dimensions to be addressed (ADM §6.5.2). The Data Security diagram
+          demonstrates compliance with privacy law and shows external parties' access; the Data
+          Entity/Business Function matrix defines application of origin, record and reference;
+          the Data Migration diagram shows extraction, transformation and loading (CONTENT
+          §3.6.5). The stakeholder review in Phase C includes an impact analysis on the other
+          domains (ADM §6.3.7; §7.3.7).
+      - key: B
+        points: 3
+        text: >-
+          Take the data-driven approach: define the single customer account data model first,
+          including system of record, migration and governance, then develop the Application
+          Architecture to fit it, and require the mobile billing programme to conform to the
+          resulting data model before go-live. Give the Data Protection Officer a Data Security
+          diagram and the Head of Billing a Data Migration diagram.
+        why: >-
+          The artefacts and the data-management content are right, and data-driven is a
+          legitimate order, but the standard makes the order a situational choice and
+          describes the application-driven approach precisely for the case where a core package
+          is already central (ADM §5.2). Requiring an in-flight, funded programme to conform
+          after the fact without resolving the impact across the landscape and consulting its
+          sponsor skips step 6 (ADM §6.3.6) and misses the CFO's concern.
+      - key: C
+        points: 1
+        text: >-
+          Run Data and Application Architecture in parallel with two independent teams, as the
+          programme manager proposes, and reconcile the results at the end of Phase C; answer
+          the Data Protection Officer with the Application Communication diagram, which shows
+          all the interfaces over which subscriber data flows.
+        why: >-
+          The two halves are combined, not independent: the Data Architecture review
+          identifies constraints on the Application Architecture and may warrant a short
+          iteration of it (ADM §6.3.7), so parallel work with no dependency produces conflict at
+          reconciliation. The Application Communication diagram shows components and interfaces,
+          not which roles and parties access which data; the DPO's concern is the Data Security
+          diagram (CONTENT §3.6.5; §3.6.6).
+      - key: D
+        points: 0
+        text: >-
+          Let the mobile billing product's data model become the target Data Architecture,
+          since it will dominate anyway, skip the data-management analysis as the vendor's
+          responsibility, and tell the Data Protection Officer that access control is a
+          configuration matter for Phase G.
+        why: >-
+          Adopting a product's model as the architecture abandons the Data Architecture's
+          responsibility for the system of record, migration and governance (ADM §6.5.2), and
+          deferring a regulator-facing stakeholder concern to implementation contradicts the
+          objective that the target address stakeholder concerns through selected viewpoints
+          (ADM §5.1). The artefact that answers the DPO exists precisely for this purpose
+          (CONTENT §3.6.5).
+    refs: ["ADM §5.2", "ADM §6.5.2", "ADM §6.3.7", "ADM §6.3.6", "ADM §5.1", "CONTENT §3.6.5", "CONTENT §3.6.6"]
+    open_book_hint: "Where to look: ADM §5.2 (Phase C approach: data or application first), §6.5.2 (data management, migration, governance), §6.3.7 (review with impact analysis), §6.3.6; Architecture Content §3.6.5 (Data Security diagram, Data Entity/Business Function matrix, Data Migration diagram) and §3.6.6."
+    difficulty: 3
+    tags: [phase-c, data-architecture, application-architecture, artefacts]
+  - id: P4-103
+    unit: P4
+    objective: "P4.1"
+    lesson: P4/02_choosing_the_right_artefacts
+    scenario: |
+      Greyfell Council is a local government body with 5,800 staff serving 400,000 residents,
+      providing services from waste collection to social care. Its target Business and Information
+      Systems Architectures, approved through Phases B and C, move resident-facing services onto a
+      shared digital platform and consolidate 60 line-of-business applications to 24. Phase D,
+      Technology Architecture, has started, and the Vision's driver for it is the closure of the
+      council's two ageing data centres — one of which has failed twice this year — and a move to a
+      mix of public cloud and a shared regional hosting service run by a neighbouring authority.
+      You are the lead architect, with two infrastructure architects seconded from the IT team and
+      eight weeks.
+
+      The council's technology estate has never been catalogued against any taxonomy; the
+      infrastructure team keeps a spreadsheet of about 600 servers and a separate list of "approved
+      software" that has not been reviewed for five years and still lists products that are out of
+      support. A regional hosting programme, run by the neighbouring authority, is in flight and will
+      offer its service in nine months; its standards are published but the council has not assessed
+      them, and the council's chief executive has told the neighbouring authority that the council
+      "will use it". The council's own network refresh, funded separately, is replacing every switch
+      and firewall over the next year and has its own design team, which has not spoken to the EA
+      team.
+
+      Four stakeholders have stated concerns. The Head of Procurement must run a compliant tender
+      under public procurement rules and needs to know which technologies the council can buy and
+      which constraints — the regional standards, the council's own — apply, before she can write
+      the tender. The Infrastructure Operations Manager needs to know which applications will run
+      where — on the regional service, in the public cloud, or on the remaining on-premises estate —
+      including non-production environments, and where the users of each application sit, because
+      his team must plan support and the data-centre closure sequence. The Information Security
+      Manager needs to know which servers host which applications across development and
+      production, for audit and access control, because the last audit could not answer that
+      question. The Head of Digital wants to know how many deployment units the platform will need
+      and how load will be distributed, because the residents' benefits portal has peaks at month
+      end that have brought the current environment down.
+
+      The infrastructure team proposes to start Phase D by choosing the cloud provider, since "that
+      decides everything", and has a preferred provider in mind. The programme manager wants Phase
+      D to reuse the Phase C Application Communication diagram as "the technology architecture" to
+      save time, arguing that it already shows all the applications and connections. The Head of
+      Procurement has warned that naming a provider before the tender would be a breach. The
+      Finance Director wants the data-centre closure date fixed within the eight weeks.
+
+      The EA team has looked at what exists. Phase C produced an Application Portfolio catalog for
+      the 24 target applications with their owners, an Interface catalog, and an Application
+      Communication diagram; it also recorded, in the Architecture Requirements Specification,
+      constraints on the Technology Architecture about to be designed — data residency inside the
+      country, a maximum recovery time for the benefits portal, and a requirement that the social
+      care system run on infrastructure the council controls. The council's Tailored Architecture
+      Framework names the TRM as the taxonomy for technology classification but nobody has applied
+      it. The regional hosting programme's published standards specify supported operating systems,
+      database platforms and network connectivity. The network refresh design team has a target
+      network diagram that assumes both data centres remain. The Head of Procurement has said that
+      a catalog of what is standard and what is constrained would let her start the tender in a
+      month; the Infrastructure Operations Manager has said that a location-by-application picture
+      would let him sequence the closure.
+
+      You must set the approach for Phase D — how the baseline is described, how the target is
+      built, how the two in-flight programmes are handled — and identify which artefact answers each
+      of the four stakeholders.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Follow the Phase D steps. Begin the baseline by converting the existing estate into
+          the council's taxonomy of technology services and components, using the TRM as the
+          starting taxonomy, and capture it as a Technology Portfolio catalog; derive a
+          Technology Standards catalog from the regional hosting programme's published standards
+          and the council's approved software, applying it to the portfolio to see the baseline
+          compliance position — this gives Procurement its answer. Develop the target by
+          conceptualising Architecture Building Blocks for hosting, platform and network
+          services without configuration or vendor detail, investigating cloud, regional and
+          on-premises alternatives with the stakeholders through trade-off. Produce the
+          Environments and Locations diagram for the Infrastructure Operations Manager, the
+          Networked Computing/Hardware diagram for the Information Security Manager, the
+          Processing diagram for the Head of Digital's deployment-unit and load question, and
+          the Application/Technology matrix aligned with a Platform Decomposition diagram to
+          tie applications to platforms. Perform gap analysis, define candidate roadmap
+          components, and resolve impacts across the landscape against the network refresh and
+          the regional programme's nine-month timeline. Leave provider selection to Phase E.
+        why: >-
+          Phase D's baseline starts by converting the existing environment into the
+          organisation's taxonomy of technology services and components, such as the TRM, and
+          defining the estate in the Technology Portfolio catalog (ADM §8.3.2); the target is
+          built by conceptualising ABBs without configuration detail and exploring alternatives
+          (ADM §8.3.3); impacts on in-flight projects are resolved in step 6 (ADM §8.3.6). The
+          artefacts match their purposes: the Standards catalog applied to the Portfolio gives
+          baseline compliance and what can be bought; Environments and Locations shows which
+          locations host which applications including non-production; Networked
+          Computing/Hardware shows the as-deployed mapping for authorisation and audit; the
+          Processing diagram addresses deployment units and load; the Application/Technology
+          matrix complements Platform Decomposition (CONTENT §3.6.7; TECH §3.4).
+      - key: B
+        points: 3
+        text: >-
+          Build the Technology Portfolio and Standards catalogs and develop the target with
+          ABBs as the standard describes, and produce Environments and Locations and Platform
+          Decomposition diagrams for operations and procurement; give the Information Security
+          Manager and the Head of Digital the Platform Decomposition diagram as well, since it
+          shows the whole platform. Assess the regional programme's standards after Phase D
+          when the council knows what it needs.
+        why: >-
+          The approach and the first artefacts are right, but Platform Decomposition does not
+          answer the security manager's as-deployed server-to-application question, which is
+          the Networked Computing/Hardware diagram's purpose, nor the deployment-unit and load
+          question, which is the Processing diagram's (CONTENT §3.6.7). Deferring assessment of
+          the in-flight regional programme leaves landscape impacts unresolved and the
+          Standards catalog incomplete (ADM §8.3.6).
+      - key: C
+        points: 1
+        text: >-
+          Start Phase D by selecting the cloud provider, since that fixes the platform, then
+          describe the target as that provider's service catalogue mapped to the 24
+          applications, and use the provider's reference diagrams to answer the four
+          stakeholders.
+        why: >-
+          Selecting a vendor first produces Solution Building Blocks where Phase D should be
+          conceptualising ABBs without the detail of configuration or products; product
+          information is an input, not the starting decision (ADM §8.3.3; §8.2.1). It also
+          skips the taxonomy-based baseline and the Standards catalog that Procurement needs
+          (ADM §8.3.2; CONTENT §3.6.7).
+      - key: D
+        points: 0
+        text: >-
+          Reuse the Phase C Application Communication diagram as the Technology Architecture,
+          annotated with "cloud" or "regional" against each application, and declare Phase D
+          complete so that the data-centre closure can be scheduled.
+        why: >-
+          The Application Communication diagram is a Phase C application artefact that shows
+          components and interfaces logically, with intermediary technology only where
+          relevant (CONTENT §3.6.6); it contains none of the technology components, platforms,
+          environments or locations that Phase D's outputs require (ADM §8.4), and none of the
+          steps of Phase D have been performed.
+    refs: ["ADM §8.3.2", "ADM §8.3.3", "ADM §8.3.6", "ADM §8.4", "CONTENT §3.6.7", "CONTENT §3.6.6", "TECH §3.4"]
+    open_book_hint: "Where to look: ADM §8.3.2 (baseline via the taxonomy and Technology Portfolio catalog), §8.3.3 (target: ABBs without configuration detail), §8.3.6 (resolve impacts), §8.4 (outputs); Architecture Content §3.6.7 (purpose of each Phase D catalog, matrix and diagram); ADM Techniques §3.4 (which stakeholder gets which artefact)."
+    difficulty: 2
+    tags: [phase-d, technology-architecture, artefacts, trm]
+  - id: P4-104
+    unit: P4
+    objective: "P4.2"
+    lesson: P4/03_gap_analysis_and_building_blocks
+    scenario: |
+      Harrowgate Home is a home-furnishings retailer with 180 stores, an online channel and 6,500
+      staff, selling furniture, lighting and textiles with a generous returns policy that is part of
+      its brand. Its architecture engagement, sponsored by the Chief Customer Officer, aims to let
+      customers buy, collect and return anywhere; the business case counts on fewer abandoned
+      online orders and on cheaper handling of returned goods. Phase B approved a target Business
+      Architecture in which "Returns Handling" is a level-2 capability supporting the "Return a
+      Product" value stream, and in which the refurbishment centre — which resells returned goods at
+      a discount — is a named organisation unit. Phase C application work is now finishing: the
+      target Application Architecture has been described in eight weeks of workshops, and the team
+      is at the gap analysis step with a Phase E start date fixed for a fortnight's time. You are
+      the lead architect.
+
+      The baseline Application Architecture, catalogued in the Application Portfolio catalog,
+      contains among others: a store point-of-sale system; an e-commerce platform; an order
+      management system; a warehouse management system; a "Returns Desk" application used in stores
+      to authorise refunds against the returns policy and to route returned goods to the
+      refurbishment centre or to disposal; a customer service case system; a loyalty system; and a
+      legacy "Gift List" application used by only two stores and maintained by one person who is
+      retiring.
+
+      The target Application Architecture, developed with stakeholders, describes: a unified
+      commerce platform replacing point-of-sale and e-commerce; the order management system
+      retained; a new "Customer Identity" service; the warehouse management system retained; the
+      customer service case system retained; the loyalty system retained and integrated; and the
+      Gift List application eliminated. The Returns Desk application does not appear in the target
+      — the team assumed the unified commerce platform "handles returns" because the vendor's
+      brochure says so, but nobody confirmed that the refund authorisation rules and the
+      refurbishment routing are covered, and the refurbishment centre manager was never in the
+      workshops. The Head of Loss Prevention, whose one requirement recorded in Phase A is that
+      returns fraud must not increase, has not been shown the target; his requirement was never
+      tested against it. The Head of Stores has said that if store staff lose the Returns Desk
+      without a replacement, "returns will be authorised by whoever is on the till".
+
+      The programme manager wants the gap analysis "done by Friday" as a list of new applications
+      to buy, so that Phase E can start on time; she regards anything eliminated as "a saving, not a
+      gap" and has already told the CFO that eliminating Gift List and Returns Desk saves two
+      licences. A solution architect on the team has already drafted a work package for the unified
+      commerce platform and a vendor shortlist of three, and has begun conversations with the
+      vendors. The Chief Customer Officer has asked whether the architecture "is finished".
+
+      Some of the inputs for a proper gap analysis exist. The Phase B target defines what Returns
+      Handling must do — authorise against policy, decide refurbish or dispose, track the returned
+      item — and the refurbishment centre's role in the value stream. The Phase A Architecture
+      Requirements Specification records the fraud requirement with the Head of Loss Prevention as
+      its owner. The Application Portfolio catalog has an owner for every baseline application; the
+      Returns Desk's owner is the Head of Stores, who was not in the workshops either. The vendor's
+      brochure describes "returns" as a feature but the vendor has confirmed, when asked by the
+      solution architect, that refurbishment routing "would be a customisation". The EA team's
+      principles include "no vendor selection before the target is approved". The Statement of
+      Architecture Work says Phase C ends with a formal stakeholder review that the Head of Loss
+      Prevention and the Head of Stores are listed to attend. The programme manager's Friday
+      deadline was set before any of this was known.
+
+      You must decide how the gap analysis is performed, what it finds, what it produces for Phase
+      E, and what happens to the shortlist.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Perform the gap analysis as the technique prescribes. First verify the target models
+          against principles, objectives, constraints and requirements — including the Head of
+          Loss Prevention's fraud requirement, which was never tested. Then draw the matrix with
+          the baseline Architecture Building Blocks on the vertical axis and the target ABBs on
+          the horizontal, add a "New" row and an "Eliminated" column, mark "Included" where a
+          block is in both, and review every baseline block missing from the target: the Gift
+          List elimination is confirmed as correct and recorded in the Eliminated cell; the
+          Returns Desk is an accidental omission unless the unified commerce platform is shown
+          to cover refund authorisation and refurbishment routing, so it is reinstated as an ABB
+          in the next iteration of the target or its functions are explicitly assigned. Mark
+          the Customer Identity service and the unified commerce platform in the New row as gaps
+          to develop or procure. Record the results in the Architecture Requirements
+          Specification and turn the addressed gaps into candidate roadmap components for
+          Phase E — not a shopping list — and hold the vendor shortlist until Phase E.
+        why: >-
+          The step verifies models for consistency, principles and completeness against
+          requirements before identifying gaps (ADM §7.3.4). The technique draws the matrix
+          with New and Eliminated, reviews each missing baseline block as correctly eliminated
+          or an accidental omission to reinstate, and marks target-only blocks as gaps to
+          develop or procure; everything under New or Eliminated must be explained or addressed
+          (TECH §5.2). The most critical source of gaps is stakeholder concerns not yet addressed
+          (TECH §5.1). Gap results feed the ARS and the domain's candidate roadmap components,
+          which are raw material for the consolidated roadmap in Phase E (ADM §7.3.5; §7.4).
+      - key: B
+        points: 3
+        text: >-
+          Draw the matrix and list the new blocks — unified commerce platform and Customer
+          Identity — as the gaps for Phase E, record the Gift List as eliminated, and note the
+          Returns Desk as "to be confirmed with the vendor during selection", since the unified
+          commerce platform may well cover it; produce the candidate roadmap components from
+          the new blocks.
+        why: >-
+          The matrix and the roadmap handover are right, but a baseline block missing from the
+          target that was not correctly eliminated is an accidental omission that must be
+          reinstated in the architecture, not left for a vendor to confirm (TECH §5.2); and
+          the untested fraud concern is exactly the kind of unaddressed stakeholder concern the
+          technique names as the most critical source of gaps (TECH §5.1).
+      - key: C
+        points: 1
+        text: >-
+          Produce the list of new applications the programme manager asked for, treat the
+          eliminated applications as savings, and hand the solution architect's work package
+          and shortlist to Phase E so that procurement can start on time.
+        why: >-
+          Treating everything eliminated as a saving skips the review of the Eliminated
+          column that distinguishes correct elimination from accidental omission (TECH §5.2),
+          and defining work packages and vendor shortlists inside Phase C runs ahead of the
+          method, which reserves the consolidated roadmap and solution work for Phase E
+          (ADM §7.3.5). The Returns Desk omission ships.
+      - key: D
+        points: 0
+        text: >-
+          Adopt the unified commerce platform vendor's feature list as the target Application
+          Architecture, since it is more complete than the team's model, and derive the gaps by
+          comparing the baseline applications to the vendor's modules.
+        why: >-
+          A vendor's feature list is a set of Solution Building Blocks, product-aware by
+          definition, and cannot serve as the target of ABBs the gap analysis compares
+          (CONTENT §5.2.4; TECH §5.2). It also lets the vendor decide which baseline
+          capabilities survive, which is the opposite of validating the architecture against
+          stakeholder concerns (TECH §5.1).
+    refs: ["TECH §5.1", "TECH §5.2", "ADM §7.3.4", "ADM §7.3.5", "ADM §7.4", "CONTENT §5.2.4"]
+    open_book_hint: "Where to look: ADM Techniques §5.1 (sources of gaps; stakeholder concerns) and §5.2 (the matrix: Included, Eliminated, New; reinstating accidental omissions); ADM §7.3.4 (verify, then gaps), §7.3.5 (candidate roadmap components for Phase E), §7.4 (outputs); Architecture Content §5.2.4 (SBBs are vendor-aware)."
+    difficulty: 2
+    tags: [gap-analysis, phase-c, roadmap-components]
+  - id: P4-105
+    unit: P4
+    objective: "P4.2"
+    lesson: P4/03_gap_analysis_and_building_blocks
+    scenario: |
+      Voltara Grid operates an electricity distribution network serving 3 million connections, with
+      4,700 staff, a control room that runs around the clock, and a safety regulator that can
+      suspend its licence. Two architecture engagements are running under the same EA team of
+      seven. The first, sponsored by the Chief Operating Officer, is a target architecture for the
+      network control and protection systems that switch and isolate the grid; it is subject to
+      safety regulation, must interoperate with the national transmission operator's systems under
+      a published interface standard, and a failure could cause blackouts or injury. The second,
+      sponsored by the Chief Marketing Officer, is a target architecture for a customer
+      outage-notification app and web pages that the marketing team wants live in ten weeks to
+      respond to a competitor's launch; it reads outage data from the control systems but changes
+      nothing in them. Both are in Phases B to D. You are the lead architect for both, and the
+      architecture board has asked to see both at its next meeting.
+
+      The two sponsors have opposite complaints. The Chief Operating Officer says the control
+      systems work is "too vague": the architects have described logical components and services,
+      controls and interface contracts, but the engineering contractor wants to know which products
+      will be used so that it can order long-lead-time equipment, and the COO fears delay to a
+      regulated deadline. The Chief Marketing Officer says the app work is "too heavy": the
+      architects are producing logical data components, contracts, controls and a full set of
+      Phase C diagrams for a notification app, the ten weeks are slipping, and the agency building
+      it has stopped waiting. The architecture board has asked why the two engagements are being
+      treated differently at all, given that both follow the ADM and the board's own guidance says
+      "one method"; one board member has proposed a single mandatory artefact list for every
+      engagement.
+
+      Within the control-systems engagement, the engineering contractor has proposed that its
+      preferred vendor's protection relay platform be written into the target architecture as the
+      "control building block", arguing that the product is the de facto standard and that naming
+      it will let procurement start; the safety regulator's guidance requires that protection
+      schemes be specified and assured independently of any vendor's product. Within the app
+      engagement, the marketing team's agency has built a working prototype in three weeks and
+      wants it adopted as the architecture; it integrates with the control systems through a
+      read-only feed the EA team has already approved. The Chief Information Security Officer has
+      asked how the two engagements will be assured and whether the same level of assurance is
+      expected of both.
+
+      The EA team has recorded what each engagement is for. The control-systems Statement of
+      Architecture Work describes the change as "long-term, regulated, interoperable with the
+      transmission operator, must work first time", with a five-year horizon and assurance by an
+      independent safety assessor before implementation; its architecture requirements include
+      controls, contracts with the transmission operator, and standards the regulator mandates. The
+      app engagement's Statement of Architecture Work describes "a short delivery-driven change,
+      tolerating rework, no impact on regulated systems", with a ten-week horizon; its only hard
+      requirements are the read-only feed and brand standards. Both sponsors signed these documents.
+      The architecture board's own guidance says nothing about levels of specification, only that
+      the ADM steps are mandatory. The engineering contractor's product proposal names a platform
+      whose interface to the transmission operator has not been assured. The agency's prototype
+      uses the approved feed and nothing else from the control systems. The CISO's question about
+      assurance has not been answered by anyone.
+
+      The architecture board wants a single recommendation on how building blocks should be
+      specified in each engagement, why the two differ, and what that means for the vendor
+      proposal and the prototype.
+    question: "Refer to the scenario. Based on the TOGAF Standard and the Series Guides, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Explain that both engagements follow the same ADM steps but differ in change
+          profile, and size the building-block specification to it. The control systems change
+          is robust — risk- and architecture-driven, regulated, interoperable across
+          enterprises, must work first time — so Phases B to D specify Architecture Building
+          Blocks fully: functionality including security and manageability, interfaces,
+          interoperability, dependent blocks, and the map to policies, plus the robust-profile
+          entities such as controls, contracts, assumptions and standards, with assurance
+          activity before anything is built. The vendor's relay platform is a Solution Building
+          Block — product-aware — and belongs to solution selection in Phase E against the ABB
+          specification, not in the target as the "control building block". The outage app is a
+          rapid or functional change — short, delivery-driven, tolerating debt — so specify only
+          the minimal entities (requirements, actors, physical components) and let the executing
+          solution speak for itself; the agency prototype can be the SBB that realises it,
+          provided the choices and their implications are documented and it integrates with the
+          landscape. Document the profile decision and its rationale for each engagement.
+        why: >-
+          ABBs capture requirements and guide SBBs, with a specified minimum content; SBBs
+          define what products implement the functionality and are product- or vendor-aware
+          (CONTENT §5.2.3; §5.2.4). ABBs are identified in Phases A to D and refined into SBBs
+          that are bought or built (CONTENT §5.3.2). The guide's three change profiles — rapid,
+          functional, robust — require different levels of intentional architecture: the rapid
+          profile creates SBBs quickly and may omit many ABBs, while the robust profile creates
+          ABBs first so the architecture "speaks for itself" before it is built, and the
+          reasons for whichever choice are documented (GUIDE:selecting-building-blocks §2;
+          §3.1; §3.4). Robust change is the profile for safety-critical systems (§3.4).
+      - key: B
+        points: 3
+        text: >-
+          Keep the ABB specifications for the control systems as they are and reject the vendor
+          relay platform from the target as an SBB, but bring the outage app into line with the
+          same standard of specification, because the architecture board is right that both
+          follow the ADM and consistency of specification across the EA team is a governance
+          requirement.
+        why: >-
+          The control-systems half is correct, but forcing a rapid, delivery-driven change
+          through the robust profile's full entity set ignores the guide's point that different
+          profiles need different levels of intentional architecture, and that the rapid
+          profile deliberately leaves many ABBs out (GUIDE:selecting-building-blocks §2; §3.1).
+          Consistency of steps does not mean consistency of detail; level of detail, precision
+          and formality are what vary (GUIDE:adm-practitioners §6.3).
+      - key: C
+        points: 1
+        text: >-
+          Resolve both complaints by specifying at the solution level in both engagements:
+          write the vendor's relay platform into the control-systems target so the contractor
+          can proceed, and adopt the agency prototype as the architecture for the app, since in
+          both cases the sponsors want to move faster.
+        why: >-
+          Writing a vendor product into the target replaces an ABB with an SBB in a robust,
+          safety-critical change where the architecture must be fully understood before the
+          physical components are chosen (CONTENT §5.2.4; GUIDE:selecting-building-blocks §3.4),
+          and adopting the prototype as the architecture without documented choices loses the
+          integration with the landscape the guide still requires of rapid change (§3.1).
+      - key: D
+        points: 0
+        text: >-
+          Tell the architecture board that the ADM does not distinguish between kinds of
+          change, so both engagements must produce the same full set of building blocks,
+          artefacts and deliverables; extend the app's timeline accordingly and ask the
+          contractor to wait for the complete control-systems specification, including product
+          selection, before Phase E.
+        why: >-
+          The standard does not mandate which artefacts and deliverables are used, and the
+          guide exists to configure the building-block set to the change profile
+          (GUIDE:selecting-building-blocks §3; the "what about artifacts" discussion in §3).
+          Product selection is not part of the Phase D ABB specification at all
+          (CONTENT §5.3.2), so the contractor would be waiting for the wrong thing.
+    refs: ["CONTENT §5.2.3", "CONTENT §5.2.4", "CONTENT §5.3.2", "GUIDE:selecting-building-blocks §2", "GUIDE:selecting-building-blocks §3", "GUIDE:selecting-building-blocks §3.1", "GUIDE:selecting-building-blocks §3.4", "GUIDE:adm-practitioners §6.3"]
+    open_book_hint: "Where to look: Architecture Content §5.2.3 (ABBs), §5.2.4 (SBBs are product-aware), §5.3.2 (ABBs in A to D, refined to SBBs); Series Guide: An Approach to Selecting Building Blocks §2 (rapid, functional, robust), §3 and §3.1 (entities per profile; rapid creates SBBs, robust creates ABBs first), §3.4 (robust change); Practitioners' Approach §6.3."
+    difficulty: 3
+    tags: [building-blocks, abb, sbb, change-profiles]

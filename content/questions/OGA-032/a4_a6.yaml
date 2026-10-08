@@ -1,0 +1,741 @@
+# ArchiMate Part 2 scenarios for A4–A6 (learn_sabsa_archimate.md §4.3). Each is an original
+# modelling situation at a fictional enterprise, scored 5/3/1/0, status: draft until reviewed.
+code: A4_A6_SCENARIOS
+exam: OGA-032
+name: "ArchiMate Part 2 scenarios, A4–A6"
+kind: DRILL
+source: authored
+questions:
+  - id: A4-S01
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    figure: ARCHIMATE:fig-52
+    scenario: |
+      Corvane Mutual is a regional insurer with 900 staff. Its claims department handles motor
+      and home claims through a contact centre in Leeds and a specialist team in Bristol. The
+      head of claims has asked the architecture team for a Business Layer model of how a claim
+      is handled, to support a review of fraud controls.
+
+      Interviews establish the following. A claim starts when a customer submits it by phone,
+      web form or post. A contact-centre agent registers it and passes it to a claims handler,
+      who assesses it. Standard claims are assessed by one handler. Claims above a value
+      threshold, or flagged by the fraud rules, are assessed jointly: a claims handler and a
+      fraud analyst must both review the file and sign off together, because company policy
+      forbids one person deciding a high-value claim alone. After assessment, the customer is
+      notified and, if approved, payment is made; both of these happen in parallel, and the
+      claim is closed when both are done. The department exposes a single 'claims handling'
+      offering to customers, reachable through the three channels.
+
+      One architect proposes modelling the joint assessment as two business processes,
+      'Handler review' and 'Analyst review', each assigned its own role, with a triggering
+      relationship between them. A second architect proposes a single business function
+      'Joint assessment' assigned to a business actor 'Claims department'. A third proposes
+      that the joint sign-off should be a business service realized directly by the two
+      roles. The head of claims wants the model to show unambiguously that the joint assessment
+      is a collective piece of work with shared responsibility, and that the customer-facing
+      offering is reachable through the three channels.
+    question: "Refer to the scenario. Which of the following is the best Business Layer representation?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Model 'Submit claim' as a business event triggering a business process 'Register
+          claim', assigned to the business role 'Contact-centre agent'. Model standard assessment
+          as a business process assigned to the role 'Claims handler'. Model the joint assessment
+          as a business interaction 'Assess high-value claim', assigned to a business collaboration
+          that aggregates the roles 'Claims handler' and 'Fraud analyst'. Model 'Notify customer'
+          and 'Pay claim' as parallel processes triggering 'Close claim'. Have the processes and
+          the interaction realize a business service 'Claims handling', and assign three business
+          interfaces — phone, web, post — to that service.
+        why: >-
+          This is the pattern the specification itself uses for a two-person adjudication: a
+          business interaction is the unit of collective behaviour, and it is assigned to a
+          collaboration of the participating roles, which expresses shared responsibility. The
+          event, the process chain, the service realized by internal behaviour and the interfaces
+          assigned to the service are all the direct relationships of the Business Layer metamodel.
+      - key: B
+        points: 3
+        text: >-
+          Model the joint assessment as a business interaction assigned directly to the two roles
+          'Claims handler' and 'Fraud analyst' without a collaboration element, and model the
+          rest of the claim as processes triggered in sequence, all realizing a business service
+          'Claims handling'. Show the three channels as business interfaces composed in the
+          business actor 'Claims department'.
+        why: >-
+          Assigning two or more roles directly to an interaction is permitted, so the collective
+          behaviour is correctly typed, and the service and channels are reasonable. It loses
+          marks because omitting the collaboration leaves the shared-responsibility grouping
+          implicit, and composing the interfaces in the actor without assigning them to the
+          service does not show that the offering is reachable through them.
+      - key: C
+        points: 1
+        text: >-
+          Model the joint assessment as two separate business processes, 'Handler review' and
+          'Analyst review', each assigned its own role, connected by a triggering relationship,
+          and model the customer-facing offering as a business function 'Claims handling' with
+          the three channels as business events.
+        why: >-
+          Two sequential processes describe one person after another, not collective work with
+          shared responsibility, which is exactly what the head of claims wants shown. A function
+          is internal behaviour, not the externally offered service, and channels are interfaces,
+          not events. Only the role assignment to the processes is sound.
+      - key: D
+        points: 0
+        text: >-
+          Model the joint sign-off as a business service realized by the business roles 'Claims
+          handler' and 'Fraud analyst', and model the whole department as a single business
+          function 'Joint assessment' assigned to the actor 'Claims department', with the three
+          channels shown as business objects accessed by the function.
+        why: >-
+          Roles cannot realize a service — services are realized by processes, functions or
+          interactions, and roles are assigned to behaviour. Channels are business interfaces,
+          not business objects. Collapsing the department into one function discards every
+          distinction the review needs.
+    open_book_hint: "Business interaction and collaboration (§8.2.3, §8.3.3); the claims example in §8.3.6; interface assigned to service (§8.2.4)."
+    refs: ["ARCHIMATE §8.3.3", "ARCHIMATE §8.2.3", "ARCHIMATE §8.3.5", "ARCHIMATE §8.2.4"]
+    difficulty: 2
+    tags: [business, interaction, collaboration, scenario]
+  - id: A4-S02
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    scenario: |
+      Halvard Freight is a logistics company operating 14 depots across Scandinavia. After a
+      merger with a smaller courier firm, the executive board has asked for a view that shows
+      how the combined organisation is structured: which departments and depots exist, which
+      responsibilities each carries, where authority sits for pricing and for safety, and how
+      the two former companies' customer-service teams now relate. The board members are not
+      architects; the chief operating officer says she wants 'something like an organisation
+      chart but with responsibilities on it, so we can see who is accountable for what'.
+
+      The architecture team has an existing ArchiMate repository containing business actors
+      for every department and depot, business roles for the main responsibilities (pricing
+      authority, safety officer, customer-service lead, depot manager), a business
+      collaboration for the joint customer-service team that the two former companies now
+      operate, locations for each city, and a large set of business processes, application
+      components and application services from earlier work.
+
+      One team member proposes a view drawn in the business process cooperation viewpoint,
+      arguing that the board will want to see the processes each department runs. Another
+      proposes the layered viewpoint 'so nothing is left out'. A third proposes a view in the
+      organization viewpoint, drawn as nested blocks and an org-chart style tree, containing only
+      actors, roles, the collaboration, the locations and the customer-facing business
+      interfaces, with assignment relationships from actors to roles and aggregation from the
+      collaboration to the roles it groups. A fourth suggests a custom viewpoint with actors,
+      roles and the applications each department uses, because the board 'will ask about the IT
+      anyway'.
+    question: "Refer to the scenario. Which of the following is the best choice of viewpoint and content for the board's request?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Use the organization viewpoint. Populate it with the business actors for departments
+          and depots (composed into the two former companies and the merged group), the business
+          roles they are assigned to, the business collaboration for the joint customer-service
+          team aggregating the two teams' roles, the locations the depots are aggregated in, and
+          the customer-facing business interfaces. Present it as nested blocks or an org-chart
+          tree, and leave out processes and applications.
+        why: >-
+          The organization viewpoint exists for exactly this concern — identifying competencies,
+          authority and responsibilities — its purpose includes informing, its stakeholders include
+          managers and shareholders, and its elements are precisely actor, role, collaboration,
+          location and interface. The specification also says it can be presented as nested blocks
+          or a traditional organisation chart, which matches the COO's request.
+      - key: B
+        points: 3
+        text: >-
+          Use the organization viewpoint, but include the main business processes each
+          department runs, with roles assigned to them, so the board can see responsibilities in
+          terms of work done. Keep applications out.
+        why: >-
+          The viewpoint choice and the stakeholder fit are right, and keeping IT out is correct.
+          Adding business processes goes beyond the organization viewpoint's element set — it has
+          no behaviour elements — and would turn the view into something closer to business
+          process cooperation, which is not what a non-architect board asked for.
+      - key: C
+        points: 1
+        text: >-
+          Use the business process cooperation viewpoint, showing each department's processes,
+          the roles assigned to them, and the application services that support them, so that
+          the board can see dependencies between departments.
+        why: >-
+          Business process cooperation is for process and domain architects and operational
+          managers concerned with dependencies between processes. It answers a different question
+          from the one asked, and its multi-layer content is more than a board wanting an
+          accountability chart needs. Only the presence of roles is relevant.
+      - key: D
+        points: 0
+        text: >-
+          Use the layered viewpoint so that the actors, roles, processes, application components
+          and technology are all visible in one diagram, since the board will eventually want to
+          see everything.
+        why: >-
+          The layered viewpoint gives an overview across all layers and aspects for architects
+          concerned with consistency and impact of change. It does not address competencies,
+          authority and responsibilities, is not geared to a non-technical board, and 'everything
+          in one diagram' is the opposite of selecting a viewpoint for a stakeholder concern.
+    open_book_hint: "Organization viewpoint table (§C.1.1): stakeholders, concerns, purpose and elements; viewpoint categories and the guidance that basic viewpoints are geared to stakeholder concerns (§C.1)."
+    refs: ["ARCHIMATE §C.1.1", "ARCHIMATE §C.1", "ARCHIMATE §C.1.10"]
+    difficulty: 2
+    tags: [viewpoint, organization, scenario]
+  - id: A4-S03
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    figure: ARCHIMATE:fig-68
+    scenario: |
+      Tallow & Reed is a savings bank launching a 'Family Saver' offering. A marketing
+      manager describes it: the customer opens a family savings account, gets a monthly
+      statement, can transfer money in and out through the mobile app or a branch, and receives
+      an annual bonus if the balance never falls below a threshold. The terms, including the
+      bonus rule and the interest rate, are set out in a 'Family Saver agreement' the customer
+      signs. The offering is sold as one thing; the customer does not buy the statement or the
+      transfer separately. The bank's product manager wants an ArchiMate model that shows what
+      the offering consists of, so that the product catalogue and the operations teams work from
+      the same definition.
+
+      The repository already contains: business services 'Account opening', 'Statement
+      provision', 'Money transfer' and 'Bonus payment'; an application service 'Mobile
+      transfer' realized by the mobile banking application; a business object 'Savings account';
+      a business object 'Statement' that is realized by a representation 'Monthly statement
+      PDF' and by a data object 'Statement record'; and business interfaces 'Mobile app' and
+      'Branch counter'.
+
+      One architect proposes modelling 'Family Saver' as a business process composed of the four
+      services. Another proposes a business service 'Family Saver' that aggregates the other
+      services and is assigned to the agreement. A third proposes a product element 'Family
+      Saver' that aggregates the four business services, aggregates the 'Mobile transfer'
+      application service directly (since the customer uses it as part of the offering),
+      aggregates the 'Savings account' business object, and aggregates a contract 'Family Saver
+      agreement', with a value 'Rewarded saving' associated with the product and the two
+      interfaces assigned to the services they expose. A fourth proposes modelling the agreement
+      as a requirement that the product realizes.
+    question: "Refer to the scenario. Which of the following is the best representation of the offering?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Model 'Family Saver' as a product that aggregates the four business services, the
+          'Mobile transfer' application service, the 'Savings account' business object and a
+          contract 'Family Saver agreement'; associate a value 'Rewarded saving' with the
+          product; keep the 'Statement' business object realized by its representation and
+          its data object; and assign the 'Mobile app' and 'Branch counter' interfaces to the
+          services they expose.
+        why: >-
+          A product is a coherent collection of services and/or passive elements accompanied by a
+          contract, offered as a whole — exactly the marketing description. The specification
+          allows a product to aggregate application services and data objects directly, a value to
+          be associated with it, and a contract to be aggregated in it; interfaces are assigned to
+          services. Every relationship used is one the specification states.
+      - key: B
+        points: 3
+        text: >-
+          Model 'Family Saver' as a product aggregating the four business services and the
+          contract, but do not include the application service or the business object, on the
+          grounds that a product should contain only Business Layer services; associate the value
+          with the product.
+        why: >-
+          The product, its services, its contract and the associated value are all right, so this
+          scores well. It is weaker because the specification explicitly permits a product to
+          aggregate application and technology services and passive elements from other layers,
+          and the customer does use the mobile transfer as part of the offering, so excluding it
+          leaves the catalogue definition incomplete.
+      - key: C
+        points: 1
+        text: >-
+          Model 'Family Saver' as a business service that aggregates the four other business
+          services and is assigned to the 'Family Saver agreement' contract, with the interfaces
+          assigned to it.
+        why: >-
+          Aggregating services in a service is permitted, and interfaces assigned to a service is
+          correct, so this is not entirely wrong. But a service is behaviour, not the bundle-plus-
+          contract that is sold, and assignment between a service and a contract is not a
+          relationship the language defines; the contract belongs in a product by aggregation.
+      - key: D
+        points: 0
+        text: >-
+          Model 'Family Saver' as a business process composed of the four services, with the
+          agreement modelled as a requirement that the process realizes and the statement
+          modelled as an artifact accessed by the process.
+        why: >-
+          A process is a sequence of behaviour, not a customer offering, and a process cannot be
+          composed of services. The agreement is a contract, a specialization of business object,
+          not a motivation requirement; and the statement at business level is a business object
+          with a representation, not a technology artifact.
+    open_book_hint: "Product definition and what it may aggregate (§8.5.1); contract (§8.4.2); the insurance product example (§8.5.2); representation and data object realizing a business object (§8.4.1)."
+    refs: ["ARCHIMATE §8.5.1", "ARCHIMATE §8.4.2", "ARCHIMATE §8.4.1", "ARCHIMATE §11.1"]
+    difficulty: 2
+    tags: [business, product, contract, scenario]
+  - id: A5-S01
+    unit: A5
+    objective: "A5.4"
+    lesson: A5/04_application_business_alignment_and_viewpoints
+    figure: ARCHIMATE:fig-104
+    scenario: |
+      Meridian Health Trust runs six hospitals. Its outpatient booking process is performed by
+      booking clerks in each hospital and is supported by a patient administration system (PAS)
+      and a separate appointment-scheduling application. Clerks use the PAS screens to look up
+      patients and the scheduler's screens to book slots; the scheduler also calls the PAS
+      through an API to fetch patient demographics. The Trust's operations director wants to
+      understand which applications the booking process depends on before a planned PAS
+      replacement, and the application architects want to record how the scheduler and the PAS
+      cooperate.
+
+      The repository contains the business process 'Book outpatient appointment', the business
+      role 'Booking clerk', the business object 'Appointment', application components 'PAS' and
+      'Scheduler', application functions 'Patient lookup' (performed by PAS) and 'Slot
+      allocation' (performed by Scheduler), application services 'Patient demographics' and
+      'Appointment booking', application interfaces 'PAS user screen', 'Scheduler user screen'
+      and 'PAS demographics API', and a data object 'Appointment record'.
+
+      A junior architect drafts one diagram: the PAS component realizes the business process,
+      the Scheduler component serves the booking clerk, the 'Appointment record' data object
+      serves the 'Appointment' business object, and the PAS demographics API triggers the
+      scheduler. A senior architect objects to every relationship in it and asks for two
+      separate views instead, one for the operations director and one for the application
+      architects, each in an appropriate basic viewpoint.
+
+      The senior architect adds two constraints. The operations director will not read a
+      diagram that contains API-level detail, but does need to see the clerk's role and the
+      screens the clerk uses, because the replacement will change them. The application
+      architects, on the other hand, need the interface between the two components recorded
+      precisely, because the new PAS must offer the same demographics API or the scheduler
+      will need to change too.
+    question: "Refer to the scenario. Which of the following is the best way to model the situation?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Draw an application usage view for the operations director: 'Book outpatient
+          appointment' served by the application services 'Patient demographics' and
+          'Appointment booking', the 'Booking clerk' role served by the two user-screen
+          interfaces, the 'Appointment record' data object realizing the 'Appointment'
+          business object, and the services realized by their functions with the components
+          assigned to those functions. Draw an application cooperation view for the architects:
+          'Scheduler' served by the 'PAS demographics API' interface, which is composed in
+          'PAS' and assigned to the 'Patient demographics' service, with the data object
+          accessed by 'Slot allocation'.
+        why: >-
+          Application usage is the viewpoint that relates applications to their use in business
+          processes and is explicitly useful to operational managers concerned with process
+          dependencies; application cooperation is the viewpoint for relationships between
+          components in terms of the services and interfaces they offer and use. Every
+          relationship named — service serves process, interface serves role, data object realizes
+          business object, function realizes service, component assigned to function, interface
+          assigned to service — is one the specification states.
+      - key: B
+        points: 3
+        text: >-
+          Draw a single application usage view containing both the business elements and the
+          component-to-component interface relationships, so the operations director and the
+          architects share one diagram; use serving from the services to the process and
+          realization from the data object to the business object.
+        why: >-
+          The relationships are correct and application usage is the right viewpoint for the
+          director's concern, so this earns most of the marks. It is weaker because one view
+          serves two different stakeholder concerns, and the internal cooperation between
+          components is what the application cooperation viewpoint is for; the specification
+          advises gearing each view to its intended stakeholders.
+      - key: C
+        points: 1
+        text: >-
+          Correct the junior architect's diagram by changing 'PAS realizes the business process'
+          to 'PAS serves the business process' and 'data object serves business object' to
+          'data object realizes business object', and keep it as one view in the application
+          cooperation viewpoint.
+        why: >-
+          The realization fix is right, and a component serving a process is a permitted derived
+          relationship, so this is not worthless. But application cooperation excludes business
+          elements, so the view is in the wrong viewpoint for the director, and the 'API triggers
+          the scheduler' relationship remains uncorrected — an interface is not a behaviour element
+          and cannot trigger.
+      - key: D
+        points: 0
+        text: >-
+          Keep the junior architect's diagram as drawn, since an application component may
+          realize a business process when it automates it, a component may serve a role, a data
+          object may serve the business object it stores, and an API interface may trigger the
+          component that calls it.
+        why: >-
+          Realization from application to business runs from application process or function to
+          business process or function, not from a component; a data object realizes a business
+          object rather than serving it; and triggering is a dynamic relationship between behaviour
+          elements and events, never from an interface. Only 'component serves role' survives, and
+          then only as a derived relationship.
+    open_book_hint: "Cross-layer serving and realization (§11.1); application usage (§C.1.8) and application cooperation (§C.1.11) viewpoint tables; interface assigned to service (§9.2.3)."
+    refs: ["ARCHIMATE §11.1", "ARCHIMATE §C.1.8", "ARCHIMATE §C.1.11", "ARCHIMATE §9.2.3"]
+    difficulty: 3
+    tags: [cross-layer, viewpoint, application-usage, scenario]
+  - id: A5-S02
+    unit: A5
+    objective: "A5.2"
+    lesson: A5/02_application_behaviour
+    figure: ARCHIMATE:fig-70
+    scenario: |
+      Solvane Energy is a utility that bills two million customers. Its billing platform has
+      three parts: a rating engine that prices consumption, an invoicing module that produces the
+      bill, and a customer portal where customers view and pay bills. Every night a scheduled
+      job runs the rating engine over the day's meter readings, then the invoicing module
+      generates invoices for accounts whose billing date has arrived. Customers see the invoice
+      in the portal, which calls the invoicing module over an internal API to fetch it. The
+      finance director wants a model of the billing platform's behaviour that the vendor can
+      use to scope a replacement of the rating engine, showing what the engine offers to the rest
+      of the platform without describing its internal algorithms.
+
+      The team must choose how to model the nightly run, the pricing behaviour, the engine's
+      offering, the portal's customer-facing capability and the data. They know the meter
+      reading and the invoice are the two pieces of information involved.
+
+      One proposal models the pricing algorithm in detail as a chain of twelve application
+      functions with flow relationships, 'so the vendor knows exactly what to replace'. Another
+      models the rating engine only as an application component with no behaviour, 'because
+      behaviour is design'. A third models 'Rating', 'Invoicing' and 'Portal' as application
+      components each assigned to one application function, each function realizing an
+      application service, the two internal services exposed through application-to-application
+      interfaces and the portal's service through a user interface, a scheduled application
+      event triggering an application process 'Nightly billing run' served by the rating and
+      invoicing services, and data objects 'Meter reading' and 'Invoice' accessed by the
+      functions. A fourth proposes a business process 'Nightly billing run' assigned to the
+      rating engine.
+    question: "Refer to the scenario. Which of the following is the best representation of the billing platform's behaviour?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Model the three components each assigned to an application function ('Rating',
+          'Invoicing', 'Bill presentation'); have each function realize an application service
+          ('Consumption pricing', 'Invoice generation', 'Bill viewing and payment'); expose the
+          two internal services through application-to-application interfaces composed in
+          their components and the portal service through a user-interface application
+          interface; model a timed application event 'Nightly run due' triggering an application
+          process 'Nightly billing run' that the rating and invoicing services serve; and model
+          'Meter reading' and 'Invoice' as data objects accessed by the functions. Do not decompose
+          the rating algorithm.
+        why: >-
+          This uses the Application Layer exactly as the specification lays it out: component
+          assigned to function, function realizes service, interface assigned to service, a
+          scheduled event triggering a process that services serve, and functions accessing data
+          objects. Keeping the engine's internal behaviour at one function level follows the
+          specification's advice that component internals are usually not modelled in detail, and
+          the service is what tells the vendor what the engine must offer.
+      - key: B
+        points: 3
+        text: >-
+          Model the components, functions, services and data objects as in the third proposal,
+          but omit the application interfaces and model the nightly run as a triggering
+          relationship directly from a timed application event to the 'Rating' function and
+          then to the 'Invoicing' function.
+        why: >-
+          The component–function–service chain and the data objects are correct, and an event
+          triggering functions in sequence is permitted, so this scores well. It loses marks
+          because the interfaces are what tell the vendor how the engine's service is reached,
+          and because the 'nightly run' is a sequence achieving a result — an application process
+          — which the flat trigger chain leaves unnamed.
+      - key: C
+        points: 1
+        text: >-
+          Model the rating engine as twelve application functions connected by flow
+          relationships representing the pricing algorithm, each accessing the 'Meter reading'
+          data object, with the overall engine as an application component assigned to all
+          twelve, and the portal as a business service.
+        why: >-
+          Component assigned to functions and functions accessing a data object are valid, so it
+          is not worthless. But decomposing the algorithm is precisely the level of detail the
+          specification says leads into design issues, it hides the service the vendor must
+          provide, and the portal's capability is an application service exposed through a user
+          interface, not a business service.
+      - key: D
+        points: 0
+        text: >-
+          Model the rating engine, invoicing module and portal as application components with no
+          behaviour elements, and model the nightly run as a business process assigned to the
+          rating engine component, with the invoice as a representation.
+        why: >-
+          Components with no behaviour tell the vendor nothing about what must be replaced; a
+          business process cannot be assigned to an application component (application behaviour
+          is assigned to components); and an invoice at application level is a data object, not a
+          business-layer representation.
+    open_book_hint: "Application behaviour elements and the advice on level of detail (§9.3); service, function and interface relationships (§9.3.1, §9.3.5, §9.2.3); application event time attribute (§9.3.4); the travel-insurance example (§9.3.6)."
+    refs: ["ARCHIMATE §9.3", "ARCHIMATE §9.3.5", "ARCHIMATE §9.3.4", "ARCHIMATE §9.2.3"]
+    difficulty: 2
+    tags: [application, behaviour, service, scenario]
+  - id: A5-S03
+    unit: A5
+    objective: "A5.3"
+    lesson: A5/03_data_object_and_access
+    scenario: |
+      Brightwater Council is a local authority digitising its planning-permission service.
+      Residents submit a planning application; a planning officer assesses it; a decision notice
+      is issued. Today the application arrives as a paper form or a PDF upload, is keyed into
+      the planning case system, and the decision notice is generated as a PDF letter. The
+      council's information architect must produce a view showing how the information the
+      planning team talks about — 'the application', 'the decision' — relates to the documents
+      residents see, the records the case system holds, and the files stored on the council's
+      servers, because a data-retention audit needs to trace each business concept to where it
+      is physically stored.
+
+      The auditor has said she will accept a single diagram provided she can start at a
+      business concept and follow relationships down to a named file on a named server, and
+      that she does not need to see the application's behaviour beyond what touches the
+      records. The planning team has also asked that the paper form residents fill in should
+      appear, because it is retained for seven years in a physical archive.
+
+      The repository contains business objects 'Planning application' and 'Decision', a
+      business process 'Assess planning application', an application function 'Case
+      management' performed by the 'Planning case system' component, and a technology node
+      'Council document store'. Nothing yet links the concepts to documents, records or files.
+
+      A first draft shows the business object 'Planning application' associated with a data
+      object 'Planning case record', the case system component accessing the data object, and
+      the decision letter modelled as a data object realized by the business process. The
+      information architect wants a view in a viewpoint whose purpose is to show the structure
+      of information across layers and that the auditor can follow from concept to storage.
+    question: "Refer to the scenario. Which of the following is the best representation?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Draw an information structure view. Model 'Planning application' and 'Decision' as
+          business objects; 'Application form' and 'Decision notice letter' as representations
+          realizing them; 'Planning case record' and 'Decision record' as data objects realizing
+          the business objects; and 'case_record.db' and 'decision_notice.pdf' as artifacts
+          realizing the data objects, deployed on the 'Council document store' node by
+          assignment. Show the business process accessing the business objects and the 'Case
+          management' function accessing the data objects. Remove the association and the
+          'process realizes data object' relationship.
+        why: >-
+          The information structure viewpoint exists to show how business-level information is
+          represented at application level and mapped onto technology, and its elements are
+          business object, representation, data object, artifact and meaning. Representation and
+          data object each realize a business object; an artifact realizes a data object; access
+          runs from behaviour to passive structure. The chain gives the auditor a traceable path
+          from concept to physical file, which is the stated need.
+      - key: B
+        points: 3
+        text: >-
+          Draw an information structure view with the business objects realized by data objects
+          and the data objects realized by artifacts on the document store, with the application
+          function accessing the data objects, but leave the paper form and the decision letter
+          out of the model because they are not stored in the case system.
+        why: >-
+          The realization chain, the access relationships and the viewpoint are right, so this
+          scores well. It is weaker because the residents' documents are business-level
+          representations of the business objects, and a data-retention audit that ignores the
+          paper and PDF forms residents see misses part of what is physically held.
+      - key: C
+        points: 1
+        text: >-
+          Keep the association between the business object and the data object, change the
+          component to access the data object through its function, and model the decision letter
+          as a representation that the data object realizes.
+        why: >-
+          Moving the access to the function is a correct fix. But association is the weakest
+          relationship and loses the 'digital form of' meaning that realization carries, and a
+          data object does not realize a representation — both realize the business object.
+          Nothing links the information to physical storage, so the audit cannot trace it.
+      - key: D
+        points: 0
+        text: >-
+          Draw an application structure view with the 'Planning case system' component accessing
+          'Planning case record' directly, the business process realizing the 'Decision' data
+          object, and the document store node aggregating the business objects.
+        why: >-
+          A component is active structure and cannot access a data object — behaviour does; a
+          business process does not realize a data object, the direction is data object realizes
+          business object; and a technology node cannot aggregate business objects. The
+          application structure viewpoint is single-layer and cannot show the cross-layer chain.
+    open_book_hint: "Data object relationships (§9.4.1); representation (§8.4.3) and business object (§8.4.1); artifact realizes data object (§10.4.1, §11.2); information structure viewpoint (§C.1.3)."
+    refs: ["ARCHIMATE §9.4.1", "ARCHIMATE §8.4.1", "ARCHIMATE §11.2", "ARCHIMATE §C.1.3"]
+    difficulty: 2
+    tags: [data-object, realization, information-structure, scenario]
+  - id: A6-S01
+    unit: A6
+    objective: "A6.3"
+    lesson: A6/03_artifact_and_application_technology_alignment
+    figure: ARCHIMATE:fig-105
+    scenario: |
+      Ashcombe Retail runs an online store. Its order-management application is a Java web
+      application packaged as 'orders.war', deployed on a Tomcat application server that runs
+      on a Linux operating system on two virtual machines in the company's data centre. The
+      virtual machines run on a VMware hypervisor on a pair of blade servers connected by the
+      data-centre LAN. Orders are stored in a PostgreSQL database on a third virtual machine;
+      the database's data files live on a SAN volume. Tomcat exposes an HTTPS endpoint through
+      which the storefront calls the order-management application's order-placement service.
+
+      The infrastructure manager has asked for a model showing how the application is realized
+      on the infrastructure, so that a migration of the blades to a cloud provider can be
+      scoped: which artifacts must move, what they run on, and which technology services the
+      application depends on. The application architect insists the model must keep the
+      distinction between the logical application and the physical deployable, because the
+      same logical application is also deployed in a test environment on different hardware.
+
+      One draft shows an application component 'Order management' assigned directly to a node
+      'Blade server 1', with Tomcat as an application component and the database as a data
+      object. Another shows 'orders.war' as an application component realized by Tomcat. A
+      third shows the logical component realized by an artifact, artifacts assigned to system
+      software, system software assigned to devices, and technology services serving the
+      application.
+
+      The cloud provider has asked specifically for a list of deployable files, the software
+      each one needs beneath it, and the storage each one reads and writes, and has said that
+      hypervisor and blade details are irrelevant to them because those are being replaced.
+      The infrastructure manager wants one view that satisfies both the provider's list and
+      the application architect's insistence on the logical/physical distinction.
+    question: "Refer to the scenario. Which of the following is the best representation of the deployment?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Model 'Order management' as an application component realized by an artifact
+          'orders.war'; system software 'Tomcat' assigned to the artifact (deployment), 'Linux'
+          assigned to 'Tomcat', and devices 'VM 1' and 'VM 2' assigned to 'Linux', the VMs
+          being system-software/device sub-nodes hosted by a 'VMware hypervisor' system software
+          on the 'Blade server' devices; a 'Data-centre LAN' communication network connecting
+          the blades and realizing a path between the nodes; a 'PostgreSQL' system software
+          assigned to an artifact 'orders_db data files' that realizes the 'Order' data object,
+          on a 'SAN volume' device; a technology interface 'HTTPS endpoint' assigned to a
+          technology service 'Web application hosting' that serves the 'Order management'
+          component; and a technology service 'Order data storage' serving its application
+          function.
+        why: >-
+          This is the pattern §11.2 describes: an artifact realizes the logical component, the
+          artifact is deployed on device or system software by assignment, layered system software
+          is modelled by assignment, an artifact realizes the data object, and technology services
+          and interfaces serve application behaviour and components. Keeping the artifact separate
+          from the component preserves the logical/physical distinction the architect requires and
+          makes 'what must move' explicit for the migration.
+      - key: B
+        points: 3
+        text: >-
+          Model 'Order management' as an application component realized by the artifact
+          'orders.war', with the artifact assigned to a single node 'Order-management platform'
+          that is composed of the Tomcat, Linux and hypervisor system software and the blade
+          devices, and technology services from that node serving the component; model the
+          database as a data object realized by an artifact on a 'Database platform' node.
+        why: >-
+          The artifact-realizes-component and artifact-realizes-data-object relationships, node
+          composition and technology services serving the application are all correct, and the
+          logical/physical distinction is kept. It scores lower because collapsing the layered
+          system software and devices into an opaque node hides which artifacts run on which
+          software and hardware, which is exactly what the cloud migration needs to know.
+      - key: C
+        points: 1
+        text: >-
+          Model 'orders.war' as an application component realized by an application component
+          'Tomcat', both deployed on a node 'Blade server 1' by assignment, with the database
+          modelled as a data object assigned to the node.
+        why: >-
+          A node assigned to something deployed on it is the right idea, and a component realizing
+          a component is permitted between abstraction levels, so this is not entirely wrong. But
+          Tomcat is system software, not an application component; 'orders.war' is an artifact, not
+          a component; and a data object is not deployed on a node — its artifact is. The
+          logical/physical distinction is lost.
+      - key: D
+        points: 0
+        text: >-
+          Model 'Order management' as an application component assigned directly to the device
+          'Blade server 1' and to the device 'Blade server 2', with Tomcat, Linux and PostgreSQL
+          as application functions the component performs, and the SAN as a business object the
+          functions access.
+        why: >-
+          The metamodel does not assign an application component to a device; deployment is
+          modelled by an artifact realizing the component and being assigned to the device or
+          system software. Tomcat, Linux and PostgreSQL are system software, not functions of the
+          application, and a SAN volume is a device, not a business object.
+    open_book_hint: "Application–technology alignment (§11.2) and the note on artifacts as physical components; artifact (§10.4.1); device and system software assignment (§10.2.2, §10.2.3); implementation and deployment viewpoint (§C.1.13)."
+    refs: ["ARCHIMATE §11.2", "ARCHIMATE §10.4.1", "ARCHIMATE §10.2.3", "ARCHIMATE §C.1.13"]
+    difficulty: 3
+    tags: [technology, artifact, deployment, scenario]
+  - id: A6-S02
+    unit: A6
+    objective: "A6.4"
+    lesson: A6/04_physical_elements
+    figure: ARCHIMATE:fig-99
+    scenario: |
+      Norrland Timber operates a sawmill and two timber yards. Logs arrive by road from forestry
+      contractors, are cut at the mill on a computer-controlled saw line, kiln-dried, and the
+      finished boards are moved by the company's own lorries to the yards, from where they are
+      sold. Each saw line has a programmable logic controller that runs cutting-pattern
+      software downloaded from the mill's planning server, and sensors on the kiln report
+      temperature to a monitoring application. The operations director wants an architecture
+      model that shows the physical production and distribution chain alongside the IT that
+      controls it, because the company is considering a second mill and wants to see what
+      would need to be replicated.
+
+      The architecture team has previously modelled only IT. They must now decide how to
+      represent the saw line, the kiln, the mill and yard buildings, the logs and boards, the
+      lorries and roads, and the controller with its software, and choose a basic viewpoint
+      for the operations director.
+
+      One team member proposes modelling the saw line and kiln as devices, the logs and boards
+      as artifacts, and the road transport as a communication network, so that the existing
+      technology viewpoint can be reused. Another proposes modelling the whole mill as a
+      single business actor and the transport as a business process. A third proposes using the
+      physical elements: equipment for the saw line and kiln, facilities for the mill and yards,
+      material for logs and boards, a distribution network for the lorry routes realizing a path
+      between the facilities, and a node for the saw line that combines the equipment with a
+      device (the controller) and system software (the controller firmware), with the
+      cutting-pattern file as an artifact deployed on it.
+    question: "Refer to the scenario. Which of the following is the best representation?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Use the physical elements in a physical view: 'Saw line' and 'Kiln' as equipment,
+          'Sawmill', 'North yard' and 'South yard' as facilities with the equipment assigned to
+          the sawmill facility, 'Logs' and 'Boards' as material accessed by technology behaviour
+          of the equipment (with equipment assigned to material to show storage in the yards),
+          'Road haulage' as a distribution network connecting the facilities and realizing a path
+          'Mill-to-yard distribution', and the saw line modelled as a node combining the
+          equipment with a device 'PLC controller', system software 'Controller firmware' and an
+          artifact 'cutting_pattern.cfg' deployed on it by assignment. Add the kiln sensor
+          reporting as a technology interface serving the monitoring application component.
+        why: >-
+          This is what the physical extension is for: equipment for machinery that transforms
+          material, facility for the buildings that house it, material for the matter processed,
+          distribution network as the physical realization of a path between facilities, and a node
+          that combines physical and IT elements to model integrated operational and information
+          technology. The physical viewpoint's stated elements and its concern — the physical
+          environment and how it relates to IT infrastructure — match the director's request.
+      - key: B
+        points: 3
+        text: >-
+          Use the physical elements for the mill and yards (facilities), the saw line and kiln
+          (equipment), logs and boards (material) and the lorry routes (distribution network),
+          but model the controller and its software separately as a device and system software
+          in a technology view, linked to the equipment only by an association.
+        why: >-
+          The physical elements are all correctly chosen, so this earns most of the marks. It is
+          weaker because the specification explicitly allows physical and IT elements to be part
+          of the same node to model an integrated system such as a controlled production line,
+          and a bare association between the equipment and the controller says less than a node
+          composition would about what the second mill must replicate.
+      - key: C
+        points: 1
+        text: >-
+          Model the saw line and kiln as devices, the logs and boards as artifacts, the mill and
+          yards as locations, and the road transport as a communication network, and draw it in
+          the technology viewpoint so the existing conventions are reused.
+        why: >-
+          Reusing a viewpoint is a legitimate concern, and locations for the sites are permitted,
+          so this is not worthless. But a device is a physical IT resource that processes
+          artifacts, not machinery that transforms matter; logs and boards are material, not data;
+          and a communication network carries data, not lorries — the distribution network exists
+          precisely for material transport.
+      - key: D
+        points: 0
+        text: >-
+          Model the whole sawmill as a single business actor 'Mill', the transport to the yards
+          as a business process 'Distribute boards' assigned to the actor, the logs and boards as
+          business objects accessed by the process, and the controller software as a business
+          service.
+        why: >-
+          This models none of the physical production chain the director asked for: the machinery,
+          buildings, materials and transport network all disappear into one actor and one process.
+          Controller firmware is system software, not a business service, and boards moving between
+          yards are material on a distribution network, not business objects.
+    open_book_hint: "Physical elements and combining them with IT in one node (§10, §10.6); equipment, facility, distribution network and material relationships (§10.6.1–§10.7.1); the manufacturing example (§10.8); physical viewpoint (§C.1.6)."
+    refs: ["ARCHIMATE §10.6", "ARCHIMATE §10.6.1", "ARCHIMATE §10.6.3", "ARCHIMATE §10.7.1", "ARCHIMATE §C.1.6"]
+    difficulty: 2
+    tags: [physical, equipment, material, scenario]

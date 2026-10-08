@@ -1,0 +1,36 @@
+# Northgate Bank — Application Use-Case Diagram (Phase C) as an Application Usage view: the use
+# cases are Application Services serving the actor or role that uses them; the Mobile App's
+# services consume Core Banking and Card Switch services in turn.
+id: APPLICATION_USE_CASE_DIAGRAM
+title: "Northgate Bank — Application Use-Case Diagram as an Application Usage view"
+viewpoint: Application Usage
+elements:
+  - {id: customer, type: business_actor, name: "Customer", col: 1, row: 0}
+  - {id: s_balance, type: application_service, name: "View balance", col: 0, row: 1}
+  - {id: s_transfer, type: application_service, name: "Transfer funds", col: 1, row: 1}
+  - {id: s_freeze, type: application_service, name: "Freeze card", col: 2, row: 1}
+  - {id: mobile, type: application_component, name: "Mobile App", col: 0, row: 2, w: 3}
+  - {id: analyst, type: business_role, name: "Cards Operations Analyst", col: 3, row: 2}
+  - {id: s_read, type: application_service, name: "Read account", col: 0, row: 3}
+  - {id: s_post, type: application_service, name: "Post transaction", col: 1, row: 3}
+  - {id: s_status, type: application_service, name: "Update card status", col: 2, row: 3}
+  - {id: s_auth, type: application_service, name: "Authorise card transaction", col: 3, row: 3}
+  - {id: network, type: business_actor, name: "Card network (external)", col: 4, row: 3}
+  - {id: core, type: application_component, name: "Core Banking", col: 0, row: 4, w: 2}
+  - {id: switch, type: application_component, name: "Card Switch", col: 2, row: 4, w: 2}
+relations:
+  - {from: s_balance, to: customer, type: serving}
+  - {from: s_transfer, to: customer, type: serving}
+  - {from: s_freeze, to: customer, type: serving}
+  - {from: mobile, to: s_balance, type: realization}
+  - {from: mobile, to: s_transfer, type: realization}
+  - {from: mobile, to: s_freeze, type: realization}
+  - {from: s_read, to: mobile, type: serving}
+  - {from: s_post, to: mobile, type: serving}
+  - {from: s_status, to: mobile, type: serving}
+  - {from: s_status, to: analyst, type: serving}
+  - {from: s_auth, to: network, type: serving}
+  - {from: core, to: s_read, type: realization}
+  - {from: core, to: s_post, type: realization}
+  - {from: switch, to: s_status, type: realization}
+  - {from: switch, to: s_auth, type: realization}

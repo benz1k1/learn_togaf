@@ -1,0 +1,29 @@
+# Northgate Bank — the mobile-payments fraud risk drawn with the Open Group risk and security
+# pattern (W172): asset as Business Object, threat as Driver, vulnerability and risk as
+# Assessments, control objective as Goal, control requirement as Requirement, control measure as
+# Course of Action realized by a Capability.
+id: northgate_risk_security
+title: "Northgate Bank — card fraud risk as a risk and security view (W172 pattern)"
+viewpoint: Motivation
+elements:
+  - {id: sh, type: stakeholder, name: "Cards Operations Lead", col: 0, row: 0}
+  - {id: threat, type: driver, name: "Threat: card-not-present fraud on mobile payments", col: 1, row: 0}
+  - {id: vuln, type: assessment, name: "Vulnerability: fraud scored overnight, blocked next morning", col: 2, row: 0}
+  - {id: asset, type: business_object, name: "Asset: card transactions and customer funds", col: 1, row: 1}
+  - {id: risk, type: assessment, name: "Risk: fraud loss index 100 and rising (R-1)", col: 2, row: 1}
+  - {id: ctrl_obj, type: goal, name: "Control objective: losses down 30%; block within 5 s", col: 2, row: 2}
+  - {id: ctrl_req, type: requirement, name: "RQ-02 Score every card transaction before authorisation", col: 2, row: 3}
+  - {id: coa, type: course_of_action, name: "Real-time scoring with analyst-in-the-loop", col: 1, row: 4}
+  - {id: cap, type: capability, name: "Real-time fraud scoring", col: 3, row: 4}
+relations:
+  - {from: sh, to: threat, type: association}
+  - {from: threat, to: asset, type: association}
+  - {from: vuln, to: asset, type: association}
+  - {from: threat, to: risk, type: influence, label: "+"}
+  - {from: vuln, to: risk, type: influence, label: "+"}
+  - {from: ctrl_obj, to: risk, type: influence, label: "−"}
+  - {from: ctrl_req, to: ctrl_obj, type: realization}
+  - {from: coa, to: ctrl_req, type: realization}
+  - {from: cap, to: coa, type: realization}
+notes:
+  - {text: "W172 pattern: asset, threat and vulnerability give the risk; the control objective mitigates it; the requirement is the control; a course of action and capability realize it.", col: 0, row: 2, w: 1, h: 2}

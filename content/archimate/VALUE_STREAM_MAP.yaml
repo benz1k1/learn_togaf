@@ -1,0 +1,44 @@
+# Value Stream Map (Phase A) as a Value Stream view: stages chained by triggering, each realizing the
+# value item (Outcome) it adds, enabling Capabilities serving the stage (ARCHIMATE §C.3).
+id: VALUE_STREAM_MAP
+title: "Northgate Bank — Value Stream Map (Obtain a loan) as a Value Stream view"
+viewpoint: Value Stream
+elements:
+  - {id: o1, type: outcome, name: "Application captured", col: 0, row: 0}
+  - {id: o2, type: outcome, name: "Credit decision made", col: 1, row: 0}
+  - {id: o3, type: outcome, name: "Offer accepted", col: 2, row: 0}
+  - {id: o4, type: outcome, name: "Funds credited", col: 3, row: 0}
+  - {id: o5, type: outcome, name: "Repayments collected", col: 4, row: 0}
+  - {id: apply, type: value_stream, name: "Apply", col: 0, row: 1}
+  - {id: assess, type: value_stream, name: "Assess", col: 1, row: 1}
+  - {id: approve, type: value_stream, name: "Approve", col: 2, row: 1}
+  - {id: disburse, type: value_stream, name: "Disburse", col: 3, row: 1}
+  - {id: service, type: value_stream, name: "Service", col: 4, row: 1}
+  - {id: c_onboard, type: capability, name: "Customer Onboarding", col: 0, row: 2}
+  - {id: c_credit, type: capability, name: "Credit Assessment", col: 1, row: 2}
+  - {id: c_orig, type: capability, name: "Loan Origination", col: 2, row: 2}
+  - {id: c_pay, type: capability, name: "Payments", col: 3, row: 2}
+  - {id: c_service, type: capability, name: "Loan Servicing", col: 4, row: 2}
+  - {id: c_idv, type: capability, name: "Identity Verification", col: 0, row: 3}
+  - {id: c_risk, type: capability, name: "Risk Management", col: 1, row: 3}
+  - {id: c_transfer, type: capability, name: "Transfers", col: 3, row: 3}
+relations:
+  - {from: apply, to: assess, type: triggering}
+  - {from: assess, to: approve, type: triggering}
+  - {from: approve, to: disburse, type: triggering}
+  - {from: disburse, to: service, type: triggering}
+  - {from: apply, to: o1, type: realization}
+  - {from: assess, to: o2, type: realization}
+  - {from: approve, to: o3, type: realization}
+  - {from: disburse, to: o4, type: realization}
+  - {from: service, to: o5, type: realization}
+  - {from: c_onboard, to: apply, type: serving}
+  - {from: c_credit, to: assess, type: serving}
+  - {from: c_orig, to: approve, type: serving}
+  - {from: c_pay, to: disburse, type: serving}
+  - {from: c_service, to: service, type: serving}
+  - {from: c_idv, to: c_onboard, type: serving}
+  - {from: c_risk, to: c_credit, type: serving}
+  - {from: c_transfer, to: c_pay, type: serving}
+notes:
+  - {text: "Value stream: Obtain a loan. Triggered by the customer; value received: money in the account and a repayment plan. Read left to right; the Outcome above each stage is the value item it adds.", col: 4, row: 3, w: 2}

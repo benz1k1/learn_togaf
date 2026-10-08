@@ -16,9 +16,10 @@ from typing import Any
 import orjson
 from markupsafe import Markup
 
+from learn_togaf.content.models import MAX_POINTS
+
 PROGRESS_STATES = ("READ", "CHECKED", "MASTERED")
 CHECK_QUESTIONS = 5
-MAX_POINTS = {"FOUNDATION": 1, "PRACTITIONER": 5}
 
 
 def _now_iso() -> str:
@@ -29,7 +30,7 @@ def units_by_exam(connection: sqlite3.Connection) -> list[dict[str, Any]]:
     """Units grouped by exam, each with its lesson count and how many are read/checked/mastered."""
     rows = connection.execute(
         """
-        SELECT u.code, u.exam, u.name, u.weight, u.ordinal,
+        SELECT u.code, u.exam, u.track, u.name, u.weight, u.ordinal,
                COUNT(l.id) AS lesson_count,
                SUM(CASE WHEN p.lesson_id IS NOT NULL THEN 1 ELSE 0 END) AS done_count
         FROM learning_unit u
@@ -38,10 +39,12 @@ def units_by_exam(connection: sqlite3.Connection) -> list[dict[str, Any]]:
         GROUP BY u.code ORDER BY u.ordinal
         """
     ).fetchall()
-    groups: dict[str, list[dict[str, Any]]] = {}
+    groups: dict[tuple[str, str], list[dict[str, Any]]] = {}
     for row in rows:
-        groups.setdefault(row["exam"], []).append(dict(row))
-    return [{"exam": exam, "units": units} for exam, units in groups.items()]
+        groups.setdefault((row["track"], row["exam"]), []).append(dict(row))
+    return [
+        {"track": track, "exam": exam, "units": units} for (track, exam), units in groups.items()
+    ]
 
 
 def unit_detail(connection: sqlite3.Connection, code: str) -> dict[str, Any] | None:
@@ -164,23 +167,35 @@ def mark_progress(connection: sqlite3.Connection, lesson_id: str, state: str) ->
 
 def check_questions(
     connection: sqlite3.Connection, lesson_id: str, count: int = CHECK_QUESTIONS
-) -> list[dict[str, Any]]:
-    """Up to ``count`` random questions tagged to the lesson's objectives, drafts included."""
+) -> dict[str, Any]:
+    """Up to ``count`` random questions for THIS lesson that the learner has not answered yet.
+
+    The pool is ``lesson_question`` (one lesson per question, built by the loader), so a question
+    is never offered by two lessons. A question answered in any lesson check, right or wrong, is
+    out for good: a wrong answer already seeded a flashcard, and drills on /practice re-ask
+    everything. Drafts are included. Returns the questions plus the mapped and remaining counts
+    so the fragment can say when the lesson is exhausted."""
     rows = connection.execute(
         """
-        SELECT q.* FROM question q
-        WHERE q.objective_code IN (SELECT objective_code FROM lesson_objective WHERE lesson_id = ?)
+        SELECT q.* FROM lesson_question lq JOIN question q ON q.id = lq.question_id
+        WHERE lq.lesson_id = ?
+          AND q.id NOT IN (
+              SELECT aa.question_id FROM attempt_answer aa JOIN attempt a ON a.id = aa.attempt_id
+              WHERE a.mode = 'CHECK' AND aa.chosen_key IS NOT NULL
+          )
         """,
         (lesson_id,),
     ).fetchall()
-    chosen = random.sample(rows, min(count, len(rows)))
+    mapped = connection.execute(
+        "SELECT COUNT(*) FROM lesson_question WHERE lesson_id = ?", (lesson_id,)
+    ).fetchone()[0]
     result = []
-    for question in chosen:
+    for question in random.sample(rows, min(count, len(rows))):
         options = connection.execute(
             "SELECT key, text FROM question_option WHERE question_id = ? ORDER BY ordinal", (question["id"],)
         ).fetchall()
         result.append({"question": question, "options": options})
-    return result
+    return {"questions": result, "mapped": mapped, "remaining": len(rows)}
 
 
 def _check_attempt(connection: sqlite3.Connection, lesson_id: str, exam: str) -> sqlite3.Row:
@@ -211,7 +226,7 @@ def record_check_answer(
     chosen = next((option for option in options if option["key"] == key), None)
     if chosen is None:
         raise ValueError(f"question {question_id} has no option {key!r}")
-    max_points = MAX_POINTS[question["exam"]]
+    max_points = MAX_POINTS[question["scoring"]]
     correct = chosen["points"] == max_points
     now = _now_iso()
     attempt = _check_attempt(connection, lesson_id, question["exam"])

@@ -1,0 +1,144 @@
+# The crosswalk (learn_sabsa_archimate.md §4.5): each ADM phase in ArchiMate (which viewpoints
+# and elements draw it — the specification's Appendix D.1 and W14C) and in SABSA (which Matrix
+# layers and cells it fills — W117 and G152). Rendered as two panels on /adm/{phase} and as the
+# table on /adm. `lessons` name the lesson ids that teach each side; the loader checks they exist.
+- phase: PRELIM
+  archimate:
+    viewpoints: [Motivation, Organization]
+    elements: [Stakeholder, Driver, Principle, Business Actor, Business Role, Grouping]
+    ref: "ARCHIMATE §D.1"
+    note: "The tailored framework and the EA organisation model are an Organization view; the principles are Principle elements."
+    lessons: ["A9/03_the_togaf_mapping"]
+  sabsa:
+    layers: [CONTEXTUAL]
+    cells: ["Contextual × People", "Contextual × Process"]
+    artefacts: [SECURITY_GOVERNANCE_MODEL, RISK_MANAGEMENT_POLICY]
+    ref: "GUIDE:integrating-risk-and-security §3"
+    note: "Establish the security architecture capability and its policy authority inside the EA capability."
+    lessons: ["S6/03_lifecycle_and_the_adm", "X2/01_the_matrix_and_attributes_on_the_adm"]
+- phase: A
+  archimate:
+    viewpoints: [Motivation, Stakeholder, Goal Realization, Strategy, Outcome Realization]
+    elements: [Stakeholder, Driver, Assessment, Goal, Outcome, Principle, Requirement, Capability, Course of Action]
+    ref: "ARCHIMATE §D.1"
+    note: "Phase A is the motivation and strategy aspects: who cares, why, and what the vision must achieve."
+    lessons: ["A2/01_stakeholder_driver_assessment_goal_outcome", "A9/03_the_togaf_mapping"]
+  sabsa:
+    layers: [CONTEXTUAL, CONCEPTUAL]
+    cells: ["Contextual × Motivation", "Conceptual × Motivation", "Conceptual × Assets"]
+    artefacts: [BUSINESS_ATTRIBUTES_PROFILE, RISK_APPETITE, BUSINESS_RISK_MODEL]
+    ref: "GUIDE:integrating-risk-and-security §3"
+    note: "The Business Attributes Profile is what Phase A requirements look like when a security architect writes them (W117)."
+    lessons: ["S3/01_the_business_attributes_profile", "X2/01_the_matrix_and_attributes_on_the_adm"]
+- phase: B
+  archimate:
+    viewpoints: [Organization, Business Process Cooperation, Product, Capability Map, Value Stream]
+    elements: [Business Actor, Business Role, Business Process, Business Function, Business Service, Business Object, Product, Capability, Value Stream]
+    ref: "ARCHIMATE §D.1"
+    note: "The business layer plus the strategy elements the Business Architecture guides use."
+    lessons: ["A4/04_business_relationships_and_viewpoints", "A3/03_strategy_viewpoints"]
+  sabsa:
+    layers: [LOGICAL]
+    cells: ["Logical × Process", "Logical × People", "Logical × Location"]
+    artefacts: [SECURITY_SERVICES_CATALOGUE, DOMAIN_MODEL, TRUST_MODEL]
+    ref: "GUIDE:integrating-risk-and-security §3"
+    note: "Security services and the domain model are designed against the business processes and roles of Phase B."
+    lessons: ["S4/02_security_domains_and_policy_authorities", "X3/02_the_domain_model_in_archimate"]
+- phase: C
+  archimate:
+    viewpoints: [Information Structure, Application Cooperation, Application Usage]
+    elements: [Business Object, Data Object, Application Component, Application Interface, Application Service, Application Function]
+    ref: "ARCHIMATE §D.1"
+    note: "Data Architecture is the Information Structure viewpoint; Application Architecture the Application Cooperation and Usage viewpoints."
+    lessons: ["A5/04_application_business_alignment_and_viewpoints"]
+  sabsa:
+    layers: [LOGICAL, PHYSICAL]
+    cells: ["Logical × Assets", "Physical × Assets", "Physical × Process"]
+    artefacts: [INFORMATION_CLASSIFICATION, SECURITY_MECHANISMS]
+    ref: "GUIDE:integrating-risk-and-security §3"
+    note: "Information assets are classified against the attributes; application mechanisms (authentication, logging, encryption) are chosen."
+    lessons: ["S4/01_the_logical_layer", "S5/01_the_physical_layer"]
+- phase: D
+  archimate:
+    viewpoints: [Technology, Technology Usage, Physical, Layered]
+    elements: [Node, Device, System Software, Technology Service, Communication Network, Artifact, Facility, Equipment]
+    ref: "ARCHIMATE §D.1"
+    note: "Technology Architecture is the technology and physical layers; the Layered view ties all three core layers together."
+    lessons: ["A6/03_artifact_and_application_technology_alignment"]
+  sabsa:
+    layers: [PHYSICAL, COMPONENT]
+    cells: ["Physical × Location", "Component × Assets", "Component × Process"]
+    artefacts: [SECURITY_MECHANISMS, PRODUCTS_AND_TOOLS, SECURITY_STANDARDS]
+    ref: "GUIDE:integrating-risk-and-security §3"
+    note: "Mechanisms drop to products, tools and standards: the Component layer is the SBB of SABSA."
+    lessons: ["S5/02_the_component_layer", "S5/03_service_to_mechanism_to_component"]
+- phase: E
+  archimate:
+    viewpoints: [Migration, Implementation and Migration]
+    elements: [Plateau, Gap, Work Package, Deliverable]
+    ref: "ARCHIMATE §D.1"
+    note: "The Baseline, Transition and Target Architectures are Plateaus; gap analysis output is Gap elements between them."
+    lessons: ["A8/03_implementation_and_migration_viewpoints"]
+  sabsa:
+    layers: [CONCEPTUAL, LOGICAL]
+    cells: ["Conceptual × Time", "Logical × Time"]
+    artefacts: [CONTROL_GAP_ANALYSIS, SECURITY_ROADMAP]
+    ref: "GUIDE:integrating-risk-and-security §3"
+    note: "The SABSA Lifecycle's Design to Implement step: which controls each transition architecture must already have."
+    lessons: ["S6/03_lifecycle_and_the_adm"]
+- phase: F
+  archimate:
+    viewpoints: [Implementation and Migration, Project]
+    elements: [Work Package, Deliverable, Implementation Event, Plateau, Business Role]
+    ref: "ARCHIMATE §D.1"
+    note: "The Implementation and Migration Plan is Work Packages in sequence, each realizing Deliverables, with Implementation Events as milestones."
+    lessons: ["A8/01_implementation_and_migration_elements"]
+  sabsa:
+    layers: [PHYSICAL, COMPONENT]
+    cells: ["Physical × Time", "Component × Time"]
+    artefacts: [CONTROL_IMPLEMENTATION_SCHEDULE]
+    ref: "GUIDE:integrating-risk-and-security §3"
+    note: "Control-structure execution timing: when each mechanism and product goes live."
+    lessons: ["S6/01_the_sabsa_lifecycle"]
+- phase: G
+  archimate:
+    viewpoints: [Implementation and Migration, Project]
+    elements: [Work Package, Deliverable, Business Role, Contract]
+    ref: "ARCHIMATE §D.1"
+    note: "Implementation governance follows the same Work Packages; the Architecture Contract is a Contract element."
+    lessons: ["A8/03_implementation_and_migration_viewpoints"]
+  sabsa:
+    layers: [SERVICE_MANAGEMENT]
+    cells: ["Service Management × Process", "Service Management × People"]
+    artefacts: [ASSURANCE_FRAMEWORK, COMPLIANCE_EVIDENCE]
+    ref: "GUIDE:integrating-risk-and-security §3"
+    note: "Compliance reviews are the assurance framework in action: evidence that the implemented control matches the designed one."
+    lessons: ["S6/02_the_service_management_layer", "S7/02_the_assurance_framework"]
+- phase: H
+  archimate:
+    viewpoints: [Motivation, Migration]
+    elements: [Driver, Assessment, Requirement, Plateau, Gap]
+    ref: "ARCHIMATE §D.1"
+    note: "A change request is a new Driver or Assessment; its impact is a Gap against the current Plateau."
+    lessons: ["A2/01_stakeholder_driver_assessment_goal_outcome"]
+  sabsa:
+    layers: [SERVICE_MANAGEMENT]
+    cells: ["Service Management × Motivation", "Service Management × Time"]
+    artefacts: [SECURITY_METRICS, RISK_REVIEW]
+    ref: "GUIDE:integrating-risk-and-security §3"
+    note: "Manage and Measure: attribute metrics feed back into strategy, closing the SABSA Lifecycle loop."
+    lessons: ["S6/02_the_service_management_layer", "X2/02_the_risk_technique_and_the_sabsa_risk_model"]
+- phase: REQ
+  archimate:
+    viewpoints: [Requirements Realization, Motivation]
+    elements: [Requirement, Constraint, Goal, Principle]
+    ref: "ARCHIMATE §D.1"
+    note: "The Architecture Requirements Repository is a set of Requirement elements, each realized by a core element."
+    lessons: ["A2/02_principle_requirement_constraint"]
+  sabsa:
+    layers: [CONCEPTUAL]
+    cells: ["Conceptual × Motivation"]
+    artefacts: [BUSINESS_ATTRIBUTES_PROFILE]
+    ref: "GUIDE:integrating-risk-and-security §3"
+    note: "Every business attribute with its performance target is a requirement under management across the cycle."
+    lessons: ["S7/01_two_way_traceability"]

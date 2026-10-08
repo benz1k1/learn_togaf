@@ -1,6 +1,6 @@
 # Test fixture (api/tests/test_import.py): a native Foundation set with generated ids.
 code: TEST_IMPORT_YAML
-exam: FOUNDATION
+exam: OGEA-101
 name: Import test (YAML)
 questions:
   - unit: F4

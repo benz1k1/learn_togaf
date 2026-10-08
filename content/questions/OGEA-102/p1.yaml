@@ -1,0 +1,690 @@
+# Authored Practitioner scenarios for P1, Context for Enterprise Architecture (learn_togaf.md §2, §6).
+code: P1_BANK
+exam: OGEA-102
+name: "P1 Context for Enterprise Architecture"
+kind: DRILL
+source: authored
+questions:
+  - id: P1-101
+    unit: P1
+    objective: "P1.1"
+    lesson: P1/01_purpose_before_method
+    scenario: |
+      Halden Mutual is a life and pensions insurer with 6,200 staff, operating in three countries
+      through a mix of tied advisers, brokers and a direct digital channel. It administers 1.4
+      million policies on three policy administration platforms, two of which came with
+      acquisitions. Two years ago its then-CIO created an Enterprise Architecture team of eight
+      people inside the IT organisation. The team produced a technology standards catalogue, a
+      reference architecture for integration and a set of forty principles. Business units say they
+      never used any of it; project teams describe the architecture review as "a gate we get
+      through by asserting compliance". Last year the CIO left, the team shrank to three, and the
+      group executive quietly stopped funding it. Two of the three remaining architects are
+      infrastructure specialists; the third is a business analyst who joined the team six months
+      before the CIO left.
+
+      A new Chief Operating Officer has now been appointed with a mandate to integrate two
+      acquisitions — a broker-only insurer and a small digital pensions start-up — into one
+      operating company within three years, while keeping the regulator satisfied that customer
+      outcomes do not deteriorate during the change. The COO has told the board that "this time we
+      will do it with proper enterprise architecture" and has asked you, as the newly hired EA lead
+      reporting to her, to re-establish the capability. Her first request is a plan.
+
+      In your first fortnight you learn the following. The group strategy is documented at a high
+      level but the three businesses run on different policy administration platforms, different
+      product ranges and different advice models; nobody has written down which capabilities the
+      integrated company will need that none of the three has today. The CFO runs an annual budget
+      cycle: business units submit investment cases in the second quarter, a portfolio committee
+      prioritises them in the third, and funds are released in the fourth. Nobody on that committee
+      has an architecture input, and last year's cases were, in the CFO's words, "judged on who
+      presented best". The integration programme director, a contractor, has already engaged a
+      systems integrator to "assess platform consolidation options" and expects a recommendation in
+      ten weeks; the integrator's proposal describes the deliverable as "the target architecture".
+      The Chief Risk Officer says her main concern is that the integration will break regulatory
+      reporting, which today is assembled by hand from three systems by a team of six people, two of
+      whom are due to retire. The surviving members of the old EA team want to restart the technology
+      standards work and to re-form the architecture review board with the power to approve or reject
+      project designs; they have drafted a terms of reference giving the board "final authority on
+      target architectures".
+
+      The COO has asked you three questions: what is the EA capability for, how will she know it is
+      working, and how should it be organised so that it does not fail as it did before. She has
+      also said, unprompted, that she does not want "another team that produces documents". The
+      board has asked for an integration roadmap by the end of the year. You have four weeks before
+      the second-quarter investment cases are due and before the systems integrator reports. You
+      have no team beyond the three architects, no budget yet, and the COO's sponsorship.
+
+      Before you arrived, three things were tried. The interim CIO commissioned a "capability
+      maturity assessment" of the EA team from a consultancy; it scored the team at level two of
+      five and recommended "more governance", and the report was filed. The programme director
+      asked the remaining architects for "a target architecture" and received the integration
+      reference architecture with the acquisitions' logos added. The Chief Risk Officer asked
+      whether anyone could list the systems that produce regulatory returns across the three
+      businesses, and nobody could. What has never been done is to ask the COO, in her own words,
+      what decision she needs architecture to inform first, what she would consider a success at
+      the end of year one, and who — beyond her — must approve the integrated company's target. Nor
+      has anyone drawn a line between the architecture the integration programme needs in the next
+      ten weeks and the capability the group needs for the next three years; both are being called
+      "enterprise architecture", and the board expects one plan that covers both.
+
+      You are the EA lead. You must propose how to establish the capability, in what order, and
+      what it will deliver first.
+    question: "Refer to the scenario. You have been asked to propose how to establish the EA capability. Based on the TOGAF Standard and the Series Guides, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Treat the re-establishment as a Preliminary Phase run with the ADM, with the practice
+          itself as the subject. First make the enterprise context and the capability's
+          objectives explicit with the COO: confirm the boundary of the enterprise (the three
+          businesses and their channels), play the board's ambition back as concrete capabilities
+          and outcomes, and agree that the primary purpose is EA to support portfolio, with EA to
+          support project for the integration programme, so that depth, breadth and horizon are
+          sized to the decisions the portfolio committee takes. Define success measures derived
+          from that purpose — recommendations accepted by the committee, risks identified and
+          mitigated, benefits tracked — rather than counts of standards produced. Design
+          governance so that decision rights over the target, relief and enforcement sit with the
+          stakeholders (COO, CRO, business unit heads) and the architecture board owns the process
+          and a recommendation on completeness and confidence. Align the team to the budget
+          cycle, so that a candidate target and roadmap exist before the second-quarter cases are
+          submitted, and produce a multi-year capability roadmap with a project manager. Engage
+          the systems integrator's assessment as an input to that roadmap rather than as the
+          architecture.
+        why: >-
+          This is the Leader's Guide applied: establishing the capability is the Preliminary
+          Phase run as a configured path through the ADM (GUIDE:togaf-leaders-guide §1.1;
+          GOV §2.1); context and objectives are extracted explicitly from the sponsor, because
+          implicit assumptions "invariably lead to failures" (§5); the purpose fixes depth and
+          breadth (§5.2); measures derive from purpose and avoid the two death traps (§5.4);
+          decision rights stay with stakeholders while the board owns process (§6.2); and
+          portfolio architecture must be ready at the start of budget preparation
+          (GUIDE:adm-practitioners §4.1). The CRO's reporting concern and the integrator's work
+          are absorbed as inputs, not ignored.
+      - key: B
+        points: 3
+        text: >-
+          Define the capability's purpose as EA to support portfolio and project, derive
+          success measures from it, and set up governance in which stakeholders hold decision
+          rights and the board owns the process. Then, because the integration programme is
+          already under way, focus the first year on producing the target architecture and
+          roadmap for platform consolidation to a level of detail that the systems integrator
+          can implement, and present it to the portfolio committee at its third-quarter
+          prioritisation meeting.
+        why: >-
+          Purpose, measures and governance are right. But presenting the roadmap at the
+          third-quarter prioritisation meeting misses the business cycle: architecture to
+          support portfolio has to exist when budget preparation starts in the second quarter,
+          and work arriving at the decision point is architecture after the decision
+          (GUIDE:adm-practitioners §4.1; §11.2). Sizing the first deliverable to what the
+          integrator can implement also confuses portfolio purpose with solution delivery
+          detail (GUIDE:adm-practitioners §3.2.2).
+      - key: C
+        points: 1
+        text: >-
+          Rebuild the team quickly by recruiting back to eight, restart the technology
+          standards catalogue so that the consolidation options can be assessed against it, and
+          re-form the architecture review board with authority to approve or reject the
+          integrator's recommended platform and every subsequent project design, so that
+          compliance is enforced rather than asserted.
+        why: >-
+          This repeats the pattern that failed. It starts with team and tools before purpose,
+          which the Leader's Guide names as oversimplified thinking (§3.4 and §5), and it vests
+          decision rights over the target and enforcement in the board — the "common failure
+          pattern" of §6.2. Standards-first teams are also statistically less successful than
+          those that deliver organisational transformations (§12.3). Compliance by assertion is
+          cured by describing and approving architecture, not by a stronger gate.
+      - key: D
+        points: 0
+        text: >-
+          Advise the COO that the capability should wait until the systems integrator has
+          recommended a consolidation platform and the portfolio committee has funded it,
+          because an architecture can only be meaningful once the target platform is known; in
+          the meantime the three remaining architects should document the current systems in
+          detail for the integrator.
+        why: >-
+          This is architecture after the decision, which the Practitioners' Approach calls one
+          of the most dangerous things a practitioner can do (§11.2.1), and it inverts the
+          purpose of EA, which is to inform the decision rather than describe its consequences
+          (§3.1). Documenting the baseline in full detail for its own sake also violates the
+          "just enough" rule (§6.3.2).
+    refs: ["GUIDE:togaf-leaders-guide §5", "GUIDE:togaf-leaders-guide §5.2", "GUIDE:togaf-leaders-guide §5.4", "GUIDE:togaf-leaders-guide §6.2", "GUIDE:adm-practitioners §4.1", "GOV §2.1"]
+    open_book_hint: "Where to look: Leader's Guide §5 (questions to answer), §5.2 (four purposes), §5.4 (measures and death traps), §6.2 (who holds decision rights); Practitioners' Approach §4.1 (architecture before the budget decision); EA Capability and Governance §2.1."
+    difficulty: 2
+    tags: [ea-capability, purpose, governance, leaders-guide]
+  - id: P1-102
+    unit: P1
+    objective: "P1.1"
+    lesson: P1/01_purpose_before_method
+    scenario: |
+      Corvane Logistics runs parcel and pallet networks across a national market with 11,000
+      employees, 46 depots and a fleet of 3,000 vehicles. Its revenue is split between contracted
+      business customers, who negotiate service levels annually, and consumer parcels, which are
+      growing fastest and least profitable. Its strategy for the next five years is to move from a
+      depot-centric operating model to a network-optimised one: dynamic routing, shared cross-dock
+      capacity with two partner carriers, and a single customer promise for delivery windows. The
+      board approved the strategy in January and created a transformation fund to pay for it.
+
+      The EA function at Corvane is four years old, reports to the CIO, and is regarded as
+      competent. It maintains an application portfolio, a capability map agreed with the operations
+      directors, a set of principles approved by the architecture board, and a repository in a
+      modelling tool. Its charter says it supports "strategy and portfolio". In practice the team
+      has spent the last two years producing detailed solution architectures for individual
+      projects because that is where the demand was; the capability map has not been refreshed
+      since it was agreed, and no target architecture for the network strategy exists.
+
+      Corvane's planning calendar is fixed and well known. Budget planning, in which the executive
+      decides which new initiatives will be started, happens in April. Budget preparation, in which
+      each division builds its spending request against executive guidance, runs from May to July.
+      The portfolio board, chaired by the CFO, allocates funds in September, and projects start in
+      January. This year the executive has asked every division to make its case for a share of the
+      transformation fund tied to the network strategy, and has told the divisions that requests
+      must show how they contribute to it.
+
+      It is now the middle of February. The CIO has asked the EA team to "make sure the
+      transformation is architected properly". Several things are happening at once. The operations
+      division has hired consultants to design the dynamic routing capability and wants to submit a
+      request for a routing platform in the May round; the consultants have produced a vendor
+      shortlist already. The commercial division wants a new customer portal and has shortlisted
+      vendors of its own, on the grounds that the customer promise "is a portal problem". The two
+      partner carriers have asked for an integration specification so that they can plan their own
+      budgets; the alliance manager has promised them something "by the summer". The depot
+      managers, who will lose control of routing decisions under the strategy, have not been asked
+      anything. The CFO has said privately that last year's requests were "a beauty contest with no
+      way to tell which ones actually moved the strategy forward" and that he would welcome a way to
+      compare them before the September meeting.
+
+      The EA lead has proposed to the CIO that the team runs a full ADM cycle for the network
+      strategy, starting with a Phase A Architecture Vision in March, Business and Information
+      Systems Architectures through the summer, Technology Architecture in the autumn, and a
+      roadmap and migration plan by November, "ready for next January's project starts". The plan
+      is thorough: it includes a complete baseline of all 46 depots' processes and a full data
+      architecture for the network. The CIO is uneasy but cannot say why, and has asked whether the
+      team can "help the divisions with their requests in the meantime".
+
+      Some groundwork exists. The capability map identifies "route planning", "capacity sharing"
+      and "customer promise" as capabilities, all rated "basic" two years ago. The application
+      portfolio shows four routing tools in use across the regions, none of them integrated with
+      the partner carriers. The principles include "plan the network, not the depot", approved
+      before the strategy and never applied to a decision. The architecture board has not met since
+      November because there has been nothing to put in front of it. The CFO's portfolio board has
+      a template for investment cases that asks for "strategic fit" as a free-text box; the CFO
+      would accept a different template if the EA team proposed one by April. The operations
+      consultants have offered to share their routing design "as input to the architecture", and
+      the commercial division's portal vendors have asked whether a target architecture exists that
+      they should conform to. Nobody in either division is opposed to architecture; they are simply
+      proceeding because the calendar does not wait.
+
+      You have been asked to advise the CIO on what the EA team should do this year, in what
+      order, and by when.
+    question: "Refer to the scenario. Based on the TOGAF Standard and the Series Guides, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Re-plan the work around the budget cycle rather than around the ADM diagram. The
+          decision that matters this year is the September allocation of the transformation
+          fund, which is prepared from May; so the EA team must deliver architecture to support
+          portfolio — a candidate target architecture for the network strategy and a candidate
+          roadmap of work packages, at portfolio-level detail — before budget preparation
+          starts in May, then iterate through Phases E and F with the divisions and the CFO as
+          the requests are shaped and negotiated through the summer. Use the existing capability
+          map and principles as the superior architecture so that the routing and portal
+          requests can be assessed against the roadmap and the CFO can compare cases by their
+          contribution to the strategy. Give the partner carriers a roadmap-level statement of
+          the integration gaps and preferred approach rather than a detailed specification, and
+          defer detailed solution architecture to Phase G of the funded projects.
+        why: >-
+          Architecture to support portfolio is linked to budget preparation and must be ready
+          when the initial budget materials are prepared, with ongoing updates during the
+          negotiations; Phases E and F align directly to this use (GUIDE:adm-practitioners §4.1;
+          §4.1.2). Waiting for clarity means missing the business cycle (§11.2). Portfolio-level
+          detail matches the purpose (§3.2.2) and the roadmap is the tool that tells the CFO what
+          must go forward and what can be deferred (§4.1.2). The capability map is the superior
+          architecture that guides the current work (§3.2.1).
+      - key: B
+        points: 3
+        text: >-
+          Run the ADM cycle as proposed but compress it: complete Phase A in March, produce a
+          portfolio-level target and roadmap by the end of June so that it can inform the July
+          finalisation of divisional requests, and produce the detailed Business, Data and
+          Application Architectures for the routing and portal projects over the summer so
+          that the September allocation is made against fully specified solutions. Provide the
+          partner carriers with the detailed integration specification they asked for.
+        why: >-
+          The cycle is right and the roadmap does arrive before allocation, but it arrives in
+          late June, after budget preparation has been running for two months, so the divisions
+          shape their requests without it (GUIDE:adm-practitioners §4.1.2; §11.2). Fully
+          specifying solutions before funding also does the work that comes after the decision
+          and mixes solution-delivery detail into portfolio purpose (§3.2.2; §5.1).
+      - key: C
+        points: 1
+        text: >-
+          Accept the EA lead's plan for a full cycle finishing in November, because a
+          transformation of this scale needs a complete Architecture Definition before any
+          project is funded, and ask the portfolio board to defer allocation of the
+          transformation fund by one year so that the September decision can be made on a
+          finished architecture.
+        why: >-
+          Asking the enterprise to move its budget cycle to fit the ADM inverts the guide's
+          rule that the architecture process feeds and supports existing change processes, not
+          the other way round (GUIDE:adm-practitioners §4). It treats the ADM as a linear
+          process model rather than an information-flow method (§5.2), and it delays a
+          strategic decision the board has already taken.
+      - key: D
+        points: 0
+        text: >-
+          Let the divisions proceed with their consultants and vendor shortlists, since they
+          are closest to the need, and position the EA team to review the routing platform and
+          the customer portal for compliance with the principles once the portfolio board has
+          funded them and the designs exist.
+        why: >-
+          This is the failure pattern of missing the business cycle: the organisation makes
+          its decisions with the information at hand on the day, and the EA team arrives after
+          the decision, where its work can at best validate and at worst embarrass
+          (GUIDE:adm-practitioners §11.2; §11.2.1). It also abandons the charter to support
+          strategy and portfolio in favour of project-level compliance.
+    refs: ["GUIDE:adm-practitioners §4.1", "GUIDE:adm-practitioners §4.1.2", "GUIDE:adm-practitioners §11.2", "GUIDE:adm-practitioners §3.2.2", "GUIDE:adm-practitioners §3.2.1", "GUIDE:togaf-leaders-guide §5.2"]
+    open_book_hint: "Where to look: Practitioners' Approach §4.1 (the budget cycle), §4.1.2 (budget preparation and architecture to support portfolio), §11.2 (missing the business cycle), §3.2.2 (purpose and level of detail); Leader's Guide §5.2."
+    difficulty: 3
+    tags: [business-cycle, portfolio, roadmap, practitioners-approach]
+  - id: P1-103
+    unit: P1
+    objective: "P1.1"
+    lesson: P1/01_purpose_before_method
+    scenario: |
+      Tamsin Foods is a food manufacturer with 3,400 employees, nine factories and a distribution
+      business that supplies supermarkets. Its board has spent eighteen months on a review of
+      finance, procurement and manufacturing systems, most of which are twenty years old and
+      heavily customised; the review was run by the finance function with support from an external
+      adviser. Last month the board approved a proposal from the CFO to replace those systems with
+      a single ERP suite from one vendor. The contract has been signed, a systems integrator has
+      been appointed, and a programme director has been given 24 months and a fixed budget. The
+      programme has already started its "discovery" phase and is preparing to configure finance
+      first, with manufacturing to follow in month nine and distribution "if budget allows".
+
+      Tamsin has a small Enterprise Architecture team of three, established two years ago under the
+      CIO. The team's charter says it "supports strategy and major change", but it was not consulted
+      during the ERP selection; the CFO's review treated it as "an IT function". The programme
+      director has now asked the EA team to "produce the enterprise architecture for the ERP
+      programme" and to sit on the design authority the integrator is setting up. The CIO has asked
+      the team to "make sure the programme is architected properly" and to avoid "being seen as the
+      department of no".
+
+      In the first three weeks the EA team has learned the following. The integrator's proposed
+      design puts all nine factories on a single global template, but three factories run regulated
+      cold-chain operations with local traceability requirements that the discovery workshops have
+      not yet reached; the factory managers assume the template will be adapted and the integrator
+      assumes it will not. The distribution business is in the middle of a separate warehouse
+      management replacement, funded last year, that will go live in the same window the ERP
+      programme plans to cut over inventory; neither programme's plan mentions the other. The
+      supermarkets' electronic ordering interfaces are undocumented and were built by a contractor
+      who left; the largest customer has said it will not change its side of the interface. The
+      CFO's business case assumes the retirement of eleven applications, four of which are owned by
+      manufacturing and are not mentioned in the ERP scope. The board's expectation, recorded in
+      the minutes, is an integrated planning capability across factories and distribution, but the
+      programme's scope stops at the factory gate. The next portfolio allocation, at which the
+      distribution phase and the integrated planning capability would be funded or not, is eight
+      months away.
+
+      The EA lead is frustrated that the decision was taken without architecture and has drafted a
+      note to the CIO proposing that the programme be paused for three months while the team runs
+      Phases A to D to produce a proper target architecture "so that the ERP can be assessed
+      against it". The programme director has said that any pause will be escalated to the board as
+      an EA-caused delay, and that the integrator's contract has penalty clauses for schedule
+      slippage caused by the client. The CFO regards the architecture question as settled by the
+      vendor selection.
+
+      The EA team has one asset that nobody in the programme has seen: a capability map and a
+      high-level application landscape produced eighteen months ago for the CIO, which show the
+      integrated planning capability the board expects as a gap spanning factories and
+      distribution, and which name the four manufacturing applications as supporting cold-chain
+      compliance. It also holds an earlier risk assessment for the warehouse programme that flagged
+      the inventory cut-over window. The design authority the integrator is setting up has a charter
+      that makes the integrator's lead architect its chair and gives the EA team "an advisory
+      seat". The programme's risk register has eleven entries, all technical, none about the
+      factories, the warehouse programme or the supermarket interfaces. The CFO has asked the EA
+      team, informally, whether "the architecture will slow us down"; the programme director has
+      asked whether it will "sign off the design"; the factory managers have asked nobody anything
+      because they assume the template will be changed for them. The EA lead's note has not yet
+      been sent.
+
+      You are advising the EA lead on what the team should actually do, both for the programme that
+      is already running and for the enterprise decisions that have not yet been taken.
+    question: "Refer to the scenario. Based on the TOGAF Standard and the Series Guides, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Recognise that the organisation has jumped to Phase G and respond in two parts. For
+          the programme that is already running, provide architecture to support solution
+          delivery: engage in Phase G with a narrow set of concerns on the critical path to the
+          board's expected value — cold-chain traceability, the collision with the warehouse
+          replacement, the undocumented supermarket interfaces, the four manufacturing
+          applications missing from scope — surfacing the uncertainty in each as risk, and
+          ensuring the programme director, CFO and design authority understand what can honestly
+          be expected in terms of value and benefit rather than trying to redesign the programme.
+          For the decisions still open, produce architecture ahead of them: an integrated
+          planning target across factories and distribution, and a roadmap that sequences the
+          ERP cut-overs against the warehouse programme, delivered before the next portfolio
+          allocation. Do not propose a pause, and keep the roles separate — the team advises and
+          governs; it does not become the integrator's design function.
+        why: >-
+          When the organisation jumps to Phase G the practitioner still provides useful support:
+          constant micro-iterations focused on a narrow set of concerns on the critical path to
+          value, exposing uncertainty as risk, and ensuring stakeholders understand honest
+          expectations without "fixing the project" (GUIDE:adm-practitioners §11.4). Architecture
+          to support solution delivery lives in Phase G (§4.1.4), while the still-open decisions
+          get architecture before the decision (§4.1). The role separation follows §11.3.
+      - key: B
+        points: 3
+        text: >-
+          Join the design authority and immediately run a short Phase A for the programme:
+          establish the stakeholders including manufacturing and the distribution business,
+          document the concerns about cold-chain, the warehouse collision and the interfaces,
+          produce an Architecture Vision and Statement of Architecture Work for the ERP
+          programme, and then govern the integrator's design against it through the remaining
+          months.
+        why: >-
+          The stakeholder and concern work is right and the Vision would help, but running a
+          Phase A "for the programme" after the decision and contract treats the ERP choice as
+          the architecture and misses the still-open enterprise decisions — integrated planning
+          across the factory gate and the sequencing against the warehouse programme — that
+          architecture could still inform (GUIDE:adm-practitioners §11.2.1; §4.1). It also
+          leaves the team's risk-mitigation role in Phase G implicit (§11.4).
+      - key: C
+        points: 1
+        text: >-
+          Send the note. Ask the CIO to pause the programme for three months so that the team
+          can run Phases A to D and produce a Target Business, Data and Application Architecture
+          for the whole enterprise, against which the ERP design can then be assessed and, if
+          necessary, the vendor scope renegotiated.
+        why: >-
+          Architecture after the decision is late and causes conflict; at best it validates,
+          at worst it proves the board wrong after the contract is signed, and the damage to the
+          EA team is unlikely to be repaid by a better decision (GUIDE:adm-practitioners §11.2.1).
+          A full A-to-D cycle at enterprise breadth is also the wrong purpose and detail for a
+          programme in delivery (§3.2.2).
+      - key: D
+        points: 0
+        text: >-
+          Accept the programme director's request literally: assign the three architects to
+          the integrator's design teams to produce the finance, procurement and manufacturing
+          designs, adopt the vendor's global template as the target architecture, and report
+          compliance to the design authority as the configurations are completed.
+        why: >-
+          This is "not doing architecture": the practitioner acts as implementer, the
+          architecture is never described or approved by stakeholders, and compliance becomes
+          assertion (GUIDE:adm-practitioners §11.3). Adopting a vendor template as the target
+          also leaves every planted risk — cold-chain, warehouse collision, missing applications
+          — unaddressed.
+    refs: ["GUIDE:adm-practitioners §11.4", "GUIDE:adm-practitioners §11.2.1", "GUIDE:adm-practitioners §11.3", "GUIDE:adm-practitioners §4.1.4", "GUIDE:adm-practitioners §4.1", "GOV §2.1"]
+    open_book_hint: "Where to look: Practitioners' Approach §11 (Jumping to Phase G), especially §11.4 (managing innovation, creativity and circumstance), §11.2.1 (architecture after decision), §11.3 (not doing architecture), §4.1.4 (solution delivery and budget control)."
+    difficulty: 3
+    tags: [jumping-to-g, solution-delivery, risk, practitioners-approach]
+  - id: P1-104
+    unit: P1
+    objective: "P1.2"
+    lesson: P1/02_landscape_partitioning_and_scope
+    scenario: |
+      Ardent Group is an industrial conglomerate formed by acquisition over fifteen years. It has
+      three operating divisions — Rail Systems, Marine Engineering and Industrial Services — each
+      with its own management, ERP, engineering tools and customer base, plus a small group centre
+      that runs treasury, group reporting and shared HR. The divisions are largely autonomous; the
+      group's stated operating model is "federated with shared services where they pay for
+      themselves", and the divisional managing directors are measured on divisional profit. Rail
+      Systems is the largest and most profitable; Industrial Services is the fastest growing and
+      runs on the thinnest margins.
+
+      Each division has some architecture capability. Rail Systems has a mature EA team of six that
+      owns a segment architecture for the division, keeps it in a modelling tool, and runs its own
+      architecture board chaired by the divisional CIO. Marine has two solution architects embedded
+      in its IT function who produce project designs and keep no repository. Industrial Services has
+      none and relies on its ERP vendor's consultants for "architecture". The group centre has just
+      appointed a Group Enterprise Architect — you — reporting to the group CIO, with a remit "to
+      bring coherence to architecture across the group". You have no team, a small budget for tools,
+      and a mandate letter from the group CEO.
+
+      Three pressures have prompted the appointment. The board wants a single group-wide view of
+      customer and supplier master data for credit risk and procurement leverage, because the same
+      supplier was found to be on different terms in all three divisions. A cyber security incident
+      in Marine exposed that nobody could say which systems connected to which across divisional
+      boundaries, and the group's insurer has asked for an integration inventory. And the group is
+      preparing a bid for a large infrastructure contract that would require Rail and Industrial
+      Services to deliver as one, with shared project controls and a common engineering data
+      environment; the bid must state what shared capability the group can commit to within twelve
+      months of award.
+
+      In your first month you have found that the Rail EA team believes the group role should not
+      exist, and has proposed that it takes on the Marine and Industrial Services architectures as
+      well, since it has the only capable team; its manager has offered to "own everything from
+      Rail". Marine's CIO objects that Rail does not understand shipbuilding and that its
+      architects would impose rail standards on marine systems. Industrial Services' managing
+      director wants nothing that slows down its ERP roadmap and has said the group role "can have
+      whatever documents it likes as long as it does not touch my projects". The group CIO has
+      suggested that the simplest answer is a single group architecture team that owns everything,
+      staffed by moving the Rail architects to the group centre. The group finance director has
+      asked for an answer within the quarter, because the bid team needs to know what shared
+      capability it can commit to and the insurer's deadline is the same. Nobody has written down
+      which architecture covers what, who owns each, or what happens where they overlap.
+
+      You have also established what exists. Rail's segment architecture covers its products,
+      engineering systems and ERP at capability-level detail, is current, and has a documented
+      relationship to nothing outside Rail. Marine's project designs reference a "group standard"
+      that does not exist. Industrial Services' ERP vendor has a reference architecture it calls
+      "the Industrial Services architecture", owned by the vendor. The group centre has a treasury
+      system architecture maintained by the finance function with no architect involved. Nobody has
+      defined the boundaries: whether "customer master data" is a group architecture or three
+      divisional ones with an integration standard, whether the bid capability is a temporary
+      project architecture or a standing group one, and which governance body would hear a dispute
+      between a divisional architecture and a group one. The group CIO's single-team proposal has
+      been costed at a level Industrial Services will not fund; the Rail proposal has been rejected
+      by Marine; and the bid team has started designing the shared engineering data environment
+      itself, with a contractor, because it could not wait.
+
+      You must recommend how architecture work across the group should be organised: who owns
+      which architecture, how the pieces relate, and how the three cross-divisional needs will be
+      covered without breaking the federated model.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Treat this as the Preliminary Phase partitioning activity. Determine the organisation
+          structure for architecture: standing teams at group and divisional level with their
+          governance bodies, membership and reporting lines. Partition the Architecture
+          Landscape so that every partition has exactly one owning team — Rail keeps its segment
+          architecture, Marine's and Industrial Services' segments are assigned owning teams
+          (built up or supported by the group centre), and the group team owns the strategic
+          architecture and the cross-divisional partitions that the pressures define: master
+          data, inter-divisional integration, and the shared engineering and project-controls
+          capability for the bid. For each partition record subject area, level of detail, time
+          period and stakeholders, then define the relationships between partitions — where
+          they overlap or drill down and what compliance is required between them. Because the
+          group is federated, adopt an integration framework: content standards (for example a
+          common master-data and interface catalog) and governance that treats content
+          integration as a condition of compliance, so that divisional architectures remain
+          stand-alone projects that still form a group picture.
+        why: >-
+          This is APPLY §4.2.1 applied: the Preliminary Phase determines the architecture
+          organisation structure, partitions the entire enterprise so that each architecture has
+          a single owning team, and defines relationships and compliance between partitions. The
+          reasons match §4.1 (conflicting unit architectures, teams working concurrently,
+          re-use). Federated architectures with an integration framework are the pattern for
+          conglomerates (§4.3), and the levels place the group work at strategic and the
+          divisional work at segment level (§3.2).
+      - key: B
+        points: 3
+        text: >-
+          Partition the landscape by division, confirming Rail, Marine and Industrial Services
+          as three segment architectures each with one owning team, and establish the group
+          team as owner of a strategic architecture that sets direction. Let each division
+          continue to develop and govern its architecture independently, and rely on the group
+          strategic architecture to provide the overall picture that the bid team and the board
+          need.
+        why: >-
+          The partitioning and single ownership are right, but stopping there produces
+          exactly the risk the standard names: a fragmented, disjointed collection that cannot
+          be integrated into a big picture (APPLY §4.3). The cross-divisional partitions the
+          scenario plants — master data, inter-divisional integration, the shared bid
+          capability — have no owner, and there are no content-integration standards or
+          compliance conditions between the partitions (§4.2.1; §4.3).
+      - key: C
+        points: 1
+        text: >-
+          Accept the group CIO's proposal: create a single group architecture team by moving
+          the Rail architects to the centre, give it ownership of one enterprise-wide
+          architecture covering all three divisions, and have it develop the master data,
+          integration and bid capabilities as part of that architecture over the next two years.
+        why: >-
+          One architecture worked on by everyone is what partitioning exists to avoid: the
+          standard prefers partitioning until each architecture has one owning team because
+          shared ownership makes responsibilities hard to establish (APPLY §4.2.1), and the
+          partitioning model should reflect the enterprise's own operating model, which here is
+          federated (§4.1). It also loses the divisional segment knowledge Marine objects about.
+      - key: D
+        points: 0
+        text: >-
+          Let the Rail EA team absorb architecture for Marine and Industrial Services as it
+          proposed, since it is the only capable team, and have the group role act as a
+          reviewer of Rail's outputs; assign the bid's shared capabilities to whichever
+          divisional project team is mobilised first.
+        why: >-
+          This assigns a temporary project team to own a standing cross-divisional partition,
+          when temporary teams should come under the governance of a standing architecture team
+          (APPLY §4.2.1), and it leaves two divisions' architectures owned by a team with no
+          mandate or subject knowledge there, contradicting the one-owning-team-per-partition
+          logic and the operating-model fit of §4.1.
+    refs: ["APPLY §4.2.1", "APPLY §4.1", "APPLY §4.3", "APPLY §3.2", "GUIDE:adm-practitioners §3.2.1"]
+    open_book_hint: "Where to look: Applying the ADM §4.1 (why partition), §4.2.1 (Preliminary Phase steps: organisation structure, one owning team, relationships), §4.3 (integration and federated architectures), §3.2 (strategic, segment, capability levels)."
+    difficulty: 2
+    tags: [partitioning, federation, landscape, preliminary-phase]
+  - id: P1-105
+    unit: P1
+    objective: "P1.2"
+    lesson: P1/02_landscape_partitioning_and_scope
+    scenario: |
+      Bellweather Health is a regional healthcare provider with 14 hospitals, 200 community clinics
+      and 38,000 staff. Two years ago its board approved a ten-year digital strategy, and the EA
+      team produced a strategic architecture for it: a capability map, a set of target operating
+      principles, a target application landscape at high level, and a roadmap of four programmes.
+      The board approved that architecture, and it is held in the Architecture Repository as the
+      current strategic target. The first programme, a shared patient portal, is in implementation
+      and has consumed two of the six architects for eighteen months.
+
+      The second of the four programmes, Integrated Care Pathways, has now been funded. It aims to
+      let a patient's care plan follow them across hospital, clinic and community services, and to
+      give clinicians one view of the plan. The programme director has issued a Request for
+      Architecture Work to the EA team. It asks for "a complete target architecture for integrated
+      care covering all services, all data, all applications and all infrastructure, with a
+      five-year migration plan", to be delivered in four months so that procurement can begin. The
+      request was drafted by the programme office from a template and has not been discussed with
+      the EA team.
+
+      The EA team has six architects. Two are already committed to the first programme, which is in
+      implementation. A third is working with the Chief Medical Information Officer on a clinical
+      safety architecture that the regulator has asked for and that cannot be delayed. The
+      remaining three are available for Integrated Care Pathways, one of whom is newly hired.
+
+      In the first two weeks the lead architect has discovered the following. The strategic
+      architecture already fixes several things the request asks for: the target application
+      landscape names a single electronic patient record as the system of record for the care plan,
+      and a principle requires that clinical data be exchanged through the regional health
+      information exchange rather than point to point; both were approved by the board and neither
+      is in question. The request's "all infrastructure" would mean describing data-centre and
+      network estates that the programme will not change and that a separate infrastructure
+      programme owns. Community clinics run on an application estate that has never been
+      documented; the clinic managers estimate around 30 applications, some of them spreadsheets.
+      The regional health information exchange has published a data standard for care plans that
+      the programme is expected to adopt. The programme director believes the four months are
+      fixed because the procurement calendar is fixed, and has hinted that if the EA team cannot
+      deliver, the programme will engage a consultancy to "do the architecture" — a consultancy
+      that has already offered to "baseline everything" in eight weeks. The Chief Medical
+      Information Officer has said the only thing that matters is that the care plan is right and
+      safe at the point of care; the Director of Finance has said the only thing that matters is
+      that procurement is not delayed.
+
+      The lead architect has also looked at what the request would cost. Describing the
+      infrastructure estate alone would take the three architects the whole four months; documenting
+      the community estate to the same depth as the hospitals would take longer than that.
+      Meanwhile the questions procurement actually needs answered — what the care-plan record must
+      hold, how it is exchanged, which existing systems must change and which must not, what the
+      community clinics must be able to do — could be answered from the strategic architecture, the
+      exchange's published standard and a targeted description of the pathway, if the scope said
+      so. The programme director has never seen the strategic architecture and did not know the
+      system-of-record decision had been made; the consultancy's proposal does not mention it
+      either. The clinical safety architect has offered two days a week if the scope excludes what
+      her work already covers. The Architecture Repository's records show that the first programme
+      ran over by six months because its scope was "everything the portal touches".
+
+      The lead architect must respond to the Request for Architecture Work with a proposed scope
+      that the programme director, the CMIO and the Director of Finance can accept, and that three
+      architects can deliver.
+    question: "Refer to the scenario. Based on the TOGAF Standard and the Series Guides, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Place the work at segment level, beneath the approved strategic architecture as its
+          superior architecture, and scope it in Phase A along the standard's dimensions:
+          breadth limited to the care-pathway subject area across hospital, clinic and community
+          services; depth sufficient to define the gaps and the architecture requirements
+          procurement needs, not implementation design; time horizon aligned to the programme's
+          transition states within the ten-year strategy; and the domains to cover — business,
+          data and application in depth, technology only where the pathway changes it, with the
+          unchanged data-centre and network estate out of scope. Start in the Repository: reuse
+          the system-of-record decision and the exchange principle as constraints rather than
+          re-deciding them, describe the undocumented community estate only to the extent needed
+          to find gaps, and record in the Statement of Architecture Work what is excluded and
+          why. Negotiate the four months against this scope rather than the original request.
+        why: >-
+          Phase A's Define Scope step lists breadth, level of detail, partitioning
+          characteristics, domains, time period and repository assets (ADM §3.3.6); the
+          landscape is organised by breadth, depth, time and recency (APPLY §3.4), and the
+          programme sits at segment level under the strategic architecture (§3.2). The
+          Practitioners' Approach requires developing to the least detail that answers the
+          question, treating the approved strategic architecture as superior and constraining,
+          and starting in the Repository (GUIDE:adm-practitioners §3.2.1; §6.3.6).
+      - key: B
+        points: 3
+        text: >-
+          Accept the request's breadth of all services, data, applications and infrastructure,
+          since the programme spans the whole provider, but reduce the level of detail to a
+          high-level target across all four domains so that it can be produced in four months,
+          and produce the five-year migration plan as a high-level roadmap. Reuse the strategic
+          architecture's decisions where they apply.
+        why: >-
+          Reusing the superior architecture and limiting detail are right, but scoping breadth
+          to the whole provider and all four domains ignores the breadth and domain dimensions
+          of Define Scope (ADM §3.3.6) and describes estates the programme will not change,
+          which the Practitioners' Approach calls work outside the scope of the initiative
+          (GUIDE:adm-practitioners §3.2.1). A uniformly shallow architecture also fails to give
+          procurement the requirements it needs where the pathway does change things.
+      - key: C
+        points: 1
+        text: >-
+          Because the request is for a complete target architecture, begin by documenting the
+          full baseline — including the community clinics' undocumented estate and the
+          infrastructure — so that the target can be derived from it, and ask the programme
+          director to extend the four months to accommodate the baseline work.
+        why: >-
+          Baseline description is done only to the extent necessary to support the target and
+          to determine gaps; if the current state is accepted, describing it in full is wasted
+          effort that lengthens time to market (ADM §3.3.6; GUIDE:adm-practitioners §6.3.2). It
+          also ignores the superior architecture that already answers several of the request's
+          questions (§3.2.1).
+      - key: D
+        points: 0
+        text: >-
+          Decline the Request for Architecture Work on the grounds that the strategic
+          architecture already covers integrated care at the level the board approved, and
+          advise the programme to procure against that document and engage the consultancy for
+          any detail it needs.
+        why: >-
+          A strategic architecture is deliberately not detailed and is more guidance than
+          constraint; it cannot serve as the procurement-level architecture for a segment
+          programme (GUIDE:adm-practitioners §3.2.2). Declining the request also abandons the
+          segment level of the landscape that the programme needs (APPLY §3.2) and hands the
+          architecture to a party outside the governance hierarchy.
+    refs: ["ADM §3.3.6", "APPLY §3.2", "APPLY §3.4", "GUIDE:adm-practitioners §3.2.1", "GUIDE:adm-practitioners §6.3.6", "GUIDE:adm-practitioners §3.2.2"]
+    open_book_hint: "Where to look: ADM §3.3.6 (Define Scope: breadth, detail, partitioning, domains, time, assets); Applying the ADM §3.2 (levels) and §3.4 (breadth, depth, time, recency); Practitioners' Approach §3.2.1 (EA Landscape, superior architecture) and §6.3.6 (start in the Repository)."
+    difficulty: 2
+    tags: [scope, landscape, superior-architecture, phase-a]

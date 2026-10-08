@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 282" font-family="sans-serif" font-size="12" role="img" aria-label="Example Stakeholder Map Matrix for a fictional retail bank, an original study illustration">
+<defs><marker id="arr-stakeholder-map-matrix" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="760" height="282" fill="#fff"/>
+<text x="10" y="20" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Example: Stakeholder Map Matrix — retail bank</text>
+<text x="750" y="20" text-anchor="end" font-size="11" fill="#666" font-style="italic">matrix: Stakeholder × attribute</text>
+<rect x="10" y="34" width="150" height="34" rx="0" fill="#f2f2f2" stroke="#999" stroke-width="1"/>
+<text x="154" y="46" text-anchor="end" font-size="10" fill="#345" font-style="italic">Attribute →</text>
+<text x="16" y="62" text-anchor="start" font-size="10" fill="#345" font-style="italic">Stakeholder ↓</text>
+<rect x="160" y="34" width="147" height="34" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="233.5" y="51" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Class</text>
+<rect x="307" y="34" width="147" height="34" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="380.5" y="51" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Involvement</text>
+<rect x="454" y="34" width="147" height="34" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="527.5" y="51" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Key concern</text>
+<rect x="601" y="34" width="147" height="34" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="674.5" y="51" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Artefacts needed</text>
+<rect x="10" y="68" width="150" height="34" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="85" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Head of Retail</text>
+<rect x="160" y="68" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="233.5" y="85" text-anchor="middle" font-size="10" fill="#222">Key player</text>
+<rect x="307" y="68" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="380.5" y="85" text-anchor="middle" font-size="10" fill="#222">Sponsor</text>
+<rect x="454" y="68" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="527.5" y="80" text-anchor="middle" font-size="10" fill="#222">Mobile adoption,</text>
+<text x="527.5" y="92" text-anchor="middle" font-size="10" fill="#222">cost to serve</text>
+<rect x="601" y="68" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="674.5" y="80" text-anchor="middle" font-size="10" fill="#222">Value Chain,</text>
+<text x="674.5" y="92" text-anchor="middle" font-size="10" fill="#222">Business Footprint</text>
+<rect x="10" y="102" width="150" height="34" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="119" text-anchor="start" font-size="11" fill="#222" font-weight="bold">CIO</text>
+<rect x="160" y="102" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="233.5" y="119" text-anchor="middle" font-size="10" fill="#222">Key player</text>
+<rect x="307" y="102" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="380.5" y="119" text-anchor="middle" font-size="10" fill="#222">Decides</text>
+<rect x="454" y="102" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="527.5" y="114" text-anchor="middle" font-size="10" fill="#222">Fit with Core</text>
+<text x="527.5" y="126" text-anchor="middle" font-size="10" fill="#222">Banking roadmap</text>
+<rect x="601" y="102" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="674.5" y="114" text-anchor="middle" font-size="10" fill="#222">Solution Concept,</text>
+<text x="674.5" y="126" text-anchor="middle" font-size="10" fill="#222">App Communication</text>
+<rect x="10" y="136" width="150" height="34" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="153" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Compliance Officer</text>
+<rect x="160" y="136" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="233.5" y="153" text-anchor="middle" font-size="10" fill="#222">Keep satisfied</text>
+<rect x="307" y="136" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="380.5" y="153" text-anchor="middle" font-size="10" fill="#222">Reviews</text>
+<rect x="454" y="136" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="527.5" y="148" text-anchor="middle" font-size="10" fill="#222">KYC and fraud</text>
+<text x="527.5" y="160" text-anchor="middle" font-size="10" fill="#222">controls</text>
+<rect x="601" y="136" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="674.5" y="148" text-anchor="middle" font-size="10" fill="#222">Data Security,</text>
+<text x="674.5" y="160" text-anchor="middle" font-size="10" fill="#222">Requirements Catalog</text>
+<rect x="10" y="170" width="150" height="34" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="187" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Branch Manager</text>
+<rect x="160" y="170" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="233.5" y="187" text-anchor="middle" font-size="10" fill="#222">Keep informed</text>
+<rect x="307" y="170" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="380.5" y="187" text-anchor="middle" font-size="10" fill="#222">Consulted</text>
+<rect x="454" y="170" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="527.5" y="182" text-anchor="middle" font-size="10" fill="#222">Branch workload</text>
+<text x="527.5" y="194" text-anchor="middle" font-size="10" fill="#222">after the change</text>
+<rect x="601" y="170" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="674.5" y="182" text-anchor="middle" font-size="10" fill="#222">Process Flow,</text>
+<text x="674.5" y="194" text-anchor="middle" font-size="10" fill="#222">Org Decomposition</text>
+<rect x="10" y="204" width="150" height="34" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="221" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Card Ops Lead</text>
+<rect x="160" y="204" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="233.5" y="221" text-anchor="middle" font-size="10" fill="#222">Keep informed</text>
+<rect x="307" y="204" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="380.5" y="221" text-anchor="middle" font-size="10" fill="#222">Consulted</text>
+<rect x="454" y="204" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="527.5" y="216" text-anchor="middle" font-size="10" fill="#222">Card authorisation</text>
+<text x="527.5" y="228" text-anchor="middle" font-size="10" fill="#222">latency</text>
+<rect x="601" y="204" width="147" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="674.5" y="216" text-anchor="middle" font-size="10" fill="#222">Interface Catalog,</text>
+<text x="674.5" y="228" text-anchor="middle" font-size="10" fill="#222">Networked Computing</text><text x="10" y="254" text-anchor="start" font-size="10" fill="#345">Class follows a power/interest grouping; the map is drawn informally in Phase A, so no metamodel entity backs it.</text>
+<text x="10" y="274" text-anchor="start" font-size="11" fill="#666">Original illustration for study; the artifact is defined in CONTENT §3.6.3</text>
+</svg>

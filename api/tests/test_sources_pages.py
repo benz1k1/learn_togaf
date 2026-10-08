@@ -58,7 +58,7 @@ def _cleanup() -> None:
         REVIEW_DIR / "rejected" / DRAFT_FILE,
         REVIEW_DIR / LESSON_FILE,
         REVIEW_DIR / "rejected" / LESSON_FILE,
-        CONTENT_DIR / "questions" / "foundation" / DRAFT_FILE,
+        CONTENT_DIR / "questions" / "OGEA-101" / DRAFT_FILE,
         CONTENT_DIR / "lessons" / "F4" / "97_test_review_queue.md",
     ):
         path.unlink(missing_ok=True)
@@ -71,7 +71,7 @@ def _drafts(client: httpx.Client):
         textwrap.dedent(
             f"""\
             code: {DRAFT_SET}
-            exam: FOUNDATION
+            exam: OGEA-101
             name: Review queue test set
             source: generated
             model: test-model
@@ -139,7 +139,7 @@ def test_accept_moves_set_and_marks_reviewed(client: httpx.Client):
     response = post(client, f"/review-queue/{DRAFT_FILE}/accept")
     assert response.status_code == 303
     assert "Accepted" in response.headers["location"]
-    destination = CONTENT_DIR / "questions" / "foundation" / DRAFT_FILE
+    destination = CONTENT_DIR / "questions" / "OGEA-101" / DRAFT_FILE
     assert destination.is_file()
     assert not (REVIEW_DIR / DRAFT_FILE).exists()
     text = destination.read_text(encoding="utf-8")
@@ -166,6 +166,6 @@ def test_unknown_draft_is_404(client: httpx.Client):
 
 
 def test_draft_id_cannot_escape_review_dir(client: httpx.Client):
-    response = post(client, "/review-queue/../questions/foundation/starter.yaml/accept")
+    response = post(client, "/review-queue/../questions/OGEA-101/starter.yaml/accept")
     assert response.status_code in (404, 422)
-    assert Path(CONTENT_DIR / "questions" / "foundation" / "starter.yaml").is_file()
+    assert Path(CONTENT_DIR / "questions" / "OGEA-101" / "starter.yaml").is_file()

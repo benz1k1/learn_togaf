@@ -5,42 +5,54 @@
 {% set io_drill = preselect_phase and preselect_kind == 'io' %}
 <div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
 <form method="post" action="/practice" class="card bg-base-100 shadow-sm"
-      x-data="{ mode: 'DRILL', exam: '{{ preselect_exam }}', units: {{ ([preselect_unit] if preselect_unit else []) | attr_json }} }">
+      x-data="{ mode: '{{ preselect_mode }}', exam: '{{ preselect_exam }}', units: {{ ([preselect_unit] if preselect_unit else []) | attr_json }}, formats: {{ exams | attr_json }} }">
   {% include "_csrf.html" %}
   <div class="card-body gap-4">
     <div>
       <h2 class="card-title text-sm mb-2">Mode</h2>
       <div class="join">
-        {% for value, label, hint in [('DRILL', 'Drill', 'untimed, explanation after each answer'), ('FOUNDATION_MOCK', 'Foundation mock', '40 questions · 60 min · closed book'), ('PRACTITIONER_MOCK', 'Practitioner mock', '8 scenarios · 90 min · open book')] %}
-        <input type="radio" name="mode" value="{{ value }}" class="join-item btn btn-sm" aria-label="{{ label }}" x-model="mode" title="{{ hint }}" {% if value == 'DRILL' %}checked{% endif %}>
+        <input type="radio" name="mode" value="DRILL" class="join-item btn btn-sm" aria-label="Drill" x-model="mode" title="untimed, explanation after each answer">
+        <input type="radio" name="mode" value="MOCK" class="join-item btn btn-sm" aria-label="Mock" x-model="mode" title="the exam's real format, timed, review at the end">
+      </div>
+      <p class="text-xs text-base-content/60 mt-1" x-show="mode === 'DRILL'">Untimed. The explanation and why each distractor is wrong appear after every answer.</p>
+      <template x-if="mode === 'MOCK'">
+        <p class="text-xs text-base-content/60 mt-1" x-text="(f => f ? `${f.questions} ${f.scoring === 'gradient' ? 'scenarios' : 'questions'} · ${f.time_minutes}-minute clock · ${f.open_book ? 'open book' : 'closed book'} · pass ${f.pass_mark}/${f.max_score}${f.scoring === 'gradient' ? ' · gradient scoring 5/3/1/0' : ' · drawn by the blueprint weights per unit'} · review only at the end.` : '')(formats.find(f => f.code === exam))"></p>
+      </template>
+    </div>
+
+    <div {% if io_drill %}x-show="false"{% endif %}>
+      <h2 class="card-title text-sm mb-2">Exam</h2>
+      <div class="flex flex-col gap-2">
+        {% for track in tracks %}
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-xs uppercase text-base-content/60 w-20">{{ track | capitalize }}</span>
+          <div class="join">
+            {% for exam in exams if exam.track == track %}
+            <input type="radio" name="exam" value="{{ exam.code }}" class="join-item btn btn-sm" aria-label="{{ exam.code }}" x-model="exam" title="{{ exam.name }}">
+            {% endfor %}
+          </div>
+        </div>
         {% endfor %}
       </div>
-      <p class="text-xs text-base-content/60 mt-1" x-text="{DRILL: 'Untimed. The explanation and why each distractor is wrong appear after every answer.', FOUNDATION_MOCK: '40 questions drawn by the blueprint weights per unit, 60-minute clock, closed book, review only at the end. Pass mark 24.', PRACTITIONER_MOCK: '8 scenarios across P1–P8, 90-minute clock, open-book panel, gradient scoring 5/3/1/0. Pass mark 24.'}[mode]"></p>
+      <p class="text-xs text-base-content/60 mt-1" x-text="(f => f ? f.name : '')(formats.find(f => f.code === exam))"></p>
     </div>
 
     {% if io_drill %}
     <div class="alert alert-info text-sm" x-show="mode === 'DRILL'">
       <i class="mdi mdi-swap-horizontal"></i>
-      <span>Drill on the <strong>inputs and outputs of Phase {{ preselect_phase }}</strong> (Foundation, unit F4). <a href="/practice" class="link">Clear</a></span>
+      <span>Drill on the <strong>inputs and outputs of Phase {{ preselect_phase }}</strong> (OGEA-101, unit F4). <a href="/practice" class="link">Clear</a></span>
       <input type="hidden" name="phase" value="{{ preselect_phase }}">
       <input type="hidden" name="kind" value="io">
+      <input type="hidden" name="exam" value="OGEA-101">
     </div>
     {% endif %}
 
     <div x-show="mode === 'DRILL'" class="space-y-4">
       <div {% if io_drill %}x-show="false"{% endif %}>
-        <h2 class="card-title text-sm mb-2">Exam</h2>
-        <div class="join">
-          <input type="radio" name="exam" value="FOUNDATION" class="join-item btn btn-sm" aria-label="Foundation" x-model="exam">
-          <input type="radio" name="exam" value="PRACTITIONER" class="join-item btn btn-sm" aria-label="Practitioner" x-model="exam">
-        </div>
-      </div>
-
-      <div {% if io_drill %}x-show="false"{% endif %}>
         <h2 class="card-title text-sm mb-2">Units and objectives <span class="font-normal text-xs text-base-content/60">— none ticked means all</span></h2>
         <div class="grid gap-2 md:grid-cols-2">
           {% for unit in units %}
-          <div class="border border-base-300 rounded-lg p-2" x-show="exam === '{{ unit.exam }}'">
+          <div class="border border-base-300 rounded-lg p-2" x-show="{{ unit.exams | attr_json }}.includes(exam)">
             <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" name="units" value="{{ unit.code }}" class="checkbox checkbox-sm" x-model="units">
               <span class="font-medium text-sm">{{ unit.code }} · {{ unit.name }}</span>
@@ -85,7 +97,7 @@
     </details>
 
     <div class="card-actions">
-      <button type="submit" class="btn btn-primary btn-sm"><i class="mdi mdi-play"></i> <span x-text="mode === 'DRILL' ? 'Start drill' : 'Start mock'"></span></button>
+      <button type="submit" class="btn btn-primary btn-sm"><i class="mdi mdi-play"></i> <span x-text="mode === 'DRILL' ? 'Start drill' : 'Start ' + exam + ' mock'"></span></button>
     </div>
   </div>
 </form>
@@ -100,7 +112,7 @@
       {% for attempt in recent %}
       <tr>
         <td class="whitespace-nowrap">{{ attempt.started_at | fmt_dt }}</td>
-        <td>{{ attempt.exam | lower | capitalize }} {{ attempt.mode | lower }}</td>
+        <td>{{ attempt.exam }} {{ attempt.mode | lower }}</td>
         <td class="text-right">
           {% if attempt.finished_at %}{{ attempt.score }}/{{ attempt.max_score }}
             {% if attempt.passed == 1 %}<span class="badge badge-success badge-xs">pass</span>{% elif attempt.passed == 0 %}<span class="badge badge-error badge-xs">fail</span>{% endif %}

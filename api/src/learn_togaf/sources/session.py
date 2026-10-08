@@ -23,7 +23,12 @@ LOGIN_HOST = "identity.opengroup.org"
 # The Open Group SSO is a WSO2 identity server: the VISIBLE username box is #usernameUserInput
 # (a hidden #username sits beside it and must not be matched first), the password is #password
 # and the submit button is #sign-in-button. Generic names follow for a changed form.
-USERNAME_SELECTORS = ("#usernameUserInput", "input[name='email']", "input[type='email']", "input[name='username']:visible")
+USERNAME_SELECTORS = (
+    "#usernameUserInput",
+    "input[name='email']",
+    "input[type='email']",
+    "input[name='username']:visible",
+)
 PASSWORD_SELECTORS = ("#password", "input[name='password']", "input[type='password']")
 SUBMIT_SELECTORS = ("#sign-in-button", "button[type='submit']", "input[type='submit']")
 
@@ -98,7 +103,9 @@ def login(login_url: str, credentials: tuple[str, str] | None, headless: bool) -
                     submit.first.click()
                 else:
                     password_field.first.press("Enter")
-                logger.info("submitted the Open Group SSO form; waiting for the bounce back to the publication")
+                logger.info(
+                    "submitted the Open Group SSO form; waiting for the bounce back to the publication"
+                )
                 try:
                     page.wait_for_url(lambda url: LOGIN_HOST not in url, timeout=45_000)
                 except PlaywrightError:

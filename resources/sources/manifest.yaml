@@ -2,7 +2,7 @@
 version: 1
 licence: Personal copy of The Open Group publications fetched by the account holder for their own study (learn_togaf.md §1.3).
   This manifest holds URLs, titles and hashes only.
-fetched_at: '2026-09-11T06:34:31+00:00'
+fetched_at: '2026-09-25T10:33:29+00:00'
 documents:
   root:
     code: root
@@ -7814,3 +7814,173 @@ documents:
         fetched_at: '2026-09-11T06:34:31+00:00'
         etag: ''
     figure_counts: {}
+  archimate:
+    code: archimate
+    kind: STANDARD
+    title: 'Introduction: ArchiMate® 3.2 Specification'
+    html_url: https://pubs.opengroup.org/architecture/archimate3-doc/index.html
+    pages:
+      index.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/index.html
+        title: 'Introduction: ArchiMate® 3.2 Specification'
+        hash: 57e525976beb3467c61f1d27dc545aef32c943278967387e312c208432d81830
+        fetched_at: '2026-09-25T10:32:38+00:00'
+        etag: ''
+      language-notation-guide.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/language-notation-guide.html
+        title: 'Language Notation Guide (Clickable): ArchiMate® 3.2 Specification'
+        hash: 1bac1cc23f45ad118a059aac1c0651cdc29b2cb9f1bb6ab27e8cf7cb5f17b21f
+        fetched_at: '2026-09-25T10:32:36+00:00'
+        etag: ''
+      _archimate_3_2_specification.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/_archimate_3_2_specification.html
+        title: ArchiMate® 3.2 Specification
+        hash: 9d1f4cfc14e70d7cdfac24fa27064c580a84eec2e5118fbabb152b276a667715
+        fetched_at: '2026-09-25T10:32:40+00:00'
+        etag: ''
+      ch-Preface.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Preface.html
+        title: 'Preface: ArchiMate® 3.2 Specification'
+        hash: b2e10da09134813412af6621e3c44b6ce3d557e9af1daa4d58159aa4805c07a1
+        fetched_at: '2026-09-25T10:32:41+00:00'
+        etag: ''
+      ch-Trademarks.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Trademarks.html
+        title: 'Trademarks: ArchiMate® 3.2 Specification'
+        hash: b34d8553593fc66acc3a96d07bb267649a9f7e2c0fc2a205a74d0c5a75baa608
+        fetched_at: '2026-09-25T10:32:43+00:00'
+        etag: ''
+      _acknowledgements.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/_acknowledgements.html
+        title: ArchiMate® 3.2 Specification
+        hash: f38c3a77d6f4eaf760d605684f5eda7cdc1b1071e2cf9989664edbd2a399f2f9
+        fetched_at: '2026-09-25T10:32:45+00:00'
+        etag: ''
+      ch-Referenced-docs.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Referenced-docs.html
+        title: 'Referenced Documents: ArchiMate® 3.2 Specification'
+        hash: d11561c4eb302a3edf14d2b2ae968157b4e37bb1ae62537f6e08249d81c15e30
+        fetched_at: '2026-09-25T10:32:47+00:00'
+        etag: ''
+      ch-Introduction.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Introduction.html
+        title: 'Introduction: ArchiMate® 3.2 Specification'
+        hash: 57e525976beb3467c61f1d27dc545aef32c943278967387e312c208432d81830
+        fetched_at: '2026-09-25T10:32:49+00:00'
+        etag: ''
+      ch-Definitions.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Definitions.html
+        title: 'Definitions: ArchiMate® 3.2 Specification'
+        hash: ca8a6203f91bdb3e7737dc7cd8bb4bb3493bf161c6eff0bb0b2d621c71e82d8a
+        fetched_at: '2026-09-25T10:32:51+00:00'
+        etag: ''
+      ch-Language-Structure.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Language-Structure.html
+        title: 'Language Structure: ArchiMate® 3.2 Specification'
+        hash: 5c64354592a4363478fe93eac45329aff12798211a7eff84189735b7e37c3689
+        fetched_at: '2026-09-25T10:32:53+00:00'
+        etag: ''
+      ch-Generic-Metamodel.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Generic-Metamodel.html
+        title: 'Generic Metamodel: ArchiMate® 3.2 Specification'
+        hash: 9daa239add3bfb612505d78e254374563ac28ef7e131ec7ff4ec191a340885f8
+        fetched_at: '2026-09-25T10:32:55+00:00'
+        etag: ''
+      ch-Relationships-and-Relationship-Connectors.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Relationships-and-Relationship-Connectors.html
+        title: 'Relationships and Relationship Connectors: ArchiMate® 3.2 Specification'
+        hash: 95e4cfcdc32fd4f2df5c32a649fee4b45adcbfe3a1b41f9c65d15da8b09f60c4
+        fetched_at: '2026-09-25T10:32:57+00:00'
+        etag: ''
+      ch-Motivation-Elements.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Motivation-Elements.html
+        title: 'Motivation Elements: ArchiMate® 3.2 Specification'
+        hash: 9c8d058653bb7af91b4dd978c4bf51922fae28f665ea96682b250c5679a323ef
+        fetched_at: '2026-09-25T10:33:00+00:00'
+        etag: ''
+      ch-Strategy-Layer.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Strategy-Layer.html
+        title: 'Strategy Layer: ArchiMate® 3.2 Specification'
+        hash: f3b9d6a97b0c269092afed760b7dde4281b8d38fb96253277d1ffa5fa33713e2
+        fetched_at: '2026-09-25T10:33:02+00:00'
+        etag: ''
+      ch-Business-Layer.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Business-Layer.html
+        title: 'Business Layer: ArchiMate® 3.2 Specification'
+        hash: 70bd10aec86876d248bda6438e3c38fc3f5a74bfdd87b43e960ae7fd8c921bb3
+        fetched_at: '2026-09-25T10:33:04+00:00'
+        etag: ''
+      ch-Application-Layer.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Application-Layer.html
+        title: 'Application Layer: ArchiMate® 3.2 Specification'
+        hash: 6fe73de582569cf16c63357cfdecea899585a4506241a6d48cc28ce46e20fa73
+        fetched_at: '2026-09-25T10:33:06+00:00'
+        etag: ''
+      ch-Technology-Layer.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Technology-Layer.html
+        title: 'Technology Layer: ArchiMate® 3.2 Specification'
+        hash: 9dffd81d6c06585e1b5e05ba206c984b0c4c34d205703104acdbaebb14df85b3
+        fetched_at: '2026-09-25T10:33:09+00:00'
+        etag: ''
+      ch-Relationships-Between-Core-Layers.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Relationships-Between-Core-Layers.html
+        title: 'Relationships between Core Layers: ArchiMate® 3.2 Specification'
+        hash: a63cd34b7982d2793d62ca0bfbeb9dc6976f3b80012da9a01616cac71cff23d7
+        fetched_at: '2026-09-25T10:33:11+00:00'
+        etag: ''
+      ch-Implementation-and-Migration-Layer.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Implementation-and-Migration-Layer.html
+        title: 'Implementation and Migration Layer: ArchiMate® 3.2 Specification'
+        hash: 1742f029ee72a94432668d2c675c187ec70f541485b329d6e2faec8cb0e17d2b
+        fetched_at: '2026-09-25T10:33:13+00:00'
+        etag: ''
+      ch-Stakeholders-Architecture-Views-and-Viewpoints.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Stakeholders-Architecture-Views-and-Viewpoints.html
+        title: 'Stakeholders, Architecture Views and Viewpoints: ArchiMate® 3.2 Specification'
+        hash: e90e3ea35b0a55159baf40aef8aefd7dcdb8eda9734e2df6d31c454535d204f2
+        fetched_at: '2026-09-25T10:33:15+00:00'
+        etag: ''
+      ch-Language-Customization-Mechanisms.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Language-Customization-Mechanisms.html
+        title: 'Language Customization Mechanisms: ArchiMate® 3.2 Specification'
+        hash: 473775de8b788e07a7a0ab3799960e620f0ce1b6f282c4b38f395e3a7e58a078
+        fetched_at: '2026-09-25T10:33:17+00:00'
+        etag: ''
+      ch-Summary-of-Language-Notation.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Summary-of-Language-Notation.html
+        title: 'Apdx A: ArchiMate® 3.2 Specification'
+        hash: 5b56a3944e0edf0cc0bcd9df3f926f6e0e6e882241edad233c72638f30cdf62a
+        fetched_at: '2026-09-25T10:33:19+00:00'
+        etag: ''
+      ch-relationships-Normative.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-relationships-Normative.html
+        title: 'Apdx B: ArchiMate® 3.2 Specification'
+        hash: 80a8f3c2dd00e49dab3b9f00e33629d95e94873424f63d978a39f16e7e192d46
+        fetched_at: '2026-09-25T10:33:21+00:00'
+        etag: ''
+      ch-Example-Viewpoints.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Example-Viewpoints.html
+        title: 'Example Viewpoints: ArchiMate® 3.2 Specification'
+        hash: 4bdf973ddde195bc511560d8ab23eea3f88cdee2375a9acecd6c9e1f1d952025
+        fetched_at: '2026-09-25T10:33:23+00:00'
+        etag: ''
+      ch-Relationship-to-Other-Standards-Specifications-and-Guidance-Documents.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Relationship-to-Other-Standards-Specifications-and-Guidance-Documents.html
+        title: 'Apdx D: ArchiMate® 3.2 Specification'
+        hash: 08befb40811de20b47669e95f84203bf20ca233a94bed75de9be4fbc5d2dbb2f
+        fetched_at: '2026-09-25T10:33:25+00:00'
+        etag: ''
+      ch-Changes-from-previous-versions.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Changes-from-previous-versions.html
+        title: Apdx E:ArchiMate® 3.2 Specification
+        hash: 43259c29027fe7309949d1749cdb3155968ed3cb48f7af17f2eccbffab493abb
+        fetched_at: '2026-09-25T10:33:28+00:00'
+        etag: ''
+      ch-Acronyms.html:
+        url: https://pubs.opengroup.org/architecture/archimate3-doc/ch-Acronyms.html
+        title: 'Acronyms: ArchiMate® 3.2 Specification'
+        hash: 96b4e1b38ca5ce637853d3e888abe49bf55b9e7aa6c9ec43c15209d32f75c55a
+        fetched_at: '2026-09-25T10:33:29+00:00'
+        etag: ''
+    figure_counts:
+      html: 117

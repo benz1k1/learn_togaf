@@ -1,0 +1,1132 @@
+# S2 Contextual and Conceptual Layers bank (learn_sabsa_archimate.md §4.3). Authored, original paraphrase
+# of the SABSA framework; refs name the SABSA White Paper sections and are to be verified once the PDF is
+# registered. status: draft until reviewed.
+code: S2_BANK
+exam: SCF
+name: "S2 Contextual and Conceptual Layers bank"
+kind: DRILL
+source: authored
+questions:
+  # ---------------------------------------------------------------- S2.1 Contextual layer
+  - id: S2-101
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "Whose view is the Contextual layer of the SABSA Matrix?"
+    options:
+      - {key: A, text: "The business", correct: true}
+      - {key: B, text: "The architect", why: "The architect's view is the Conceptual layer."}
+      - {key: C, text: "The designer", why: "The designer's view is the Logical layer."}
+      - {key: D, text: "The facilities manager", why: "That is the Service Management layer."}
+    explanation: "The Contextual layer is the business view: the enterprise as it sees itself, in its own language."
+    refs: ["SABSA §3"]
+    difficulty: 1
+    tags: [contextual, views]
+  - id: S2-102
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "What is in the Contextual × Motivation cell?"
+    options:
+      - {key: A, text: "Risk management objectives", why: "That is Conceptual × Motivation."}
+      - {key: B, text: "Business risk: opportunities and threats", correct: true}
+      - {key: C, text: "Risk management policies", why: "That is Logical × Motivation."}
+      - {key: D, text: "Operational risk management", why: "That is Service Management × Motivation."}
+    explanation: "The business's own perception of risk, on both sides, before the architect has turned it into objectives."
+    refs: ["SABSA §3.1"]
+    difficulty: 1
+    tags: [contextual, cells, risk]
+  - id: S2-103
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "What is in the Contextual × People cell?"
+    options:
+      - {key: A, text: "Roles and responsibilities: owners, custodians and users", why: "That is the Conceptual cell."}
+      - {key: B, text: "Business governance: the organisation and its relationships", correct: true}
+      - {key: C, text: "The entity and trust framework", why: "That is Logical × People."}
+      - {key: D, text: "Identity and access-control systems", why: "That is Physical × People."}
+    explanation: "The business view of 'who' is its governance: structures, accountabilities, customers, suppliers, partners, regulators."
+    refs: ["SABSA §3.1"]
+    difficulty: 2
+    tags: [contextual, cells]
+  - id: S2-104
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "What is in the Contextual × Location cell?"
+    options:
+      - {key: A, text: "Business geography", correct: true}
+      - {key: B, text: "The domain framework", why: "Conceptual × Location."}
+      - {key: C, text: "Domain maps", why: "Logical × Location."}
+      - {key: D, text: "ICT infrastructure", why: "Physical × Location."}
+    explanation: "Where the business operates: countries, sites, jurisdictions and markets."
+    refs: ["SABSA §3.1"]
+    difficulty: 1
+    tags: [contextual, cells]
+  - id: S2-105
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "What is in the Contextual × Assets cell?"
+    options:
+      - {key: A, text: "The inventory of information assets", why: "Logical × Assets."}
+      - {key: B, text: "The business: its decisions, goals and assets", correct: true}
+      - {key: C, text: "The Business Attributes Profile", why: "Conceptual × Assets."}
+      - {key: D, text: "The data dictionary", why: "Physical × Assets."}
+    explanation: "The business's own assets and goals: revenue, brand, customer relationships, licence to operate."
+    refs: ["SABSA §3.1"]
+    difficulty: 1
+    tags: [contextual, cells]
+  - id: S2-106
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "What is in the Contextual × Process cell?"
+    options:
+      - {key: A, text: "Business processes and the transactions they perform", correct: true}
+      - {key: B, text: "Strategies for process assurance", why: "Conceptual × Process."}
+      - {key: C, text: "Process maps with security services", why: "Logical × Process."}
+      - {key: D, text: "Process mechanisms", why: "Physical × Process."}
+    explanation: "The value chain: how the business does what it does."
+    refs: ["SABSA §3.1"]
+    difficulty: 1
+    tags: [contextual, cells]
+  - id: S2-107
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "Which language is used in the Contextual layer?"
+    options:
+      - {key: A, text: "Security vocabulary such as confidentiality and integrity", why: "Security wording appears from the Conceptual layer onward."}
+      - {key: B, text: "The business's own language, with no security terms", correct: true}
+      - {key: C, text: "Technical standards and protocol names", why: "Component-layer language."}
+      - {key: D, text: "Regulatory clause numbers", why: "Regulation is a source, not the language of the layer."}
+    explanation: "The Contextual layer records the business as it describes itself so that later justifications are understood by business owners."
+    refs: ["SABSA §3"]
+    difficulty: 1
+    tags: [contextual]
+  - id: S2-108
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "Which of these is a Contextual-layer business driver rather than a Conceptual-layer attribute?"
+    options:
+      - {key: A, text: "Confidential", why: "An attribute."}
+      - {key: B, text: "Retain the banking licence", correct: true}
+      - {key: C, text: "Available", why: "An attribute."}
+      - {key: D, text: "Non-repudiable", why: "An attribute."}
+    explanation: "A driver is a business need in business words; an attribute is the quality that need implies."
+    refs: ["SABSA §3.1"]
+    difficulty: 1
+    tags: [contextual, drivers]
+  - id: S2-109
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "'The payments window closes at 16:00' belongs in which Contextual cell?"
+    options:
+      - {key: A, text: "Process", why: "It is a temporal constraint on the process, so it belongs under Time."}
+      - {key: B, text: "Time", correct: true}
+      - {key: C, text: "Location", why: "Not about place."}
+      - {key: D, text: "Motivation", why: "Not a risk statement."}
+    explanation: "Business time dependencies: trading hours, deadlines and windows."
+    refs: ["SABSA §3.1"]
+    difficulty: 1
+    tags: [contextual, cells, time]
+  - id: S2-110
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "How is the Contextual layer populated?"
+    options:
+      - {key: A, text: "By designing the security services", why: "That is Logical-layer work."}
+      - {key: B, text: "By listening: strategy documents, business plans, process descriptions, interviews with business owners", correct: true}
+      - {key: C, text: "By selecting products from a catalogue", why: "Component-layer work."}
+      - {key: D, text: "By running a vulnerability scan", why: "A technical input to risk assessment, not the business view."}
+    explanation: "The layer is recorded from the business, not designed by the architect."
+    refs: ["SABSA §3"]
+    difficulty: 1
+    tags: [contextual]
+  - id: S2-111
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "Which Contextual cell sets the boundaries that security domains will later respect?"
+    options:
+      - {key: A, text: "Assets", why: "Assets says what matters, not where the boundaries are."}
+      - {key: B, text: "Location (business geography) together with People (business governance)", correct: true}
+      - {key: C, text: "Time", why: "Time gives calendars, not boundaries."}
+      - {key: D, text: "Motivation", why: "Motivation gives priority, not scope."}
+    explanation: "Geography and governance define the jurisdictions and organisational units that later domains match."
+    refs: ["SABSA §3"]
+    difficulty: 2
+    tags: [contextual, scope]
+  - id: S2-112
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "Which Contextual cell tells the architect which attributes will matter most?"
+    options:
+      - {key: A, text: "Motivation (business risk)", correct: true}
+      - {key: B, text: "Location", why: "Location scopes; it does not prioritise."}
+      - {key: C, text: "Time", why: "Time constrains; it does not prioritise."}
+      - {key: D, text: "Process", why: "Process describes activity, not priority."}
+    explanation: "The business-risk cell weights the profile by what the business fears and hopes for."
+    refs: ["SABSA §3"]
+    difficulty: 2
+    tags: [contextual, priority]
+  - id: S2-113
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "In the TOGAF risk and security guide, where is the Contextual-layer work of capturing business drivers, risk appetite and key risk areas done?"
+    options:
+      - {key: A, text: "Phase D", why: "Technology architecture."}
+      - {key: B, text: "Preliminary Phase and Phase A", correct: true}
+      - {key: C, text: "Phase G", why: "Implementation governance."}
+      - {key: D, text: "Phase F", why: "Migration planning."}
+    explanation: "The guide's Preliminary Phase covers drivers, appetite, key risk areas and the security resource plan; Phase A carries them into the vision."
+    refs: ["GUIDE:integrating-risk-and-security §5.1", "SABSA §3"]
+    difficulty: 1
+    tags: [contextual, togaf]
+  - id: S2-114
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "'Customers must be able to trust us with their data' is a driver from which Contextual cell?"
+    options:
+      - {key: A, text: "People (business governance and relationships)", correct: true}
+      - {key: B, text: "Time", why: "No temporal element."}
+      - {key: C, text: "Location", why: "No place element."}
+      - {key: D, text: "Process", why: "It is about a relationship, not an activity."}
+    explanation: "Customer relationships are part of business governance and relationships."
+    refs: ["SABSA §3.1"]
+    difficulty: 2
+    tags: [contextual, drivers]
+  - id: S2-115
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "A security architect skips the Contextual layer and starts with a threat model. What is the consequence in SABSA's terms?"
+    options:
+      - {key: A, text: "Nothing; the Contextual layer is optional", why: "It is the foundation of traceability."}
+      - {key: B, text: "There is nothing to trace controls to, so the architecture is not business-driven", correct: true}
+      - {key: C, text: "The Component layer becomes redundant", why: "Unrelated."}
+      - {key: D, text: "The Lifecycle starts at Design", why: "Strategy and Planning has been skipped, which is the failure, not a re-labelling."}
+    explanation: "Without the business view every control lacks a business justification."
+    refs: ["SABSA §3"]
+    difficulty: 2
+    tags: [contextual, traceability]
+  - id: S2-116
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "'Operate under both EU and Indian law at the same time' is a driver from which Contextual cell?"
+    options:
+      - {key: A, text: "Location", correct: true}
+      - {key: B, text: "Assets", why: "It is about jurisdiction, not assets."}
+      - {key: C, text: "Time", why: "Not temporal."}
+      - {key: D, text: "People", why: "Not organisational."}
+    explanation: "Business geography includes the legal places the business operates in."
+    refs: ["SABSA §3.1"]
+    difficulty: 1
+    tags: [contextual, drivers]
+  - id: S2-117
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "Which statement about the Contextual layer's Motivation cell is correct?"
+    options:
+      - {key: A, text: "It contains only threats", why: "SABSA's risk is two-sided."}
+      - {key: B, text: "It contains both the opportunities the business wants to seize and the threats it wants to avoid", correct: true}
+      - {key: C, text: "It contains the control objectives", why: "Objectives are Conceptual."}
+      - {key: D, text: "It contains the risk register maintained by operations", why: "That is Service Management."}
+    explanation: "Business risk at the Contextual layer is stated by the business, on both sides, in business terms."
+    refs: ["SABSA §3.1"]
+    difficulty: 1
+    tags: [contextual, risk]
+  - id: S2-118
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "Which of these is NOT a typical source for populating the Contextual layer?"
+    options:
+      - {key: A, text: "Organisation charts", why: "A source for the People cell."}
+      - {key: B, text: "Regulatory obligations", why: "A source for drivers in several cells."}
+      - {key: C, text: "Firewall rule sets", correct: true}
+      - {key: D, text: "Business plans", why: "A source for Assets and Motivation."}
+    explanation: "Firewall rules are Physical and Component content; the Contextual layer is drawn from the business's own documents and people."
+    refs: ["SABSA §3"]
+    difficulty: 1
+    tags: [contextual]
+  - id: S2-119
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "What is the first link in SABSA's two-way traceability chain?"
+    options:
+      - {key: A, text: "Service to mechanism", why: "Logical to Physical, further down."}
+      - {key: B, text: "Business driver to business attribute", correct: true}
+      - {key: C, text: "Policy to procedure", why: "Logical to Physical in the Motivation column."}
+      - {key: D, text: "Product to standard", why: "Component-layer detail."}
+    explanation: "Every attribute must trace to a driver and every driver to an attribute: Contextual to Conceptual."
+    refs: ["SABSA §2.2", "SABSA §3.1"]
+    difficulty: 2
+    tags: [contextual, traceability]
+  - id: S2-120
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "Which Contextual cell would hold 'the lifetime of a customer contract is five years'?"
+    options:
+      - {key: A, text: "Time", correct: true}
+      - {key: B, text: "Assets", why: "Although the contract is an asset, the fact recorded is its lifetime."}
+      - {key: C, text: "Process", why: "Not an activity."}
+      - {key: D, text: "People", why: "Not organisational."}
+    explanation: "Business time dependencies include the lifetimes of assets and contracts."
+    refs: ["SABSA §3.1"]
+    difficulty: 2
+    tags: [contextual, cells, time]
+  - id: S2-121
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "Why does SABSA insist that Contextual drivers are written in the business's language?"
+    options:
+      - {key: A, text: "So that auditors can map them to ISO 27001 clauses", why: "Mapping to standards is done lower down."}
+      - {key: B, text: "So that a control's justification can later be shown to a business owner and understood", correct: true}
+      - {key: C, text: "Because the architect has not yet been appointed", why: "The architect records the layer; the language choice is deliberate."}
+      - {key: D, text: "Because security terms are trade-marked", why: "Not a reason."}
+    explanation: "Transparency to the business depends on the top layer being in business words."
+    refs: ["SABSA §3"]
+    difficulty: 2
+    tags: [contextual, business-driven]
+  - id: S2-122
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "Which TOGAF metamodel concepts are the nearest to SABSA's Contextual-layer business drivers?"
+    options:
+      - {key: A, text: "Solution Building Blocks", why: "Those are Physical and Component content."}
+      - {key: B, text: "Drivers, goals and objectives in the Motivation extension", correct: true}
+      - {key: C, text: "Technology components", why: "Phase D content."}
+      - {key: D, text: "Architecture Contracts", why: "Governance artefacts."}
+    explanation: "TOGAF records drivers, goals and objectives in the Architecture Vision; SABSA records them as the Contextual row."
+    refs: ["GUIDE:integrating-risk-and-security §5.1", "SABSA §3"]
+    difficulty: 2
+    tags: [contextual, togaf]
+  - id: S2-123
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "'Settle every trade the same day' is a Contextual driver from which cell?"
+    options:
+      - {key: A, text: "Process (with a Time dependency)", correct: true}
+      - {key: B, text: "Location", why: "No place element."}
+      - {key: C, text: "People", why: "No organisational element."}
+      - {key: D, text: "Assets", why: "Describes an activity, not an asset."}
+    explanation: "Settlement is a business process; the same-day constraint is its time dependency."
+    refs: ["SABSA §3.1"]
+    difficulty: 2
+    tags: [contextual, drivers]
+  - id: S2-124
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "What does the Contextual layer contribute to the scope of the architecture?"
+    options:
+      - {key: A, text: "The list of products to buy", why: "Component layer."}
+      - {key: B, text: "The boundaries of the enterprise, its geography and its governance, within which everything below is designed", correct: true}
+      - {key: C, text: "The network topology", why: "Physical layer."}
+      - {key: D, text: "The trust relationships", why: "Logical layer."}
+    explanation: "Scope, priority and language are the three contributions of a well-populated Contextual layer."
+    refs: ["SABSA §3"]
+    difficulty: 2
+    tags: [contextual, scope]
+  - id: S2-125
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "In the TOGAF guide, what does the security architect contribute to the Phase A Architecture Vision?"
+    options:
+      - {key: A, text: "The security services catalogue", why: "Phase C."}
+      - {key: B, text: "Business drivers, the risk appetite statement and the key risk areas", correct: true}
+      - {key: C, text: "The security domain model", why: "Phase B."}
+      - {key: D, text: "The risk mitigation plan", why: "Phase E."}
+    explanation: "Phase A's security contribution is the Contextual and Conceptual content expressed so the sponsor recognises it."
+    refs: ["GUIDE:integrating-risk-and-security §5.2"]
+    difficulty: 2
+    tags: [contextual, togaf]
+  - id: S2-126
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "Which cell does 'the brand' belong to at the Contextual layer?"
+    options:
+      - {key: A, text: "Assets", correct: true}
+      - {key: B, text: "Motivation", why: "Damage to the brand would be a risk; the brand itself is an asset."}
+      - {key: C, text: "People", why: "Not organisational."}
+      - {key: D, text: "Process", why: "Not an activity."}
+    explanation: "The business's assets include intangibles such as brand and reputation."
+    refs: ["SABSA §3.1"]
+    difficulty: 1
+    tags: [contextual, cells]
+  - id: S2-127
+    unit: S2
+    objective: "S2.1"
+    lesson: S2/01_the_contextual_layer
+    stem: "The six Contextual cells, read together, produce what output for the next layer?"
+    options:
+      - {key: A, text: "A list of business drivers, still free of security wording", correct: true}
+      - {key: B, text: "A list of control objectives", why: "Objectives are produced at the Conceptual layer."}
+      - {key: C, text: "A list of security services", why: "Logical layer."}
+      - {key: D, text: "A list of vulnerabilities", why: "Input to risk assessment, not the Contextual output."}
+    explanation: "Drivers are the raw material of the Business Attributes Profile."
+    refs: ["SABSA §3.1"]
+    difficulty: 1
+    tags: [contextual, drivers]
+  # ---------------------------------------------------------------- S2.2 Conceptual layer
+  - id: S2-128
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "Whose view is the Conceptual layer?"
+    options:
+      - {key: A, text: "The architect", correct: true}
+      - {key: B, text: "The business", why: "Contextual."}
+      - {key: C, text: "The designer", why: "Logical."}
+      - {key: D, text: "The builder", why: "Physical."}
+    explanation: "The Conceptual layer is the architect's view: the security strategy."
+    refs: ["SABSA §3.2"]
+    difficulty: 1
+    tags: [conceptual, views]
+  - id: S2-129
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "What is in the Conceptual × Assets cell?"
+    options:
+      - {key: A, text: "Business knowledge and risk strategy: the Business Attributes Profile", correct: true}
+      - {key: B, text: "The business: its goals and assets", why: "Contextual."}
+      - {key: C, text: "Information assets", why: "Logical."}
+      - {key: D, text: "Control and enablement objectives", why: "Conceptual × Motivation."}
+    explanation: "The profile describes what the business needs its assets to be, so it sits in the Assets column."
+    refs: ["SABSA §3.2"]
+    difficulty: 2
+    tags: [conceptual, cells, attributes]
+  - id: S2-130
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "What is in the Conceptual × Motivation cell?"
+    options:
+      - {key: A, text: "Business risk", why: "Contextual."}
+      - {key: B, text: "Risk management objectives: control and enablement objectives", correct: true}
+      - {key: C, text: "Risk management policies", why: "Logical."}
+      - {key: D, text: "The Business Attributes Profile", why: "Conceptual × Assets."}
+    explanation: "The architect turns business risk into objectives, with the risk appetite setting how much is enough."
+    refs: ["SABSA §3.2"]
+    difficulty: 2
+    tags: [conceptual, cells, objectives]
+  - id: S2-131
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "What is in the Conceptual × Location cell?"
+    options:
+      - {key: A, text: "Domain maps", why: "Logical."}
+      - {key: B, text: "The domain framework: security-domain concepts and the structure of domains", correct: true}
+      - {key: C, text: "Business geography", why: "Contextual."}
+      - {key: D, text: "ICT infrastructure", why: "Physical."}
+    explanation: "The Conceptual layer holds the concept and framework of domains; the Logical layer draws the maps."
+    refs: ["SABSA §3.2"]
+    difficulty: 2
+    tags: [conceptual, cells, domains]
+  - id: S2-132
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "What is in the Conceptual × People cell?"
+    options:
+      - {key: A, text: "Roles and responsibilities: owners, custodians, users, providers and customers", correct: true}
+      - {key: B, text: "Business governance", why: "Contextual."}
+      - {key: C, text: "The entity schema and privilege profiles", why: "Logical."}
+      - {key: D, text: "Account provisioning", why: "Service Management."}
+    explanation: "The architect assigns accountabilities for information and services."
+    refs: ["SABSA §3.2"]
+    difficulty: 2
+    tags: [conceptual, cells]
+  - id: S2-133
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "What is in the Conceptual × Time cell?"
+    options:
+      - {key: A, text: "Business time dependencies", why: "Contextual."}
+      - {key: B, text: "The time management framework: the through-life risk management framework", correct: true}
+      - {key: C, text: "The calendar and timetable", why: "Logical."}
+      - {key: D, text: "The processing schedule", why: "Physical."}
+    explanation: "The architect's 'when' is how risk is assessed and re-assessed across the lifetime of assets and services."
+    refs: ["SABSA §3.2"]
+    difficulty: 2
+    tags: [conceptual, cells, time]
+  - id: S2-134
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "What is in the Conceptual × Process cell?"
+    options:
+      - {key: A, text: "Strategies for process assurance and the process-mapping framework", correct: true}
+      - {key: B, text: "Business processes", why: "Contextual."}
+      - {key: C, text: "Security services on process maps", why: "Logical."}
+      - {key: D, text: "Applications and middleware", why: "Physical."}
+    explanation: "Architectural strategies such as layered defence and separation of duties are decided here."
+    refs: ["SABSA §3.2"]
+    difficulty: 2
+    tags: [conceptual, cells]
+  - id: S2-135
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "What is risk appetite?"
+    options:
+      - {key: A, text: "The list of threats the business has identified", why: "That is the Contextual risk cell's content, not the appetite."}
+      - {key: B, text: "The amount and kind of risk the business is willing to bear in pursuit of its objectives", correct: true}
+      - {key: C, text: "The budget for security controls", why: "Budget is a consequence, not the definition."}
+      - {key: D, text: "The residual risk after controls", why: "Residual risk is compared against the appetite."}
+    explanation: "Appetite is set by the business and applied at the Conceptual layer as the threshold that turns risk into objectives."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [conceptual, appetite]
+  - id: S2-136
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "How does SABSA relate risk appetite to attribute performance targets?"
+    options:
+      - {key: A, text: "They are unrelated", why: "SABSA treats them as the same decision seen twice."}
+      - {key: B, text: "The target says how good an attribute must be; the appetite says how much shortfall is tolerable — the same decision in two vocabularies", correct: true}
+      - {key: C, text: "Appetite applies only to threats, targets only to opportunities", why: "Both apply to both sides."}
+      - {key: D, text: "Targets are set by operations; appetite by the architect", why: "Both are business decisions recorded by the architect."}
+    explanation: "A 99.95 % availability target is an appetite statement: 0.05 % outage is accepted."
+    refs: ["SABSA §4"]
+    difficulty: 2
+    tags: [conceptual, appetite, targets]
+  - id: S2-137
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "Where does the policy architecture (which authorities exist) sit, versus the policies themselves?"
+    options:
+      - {key: A, text: "Both at the Contextual layer", why: "Policy is not business-view content."}
+      - {key: B, text: "The policy architecture is Conceptual; the per-domain policies are Logical", correct: true}
+      - {key: C, text: "Both at the Physical layer", why: "Physical holds practices and procedures."}
+      - {key: D, text: "The policies are Conceptual; the architecture is Logical", why: "Reversed."}
+    explanation: "Which authorities exist belongs to the domain framework (Conceptual); what each policy says is Logical × Motivation."
+    refs: ["SABSA §3.2", "GUIDE:integrating-risk-and-security §5.2"]
+    difficulty: 3
+    tags: [conceptual, policy]
+  - id: S2-138
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "What is a control objective?"
+    options:
+      - {key: A, text: "A statement of what must be achieved to keep a threat within appetite", correct: true}
+      - {key: B, text: "A product selected to implement a control", why: "Component layer."}
+      - {key: C, text: "A statement of what must be achieved to realise an opportunity", why: "That is an enablement objective."}
+      - {key: D, text: "A measured result reported by operations", why: "A metric, not an objective."}
+    explanation: "Control objectives are the threat-side objectives at Conceptual × Motivation."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [conceptual, objectives]
+  - id: S2-139
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "What is an enablement objective?"
+    options:
+      - {key: A, text: "A weaker form of control objective", why: "It is the opportunity-side counterpart, not a weaker control."}
+      - {key: B, text: "A statement of what must be achieved to realise a business opportunity", correct: true}
+      - {key: C, text: "A training objective for staff", why: "Not the meaning."}
+      - {key: D, text: "A statement of residual risk", why: "Residual risk is an assessment outcome."}
+    explanation: "Enablement objectives derive from attributes such as enabling time-to-market and business-enabled."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [conceptual, objectives]
+  - id: S2-140
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "Which of these does NOT belong in the Conceptual layer?"
+    options:
+      - {key: A, text: "The Business Attributes Profile", why: "Conceptual × Assets."}
+      - {key: B, text: "The domain framework", why: "Conceptual × Location."}
+      - {key: C, text: "The named encryption product", correct: true}
+      - {key: D, text: "The risk appetite", why: "Applied at the Conceptual layer."}
+    explanation: "Products are Component-layer content; the Conceptual layer is free of design and product detail."
+    refs: ["SABSA §3.2"]
+    difficulty: 1
+    tags: [conceptual]
+  - id: S2-141
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "In the TOGAF guide, in which phase are security principles and risk appetite established?"
+    options:
+      - {key: A, text: "Preliminary Phase", correct: true}
+      - {key: B, text: "Phase C", why: "Information systems architectures."}
+      - {key: C, text: "Phase E", why: "Opportunities and solutions."}
+      - {key: D, text: "Phase H", why: "Change management."}
+    explanation: "The guide's Preliminary Phase covers business drivers, security principles, risk appetite, key risk areas and the security resource plan."
+    refs: ["GUIDE:integrating-risk-and-security §5.1"]
+    difficulty: 1
+    tags: [conceptual, togaf]
+  - id: S2-142
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "Where does the TOGAF guide place the Business Attribute Profile, and why?"
+    options:
+      - {key: A, text: "In Phase D, because it lists technology attributes", why: "It is a business requirement set."}
+      - {key: B, text: "In Requirements Management, because every phase consumes it as the requirement set", correct: true}
+      - {key: C, text: "In Phase G, because it is audited there", why: "Audited in G, but held in Requirements Management."}
+      - {key: D, text: "In Phase E, because it drives the work packages", why: "Not where the guide places it."}
+    explanation: "The profile is what Phase A requirements look like when a security architect writes them, so it is carried by Requirements Management."
+    refs: ["GUIDE:integrating-risk-and-security §5.10"]
+    difficulty: 2
+    tags: [conceptual, togaf, attributes]
+  - id: S2-143
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "A distractor reads 'Conceptual × Motivation: Business Attributes Profile'. What is wrong with it?"
+    options:
+      - {key: A, text: "Nothing; that is the correct cell", why: "The profile is in the Assets column."}
+      - {key: B, text: "The profile is in the Assets column; the Motivation cell holds the objectives derived from it", correct: true}
+      - {key: C, text: "The profile is at the Contextual layer", why: "It is Conceptual."}
+      - {key: D, text: "The profile is at the Logical layer", why: "It is Conceptual."}
+    explanation: "Attributes say what assets must be (Assets); objectives say what must be achieved (Motivation)."
+    refs: ["SABSA §3.2"]
+    difficulty: 2
+    tags: [conceptual, cells, attributes]
+  - id: S2-144
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "What does SABSA call the whole Conceptual layer's content?"
+    options:
+      - {key: A, text: "The design", why: "Design is the Logical layer downward."}
+      - {key: B, text: "The strategy", correct: true}
+      - {key: C, text: "The build", why: "Physical."}
+      - {key: D, text: "The operations", why: "Service Management."}
+    explanation: "The architect's view is the security strategy, tested for coverage from attribute to objective to assurance strategy to accountable role."
+    refs: ["SABSA §3.2"]
+    difficulty: 1
+    tags: [conceptual]
+  - id: S2-145
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "Which Conceptual-layer coverage check is described by 'every objective has a process-assurance strategy and every strategy has an accountable role'?"
+    options:
+      - {key: A, text: "Motivation → Process → People coverage across the row", correct: true}
+      - {key: B, text: "Contextual to Logical traceability", why: "That is between layers; this is within the row."}
+      - {key: C, text: "The Lifecycle feedback loop", why: "That is Manage and Measure to Strategy."}
+      - {key: D, text: "The domain framework", why: "Location column only."}
+    explanation: "A row is a complete architecture; coverage across its cells is checked at the Conceptual layer as strategy."
+    refs: ["SABSA §3.2"]
+    difficulty: 3
+    tags: [conceptual, completeness]
+  - id: S2-146
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "An architecture writes only control objectives and no enablement objectives. What has it missed?"
+    options:
+      - {key: A, text: "The threat side of the Contextual risk cell", why: "It has covered the threat side."}
+      - {key: B, text: "The opportunity side of the Contextual risk cell", correct: true}
+      - {key: C, text: "The Service Management layer", why: "Unrelated."}
+      - {key: D, text: "The domain framework", why: "Unrelated."}
+    explanation: "Both objectives derive from the two sides of business risk; omitting enablement means half the risk cell was not read."
+    refs: ["SABSA §4"]
+    difficulty: 2
+    tags: [conceptual, objectives, risk]
+  - id: S2-147
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "Which layer first makes SABSA's two-sided view of risk explicit as two kinds of objective?"
+    options:
+      - {key: A, text: "Contextual", why: "Contextual states risk; it does not derive objectives."}
+      - {key: B, text: "Conceptual", correct: true}
+      - {key: C, text: "Logical", why: "Logical writes policies from the objectives."}
+      - {key: D, text: "Service Management", why: "Operational risk management applies them."}
+    explanation: "Control and enablement objectives are the Conceptual × Motivation cell."
+    refs: ["SABSA §4"]
+    difficulty: 1
+    tags: [conceptual, objectives]
+  - id: S2-148
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "In the TOGAF guide, where is the security policy architecture developed?"
+    options:
+      - {key: A, text: "Phase B", correct: true}
+      - {key: B, text: "Preliminary Phase", why: "That phase sets principles and appetite, not the policy architecture."}
+      - {key: C, text: "Phase D", why: "Technology architecture."}
+      - {key: D, text: "Phase F", why: "Migration planning."}
+    explanation: "Risk appetite and principles are Preliminary and Phase A; the security policy architecture is Phase B, the same Conceptual-to-Logical line SABSA draws."
+    refs: ["GUIDE:integrating-risk-and-security §5.2", "GUIDE:integrating-risk-and-security §5.3"]
+    difficulty: 2
+    tags: [conceptual, togaf, policy]
+  - id: S2-149
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "'Layered defence' and 'separation of duties' as architectural strategies belong to which cell?"
+    options:
+      - {key: A, text: "Conceptual × Process", correct: true}
+      - {key: B, text: "Conceptual × Motivation", why: "That holds objectives, not strategies for assuring processes."}
+      - {key: C, text: "Logical × Process", why: "That holds the services placed on process maps."}
+      - {key: D, text: "Physical × Process", why: "That holds mechanisms."}
+    explanation: "Strategies for process assurance are the architect's 'how'."
+    refs: ["SABSA §3.2"]
+    difficulty: 2
+    tags: [conceptual, cells]
+  - id: S2-150
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "Who sets the risk appetite, and who records and applies it?"
+    options:
+      - {key: A, text: "Set by the architect; applied by the business", why: "Reversed."}
+      - {key: B, text: "Set by the business; recorded and applied by the architect at the Conceptual layer", correct: true}
+      - {key: C, text: "Set and applied by operations", why: "Operations measures against it."}
+      - {key: D, text: "Set by the regulator", why: "Regulation informs it; the business sets it."}
+    explanation: "Appetite is a business decision that the Conceptual layer turns into objectives and targets."
+    refs: ["SABSA §4"]
+    difficulty: 2
+    tags: [conceptual, appetite]
+  - id: S2-151
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "Which pair correctly distinguishes the Location cells of the Conceptual and Logical layers?"
+    options:
+      - {key: A, text: "Conceptual: domain maps; Logical: domain framework", why: "Reversed."}
+      - {key: B, text: "Conceptual: domain framework (the concept and structure); Logical: domain maps (the drawn domains and associations)", correct: true}
+      - {key: C, text: "Conceptual: business geography; Logical: ICT infrastructure", why: "Those are Contextual and Physical."}
+      - {key: D, text: "Conceptual: locator tools; Logical: sites and networks", why: "Those are Component and Service Management."}
+    explanation: "The framework anticipates; the maps draw."
+    refs: ["SABSA §3.2"]
+    difficulty: 2
+    tags: [conceptual, cells, domains]
+  - id: S2-152
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "Which attribute would yield both a control objective and an enablement objective?"
+    options:
+      - {key: A, text: "Available: an outage is a threat and round-the-clock service is an opportunity", correct: true}
+      - {key: B, text: "Confidential: it yields only a control objective", why: "Correct about confidential, but the question asks for one that yields both."}
+      - {key: C, text: "Enabling time-to-market: it yields only an enablement objective", why: "Correct about that attribute, but the question asks for one that yields both."}
+      - {key: D, text: "None; an attribute yields exactly one objective", why: "Attributes can yield both."}
+    explanation: "Some attributes sit on both sides of risk and produce objectives of both kinds."
+    refs: ["SABSA §4"]
+    difficulty: 3
+    tags: [conceptual, objectives]
+  - id: S2-153
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "What is the first layer written by the architect rather than recorded from the business?"
+    options:
+      - {key: A, text: "Contextual", why: "Recorded from the business."}
+      - {key: B, text: "Conceptual", correct: true}
+      - {key: C, text: "Logical", why: "Second layer the architect and designer write."}
+      - {key: D, text: "Physical", why: "The builder's layer."}
+    explanation: "The Conceptual layer translates the business context into a security strategy."
+    refs: ["SABSA §3.2"]
+    difficulty: 1
+    tags: [conceptual]
+  - id: S2-154
+    unit: S2
+    objective: "S2.2"
+    lesson: S2/02_the_conceptual_layer
+    stem: "In ADM terms, the Conceptual layer's output becomes the target that which phases must meet?"
+    options:
+      - {key: A, text: "Phases B and C, where the Logical-layer design is done", correct: true}
+      - {key: B, text: "Phase H only", why: "Phase H manages change, not the initial design."}
+      - {key: C, text: "The Preliminary Phase", why: "That precedes it."}
+      - {key: D, text: "No phase; it is informational", why: "It is the requirement set."}
+    explanation: "The Conceptual strategy is what the Logical design in Phases B and C must satisfy."
+    refs: ["GUIDE:integrating-risk-and-security §5.10", "SABSA §3.2"]
+    difficulty: 2
+    tags: [conceptual, togaf]
+  # ---------------------------------------------------------------- S2.3 tracing driver to attribute
+  - id: S2-155
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Which is a driver, which an attribute and which a performance target? 'Protect the brand'; 'reputable'; 'no security incident in the press in any quarter'."
+    options:
+      - {key: A, text: "Driver; attribute; target", correct: true}
+      - {key: B, text: "Attribute; driver; target", why: "'Protect the brand' is a business need, hence a driver."}
+      - {key: C, text: "Driver; target; attribute", why: "'Reputable' is the attribute; the press statement is the measurable target."}
+      - {key: D, text: "Target; attribute; driver", why: "Reversed."}
+    explanation: "Driver (Contextual) → attribute (Conceptual × Assets) → target (the measurable column of the profile)."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, drivers, attributes]
+  - id: S2-156
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "The driver 'customers must be able to pay online at any hour' most directly implies which attribute?"
+    options:
+      - {key: A, text: "Available", correct: true}
+      - {key: B, text: "Anonymous", why: "Not implied by round-the-clock payment."}
+      - {key: C, text: "Legacy-sensitive", why: "A technical-strategy attribute, not implied."}
+      - {key: D, text: "Insurable", why: "Not implied."}
+    explanation: "'At any hour' is availability; the same driver also implies accurate, confidential and non-repudiable."
+    refs: ["SABSA §3.3"]
+    difficulty: 1
+    tags: [trace, attributes]
+  - id: S2-157
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "The driver 'retain the banking licence' traces to which attributes?"
+    options:
+      - {key: A, text: "Compliant, auditable, regulated", correct: true}
+      - {key: B, text: "Usable, responsive, supported", why: "User attributes, not implied by the licence."}
+      - {key: C, text: "Scalable, extendible, migratable", why: "Technical strategy, not implied."}
+      - {key: D, text: "Brand-enhancing, credible", why: "Business strategy; a weaker link than compliance."}
+    explanation: "A licence is retained by complying with the regulator's rules and being able to demonstrate it."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, attributes]
+  - id: S2-158
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "The driver 'enter the new market before the competitor' produces which kind of objective?"
+    options:
+      - {key: A, text: "Control objective", why: "This is an opportunity, not a threat."}
+      - {key: B, text: "Enablement objective", correct: true}
+      - {key: C, text: "Audit objective", why: "Not a SABSA objective type."}
+      - {key: D, text: "No objective; it is not a security driver", why: "SABSA traces opportunities too."}
+    explanation: "An opportunity driver yields enablement attributes and enablement objectives, met by enhance-type services."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, objectives, opportunity]
+  - id: S2-159
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "An attribute in the profile cannot be traced to any business driver. What is it?"
+    options:
+      - {key: A, text: "A gap to be closed with a control", why: "A gap is an attribute with no control below it."}
+      - {key: B, text: "The architect's preference dressed as a requirement, which should be removed or justified", correct: true}
+      - {key: C, text: "A Service Management requirement", why: "Operational needs are also drivers."}
+      - {key: D, text: "A regulatory attribute, which needs no driver", why: "Regulation is a driver; it must be recorded."}
+    explanation: "Bottom-up traceability at the top link: every attribute must have a driver."
+    refs: ["SABSA §2.2", "SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, traceability]
+  - id: S2-160
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "A business driver reaches no attribute in the profile. What does that indicate?"
+    options:
+      - {key: A, text: "A business need the architecture has ignored", correct: true}
+      - {key: B, text: "That the driver is not important", why: "Importance is decided by the business, not by omission."}
+      - {key: C, text: "That the driver is a Component-layer concern", why: "Drivers are Contextual."}
+      - {key: D, text: "That the taxonomy is complete", why: "Unrelated."}
+    explanation: "Top-down traceability at the first link: every driver must reach an attribute."
+    refs: ["SABSA §2.2", "SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, traceability]
+  - id: S2-161
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "What tool does SABSA use to check the driver-to-attribute trace both ways?"
+    options:
+      - {key: A, text: "A matrix of drivers against attributes, where empty rows and empty columns are the findings", correct: true}
+      - {key: B, text: "A vulnerability scan", why: "Technical, not a trace check."}
+      - {key: C, text: "A network diagram", why: "Physical content."}
+      - {key: D, text: "A product comparison", why: "Component content."}
+    explanation: "Each justified cell is marked; an empty row is a driver without an attribute, an empty column an attribute without a driver."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [trace, traceability]
+  - id: S2-162
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Which is the correct sequence of steps from driver to profile row?"
+    options:
+      - {key: A, text: "Record the driver; place it in its Contextual cell; identify what must be true; select and weight attributes; set metric and target", correct: true}
+      - {key: B, text: "Select products; derive attributes; find drivers", why: "Bottom-up from Component."}
+      - {key: C, text: "Set targets; choose attributes; find drivers", why: "Targets come last."}
+      - {key: D, text: "Identify threats; select controls; name attributes", why: "Threat-driven."}
+    explanation: "Steps 1–2 are Contextual; steps 3–5 fill the Conceptual × Assets cell."
+    refs: ["SABSA §3.2", "SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, procedure]
+  - id: S2-163
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Why is deriving attributes from threats instead of from drivers a mistake in SABSA?"
+    options:
+      - {key: A, text: "It produces a purely protective profile and misses every enablement attribute", correct: true}
+      - {key: B, text: "Threats are Logical-layer content", why: "Threats are analysed against attributes; the layer is not the point."}
+      - {key: C, text: "Threats change too often", why: "True but not the SABSA reason."}
+      - {key: D, text: "It is not a mistake", why: "It is; it breaks business-driven traceability."}
+    explanation: "Business-driven means starting from what the business needs, on both sides of risk."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, mistakes]
+  - id: S2-164
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "How many attributes does a working profile typically contain?"
+    options:
+      - {key: A, text: "All of the taxonomy, so nothing is missed", why: "A profile of sixty unmeasurable attributes is a failure of selection."}
+      - {key: B, text: "A couple of dozen, chosen and weighted by the business", correct: true}
+      - {key: C, text: "Exactly three: confidentiality, integrity, availability", why: "Far narrower than SABSA's taxonomy."}
+      - {key: D, text: "One per system", why: "Profiles hold several attributes per scope."}
+    explanation: "The taxonomy is a menu; the profile selects what the business needs and can measure."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, profile]
+  - id: S2-165
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "'Non-repudiable' would most directly trace to which driver?"
+    options:
+      - {key: A, text: "Disputes over online payments must be settleable", correct: true}
+      - {key: B, text: "Staff must be trained annually", why: "That traces to educated and aware."}
+      - {key: C, text: "Systems must scale to double the load", why: "That traces to scalable."}
+      - {key: D, text: "The data centre must be in-country", why: "That traces to legal or regulated."}
+    explanation: "Non-repudiation is the quality that lets a transaction be proven after the fact."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, attributes]
+  - id: S2-166
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "What is wrong with writing a performance target before choosing the metric?"
+    options:
+      - {key: A, text: "Nothing; targets come first", why: "The metric defines the units the target is stated in."}
+      - {key: B, text: "It produces an unmeasurable requirement", correct: true}
+      - {key: C, text: "It violates the domain framework", why: "Unrelated."}
+      - {key: D, text: "It skips the Contextual layer", why: "Unrelated."}
+    explanation: "A target is a level on a metric; without the metric there is nothing to measure against."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, mistakes, targets]
+  - id: S2-167
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Which ADM phase is described by 'Phase A with a security architect in the room, deriving the attribute profile from the drivers'?"
+    options:
+      - {key: A, text: "Phase A, with the profile then carried by Requirements Management", correct: true}
+      - {key: B, text: "Phase D", why: "Technology architecture."}
+      - {key: C, text: "Phase G", why: "Implementation governance."}
+      - {key: D, text: "Phase F", why: "Migration planning."}
+    explanation: "The trace is Phase A work; the TOGAF guide holds the profile in Requirements Management thereafter."
+    refs: ["GUIDE:integrating-risk-and-security §5.1", "GUIDE:integrating-risk-and-security §5.10"]
+    difficulty: 1
+    tags: [trace, togaf]
+  - id: S2-168
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Which TOGAF technique supplies the initial risk view that weights the attributes during the trace?"
+    options:
+      - {key: A, text: "Gap analysis", why: "Compares baseline and target architectures."}
+      - {key: B, text: "The risk management technique used in Phase A", correct: true}
+      - {key: C, text: "Business scenarios", why: "A requirements elicitation technique, not the risk view."}
+      - {key: D, text: "Migration planning techniques", why: "Phases E and F."}
+    explanation: "TOGAF's Phase A risk technique gives the initial risk assessment that prioritises attributes."
+    refs: ["GUIDE:integrating-risk-and-security §5.1", "SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, togaf, risk]
+  - id: S2-169
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Which attributes would the driver 'enter the new market before the competitor' most plausibly produce?"
+    options:
+      - {key: A, text: "Enabling time-to-market, business-enabled, flexible, scalable", correct: true}
+      - {key: B, text: "Confidential, integrity-assured, authenticated", why: "Protective attributes; the driver is an opportunity."}
+      - {key: C, text: "Admissible, enforceable, insurable", why: "Legal attributes, not implied."}
+      - {key: D, text: "Recoverable, detectable, error-free", why: "Operational attributes, not implied."}
+    explanation: "Opportunity drivers yield enablement attributes from the business-strategy and technical-strategy families."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, attributes, opportunity]
+  - id: S2-170
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Who selects and weights the attributes in a profile?"
+    options:
+      - {key: A, text: "The architect alone, from the taxonomy", why: "The architect brings the taxonomy; the business selects."}
+      - {key: B, text: "The business owners, in a workshop facilitated by the architect", correct: true}
+      - {key: C, text: "The vendor", why: "Never."}
+      - {key: D, text: "The auditor", why: "The auditor checks, does not select."}
+    explanation: "Building a profile is a business exercise; the architect facilitates and records."
+    refs: ["SABSA §3.3"]
+    difficulty: 1
+    tags: [trace, profile]
+  - id: S2-171
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Which Matrix cells does the driver-to-attribute trace connect?"
+    options:
+      - {key: A, text: "Contextual (any cell) to Conceptual × Assets", correct: true}
+      - {key: B, text: "Conceptual × Motivation to Logical × Motivation", why: "That is objective to policy."}
+      - {key: C, text: "Logical × Process to Physical × Process", why: "That is service to mechanism."}
+      - {key: D, text: "Contextual × Time to Service Management × Time", why: "Not the trace in question."}
+    explanation: "Drivers come from any Contextual cell; attributes are recorded in the Conceptual Assets cell."
+    refs: ["SABSA §3.2", "SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, cells]
+  - id: S2-172
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "For the attribute 'auditable' derived from the licence driver, which is a well-formed performance target?"
+    options:
+      - {key: A, text: "Every regulated transaction reconstructable from records within 24 hours", correct: true}
+      - {key: B, text: "Be more auditable than last year", why: "Not measurable."}
+      - {key: C, text: "Install an audit logging product", why: "A Component-layer solution, not a target."}
+      - {key: D, text: "Auditability is important", why: "A statement of priority, not a target."}
+    explanation: "A target is a level on a metric that can be tested, here by a sampled reconstruction."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, targets]
+  - id: S2-173
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "What does a profile with attributes from only the risk-management family suggest?"
+    options:
+      - {key: A, text: "That the business is highly regulated", why: "Regulation would add legal attributes."}
+      - {key: B, text: "That the Contextual layer was read narrowly through security reflexes", correct: true}
+      - {key: C, text: "That the profile is complete", why: "The opposite."}
+      - {key: D, text: "That enablement objectives have been covered", why: "Enablement attributes come from other families."}
+    explanation: "Families prompt the architect to ask about usability, cost, legal exposure and strategy, not only classic security."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, families]
+  - id: S2-174
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Which statement about the trace is correct?"
+    options:
+      - {key: A, text: "One driver maps to exactly one attribute", why: "A driver commonly yields several attributes."}
+      - {key: B, text: "A driver may yield several attributes and an attribute may serve several drivers", correct: true}
+      - {key: C, text: "Attributes are chosen before drivers are known", why: "Reversed."}
+      - {key: D, text: "Only threats yield attributes", why: "Opportunities do too."}
+    explanation: "The relationship is many-to-many, which is why the check is a matrix."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace]
+  - id: S2-175
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "The driver 'customers must be able to pay online at any hour' yields the attribute 'confidential' for card details. Which target fits?"
+    options:
+      - {key: A, text: "No card data outside the tokenised zone, verified by quarterly audit", correct: true}
+      - {key: B, text: "99.95 % uptime measured monthly", why: "That is the target for 'available'."}
+      - {key: C, text: "Zero unreconciled payments per day", why: "That is the target for 'accurate'."}
+      - {key: D, text: "Every payment carries a verifiable signature", why: "That is the target for 'non-repudiable'."}
+    explanation: "Each attribute derived from the driver gets its own metric and target."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, targets]
+  - id: S2-176
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "What does the TOGAF guide expect each phase's security artefact to do with respect to the attribute profile?"
+    options:
+      - {key: A, text: "Ignore it after Phase A", why: "The profile is carried throughout."}
+      - {key: B, text: "Cite the attributes it serves", correct: true}
+      - {key: C, text: "Replace it with a control checklist", why: "The guide has no controls checklist."}
+      - {key: D, text: "Re-derive it from threats", why: "Threat-driven, not the guide's approach."}
+    explanation: "Requirements Management holds the profile and every phase's artefacts trace to it."
+    refs: ["GUIDE:integrating-risk-and-security §5.10"]
+    difficulty: 2
+    tags: [trace, togaf]
+  - id: S2-177
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Which of these is a business driver rather than an attribute or a target?"
+    options:
+      - {key: A, text: "Zero critical audit findings", why: "A target."}
+      - {key: B, text: "Reputable", why: "An attribute."}
+      - {key: C, text: "Avoid regulatory fines", correct: true}
+      - {key: D, text: "Compliant", why: "An attribute."}
+    explanation: "Drivers are business needs in business words; this one comes from the Contextual risk cell."
+    refs: ["SABSA §3.1", "SABSA §3.3"]
+    difficulty: 1
+    tags: [trace, drivers]
+  - id: S2-178
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Why does the taxonomy stay the same across the enterprise while each profile differs?"
+    options:
+      - {key: A, text: "So that profiles can be compared and re-used while each reflects its own business context", correct: true}
+      - {key: B, text: "Because the SABSA Institute forbids changing it", why: "Attributes may be added where needed."}
+      - {key: C, text: "Because every system needs every attribute", why: "Profiles select."}
+      - {key: D, text: "Because the taxonomy is a regulatory requirement", why: "It is not."}
+    explanation: "A shared vocabulary with a per-scope selection is what makes profiles comparable."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, taxonomy]
+  - id: S2-179
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "An architect can only derive protective attributes. Which drivers can that architect not trace?"
+    options:
+      - {key: A, text: "Regulatory drivers", why: "Those yield protective and legal attributes, which the architect can handle."}
+      - {key: B, text: "Opportunity drivers such as entering a new market", correct: true}
+      - {key: C, text: "Availability drivers", why: "Availability has a protective side."}
+      - {key: D, text: "Time drivers", why: "Deadlines yield timely and available, which are traceable."}
+    explanation: "Opportunity drivers need enablement attributes and enhance-type services; a protection-only mindset cannot trace them."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, opportunity]
+  - id: S2-180
+    unit: S2
+    objective: "S2.3"
+    lesson: S2/03_tracing_a_driver_to_an_attribute
+    stem: "Which layer does each of these belong to: business driver; business attribute; performance target?"
+    options:
+      - {key: A, text: "Contextual; Conceptual; Conceptual", correct: true}
+      - {key: B, text: "Contextual; Contextual; Logical", why: "Attributes and targets are Conceptual."}
+      - {key: C, text: "Conceptual; Logical; Physical", why: "All one layer too low."}
+      - {key: D, text: "Contextual; Conceptual; Service Management", why: "The target is set at Conceptual and measured at Service Management."}
+    explanation: "Driver is Contextual; attribute and its target are both in the Conceptual × Assets profile; the target is later measured operationally."
+    refs: ["SABSA §3.2", "SABSA §3.3"]
+    difficulty: 2
+    tags: [trace, layers]

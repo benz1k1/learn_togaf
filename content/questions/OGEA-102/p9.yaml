@@ -1,0 +1,587 @@
+# Authored Practitioner scenarios for unit P9, Architecture Governance in Practice.
+# Shape per learn_togaf.md §2; grounded on GOV chapters 3-6, the maturity models guide and the skills guides.
+code: P9_BANK
+exam: OGEA-102
+name: P9 Architecture Governance in Practice, authored bank
+kind: DRILL
+source: authored
+questions:
+  - id: P9-101
+    unit: P9
+    objective: "P9.1"
+    lesson: P9/01_the_governance_framework_in_practice
+    scenario: |
+      Stratford Holdings is a diversified industrial group with 14,000 staff in five operating
+      companies that make building products, packaging, industrial coatings, specialist chemicals
+      and engineered components. Each company has its own IT function and its own way of making
+      technology decisions; the group has a small central IT team that owns the network, the
+      enterprise resource planning platform used by three of the five companies and the group's
+      security standards. Eighteen months ago the group Chief Executive created an Enterprise
+      Architecture function of six people under a new Group Chief Information Officer, with a mandate
+      to "stop the companies buying the same things five times" and to prepare the group for a
+      shared-services model. The function completed a Preliminary Phase, published architecture
+      principles and produced a group-level Strategic Architecture that the Chief Executive endorsed.
+
+      Governance has not followed. The principles were sent to the five companies' IT directors,
+      who acknowledged them and continued as before. In the last year two companies bought different
+      customer-relationship products, one company signed a ten-year data-centre contract that
+      conflicts with the group's cloud principle, and the coatings company adopted a manufacturing
+      execution system that cannot exchange data with the group platform. When the architecture team
+      objected, each company pointed out that no group body had the authority to stop it. The Group
+      Chief Information Officer has proposed an "architecture council" of himself, the five IT
+      directors, the head of security, the head of the ERP platform, the six architects and a
+      representative of each business unit, twenty-three people, chaired by himself, meeting
+      quarterly.
+
+      Two other facts matter. The group Chief Financial Officer, who approves capital expenditure
+      above a threshold, has said he would welcome "a way to know whether a request fits the plan"
+      but has no such input today. The Chief Executive supports the architecture function in
+      principle but has not been asked to do anything specific, and the operating companies' managing
+      directors report to him, not to the Group Chief Information Officer. The specialist chemicals
+      company, which is profitable and independent-minded, has said it will "not be governed by
+      group IT". A new regulation on supply-chain data reporting will apply to all five companies
+      next year and nobody owns the response.
+
+      The Chief Executive has asked you, as the Group Chief Architect, to propose how Architecture
+      Governance should be established so that the group's architecture decisions actually take
+      effect, and to comment on the proposed council.
+    question: "Refer to the scenario. The Chief Executive has asked you to propose how Architecture Governance should be established and to comment on the proposed council. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Propose an Architecture Governance strategy built on the standard's three elements. First, a
+          cross-organisational Architecture Board with the backing of executive management: four or
+          five permanent members, no more than ten, representative of the key stakeholders across the
+          operating companies, with an executive sponsor from the highest level, the Chief Executive,
+          to whom the managing directors report, rather than the Group Chief Information Officer;
+          rotate membership with staggered terms for continuity, and give the Board articulated
+          responsibilities, remit and authority limits, including authority over capital requests
+          above the threshold in co-operation with the Chief Financial Officer. Reduce the proposed
+          twenty-three-person council to that board, with local governance boards or design
+          authorities in the operating companies and working parties for topics such as the
+          supply-chain regulation. Second, the published principles, taken on through a formal policy
+          management process. Third, an Architecture Compliance strategy with specific measures:
+          project impact assessments, a formal compliance review process for all major projects, and
+          involvement of the architecture team in product procurement so that purchases like the
+          customer-relationship products are reviewed before signature. Record decisions,
+          dispensations and assessments in a Governance Repository and take the regulation on through
+          the same processes.
+        why: >-
+          The three elements of an effective Architecture Governance strategy are a
+          cross-organisational Architecture Board with executive backing, a comprehensive set of
+          principles, and a compliance strategy with specific measures including impact assessments, a
+          formal review process and possibly procurement involvement (GOV §3.3.2); an architecture
+          imposed without executive support and political alignment is bound to fail (GOV §3.3.2). The
+          Board should be representative of key stakeholders, may exist at global and local levels with
+          articulated remit and authority limits (GOV §4.1), have four or five and no more than ten
+          members with rotation and staggered terms (GOV §4.3.2), and needs an executive sponsor from
+          the highest level of the corporation (GOV §4.3.1). The structure of global and local boards,
+          design authorities and working parties is GOV §3.2.2, and the Governance Repository is
+          CONTENT §7.5.
+      - key: B
+        points: 3
+        text: >-
+          Support the Group Chief Information Officer's council but reduce it to the five IT directors,
+          the head of security and the Chief Architect, chaired by the Group Chief Information Officer,
+          and give it authority to review projects at design approval; ask the Chief Financial Officer
+          to consult it on capital requests.
+        why: >-
+          Reducing the council to a workable size and adding a review point moves in the right
+          direction, but a board of IT directors chaired by the Group CIO is neither
+          cross-organisational nor sponsored from the highest level, and the managing directors who
+          actually decide will not be bound by it; the standard says the Board needs an executive
+          sponsor above it and must be representative of all key stakeholders (GOV §4.1, §4.3.1). Review
+          at design approval alone is also not the compliance strategy of impact assessments, a formal
+          process and procurement involvement (GOV §3.3.2).
+      - key: C
+        points: 1
+        text: >-
+          Re-issue the architecture principles as a mandatory group policy signed by the Chief
+          Executive, with a requirement that every company certify compliance annually, and rely on
+          internal audit to enforce it.
+        why: >-
+          A policy statement is exactly what the standard says a compliance strategy must be more than:
+          specific measures, impact assessments and a formal review process are required (GOV §3.3.2).
+          Without a Board to decide, grant dispensations and resolve disputes, and without a compliance
+          process during projects rather than after the fact, the principles remain unenforced
+          (GOV §4.2, §6.1).
+      - key: D
+        points: 0
+        text: >-
+          Accept the twenty-three-person council as proposed, since inclusiveness will win the
+          companies' co-operation, and let it decide its own terms of reference at its first quarterly
+          meeting.
+        why: >-
+          A body of twenty-three exceeds the standard's recommended maximum of ten (GOV §4.3.2), has no
+          executive sponsor above the Group CIO (GOV §4.3.1), and no defined responsibilities, remit or
+          authority limits (GOV §4.1); it repeats the failure the scenario describes, a body with no
+          authority to stop anything.
+    refs: ["GOV §3.2.2", "GOV §3.3.2", "GOV §4.1", "GOV §4.3.1", "GOV §4.3.2", "CONTENT §7.5"]
+    open_book_hint: "Where to look: EA Capability and Governance 3.3.2 for the three elements of an effective governance strategy and corporate politics, 3.2.2 for the organisational structure, 4.1 for the Board's role and levels, 4.3.1 for sponsorship, 4.3.2 for size and rotation; Architecture Content 7.5 for the Governance Repository."
+    difficulty: 2
+    tags: [governance, architecture-board, sponsorship, compliance-strategy]
+    status: draft
+
+  - id: P9-102
+    unit: P9
+    objective: "P9.1"
+    lesson: P9/01_the_governance_framework_in_practice
+    scenario: |
+      Ridgeway Rail is a passenger rail operator running 1,200 services a day with 5,500 staff under a
+      government franchise. Its Architecture Governance is well established: an Architecture Board of
+      five, sponsored by the Chief Executive and chaired by the Chief Operating Officer, meets
+      monthly with a standing agenda; a Governance Repository holds a decision log, compliance
+      assessments, capability assessments, a calendar of in-flight projects and performance
+      measures; and every project above a threshold is subject to compliance reviews. The Board's
+      terms of reference allow it to grant dispensations "for a defined period against defined
+      criteria, reviewed before expiry".
+
+      Three matters are on the next agenda. The first is a dispensation request from the ticketing
+      programme, which cannot meet the group's identity standard because its chosen retail platform
+      supports only its own authentication until the vendor's next major release, eighteen months
+      away; the programme asks for a dispensation "until the vendor delivers". The second is a
+      compliance assessment of the timetable-planning project, which the review team has rejected
+      because the project has selected a database technology outside the standards library; the
+      project argues that the standards library is out of date because the listed technology is no
+      longer developed, and that the review team should "update the standard rather than block the
+      project". The third is a dispute between the operations directorate and the customer
+      directorate about which of them owns the passenger-information data: both have escalated
+      through their line management, neither has raised it with the Board, and the passenger
+      information project has stalled.
+
+      Three complications have arisen. The Board's previous chair granted an open-ended dispensation
+      to the rostering system four years ago, which was never reviewed and is now cited by the
+      ticketing programme as precedent. The performance measurement log in the Governance
+      Repository shows that dispensation reviews have been missed in six of the last twelve months
+      because no one owns the calendar. And the franchise authority has written to the Chief
+      Executive asking for evidence that the operator's technology decisions are "properly governed
+      and auditable", with a deadline in two months.
+
+      You are the lead Enterprise Architect and the Board's secretary. The Chief Operating Officer
+      has asked you to advise the Board on how to handle the three agenda items and on what to change
+      so that the franchise authority's question can be answered with confidence.
+    question: "Refer to the scenario. The Chief Operating Officer has asked you to advise the Board on the three agenda items and on what to change for the franchise authority. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Advise the Board to apply the governance framework's processes to each item and to repair the
+          process gaps that the franchise question exposes. For the ticketing programme, grant a
+          dispensation only for a defined period, for example to the vendor's release date plus a
+          migration window, with the service and operational criteria that must be enforced meanwhile,
+          such as compensating controls on the platform's authentication, and a review before expiry;
+          refuse "until the vendor delivers" as indefinite, and treat the rostering precedent as a
+          governance failure to be corrected by putting that dispensation on the same footing. For the
+          timetable-planning project, uphold the rejected compliance assessment as the position
+          against the current standard, but recognise that non-compliance highlights standards that
+          may need modification: raise a change to the standards library through the policy
+          management and take-on process so that the standard is registered, validated, ratified and
+          published, and give the project a time-bound dispensation pending that decision if the
+          business case justifies it. For the data ownership dispute, take it as an escalated dispute
+          under the Board's dispute-resolution agenda item and decide the ownership, recording the
+          decision in the decision log. For the franchise authority, assign an owner to the calendar
+          and the dispensation reviews, re-audit open dispensations, and show the Governance
+          Repository's decision log, compliance assessments and performance measures as the evidence
+          of auditable governance.
+        why: >-
+          Dispensations are granted for a given time period and a set of identified service and
+          operational criteria that must be enforced during their lifespan; they are not granted
+          indefinitely, and their time-bound nature is a trigger in the compliance cycle (GOV §3.2.1,
+          §4.4.3). Non-compliance highlights areas for realignment and areas where the standards may
+          require modification (GOV §6.3.1), and all governance content, standards included, comes under
+          the formal policy management and take-on process (GOV §3.2.1). Disputes not resolved through
+          compliance and dispensation are a standing Board agenda item (GOV §4.4.3), and the Board
+          resolves escalated conflicts and identifies divergence (GOV §4.2). The Governance Repository's
+          decision log, compliance assessments, calendar and performance measurement are the auditable
+          record (CONTENT §7.5), and governance requires transparency and accountability (GOV §3.1.2).
+      - key: B
+        points: 3
+        text: >-
+          Grant the ticketing programme its dispensation until the vendor's release, since the
+          constraint is genuine and there is precedent, update the standards library to include the
+          timetable project's database so that the assessment can be accepted, and refer the data
+          dispute back to the two directors to settle between themselves; answer the franchise authority
+          with the Board's terms of reference.
+        why: >-
+          The standards question is handled in roughly the right direction, but an open-ended
+          dispensation is precisely what the standard forbids and the precedent is a failure rather
+          than a justification (GOV §3.2.1); updating a standard to fit a project without the formal
+          take-on process bypasses governance of content (GOV §3.2.1); an escalated dispute is the
+          Board's to resolve, not to bounce back (GOV §4.4.3); and terms of reference are not evidence
+          of decisions taken, which the repository's logs provide (CONTENT §7.5).
+      - key: C
+        points: 1
+        text: >-
+          Refuse both the dispensation and the standards change, require the ticketing programme to
+          switch to a platform that meets the identity standard and the timetable project to use the
+          listed database, and tell the two directors that the Board does not adjudicate data
+          ownership.
+        why: >-
+          Dispensations exist precisely to provide an alternate route to interim conformance when a
+          subject area cannot immediately comply, and non-compliance is a mechanism for registering
+          standards that need to change (GOV §3.2.1, §6.3.1); refusing everything ignores those
+          processes. Data ownership disputes between architecture stakeholders are within the Board's
+          dispute-resolution remit (GOV §4.4.3, §4.2).
+      - key: D
+        points: 0
+        text: >-
+          Approve all three items as requested by the parties to keep projects moving, and answer the
+          franchise authority that decisions are taken by an executive Board and are therefore
+          governed.
+        why: >-
+          Approving an indefinite dispensation, accepting a rejected assessment without a standards
+          decision and leaving a dispute unresolved contradict the compliance, dispensation and dispute
+          processes (GOV §3.2.1, §4.4.3); and an unauditable record fails the governance characteristics
+          of transparency and accountability that the franchise authority is asking about (GOV §3.1.2).
+    refs: ["GOV §3.1.2", "GOV §3.2.1", "GOV §4.2", "GOV §4.4.3", "GOV §6.3.1", "CONTENT §7.5"]
+    open_book_hint: "Where to look: EA Capability and Governance 3.2.1 for the governance processes (policy take-on, compliance, dispensation, monitoring), 4.4.3 for the Board agenda including dispensations, compliance assessments and dispute resolution, 6.3.1 for non-compliance as a signal that standards may need changing, 3.1.2 for the characteristics of governance; Architecture Content 7.5 for the Governance Repository."
+    difficulty: 3
+    tags: [governance, dispensation, standards, dispute-resolution]
+    status: draft
+
+  - id: P9-103
+    unit: P9
+    objective: "P9.1"
+    lesson: P9/02_maturity_models_and_the_skills_framework_applied
+    scenario: |
+      Fenwick Council is a metropolitan local authority with 9,200 staff delivering social care,
+      education support, housing, environmental services and revenue collection to a population of
+      620,000. Its Enterprise Architecture function was established four years ago and now has seven
+      architects. It has completed two ADM cycles, maintains an Architecture Repository and reports
+      to an Architecture Board chaired by the Chief Executive's deputy. The council's external
+      auditors have nonetheless reported that "technology investment decisions are not consistently
+      informed by the enterprise architecture", citing three large procurements approved without
+      architecture input, and the council's improvement board has asked the architecture function to
+      show how it will improve.
+
+      The Head of Architecture has gathered evidence. The architecture process is documented and
+      followed for projects that come to the team, but half of the council's technology spend goes
+      through service departments' own procurements that never reach the team. Business linkage is
+      strong for the two completed cycles and weak elsewhere. Senior management involvement is
+      limited to the Board chair; the council's chief officers regard architecture as "an IT thing".
+      Operating-unit participation varies from enthusiastic in housing to hostile in social care,
+      whose director has said the architecture team "slows down safeguarding". Architecture
+      documentation is published on an intranet page few people read. IT security has its own
+      standards profile, integrated with the architecture in the two cycles but not elsewhere.
+      Governance of standards exists for the corporate platforms only. There is no link at all between
+      the architecture and the council's capital planning process, which the Chief Finance Officer
+      runs.
+
+      Three proposals compete. The Head of Architecture wants to declare a target of "level 4" and
+      write a plan to reach it. The Chief Digital Officer wants to commission a consultancy to
+      benchmark the council against peers. The improvement board's chair wants "a score we can report
+      quarterly". The Chief Finance Officer has offered to make architecture sign-off a condition of
+      capital approval if the architecture function can show it is ready to handle the volume. The
+      Director of Social Care has warned that any new gate will be "escalated".
+
+      You are the Head of Architecture. The improvement board has asked you to propose how the
+      maturity of the council's architecture capability should be assessed and improved, using a
+      recognised approach, and what the first improvements should be.
+    question: "Refer to the scenario. The improvement board has asked how the maturity of the architecture capability should be assessed and improved and what the first improvements should be. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Propose an assessment against an Architecture Capability Maturity Model such as the US
+          Department of Commerce ACMM, scored element by element rather than as one declared level.
+          Assess the nine elements, architecture process, architecture development, business linkage,
+          senior management involvement, operating unit participation, architecture communication, IT
+          security, Architecture Governance, and IT investment and acquisition strategy, against the
+          characteristics of the six levels, and report both the weighted mean level and the
+          percentage achieved per element so that the improvement board has a quarterly score with
+          meaning. The evidence points to a profile of roughly "defined" for process and development
+          and "initial" for senior management involvement, operating-unit participation, governance of
+          standards beyond the corporate platforms, and investment and acquisition strategy. Direct the
+          first improvements at the weak elements with the highest return: integrate the architecture
+          with capital planning by accepting the Chief Finance Officer's offer, which is the level-3
+          characteristic for business linkage and the level-3 and level-4 characteristics for
+          investment governance; engage the chief officers as senior management; and work with social
+          care on participation, treating its safeguarding concern through the governance process
+          rather than a blanket gate. Re-assess on a fixed cycle and record the assessments in the
+          Governance Repository's capability assessments log.
+        why: >-
+          Capability Maturity Models describe the practices needed, provide a yardstick to measure
+          improvement periodically, and identify the practices on which to focus for the greatest
+          improvement and return (GUIDE:architecture-maturity-models §1.2); the ACMM has six levels and
+          nine elements with two scoring methods, a weighted mean and the percentage achieved per
+          element (GUIDE:architecture-maturity-models §2.2), and its level characteristics include
+          integration with capital planning and investment control at level 3 and explicit governance
+          of all investments at level 4 (GUIDE:architecture-maturity-models §2.3). The Board is
+          responsible for improving the maturity of the discipline (GOV §4.2), and capability assessments
+          are held in the Governance Repository (CONTENT §7.5). The answer uses the model to direct
+          effort rather than to declare a number.
+      - key: B
+        points: 3
+        text: >-
+          Commission the consultancy benchmark against peer councils and, in parallel, assess the
+          council against the ACMM's six levels to produce a single overall level for the improvement
+          board, then write an improvement plan to move the whole capability up one level within a year.
+        why: >-
+          Using the ACMM is right, but reporting a single level hides which of the nine elements are
+          weak, which is what the model's per-element scoring exists to show and what should direct
+          effort (GUIDE:architecture-maturity-models §2.2, §1.2); a plan to "move up one level" without
+          targeting elements will not address the investment and participation gaps the auditors and
+          the evidence identify. Peer benchmarking is not a maturity assessment against the model's
+          practices.
+      - key: C
+        points: 1
+        text: >-
+          Adopt the Head of Architecture's proposal: declare the target as level 4, "managed", write a
+          plan of process improvements to reach it, and report progress against the plan quarterly as
+          the improvement board's score.
+        why: >-
+          A maturity level is the result of an assessment against the model's characteristics, not a
+          target declared in advance, and the score the improvement board would receive is progress
+          against a plan rather than an assessment of the practices actually in place
+          (GUIDE:architecture-maturity-models §1.2, §2.1). Without an element-by-element assessment
+          the plan cannot know where to focus.
+      - key: D
+        points: 0
+        text: >-
+          Decline a maturity assessment as bureaucratic and instead make architecture sign-off a
+          mandatory gate on all procurements immediately, using the Chief Finance Officer's offer, so
+          that the auditors' finding is addressed by control rather than by measurement.
+        why: >-
+          A gate imposed without assessing the capability's readiness and without engaging the
+          operating units and chief officers is the "architecture imposed without executive support and
+          political alignment" that the standard says is bound to fail (GOV §3.3.2), and it ignores
+          the model's guidance that assessment shows where effort brings the greatest return
+          (GUIDE:architecture-maturity-models §1.2). It would also fail the Chief Finance Officer's own
+          condition that the function show it can handle the volume.
+    refs: ["GUIDE:architecture-maturity-models §1.2", "GUIDE:architecture-maturity-models §2.1", "GUIDE:architecture-maturity-models §2.2", "GUIDE:architecture-maturity-models §2.3", "GOV §4.2", "CONTENT §7.5"]
+    open_book_hint: "Where to look: Series Guide Architecture Maturity Models, section 1.2 for what a CMM assessment gives, 2.1 for the ACMM's three sections, 2.2 for the six levels, nine elements and two scoring methods, 2.3 for the characteristics at each level; EA Capability and Governance 4.2 for the Board's responsibility for maturity; Architecture Content 7.5 for capability assessments in the Governance Repository."
+    difficulty: 2
+    tags: [maturity-models, acmm, governance, capability-assessment]
+    status: draft
+
+  - id: P9-104
+    unit: P9
+    objective: "P9.1"
+    lesson: P9/02_maturity_models_and_the_skills_framework_applied
+    scenario: |
+      Larkspur Telecom is a mobile network operator with 6,100 staff that has decided to build an
+      internal Enterprise Architecture practice after a decade of relying on consultancies. Its Chief
+      Information Officer has a budget for twelve architecture posts and a mandate from the Chief
+      Executive to have the practice "credible with the business" within a year. The company has
+      completed a Preliminary Phase that established an Architecture Board, principles and a
+      tailored ADM, and it has begun its first ADM cycle for the customer-experience domain with two
+      contract architects.
+
+      Recruitment has gone badly. The first job advertisement for "Enterprise Architects" attracted
+      four hundred applicants, most of them software designers and infrastructure specialists who
+      described themselves as architects; the interviews were inconsistent because the three
+      interviewing managers had different ideas of the role; two hires have already left, one
+      because he expected to design systems and found himself facilitating workshops, the other
+      because she expected to shape strategy and was asked to review network designs. The Human
+      Resources director has asked for "a proper definition of what these people do" before she
+      approves further posts. The Chief Technology Officer wants the twelve posts to be domain
+      specialists in networks, billing and digital channels; the Chief Marketing Officer wants
+      "business architects who understand customers"; the Chief Information Officer wants a small
+      number of senior generalists who can lead the ADM cycles.
+
+      Other facts bear on the design. The two contract architects have been effective, but they are
+      leaving in six months and nothing has been done to transfer their skills. The company runs a
+      formal competency framework for engineering roles with defined levels, which Human Resources
+      would like architecture to fit. A well-regarded solution designer in the billing team has asked
+      to move into architecture and wants to know what she would need to learn. The Architecture
+      Board has asked how it will know whether the practice is competent to lead the customer-
+      experience cycle without consultants.
+
+      You are the newly appointed Head of Architecture. The Chief Information Officer has asked you to
+      propose how the practice's roles, skills and development should be defined so that
+      recruitment, assignment and career development are consistent and the Board can have
+      confidence in the practice.
+    question: "Refer to the scenario. The CIO has asked how the practice's roles, skills and development should be defined. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Apply the Architecture Skills Framework and the Architecture Roles and Skills guide to set up
+          the practice. Define the roles the practice needs, distinguishing the Enterprise Architect,
+          responsible for the landscape and reference-model level and the enterprise's capabilities,
+          from Segment Architects for the customer-experience, billing and network domains, who need
+          similar skills without whole-enterprise scope, and from Solution Architects at system level,
+          who are more IT-centred, and add the Chief Architect role for the head of the practice's
+          strategic and political work; assign a lead Enterprise Architect to lead the customer-
+          experience cycle's team. For each role, define the skills required across the skill
+          categories, generic, business, Enterprise Architecture, programme and project management, IT
+          general knowledge, technical IT and legal, and the proficiency level required in each, on
+          the four-level scale from background to expert, and map that to the company's competency
+          framework. Use the definitions to write role-specific job descriptions and interview
+          criteria so that recruitment is consistent, to assess the billing solution designer and the
+          existing staff against the required levels and give them development paths, to plan the
+          transfer of the contractors' skills through mentoring before they leave, and to establish an
+          internal recognition or certification path. Report the practice's skill profile against
+          the required levels to the Board as the evidence of competence.
+        why: >-
+          A skills framework defines the roles in a work area, the skills each role requires and the
+          depth of knowledge needed, and its value is rapid identification of skill matches and gaps in
+          a discipline whose terms are inconsistently used, which is exactly the recruitment failure
+          described (GUIDE:architecture-skills-framework §1.2, §2.1). The framework separates Enterprise,
+          Segment and Solution Architects by scope and skill focus with a lead Enterprise Architect
+          managing a team (GUIDE:architecture-skills-framework §6.2), lists the skill categories
+          (§4.3) and four proficiency levels (§4.4), and sets three purposes for an internal
+          certification programme: defined competencies aligned to tasks, formal recognition and a
+          development path (§3.1). The Roles and Skills guide adds the Chief Architect, defines job,
+          role and assignment, and requires a clear mandate, defined competencies, formal recognition
+          and a development path to set up a practice (GUIDE:architecture-roles-and-skills §3, §4, §5).
+      - key: B
+        points: 3
+        text: >-
+          Write a single detailed job description for "Enterprise Architect" covering strategy,
+          domain design and solution review, grade it against the company's competency framework at a
+          senior level, and hire twelve people to it, allocating them to domains after they join;
+          ask the contractors to write handover notes.
+        why: >-
+          Aligning to the competency framework is right, but a single role that spans strategy, domain
+          and solution work reproduces the ambiguity the framework exists to remove and the two
+          departures the scenario describes; the framework distinguishes Enterprise, Segment and
+          Solution Architects precisely because their scope and skills differ
+          (GUIDE:architecture-skills-framework §6.2, §2.1). Handover notes are not the mentoring and
+          skills transfer that a development path requires (GUIDE:architecture-roles-and-skills §3).
+      - key: C
+        points: 1
+        text: >-
+          Adopt the Chief Technology Officer's proposal and hire twelve domain specialists for
+          networks, billing and digital channels, on the grounds that deep technical expertise is what
+          the company lacks, and let the Chief Information Officer's generalist role be filled by
+          consultants when a cycle needs it.
+        why: >-
+          Domain specialists correspond to Segment or Solution Architects, but a practice with no
+          Enterprise Architects cannot lead an ADM cycle, own the landscape or reconcile the domains,
+          which is the central role the framework says needs the most careful definition
+          (GUIDE:architecture-skills-framework §4.2, §6.1); continuing to buy that role from consultants
+          contradicts the mandate to build an internal practice and leaves no development path
+          (GUIDE:architecture-roles-and-skills §3).
+      - key: D
+        points: 0
+        text: >-
+          Continue recruiting under the existing advertisement but tighten the screening to candidates
+          with the word "architect" in their current title, since the volume of applicants shows the
+          market can supply the role, and address any mismatch after hiring through probation.
+        why: >-
+          Job titles are the ambiguity the framework was written to resolve; hiring by title without
+          defined roles, skills and proficiency levels wastes time on candidates who lack the required
+          skills and overlooks those who have them, and provides no basis for assignment or development
+          (GUIDE:architecture-skills-framework §2.1, §3.2). It repeats the failure that prompted the
+          Human Resources director's request.
+    refs: ["GUIDE:architecture-skills-framework §1.2", "GUIDE:architecture-skills-framework §3.1", "GUIDE:architecture-skills-framework §4.3", "GUIDE:architecture-skills-framework §4.4", "GUIDE:architecture-skills-framework §6.2", "GUIDE:architecture-roles-and-skills §3"]
+    open_book_hint: "Where to look: Series Guide Architecture Skills Framework, section 1.2 (what a skills framework defines), 2.1 (definitional rigour), 3.1 (purposes of certification), 4.2 (roles), 4.3 (skill categories), 4.4 (proficiency levels), 6.2 (Enterprise, Segment and Solution Architects); Series Guide Architecture Roles and Skills, chapter 3 (setting up a practice), chapter 4 (the four roles) and chapter 5 (skills and proficiency levels)."
+    difficulty: 2
+    tags: [skills-framework, roles, architecture-practice]
+    status: draft
+
+  - id: P9-105
+    unit: P9
+    objective: "P9.1"
+    lesson: P9/01_the_governance_framework_in_practice
+    scenario: |
+      Calder Agricultural is a co-operative that processes and markets dairy and grain for 4,000
+      farmer members, with 2,800 staff, twelve processing sites and a trading arm. Its Enterprise
+      Architecture function of five reports to the Chief Information Officer and has run for three
+      years; an Architecture Board of six, sponsored by the Chief Executive, meets monthly and has
+      granted several dispensations and approved two Target Architectures. The Board's agenda follows
+      the standard's model and its decisions are logged. The co-operative's governance was praised by
+      its auditors last year.
+
+      This year the picture has changed in three ways. First, the co-operative has acquired a
+      food-ingredients company in another country with 900 staff, its own IT function and its own
+      informal way of deciding technology, which now reports to the trading arm's managing director.
+      Second, a new national food-safety regulation requires every processing site to keep traceable
+      production records in a defined format and to make them available to inspectors within
+      twenty-four hours; the regulation must be "taken on" by every site's systems and by the
+      ingredients company. Third, the trading arm has adopted a commodity-trading platform under a
+      dispensation granted for twelve months because it did not meet the integration standard; the
+      dispensation expires next month, the platform still does not comply, the trading arm says it
+      cannot operate without it, and the Board's chair is minded to "extend it again".
+
+      The Board's own processes are showing strain. The compliance assessments of the two Target
+      Architectures' implementation projects are up to date, but the acquired company has never been
+      assessed and its managing director has said the Board's authority "does not extend across the
+      border". The regulation has been assigned to the Head of Food Safety, who has asked the
+      architecture team "what the architecture says about it" and been told, correctly, that it says
+      nothing yet. The monitoring and reporting of service levels agreed in the operating-level
+      agreements with the processing sites has lapsed since the service manager left. The
+      Governance Repository's decision log is complete, but its project portfolio does not include
+      the acquired company's projects.
+
+      The Chief Executive has asked you, the lead Enterprise Architect, to advise the Board on how
+      the governance framework should respond to the acquisition, the regulation and the expiring
+      dispensation, and what the Board should do about its own lapses.
+    question: "Refer to the scenario. The Chief Executive has asked how the governance framework should respond to the acquisition, the regulation and the expiring dispensation, and what the Board should do about its lapses. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Advise the Board to apply each part of the governance framework to the matching problem. For
+          the acquisition, extend the governance structure: establish a local governance board or
+          design authority for the acquired company under the global Board's remit and authority
+          limits, with the Chief Executive's sponsorship making clear that the Board's authority is a
+          matter of the co-operative's governance hierarchy rather than geography, add the company's
+          projects to the Governance Repository's portfolio and schedule compliance assessments. For
+          the regulation, take it on through the policy management and take-on process so that the
+          requirement is registered, validated, ratified and published as governance content, then
+          update the architecture through Requirements Management and a Change Request, with the Head of
+          Food Safety as the business owner and compliance assessed against it. For the trading
+          platform, refuse a rolling extension: a dispensation is time-bound and its expiry is a
+          trigger for compliance activity, so either the platform is realigned to the integration
+          standard on a dated plan with enforced interim criteria, or the Board decides through a
+          Change Request whether the standard itself should change. For the lapses, restore monitoring
+          and reporting against the operating-level agreements by assigning an owner, and review the
+          Board's performance measures.
+        why: >-
+          The governance structure has global and local boards, design authorities and working parties
+          within a hierarchy that may span geographic levels (GOV §3.2.2, §3.1.1), and each board has
+          articulated responsibilities, remit and authority limits (GOV §4.1). All new governance
+          material, regulatory included, comes under the policy management and take-on process
+          (GOV §3.2.1); Change Requests and impact assessments carry the architecture change
+          (CONTENT §4.2.11). Dispensations are granted for a given period against criteria and are
+          never indefinite, their expiry triggering the compliance cycle (GOV §3.2.1, §4.4.3), and the
+          Board considers policy changes where similar dispensations keep being requested (GOV §4.2).
+          Monitoring and reporting against SLAs and OLAs is a governance process (GOV §3.2.1), and the
+          portfolio and performance measurement belong in the Governance Repository (CONTENT §7.5).
+      - key: B
+        points: 3
+        text: >-
+          Bring the acquired company under the Board by adding its managing director as a seventh
+          member, ask the Head of Food Safety to specify the regulation's requirements directly to the
+          site system owners, and extend the trading platform's dispensation for a final six months on
+          the condition that a compliance plan is produced.
+        why: >-
+          Adding a member and setting a final, conditional extension are closer to the framework than
+          an open extension, but the regulation bypasses the policy take-on and Requirements
+          Management processes and so never becomes governed architecture content (GOV §3.2.1); and a
+          "final" extension without enforced interim criteria and without the Board deciding whether
+          the standard should change repeats the pattern the standard warns about (GOV §3.2.1, §4.2).
+          The monitoring lapse is left unaddressed.
+      - key: C
+        points: 1
+        text: >-
+          Treat the acquired company as outside the Board's remit until it is integrated, handle the
+          regulation as a food-safety project with no architecture involvement since it is a business
+          matter, and let the trading dispensation lapse so that the platform becomes non-compliant
+          and the trading arm must decide what to do.
+        why: >-
+          Governance operates within a hierarchy that includes geographic levels, and an acquired
+          company's architectures are within the co-operative's governance (GOV §3.1.1, §3.2.2); a
+          regulation is exactly the legal and regulatory material the framework's content-agnostic
+          design exists to take on (GOV §3.2.1); and letting a dispensation lapse without a decision
+          abandons the compliance cycle that its expiry is meant to trigger (GOV §3.2.1).
+      - key: D
+        points: 0
+        text: >-
+          Extend the trading dispensation indefinitely as the chair prefers, leave the acquired
+          company to its own devices, and record the regulation as a risk for each site to manage; the
+          Board's processes are otherwise sound and its auditors were satisfied last year.
+        why: >-
+          An indefinite dispensation contradicts the standard directly (GOV §3.2.1), leaving the
+          acquisition ungoverned contradicts the structure and remit of Architecture Governance
+          (GOV §3.2.2, §4.1), and treating a regulation as a site-level risk ignores the compliance
+          system for external standards and regulatory obligations that Architecture Governance
+          includes (GOV §3.1.5). Last year's audit does not cover this year's lapses.
+    refs: ["GOV §3.1.1", "GOV §3.1.5", "GOV §3.2.1", "GOV §3.2.2", "GOV §4.2", "CONTENT §4.2.11"]
+    open_book_hint: "Where to look: EA Capability and Governance 3.1.1 for the governance hierarchy and geographic levels, 3.1.5 for what Architecture Governance includes, 3.2.1 for the processes (policy take-on, compliance, dispensation, monitoring), 3.2.2 for global and local boards and design authorities, 4.1 and 4.2 for the Board's remit and responsibilities including repeated dispensations; Architecture Content 4.2.11 for the Change Request and 7.5 for the repository."
+    difficulty: 3
+    tags: [governance, dispensation, policy-take-on, local-board]
+    status: draft

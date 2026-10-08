@@ -1,0 +1,852 @@
+# S1 SABSA Overview bank (learn_sabsa_archimate.md §4.3). Authored, original paraphrase of the SABSA
+# framework; refs name the SABSA White Paper sections and are to be verified once the PDF is registered.
+# status: draft until reviewed.
+code: S1_BANK
+exam: SCF
+name: "S1 SABSA Overview bank"
+kind: DRILL
+source: authored
+questions:
+  # ---------------------------------------------------------------- S1.1 what SABSA is
+  - id: S1-101
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "What does the acronym SABSA stand for?"
+    options:
+      - {key: A, text: "Sherwood Applied Business Security Architecture", correct: true}
+      - {key: B, text: "Security Architecture for Business Systems and Applications", why: "Not the name; SABSA is named after its originator and its business focus."}
+      - {key: C, text: "Standard Assurance-Based Security Assessment", why: "SABSA is an architecture framework, not an assessment standard."}
+      - {key: D, text: "Structured Approach to Business Security Analysis", why: "Plausible words, wrong expansion."}
+    explanation: "SABSA is the Sherwood Applied Business Security Architecture, a framework and method for business-driven security architecture."
+    refs: ["SABSA §1"]
+    difficulty: 1
+    tags: [sabsa, definitions]
+  - id: S1-102
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "Which statement best describes what SABSA is?"
+    options:
+      - {key: A, text: "A catalogue of security controls to be applied to every system", why: "SABSA is not a controls checklist; ISO 27001 and NIST supply those."}
+      - {key: B, text: "A framework and method for developing risk-driven enterprise security architectures justified by business requirements", correct: true}
+      - {key: C, text: "A product certification scheme for security technology", why: "SABSA certifies people (SCF, SCP, SCM), not products."}
+      - {key: D, text: "A modelling language for drawing security diagrams", why: "SABSA prescribes no notation; ArchiMate is a modelling language."}
+    explanation: "SABSA is a framework and methodology for business-driven, risk-focused security architecture; it is not a control catalogue, a product scheme or a notation."
+    refs: ["SABSA §1"]
+    difficulty: 1
+    tags: [sabsa, definitions]
+  - id: S1-103
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "In SABSA, what does 'business-driven' mean?"
+    options:
+      - {key: A, text: "The business writes the technical security policy", why: "The business owns requirements; the architect owns policy and traceability."}
+      - {key: B, text: "Every security element is justified by a traceable business requirement", correct: true}
+      - {key: C, text: "Security spending is capped at a percentage of revenue", why: "Nothing in the framework sets a budget rule."}
+      - {key: D, text: "Threat intelligence determines which controls are deployed", why: "That would be threat-driven; SABSA starts from business needs, not threats."}
+    explanation: "Business-driven means the reasoning runs downward from business drivers through attributes to controls, and each control can be traced back to a business requirement."
+    refs: ["SABSA §1.2"]
+    difficulty: 1
+    tags: [sabsa, business-driven]
+  - id: S1-104
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "Which of the following is NOT one of the characteristics SABSA claims for itself?"
+    options:
+      - {key: A, text: "Business-driven", why: "This is the first and defining characteristic."}
+      - {key: B, text: "Risk-focused", why: "Risk, both threat and opportunity, is SABSA's lens."}
+      - {key: C, text: "Vendor-certified", correct: true}
+      - {key: D, text: "Two-way traceable", why: "Traceability up and down is a stated characteristic."}
+    explanation: "SABSA is business-driven, risk-focused, comprehensive, modular, open-use, auditable, transparent, scalable and two-way traceable. It is vendor-neutral, not vendor-certified."
+    refs: ["SABSA §1.2"]
+    difficulty: 1
+    tags: [sabsa, characteristics]
+  - id: S1-105
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "What does two-way traceability require of a SABSA architecture?"
+    options:
+      - {key: A, text: "Every control traces up to a business attribute and every attribute traces down to at least one control", correct: true}
+      - {key: B, text: "Every document is version-controlled and signed by two reviewers", why: "That is document control, not traceability."}
+      - {key: C, text: "Every threat is matched with an opportunity", why: "Two-sided risk is a separate idea from traceability."}
+      - {key: D, text: "Every layer is reviewed by the layer above and the layer below", why: "Review flow is not what the term means."}
+    explanation: "Top-down traceability justifies every control; bottom-up traceability checks that every attribute is covered. Together they are the completeness check."
+    refs: ["SABSA §2"]
+    difficulty: 2
+    tags: [sabsa, traceability]
+  - id: S1-106
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "On what terms may an organisation use the SABSA framework?"
+    options:
+      - {key: A, text: "Under a paid licence from the SABSA Institute", why: "The framework itself is free to use."}
+      - {key: B, text: "Only through an accredited training partner", why: "Training and certification are gated; the framework is not."}
+      - {key: C, text: "Free of charge, provided the source is attributed", correct: true}
+      - {key: D, text: "Only by organisations that hold ISO 27001 certification", why: "No such dependency exists."}
+    explanation: "The SABSA framework is open-use with attribution; the training material, examinations and trade marks are protected."
+    refs: ["SABSA §1.1"]
+    difficulty: 1
+    tags: [sabsa, licensing]
+  - id: S1-107
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "A control appears in the architecture with no business attribute above it. In SABSA's terms, what is it?"
+    options:
+      - {key: A, text: "A best-practice baseline control that needs no justification", why: "SABSA accepts no unjustified control."}
+      - {key: B, text: "An unjustified control that should be questioned", correct: true}
+      - {key: C, text: "A Service Management control, which is exempt from traceability", why: "Service Management is a Matrix layer, not an exemption."}
+      - {key: D, text: "A Component-layer standard", why: "Layer placement does not remove the need for justification."}
+    explanation: "Top-down traceability means a control without an attribute is unjustified; bottom-up, an attribute without a control is a gap."
+    refs: ["SABSA §2"]
+    difficulty: 2
+    tags: [sabsa, traceability]
+  - id: S1-108
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "Which SABSA characteristic is described by 'the reasoning from business driver to control is visible to business stakeholders'?"
+    options:
+      - {key: A, text: "Modular", why: "Modularity is about independent development of parts."}
+      - {key: B, text: "Scalable", why: "Scalability is about size of application, from a system to a supply chain."}
+      - {key: C, text: "Transparent", correct: true}
+      - {key: D, text: "Comprehensive", why: "Comprehensiveness is about covering every layer and column."}
+    explanation: "Transparency means the justification chain is visible; auditability means it is recorded so an auditor can follow it."
+    refs: ["SABSA §1.2"]
+    difficulty: 2
+    tags: [sabsa, characteristics]
+  - id: S1-109
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "SABSA starts the security architecture with which question?"
+    options:
+      - {key: A, text: "What threats does the organisation face?", why: "Threat-driven; SABSA derives attributes from business needs first."}
+      - {key: B, text: "What does the business need to be true about its information and processes to succeed?", correct: true}
+      - {key: C, text: "Which products are already installed?", why: "That is bottom-up from the Component layer."}
+      - {key: D, text: "Which regulations apply?", why: "Regulation is one Contextual driver among many, not the starting question."}
+    explanation: "The framework begins with business needs, captured as business attributes; threats and regulations are inputs to that, not the starting point."
+    refs: ["SABSA §1.2"]
+    difficulty: 1
+    tags: [sabsa, business-driven]
+  - id: S1-110
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "How does SABSA relate to a controls standard such as ISO/IEC 27001?"
+    options:
+      - {key: A, text: "SABSA replaces it", why: "They are complementary."}
+      - {key: B, text: "SABSA is the architecture that says which controls are needed, why, and how the business will know they work; the standard supplies the control catalogue", correct: true}
+      - {key: C, text: "SABSA is a subset of it", why: "SABSA is not derived from ISO 27001."}
+      - {key: D, text: "They cannot be used together", why: "The TOGAF guide positions them side by side."}
+    explanation: "SABSA supplies the why and the traceability; a control standard supplies the what. The TOGAF risk and security guide places them together on those terms."
+    refs: ["SABSA §1", "GUIDE:integrating-risk-and-security §2.8"]
+    difficulty: 2
+    tags: [sabsa, standards]
+  - id: S1-111
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "Which characteristic allows SABSA to be applied to a single system, a business unit or a whole supply chain?"
+    options:
+      - {key: A, text: "Scalable", correct: true}
+      - {key: B, text: "Auditable", why: "Auditability concerns recorded justification."}
+      - {key: C, text: "Open-use", why: "Open-use concerns licensing."}
+      - {key: D, text: "Risk-focused", why: "Risk focus concerns prioritisation, not scope."}
+    explanation: "Scalability is the characteristic that lets the same framework apply at any scope."
+    refs: ["SABSA §1.2"]
+    difficulty: 1
+    tags: [sabsa, characteristics]
+  - id: S1-112
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "Which characteristic means each layer, column and domain can be developed and changed independently?"
+    options:
+      - {key: A, text: "Transparent", why: "Transparency is visibility of reasoning."}
+      - {key: B, text: "Modular", correct: true}
+      - {key: C, text: "Comprehensive", why: "Comprehensiveness is coverage, not independence."}
+      - {key: D, text: "Traceable", why: "Traceability is the linkage between layers, not their independence."}
+    explanation: "Modularity is the characteristic that permits independent development of parts of the architecture."
+    refs: ["SABSA §1.2"]
+    difficulty: 1
+    tags: [sabsa, characteristics]
+  - id: S1-113
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "What is the business's role and the architect's role in a business-driven security architecture?"
+    options:
+      - {key: A, text: "The business owns the requirements; the architect owns the traceability from requirements to controls", correct: true}
+      - {key: B, text: "The business owns the controls; the architect owns the requirements", why: "Reversed."}
+      - {key: C, text: "Both are owned by the security function", why: "That would not be business-driven."}
+      - {key: D, text: "Both are owned by the regulator", why: "Regulation is a driver, not an owner."}
+    explanation: "Business-driven means the business states what it needs and the architect makes every control traceable to it."
+    refs: ["SABSA §1.2"]
+    difficulty: 2
+    tags: [sabsa, business-driven]
+  - id: S1-114
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "Which body publishes and maintains the SABSA framework?"
+    options:
+      - {key: A, text: "The Open Group", why: "The Open Group publishes TOGAF and ArchiMate and co-authored the integration papers."}
+      - {key: B, text: "ISO", why: "ISO publishes 27001 and 31000."}
+      - {key: C, text: "The SABSA Institute", correct: true}
+      - {key: D, text: "NIST", why: "NIST publishes US cybersecurity frameworks."}
+    explanation: "The SABSA Institute owns and publishes the framework; The Open Group co-published the TOGAF integration material with it."
+    refs: ["SABSA §1.1", "GUIDE:integrating-risk-and-security §2.8"]
+    difficulty: 1
+    tags: [sabsa, definitions]
+  - id: S1-115
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "In SABSA, business needs are captured as which kind of statement?"
+    options:
+      - {key: A, text: "Threat scenarios", why: "Threats are analysed against attributes, not used as the requirement."}
+      - {key: B, text: "Business attributes such as available, confidential and reputable", correct: true}
+      - {key: C, text: "Control objectives from a standard", why: "Control objectives are derived from attributes."}
+      - {key: D, text: "Technical standards", why: "Standards sit at the Component layer."}
+    explanation: "Business attributes are the business's requirements in its own words, and everything below exists to make an attribute true to a measured level."
+    refs: ["SABSA §1.2"]
+    difficulty: 1
+    tags: [sabsa, attributes]
+  - id: S1-116
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "Which characteristic means every decision is recorded with its justification so a reviewer can follow it?"
+    options:
+      - {key: A, text: "Auditable", correct: true}
+      - {key: B, text: "Modular", why: "Modularity is independence of parts."}
+      - {key: C, text: "Scalable", why: "Scalability is range of application."}
+      - {key: D, text: "Open-use", why: "Open-use is a licensing term."}
+    explanation: "Auditability is the recorded justification; transparency is its visibility to stakeholders."
+    refs: ["SABSA §1.2"]
+    difficulty: 1
+    tags: [sabsa, characteristics]
+  - id: S1-117
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "A business attribute in the profile has no control beneath it at any layer. What has been found?"
+    options:
+      - {key: A, text: "An unjustified control", why: "That is the top-down failure; this is the bottom-up one."}
+      - {key: B, text: "A gap that must be closed", correct: true}
+      - {key: C, text: "An enablement objective", why: "Objectives are derived from attributes; this is about coverage."}
+      - {key: D, text: "An acceptable residual risk", why: "Acceptance is a recorded decision, not an accident of coverage."}
+    explanation: "Bottom-up traceability checks that every attribute is covered; an uncovered attribute is a gap."
+    refs: ["SABSA §2"]
+    difficulty: 2
+    tags: [sabsa, traceability]
+  - id: S1-118
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "Why does SABSA organise the architecture into layers of abstraction?"
+    options:
+      - {key: A, text: "So that each layer can be outsourced to a different vendor", why: "Not the reason; layers are audiences, not procurement lots."}
+      - {key: B, text: "So that each audience, from the business to the facilities manager, has a complete architecture at its own level", correct: true}
+      - {key: C, text: "So that lower layers can be skipped for small projects", why: "Scalability does not mean skipping layers."}
+      - {key: D, text: "To mirror the OSI network model", why: "No relationship to OSI."}
+    explanation: "Each layer is a complete architecture for one view: business, architect, designer, builder, tradesman and facilities manager."
+    refs: ["SABSA §2"]
+    difficulty: 2
+    tags: [sabsa, layers]
+  - id: S1-119
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "Which TOGAF publication is the learner's existing entry point to SABSA ideas and was developed with the SABSA Institute?"
+    options:
+      - {key: A, text: "The TOGAF Series Guide on integrating risk and security within a TOGAF enterprise architecture", correct: true}
+      - {key: B, text: "The TOGAF Series Guide on business scenarios", why: "Business scenarios are a requirements technique, not a security guide."}
+      - {key: C, text: "The Architecture Content framework", why: "That is part of the standard, not a SABSA bridge."}
+      - {key: D, text: "The ArchiMate specification", why: "A modelling language, not a security guide."}
+    explanation: "The risk and security guide was developed with the SABSA Institute and draws on the Business Attribute model."
+    refs: ["GUIDE:integrating-risk-and-security §2.8", "SABSA §1"]
+    difficulty: 1
+    tags: [sabsa, togaf]
+  - id: S1-120
+    unit: S1
+    objective: "S1.1"
+    lesson: S1/01_what_sabsa_is
+    stem: "Which of these is the SABSA view of the relationship between security and the business?"
+    options:
+      - {key: A, text: "Security constrains the business and must be minimised", why: "SABSA sees security as enabling, not merely constraining."}
+      - {key: B, text: "Security is applied to the business, justified by what the business wants to achieve, and enables as well as protects", correct: true}
+      - {key: C, text: "Security is a technology concern separate from business strategy", why: "The opposite of business-driven."}
+      - {key: D, text: "Security is defined by the regulator alone", why: "Regulation is one driver among many."}
+    explanation: "SABSA's name carries the claim: security architecture applied to the business, with both enablement and protection in view."
+    refs: ["SABSA §1"]
+    difficulty: 1
+    tags: [sabsa, business-driven]
+  # ---------------------------------------------------------------- S1.2 the Matrix
+  - id: S1-121
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "How many layers and how many columns does the SABSA Matrix have?"
+    options:
+      - {key: A, text: "Five layers and six columns", why: "There are six layers including Service Management."}
+      - {key: B, text: "Six layers and six columns", correct: true}
+      - {key: C, text: "Six layers and five columns", why: "There are six columns, the six interrogatives."}
+      - {key: D, text: "Seven layers and six columns", why: "The Lifecycle is not a seventh layer."}
+    explanation: "Six layers (Contextual, Conceptual, Logical, Physical, Component, Service Management) by six columns (Assets, Motivation, Process, People, Location, Time) give thirty-six cells."
+    refs: ["SABSA §2.1"]
+    difficulty: 1
+    tags: [matrix]
+  - id: S1-122
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which layer of the SABSA Matrix is the designer's view?"
+    options:
+      - {key: A, text: "Conceptual", why: "Conceptual is the architect's view."}
+      - {key: B, text: "Logical", correct: true}
+      - {key: C, text: "Physical", why: "Physical is the builder's view."}
+      - {key: D, text: "Component", why: "Component is the tradesman's view."}
+    explanation: "Business, architect, designer, builder, tradesman, facilities manager map to Contextual, Conceptual, Logical, Physical, Component, Service Management."
+    refs: ["SABSA §2.1"]
+    difficulty: 1
+    tags: [matrix, views]
+  - id: S1-123
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which layer is the tradesman's view?"
+    options:
+      - {key: A, text: "Physical", why: "Physical is the builder's view."}
+      - {key: B, text: "Component", correct: true}
+      - {key: C, text: "Service Management", why: "That is the facilities manager's view."}
+      - {key: D, text: "Logical", why: "Logical is the designer's view."}
+    explanation: "The Component layer, products and tools and standards, is the tradesman's view."
+    refs: ["SABSA §2.1"]
+    difficulty: 1
+    tags: [matrix, views]
+  - id: S1-124
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which column of the SABSA Matrix answers the question 'why'?"
+    options:
+      - {key: A, text: "Assets", why: "Assets answers 'what'."}
+      - {key: B, text: "Motivation", correct: true}
+      - {key: C, text: "Process", why: "Process answers 'how'."}
+      - {key: D, text: "Time", why: "Time answers 'when'."}
+    explanation: "The columns are Assets (what), Motivation (why), Process (how), People (who), Location (where), Time (when)."
+    refs: ["SABSA §2.1"]
+    difficulty: 1
+    tags: [matrix, columns]
+  - id: S1-125
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "In the SABSA Matrix, where is the Business Attributes Profile?"
+    options:
+      - {key: A, text: "Contextual × Motivation", why: "That cell is business risk: opportunities and threats."}
+      - {key: B, text: "Conceptual × Assets", correct: true}
+      - {key: C, text: "Conceptual × Motivation", why: "That cell holds the control and enablement objectives derived from the profile."}
+      - {key: D, text: "Logical × Assets", why: "That cell is the inventory of information assets."}
+    explanation: "The Business Attributes Profile is business knowledge and risk strategy at the Conceptual layer's Assets column: what the business needs its assets to be."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells, attributes]
+  - id: S1-126
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which cell of the Matrix holds the security domain maps with their inter-domain associations?"
+    options:
+      - {key: A, text: "Conceptual × Location", why: "That is the domain framework, the concept; the maps are drawn a layer lower."}
+      - {key: B, text: "Logical × Location", correct: true}
+      - {key: C, text: "Physical × Location", why: "That is ICT infrastructure: platforms and networks."}
+      - {key: D, text: "Logical × People", why: "That is the entity and trust framework."}
+    explanation: "Domain maps, with domain definitions and inter-domain associations, are the Logical layer's Location cell."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells, domains]
+  - id: S1-127
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which cell holds the entity schema, privilege profiles and trust relationships?"
+    options:
+      - {key: A, text: "Logical × People", correct: true}
+      - {key: B, text: "Conceptual × People", why: "That is roles and responsibilities: owners, custodians, users."}
+      - {key: C, text: "Physical × People", why: "That is the human interface and identity and access-control systems."}
+      - {key: D, text: "Logical × Location", why: "That is the domain maps."}
+    explanation: "The entity and trust framework is Logical × People."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells, trust]
+  - id: S1-128
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which cell of the SABSA Matrix holds operational risk management?"
+    options:
+      - {key: A, text: "Contextual × Motivation", why: "That is business risk as the business perceives it."}
+      - {key: B, text: "Physical × Motivation", why: "That is risk management practices, rules and procedures."}
+      - {key: C, text: "Service Management × Motivation", correct: true}
+      - {key: D, text: "Component × Motivation", why: "That is risk management tools and standards."}
+    explanation: "Operational risk management, with assessment, monitoring, reporting and treatment, is the Motivation cell of the Service Management layer."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells, risk]
+  - id: S1-129
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which cell holds security mechanisms such as applications, middleware and system-level controls?"
+    options:
+      - {key: A, text: "Logical × Process", why: "That is process maps and security services."}
+      - {key: B, text: "Physical × Process", correct: true}
+      - {key: C, text: "Component × Process", why: "That is process tools and standards: protocols and products."}
+      - {key: D, text: "Physical × Assets", why: "That is data assets: the data dictionary and inventory."}
+    explanation: "Process mechanisms, including security mechanisms, are Physical × Process; services are a layer above, products a layer below."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells, mechanisms]
+  - id: S1-130
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "What is in the Contextual × Time cell?"
+    options:
+      - {key: A, text: "Calendar and timetable", why: "That is Logical × Time."}
+      - {key: B, text: "Processing schedule", why: "That is Physical × Time."}
+      - {key: C, text: "Business time dependencies", correct: true}
+      - {key: D, text: "Time and performance management", why: "That is Service Management × Time."}
+    explanation: "The business view of time is its time dependencies: trading hours, deadlines, settlement windows."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells, time]
+  - id: S1-131
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which layer is described as cutting across all the others as well as being drawn as a row of its own?"
+    options:
+      - {key: A, text: "Contextual", why: "Contextual is the top row only."}
+      - {key: B, text: "Logical", why: "Logical is the designer's row."}
+      - {key: C, text: "Service Management", correct: true}
+      - {key: D, text: "Component", why: "Component is the tradesman's row."}
+    explanation: "Service Management (the operational layer) is the sixth row and also spans the other five, because operations touch every level."
+    refs: ["SABSA §2.1"]
+    difficulty: 1
+    tags: [matrix, layers]
+  - id: S1-132
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which cell holds ICT infrastructure: host platforms, networks and the layout of devices?"
+    options:
+      - {key: A, text: "Physical × Location", correct: true}
+      - {key: B, text: "Component × Location", why: "That is locator tools and standards: nodes and addresses."}
+      - {key: C, text: "Logical × Location", why: "That is the domain maps."}
+      - {key: D, text: "Physical × Assets", why: "That is data assets."}
+    explanation: "The builder's view of 'where' is the ICT infrastructure."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells]
+  - id: S1-133
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Reading down the Motivation column, what is the correct order of cell contents from Contextual to Service Management?"
+    options:
+      - {key: A, text: "Business risk; risk management objectives; policies; practices; tools and standards; operational risk management", correct: true}
+      - {key: B, text: "Policies; business risk; objectives; practices; tools; operational risk management", why: "Policies belong at the Logical layer, third from the top."}
+      - {key: C, text: "Business risk; policies; objectives; tools; practices; operational risk management", why: "Objectives (Conceptual) precede policies (Logical); practices (Physical) precede tools (Component)."}
+      - {key: D, text: "Operational risk management; business risk; objectives; policies; practices; tools", why: "Operational risk management is the bottom row, not the top."}
+    explanation: "The Motivation column is the risk model laid out top to bottom: risk, objectives, policies, practices, tools, operational risk management."
+    refs: ["SABSA §2.3"]
+    difficulty: 3
+    tags: [matrix, columns, risk]
+  - id: S1-134
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which cell holds the control and enablement objectives?"
+    options:
+      - {key: A, text: "Conceptual × Motivation", correct: true}
+      - {key: B, text: "Conceptual × Assets", why: "That holds the Business Attributes Profile from which the objectives are derived."}
+      - {key: C, text: "Logical × Motivation", why: "That holds the risk management policies."}
+      - {key: D, text: "Contextual × Motivation", why: "That holds business risk: opportunities and threats."}
+    explanation: "Risk management objectives, control and enablement, are the architect's answer to 'why'."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells, objectives]
+  - id: S1-135
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "A row of the Matrix with an empty cell indicates what?"
+    options:
+      - {key: A, text: "That the column does not apply at that layer", why: "Every column applies at every layer."}
+      - {key: B, text: "An incomplete architecture for that view", correct: true}
+      - {key: C, text: "That the layer above has already answered the question", why: "Each layer answers every question at its own abstraction."}
+      - {key: D, text: "A Service Management responsibility", why: "Service Management has its own row."}
+    explanation: "Each row is a complete architecture for one audience; an empty cell is a missing answer, and the Matrix doubles as a completeness checklist."
+    refs: ["SABSA §2.3"]
+    difficulty: 2
+    tags: [matrix, completeness]
+  - id: S1-136
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which cell holds the data dictionary and data inventory?"
+    options:
+      - {key: A, text: "Logical × Assets", why: "That is the inventory of information assets, one abstraction higher."}
+      - {key: B, text: "Physical × Assets", correct: true}
+      - {key: C, text: "Component × Assets", why: "That is ICT components: repositories and processors."}
+      - {key: D, text: "Contextual × Assets", why: "That is the business itself."}
+    explanation: "Information (Logical) becomes data (Physical) becomes repositories and processors (Component)."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells]
+  - id: S1-137
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "What is the correct order of the SABSA Matrix columns?"
+    options:
+      - {key: A, text: "Assets, Motivation, Process, People, Location, Time", correct: true}
+      - {key: B, text: "What, How, Where, Who, When, Why", why: "That is Zachman's order; SABSA puts Motivation second."}
+      - {key: C, text: "Motivation, Assets, People, Process, Location, Time", why: "Assets comes first."}
+      - {key: D, text: "Assets, Process, Motivation, People, Time, Location", why: "Motivation is second and Location precedes Time."}
+    explanation: "Assets (what), Motivation (why), Process (how), People (who), Location (where), Time (when)."
+    refs: ["SABSA §2.1"]
+    difficulty: 1
+    tags: [matrix, columns]
+  - id: S1-138
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which cell holds account provisioning and user support management?"
+    options:
+      - {key: A, text: "Physical × People", why: "That is the human interface and identity and access systems."}
+      - {key: B, text: "Component × People", why: "That is personnel management tools and standards such as ACLs."}
+      - {key: C, text: "Service Management × People", correct: true}
+      - {key: D, text: "Conceptual × People", why: "That is roles and responsibilities."}
+    explanation: "Personnel management, provisioning and user support is the operational layer's People cell."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells]
+  - id: S1-139
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which cell holds the calendar and timetable of start times, lifetimes and deadlines?"
+    options:
+      - {key: A, text: "Conceptual × Time", why: "That is the time management framework, the through-life risk framework."}
+      - {key: B, text: "Logical × Time", correct: true}
+      - {key: C, text: "Physical × Time", why: "That is the processing schedule."}
+      - {key: D, text: "Component × Time", why: "That is step timing tools such as clocks and timers."}
+    explanation: "The designer's view of 'when' is the calendar and timetable."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells, time]
+  - id: S1-140
+    unit: S1
+    objective: "S1.2"
+    lesson: S1/02_the_sabsa_matrix
+    stem: "Which cell holds the security services attached to process maps?"
+    options:
+      - {key: A, text: "Logical × Process", correct: true}
+      - {key: B, text: "Conceptual × Process", why: "That is the strategies for process assurance."}
+      - {key: C, text: "Physical × Process", why: "That is the mechanisms that realise the services."}
+      - {key: D, text: "Service Management × Process", why: "That is process delivery management."}
+    explanation: "Services are Logical; the strategies above and the mechanisms below are neighbours in the same column."
+    refs: ["SABSA §2.2"]
+    difficulty: 2
+    tags: [matrix, cells, services]
+  # ---------------------------------------------------------------- S1.3 Zachman, TOGAF, Lifecycle
+  - id: S1-141
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "What does the SABSA Matrix borrow from the Zachman Framework?"
+    options:
+      - {key: A, text: "The grid of perspectives against the six interrogatives", correct: true}
+      - {key: B, text: "The Business Attributes Profile", why: "That is SABSA's own contribution."}
+      - {key: C, text: "The four-phase Lifecycle", why: "Zachman prescribes no method."}
+      - {key: D, text: "The security domain model", why: "Domains are SABSA content, not Zachman's."}
+    explanation: "SABSA takes Zachman's shape, rows of views against columns of interrogatives, and fills it with security content and a method."
+    refs: ["SABSA §2.1"]
+    difficulty: 1
+    tags: [zachman]
+  - id: S1-142
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "Which is a difference between SABSA and Zachman?"
+    options:
+      - {key: A, text: "SABSA has six columns; Zachman has four", why: "Both have six."}
+      - {key: B, text: "SABSA supplies a development method and a risk model; Zachman is a classification scheme with no method", correct: true}
+      - {key: C, text: "Zachman is security-specific; SABSA is generic", why: "Reversed."}
+      - {key: D, text: "SABSA has no rows", why: "SABSA has six rows."}
+    explanation: "Zachman classifies; SABSA classifies, then prescribes the Lifecycle, the attributes and the risk model."
+    refs: ["SABSA §1.3", "SABSA §2.1"]
+    difficulty: 2
+    tags: [zachman]
+  - id: S1-143
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "In SABSA's column order, which position does Motivation occupy?"
+    options:
+      - {key: A, text: "First", why: "Assets is first."}
+      - {key: B, text: "Second", correct: true}
+      - {key: C, text: "Last", why: "In Zachman 'why' is last; SABSA moves it to second."}
+      - {key: D, text: "Fourth", why: "People is fourth."}
+    explanation: "SABSA reorders Zachman's interrogatives so that Motivation (why) is the second column."
+    refs: ["SABSA §2.1"]
+    difficulty: 2
+    tags: [zachman, columns]
+  - id: S1-144
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "What are the four phases of the SABSA Lifecycle?"
+    options:
+      - {key: A, text: "Strategy and Planning; Design; Implement; Manage and Measure", correct: true}
+      - {key: B, text: "Plan; Do; Check; Act", why: "That is the Deming cycle."}
+      - {key: C, text: "Identify; Protect; Detect; Respond", why: "Those are NIST framework functions."}
+      - {key: D, text: "Preliminary; Vision; Development; Governance", why: "TOGAF-flavoured, not the SABSA names."}
+    explanation: "Strategy and Planning, Design, Implement, Manage and Measure, with Manage and Measure feeding metrics back to Strategy."
+    refs: ["SABSA §5"]
+    difficulty: 1
+    tags: [lifecycle]
+  - id: S1-145
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "Which Matrix layers are developed in the Strategy and Planning phase of the Lifecycle?"
+    options:
+      - {key: A, text: "Contextual and Conceptual", correct: true}
+      - {key: B, text: "Logical and Physical", why: "Those are Design."}
+      - {key: C, text: "Component only", why: "Component is Design."}
+      - {key: D, text: "Service Management", why: "That is Manage and Measure."}
+    explanation: "Strategy and Planning fills the top two layers; Design fills Logical, Physical and Component; Manage and Measure is the Service Management layer."
+    refs: ["SABSA §5"]
+    difficulty: 2
+    tags: [lifecycle, layers]
+  - id: S1-146
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "What feeds back from the Manage and Measure phase into Strategy and Planning?"
+    options:
+      - {key: A, text: "Product upgrade schedules", why: "Component-layer detail, not the strategic feedback."}
+      - {key: B, text: "Measured business-attribute performance against target", correct: true}
+      - {key: C, text: "The network diagram", why: "Physical-layer content."}
+      - {key: D, text: "New staff job descriptions", why: "Component × People content."}
+    explanation: "Attribute metrics gathered in operations re-baseline the profile in the next planning cycle; that closes the loop."
+    refs: ["SABSA §5.1"]
+    difficulty: 2
+    tags: [lifecycle, metrics]
+  - id: S1-147
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "How do the top two SABSA layers map onto the TOGAF ADM?"
+    options:
+      - {key: A, text: "Phases E and F", why: "Those are opportunities and migration planning."}
+      - {key: B, text: "Preliminary Phase and Phase A", correct: true}
+      - {key: C, text: "Phases G and H", why: "Those are the Service Management layer."}
+      - {key: D, text: "Phase D only", why: "Phase D is Physical and Component."}
+    explanation: "Contextual and Conceptual are the Preliminary Phase and Phase A: drivers, principles, appetite and attributes."
+    refs: ["GUIDE:integrating-risk-and-security §5", "SABSA §1.3"]
+    difficulty: 1
+    tags: [togaf, crosswalk]
+  - id: S1-148
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "Which ADM phases correspond to the SABSA Service Management layer?"
+    options:
+      - {key: A, text: "Phases B and C", why: "Those are the Logical layer."}
+      - {key: B, text: "Phases G and H", correct: true}
+      - {key: C, text: "Preliminary Phase", why: "That is Contextual."}
+      - {key: D, text: "Phase A", why: "That is Conceptual."}
+    explanation: "Implementation governance and change management are the operational, Manage and Measure side of the architecture."
+    refs: ["GUIDE:integrating-risk-and-security §5"]
+    difficulty: 1
+    tags: [togaf, crosswalk]
+  - id: S1-149
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "The word 'domain' means what in SABSA, as opposed to TOGAF?"
+    options:
+      - {key: A, text: "One of Business, Data, Application or Technology architecture", why: "That is TOGAF's architecture domain."}
+      - {key: B, text: "A set of elements under one security policy from one policy authority", correct: true}
+      - {key: C, text: "A layer of the ArchiMate language", why: "ArchiMate uses layers, not domains."}
+      - {key: D, text: "A DNS namespace", why: "Not an architecture meaning."}
+    explanation: "SABSA's security domain is a policy scope under one authority; TOGAF's domain is an architecture discipline."
+    refs: ["SABSA §1.3"]
+    difficulty: 2
+    tags: [confusables, domain]
+  - id: S1-150
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "What is the SABSA equivalent of a TOGAF requirement?"
+    options:
+      - {key: A, text: "A security mechanism", why: "Physical-layer solution, not a requirement."}
+      - {key: B, text: "A business attribute with a performance target", correct: true}
+      - {key: C, text: "A security domain", why: "A scope, not a requirement."}
+      - {key: D, text: "A Lifecycle phase", why: "A process step, not a requirement."}
+    explanation: "SABSA's requirements are attributes with targets, which TOGAF's risk and security guide places in Requirements Management."
+    refs: ["SABSA §1.3", "GUIDE:integrating-risk-and-security §5"]
+    difficulty: 2
+    tags: [confusables, requirement]
+  - id: S1-151
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "What does 'risk' mean in SABSA that differs from the usual TOGAF usage?"
+    options:
+      - {key: A, text: "It is two-sided: threat and opportunity", correct: true}
+      - {key: B, text: "It is measured only in money", why: "SABSA measures against attributes in business terms, not money alone."}
+      - {key: C, text: "It is assessed only in Phase G", why: "TOGAF assesses in Phase A and monitors in G; SABSA assesses throughout."}
+      - {key: D, text: "It excludes operational risk", why: "Operational risk is a SABSA layer's core content."}
+    explanation: "TOGAF's risk technique is about initial and residual loss; SABSA adds the opportunity side."
+    refs: ["SABSA §1.3"]
+    difficulty: 2
+    tags: [confusables, risk]
+  - id: S1-152
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "What does the word 'view' mean in SABSA?"
+    options:
+      - {key: A, text: "A representation from a viewpoint in the ISO 42010 sense", why: "That is the TOGAF and ArchiMate sense."}
+      - {key: B, text: "One of the six rows of the Matrix, written for one audience", correct: true}
+      - {key: C, text: "A database view", why: "Not an architecture meaning."}
+      - {key: D, text: "A diagram type", why: "SABSA prescribes no notation."}
+    explanation: "SABSA's views are the layers: business, architect, designer, builder, tradesman, facilities manager."
+    refs: ["SABSA §1.3", "SABSA §2.1"]
+    difficulty: 2
+    tags: [confusables, view]
+  - id: S1-153
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "In SABSA, what is the nearest concept to a TOGAF Architecture Principle?"
+    options:
+      - {key: A, text: "A business attribute", why: "An attribute is a requirement, not a governing rule."}
+      - {key: B, text: "Policy at the Conceptual and Logical layers", correct: true}
+      - {key: C, text: "A security domain", why: "A domain is a scope."}
+      - {key: D, text: "A control type", why: "A classification of what controls do."}
+    explanation: "SABSA does not treat 'principle' as a first-class term; governing statements are expressed as policy under a policy authority."
+    refs: ["SABSA §1.3"]
+    difficulty: 3
+    tags: [confusables, principle]
+  - id: S1-154
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "Which ADM phases correspond to the SABSA Logical layer?"
+    options:
+      - {key: A, text: "Phases B and C", correct: true}
+      - {key: B, text: "Preliminary and A", why: "Those are Contextual and Conceptual."}
+      - {key: C, text: "Phases G and H", why: "Those are Service Management."}
+      - {key: D, text: "Phase E", why: "Phase E is opportunities and solutions, the Implement transition."}
+    explanation: "The designer's work of services, domains and trust is done in Business and Information Systems Architecture."
+    refs: ["GUIDE:integrating-risk-and-security §5"]
+    difficulty: 1
+    tags: [togaf, crosswalk]
+  - id: S1-155
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "Which phase of the SABSA Lifecycle corresponds to the Logical, Physical and Component layers?"
+    options:
+      - {key: A, text: "Strategy and Planning", why: "Top two layers."}
+      - {key: B, text: "Design", correct: true}
+      - {key: C, text: "Implement", why: "The transition into operations."}
+      - {key: D, text: "Manage and Measure", why: "Service Management."}
+    explanation: "Design produces the services, mechanisms and components that make each attribute true."
+    refs: ["SABSA §5"]
+    difficulty: 1
+    tags: [lifecycle]
+  - id: S1-156
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "Is the SABSA Lifecycle a seventh row of the Matrix?"
+    options:
+      - {key: A, text: "Yes, it is the Operational row", why: "The operational row is Service Management, a layer, not the Lifecycle."}
+      - {key: B, text: "No; it is the process that builds and maintains the six rows", correct: true}
+      - {key: C, text: "Yes, it replaces the Contextual row", why: "Nothing replaces Contextual."}
+      - {key: D, text: "No; it is a column", why: "The columns are the six interrogatives."}
+    explanation: "The Matrix is static structure; the Lifecycle is the method that fills and revisits it."
+    refs: ["SABSA §5"]
+    difficulty: 2
+    tags: [lifecycle, matrix]
+  - id: S1-157
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "Which joint publication formally maps the SABSA Business Attributes Profile and Matrix onto the ADM phases?"
+    options:
+      - {key: A, text: "The Open Group White Paper on TOGAF and SABSA integration", correct: true}
+      - {key: B, text: "The ArchiMate specification", why: "A language, with a TOGAF appendix but no SABSA mapping."}
+      - {key: C, text: "ISO 31000", why: "A risk management standard."}
+      - {key: D, text: "The TOGAF Architecture Content Framework", why: "Part of the standard, not a SABSA bridge."}
+    explanation: "The TOGAF and SABSA integration white paper, from The Open Group with the SABSA Institute, is the formal bridge; the risk and security guide carries it into the Series Guides."
+    refs: ["GUIDE:integrating-risk-and-security §2.8", "SABSA §1.3"]
+    difficulty: 2
+    tags: [togaf, integration]
+  - id: S1-158
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "What does 'service' mean in SABSA?"
+    options:
+      - {key: A, text: "A business, IS or technology service in the TOGAF metamodel", why: "That is TOGAF's usage."}
+      - {key: B, text: "A behaviour element exposed through an interface", why: "That is ArchiMate's usage."}
+      - {key: C, text: "A logical security capability delivering an objective, independent of mechanism", correct: true}
+      - {key: D, text: "A managed service contract", why: "Commercial, not architectural."}
+    explanation: "SABSA's security services are Logical-layer capabilities, realised by Physical mechanisms and Component products."
+    refs: ["SABSA §1.3"]
+    difficulty: 2
+    tags: [confusables, service]
+  - id: S1-159
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "In which SABSA Lifecycle phase does the transition into operations, with build, test and deployment, take place?"
+    options:
+      - {key: A, text: "Design", why: "Design produces the design, not the deployment."}
+      - {key: B, text: "Implement", correct: true}
+      - {key: C, text: "Strategy and Planning", why: "The top-layer work."}
+      - {key: D, text: "Manage and Measure", why: "Operations after hand-over."}
+    explanation: "Implement is the hand-over into service management; in ADM terms Phases E to G."
+    refs: ["SABSA §5"]
+    difficulty: 1
+    tags: [lifecycle]
+  - id: S1-160
+    unit: S1
+    objective: "S1.3"
+    lesson: S1/03_zachman_togaf_and_the_lifecycle
+    stem: "How should the mapping 'Logical layer ≈ ADM Phases B–C' be understood?"
+    options:
+      - {key: A, text: "The artefacts are identical under different names", why: "A TOGAF principle is not an attribute; a TOGAF domain is not a security domain."}
+      - {key: B, text: "It says where in the ADM the Logical-layer work is done, not that the artefacts are the same", correct: true}
+      - {key: C, text: "SABSA replaces Phases B and C", why: "The frameworks are complementary."}
+      - {key: D, text: "Phases B and C are skipped when SABSA is used", why: "Nothing is skipped."}
+    explanation: "The crosswalk is a mapping of where work is done; vocabulary and artefacts differ between the frameworks."
+    refs: ["GUIDE:integrating-risk-and-security §5", "SABSA §1.3"]
+    difficulty: 2
+    tags: [togaf, crosswalk]

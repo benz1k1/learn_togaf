@@ -1,0 +1,852 @@
+# S5 Physical and Component Layers bank (SCF). Authored from the SABSA framework as published by the
+# SABSA Institute; SABSA section numbers refer to the White Paper and are to be verified against
+# the registered PDF. status: draft until reviewed.
+code: S5_BANK
+exam: SCF
+name: S5 Physical and Component Layers bank
+kind: DRILL
+source: authored
+questions:
+  # ---------------------------------------------------------------- S5.1 Physical layer
+  - id: S5-101
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "Whose view of the enterprise is the SABSA Physical layer?"
+    options:
+      - {key: A, text: "The builder's view", correct: true}
+      - {key: B, text: "The designer's view", why: "The designer's view is the Logical layer."}
+      - {key: C, text: "The tradesman's view", why: "The tradesman's view is the Component layer."}
+      - {key: D, text: "The facilities manager's view", why: "That is the Service Management layer."}
+    explanation: "SABSA names each layer after its reader: business, architect, designer, builder, tradesman, facilities manager. Physical is the builder."
+    refs: ["SABSA §3.4"]
+    difficulty: 1
+    tags: [physical, layers]
+  - id: S5-102
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "Which of the following belongs in the Physical layer's Process (How) cell?"
+    options:
+      - {key: A, text: "Security mechanisms such as encryption and authentication protocols", correct: true}
+      - {key: B, text: "Security services described by what they do for the business", why: "Services are the Logical layer's Process cell."}
+      - {key: C, text: "Named security products and their protocols", why: "Products are the Component layer."}
+      - {key: D, text: "Business processes and their risk", why: "That is the Contextual layer."}
+    explanation: "Physical × Process is the security mechanisms cell: the means by which a logical service is delivered, technology-specific but vendor-neutral."
+    refs: ["SABSA §3.4"]
+    difficulty: 1
+    tags: [physical, mechanism]
+  - id: S5-103
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "In the Physical layer, what does the Assets (What) cell contain?"
+    options:
+      - {key: A, text: "The business data model: physical data structures and storage", correct: true}
+      - {key: B, text: "The inventory of information assets", why: "That is the Logical layer's Assets cell."}
+      - {key: C, text: "ICT products including data repositories and processors", why: "That is the Component layer's Assets cell."}
+      - {key: D, text: "Business assets and business decisions", why: "That is the Contextual layer."}
+    explanation: "Physical × Assets turns the logical information assets into data structures and storage: the business data model / data dictionary and storage devices."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [physical, assets]
+  - id: S5-104
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "The Physical layer's Time (When) cell is best described as:"
+    options:
+      - {key: A, text: "Control-structure execution: the timing and sequencing of processes and sessions", correct: true}
+      - {key: B, text: "The calendar of start times, lifetimes and deadlines", why: "That is the Logical layer's Time cell."}
+      - {key: C, text: "Clocks, timers and interrupts", why: "Those are Component-layer timing tools."}
+      - {key: D, text: "Business time dependence", why: "That is Contextual × Time."}
+    explanation: "At the Physical layer, time becomes when controls actually run: session lifetimes, batch windows, rotation intervals."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [physical, time]
+  - id: S5-105
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "Which statement about the word 'physical' in SABSA is correct?"
+    options:
+      - {key: A, text: "It denotes the builder's level of abstraction and includes data structures, procedures and schedules, not only hardware", correct: true}
+      - {key: B, text: "It denotes hardware only: servers, cables and devices", why: "Hardware is one cell (Location); the layer has six."}
+      - {key: C, text: "It is a synonym for TOGAF's Technology Architecture", why: "The Physical layer overlaps Phases C and D and is broader than the technology domain."}
+      - {key: D, text: "It refers to physical security of buildings", why: "Buildings and sites are a Service Management concern, not the layer's definition."}
+    explanation: "SABSA's Physical layer is the builder's view across all six columns; hardware is only its Location cell."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [physical, trap]
+  - id: S5-106
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "Which ADM phases does the SABSA Physical layer overlap in the TOGAF crosswalk?"
+    options:
+      - {key: A, text: "Phases C and D", correct: true}
+      - {key: B, text: "Phase D only", why: "Application-level mechanisms are chosen in Phase C too."}
+      - {key: C, text: "Phases A and B", why: "Those hold the Contextual, Conceptual and Logical layers."}
+      - {key: D, text: "Phases G and H", why: "Those hold the Service Management layer."}
+    explanation: "Application mechanisms (authentication, logging, encryption inside applications) come in Phase C; platform and network hosting in Phase D."
+    refs: ["GUIDE:integrating-risk-and-security §5.4", "GUIDE:integrating-risk-and-security §5.5"]
+    difficulty: 2
+    tags: [physical, crosswalk]
+  - id: S5-107
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "'TLS 1.3 with mutual authentication' is an example of content at which SABSA layer?"
+    options:
+      - {key: A, text: "Physical — it is a mechanism, technology-specific but vendor-neutral", correct: true}
+      - {key: B, text: "Component — it is a product", why: "No product is named; a mechanism is."}
+      - {key: C, text: "Logical — it is a service", why: "A service says what is delivered (confidentiality in transit), not how."}
+      - {key: D, text: "Conceptual — it is an attribute", why: "Attributes are business words such as Confidential."}
+    explanation: "A named technique with no vendor is a mechanism: Physical layer. The vendor's gateway that implements it is Component."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [physical, mechanism]
+  - id: S5-108
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "What does the Physical layer's People (Who) cell describe?"
+    options:
+      - {key: A, text: "The human interface: user interfaces to ICT systems and access-control systems", correct: true}
+      - {key: B, text: "The entity schema and privilege profiles", why: "Those are Logical × People."}
+      - {key: C, text: "Identities, functions, actions and access-control lists", why: "That is Component × People."}
+      - {key: D, text: "Account provisioning and user support", why: "That is Service Management × People."}
+    explanation: "Physically, entities meet the system through login screens, tokens and access-control systems."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [physical, people]
+  - id: S5-109
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "In the Physical layer, the Motivation (Why) cell holds:"
+    options:
+      - {key: A, text: "Security rules, practices and procedures that enforce policy", correct: true}
+      - {key: B, text: "Risk-management policies for each domain", why: "Policies are Logical × Motivation."}
+      - {key: C, text: "Security standards", why: "Standards are Component × Motivation in the Blue Book wording."}
+      - {key: D, text: "Business risk and opportunity", why: "That is Contextual × Motivation."}
+    explanation: "Policy is Logical; the concrete practices and procedures that carry it out are Physical."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [physical, motivation]
+  - id: S5-110
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "The Physical layer's Location (Where) cell is the closest SABSA neighbour of which TOGAF content?"
+    options:
+      - {key: A, text: "Phase D Technology Architecture: platforms and networks", correct: true}
+      - {key: B, text: "Phase B organisation and location catalogs", why: "Business geography is Contextual × Location."}
+      - {key: C, text: "The Architecture Repository", why: "The repository is a TOGAF storage concept, not a location cell."}
+      - {key: D, text: "Phase E transition architectures", why: "Transitions are the Time column in Phases E and F."}
+    explanation: "Platform and network infrastructure hosts the logical domains; TOGAF's Phase D describes the same platforms."
+    refs: ["SABSA §3.4", "GUIDE:integrating-risk-and-security §5.5"]
+    difficulty: 2
+    tags: [physical, location]
+  - id: S5-111
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "Which layer sits immediately above the Physical layer in the SABSA Matrix?"
+    options:
+      - {key: A, text: "Logical", correct: true}
+      - {key: B, text: "Conceptual", why: "Conceptual is two layers up."}
+      - {key: C, text: "Component", why: "Component is below the Physical layer."}
+      - {key: D, text: "Service Management", why: "Service Management runs across all layers rather than above Physical."}
+    explanation: "The order is Contextual, Conceptual, Logical, Physical, Component, with Service Management across them."
+    refs: ["SABSA §2"]
+    difficulty: 1
+    tags: [physical, layers]
+  - id: S5-112
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "A mechanism in the Physical layer that cannot be traced to any Logical-layer service is:"
+    options:
+      - {key: A, text: "An orphan control and a candidate for removal", correct: true}
+      - {key: B, text: "Acceptable if it is a widely used product", why: "Popularity is not justification; traceability is."}
+      - {key: C, text: "Evidence of a complete Physical layer", why: "Completeness is judged by links, not by population."}
+      - {key: D, text: "A Component-layer item filed in the wrong row", why: "The problem is missing justification, not classification."}
+    explanation: "Every Physical-layer cell must trace upward; a mechanism with no service above it is unjustified."
+    refs: ["SABSA §3.4", "SABSA §6"]
+    difficulty: 2
+    tags: [physical, traceability]
+  - id: S5-113
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "According to the TOGAF risk and security guide, what does the Security Architect do in Phase D, where the Physical layer's platforms are hosted?"
+    options:
+      - {key: A, text: "Verifies that the controls are included and effective, and may produce a view justifying each technology by the risk it mitigates", correct: true}
+      - {key: B, text: "Produces the Business Attributes Profile", why: "That is Phase A and Requirements Management."}
+      - {key: C, text: "Signs the Architecture Contract", why: "That is Phase G."}
+      - {key: D, text: "Designs the security domain model", why: "That is Phase B."}
+    explanation: "Phase D usually has no separate security artefacts; the architect verifies controls and may supply a risk-justified technology view."
+    refs: ["GUIDE:integrating-risk-and-security §5.5"]
+    difficulty: 2
+    tags: [physical, togaf]
+  - id: S5-114
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "Which pair correctly matches a Physical-layer cell to an example?"
+    options:
+      - {key: A, text: "Time — a session timeout of 15 minutes", correct: true}
+      - {key: B, text: "Assets — the business attribute Confidential", why: "Attributes are Conceptual."}
+      - {key: C, text: "People — a named vendor's identity product", why: "Named products are Component."}
+      - {key: D, text: "Location — business geography and market regions", why: "That is Contextual × Location."}
+    explanation: "A session timeout is control-structure execution timing: Physical × Time."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [physical, cells]
+  - id: S5-115
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "Why does SABSA keep vendor names out of the Physical layer?"
+    options:
+      - {key: A, text: "So products can change without redesigning the architecture", correct: true}
+      - {key: B, text: "Because vendors are recorded only in the Contextual layer", why: "Vendors are not a Contextual concern; products are Component."}
+      - {key: C, text: "Because the Physical layer describes services, not technology", why: "Services are Logical; Physical does describe technology, but generically."}
+      - {key: D, text: "Because procurement is outside SABSA's scope", why: "The Component layer explicitly covers products and tools."}
+    explanation: "Separating mechanism (Physical) from product (Component) gives substitutability."
+    refs: ["SABSA §3.4", "SABSA §3.5"]
+    difficulty: 2
+    tags: [physical, component]
+  - id: S5-116
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "A classified information asset in the Logical layer becomes, at the Physical layer:"
+    options:
+      - {key: A, text: "A data structure in a storage location, with the same classification", correct: true}
+      - {key: B, text: "A business attribute with a performance target", why: "Attributes are above the Logical layer, not below it."}
+      - {key: C, text: "A reclassified asset at a lower sensitivity", why: "Classification does not change on the way down; only its embodiment does."}
+      - {key: D, text: "A named database product", why: "Products are Component."}
+    explanation: "The Physical Assets cell embodies the logical asset as a table, file or store; the classification carries down unchanged."
+    refs: ["SABSA §3.4", "GUIDE:integrating-risk-and-security §5.4.2"]
+    difficulty: 2
+    tags: [physical, assets]
+  - id: S5-117
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "How many cells does the Physical layer have?"
+    options:
+      - {key: A, text: "Six, one per column: Assets, Motivation, Process, People, Location, Time", correct: true}
+      - {key: B, text: "Three: mechanisms, data structures and platforms", why: "Those are examples from three of the six cells."}
+      - {key: C, text: "Five, because Time applies only to Service Management", why: "Every layer has all six columns."}
+      - {key: D, text: "Thirty-six", why: "Thirty-six is the whole Matrix."}
+    explanation: "Every SABSA layer answers the same six questions."
+    refs: ["SABSA §3", "SABSA §3.4"]
+    difficulty: 1
+    tags: [physical, matrix]
+  - id: S5-118
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "Which item is NOT Physical-layer content?"
+    options:
+      - {key: A, text: "The trust relationship model between entities", correct: true}
+      - {key: B, text: "A quarterly privileged-access recertification procedure", why: "A procedure is Physical × Motivation."}
+      - {key: C, text: "Encryption at rest with segregated key management", why: "A mechanism is Physical × Process."}
+      - {key: D, text: "Host platforms and network layout", why: "Physical × Location."}
+    explanation: "The trust relationship model is Logical × People; the others are Physical cells."
+    refs: ["SABSA §3.3", "SABSA §3.4"]
+    difficulty: 2
+    tags: [physical, cells]
+  - id: S5-119
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "A policy states that privileged access is reviewed. At the Physical layer this becomes:"
+    options:
+      - {key: A, text: "A named procedure with steps and a schedule", correct: true}
+      - {key: B, text: "A business attribute called Access-controlled", why: "That is the Conceptual layer above the policy."}
+      - {key: C, text: "A specific identity-governance product", why: "Products are Component."}
+      - {key: D, text: "A domain policy statement", why: "That is the Logical layer where the policy already is."}
+    explanation: "Physical × Motivation holds the practices and procedures that carry out Logical-layer policy."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [physical, motivation]
+  - id: S5-120
+    unit: S5
+    objective: "S5.1"
+    lesson: S5/01_the_physical_layer
+    stem: "The builder metaphor SABSA uses places 'a block wall on this footing with this reinforcement' at which layer?"
+    options:
+      - {key: A, text: "Physical", correct: true}
+      - {key: B, text: "Logical", why: "The Logical drawing says 'a load-bearing wall here'."}
+      - {key: C, text: "Component", why: "Component picks the brand of block."}
+      - {key: D, text: "Contextual", why: "Contextual says why the building is needed."}
+    explanation: "Architect (Logical), builder (Physical), tradesman (Component)."
+    refs: ["SABSA §2", "SABSA §3.4"]
+    difficulty: 1
+    tags: [physical, metaphor]
+  # ---------------------------------------------------------------- S5.2 Component layer
+  - id: S5-121
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "Whose view of the enterprise is the SABSA Component layer?"
+    options:
+      - {key: A, text: "The tradesman's view", correct: true}
+      - {key: B, text: "The builder's view", why: "The builder is the Physical layer."}
+      - {key: C, text: "The architect's view", why: "The architect is the Conceptual layer."}
+      - {key: D, text: "The business's view", why: "The business is the Contextual layer."}
+    explanation: "Component is the tradesman: the most concrete design layer."
+    refs: ["SABSA §3.5"]
+    difficulty: 1
+    tags: [component, layers]
+  - id: S5-122
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "Which of the following is Component-layer content in the Process (How) column?"
+    options:
+      - {key: A, text: "Security products and tools, and the protocols they implement", correct: true}
+      - {key: B, text: "Security mechanisms", why: "Mechanisms are Physical × Process."}
+      - {key: C, text: "Security services", why: "Services are Logical × Process."}
+      - {key: D, text: "Management and support of systems and services", why: "That is Service Management × Process."}
+    explanation: "Component × Process is the products, tools and protocols that realise each mechanism."
+    refs: ["SABSA §3.5"]
+    difficulty: 1
+    tags: [component, products]
+  - id: S5-123
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "In the Blue Book wording, what does the Component layer's Motivation (Why) cell hold?"
+    options:
+      - {key: A, text: "Security standards", correct: true}
+      - {key: B, text: "Security policies", why: "Policy is Logical."}
+      - {key: C, text: "Business risk", why: "Contextual."}
+      - {key: D, text: "Control objectives", why: "Conceptual."}
+    explanation: "Standards constrain product choice and configuration; they sit in the Component layer's Why cell (later wording: risk-management tools and standards)."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [component, standards]
+  - id: S5-124
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "Which SABSA layer corresponds most closely to a TOGAF Solution Building Block?"
+    options:
+      - {key: A, text: "Component", correct: true}
+      - {key: B, text: "Logical", why: "Logical corresponds to an Architecture Building Block."}
+      - {key: C, text: "Physical", why: "Physical corresponds to the ABB's specification as a mechanism."}
+      - {key: D, text: "Service Management", why: "That is operations and governance, not a building block."}
+    explanation: "ABB is Logical, its specification Physical, the SBB that implements it Component."
+    refs: ["SABSA §3.5", "GUIDE:integrating-risk-and-security §5.6"]
+    difficulty: 2
+    tags: [component, sbb]
+  - id: S5-125
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "A vulnerability scanner used to support the risk process is best classified as a:"
+    options:
+      - {key: A, text: "Tool", correct: true}
+      - {key: B, text: "Product realising a security mechanism", why: "It supports a process; it does not deliver a security service itself."}
+      - {key: C, text: "Standard", why: "A standard constrains choice; it is not software."}
+      - {key: D, text: "Security service", why: "Services are Logical and describe what, not with what."}
+    explanation: "Tools support a process rather than delivering a service directly; they live mostly in the Component layer's Motivation and Process cells."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [component, tools]
+  - id: S5-126
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "'Hash passwords with algorithm A at cost factor B' is an example of a:"
+    options:
+      - {key: A, text: "Standard (Component layer)", correct: true}
+      - {key: B, text: "Policy (Logical layer)", why: "The policy is 'all passwords are hashed'."}
+      - {key: C, text: "Business attribute (Conceptual layer)", why: "Attributes are business words such as Confidential."}
+      - {key: D, text: "Business driver (Contextual layer)", why: "A driver is a business reason, not a configuration."}
+    explanation: "Policy says why we protect; a standard says which algorithm and configuration satisfy the mechanism."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [component, standards, trap]
+  - id: S5-127
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "Where does the TOGAF risk and security guide say security standards should be placed so later cycles inherit them?"
+    options:
+      - {key: A, text: "The Standards Library of the Architecture Repository", correct: true}
+      - {key: B, text: "The Governance Log", why: "The log records governance activity, not standards."}
+      - {key: C, text: "The Architecture Vision", why: "The vision is a Phase A deliverable, not a reference store."}
+      - {key: D, text: "The Risk Register", why: "The register lists risks, not standards."}
+    explanation: "The guide's Requirements Management section adds security standards to the Standards Library."
+    refs: ["GUIDE:integrating-risk-and-security §5.10.3"]
+    difficulty: 2
+    tags: [component, standards, togaf]
+  - id: S5-128
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "What does the Component layer's Location (Where) cell contain?"
+    options:
+      - {key: A, text: "Nodes, addresses and other locators", correct: true}
+      - {key: B, text: "Host platforms and network layout", why: "That is Physical × Location."}
+      - {key: C, text: "Domain definitions and inter-domain associations", why: "That is Logical × Location."}
+      - {key: D, text: "Management of buildings and sites", why: "That is Service Management × Location."}
+    explanation: "Component-level location is concrete: IP addresses, hostnames, URIs, racks."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [component, location]
+  - id: S5-129
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "What does the Component layer's People (Who) cell contain?"
+    options:
+      - {key: A, text: "Identities, functions, actions and access-control lists", correct: true}
+      - {key: B, text: "The user interface and access-control systems", why: "Physical × People."}
+      - {key: C, text: "Roles and responsibilities and the trust framework", why: "Conceptual × People."}
+      - {key: D, text: "Account provisioning and user support", why: "Service Management × People."}
+    explanation: "At the Component layer, people become concrete identities and permission sets."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [component, people]
+  - id: S5-130
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "Which statement about the Component layer is FALSE?"
+    options:
+      - {key: A, text: "It is the technology layer and has no People or Time content", correct: true}
+      - {key: B, text: "It is the most concrete of the design layers", why: "True: a purchase order could be written from it."}
+      - {key: C, text: "Two enterprises with identical Physical layers may differ here", why: "True: that is the test for Component content."}
+      - {key: D, text: "It holds products, tools and standards", why: "True by definition."}
+    explanation: "Like every layer it has six columns, including identities and ACLs (People) and clocks and timers (Time)."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [component, trap]
+  - id: S5-131
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "The Component layer's Time (When) cell holds:"
+    options:
+      - {key: A, text: "Security step timing and sequencing tools: schedules, clocks, timers and interrupts", correct: true}
+      - {key: B, text: "Control-structure execution timing", why: "Physical × Time."}
+      - {key: C, text: "The through-life risk-management framework", why: "Conceptual × Time."}
+      - {key: D, text: "The security operations schedule", why: "Service Management × Time."}
+    explanation: "Component-level time is the concrete scheduler, clock source and timer."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [component, time]
+  - id: S5-132
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "In which ADM phases does the crosswalk place the Component layer?"
+    options:
+      - {key: A, text: "Phase D, and Phase E where security building blocks become SBBs", correct: true}
+      - {key: B, text: "Phase A only", why: "Phase A holds the Contextual and Conceptual layers."}
+      - {key: C, text: "Phases B and C", why: "Those hold the Logical and Physical layers."}
+      - {key: D, text: "Phase H only", why: "Phase H is Service Management."}
+    explanation: "Technology components are identified in D; the guide's Phase E turns security ABBs into SBBs and verifies reused services."
+    refs: ["GUIDE:integrating-risk-and-security §5.6"]
+    difficulty: 2
+    tags: [component, crosswalk]
+  - id: S5-133
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "Keeping the Component layer separate from the Physical layer provides all of the following EXCEPT:"
+    options:
+      - {key: A, text: "Guaranteed compliance with regulation", correct: true}
+      - {key: B, text: "Substitutability: swap the product, keep the mechanism", why: "This is a genuine benefit."}
+      - {key: C, text: "Testability: a component is tested against the mechanism it claims to realise", why: "Genuine benefit."}
+      - {key: D, text: "Traceability: a component with no mechanism above it is unjustified", why: "Genuine benefit."}
+    explanation: "Separation gives substitutability, testability and traceability; it does not by itself guarantee compliance."
+    refs: ["SABSA §3.5", "SABSA §6"]
+    difficulty: 2
+    tags: [component, benefits]
+  - id: S5-134
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "A risk register application used to record and monitor risks belongs in which Component-layer cell (later wording)?"
+    options:
+      - {key: A, text: "Motivation: risk-management tools and standards", correct: true}
+      - {key: B, text: "Assets: ICT products", why: "Assets holds repositories and processors for data, not risk tooling."}
+      - {key: C, text: "People: identities and ACLs", why: "Not a people item."}
+      - {key: D, text: "Time: clocks and timers", why: "Not a timing item."}
+    explanation: "The later Matrix wording puts risk-analysis tools, registers and monitoring tools in Component × Motivation."
+    refs: ["SABSA §3.5"]
+    difficulty: 3
+    tags: [component, motivation]
+  - id: S5-135
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "According to the TOGAF risk and security guide, an existing security service may be reused in Phase E only when:"
+    options:
+      - {key: A, text: "Its efficacy has been verified", correct: true}
+      - {key: B, text: "It is cheaper than a new component", why: "Cost is not the guide's criterion."}
+      - {key: C, text: "The vendor is on the approved list", why: "Approval lists are not the guide's criterion."}
+      - {key: D, text: "It appears in the Baseline Architecture", why: "Being present is not the same as being effective."}
+    explanation: "Reuse is allowed after the service's effectiveness for the new need is verified."
+    refs: ["GUIDE:integrating-risk-and-security §5.6"]
+    difficulty: 2
+    tags: [component, reuse]
+  - id: S5-136
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "Which pair is correctly matched?"
+    options:
+      - {key: A, text: "Product — realises a mechanism; Standard — constrains the product's choice and configuration", correct: true}
+      - {key: B, text: "Product — states policy; Tool — realises a service", why: "Products do not state policy and tools do not realise services."}
+      - {key: C, text: "Standard — a business attribute; Tool — a mechanism", why: "Standards are not attributes; tools are not mechanisms."}
+      - {key: D, text: "Tool — a security service; Product — a business driver", why: "Neither is right."}
+    explanation: "Products realise mechanisms, tools support processes, standards constrain products."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [component, definitions]
+  - id: S5-137
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "Which layer lies directly below the Component layer in the Matrix drawing?"
+    options:
+      - {key: A, text: "None of the design layers; the Service Management layer runs across all of them", correct: true}
+      - {key: B, text: "Physical", why: "Physical is above Component."}
+      - {key: C, text: "Logical", why: "Logical is two layers above."}
+      - {key: D, text: "Operational, as a seventh design layer", why: "Operational is the older name for Service Management, which is not a further design layer."}
+    explanation: "Component is the lowest design layer; Service Management is orthogonal."
+    refs: ["SABSA §3.5", "SABSA §3.6"]
+    difficulty: 2
+    tags: [component, layers]
+  - id: S5-138
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "Which of the following is Component × Assets content?"
+    options:
+      - {key: A, text: "The specific database products and processors that hold the data structures", correct: true}
+      - {key: B, text: "The data dictionary and storage devices", why: "Physical × Assets."}
+      - {key: C, text: "The inventory of information assets", why: "Logical × Assets."}
+      - {key: D, text: "Assurance of operational continuity", why: "Service Management × Assets."}
+    explanation: "Component-level assets are ICT products including repositories and processors."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [component, assets]
+  - id: S5-139
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "If product names were recorded in the Physical layer instead of the Component layer, the main consequence would be:"
+    options:
+      - {key: A, text: "Every product change would become an architecture change", correct: true}
+      - {key: B, text: "The Matrix would gain a seventh column", why: "Columns are fixed at six."}
+      - {key: C, text: "Traceability would be unaffected", why: "Traceability would be harder, since mechanisms and products would be conflated."}
+      - {key: D, text: "The Logical layer would become redundant", why: "The Logical layer's services are unaffected."}
+    explanation: "Separation of mechanism from product is what keeps product substitution out of architecture review."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [component, rationale]
+  - id: S5-140
+    unit: S5
+    objective: "S5.2"
+    lesson: S5/02_the_component_layer
+    stem: "The Component layer is described as the layer at which:"
+    options:
+      - {key: A, text: "A purchase order could be written", correct: true}
+      - {key: B, text: "The business states its drivers", why: "Contextual."}
+      - {key: C, text: "Security services are defined independent of technology", why: "Logical."}
+      - {key: D, text: "Attribute metrics are measured", why: "Service Management."}
+    explanation: "Component names products, tools, standards, identities, addresses and clocks: the buyable level."
+    refs: ["SABSA §3.5"]
+    difficulty: 1
+    tags: [component]
+  # ---------------------------------------------------------------- S5.3 Service → mechanism → component
+  - id: S5-141
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "Which sequence correctly lists the SABSA drop from Logical to Component layer?"
+    options:
+      - {key: A, text: "Security service → security mechanism → component", correct: true}
+      - {key: B, text: "Security mechanism → security service → component", why: "Mechanisms are below services."}
+      - {key: C, text: "Component → mechanism → service", why: "That is the bottom-up direction, not the drop."}
+      - {key: D, text: "Business attribute → component → mechanism", why: "The attribute is above the service; component is last."}
+    explanation: "Service (Logical) is delivered by mechanism (Physical), realised by component (Component)."
+    refs: ["SABSA §3.3", "SABSA §3.4", "SABSA §3.5"]
+    difficulty: 1
+    tags: [drop]
+  - id: S5-142
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "The service → mechanism → component drop parallels which TOGAF sequence?"
+    options:
+      - {key: A, text: "ABB → ABB specification → SBB (product)", correct: true}
+      - {key: B, text: "Phase A → Phase B → Phase C", why: "The parallel is with building blocks, not phases."}
+      - {key: C, text: "Baseline → Transition → Target", why: "Those are architecture states."}
+      - {key: D, text: "Catalog → matrix → diagram", why: "Those are artefact kinds."}
+    explanation: "SABSA's three-step drop is TOGAF's ABB to SBB drop with security vocabulary."
+    refs: ["SABSA §3.3", "GUIDE:integrating-risk-and-security §5.4.1"]
+    difficulty: 2
+    tags: [drop, togaf]
+  - id: S5-143
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "What is the cardinality between security services and security mechanisms?"
+    options:
+      - {key: A, text: "Many-to-many: a service may need several mechanisms and a mechanism may serve several services", correct: true}
+      - {key: B, text: "One-to-one", why: "SABSA does not claim a one-to-one mapping."}
+      - {key: C, text: "One service to exactly one mechanism, but many components", why: "The many-to-many holds at both steps."}
+      - {key: D, text: "Many services to exactly one mechanism", why: "Not a SABSA rule."}
+    explanation: "Confidentiality in transit may use encryption and a private network; encryption may be realised by a gateway, a library and a standard."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [drop, cardinality]
+  - id: S5-144
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "'Confidentiality of identity evidence in storage' is a:"
+    options:
+      - {key: A, text: "Security service (Logical)", correct: true}
+      - {key: B, text: "Security mechanism (Physical)", why: "Encryption at rest would be the mechanism."}
+      - {key: C, text: "Component", why: "A named storage-encryption feature would be the component."}
+      - {key: D, text: "Business driver", why: "Drivers are Contextual reasons, e.g. a regulation."}
+    explanation: "A service says what is delivered independent of how; two technologies could deliver it."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [drop, service]
+  - id: S5-145
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "'Encryption at rest with segregated key management' is a:"
+    options:
+      - {key: A, text: "Security mechanism (Physical)", correct: true}
+      - {key: B, text: "Security service (Logical)", why: "It names a technique, so it has already dropped below the service."}
+      - {key: C, text: "Component", why: "No product or standard is named."}
+      - {key: D, text: "Business attribute", why: "Attributes are business words such as Confidential."}
+    explanation: "A technique that is technology-specific but vendor-neutral is a mechanism."
+    refs: ["SABSA §3.4"]
+    difficulty: 2
+    tags: [drop, mechanism]
+  - id: S5-146
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "A storage-encryption feature at a named key length under a named standard, plus the key-management product, are:"
+    options:
+      - {key: A, text: "Components", correct: true}
+      - {key: B, text: "Mechanisms", why: "The mechanism is encryption at rest; these realise it."}
+      - {key: C, text: "Services", why: "Services describe what, not with what."}
+      - {key: D, text: "Attributes", why: "Attributes are Conceptual business requirements."}
+    explanation: "Buyable, citable, downloadable items are components."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [drop, component]
+  - id: S5-147
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "According to the TOGAF risk and security guide, security services are:"
+    options:
+      - {key: A, text: "Architecture Building Blocks listed in a Security Services Catalog, not items on a controls checklist", correct: true}
+      - {key: B, text: "Items on a controls checklist in the Preliminary Phase", why: "The guide explicitly has no controls checklist."}
+      - {key: C, text: "Solution Building Blocks chosen in Phase D", why: "Services are ABBs; SBBs come later."}
+      - {key: D, text: "Business attributes with performance targets", why: "Those are requirements, above the services."}
+    explanation: "The guide's 'where is the controls checklist' answer: security services are ABBs in the Phase C catalog."
+    refs: ["GUIDE:integrating-risk-and-security §1.3", "GUIDE:integrating-risk-and-security §5.4.1"]
+    difficulty: 2
+    tags: [drop, togaf]
+  - id: S5-148
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "Reading the trace table upward from component to attribute demonstrates:"
+    options:
+      - {key: A, text: "Justification: each row exists because of the one above it", correct: true}
+      - {key: B, text: "Completeness: each requirement has a control", why: "Completeness is the downward reading."}
+      - {key: C, text: "Substitutability of products", why: "Substitutability is a property of separating layers, not of reading direction."}
+      - {key: D, text: "The order of the SABSA Lifecycle", why: "The lifecycle is a different view."}
+    explanation: "Upward is top-down justification; downward is bottom-up completeness."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [drop, traceability]
+  - id: S5-149
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "When a product reaches end of life, where in the SABSA layers is the change contained if the drop is properly maintained?"
+    options:
+      - {key: A, text: "The Component layer: the mechanism, service and attribute are unchanged", correct: true}
+      - {key: B, text: "The Logical layer: the service must be redefined", why: "The service does not change when a product does."}
+      - {key: C, text: "The Conceptual layer: the attribute must be re-baselined", why: "The business requirement is untouched."}
+      - {key: D, text: "All layers, since SABSA is fully integrated", why: "Integration is by traceability, which localises change."}
+    explanation: "Substitution without redesign is the point of keeping mechanism and component apart."
+    refs: ["SABSA §3.5"]
+    difficulty: 2
+    tags: [drop, substitution]
+  - id: S5-150
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "Which layer holds the answer to 'how often is the key rotated' in a full trace of the attribute Confidential?"
+    options:
+      - {key: A, text: "Service Management × Time", correct: true}
+      - {key: B, text: "Logical × Process", why: "That holds the service, e.g. confidentiality in storage."}
+      - {key: C, text: "Conceptual × Motivation", why: "That holds the attribute and its target."}
+      - {key: D, text: "Contextual × Assets", why: "That holds business assets."}
+    explanation: "Operational schedules for controls are Service Management, Time column."
+    refs: ["SABSA §3.6"]
+    difficulty: 3
+    tags: [drop, service-management]
+  - id: S5-151
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "A learner places 'encryption' in the Logical layer because it 'seems logical'. What is wrong?"
+    options:
+      - {key: A, text: "Encryption names a technique, so it is a mechanism; the Logical service is confidentiality", correct: true}
+      - {key: B, text: "Nothing; encryption is a Logical-layer service", why: "The Logical layer describes what, not how."}
+      - {key: C, text: "Encryption is a component", why: "A component would be a named product or standard."}
+      - {key: D, text: "Encryption belongs in the Contextual layer", why: "Contextual is the business view."}
+    explanation: "Anything that names a technique has already dropped to Physical."
+    refs: ["SABSA §3.3", "SABSA §3.4"]
+    difficulty: 2
+    tags: [drop, trap]
+  - id: S5-152
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "In which ADM phase does the crosswalk say the compliance review checks the implemented component against the designed mechanism?"
+    options:
+      - {key: A, text: "Phase G", correct: true}
+      - {key: B, text: "Phase C", why: "Phase C defines services and application mechanisms."}
+      - {key: C, text: "Phase E", why: "Phase E turns ABBs into SBBs."}
+      - {key: D, text: "Phase A", why: "Phase A sets the attributes."}
+    explanation: "Implementation governance verifies built against designed."
+    refs: ["GUIDE:integrating-risk-and-security §5.8"]
+    difficulty: 2
+    tags: [drop, crosswalk]
+  - id: S5-153
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "Why can spend on a security component be argued in business terms under SABSA?"
+    options:
+      - {key: A, text: "Because every component traces to an attribute with a performance target", correct: true}
+      - {key: B, text: "Because SABSA mandates a cost-benefit tool", why: "SABSA mandates no tool."}
+      - {key: C, text: "Because components are chosen by the business", why: "Components are chosen by the tradesman's view, justified by the trace."}
+      - {key: D, text: "Because the Component layer contains the budget", why: "Budget is not a Matrix cell."}
+    explanation: "Business-driven means each control's cost has a traced business reason."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [drop, business-driven]
+  - id: S5-154
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "Which test distinguishes a service from a mechanism?"
+    options:
+      - {key: A, text: "If two different technologies could deliver it, it is a service", correct: true}
+      - {key: B, text: "If it can be purchased, it is a service", why: "Purchasable items are components."}
+      - {key: C, text: "If it has a metric, it is a mechanism", why: "Metrics belong to attributes."}
+      - {key: D, text: "If it is documented, it is a mechanism", why: "Documentation says nothing about abstraction level."}
+    explanation: "Technology-independence marks a service; technology-specific but vendor-neutral marks a mechanism."
+    refs: ["SABSA §3.3"]
+    difficulty: 2
+    tags: [drop, definitions]
+  - id: S5-155
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "An attribute listed in the profile with no service below it is:"
+    options:
+      - {key: A, text: "A wish, not an architecture: the downward trace is incomplete", correct: true}
+      - {key: B, text: "Acceptable if the attribute is low priority", why: "Every attribute in the profile must be delivered or removed."}
+      - {key: C, text: "An orphan control", why: "An orphan control is the upward failure, a control with no attribute."}
+      - {key: D, text: "A Component-layer omission only", why: "The gap is at the Logical layer first."}
+    explanation: "Bottom-up completeness fails when an attribute reaches no service, mechanism, component and measurement."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [drop, completeness]
+  - id: S5-156
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "In the ADM, application-level mechanisms for a security service are chosen in which phase?"
+    options:
+      - {key: A, text: "Phase C", correct: true}
+      - {key: B, text: "Phase A", why: "Phase A holds attributes and vision."}
+      - {key: C, text: "Phase F", why: "Phase F schedules implementation."}
+      - {key: D, text: "Phase H", why: "Phase H manages change."}
+    explanation: "The Security Services Catalog and application mechanisms belong to Phase C; platform mechanisms to Phase D."
+    refs: ["GUIDE:integrating-risk-and-security §5.4.1"]
+    difficulty: 2
+    tags: [drop, crosswalk]
+  - id: S5-157
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "Which is an example of a single mechanism serving several services?"
+    options:
+      - {key: A, text: "Access logging supporting both an audit service and an incident-detection service", correct: true}
+      - {key: B, text: "Confidentiality delivered by both encryption and a private network", why: "That is one service with several mechanisms."}
+      - {key: C, text: "A gateway product realising transport encryption", why: "That is a component realising a mechanism."}
+      - {key: D, text: "An attribute with two performance targets", why: "That is a profile detail, not the drop."}
+    explanation: "The many-to-many runs both ways at each step."
+    refs: ["SABSA §3.3"]
+    difficulty: 3
+    tags: [drop, cardinality]
+  - id: S5-158
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "Reusing an existing component for a new service requires, in the spirit of the drop and the TOGAF guide:"
+    options:
+      - {key: A, text: "Verifying the component still realises the mechanism the new service needs at the attribute's required performance", correct: true}
+      - {key: B, text: "Nothing, since the component already exists", why: "Existence is not efficacy."}
+      - {key: C, text: "Re-writing the Business Attributes Profile", why: "The profile is the requirement, not the thing verified."}
+      - {key: D, text: "Moving the component to the Logical layer", why: "Layers do not change; the trace is checked."}
+    explanation: "Reuse is the drop applied in reverse: check the realisation and the performance."
+    refs: ["GUIDE:integrating-risk-and-security §5.6"]
+    difficulty: 2
+    tags: [drop, reuse]
+  - id: S5-159
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "In the worked trace, 'role recertification each quarter' sits at which level?"
+    options:
+      - {key: A, text: "Service Management", correct: true}
+      - {key: B, text: "Component", why: "Component holds the identity product and its role catalogue."}
+      - {key: C, text: "Logical", why: "Logical holds the access-control service."}
+      - {key: D, text: "Conceptual", why: "Conceptual holds the attribute."}
+    explanation: "Operating and re-checking a control on a schedule is Service Management."
+    refs: ["SABSA §3.6"]
+    difficulty: 2
+    tags: [drop, service-management]
+  - id: S5-160
+    unit: S5
+    objective: "S5.3"
+    lesson: S5/03_service_to_mechanism_to_component
+    stem: "What does SABSA mean by saying the three design layers are 'one thread', not three documents?"
+    options:
+      - {key: A, text: "Any component can be walked up to a service and then to the attribute that justifies it", correct: true}
+      - {key: B, text: "The three layers must be written by one person", why: "Authorship is not the point."}
+      - {key: C, text: "The layers share a single Matrix cell", why: "Each layer has its own six cells."}
+      - {key: D, text: "The Component layer replaces the other two once built", why: "All layers persist and stay traceable."}
+    explanation: "The thread is traceability across abstraction levels."
+    refs: ["SABSA §3.3", "SABSA §6"]
+    difficulty: 2
+    tags: [drop, traceability]

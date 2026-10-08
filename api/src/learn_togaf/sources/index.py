@@ -38,14 +38,27 @@ SEGMENT_CODES = {
     "architecture-content": "CONTENT",
     "ea-capability-and-governance": "GOV",
     "capability-and-governance": "GOV",
+    "archimate": "ARCHIMATE",
 }
-CANONICAL_SEGMENTS = {"INTRO": "introduction", "ADM": "adm", "TECH": "adm-techniques", "APPLY": "applying-the-adm", "CONTENT": "architecture-content", "GOV": "ea-capability-and-governance"}
+CANONICAL_SEGMENTS = {
+    "INTRO": "introduction",
+    "ADM": "adm",
+    "TECH": "adm-techniques",
+    "APPLY": "applying-the-adm",
+    "CONTENT": "architecture-content",
+    "GOV": "ea-capability-and-governance",
+    "ARCHIMATE": "archimate",
+}
+# PDF-only documents (learn_sabsa_archimate.md §4.2): a white paper under pdf/wp/<id>.pdf is
+# WP:<id>; the SABSA white paper pdf/sabsa.pdf is SABSA and pdf/sabsa/<name>.pdf SABSA:<name>.
+PDF_PREFIXES = {"wp": "WP", "sabsa": "SABSA"}
 # Not documents: the publication root, its info and help pages, the guides listing, redirectors.
 NON_DOCUMENT_SEGMENTS = {"root", "info", "v2022", "reference-models", "index.html"}
-_REF_RE = re.compile(r"^(?P<doc>[A-Z]+)(?::(?P<guide>[A-Za-z0-9_\-]+))?\s+§(?P<number>[0-9][0-9A-Za-z.\-]*)")
+_REF_RE = re.compile(r"^(?P<doc>[A-Z]+)(?::(?P<guide>[A-Za-z0-9_\-]+))?\s+§(?P<number>[0-9A-Z][0-9A-Za-z.\-]*)")
 _LIST_ITEM_RE = re.compile(r"^(?:-|\d+\.)\s+(?P<item>.+?)\s*$")  # top-level items only
 _PHASE_TITLE_RE = re.compile(
-    r"^(?:Preliminary Phase|Phase (?P<letter>[A-H])\b|(?:ADM Architecture )?Requirements Management)", re.IGNORECASE
+    r"^(?:Preliminary Phase|Phase (?P<letter>[A-H])\b|(?:ADM Architecture )?Requirements Management)",
+    re.IGNORECASE,
 )
 PHASE_FIELDS = {
     "objectives": "objective",
@@ -65,6 +78,13 @@ def document_code(segment: str) -> str | None:
         return None
     if segment.startswith("guides/"):
         return f"GUIDE:{segment.split('/', 1)[1]}"
+    head, _, tail = segment.partition("/")
+    if head in PDF_PREFIXES:
+        if head == "sabsa" and not tail:
+            return "SABSA"
+        if not tail:
+            return None
+        return f"{PDF_PREFIXES[head]}:{tail}"
     if segment in SEGMENT_CODES:
         code = SEGMENT_CODES[segment]
         return code if CANONICAL_SEGMENTS[code] == segment else None
@@ -76,18 +96,33 @@ def document_code(segment: str) -> str | None:
 def segment_for_code(code: str) -> str:
     if code.startswith("GUIDE:"):
         return code.split(":", 1)[1]
+    if code == "SABSA":
+        return "sabsa"
+    if code.startswith("WP:") or code.startswith("SABSA:"):
+        prefix, name = code.split(":", 1)
+        return f"{prefix.lower()}/{name}"
     if code in CANONICAL_SEGMENTS:
         return CANONICAL_SEGMENTS[code]
     raise ValueError(f"{code!r} is not a source document code")
 
 
 def document_kind(code: str) -> str:
-    return "GUIDE" if code.startswith("GUIDE:") else "STANDARD"
+    if code.startswith("GUIDE:"):
+        return "GUIDE"
+    if code.startswith("WP:"):
+        return "WHITEPAPER"
+    if code.split(":")[0] == "SABSA":
+        return "SABSA"
+    return "STANDARD"
 
 
 def document_title(code: str, page_title: str) -> str:
     if code.startswith("GUIDE:"):
         return page_title or f"TOGAF Series Guide: {code.split(':', 1)[1]}"
+    if code.startswith("WP:"):
+        return page_title or f"The Open Group White Paper {code.split(':', 1)[1].upper()}"
+    if code.startswith("SABSA:"):
+        return page_title or f"SABSA: {code.split(':', 1)[1]}"
     return DOCUMENT_CODES[code]
 
 
@@ -182,7 +217,7 @@ def index_document(
     if not sections:
         # A slug with pages but no anchored headings is a listing or a redirector, not a document.
         logger.warning(f"document {code}: no anchored h1–h4 headings in {len(pages)} page(s); skipped")
-        return 0
+        return []
     title = document_title(code, pages[0].title)
     digest = content_hash(*(section.text for section in sections))
     pdf_pages = pdf_pages or {}
@@ -293,7 +328,12 @@ def match_sections(connection: sqlite3.Connection, spec: str) -> list[str]:
     rows = connection.execute(
         "SELECT id, heading_path FROM source_section WHERE document_code = ? ORDER BY ordinal", (doc,)
     ).fetchall()
-    number, _ = split_heading(rest + " x") if rest and rest[0].isdigit() else (None, rest)
+    if rest and rest[0].isdigit():
+        number, _ = split_heading(rest + " x")
+    elif re.fullmatch(r"[A-Z](?:\.\d+)*", rest):
+        number = rest  # an appendix: "ARCHIMATE › D" is Appendix D and everything beneath it
+    else:
+        number = None
     if number:
         return [
             row["id"]
@@ -361,9 +401,10 @@ def phase_code(title: str) -> str | None:
         return None
     if title.lower().startswith("preliminary"):
         return "PRELIM"
-    if title.lower().startswith("requirements"):
+    if "requirements management" in title.lower():
         return "REQ"
-    return match.group("letter").upper()
+    letter = match.group("letter")
+    return letter.upper() if letter else None
 
 
 def list_items(text: str) -> list[str]:

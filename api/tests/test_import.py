@@ -24,11 +24,11 @@ IMPORTED_DIR = CONTENT_DIR / "questions" / "imported"
 TOKEN_RE = re.compile(r'name="token" value="([^"]+)"')
 
 FORMATS = [
-    ("import_foundation.yaml", "FOUNDATION", "TEST_IMPORT_YAML", 2),
-    ("import_foundation.csv", "FOUNDATION", "TEST_IMPORT_CSV", 2),
-    ("import_foundation.json", "FOUNDATION", "TEST_IMPORT_JSON", 1),
-    ("import_foundation.md", "FOUNDATION", "TEST_IMPORT_MD", 2),
-    ("import_practitioner.yaml", "PRACTITIONER", "TEST_IMPORT_P", 1),
+    ("import_foundation.yaml", "OGEA-101", "TEST_IMPORT_YAML", 2),
+    ("import_foundation.csv", "OGEA-101", "TEST_IMPORT_CSV", 2),
+    ("import_foundation.json", "OGEA-101", "TEST_IMPORT_JSON", 1),
+    ("import_foundation.md", "OGEA-101", "TEST_IMPORT_MD", 2),
+    ("import_practitioner.yaml", "OGEA-102", "TEST_IMPORT_P", 1),
 ]
 ALL_CODES = [code for _, _, code, _ in FORMATS] + ["TEST_IMPORT_BROKEN"]
 
@@ -106,7 +106,7 @@ def test_format_round_trips(client: httpx.Client, file_name: str, exam: str, set
 
 
 def test_csv_row_without_unit_is_mapped_and_flagged(client: httpx.Client):
-    page, token = _preview(client, "import_foundation.csv", "FOUNDATION", "TEST_IMPORT_CSV")
+    page, token = _preview(client, "import_foundation.csv", "OGEA-101", "TEST_IMPORT_CSV")
     assert "1 unit guessed" in page.text
     assert 'name="unit_map:"' in page.text, "the no-unit group gets a mapping select"
     flash = _flash(post(client, "/import/confirm", {"token": token}))
@@ -116,7 +116,7 @@ def test_csv_row_without_unit_is_mapped_and_flagged(client: httpx.Client):
 
 
 def test_unit_mapping_override_confirms_unit(client: httpx.Client):
-    _, token = _preview(client, "import_foundation.csv", "FOUNDATION", "TEST_IMPORT_CSV")
+    _, token = _preview(client, "import_foundation.csv", "OGEA-101", "TEST_IMPORT_CSV")
     flash = _flash(post(client, "/import/confirm", {"token": token, "unit_map:": "F3"}))
     assert "unverified" not in flash
     text = (IMPORTED_DIR / "TEST_IMPORT_CSV.yaml").read_text(encoding="utf-8")
@@ -124,7 +124,7 @@ def test_unit_mapping_override_confirms_unit(client: httpx.Client):
 
 
 def test_duplicate_is_reported_not_inserted(client: httpx.Client):
-    page, token = _preview(client, "import_broken.csv", "FOUNDATION", "TEST_IMPORT_BROKEN")
+    page, token = _preview(client, "import_broken.csv", "OGEA-101", "TEST_IMPORT_BROKEN")
     assert "1 duplicate" in page.text
     assert "<code>F4-002</code>" in page.text, "the duplicate names the question it duplicates"
     flash = _flash(post(client, "/import/confirm", {"token": token, "import_partial": "on"}))
@@ -134,7 +134,7 @@ def test_duplicate_is_reported_not_inserted(client: httpx.Client):
 
 
 def test_broken_row_blocks_unless_partial(client: httpx.Client):
-    page, token = _preview(client, "import_broken.csv", "FOUNDATION", "TEST_IMPORT_BROKEN")
+    page, token = _preview(client, "import_broken.csv", "OGEA-101", "TEST_IMPORT_BROKEN")
     assert "1 invalid" in page.text
     assert "explanation" in page.text.lower()
     blocked = post(client, "/import/confirm", {"token": token})
@@ -149,15 +149,15 @@ def test_broken_row_blocks_unless_partial(client: httpx.Client):
 
 
 def test_existing_set_code_is_refused(client: httpx.Client):
-    _, token = _preview(client, "import_foundation.json", "FOUNDATION", "TEST_IMPORT_JSON")
+    _, token = _preview(client, "import_foundation.json", "OGEA-101", "TEST_IMPORT_JSON")
     _flash(post(client, "/import/confirm", {"token": token}))
-    page, token = _preview(client, "import_foundation.json", "FOUNDATION", "TEST_IMPORT_JSON")
+    page, token = _preview(client, "import_foundation.json", "OGEA-101", "TEST_IMPORT_JSON")
     assert "already exists" in page.text
     assert post(client, "/import/confirm", {"token": token}).status_code == 422
 
 
 def test_remove_deletes_set_and_file(client: httpx.Client):
-    _, token = _preview(client, "import_foundation.md", "FOUNDATION", "TEST_IMPORT_MD")
+    _, token = _preview(client, "import_foundation.md", "OGEA-101", "TEST_IMPORT_MD")
     _flash(post(client, "/import/confirm", {"token": token}))
     assert _listed(client, "TEST_IMPORT_MD")
     flash = _flash(post(client, "/import/remove/TEST_IMPORT_MD"))
@@ -171,11 +171,11 @@ def test_exam_mismatch_is_refused(client: httpx.Client):
     response = post(
         client,
         "/import/preview",
-        {"exam": "PRACTITIONER", "set_code": "TEST_IMPORT_YAML"},
+        {"exam": "OGEA-102", "set_code": "TEST_IMPORT_YAML"},
         files={"file": ("import_foundation.yaml", (FIXTURES / "import_foundation.yaml").read_bytes())},
     )
     assert response.status_code == 422
-    assert "says exam FOUNDATION" in response.text
+    assert "says exam OGEA-101" in response.text
 
 
 def test_post_without_csrf_is_refused(client: httpx.Client):
@@ -218,7 +218,7 @@ def _state(note_body: str, note_updated: str) -> dict:
         "attempts": [
             {
                 "id": 12345,
-                "exam": "FOUNDATION",
+                "exam": "OGEA-101",
                 "mode": "DRILL",
                 "set_code": None,
                 "seed": 7,

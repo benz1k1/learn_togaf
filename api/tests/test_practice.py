@@ -59,11 +59,11 @@ def _answer(client, attempt_id: int, index: int, question_id: str, key: str, sec
 # ---------------------------------------------------------------- draws (pure, over the connection)
 def test_foundation_mock_draws_the_blueprint_counts(db) -> None:
     units = db.execute(
-        "SELECT code, weight FROM learning_unit WHERE exam = 'FOUNDATION' AND weight > 0"
+        "SELECT code, weight FROM learning_unit WHERE exam = 'OGEA-101' AND weight > 0"
     ).fetchall()
     assert sum(unit["weight"] for unit in units) == 40
-    draw = engine.draw_foundation_mock(db, seed=42)
-    assert draw.exam == "FOUNDATION" and draw.mode == "MOCK" and draw.time_limit_s == 3600
+    draw = engine.draw_mock(db, "OGEA-101", seed=42)
+    assert draw.exam == "OGEA-101" and draw.mode == "MOCK" and draw.time_limit_s == 3600
     assert len(draw.question_ids) == len(set(draw.question_ids)), "no question twice"
     by_unit: dict[str, int] = {}
     for question_id in draw.question_ids:
@@ -73,10 +73,10 @@ def test_foundation_mock_draws_the_blueprint_counts(db) -> None:
         by_unit[unit] = by_unit.get(unit, 0) + 1
     for unit in units:
         available = db.execute(
-            "SELECT COUNT(*) FROM question WHERE exam = 'FOUNDATION' AND unit_code = ?", (unit["code"],)
+            "SELECT COUNT(*) FROM question WHERE exam = 'OGEA-101' AND unit_code = ?", (unit["code"],)
         ).fetchone()[0]
         reviewed = db.execute(
-            "SELECT COUNT(*) FROM question WHERE exam = 'FOUNDATION' AND unit_code = ? AND status = 'reviewed'",
+            "SELECT COUNT(*) FROM question WHERE exam = 'OGEA-101' AND unit_code = ? AND status = 'reviewed'",
             (unit["code"],),
         ).fetchone()[0]
         assert by_unit.get(unit["code"], 0) == min(unit["weight"], available), f"unit {unit['code']}"
@@ -93,37 +93,37 @@ def test_foundation_mock_draws_the_blueprint_counts(db) -> None:
 
 
 def test_same_seed_same_paper_different_seed_differs(db) -> None:
-    first = engine.draw_foundation_mock(db, seed=7)
-    again = engine.draw_foundation_mock(db, seed=7)
+    first = engine.draw_mock(db, "OGEA-101", seed=7)
+    again = engine.draw_mock(db, "OGEA-101", seed=7)
     assert first.question_ids == again.question_ids
-    other = engine.draw_foundation_mock(db, seed=8)
+    other = engine.draw_mock(db, "OGEA-101", seed=8)
     assert set(other.question_ids) != set(first.question_ids) or other.question_ids != first.question_ids
-    drill = engine.draw_drill(db, "FOUNDATION", ["F4"], [], 5, True, "all", seed=3)
+    drill = engine.draw_drill(db, "OGEA-101", ["F4"], [], 5, True, "all", seed=3)
     assert (
         drill.question_ids
-        == engine.draw_drill(db, "FOUNDATION", ["F4"], [], 5, True, "all", seed=3).question_ids
+        == engine.draw_drill(db, "OGEA-101", ["F4"], [], 5, True, "all", seed=3).question_ids
     )
     assert len(drill.question_ids) == 5 and drill.time_limit_s is None
 
 
 def test_drill_filters_and_empty_draw(db) -> None:
-    drill = engine.draw_drill(db, "FOUNDATION", ["F1", "F2"], ["1.3"], 10, True, "all", seed=1)
+    drill = engine.draw_drill(db, "OGEA-101", ["F1", "F2"], ["1.3"], 10, True, "all", seed=1)
     for question_id in drill.question_ids:
         row = db.execute(
             "SELECT unit_code, objective_code FROM question WHERE id = ?", (question_id,)
         ).fetchone()
         assert row["objective_code"] == "1.3"
     with pytest.raises(engine.DrawError):
-        engine.draw_drill(db, "FOUNDATION", ["F1"], [], 5, True, "imported", seed=1)
+        engine.draw_drill(db, "OGEA-101", ["F1"], [], 5, True, "imported", seed=1)
     reviewed = db.execute(
-        "SELECT COUNT(*) FROM question WHERE exam = 'FOUNDATION' AND status = 'reviewed'"
+        "SELECT COUNT(*) FROM question WHERE exam = 'OGEA-101' AND status = 'reviewed'"
     ).fetchone()[0]
     if reviewed:
-        strict = engine.draw_drill(db, "FOUNDATION", [], [], 5, False, "all", seed=1)
+        strict = engine.draw_drill(db, "OGEA-101", [], [], 5, False, "all", seed=1)
         assert len(strict.question_ids) == min(5, reviewed)
     else:
         with pytest.raises(engine.DrawError):
-            engine.draw_drill(db, "FOUNDATION", [], [], 5, False, "all", seed=1)
+            engine.draw_drill(db, "OGEA-101", [], [], 5, False, "all", seed=1)
 
 
 def test_phase_io_drill_is_foundation_f4(db) -> None:
@@ -131,31 +131,31 @@ def test_phase_io_drill_is_foundation_f4(db) -> None:
     assert drill.filters["phase"] == "A" and drill.filters["kind"] == "io"
     for question_id in drill.question_ids:
         row = db.execute("SELECT unit_code, exam FROM question WHERE id = ?", (question_id,)).fetchone()
-        assert (row["exam"], row["unit_code"]) == ("FOUNDATION", "F4")
+        assert (row["exam"], row["unit_code"]) == ("OGEA-101", "F4")
     with pytest.raises(engine.DrawError):
         engine.draw_phase_io_drill(db, "Z", 10, seed=2)
 
 
 def test_practitioner_mock_draw(db) -> None:
-    draw = engine.draw_practitioner_mock(db, seed=5)
-    assert draw.exam == "PRACTITIONER" and draw.time_limit_s == 5400
-    available = db.execute("SELECT COUNT(*) FROM question WHERE exam = 'PRACTITIONER'").fetchone()[0]
+    draw = engine.draw_mock(db, "OGEA-102", seed=5)
+    assert draw.exam == "OGEA-102" and draw.time_limit_s == 5400
+    available = db.execute("SELECT COUNT(*) FROM question WHERE exam = 'OGEA-102'").fetchone()[0]
     assert len(draw.question_ids) == min(8, available)
-    assert draw.question_ids == engine.draw_practitioner_mock(db, seed=5).question_ids
+    assert draw.question_ids == engine.draw_mock(db, "OGEA-102", seed=5).question_ids
 
 
 # ---------------------------------------------------------------- scoring (pure)
 def test_scoring_matches_the_exam_formats() -> None:
     assert engine.score_answers([1, 0, None, 1]) == 2
     assert engine.score_answers([5, 3, 1, 0, None]) == 9
-    assert engine.max_score_for("FOUNDATION", "MOCK", 38) == 40, (
+    assert engine.max_score_for("OGEA-101", "MOCK", 38) == 40, (
         "a mock is out of 40 even when the paper is short"
     )
-    assert engine.max_score_for("PRACTITIONER", "MOCK", 8) == 40
-    assert engine.max_score_for("FOUNDATION", "DRILL", 7) == 7
-    assert engine.max_score_for("PRACTITIONER", "DRILL", 2) == 10
-    assert engine.pass_mark_for("FOUNDATION") == 24
-    assert engine.pass_mark_for("PRACTITIONER") == 24
+    assert engine.max_score_for("OGEA-102", "MOCK", 8) == 40
+    assert engine.max_score_for("OGEA-101", "DRILL", 7) == 7
+    assert engine.max_score_for("OGEA-102", "DRILL", 2) == 10
+    assert engine.pass_mark_for("OGEA-101") == 24
+    assert engine.pass_mark_for("OGEA-102") == 24
 
 
 def test_clock_is_pure_over_the_row() -> None:
@@ -185,7 +185,7 @@ def test_drill_reveals_explanation_and_locks(client, db) -> None:
         client,
         {
             "mode": "DRILL",
-            "exam": "FOUNDATION",
+            "exam": "OGEA-101",
             "units": "F4",
             "count": 3,
             "include_drafts": "on",
@@ -236,11 +236,11 @@ def test_drill_reveals_explanation_and_locks(client, db) -> None:
 
 # ---------------------------------------------------------------- HTTP: mocks and the clock
 def test_foundation_mock_flow_with_short_units_warning(client, db) -> None:
-    attempt_id = _start(client, {"mode": "FOUNDATION_MOCK", "seed": 42})
+    attempt_id = _start(client, {"mode": "MOCK", "exam": "OGEA-101", "seed": 42})
     row = db.execute("SELECT * FROM attempt WHERE id = ?", (attempt_id,)).fetchone()
     assert row["time_limit_s"] == 3600 and row["mode"] == "MOCK"
     ids = _ids(db, attempt_id)
-    assert ids == engine.draw_foundation_mock(db, 42).question_ids, "the recorded paper is the seeded draw"
+    assert ids == engine.draw_mock(db, "OGEA-101", 42).question_ids, "the recorded paper is the seeded draw"
     page = client.get(f"/attempt/{attempt_id}")
     filters = orjson.loads(row["filters"])
     if filters.get("short_units"):
@@ -279,7 +279,7 @@ def test_foundation_mock_flow_with_short_units_warning(client, db) -> None:
 
 
 def test_clock_is_enforced_server_side(client, db) -> None:
-    attempt_id = _start(client, {"mode": "FOUNDATION_MOCK", "seed": 43})
+    attempt_id = _start(client, {"mode": "MOCK", "exam": "OGEA-101", "seed": 43})
     ids = _ids(db, attempt_id)
     with transaction(db):
         db.execute(
@@ -296,9 +296,9 @@ def test_clock_is_enforced_server_side(client, db) -> None:
 
 
 def test_practitioner_mock_gradient_and_open_book(client, db) -> None:
-    attempt_id = _start(client, {"mode": "PRACTITIONER_MOCK", "seed": 5})
+    attempt_id = _start(client, {"mode": "MOCK", "exam": "OGEA-102", "seed": 5})
     row = db.execute("SELECT * FROM attempt WHERE id = ?", (attempt_id,)).fetchone()
-    assert row["time_limit_s"] == 5400 and row["exam"] == "PRACTITIONER"
+    assert row["time_limit_s"] == 5400 and row["exam"] == "OGEA-102"
     ids = _ids(db, attempt_id)
     page = client.get(f"/attempt/{attempt_id}").text
     assert 'data-testid="open-book"' in page, "Part 2 is open book"
@@ -329,7 +329,7 @@ def test_retake_identical_over_http(client, db) -> None:
         client,
         {
             "mode": "DRILL",
-            "exam": "FOUNDATION",
+            "exam": "OGEA-101",
             "units": "F5",
             "count": 4,
             "include_drafts": "on",
@@ -341,7 +341,7 @@ def test_retake_identical_over_http(client, db) -> None:
         client,
         {
             "mode": "DRILL",
-            "exam": "FOUNDATION",
+            "exam": "OGEA-101",
             "units": "F5",
             "count": 4,
             "include_drafts": "on",
@@ -358,7 +358,7 @@ def test_empty_draw_bounces_with_a_flash(client) -> None:
         "/practice",
         {
             "mode": "DRILL",
-            "exam": "FOUNDATION",
+            "exam": "OGEA-101",
             "units": "F1",
             "count": 5,
             "include_drafts": "on",
@@ -366,7 +366,8 @@ def test_empty_draw_bounces_with_a_flash(client) -> None:
         },
     )
     assert response.status_code == 303 and response.headers["location"].startswith("/practice?flash=")
-    assert post(client, "/practice", {"mode": "NOPE"}).status_code == 422
+    assert post(client, "/practice", {"mode": "NOPE", "exam": "OGEA-101"}).status_code == 422
+    assert post(client, "/practice", {"mode": "DRILL", "exam": "NOPE"}).status_code == 422
     assert client.get("/attempt/999999999").status_code == 404
 
 

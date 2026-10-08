@@ -29,9 +29,15 @@ _HEADING_LEVEL = {tag: index + 1 for index, tag in enumerate(HEADING_TAGS)}
 BLOCK_TAGS = {"p", "ul", "ol", "table", "pre", "blockquote", "dl", "figure"}
 SKIP_TAGS = {"script", "style", "noscript", "nav", "header", "footer", "template"}
 
-HEADING_NUMBER_RE = re.compile(r"^\s*(?P<number>\d+(?:\.\d+)*)\.?\s+(?P<title>\S.*)$")
+# "3.3 Inputs", "1.1. Objective", and an appendix "B. Relationship Tables" / "B.1. Derivation":
+# a bare letter counts only with a dot after it, so "A Business Process" is a title, not "A".
+# "Appendix C: Example Viewpoints" is numbered C, so "ARCHIMATE §C" resolves like "§C.1".
+HEADING_NUMBER_RE = re.compile(
+    r"^\s*(?:Appendix\s+(?P<appendix>[A-Z])[:.]?|(?P<number>\d+(?:\.\d+)*\.?|[A-Z](?:\.\d+)+\.?|[A-Z]\.))\s+(?P<title>\S.*)$"
+)
+# "Figure 6-1: …" (the TOGAF documents) or "Figure 54. …" (the ArchiMate specification).
 FIGURE_CAPTION_RE = re.compile(
-    r"Figure\s+(?P<chapter>\d+)[-–](?P<n>\d+)\s*[:.]?\s*(?P<title>.*)", re.IGNORECASE
+    r"Figure\s+(?:(?P<chapter>\d+)[-–])?(?P<n>\d+)\s*[:.]?\s*(?P<title>.*)", re.IGNORECASE
 )
 _WS_RE = re.compile(r"\s+")
 
@@ -87,12 +93,27 @@ def split_heading(text: str) -> tuple[str | None, str]:
     match = HEADING_NUMBER_RE.match(text)
     if not match:
         return None, collapse(text)
-    return match.group("number"), collapse(match.group("title"))
+    number = match.group("appendix") or match.group("number")
+    return number.rstrip("."), collapse(match.group("title"))
 
 
 def figure_number(caption: str) -> str | None:
     match = FIGURE_CAPTION_RE.search(caption)
-    return f"{match.group('chapter')}-{match.group('n')}" if match else None
+    if not match:
+        return None
+    return f"{match.group('chapter')}-{match.group('n')}" if match.group("chapter") else match.group("n")
+
+
+def _imageblock_title(img: Node) -> str:
+    """The ArchiMate specification wraps each figure as ``<div class="imageblock"><div class="content">
+    <img></div><div class="title">Figure 54. …</div></div>``: the caption is the block's title."""
+    node = img.parent
+    while node is not None and node.tag != "body":
+        if "imageblock" in (node.attributes.get("class") or ""):
+            title = node.css_first(".title")
+            return collapse(title.text(deep=True, separator=" ")) if title is not None else ""
+        node = node.parent
+    return ""
 
 
 def _heading_anchor(node: Node) -> str | None:
@@ -234,6 +255,7 @@ class _Walker:
                 caption = collapse(figcaption.text(deep=True, separator=" "))
         candidates = [
             caption,
+            _imageblock_title(img),
             collapse(img.attributes.get("alt") or ""),
             collapse(img.attributes.get("title") or ""),
             _sibling_text(img.next),

@@ -154,6 +154,7 @@ CSRF_SECRET = _require("security", "csrf_secret")
 
 SOURCES_BASE_URL = _require("sources", "base_url")
 SOURCES_LOGIN_URL = _require("sources", "login_url")
+SOURCES_ARCHIMATE_URL = _require("sources", "archimate_url")
 SOURCES_DELAY_SECONDS = _opt_float("sources", "delay_seconds", default=1.5)
 SOURCES_USER_AGENT = _require("sources", "user_agent")
 # Optional: a system Chromium for Playwright instead of a per-venv download (e.g. /usr/bin/chromium).

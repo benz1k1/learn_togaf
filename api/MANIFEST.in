@@ -2,3 +2,4 @@ include src/learn_togaf/schema.sql
 recursive-include src/learn_togaf/pages/templates *.html
 recursive-include src/learn_togaf/pages/static *
 recursive-include src/learn_togaf/generate/prompts *.md
+recursive-include src/learn_togaf/pages/static/artefact *.svg

@@ -251,6 +251,7 @@ content/
     techniques.yaml               # each technique: purpose, phase(s) used, artefacts produced, exam traps
     artefacts.yaml                # every catalog / matrix / diagram: phase, domain, purpose
   glossary.yaml                   # every defined term: definition (paraphrase), document, section, confusable_with[]
+  examples/<nn>_<slug>.md         # worked example documents: every deliverable of CONTENT ch. 4 written out for one fictional enterprise (§4.3)
   questions/
     foundation/<set>.yaml         # Part 1 shape
     practitioner/<set>.yaml       # Part 2 shape, gradient answers
@@ -269,6 +270,7 @@ and the `refs[]` it was grounded on, in its front matter or per item. Hand-writt
 - id: F4-017
   unit: F4                       # ADM Phases
   objective: "4.3"               # objective code from the conformance document
+  lesson: F4/04_phase_a_architecture_vision   # the ONE lesson whose "check yourself" asks it (§4.2)
   stem: "Which of the following is an output of Phase A?"
   options:
     - {key: A, text: "Architecture Definition Document"}
@@ -291,6 +293,7 @@ answers, each with the reason it earns what it earns:
 - id: P3-004
   unit: P3                       # Architecture Vision / Phase A
   objective: "3.2"
+  lesson: P3/01_phase_a_in_practice
   scenario: |
     …600–900 words: the enterprise, the sponsor, the situation, the constraints,
     what has been done, what is being asked…
@@ -367,8 +370,15 @@ the study plan; days to the exam date the learner set. A single honest line at t
 
 Rendered Markdown with the unit's objectives in the margin and the section references as
 links to the glossary and the ADM explorer. Each lesson ends with "check yourself": five
-questions from the bank tagged to its objectives, answered inline (htmx swap), which also
+questions from the bank mapped to that lesson, answered inline (htmx swap), which also
 seeds flashcards for anything missed. Progress is per lesson (read, checked, mastered).
+
+Every question belongs to exactly one lesson (`lesson_question`, rebuilt by the loader): the
+question's `lesson:` field, or, when it is absent, the unit's lesson carrying the objective whose
+`refs` cover the question's `refs` most specifically. A tie is reported at load and fails
+`tests/test_content.py`; the author settles it with `lesson:`, code never guesses. A question
+answered in any lesson check, right or wrong, is never offered by check-yourself again; drills
+and mocks (§4.6) still draw from the whole bank.
 
 ### 4.3 ADM explorer — `/adm`, `/adm/{phase}`
 
@@ -380,6 +390,17 @@ the local source store (§1.4) and a link to the section's HTML anchor and PDF p
 outputs, which is where Part 1 loses most marks. The same page pattern serves the techniques
 (`/adm/technique/{code}`: where it is used, what it produces) and the artefact catalogue
 (`/artefact`: filter by phase, domain, kind).
+
+**Worked examples — `/example`, `/example/{id}`.** The standard defines each deliverable by purpose
+and a contents list but never shows one filled in, and the lessons could not either. `content/examples/`
+holds every deliverable of the Content Framework's Table 4-1 (plus the Business Scenario and an ACMM
+maturity scorecard) written out for one fictional enterprise — Northgate Bank, the retail bank the
+artefact drawings already use — following one project from a Request for Architecture Work in the
+Preliminary Phase round the cycle to a second request issued from Phase H. Each document follows its
+defining section's contents list, opens with a "what to notice" callout naming the exam traps it
+illustrates, and cites the sections it is grounded on (`refs`, resolved at load like a lesson's). The
+list page groups them by producing phase; each phase page links its own. Notes attach with
+`ref_kind = EXAMPLE`.
 
 ### 4.4 Glossary — `/glossary`
 
@@ -508,6 +529,7 @@ learn_togaf/
 | Dashboard | `/` | `_readiness.html`, `_due.html`, `_weakest.html` |
 | Unit, lesson | `/unit/{code}`, `/lesson/{id}` | `_check_yourself.html` |
 | ADM explorer | `/adm`, `/adm/{phase}`, `/adm/technique/{code}`, `/artefact` | `_phase_panel.html` |
+| Worked examples | `/example`, `/example/{id}` | — |
 | Glossary | `/glossary?q=` | `_term_list.html` |
 | Review | `/review`, `POST /review/{card_id}/grade` | `_card.html` |
 | Practice | `/practice`, `POST /practice` (new attempt), `/attempt/{id}`, `POST /attempt/{id}/answer`, `POST /attempt/{id}/finish`, `/attempt/{id}/review` | `_question.html`, `_scenario.html`, `_timer.html`, `_open_book.html` |
@@ -573,6 +595,11 @@ purchased or hand-typed set and drill it alongside ours.
 
 **Phase 5 — bank to target (ongoing).** Foundation to ≥ 400, Practitioner to the per-unit floor,
 driven by the coverage page and by the learner's own weak-objective data.
+
+**Phases 6–10 — ArchiMate and SABSA** are specified in `learn_sabsa_archimate.md` §4.8 and were
+delivered 2026-09-25: exams as data (five exam codes in `blueprint.exams`), the ArchiMate crawl,
+the A1–A9, S1–S7 and X1–X3 units, the crosswalk on the ADM explorer, ArchiMate views on the
+artefact catalogue and the worked examples, and the 16-week braid as the study plan.
 
 ---
 

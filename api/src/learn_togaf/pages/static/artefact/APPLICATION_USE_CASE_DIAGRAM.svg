@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 398" font-family="sans-serif" font-size="12" role="img" aria-label="Example Application Use-Case Diagram for a fictional retail bank, an original study illustration">
+<defs><marker id="arr-application-use-case-diagram" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="760" height="398" fill="#fff"/>
+<text x="10" y="20" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Example: Application Use-Case Diagram — retail bank</text>
+<text x="750" y="20" text-anchor="end" font-size="11" fill="#666" font-style="italic">diagram: Phase C application</text>
+<rect x="160" y="40" width="300" height="230" rx="6" fill="#fafafa" stroke="#999" stroke-width="1"/><text x="310" y="58" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Mobile App</text>
+<rect x="500" y="40" width="240" height="230" rx="6" fill="#fafafa" stroke="#999" stroke-width="1"/><text x="620" y="58" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Core Banking / Card Switch</text>
+<circle cx="70" cy="67" r="7" fill="#fff" stroke="#333"/>
+<line x1="70" y1="74" x2="70" y2="94" stroke="#333" stroke-width="1"/>
+<line x1="58" y1="82" x2="82" y2="82" stroke="#333" stroke-width="1"/>
+<line x1="70" y1="94" x2="60" y2="110" stroke="#333" stroke-width="1"/>
+<line x1="70" y1="94" x2="80" y2="110" stroke="#333" stroke-width="1"/>
+<text x="70" y="124" text-anchor="middle" font-size="11" fill="#222">Customer</text>
+<circle cx="70" cy="277" r="7" fill="#fff" stroke="#333"/>
+<line x1="70" y1="284" x2="70" y2="304" stroke="#333" stroke-width="1"/>
+<line x1="58" y1="292" x2="82" y2="292" stroke="#333" stroke-width="1"/>
+<line x1="70" y1="304" x2="60" y2="320" stroke="#333" stroke-width="1"/>
+<line x1="70" y1="304" x2="80" y2="320" stroke="#333" stroke-width="1"/>
+<text x="70" y="334" text-anchor="middle" font-size="11" fill="#222">Card Ops Analyst</text>
+<ellipse cx="310" cy="95" rx="80" ry="20" fill="#e3f5e1" stroke="#7fbf7a"/><text x="310" y="99" text-anchor="middle" font-size="11" fill="#222">View balance</text>
+<ellipse cx="310" cy="150" rx="80" ry="20" fill="#e3f5e1" stroke="#7fbf7a"/><text x="310" y="154" text-anchor="middle" font-size="11" fill="#222">Transfer funds</text>
+<ellipse cx="310" cy="205" rx="80" ry="20" fill="#e3f5e1" stroke="#7fbf7a"/><text x="310" y="209" text-anchor="middle" font-size="11" fill="#222">Freeze card</text>
+<ellipse cx="620" cy="95" rx="90" ry="20" fill="#e0ecff" stroke="#7aa2e3"/><text x="620" y="99" text-anchor="middle" font-size="11" fill="#222">Read account</text>
+<ellipse cx="620" cy="150" rx="90" ry="20" fill="#e0ecff" stroke="#7aa2e3"/><text x="620" y="154" text-anchor="middle" font-size="11" fill="#222">Post transaction</text>
+<ellipse cx="620" cy="205" rx="90" ry="20" fill="#e0ecff" stroke="#7aa2e3"/><text x="620" y="209" text-anchor="middle" font-size="11" fill="#222">Update card status</text>
+<line x1="90" y1="88" x2="230" y2="95" stroke="#333" stroke-width="1"/><line x1="90" y1="88" x2="230" y2="150" stroke="#333" stroke-width="1"/><line x1="90" y1="88" x2="230" y2="205" stroke="#333" stroke-width="1"/>
+<path d="M92 292 L620 292 L620 225" fill="none" stroke="#333"/>
+<line x1="390" y1="95" x2="530" y2="95" stroke="#555" stroke-dasharray="5 4" marker-end="url(#arr-application-use-case-diagram)"/>
+<text x="460" y="88" text-anchor="middle" font-size="9" fill="#345">«consumes»</text>
+<line x1="390" y1="150" x2="530" y2="150" stroke="#555" stroke-dasharray="5 4" marker-end="url(#arr-application-use-case-diagram)"/>
+<text x="460" y="143" text-anchor="middle" font-size="9" fill="#345">«consumes»</text>
+<line x1="390" y1="205" x2="530" y2="205" stroke="#555" stroke-dasharray="5 4" marker-end="url(#arr-application-use-case-diagram)"/>
+<text x="460" y="198" text-anchor="middle" font-size="9" fill="#345">«consumes»</text>
+<circle cx="690" cy="297" r="7" fill="#fff" stroke="#333"/>
+<line x1="690" y1="304" x2="690" y2="324" stroke="#333" stroke-width="1"/>
+<line x1="678" y1="312" x2="702" y2="312" stroke="#333" stroke-width="1"/>
+<line x1="690" y1="324" x2="680" y2="340" stroke="#333" stroke-width="1"/>
+<line x1="690" y1="324" x2="700" y2="340" stroke="#333" stroke-width="1"/>
+<text x="690" y="354" text-anchor="middle" font-size="11" fill="#222">Card network</text>
+<line x1="690" y1="290" x2="660" y2="225" stroke="#333" stroke-width="1"/>
+<text x="380" y="372" text-anchor="middle" font-size="10" fill="#345">Actors consume application services (ellipses); a service in one component may consume a service in another. Boundaries name the providing component.</text>
+<text x="10" y="390" text-anchor="start" font-size="11" fill="#666">Original illustration for study; the artifact is defined in CONTENT §3.6.6</text>
+</svg>

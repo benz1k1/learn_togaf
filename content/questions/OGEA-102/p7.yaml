@@ -1,0 +1,685 @@
+# Authored Practitioner scenarios for unit P7, Requirements Management.
+# Shape per learn_togaf.md §2; grounded on ADM chapter 13, CONTENT 4.2.18, 4.2.11, 7.6, TECH 6.6.
+code: P7_BANK
+exam: OGEA-102
+name: P7 Requirements Management, authored bank
+kind: DRILL
+source: authored
+questions:
+  - id: P7-101
+    unit: P7
+    objective: "P7.1"
+    lesson: P7/01_requirements_management_across_the_cycle
+    scenario: |
+      Atlas Airports operates three regional airports handling eleven million passengers a year, with
+      2,700 staff and a large ecosystem of airlines, ground handlers, retailers and border agencies.
+      Its board has approved a strategy to cut average passenger processing time by a third through
+      a shared passenger-flow platform, biometric identity checks at security and boarding, and a
+      common resource-scheduling capability for gates and stands. The Enterprise Architecture team of
+      six reports to the Chief Information Officer; the Chief Operating Officer sponsors the current
+      architecture cycle. The Preliminary Phase established a Requirements Management process, an
+      Architecture Requirements Repository and a tailored method.
+
+      Phase A produced an Architecture Vision and an approved Statement of Architecture Work scoped to
+      passenger flow, identity and resource scheduling at all three airports, with a business
+      scenario that generated the first high-level requirements. Phase B is complete and Phase C is
+      about two-thirds through: the Data Architecture has been reviewed by stakeholders and the
+      Application Architecture is in the target-description step.
+
+      Two new requirements have arrived in the same week. The national border agency has published a
+      mandatory standard that requires biometric identity data to be retained for a fixed period in
+      an accredited store and to be made available to the agency through a defined interface; it
+      applies from a date eighteen months away and has no exception process. Separately, the retail
+      concessions manager has asked that the passenger-flow platform provide real-time footfall data
+      to retailers so that they can staff their shops, and has offered to fund the feature.
+
+      The Head of the Programme Management Office says the Phase C work should stop until the two
+      requirements are "decided by someone". The airline liaison manager says the airlines were not
+      told about either. The Head of Data warns that the retention requirement changes the Data
+      Architecture that stakeholders have just reviewed. The Chief Operating Officer wants to know
+      whether the requirements mean going back to Phase A.
+
+      The Requirements Management arrangements were set up carefully in the Preliminary Phase. A
+      requirements manager in the architecture team maintains the Architecture Requirements Repository,
+      which holds the requirements from the Phase A business scenario, the strategic requirements from
+      the previous architecture cycle and a set of requirements the airports inherited from a regulatory
+      programme; the Architecture Requirements Specification for the current cycle holds the fifty-two
+      requirements in scope of the Statement of Architecture Work with priorities agreed by the
+      stakeholders in Phase A. Each phase's architects have selected the approved requirements at the
+      start of the phase and updated their status at the end. Requirements Impact Assessments have been
+      issued twice so far, once in Phase B when the airlines changed their check-in requirements and once
+      in Phase C when the biometric vendor landscape changed.
+
+      The border agency's standard is not entirely new. The previous regulatory programme recorded a
+      strategic requirement that identity data "be handled in accordance with future national
+      standards", which sits in the repository; the specific retention period, accredited store and
+      interface are new and detailed. The standard affects the Data Architecture that stakeholders
+      reviewed three weeks ago, because the biometric identity data entity has a retention attribute and
+      a storage location that the standard now dictates, and it affects the Application Architecture in
+      progress, because the interface to the agency must be provided by some application component. It
+      may also affect the Phase B Business Architecture, since the business process for identity
+      enrolment must inform passengers about retention.
+
+      The retail footfall request is different in kind. It would add a new information flow from the
+      passenger-flow platform to retailers, who are not among the stakeholders identified in Phase A, and
+      would raise privacy questions about passenger data that the Statement of Architecture Work did not
+      contemplate. The concessions manager's offer of funding has attracted the sponsor's interest,
+      and the Chief Operating Officer has asked whether accepting it "just extends the scope a little".
+      The Head of the Programme Management Office's suggestion to stop Phase C reflects a genuine worry:
+      the Application Architecture target-description step is due to complete in three weeks and the
+      architects do not know whether to design in the retention interface or not. The airline liaison
+      manager has reminded everyone that the airlines were promised no surprises after the Phase B change.
+
+      You are the lead Enterprise Architect. The sponsor has asked you how the two new requirements
+      should be handled.
+    question: "Refer to the scenario. The sponsor has asked how the two new requirements should be handled. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Handle both through the Requirements Management process without stopping Phase C. Identify and
+          record each requirement. Route them by scope: the border agency's standard falls within the
+          scope of the Statement of Architecture Work, identity at all three airports, so document it in
+          the Architecture Requirements Specification and the Architecture Requirements Repository; the
+          retailer footfall request is outside the current scope, so record it in the Architecture
+          Requirements Repository for a future cycle unless the sponsor changes the Statement of
+          Architecture Work. Have the Phase C architects and the relevant stakeholders, including the
+          airlines and the Head of Data, prioritise the changed requirements and resolve conflicts,
+          and generate a Requirements Impact Assessment that references the requirements, records the
+          priorities, names the phases to be revisited, in this case the Data Architecture step just
+          reviewed and any Phase B business process affected, and identifies the phase to lead
+          prioritisation. Let the current phase assess the impact and decide to implement the retention
+          requirement now and defer the footfall feature, issue the next version of the impact
+          assessment, update the repository, and confirm stakeholder satisfaction with the decision.
+        why: >-
+          This follows the steps table: identify, prioritise with the phase architects and
+          stakeholders, generate the Requirements Impact Assessment, let the phase assess impact on the
+          current and previous phases and decide implement or defer, issue version n+1, update the
+          repository, and check stakeholder satisfaction (ADM §13.3); requirements within the scope of
+          the Statement of Architecture Work go to the specification, those outside it to the
+          repository (ADM §13.5.2); the impact assessment names the phases to revisit and the phase to
+          lead (CONTENT §4.2.18); and the process manages requirements but does not itself dispose of
+          them, the phase does (ADM §13.5.1). It answers the COO, the PMO, the airlines and the Head of
+          Data with the standard's mechanisms.
+      - key: B
+        points: 3
+        text: >-
+          Record both requirements in the Architecture Requirements Specification, have the
+          requirements manager rank them, with the border standard as mandatory and the footfall
+          feature as desirable since it is funded, and instruct the Phase C team to incorporate both in
+          the target Application Architecture, then update the Data Architecture afterwards.
+        why: >-
+          Recording and ranking is close, but the Requirements Management process must not itself
+          prioritise or dispose of requirements; that is done by the architects of the current phase and
+          the stakeholders (ADM §13.5.1, §13.3 step 5). The footfall feature is outside the scope of the
+          Statement of Architecture Work and belongs in the repository rather than the specification
+          (ADM §13.5.2), and no Requirements Impact Assessment is produced to identify the phases to
+          revisit (CONTENT §4.2.18).
+      - key: C
+        points: 1
+        text: >-
+          Because the border standard changes identity data handling that was scoped in Phase A,
+          return to Phase A, revise the Architecture Vision and the Statement of Architecture Work to
+          include both requirements, obtain sponsor approval, and then repeat Phases B and C.
+        why: >-
+          The Requirements Impact Assessment determines which phases need to be revisited; a mandatory
+          data-retention requirement within the existing scope is assessed and implemented in the
+          current phase with previous phases revisited only where impacted, and deferral to a later
+          cycle is a listed option for out-of-scope requests (ADM §13.3 step 6, §13.4). Restarting the
+          cycle for both requirements is disproportionate and bundles an out-of-scope request into the
+          current work (ADM §13.5.2).
+      - key: D
+        points: 0
+        text: >-
+          Ask the Programme Management Office to hold both requirements until Phase C is complete and
+          then raise them at the Phase D kick-off, since introducing changes mid-phase would invalidate
+          the stakeholder review of the Data Architecture.
+        why: >-
+          Changed requirements can come in through any route and must be assessed and prioritised when
+          they arrive; the process directs the phases and records the decisions rather than queuing
+          requirements until a phase ends (ADM §13.3 step 5, §13.5.1). Holding a mandatory requirement
+          until a later phase also increases the rework the impact assessment exists to control.
+    refs: ["ADM §13.3", "ADM §13.4", "ADM §13.5.1", "ADM §13.5.2", "CONTENT §4.2.18", "CONTENT §7.6"]
+    open_book_hint: "Where to look: ADM chapter 13: 13.3 for the ten-step table and which column each step belongs to, 13.4 for the outputs and the versioned impact assessment, 13.5.1 for the rule that the process does not dispose of or prioritise requirements, 13.5.2 for in-scope versus out-of-scope routing; Architecture Content 4.2.18 for the Requirements Impact Assessment contents and 7.6 for the Architecture Requirements Repository."
+    difficulty: 2
+    tags: [requirements-management, impact-assessment, scope]
+    status: draft
+
+  - id: P7-102
+    unit: P7
+    objective: "P7.1"
+    lesson: P7/01_requirements_management_across_the_cycle
+    scenario: |
+      Brightwater Utilities supplies water and wastewater services to 2.4 million customers with
+      3,100 staff, under an economic regulator that sets five-year price controls. Its Enterprise
+      Architecture function was established four years ago and has completed one full ADM cycle. A
+      second cycle is under way, sponsored by the Director of Customer Services, with an approved
+      Statement of Architecture Work scoped to customer billing and contact: a new billing engine, a
+      customer contact platform, a customer data service and the retirement of two legacy systems.
+      The cycle is in Phase B, developing the Target Business Architecture. The company operates an
+      Architecture Requirements Repository, maintained by the Requirements Management process, and
+      an Architecture Requirements Specification for the current cycle.
+
+      During Phase B workshops the stakeholders have generated a stream of requirements. Some are
+      squarely within scope: a requirement that any bill can be explained to a customer in one
+      contact, and a requirement that vulnerable customers be flagged consistently across channels.
+      Others are not: the Director of Operations wants the contact platform to dispatch field crews
+      to burst mains, which is the domain of the network-operations architecture completed in the
+      first cycle; the Head of Regulation wants a new data set for the next price review that the
+      billing engine would need to produce in four years' time; and a workshop of frontline staff has
+      produced sixty detailed screen-level wishes for the contact platform.
+
+      The requirements manager, newly appointed from the project office, has begun entering
+      everything into the Architecture Requirements Specification, marking each as "accepted",
+      "rejected" or "parked" on her own judgement, and has told the Director of Operations that his
+      dispatch requirement is rejected. The Director of Operations has complained to the sponsor. The
+      Head of Regulation has asked why his four-year requirement is "parked" and where it will be
+      when the next cycle starts. The Phase B architects say the specification is becoming unusable.
+
+      The first cycle's experience shapes the second. In the first cycle, requirements were kept in a
+      spreadsheet owned by the programme; when the programme closed the spreadsheet was archived and the
+      architecture team had to reconstruct which requirements the delivered architecture actually met.
+      The Preliminary Phase for the second cycle therefore established the Architecture Requirements
+      Repository as a managed store with strategic, segment and capability levels, populated it with the
+      network-operations architecture's requirements from the first cycle, and defined the Requirements
+      Management process with the architecture team's requirements manager responsible for the
+      repository's contents, integrity and availability to every phase. The Architecture Requirements
+      Specification for the current cycle was started in Phase A with the requirements the business
+      scenario produced, prioritised by the stakeholders at the Phase A review.
+
+      The requirements manager's difficulty is partly one of role. She has taken her authority from the
+      project office's practice, in which a change manager accepts or rejects change requests, and she
+      has interpreted "managing requirements" as deciding them. The Phase B architects, for their part,
+      have not been asked to prioritise anything; they have been receiving the specification with
+      statuses already set and have been unsure whether "accepted" means the stakeholders agreed it or
+      the requirements manager did. Nobody has generated a Requirements Impact Assessment since Phase A,
+      although the vulnerable-customer requirement, added in a Phase B workshop, changes the Phase A
+      Architecture Vision's description of the contact platform.
+
+      The out-of-scope items are not trivial. The Director of Operations' field-crew dispatch requirement
+      belongs to the network-operations architecture from the first cycle, which is in Phase H; it is a
+      legitimate requirement for that architecture and its owner was never told it had a home. The Head
+      of Regulation's four-year data set is a strategic requirement arising from the regulator's published
+      methodology for the next price review and will constrain whatever billing engine is chosen, even
+      though it will not be built in this cycle. The sixty screen-level wishes range from "a bigger font"
+      to "show the last three bills", and the frontline staff who produced them expect to hear what
+      happened to each. The sponsor, the Director of Customer Services, has said that the company cannot
+      afford to lose the goodwill of frontline staff or of the Director of Operations, and that he wants
+      "a process people can see working, not a filing system".
+
+      The sponsor has asked you, the lead Enterprise Architect, to put the handling of requirements
+      on a sound footing.
+    question: "Refer to the scenario. The sponsor has asked you to put the handling of requirements on a sound footing. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Restate the roles. The Requirements Management process identifies, stores, monitors and
+          feeds requirements to the phases and records the decisions; it does not accept, reject or
+          prioritise them itself. Route requirements by scope: those within the Statement of
+          Architecture Work, the bill-explanation and vulnerable-customer requirements, go into the
+          Architecture Requirements Specification and the Architecture Requirements Repository, to be
+          prioritised by the Phase B architects with the stakeholders; those outside it, the field-crew
+          dispatch and the four-year regulatory data set, go into the Architecture Requirements
+          Repository for management towards a future cycle, at the appropriate strategic, segment or
+          capability level, and the Director of Operations is told his requirement is recorded against
+          the network-operations architecture rather than rejected. Establish baseline requirements with
+          agreed priorities, monitor them, and generate a Requirements Impact Assessment when they
+          change. Treat the sixty screen-level wishes as solution detail to be captured at the right
+          level rather than as architecture requirements in the specification, and confirm stakeholder
+          satisfaction with the decisions so that the complaint is resolved through the process.
+        why: >-
+          The process does not dispose of, address or prioritise requirements; the relevant phase does
+          (ADM §13.5.1). New requirements within the scope of the current Statement of Architecture Work
+          are documented in the specification, and those outside it must be input to the Architecture
+          Requirements Repository for management through the process (ADM §13.5.2), which holds
+          requirements across cycles at strategic, segment and capability levels (ADM §13.5.1, CONTENT
+          §7.6.2) and whose contents, integrity and availability the Requirements Management phase is
+          responsible for (CONTENT §7.6.1). Baseline requirements with stakeholder-agreed priorities,
+          monitoring, the impact assessment and the stakeholder-satisfaction check are steps 2, 3 and
+          5 of the table (ADM §13.3).
+      - key: B
+        points: 3
+        text: >-
+          Keep the specification as the single list but change the statuses to "in scope" and "out of
+          scope", have the requirements manager and the Phase B lead architect jointly decide the
+          statuses, and tell the Director of Operations that his requirement will be considered in the
+          next cycle.
+        why: >-
+          Involving the phase architect moves toward the right ownership and the scope distinction is
+          right, but out-of-scope requirements must be placed in the Architecture Requirements
+          Repository, not left in a cycle-bound specification that cannot hold information from
+          multiple cycles (ADM §13.5.1, §13.5.2); and prioritisation belongs to the phase architects and
+          the relevant stakeholders, not to a pair of individuals (ADM §13.3 step 5).
+      - key: C
+        points: 1
+        text: >-
+          Expand the Statement of Architecture Work to include field-crew dispatch and the regulatory
+          data set so that nothing is rejected, and ask the frontline workshop to prioritise its sixty
+          wishes so that they can be added to the specification in priority order.
+        why: >-
+          Changing the scope of the Statement of Architecture Work is a sponsor decision made through a
+          revised statement, not a way of avoiding the routing rule, and it would pull requirements
+          belonging to another architecture and to a later cycle into the current work (ADM §13.5.2).
+          Screen-level wishes are not architecture requirements to be prioritised into the
+          specification; requirements are gathered at the level appropriate to the architecture
+          (CONTENT §7.6.2).
+      - key: D
+        points: 0
+        text: >-
+          Confirm the requirements manager's authority to accept, reject and park requirements, since a
+          single decision-maker keeps the specification manageable, and ask her to delete the rejected
+          ones so that the Phase B architects see only what they must build.
+        why: >-
+          This contradicts the standard directly: the Requirements Management process does not dispose
+          of or prioritise requirements, the phases do (ADM §13.5.1); out-of-scope requirements are
+          recorded in the repository for future work rather than discarded (ADM §13.5.2); and the
+          Architecture Requirements Repository is meant to hold all requirements information across
+          cycles (ADM §13.4, CONTENT §7.6.1).
+    refs: ["ADM §13.3", "ADM §13.4", "ADM §13.5.1", "ADM §13.5.2", "CONTENT §7.6.1", "CONTENT §7.6.2"]
+    open_book_hint: "Where to look: ADM chapter 13: 13.5.1 for what the process does and does not do and for which documents span cycles, 13.5.2 for routing by the scope of the Statement of Architecture Work, 13.3 steps 2, 3 and 5; Architecture Content 7.6.1 and 7.6.2 for the repository's purpose and its three levels."
+    difficulty: 2
+    tags: [requirements-management, repository, scope, roles]
+    status: draft
+
+  - id: P7-103
+    unit: P7
+    objective: "P7.1"
+    lesson: P7/01_requirements_management_across_the_cycle
+    scenario: |
+      Kestrel Logistics is a third-party logistics provider with 4,400 staff, twenty-two warehouses
+      and a transport fleet serving retail and manufacturing customers under multi-year contracts. It
+      is in Phase D of an ADM cycle sponsored by the Chief Operating Officer and scoped by an approved
+      Statement of Architecture Work to warehouse management, transport planning and customer
+      visibility. Phases B and C are complete. The Architecture Requirements Specification for the
+      cycle lists forty-one requirements with agreed priorities; the Architecture Requirements
+      Repository holds these and requirements from earlier work.
+
+      The Phase C gap analysis, completed six weeks ago, identified that the Target Application
+      Architecture does not include a returns-processing application service that exists in the
+      baseline. At the time the architects assumed this was intended, because returns were to be
+      handled by the new warehouse management capability. During Phase D, while selecting technology
+      for the warehouse capability, the vendor evaluation revealed that the selected product does not
+      handle customer returns for one major retail customer whose contract requires returns to be
+      inspected and graded within twenty-four hours. Nobody had recorded that contractual obligation
+      as a requirement. The customer's account manager says losing the capability would breach the
+      contract.
+
+      Meanwhile the Head of Transport, who chairs the customer-visibility working group, has asked
+      that the visibility portal be given priority over the warehouse work because two customers
+      have complained about tracking; the Head of Warehousing objects that the priorities were agreed
+      in Phase B. The Chief Financial Officer has asked whether the newly discovered returns
+      requirement changes the cost of the cycle.
+
+      The cycle's Requirements Management process is mature and documented. The Architecture Requirements
+      Specification records each requirement with its source, its stakeholder priority and its status per
+      phase; the Architecture Requirements Repository holds the specification's requirements alongside
+      strategic requirements from Kestrel's growth strategy and capability-level requirements from
+      individual warehouse projects. Requirements Impact Assessments have been issued at each phase
+      transition, and the process's steps, including the revision of gap analysis for past phases when new
+      facts emerge, are written into the tailored ADM. The Phase C gap analysis was reviewed by the
+      stakeholders and the Architecture Board accepted the Target Application Architecture on the basis
+      of it.
+
+      The returns discovery has a history. The major retail customer's contract was negotiated by the
+      commercial team two years ago and its returns clause was never passed to the architecture team;
+      the customer's account manager attended the Phase A business scenario workshop but did not raise
+      returns because "it has always just worked". The baseline returns-processing application service
+      is a module of a legacy warehouse system that is scheduled for retirement in the Target Architecture,
+      and its function was silently assumed to be covered by the new warehouse management capability.
+      The vendor evaluation in Phase D has produced a shortlist of two products, one of which handles
+      returns inspection and grading natively and one of which does not; the second is cheaper and was
+      about to be selected. The Head of Warehousing believes the returns function could also be met by a
+      separate returns application, which would add an application component to the Target Application
+      Architecture.
+
+      The priority dispute has its own facts. The Phase B stakeholder review agreed priorities that put
+      warehouse management first because the largest cost saving is there; the customer-visibility portal
+      was rated second. Since then two customers have complained about tracking and one has threatened to
+      move its business, and the Head of Transport argues that the priority should change. The Head of
+      Warehousing points out that the Chief Operating Officer signed off the priorities and that "you
+      cannot change them every time a customer complains". The Chief Financial Officer wants a single
+      answer about cost: the returns requirement may change the product selection and therefore the
+      licence cost of the whole warehouse capability. The sponsor wants the two matters resolved before
+      the Phase D stakeholder review in three weeks.
+
+      You are the lead Enterprise Architect. The sponsor has asked how the returns discovery and the
+      priority dispute should be handled under Requirements Management.
+    question: "Refer to the scenario. The sponsor has asked how the returns discovery and the priority dispute should be handled. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Treat the returns discovery as a gap requirement: the returns application service was present
+          in the baseline and absent from the target, and it was eliminated by accident rather than by
+          design, so it requires a change to the Target Architecture. Record it in the Architecture
+          Requirements Repository and the specification with the contractual obligation as its source,
+          revise the Phase C gap analysis and the Target Application Architecture, and generate a
+          Requirements Impact Assessment that identifies the phases to revisit, the Phase C application
+          step and the Phase D technology selection, and the cost and timescale implications for the
+          CFO. For the priority dispute, apply the process: the changed priority is a changed
+          requirement to be prioritised by the architects responsible for the current phase together
+          with the relevant stakeholders, the Heads of Transport and Warehousing, with the conflict
+          identified and managed to a conclusion and the new priorities recorded, rather than decided
+          by the working-group chair alone; if the two customers' complaints represent new
+          requirements, register them too. Confirm stakeholder satisfaction with the outcome.
+        why: >-
+          Step 10 of the table defines gap requirements: something eliminated by accident requires a
+          change to the Target Architecture, and the step ensures gap requirements are addressed,
+          recorded in the repository and the target revised (ADM §13.3). The impact assessment names
+          the phases to be revisited and iterates until it carries the full implications including
+          costs and timescales (CONTENT §4.2.18, ADM §13.4). Step 5 has changed requirements prioritised
+          by the current phase's architects and the stakeholders, with conflicts managed to a
+          conclusion and satisfaction determined (ADM §13.3); requirements can come from any route,
+          including a contract (ADM §13.5.2).
+      - key: B
+        points: 3
+        text: >-
+          Add a returns requirement to the specification and ask the vendor to quote for a returns
+          module in Phase D, since the technology selection is where the problem surfaced; keep the
+          Phase B priorities unchanged because they were agreed, and tell the Head of Transport to raise
+          his request in Phase H after deployment.
+        why: >-
+          Recording the requirement is right, but fixing it in Phase D alone leaves the Target
+          Application Architecture and the Phase C gap analysis wrong; step 10 requires the gap analysis
+          for past phases to be revised and the target updated (ADM §13.3). Refusing to reconsider a
+          priority because it was agreed earlier ignores step 5, which expects changed priorities to be
+          re-assessed by the phase and stakeholders as they arise (ADM §13.3).
+      - key: C
+        points: 1
+        text: >-
+          Since a contractual capability was missed, return to Phase A to re-scope the Statement of
+          Architecture Work and rerun the business scenario, then repeat Phases B, C and D with returns
+          included.
+        why: >-
+          The returns capability is within the existing scope; the impact assessment identifies which
+          phases must be revisited and the current phase decides whether to implement now or defer,
+          so revisiting the Phase C application step suffices without restarting the cycle (ADM §13.3
+          step 6, §13.4). A full restart is the disproportionate response the impact assessment exists
+          to avoid.
+      - key: D
+        points: 0
+        text: >-
+          Record the returns issue as a risk for the implementation project to resolve, on the grounds
+          that the Target Architecture was approved by stakeholders and requirements are frozen after
+          Phase B, and reject the Head of Transport's request for the same reason.
+        why: >-
+          Requirements are not frozen after any phase: every phase can identify new and changed
+          requirements, the process is dynamic across the whole cycle, and a gap requirement demands a
+          change to the Target Architecture rather than a project risk (ADM §13.5.1, §13.3 steps 4 and
+          10). Rejecting a changed priority outright also contradicts step 5.
+    refs: ["ADM §13.3", "ADM §13.4", "ADM §13.5.1", "ADM §13.5.2", "CONTENT §4.2.18", "TECH §5"]
+    open_book_hint: "Where to look: ADM chapter 13: 13.3 step 10 for gap requirements and the two kinds of gap, step 5 for prioritisation by the phase and stakeholders and conflict management, step 6 for implement or defer; 13.4 for the iterated impact assessment; Architecture Content 4.2.18; ADM Techniques chapter 5 for gap analysis."
+    difficulty: 3
+    tags: [requirements-management, gap-requirement, prioritisation]
+    status: draft
+
+  - id: P7-104
+    unit: P7
+    objective: "P7.1"
+    lesson: P7/02_the_requirements_repository_and_the_impact_assessment
+    scenario: |
+      Lumen Media is a broadcaster and streaming publisher with 2,600 staff, a national television
+      channel, a streaming service with four million accounts and a growing advertising technology
+      business. It has completed two ADM cycles. The first, three years ago, produced the streaming
+      platform architecture; the second, finished last year, produced a Target Architecture for
+      advertising: an audience data platform, a campaign-management service, an ad-decisioning engine
+      and integration with the streaming player. The advertising architecture is deployed and in
+      Phase H; the streaming architecture has been in Phase H for two years. Both are governed by an
+      Architecture Board that meets monthly, and the Enterprise Architecture team maintains an
+      Architecture Requirements Repository that was populated in both cycles.
+
+      Phase H monitoring of the advertising architecture has produced a Change Request from the
+      Head of Advertising Sales: a new industry measurement standard requires that every ad
+      impression be attributed to a household-level identifier, which changes what the audience data
+      platform must store and what the decisioning engine must match on. The Head of Privacy has
+      added that a new data-protection ruling limits how long the identifier may be retained. The
+      Board has classified the change as incremental, affecting the Data and Application Architectures
+      of the advertising domain, and has decided to implement it through a partial re-architecting
+      rather than a new cycle.
+
+      The Board has now asked how the resulting requirements should be managed. Complications have
+      emerged. The streaming platform's player must also change to emit the identifier, which touches
+      the older architecture. The requirements manager has proposed creating a fresh Architecture
+      Requirements Specification for the advertising change and copying every advertising
+      requirement from the previous cycle into it. The Head of Data has asked whether the household
+      identifier is a strategic, segment or capability requirement, because "it seems to be all
+      three". The Head of Privacy wants the retention limit to apply across both architectures. A
+      newly hired architect asks why the old cycle's requirements are still in the repository at all.
+
+      The advertising architecture cycle set up its requirements carefully. The Architecture Requirements
+      Specification for that cycle, now closed, held sixty-one requirements, of which fifty-four were met
+      and archived when the advertising Solutions Landscape was populated, five were deferred to the
+      repository as out of scope, and two were withdrawn. The Architecture Requirements Repository holds
+      the strategic requirements from Lumen's group strategy, the segment-level requirements for the
+      streaming and advertising operating models, and capability-level requirements for individual
+      components in both architectures. The Requirements Impact Assessment template records the
+      requirements referenced, stakeholder priority, phases to be revisited, the phase to lead, results of
+      investigations, recommendations and a repository reference number.
+
+      The measurement standard is demanding. It defines the household identifier, the events that must
+      carry it, the matching rules the decisioning engine must apply and the reporting the advertising
+      sales team must produce for agencies. The privacy ruling limits retention of the identifier to a
+      short period after the last interaction and requires a documented purpose for each use. The Head
+      of Advertising Sales regards the change as urgent because agencies will move budgets to publishers
+      that comply. The Head of Privacy regards it as a strategic constraint on every architecture the
+      group has, since the identifier will also appear in the streaming platform's player events and in
+      any future product.
+
+      The Board's decision to treat the change as a partial re-architecting of the Data and Application
+      Architectures of the advertising domain was made against its criteria and minuted, with a new
+      Statement of Architecture Work to be drafted for the work. The Board did not consider the streaming
+      player at the time because the requirement was described as an advertising matter; it has since
+      been told that the player must emit the identifier and that the streaming architecture's owner,
+      the Head of Streaming Product, was not consulted. The requirements manager's proposal to copy the
+      old specification arose from a wish to "start from what we already know". The new architect's
+      question about old requirements in the repository was prompted by the repository's size, which she
+      finds confusing. The Board wants a clear method it can apply to future Phase H changes in either
+      architecture.
+
+      You are the lead Enterprise Architect. The Board has asked you to explain how the requirements
+      arising from this Phase H change should be handled and recorded.
+    question: "Refer to the scenario. The Board has asked how the requirements arising from the Phase H change should be handled and recorded. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Bring the Phase H requirements into the Requirements Management process as step 7 of its
+          table, implementing requirements arising from Phase H so that they are managed like any
+          other. Record them in the Architecture Requirements Repository at the right levels of
+          granularity: the household identifier as a segment-level requirement for the advertising
+          operating model with capability-level requirements for the audience platform, decisioning
+          engine and streaming player work packages, and the privacy retention limit as a strategic
+          requirement that applies across both architectures. Use a Requirements Impact Assessment to
+          identify the phases and architectures to revisit, including the streaming architecture's
+          player, and issue new versions as investigation proceeds. Create an Architecture Requirements
+          Specification only for the requirements in scope of the new Statement of Architecture Work
+          for the partial re-architecting, drawn from the repository rather than by copying the old
+          cycle's specification wholesale, and explain to the new architect that the repository
+          deliberately holds requirements from multiple cycles while specifications and impact
+          assessments belong to one cycle; requirements already met are archived for audit, not
+          deleted.
+        why: >-
+          Step 7 implements requirements arising from Phase H through the process (ADM §13.3); the
+          Architecture Requirements Repository is divided into strategic, segment and capability
+          levels, and met requirements are archived for audit when reflected in the Solutions Landscape
+          (CONTENT §7.6.2); the impact assessment identifies the phases to revisit and iterates through
+          versions (ADM §13.4, CONTENT §4.2.18); and, unlike the specification and the impact assessment,
+          the repository holds information from multiple ADM cycles (ADM §13.5.1). Requirements in scope
+          of the current Statement of Architecture Work belong in the specification, the rest in the
+          repository (ADM §13.5.2).
+      - key: B
+        points: 3
+        text: >-
+          Accept the requirements manager's proposal: create a new Architecture Requirements
+          Specification for the advertising change, copy the previous cycle's advertising requirements
+          into it as the baseline, add the identifier and retention requirements, and treat the
+          streaming player change as an item for the streaming architecture's next review.
+        why: >-
+          A specification for the new work is right, but copying a whole previous specification confuses
+          the cycle-bound specification with the multi-cycle repository (ADM §13.5.1); the levels of
+          granularity are ignored (CONTENT §7.6.2); and the streaming player impact must be identified
+          in the Requirements Impact Assessment now, which names the phases and architectures to
+          revisit, rather than left to a future review (CONTENT §4.2.18).
+      - key: C
+        points: 1
+        text: >-
+          Because the change spans two architectures and three levels of requirement, recommend that
+          the Board reverse its classification and start a new ADM cycle covering advertising and
+          streaming together, so that a single specification can hold all the requirements.
+        why: >-
+          The Board's classification is a Phase H governance decision made against its criteria; the
+          Requirements Management process serves whichever route was chosen and its repository is
+          designed precisely to hold requirements across architectures, cycles and levels, so the
+          spread of requirements is not a reason to restart (ADM §12.5, CONTENT §7.6.1, §7.6.2). A new
+          cycle for a change classified as incremental is the disproportionate response the standard
+          warns against.
+      - key: D
+        points: 0
+        text: >-
+          Purge the previous cycles' requirements from the repository so that only the current change
+          is visible, and hand the identifier and retention requirements to the audience-platform
+          product team to manage in their backlog, since the change is incremental.
+        why: >-
+          The repository is intended to hold all requirements information across cycles and met
+          requirements are archived for audit (ADM §13.4, CONTENT §7.6.2); Phase H requirements are
+          explicitly brought into the Requirements Management process rather than delegated to a
+          product backlog (ADM §13.3 step 7); and the strategic privacy requirement spans architectures,
+          which a single team's backlog cannot govern (CONTENT §7.6.2).
+    refs: ["ADM §13.3", "ADM §13.4", "ADM §13.5.1", "ADM §13.5.2", "CONTENT §4.2.18", "CONTENT §7.6.2"]
+    open_book_hint: "Where to look: ADM 13.3 step 7 (requirements arising from Phase H), 13.4 for outputs and versioning, 13.5.1 for which documents span cycles, 13.5.2 for specification versus repository; Architecture Content 7.6.2 for the three levels of granularity and archiving, 4.2.18 for the impact assessment."
+    difficulty: 3
+    tags: [requirements-management, repository, phase-h, granularity]
+    status: draft
+
+  - id: P7-105
+    unit: P7
+    objective: "P7.1"
+    lesson: P7/01_requirements_management_across_the_cycle
+    scenario: |
+      Sable Manufacturing makes industrial pumps and valves in four plants with 5,600 staff and
+      sells through distributors in thirty countries. Its board has approved a strategy to offer
+      "pumps as a service" with remote monitoring and predictive maintenance. The Enterprise
+      Architecture team was established in the Preliminary Phase eight months ago with a tailored
+      method and an Architecture Requirements Repository; the Chief Commercial Officer sponsors the
+      first ADM cycle. Phase A is nearly complete: a business scenario workshop with distributors,
+      service engineers, product managers and finance produced the Architecture Vision and a first
+      set of high-level requirements, and the Statement of Architecture Work is drafted for approval.
+
+      The sponsor has raised a concern before signing. The business scenario produced 118
+      "requirements", a mixture of business goals ("increase service revenue to thirty percent"),
+      functional requirements ("a service engineer can see a pump's vibration history"),
+      non-functional requirements ("alerts within ten minutes"), constraints ("no customer data may
+          leave the country where the pump operates"), assumptions ("distributors will install
+      sensors") and the product director's list of features. The Head of Product wants them all put
+      into a requirements tool she has licensed and treated as the backlog for the programme. The
+      Chief Information Security Officer says the data-residency item is a policy, not a requirement.
+      The Head of Service Engineering asks who will decide which requirements the architecture must
+      meet, because in the last programme "everything was a priority". A consultant has proposed that
+      the architecture team adopt a full commercial requirements-engineering method as mandated by the
+      TOGAF Standard.
+
+      The business scenario workshop was thorough. Facilitated by the lead architect over two days with
+      thirty participants, it described the pumps-as-a-service business problem in terms of the business
+      processes involved, the actors, human and computer, and their roles, and produced the desired
+      outcome, a service business that could monitor pumps remotely and predict failures before they
+      occurred. The 118 items were captured on a shared board by four scribes in whatever form the
+      speaker used, without classification. The product director's feature list, about thirty of the
+      items, was submitted after the workshop and includes items such as "dashboard in the company
+      colours" and "export to spreadsheet". Finance's items are mostly goals and constraints, including a
+      requirement that the service be profitable in year three and a constraint on capital expenditure.
+
+      The Preliminary Phase set up the Requirements Management process on paper: a requirements manager
+      role in the architecture team, an Architecture Requirements Repository in a simple tool, and a
+      statement that "requirements are managed through the Requirements Management process across all
+      phases". It did not define how requirements would be classified, who would prioritise them, or how
+      the Architecture Requirements Specification for a cycle would relate to the repository. The sponsor
+      approved the process as part of the Tailored Architecture Framework without reading it closely and
+      now wants it explained before he commits to the Statement of Architecture Work.
+
+      The stakeholders' positions are firm. The Head of Product regards the 118 items as her backlog and
+      her tool as the system of record; she has asked whether the architecture team "even needs to be
+      involved" once the items are loaded. The Chief Information Security Officer wants the
+      data-residency item recorded as a policy that constrains the architecture rather than a feature to
+      be prioritised against a dashboard colour. The Head of Service Engineering wants an answer to who
+      decides, because the previous programme had a single list in which everything was marked "must
+      have". The consultant's proposal to adopt a commercial requirements-engineering method comes with
+      a fee and a claim that the standard mandates it. The Chief Commercial Officer has said that he will
+      sign the Statement of Architecture Work when he understands what will happen to the workshop's
+      output, who will prioritise it, and where it will live for the rest of the cycle and beyond.
+
+      You are the lead Enterprise Architect. The sponsor has asked you to explain, before approving
+      the Statement of Architecture Work, how the requirements from the business scenario will be
+      developed and managed through the cycle.
+    question: "Refer to the scenario. The sponsor has asked how the business-scenario requirements will be developed and managed through the cycle. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Explain that the business scenario is the technique the standard uses to articulate the first
+          high-level requirements in the Architecture Vision, and that from here each phase will select
+          the approved requirements for that phase from the Architecture Requirements Repository and
+          Specification and update their status at phase end. Sort the 118 items by kind: functional
+          and non-functional requirements are recorded as requirements; assumptions, constraints,
+          policies such as data residency, standards and principles are recorded as the things the
+          architect must take into account when defining requirements and captured in the Requirements
+          catalog as requirements, assumptions, constraints and gaps; business goals are drivers the
+          requirements trace to. Establish the baseline requirements with priorities agreed by the
+          stakeholders in Phase A, document them in the Architecture Requirements Specification and the
+          repository, and make clear that prioritisation and disposal happen in the phases with the
+          stakeholders, not in the Requirements Management function. Note that the standard mandates no
+          particular requirements method or tool, so the Head of Product's tool may be used to support
+          the process provided the repository remains the managed source, and that later phases will
+          add new kinds such as conformance requirements and implementation time windows.
+        why: >-
+          The first high-level requirements come from the business scenario in the Vision; each phase
+          selects its approved requirements from the repository and specification and updates their
+          status; the architect identifies functional and non-functional requirements and takes account
+          of assumptions, constraints, principles, policies, standards, guidelines and specifications;
+          later phases generate conformance requirements and time windows (ADM §13.5.2). The
+          Requirements catalog holds requirement, assumption, constraint and gap entities (CONTENT
+          §3.6.10). Baseline requirements with stakeholder-agreed priorities are step 2 (ADM §13.3), the
+          process does not prioritise (ADM §13.5.1), and the standard mandates no specific process or
+          tool, only what an effective process should achieve (ADM §13.5.3).
+      - key: B
+        points: 3
+        text: >-
+          Load all 118 items into the Head of Product's requirements tool as the single backlog, ask
+          the Requirements Management function to prioritise them into "must, should, could", and have
+          the Phase B architects work from the top of the list; treat the data-residency item as a
+          requirement like any other.
+        why: >-
+          Using a tool is permitted and getting the items recorded is right, but the Requirements
+          Management function must not prioritise; the phase architects and stakeholders do
+          (ADM §13.5.1, §13.3 step 5); and lumping goals, assumptions, constraints and policies together
+          as requirements ignores the standard's distinction between requirements and the assumptions,
+          constraints, policies and standards the architect must take into account (ADM §13.5.2, CONTENT
+          §3.6.10).
+      - key: C
+        points: 1
+        text: >-
+          Adopt the consultant's commercial requirements-engineering method in full, since the TOGAF
+          Standard requires a recognised method, and defer approval of the Statement of Architecture
+          Work until the 118 items have been rewritten in that method's format.
+        why: >-
+          The standard does not mandate or recommend any specific requirements process or tool; it
+          states what an effective process should achieve (ADM §13.5.3). Delaying the Statement of
+          Architecture Work for a reformatting exercise also confuses the Phase A deliverable with the
+          continuing management of requirements through the cycle (ADM §13.5.2).
+      - key: D
+        points: 0
+        text: >-
+          Treat the 118 items as the complete and final set of requirements for the cycle, since they
+          came from the sponsor's own workshop, and instruct the phases to design to them without
+          further change so that "everything is a priority" cannot recur.
+        why: >-
+          Architecture requirements are invariably subject to change and the Requirements Management
+          circle denotes a dynamic process, not a static set; every phase identifies new and changed
+          requirements and re-assesses priorities (ADM §13.5.1, §13.3 step 4). Freezing the list
+          contradicts the purpose of the process and does not solve prioritisation, which belongs to
+          the phases with the stakeholders.
+    refs: ["ADM §13.3", "ADM §13.5.1", "ADM §13.5.2", "ADM §13.5.3", "CONTENT §3.6.10", "CONTENT §7.6.1"]
+    open_book_hint: "Where to look: ADM chapter 13: 13.5.2 for requirements development, the business scenario as the source of the first requirements, kinds of requirement and what to take into account; 13.5.3 for resources (no mandated method or tool); 13.5.1 for the dynamic process; 13.3 step 2 for baseline requirements; Architecture Content 3.6.10 for the Requirements catalog entities and 7.6.1 for the repository."
+    difficulty: 2
+    tags: [requirements-management, business-scenario, requirements-catalog]
+    status: draft

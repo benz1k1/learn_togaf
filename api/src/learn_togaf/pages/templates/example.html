@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}{{ document.title }} · Learn TOGAF{% endblock %}
+{% block heading %}<a href="/example" class="link link-hover">Worked examples</a> › <a href="/adm/{{ phase.code }}" class="link link-hover">{{ phase.name }}</a> › {{ document.title }}{% endblock %}
+{% block header_actions %}
+{% if document.status == 'draft' %}<span class="badge badge-warning badge-sm">draft</span>{% endif %}
+{% if document.track != 'TOGAF' %}<span class="badge badge-sm {{ 'badge-info' if document.track == 'ARCHIMATE' else 'badge-secondary' }}">{{ document.track | lower }}</span>{% endif %}
+<span class="badge badge-ghost badge-sm">{{ document.kind | lower }}</span>
+{% endblock %}
+{% block content %}
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+  <div class="lg:col-span-3 flex flex-col gap-4">
+    <article class="card bg-base-100 shadow-sm">
+      <div class="card-body p-5">
+        <p class="text-xs text-base-content/60">Original worked example for study — Northgate Bank is fictional; the {{ 'view' if document.kind == 'MODEL' else 'deliverable' }} is defined in {% for ref in document.refs %}<a class="link" href="/source/{{ ref | urlencode }}">{{ ref }}</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>
+        <h1 class="text-xl font-bold">{{ document.title }}</h1>
+        <p class="text-sm text-base-content/70">{{ document.summary }}</p>
+        {% if figure_url %}
+        <figure class="my-2" data-testid="model-figure">
+          <img src="{{ figure_url }}" alt="{{ document.title }}" class="w-full border border-base-200 rounded bg-white">
+          <figcaption class="text-xs text-base-content/60 mt-1">{{ document.viewpoint }} viewpoint, ArchiMate 3.2 notation · <a class="link" href="{{ figure_url }}" target="_blank" rel="noopener"><i class="mdi mdi-open-in-new"></i> open / save the SVG</a> · drawn from <code>content/archimate/{{ document.figure | replace('.svg', '.yaml') }}</code></figcaption>
+        </figure>
+        {% endif %}
+        <div class="prose-lesson">{{ body_html }}</div>
+      </div>
+    </article>
+    <div class="flex justify-between">
+      {% if prev %}<a class="btn btn-sm" href="/example/{{ prev.id }}"><i class="mdi mdi-chevron-left"></i> {{ prev.title }}</a>{% else %}<span></span>{% endif %}
+      {% if next %}<a class="btn btn-sm" href="/example/{{ next.id }}">{{ next.title }} <i class="mdi mdi-chevron-right"></i></a>{% endif %}
+    </div>
+  </div>
+  <aside class="flex flex-col gap-4">
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Produced in</h2>
+      <a class="link text-sm" href="/adm/{{ phase.code }}"><span class="badge badge-neutral badge-sm mr-1">{{ phase.code }}</span>{{ phase.name }}</a>
+      <p class="text-xs text-base-content/60 mt-1">Example of: {{ document.deliverable }}</p>
+      {% if document.viewpoint %}<p class="text-xs text-base-content/60">Viewpoint: {{ document.viewpoint }}</p>{% endif %}
+    </div></div>
+    {% if artefact_rows %}
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">TOGAF artefacts realised</h2>
+      <ul class="flex flex-col gap-1 text-sm">{% for row in artefact_rows %}<li><a class="link" href="/artefact?phase={{ row.phase_code }}#{{ row.code }}">{{ row.name }}</a> <span class="text-xs text-base-content/60">{{ row.kind | lower }}</span></li>{% endfor %}</ul>
+    </div></div>
+    {% endif %}
+    {% if related %}
+    <div class="card bg-base-100 shadow-sm" data-testid="related-examples"><div class="card-body p-4">
+      <h2 class="card-title text-sm">The same thing in the other frameworks</h2>
+      <ul class="flex flex-col gap-1 text-sm">{% for item in related %}<li><span class="badge badge-xs {{ 'badge-info' if item.track == 'ARCHIMATE' else 'badge-secondary' if item.track == 'SABSA' else 'badge-ghost' }} mr-1">{{ item.track | lower }}</span><a class="link" href="/example/{{ item.id }}">{{ item.title }}</a></li>{% endfor %}</ul>
+    </div></div>
+    {% endif %}
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Defined in</h2>
+      <ul class="flex flex-col gap-1 text-sm">{% for ref in document.refs %}<li><a class="link link-primary" href="/source/{{ ref | urlencode }}">{{ ref }}</a></li>{% endfor %}</ul>
+    </div></div>
+    <div class="card bg-base-100 shadow-sm"><div class="card-body p-4">
+      <h2 class="card-title text-sm">Your note</h2>
+      {% with ref_kind = "EXAMPLE", ref_id = document.id %}{% include "_note.html" %}{% endwith %}
+    </div></div>
+  </aside>
+</div>
+{% endblock %}

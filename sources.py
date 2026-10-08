@@ -6,7 +6,7 @@ The source store CLI (learn_togaf.md §1.4).
     python sources.py encrypt                  # prompt for a plaintext, print the Fernet token
     python sources.py encrypt --set opengroup.password    # …and write it into the env YAML in place
     python sources.py login [--headless]       # Playwright: Open Group SSO → resources/sources/session.json
-    python sources.py fetch [--limit N]        # crawl the Digital Edition into resources/sources/html/
+    python sources.py fetch [--limit N] [--root togaf|archimate]   # crawl into resources/sources/html/
     python sources.py pdf                      # register PDFs placed under resources/sources/pdf/
     python sources.py index                    # HTML + PDF → source_* tables, text/, objective_source, ADM diff
     python sources.py figures                  # every diagram → resources/sources/figures/ + source_figure
@@ -121,37 +121,55 @@ def cmd_login(args: argparse.Namespace) -> None:
     session.login(config.SOURCES_LOGIN_URL, credentials, headless=args.headless)
 
 
+# Crawl roots: the TOGAF Digital Edition (many documents under one site) and the ArchiMate
+# specification (one flat document, segment "archimate"). Both use the same saved session.
+CRAWL_ROOTS = {
+    "togaf": (config.SOURCES_BASE_URL, None),
+    "archimate": (config.SOURCES_ARCHIMATE_URL, "archimate"),
+}
+
+
 def cmd_fetch(args: argparse.Namespace) -> None:
     manifest = load_manifest(config.SOURCES_DIR)
+    roots = list(CRAWL_ROOTS) if args.root == "all" else [args.root]
     try:
         with session.http_client() as client:
-            report = fetch_module.crawl(
-                client,
-                config.SOURCES_BASE_URL,
-                config.SOURCES_DIR,
-                manifest,
-                config.SOURCES_DELAY_SECONDS,
-                args.limit,
-            )
+            for name in roots:
+                base_url, root_segment = CRAWL_ROOTS[name]
+                report = fetch_module.crawl(
+                    client,
+                    base_url,
+                    config.SOURCES_DIR,
+                    manifest,
+                    config.SOURCES_DELAY_SECONDS,
+                    args.limit,
+                    root_segment=root_segment,
+                )
+                save_manifest(config.SOURCES_DIR, manifest)
+                print(f"{name}: {report.summary()}")
+                for page in report.pages:
+                    print(f"  saved {page}")
     except session.LoginRequired as exc:
         save_manifest(config.SOURCES_DIR, manifest)
         raise SystemExit(str(exc)) from exc
-    save_manifest(config.SOURCES_DIR, manifest)
-    print(report.summary())
-    for page in report.pages:
-        print(f"  saved {page}")
 
 
 def cmd_pdf(args: argparse.Namespace) -> None:
     manifest = load_manifest(config.SOURCES_DIR)
     pdf_dir = config.SOURCES_DIR / "pdf"
-    paths = sorted(pdf_dir.glob("*.pdf")) + sorted(pdf_dir.glob("guides/*.pdf"))
+    paths = (
+        sorted(pdf_dir.glob("*.pdf"))
+        + sorted(pdf_dir.glob("guides/*.pdf"))
+        + sorted(pdf_dir.glob("wp/*.pdf"))
+        + sorted(pdf_dir.glob("sabsa/*.pdf"))
+    )
     if not paths:
         raise SystemExit(
-            f"no PDFs under {pdf_dir}: place the licensed downloads there as <doc>.pdf (adm.pdf, guides/<slug>.pdf)"
+            f"no PDFs under {pdf_dir}: place the licensed downloads there as <doc>.pdf (adm.pdf, guides/<slug>.pdf,"
+            f" wp/w117.pdf, wp/w14c.pdf, wp/w172.pdf, sabsa.pdf, sabsa/bluebook.pdf)"
         )
     for path in paths:
-        segment = f"guides/{path.stem}" if path.parent.name == "guides" else path.stem
+        segment = f"{path.parent.name}/{path.stem}" if path.parent != pdf_dir else path.stem
         code = index_module.document_code(segment)
         if code is None:
             print(
@@ -291,8 +309,9 @@ def main() -> None:
     login = sub.add_parser("login", help="log in to the Open Group SSO with Playwright and save the session")
     login.add_argument("--headless", action="store_true")
     login.set_defaults(func=cmd_login)
-    fetch = sub.add_parser("fetch", help="crawl the Digital Edition")
-    fetch.add_argument("--limit", type=int, help="stop after N requests (a partial run)")
+    fetch = sub.add_parser("fetch", help="crawl the Digital Edition and the ArchiMate specification")
+    fetch.add_argument("--limit", type=int, help="stop after N requests per root (a partial run)")
+    fetch.add_argument("--root", choices=["all", *CRAWL_ROOTS], default="all", help="which site to crawl")
     fetch.set_defaults(func=cmd_fetch)
     sub.add_parser("pdf", help="register the PDFs under resources/sources/pdf/").set_defaults(func=cmd_pdf)
     sub.add_parser("index", help="build the source index").set_defaults(func=cmd_index)

@@ -1,0 +1,31 @@
+# Northgate Bank — Logical Data Diagram (Phase C) as an Information Structure view: the logical
+# Data Objects (with their keys) realize the conceptual Business Objects above them, and the
+# three target additions from ADD chapter 5b sit below.
+id: LOGICAL_DATA_DIAGRAM
+title: "Northgate Bank — Logical Data Diagram as an Information Structure view"
+viewpoint: Information Structure
+elements:
+  - {id: customer, type: business_object, name: "Customer", col: 0, row: 0}
+  - {id: account, type: business_object, name: "Account", col: 1, row: 0}
+  - {id: card, type: business_object, name: "Card", col: 2, row: 0}
+  - {id: txn, type: business_object, name: "Transaction", col: 3, row: 0}
+  - {id: d_customer, type: data_object, name: "Customer record: customer_id PK, kyc_status", col: 0, row: 1}
+  - {id: d_account, type: data_object, name: "Account record: account_id PK, customer_id FK", col: 1, row: 1}
+  - {id: d_card, type: data_object, name: "Card record: card_id PK, pan_token, status", col: 2, row: 1}
+  - {id: d_txn, type: data_object, name: "Transaction record: txn_id PK, card_id FK 0..1", col: 3, row: 1}
+  - {id: d_evidence, type: data_object, name: "Identity Evidence: images, decision, expiry <= 30 d", col: 0, row: 2}
+  - {id: d_journey, type: data_object, name: "Onboarding Journey: token, channel, step, 24 h", col: 1, row: 2}
+  - {id: d_score, type: data_object, name: "Fraud Score: txn ref, score, reasons, threshold", col: 3, row: 2}
+relations:
+  - {from: d_customer, to: customer, type: realization}
+  - {from: d_account, to: account, type: realization}
+  - {from: d_card, to: card, type: realization}
+  - {from: d_txn, to: txn, type: realization}
+  - {from: d_customer, to: d_account, type: aggregation, label: "1..*"}
+  - {from: d_account, to: d_card, type: aggregation, label: "0..*"}
+  - {from: d_card, to: d_txn, type: association, label: "0..1"}
+  - {from: d_evidence, to: d_customer, type: association}
+  - {from: d_journey, to: d_customer, type: association}
+  - {from: d_score, to: d_txn, type: association}
+notes:
+  - {text: "Row 3: the three data objects Phase C adds (RC-C1 to RC-C3); none is a new master (CN-03).", col: 2, row: 2, w: 1, h: 1}

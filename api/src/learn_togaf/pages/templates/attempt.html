@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block title %}{{ mode_label | replace('_', ' ') | lower | capitalize }} · Learn TOGAF{% endblock %}
 {% block heading %}
-{{ attempt.exam | lower | capitalize }} {{ attempt.mode | lower }}
-<span class="text-xs font-normal text-base-content/60 ml-2">{{ question_count }} questions{% if attempt.exam == 'FOUNDATION' %} · closed book{% else %} · open book{% endif %} · seed {{ attempt.seed }}</span>
+{{ attempt.exam }} {{ attempt.mode | lower }}
+<span class="text-xs font-normal text-base-content/60 ml-2">{{ question_count }} questions{% if open_book %} · open book{% else %} · closed book{% endif %} · seed {{ attempt.seed }}</span>
 {% endblock %}
 {% block header_actions %}
 {% with remaining_s=remaining_s %}{% include "_timer.html" %}{% endwith %}

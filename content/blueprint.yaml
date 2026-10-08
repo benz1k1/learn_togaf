@@ -1,30 +1,65 @@
-# Exam formats, learning units, objectives and weights (learn_togaf.md §0).
-# Transcribed from the TOGAF 10 Conformance Requirements; verify against the current revision
-# on opengroup.org before authoring a mock and record the revision here.
-revision: "TOGAF 10 Foundation & Practitioner Conformance Requirements — transcription 2026-09-10, unverified against the live document"
+# Exam formats, learning units, objectives and weights (learn_togaf.md §0, learn_sabsa_archimate.md §4.1).
+# Exams are data: one entry per exam code, each with its track and its scoring shape. Every
+# figure marked "verify" was transcribed from memory and must be checked against the certifying
+# body's current datasheet before a mock of that exam is trusted; record the revision on the entry.
+revision: "TOGAF 10 Foundation & Practitioner Conformance Requirements — transcription 2026-09-10, unverified against the live document; ArchiMate 3 and SABSA formats transcribed 2026-09-25, unverified"
 
-foundation:
-  code: OGEA-101
-  questions: 40
-  time_minutes: 60
-  pass_mark: 24
-  max_score: 40
-  open_book: false
-  scoring: single
-
-practitioner:
-  code: OGEA-102
-  questions: 8
-  time_minutes: 90
-  pass_mark: 24
-  max_score: 40
-  open_book: true
-  scoring: gradient
+exams:
+  OGEA-101:
+    track: TOGAF
+    name: "TOGAF 10 Foundation"
+    questions: 40
+    time_minutes: 60
+    pass_mark: 24
+    max_score: 40
+    open_book: false
+    scoring: single
+    revision: "TOGAF 10 Conformance Requirements, transcription 2026-09-10 (verify)"
+  OGEA-102:
+    track: TOGAF
+    name: "TOGAF 10 Practitioner"
+    questions: 8
+    time_minutes: 90
+    pass_mark: 24
+    max_score: 40
+    open_book: true
+    scoring: gradient
+    revision: "TOGAF 10 Conformance Requirements, transcription 2026-09-10 (verify)"
+  OGA-031:
+    track: ARCHIMATE
+    name: "ArchiMate 3 Part 1 (Foundation)"
+    questions: 40
+    time_minutes: 60
+    pass_mark: 24
+    max_score: 40
+    open_book: false
+    scoring: single
+    revision: "ArchiMate 3 certification datasheet, recalled 2026-09-25 (verify exam code, count, pass mark)"
+  OGA-032:
+    track: ARCHIMATE
+    name: "ArchiMate 3 Part 2 (Practitioner)"
+    questions: 8
+    time_minutes: 90
+    pass_mark: 24
+    max_score: 40
+    open_book: true
+    scoring: gradient
+    revision: "ArchiMate 3 certification datasheet, recalled 2026-09-25 (verify exam code, count, pass mark)"
+  SCF:
+    track: SABSA
+    name: "SABSA Chartered Foundation"
+    questions: 48
+    time_minutes: 90
+    pass_mark: 36
+    max_score: 48
+    open_book: false
+    scoring: single
+    revision: "SABSA Institute SCF description, recalled 2026-09-25 (verify: paper count, question count, pass mark, course gating)"
 
 units:
   # ---------------------------------------------------------------- Part 1 (40 questions)
   - code: F1
-    exam: FOUNDATION
+    exam: OGEA-101
     name: Concepts
     weight: 3
     objectives:
@@ -34,14 +69,14 @@ units:
       - {code: "1.4", text: "Explain deliverables, artefacts and building blocks and how they differ"}
       - {code: "1.5", text: "Describe the Enterprise Continuum, the Architecture Repository and the EA Capability at a summary level"}
   - code: F2
-    exam: FOUNDATION
+    exam: OGEA-101
     name: Definitions
     weight: 3
     objectives:
       - {code: "2.1", text: "Define the key terms of the standard as given in the Definitions chapter"}
       - {code: "2.2", text: "Distinguish commonly confused terms (artefact/deliverable/building block, vision/definition document, continuum/repository)"}
   - code: F3
-    exam: FOUNDATION
+    exam: OGEA-101
     name: Introduction to the ADM
     weight: 3
     objectives:
@@ -49,7 +84,7 @@ units:
       - {code: "3.2", text: "Explain how the ADM is adapted, scoped and iterated, and what governs it"}
       - {code: "3.3", text: "Explain the relationship between the ADM and the Architecture Repository and Continuum"}
   - code: F4
-    exam: FOUNDATION
+    exam: OGEA-101
     name: ADM Phases
     weight: 9
     objectives:
@@ -61,7 +96,7 @@ units:
       - {code: "4.6", text: "Describe the objectives and approach of Phases G and H"}
       - {code: "4.7", text: "Describe the objectives and approach of Requirements Management"}
   - code: F5
-    exam: FOUNDATION
+    exam: OGEA-101
     name: ADM Techniques
     weight: 6
     objectives:
@@ -71,7 +106,7 @@ units:
       - {code: "5.4", text: "Explain business scenarios, interoperability requirements, readiness assessment and risk management"}
       - {code: "5.5", text: "Explain capability-based planning and architecture patterns"}
   - code: F6
-    exam: FOUNDATION
+    exam: OGEA-101
     name: Applying the ADM
     weight: 4
     objectives:
@@ -79,7 +114,7 @@ units:
       - {code: "6.2", text: "Explain the Architecture Landscape levels and architecture partitioning"}
       - {code: "6.3", text: "Explain security in the ADM and using the ADM with agile methods, at a summary level"}
   - code: F7
-    exam: FOUNDATION
+    exam: OGEA-101
     name: Architecture Content Framework
     weight: 5
     objectives:
@@ -89,7 +124,7 @@ units:
       - {code: "7.4", text: "Describe the Architecture Repository and its parts"}
       - {code: "7.5", text: "Describe the Enterprise Continuum, the Architecture Continuum and the Solutions Continuum"}
   - code: F8
-    exam: FOUNDATION
+    exam: OGEA-101
     name: Enterprise Architecture Capability and Governance
     weight: 7
     objectives:
@@ -101,61 +136,61 @@ units:
 
   # ---------------------------------------------------------------- Part 2 (8 scenarios)
   - code: P1
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: Context for Enterprise Architecture
     weight: 1
     objectives:
       - {code: "P1.1", text: "Apply the concepts of the EA Capability and the Leader's Guide to an enterprise's situation"}
       - {code: "P1.2", text: "Apply architecture partitioning and the Architecture Landscape to scope work"}
   - code: P2
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: Stakeholder Management
     weight: 1
     objectives:
       - {code: "P2.1", text: "Identify stakeholders, their concerns and the views and viewpoints that address them"}
       - {code: "P2.2", text: "Apply the stakeholder map and power/interest grid to plan engagement"}
   - code: P3
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: Architecture Vision and Phase A
     weight: 1
     objectives:
       - {code: "P3.1", text: "Apply Phase A to establish scope, vision, principles and the Statement of Architecture Work"}
       - {code: "P3.2", text: "Apply business scenarios, readiness assessment and risk management in Phase A"}
   - code: P4
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: Architecture Development (Phases B, C, D)
     weight: 1
     objectives:
       - {code: "P4.1", text: "Develop baseline and target architectures across the four domains and choose the right artefacts"}
       - {code: "P4.2", text: "Apply gap analysis and building blocks to produce candidate roadmap components"}
   - code: P5
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: Implementing the Architecture (Phases E, F, G)
     weight: 1
     objectives:
       - {code: "P5.1", text: "Apply the migration planning techniques to produce the Implementation and Migration Plan"}
       - {code: "P5.2", text: "Apply implementation governance, compliance reviews and Architecture Contracts"}
   - code: P6
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: Architecture Change Management (Phase H)
     weight: 1
     objectives:
       - {code: "P6.1", text: "Classify change requests and decide between simplification, incremental and re-architecting change"}
   - code: P7
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: Requirements Management
     weight: 1
     objectives:
       - {code: "P7.1", text: "Apply Requirements Management across the cycle and manage the Architecture Requirements Repository"}
   - code: P8
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: Supporting the ADM Work (Series Guides)
     weight: 1
     objectives:
       - {code: "P8.1", text: "Choose and apply the Series Guides: business capabilities, value streams, information and organization maps"}
       - {code: "P8.2", text: "Apply the risk and security, agile and digital guides to a situation"}
   - code: P9
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: Architecture Governance in Practice
     weight: 0
     objectives:
@@ -163,42 +198,201 @@ units:
 
   # ---------------------------------------------------------------- Series Guides (summary lessons)
   - code: G_LEADERS
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: "Guide: The TOGAF Leader's Guide to Establishing and Evolving an EA Capability"
     objectives:
       - {code: "G1.1", text: "Summarise the Leader's Guide and when it applies"}
   - code: G_PRACTITIONERS
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: "Guide: A Practitioners' Approach to Developing EA Following the ADM"
     objectives:
       - {code: "G2.1", text: "Summarise the Practitioners' Approach and when it applies"}
   - code: G_BUSINESS_SCENARIOS
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: "Guide: Business Scenarios"
     objectives:
       - {code: "G3.1", text: "Summarise the Business Scenarios guide and when it applies"}
   - code: G_BUSINESS_ARCH
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: "Guide: Business Capabilities, Value Streams, Information Mapping, Organization Mapping, Business Models"
     objectives:
       - {code: "G4.1", text: "Summarise the business architecture guides and when each applies"}
   - code: G_DIGITAL_AGILE
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: "Guide: Digital, Enterprise Agility and the ADM in an agile sprint context"
     objectives:
       - {code: "G5.1", text: "Summarise the digital and agility guides and when each applies"}
   - code: G_RISK_SECURITY
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: "Guide: Integrating Risk and Security; Security Architecture"
     objectives:
       - {code: "G6.1", text: "Summarise the risk and security guides and when each applies"}
   - code: G_GOVERNANCE
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: "Guide: Architecture Project Management, Maturity Models, Skills Framework, Partitioning, Repository patterns"
     objectives:
       - {code: "G7.1", text: "Summarise the governance-related guides and when each applies"}
   - code: G_REFERENCE_MODELS
-    exam: PRACTITIONER
+    exam: OGEA-102
     name: "Guide: Reference models (TRM, III-RM, Government Reference Model, Microservices, SOA)"
     objectives:
       - {code: "G8.1", text: "Summarise the reference-model guides and when each applies"}
+
+  # ---------------------------------------------------------------- ArchiMate 3.2 (OGA-031 single-answer; OGA-032 scenarios attach to the same units)
+  - code: A1
+    exam: OGA-031
+    name: Language Overview
+    weight: 3
+    objectives:
+      - {code: "A1.1", text: "Explain the purpose of the ArchiMate language, its design goals and the generic metamodel"}
+      - {code: "A1.2", text: "Describe the three aspects, the layers and the full framework grid"}
+      - {code: "A1.3", text: "Explain the relationship of the language to the TOGAF framework and to other standards at a summary level"}
+      - {code: "A1.4", text: "Describe language customization, the Model Exchange File Format and the certification programme at a summary level"}
+  - code: A2
+    exam: OGA-031
+    name: Motivation Elements
+    weight: 4
+    objectives:
+      - {code: "A2.1", text: "Describe Stakeholder, Driver, Assessment, Goal and Outcome and how they relate"}
+      - {code: "A2.2", text: "Describe Principle, Requirement and Constraint and how they are realized"}
+      - {code: "A2.3", text: "Describe Meaning and Value and the motivation relationships (influence, realization, association)"}
+  - code: A3
+    exam: OGA-031
+    name: Strategy Elements
+    weight: 4
+    objectives:
+      - {code: "A3.1", text: "Describe Resource, Capability, Value Stream and Course of Action"}
+      - {code: "A3.2", text: "Describe the relationships among strategy elements and to motivation and core elements"}
+      - {code: "A3.3", text: "Describe the Strategy, Capability Map, Value Stream and Outcome Realization viewpoints"}
+  - code: A4
+    exam: OGA-031
+    name: Business Layer
+    weight: 6
+    objectives:
+      - {code: "A4.1", text: "Describe the business active-structure elements: Actor, Role, Collaboration, Interface"}
+      - {code: "A4.2", text: "Describe the business behaviour elements: Process, Function, Interaction, Event, Service"}
+      - {code: "A4.3", text: "Describe the business passive-structure elements: Business Object, Contract, Representation, and Product"}
+      - {code: "A4.4", text: "Describe the business layer relationships and the Organization and Business Process Cooperation viewpoints"}
+  - code: A5
+    exam: OGA-031
+    name: Application Layer
+    weight: 5
+    objectives:
+      - {code: "A5.1", text: "Describe Application Component, Collaboration and Interface"}
+      - {code: "A5.2", text: "Describe application Function, Interaction, Process, Event and Service"}
+      - {code: "A5.3", text: "Describe Data Object and the access relationships"}
+      - {code: "A5.4", text: "Describe the cross-layer dependencies between the application and business layers and the Application Cooperation and Usage viewpoints"}
+  - code: A6
+    exam: OGA-031
+    name: Technology and Physical Layers
+    weight: 5
+    objectives:
+      - {code: "A6.1", text: "Describe Node, Device, System Software, Technology Collaboration, Interface, Path and Communication Network"}
+      - {code: "A6.2", text: "Describe technology Function, Process, Interaction, Event and Service"}
+      - {code: "A6.3", text: "Describe Artifact and the technology passive structure, and the cross-layer dependencies to the application layer"}
+      - {code: "A6.4", text: "Describe the physical elements: Equipment, Facility, Distribution Network and Material"}
+  - code: A7
+    exam: OGA-031
+    name: Relationships and Derivation
+    weight: 7
+    objectives:
+      - {code: "A7.1", text: "Describe the structural relationships: Composition, Aggregation, Assignment, Realization"}
+      - {code: "A7.2", text: "Describe the dependency relationships: Serving, Access, Influence, Association"}
+      - {code: "A7.3", text: "Describe the dynamic relationships Triggering and Flow, and Specialization and the Junction"}
+      - {code: "A7.4", text: "Apply the derivation rules to decide whether a derived relationship is permitted"}
+      - {code: "A7.5", text: "Use the relationship table to decide which relationships are allowed between two element types"}
+  - code: A8
+    exam: OGA-031
+    name: Implementation, Migration and Composite Elements
+    weight: 3
+    objectives:
+      - {code: "A8.1", text: "Describe Work Package, Deliverable, Implementation Event, Plateau and Gap"}
+      - {code: "A8.2", text: "Describe Grouping and Location and how they compose or aggregate other elements"}
+      - {code: "A8.3", text: "Describe the Migration, Implementation and Migration, and Project viewpoints"}
+  - code: A9
+    exam: OGA-031
+    name: Viewpoints and the TOGAF Mapping
+    weight: 3
+    objectives:
+      - {code: "A9.1", text: "Distinguish view from viewpoint, and describe the viewpoint mechanism and its purpose/content classification"}
+      - {code: "A9.2", text: "Describe the example viewpoints in the specification and when each is used"}
+      - {code: "A9.3", text: "Map ADM phases to viewpoints and content-metamodel entities to language elements"}
+
+  # ---------------------------------------------------------------- SABSA (SCF, single-answer)
+  - code: S1
+    exam: SCF
+    name: SABSA Overview and the Matrix
+    weight: 6
+    objectives:
+      - {code: "S1.1", text: "Explain what SABSA is, what business-driven means and the attributes of the framework"}
+      - {code: "S1.2", text: "Describe the SABSA Matrix: the six layers and the six columns"}
+      - {code: "S1.3", text: "Position SABSA against TOGAF and Zachman and summarise the SABSA Lifecycle"}
+  - code: S2
+    exam: SCF
+    name: Contextual and Conceptual Layers
+    weight: 8
+    objectives:
+      - {code: "S2.1", text: "Describe the Contextual layer: the business view, business drivers and its six cells"}
+      - {code: "S2.2", text: "Describe the Conceptual layer: strategy, risk appetite, policy and its six cells"}
+      - {code: "S2.3", text: "Trace a business driver from the Contextual layer to a Conceptual-layer attribute"}
+  - code: S3
+    exam: SCF
+    name: Business Attributes and the Risk Model
+    weight: 8
+    objectives:
+      - {code: "S3.1", text: "Describe the Business Attributes Profile: the taxonomy and its families"}
+      - {code: "S3.2", text: "Describe metric types, measurement approaches and performance targets for an attribute"}
+      - {code: "S3.3", text: "Explain two-sided risk (threat and opportunity) and the control types enhance, protect, detect, recover, correct"}
+      - {code: "S3.4", text: "Describe operational risk management and the SABSA risk assessment approach"}
+  - code: S4
+    exam: SCF
+    name: Logical Layer, Domains and Trust
+    weight: 8
+    objectives:
+      - {code: "S4.1", text: "Describe the Logical layer: security services, information and its six cells"}
+      - {code: "S4.2", text: "Describe the domain model: security domains, sub-domains, multi-tiered domains and policy authorities"}
+      - {code: "S4.3", text: "Describe trust relationships: one-way, two-way, transitive and inter-domain services"}
+  - code: S5
+    exam: SCF
+    name: Physical and Component Layers
+    weight: 6
+    objectives:
+      - {code: "S5.1", text: "Describe the Physical layer: mechanisms, data structures, platforms and its six cells"}
+      - {code: "S5.2", text: "Describe the Component layer: products, tools, standards and its six cells"}
+      - {code: "S5.3", text: "Trace a security service to a mechanism and a component"}
+  - code: S6
+    exam: SCF
+    name: Lifecycle and Service Management
+    weight: 6
+    objectives:
+      - {code: "S6.1", text: "Describe the SABSA Lifecycle: Strategy and Planning, Design, Implement, Manage and Measure"}
+      - {code: "S6.2", text: "Describe the Service Management layer: operations, incident, change, assurance and audit"}
+      - {code: "S6.3", text: "Relate the SABSA Lifecycle and Service Management to the ADM and architecture governance"}
+  - code: S7
+    exam: SCF
+    name: Traceability and Assurance
+    weight: 6
+    objectives:
+      - {code: "S7.1", text: "Explain two-way traceability: top-down justification and bottom-up completeness"}
+      - {code: "S7.2", text: "Describe the assurance framework and the evidence that traceability holds"}
+      - {code: "S7.3", text: "Use the Matrix as a viewpoint catalogue and a completeness check"}
+
+  # ---------------------------------------------------------------- Crosswalk units (no exam, weight 0)
+  - code: X1
+    track: CROSSWALK
+    name: "Crosswalk: TOGAF and ArchiMate"
+    objectives:
+      - {code: "X1.1", text: "Map ADM phases to ArchiMate viewpoints and content-metamodel entities to language elements"}
+      - {code: "X1.2", text: "Model a TOGAF artefact of the case enterprise as an ArchiMate view"}
+  - code: X2
+    track: CROSSWALK
+    name: "Crosswalk: TOGAF and SABSA"
+    objectives:
+      - {code: "X2.1", text: "Map the SABSA Matrix and Business Attributes Profile onto the ADM phases"}
+      - {code: "X2.2", text: "Relate the TOGAF risk technique and the risk and security guide to the SABSA risk model"}
+  - code: X3
+    track: CROSSWALK
+    name: "Crosswalk: ArchiMate and SABSA"
+    objectives:
+      - {code: "X3.1", text: "Model SABSA risk concepts (asset, threat, vulnerability, risk, control) with ArchiMate motivation and core elements"}
+      - {code: "X3.2", text: "Draw a SABSA domain model with ArchiMate Grouping, Location, Role and Interface elements"}

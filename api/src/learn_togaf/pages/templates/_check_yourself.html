@@ -22,7 +22,13 @@
 </div>
 {% else %}
 {% if not questions %}
-<p class="text-sm text-base-content/60">No questions are tagged to this lesson's objectives yet.</p>
+{% if mapped == 0 %}
+<p class="text-sm text-base-content/60">No questions are mapped to this lesson yet.</p>
+{% else %}
+<p class="text-sm text-base-content/60">All {{ mapped }} question{{ '' if mapped == 1 else 's' }} for this lesson are answered. Anything you missed is in your <a class="link link-primary" href="/review">flashcards</a>; <a class="link link-primary" href="/practice">drills</a> re-ask everything.</p>
+{% endif %}
+{% else %}
+<p class="text-xs text-base-content/60">{{ remaining }} of {{ mapped }} question{{ '' if mapped == 1 else 's' }} for this lesson still unanswered.</p>
 {% endif %}
 <div class="flex flex-col gap-3">
   {% for item in questions %}

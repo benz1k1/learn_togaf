@@ -1,0 +1,661 @@
+# Authored Practitioner scenarios for P2, Stakeholder Management (learn_togaf.md §2, §6).
+code: P2_BANK
+exam: OGEA-102
+name: "P2 Stakeholder Management"
+kind: DRILL
+source: authored
+questions:
+  - id: P2-101
+    unit: P2
+    objective: "P2.1"
+    lesson: P2/01_stakeholders_concerns_and_views
+    scenario: |
+      St Aldhelm's is a group of four acute hospitals and a network of outpatient centres with
+      9,000 staff, serving a population of 1.2 million. Its board has approved a programme to
+      replace three separate patient administration systems with one, and to introduce electronic
+      prescribing across all sites within two years; the business case rests on reduced prescribing
+      errors, fewer duplicate records and the retirement of two ageing systems. The Chief Executive
+      is the sponsor. The Preliminary Phase is complete: an EA team exists, principles are approved,
+      and the Request for Architecture Work has been accepted. You are the lead architect starting
+      Phase A, with a team of three and a deadline of eight weeks for the Architecture Vision.
+
+      The programme director has given you a stakeholder list she prepared for the business case.
+      It contains the Chief Executive, the Medical Director, the Chief Nurse, the Director of
+      Finance, the CIO, and the heads of the three patient administration teams. She regards it as
+      complete: "these are the people on the programme board". The list was produced in an
+      afternoon from the organisation chart, and the programme director considers stakeholder
+      work "done".
+
+      In your first round of conversations you learn more. The Medical Director says prescribing
+      safety is his only concern and that he will block anything that slows down prescribing on the
+      wards; he has already told the consultants' committee as much. The Chief Nurse wants ward
+      staff involved in design but has no time herself, and has nominated a matron who is on
+      long-term leave. The Director of Finance is concerned about the cost of the second year and
+      has not been told about the licensing model, which the vendor bases on user counts. The
+      clinical coding team, twelve people in a basement office, produce the coded activity data on
+      which the hospital's income depends; they were not on the list and nobody has spoken to them,
+      although the patient administration replacement will change every screen they use. The
+      pharmacy department's chief pharmacist is widely regarded as the person who "actually
+      decides" what happens to prescribing, chairs the drugs and therapeutics committee, and holds
+      no management role in the programme structure; the last prescribing change he opposed was
+      withdrawn. The IT service desk, outsourced to a supplier, will have to support electronic
+      prescribing at three in the morning, and its contract does not cover it. The regional
+      regulator requires that prescribing incidents be reportable within 48 hours, and the current
+      paper process cannot do that. The outpatient centres' managers have heard about the programme
+      only through rumour and assume it does not apply to them, although outpatient prescribing is
+      in scope. A junior doctors' representative has asked, via the Medical Director, whether the
+      new system will add to the time it takes to admit a patient.
+
+      The programme director wants you to accept her list, produce the Architecture Vision from it,
+      and present the Vision to the programme board next month. She points out that adding
+      stakeholders "will only add noise", that the programme board members are the ones who
+      approve the Vision, and that the coding team and the service desk "are operational and will
+      do what the system requires". The CIO has asked you to avoid "a stakeholder exercise that
+      takes three months".
+
+      Some facts about the programme's history bear on the question. The previous attempt to
+      introduce electronic prescribing, at one of the four hospitals three years ago, was withdrawn
+      after six weeks when ward pharmacists refused to use it; the post-implementation review
+      listed "insufficient stakeholder engagement" as the cause, and the programme director was
+      its author. The coding team's manager has since told a colleague that "nobody ever asks us
+      until the income drops". The outsourced service desk contract is up for renewal in the
+      programme's second year and the supplier has hinted that out-of-hours prescribing support
+      will cost extra. The regulator has published guidance on incident reporting that the
+      programme has not read. None of this is in the programme board's papers. The EA team's
+      repository holds a template stakeholder map from the Preliminary Phase with generic classes
+      and no names, which nobody has yet used.
+
+      You must decide how to handle stakeholder identification for Phase A: whose concerns are
+      captured, how, and what the stakeholder map is then used for.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Do not accept the list as complete. Run the identify step properly: work through who
+          gains and loses, who controls process change, who designs and decides, who procures,
+          who controls resources, who holds specialist skills, and who has influence — which
+          surfaces the clinical coding team (income depends on them), the chief pharmacist (an
+          influencer with no formal role), the outsourced service desk (the invisible team that
+          must contribute), the regulator and the outpatient managers. Record each stakeholder's
+          concerns — prescribing safety, ward workflow time, second-year cost and licensing,
+          coded data integrity, 48-hour incident reporting, out-of-hours support — in a
+          stakeholder map, identify the viewpoints each needs, and use the map to define the
+          concerns and views in the Architecture Vision, to seed the Communications Plan, and to
+          set roles and responsibilities in the Statement of Architecture Work. Present a Vision
+          built on that map, not on the programme board list.
+        why: >-
+          The identify step explicitly warns against relying on the formal organisation,
+          requires finding influencers who hold no formal power, and asks the eight questions
+          about gain, control, decisions, procurement, resources, skills and influence; it also
+          asks for the invisible team (TECH §3.3.1). The stakeholder map is the major product of
+          the Phase A step and feeds the Vision's concerns and viewpoints, the Communications
+          Plan and the Statement of Architecture Work (ADM §3.3.2). Identifying conflicting
+          objectives early is a named benefit (TECH §3.1).
+      - key: B
+        points: 3
+        text: >-
+          Accept the programme board list as the formal stakeholder set for the Vision, but
+          add the regulator and the clinical coding team because their requirements are
+          concrete, record the concerns of each, and plan to widen the list to the pharmacist,
+          service desk and outpatient managers in Phase B when detailed design begins and their
+          input becomes relevant.
+        why: >-
+          Recording concerns is right and the additions are real, but deferring the influencer,
+          the invisible team and an entire class of affected sites to Phase B contradicts the
+          approach that stakeholder analysis is used in Phase A to identify the key players
+          (TECH §3.2), and it leaves the Vision's scope boundaries and communication approach —
+          which the Phase A step is meant to set — decided on an incomplete map (ADM §3.3.2).
+      - key: C
+        points: 1
+        text: >-
+          Produce the Architecture Vision from the programme board list as requested, since
+          those are the people with authority to approve it, and use the board presentation to
+          ask the members to nominate any further stakeholders they think should be consulted in
+          later phases.
+        why: >-
+          This concentrates on the formal structure, which the standard identifies as the
+          danger in stakeholder identification (TECH §3.3.1), and it builds the Vision before the
+          concerns that should shape it are known, so the influencer and the invisible team
+          appear only when they block the work — the outcome stakeholder management exists to
+          prevent (TECH §3.1).
+      - key: D
+        points: 0
+        text: >-
+          Take the Medical Director's position as the governing requirement, since he has said
+          he will block anything else, scope the architecture to prescribing safety, and treat
+          the other stakeholders as an audience for the finished Vision.
+        why: >-
+          One powerful stakeholder's demand is not the requirement set; the point of the
+          stakeholder step is to identify all concerns and the conflicting objectives among
+          them so that a strategy to resolve them can be developed (TECH §3.1; ADM §3.3.2).
+          Treating the rest as an audience abandons identification altogether.
+    refs: ["TECH §3.3.1", "TECH §3.1", "TECH §3.2", "ADM §3.3.2", "CONTENT §3.1"]
+    open_book_hint: "Where to look: ADM Techniques §3.3.1 (Identify Stakeholders: the eight questions, influencers, visible and invisible teams), §3.1 (benefits), §3.2 (Phase A); ADM §3.3.2 (the stakeholder map and where it feeds)."
+    difficulty: 2
+    tags: [stakeholders, identification, phase-a]
+  - id: P2-102
+    unit: P2
+    objective: "P2.1"
+    lesson: P2/01_stakeholders_concerns_and_views
+    scenario: |
+      Meridian Water is a regulated utility supplying 2.1 million customers through 30,000
+      kilometres of pipe, with 4,800 staff and an outsourced customer contact centre. Its Phase A
+      for a "customer and network data" architecture is complete; the Statement of Architecture
+      Work is signed by the Chief Customer Officer as sponsor, and the team is in Phase B moving
+      into Phase C. The engagement exists because the regulator's price review penalises the
+      company for unexplained customer complaints and for slow responses to supply interruptions,
+      and because three previous data programmes produced models that nobody used. The engagement's
+      stakeholder map lists, among others, the Director of Regulation, the Head of Network
+      Operations, the Customer Contact Director, the Data Protection Officer, and the head of the
+      software engineering group that will build the new integration layer.
+
+      The architecture team has built a substantial set of models in its repository tool over four
+      months: a business capability map, a value stream map for "resolve a supply interruption", an
+      information map, a conceptual data model, a logical data model, an application communication
+      diagram, a data entity to business function matrix, and an early platform decomposition. The
+      models are consistent and traceable to each other, and the team is proud of them. Two weeks
+      before the formal stakeholder review, four stakeholders have each asked for "the
+      architecture".
+
+      The Director of Regulation wants to be able to show the regulator that customer complaint
+      data will be complete and traceable to the operational events that caused them, because the
+      price review penalises unexplained complaints and the next submission is due in four months.
+      The Head of Network Operations wants to know how quickly a control-room operator will see a
+      customer's report of a burst pipe, and which systems are involved in that path, because a
+      recent incident took forty minutes to reach the control room. The Data Protection Officer
+      wants to know which roles and which external parties — including the outsourced contact
+      centre — will be able to access customer address and vulnerability data, because she must
+      certify this to the information commissioner. The head of software engineering wants the
+      logical data model and the interface definitions so that his team can start building the
+      integration layer before the summer.
+
+      The lead architect's first instinct was to publish the repository to all four. A junior
+      architect proposed instead exporting the full set of diagrams as a single 90-page pack "so
+      that everyone has the whole picture". The programme manager has asked why the team cannot
+      simply "send them the architecture document", by which she means the draft Architecture
+      Definition Document. The tool vendor has offered read-only licences for the stakeholders.
+
+      A further complication: the Director of Regulation and the Head of Network Operations have
+      each reviewed drafts before and each rejected diagrams as "not what I asked for" — the
+      Director of Regulation was sent the logical data model, and the Head of Network Operations
+      the application communication diagram. Both have said they will not attend another
+      "architecture presentation". The formal review must produce approval, because Phase C cannot
+      be finalised without it and the Statement of Architecture Work commits the team to a Phase C
+      completion date that the regulatory submission depends on.
+
+      The two earlier rejections have a history worth knowing. In each case the diagram was
+      technically correct and answered a question the stakeholder had not asked; in each case the
+      stakeholder concluded the architects "did not understand the business". The Director of
+      Regulation has since said she wants "something I can put in front of the regulator without a
+      translator". The Head of Network Operations has said he wants "a picture of the forty
+      minutes". The Data Protection Officer has never been shown anything and is expecting a
+      matrix. The software engineering lead has already built his team's plan around receiving the
+      logical data model in a form the modelling tool can export. The Statement of Architecture
+      Work lists, for each stakeholder, the concern recorded in Phase A; nobody on the team has
+      re-read it since the models were built. The formal review is in the sponsor's diary and the
+      Chief Customer Officer has said she expects it to conclude with approvals, not another round
+      of "we will come back to you".
+
+      You must decide how the team responds to the four requests, and how it gets the two
+      dissatisfied stakeholders to approval at the formal review.
+    question: "Refer to the scenario. Based on the TOGAF Standard and the Series Guides, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Respond with views, not models. For each stakeholder, take their concern and select
+          or define the viewpoint that addresses it, then build the view from the relevant parts
+          of the models: for the Director of Regulation, a view tracing complaint data to
+          operational events — drawn from the Business Service/Information diagram, the Data
+          Entity/Business Function matrix and the value stream; for Network Operations, a
+          Process/Application Realization view of the burst-pipe report path showing sequence and
+          hand-offs; for the Data Protection Officer, a Data Security view showing which roles,
+          units and external parties access address and vulnerability data; for the engineering
+          lead, the logical data diagram and the Interface catalog. Record the viewpoints in the
+          viewpoint library for reuse, and take the two previously rejected stakeholders through
+          their views before the formal review so that each can verify their concern is
+          addressed. Keep the full model set in the repository as the source, not as the
+          deliverable.
+        why: >-
+          A view is a representation from the perspective of a set of concerns, built from
+          selected parts of models so that a stakeholder can verify their concern is addressed;
+          viewpoints are the reusable conventions kept in a library (CONTENT §3.1). Each
+          stakeholder sees a subset, like the pilot and the controller, and neither subset is
+          the whole system (§3.4.1). The specific artefacts follow their stated purposes
+          (CONTENT §3.6.5; §3.6.6). Tailoring artefacts per stakeholder is the engagement step
+          (TECH §3.3.4) and the Practitioners' Approach insists views demonstrate how the
+          concern is addressed, which is what the earlier rejections were about (GUIDE:adm-practitioners §3.3.1).
+      - key: B
+        points: 3
+        text: >-
+          Produce a single architecture pack containing all of the diagrams, ordered by
+          domain, with an executive summary for each stakeholder pointing to the pages relevant
+          to them, and send it to all four so that everyone has a consistent picture ahead of
+          the formal review.
+        why: >-
+          It recognises that stakeholders need different parts, but it delivers models rather
+          than views built for concerns; models are poor communication tools that require
+          specialist knowledge, and a page reference into a pack does not demonstrate that the
+          Director of Regulation's traceability concern or the DPO's access concern is addressed
+          (CONTENT §3.1; GUIDE:adm-practitioners §3.3.1). The two stakeholders who rejected
+          earlier drafts are likely to reject again.
+      - key: C
+        points: 1
+        text: >-
+          Give the software engineering lead the logical data model and interface definitions
+          now, since his need is concrete and time-critical, and ask the other three to wait
+          for the Architecture Definition Document at the formal review, where the whole
+          architecture will be presented and approved.
+        why: >-
+          It serves the implementer but treats the approving stakeholders as passive
+          recipients of the document, when approval depends on views that address their
+          concerns; stakeholders approve views, not architecture descriptions
+          (GUIDE:adm-practitioners §5.1; CONTENT §3.1). Arriving at the formal review without
+          having taken the previously dissatisfied stakeholders through their views is the
+          route to a third rejection.
+      - key: D
+        points: 0
+        text: >-
+          Open the repository tool to all four stakeholders with read access so that each can
+          explore the models and find what they need, and record the formal review as complete
+          once they have had access for two weeks.
+        why: >-
+          This abandons the concept of a view altogether. Models are specialised, partial
+          representations that non-specialists cannot be expected to read (GUIDE:adm-practitioners §3.3.1;
+          CONTENT §3.1), and access is not approval; the formal stakeholder review is a check of
+          the proposal against the original motivation, which cannot be deemed complete by
+          elapsed time.
+    refs: ["CONTENT §3.1", "CONTENT §3.4.1", "TECH §3.3.4", "CONTENT §3.6.5", "CONTENT §3.6.6", "GUIDE:adm-practitioners §3.3.1"]
+    open_book_hint: "Where to look: Architecture Content §3.1 (concern, view, viewpoint, model; viewpoint library), §3.4.1 (the airport example), §3.6.5 and §3.6.6 (purpose of the Data Security, Data Entity/Business Function and Process/Application Realization artefacts); ADM Techniques §3.3.4; Practitioners' Approach §3.3.1."
+    difficulty: 3
+    tags: [views, viewpoints, concerns, artefacts]
+  - id: P2-103
+    unit: P2
+    objective: "P2.1"
+    lesson: P2/01_stakeholders_concerns_and_views
+    scenario: |
+      Norrland Freight is a rail freight operator with 2,800 staff, 140 locomotives and 6,000
+      wagons, moving timber, minerals and containers for 200 business customers. It is in Phase A
+      of an architecture engagement whose Request for Architecture Work, from the Chief Commercial
+      Officer as sponsor, asks for a target architecture for "customer booking, pricing and
+      capacity allocation" so that a new digital booking channel can be launched within eighteen
+      months, replacing a process in which customers email or phone a planning desk. The
+      Preliminary Phase established an EA team and principles, and the Architecture Repository
+      already contains a Requirements Repository managed through the Requirements Management
+      process, with a backlog of forty requests from earlier work, each with an owner and a status.
+
+      The lead architect has identified the stakeholders and is capturing concerns in the
+      stakeholder map. Four conversations have produced four demands, each from a stakeholder with
+      a claim to be heard.
+
+      The Head of Yard Operations says that the real problem is wagon maintenance scheduling:
+      wagons are unavailable because maintenance is planned in a spreadsheet, and he wants the
+      architecture to "fix maintenance first, because there is no point selling capacity we do not
+      have"; he estimates that 8% of the fleet is idle at any time for want of a maintenance slot.
+      The Pricing Manager wants dynamic pricing based on real-time demand, which the current tariff
+      system cannot do; she has a detailed requirements list of sixty items ready and expects them
+      to be adopted as they stand. The Safety Director insists that any change to capacity
+      allocation must preserve the existing rules on dangerous-goods segregation, and wants that
+      written into whatever is produced; the rules are regulatory and non-negotiable. The Finance
+      Director, who was not consulted when the Request for Architecture Work was written, says that
+      the booking channel is only justified if it also replaces the invoicing system, which is out
+      of support next year, and that he will not approve funding otherwise; he controls the capital
+      budget and sits on the governance body that approves Statements of Architecture Work.
+
+      The Chief Commercial Officer is impatient: she wants the booking channel and regards
+      maintenance and invoicing as "other people's problems"; she has said she will "take it up
+      with the CEO" if the scope grows. The lead architect must produce the Architecture Vision and
+      the Statement of Architecture Work in three weeks, and is unsure which of the four demands
+      belongs where — in the Vision, in the Architecture Requirements Specification, in the
+      Requirements Repository, or nowhere. Two members of the EA team think everything a
+      stakeholder says is a requirement; one thinks only the sponsor's words count. Nobody has yet
+      looked at the forty items already in the Requirements Repository to see whether maintenance
+      scheduling or invoicing is among them.
+
+      The lead architect has looked at what Phase A has produced so far. The stakeholder map
+      records the four people and their concerns in one line each, with no classification. The
+      draft Vision has a scope statement copied from the Request for Architecture Work. The
+      Requirements Repository's forty items include one from the Finance Director, raised a year
+      ago, about the invoicing system's end of support, marked "no owner"; there is nothing about
+      wagon maintenance. The governance body that will approve the Statement of Architecture Work
+      meets in a fortnight, and the Finance Director chairs it in the CEO's absence. The Safety
+      Director has sent the dangerous-goods rules as a twelve-page regulatory extract and asked for
+      written confirmation that they will be "in the architecture". The Pricing Manager's sixty
+      items include several that describe how the tariff engine should be coded. The Chief
+      Commercial Officer has asked for the Vision to say "booking channel" and nothing else.
+
+      You are asked how the four demands should be handled, where each is recorded, and what the
+      lead architect should say to the sponsor and to the Finance Director.
+    question: "Refer to the scenario. Based on the TOGAF Standard and the Series Guides, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Record all four as stakeholder concerns in the stakeholder map, then route them by
+          scope. The Safety Director's dangerous-goods rules and the Pricing Manager's dynamic
+          pricing are within the selected scope of booking, pricing and capacity allocation:
+          capture them as candidate requirements in the Architecture Requirements Specification,
+          treating the safety rules as a constraint the Vision must state. Wagon maintenance
+          scheduling and invoicing replacement are outside the requested scope: enter them in the
+          Requirements Repository through the Requirements Management process so that they are
+          managed and can drive a change to scope if governance decides so, and raise them with
+          the sponsor as scope-boundary questions — noting that the Finance Director controls
+          funding and that the Vision's business case and Statement of Architecture Work cannot
+          be approved without addressing his concern. Reflect the outcome in the Vision's scope
+          statement and in the roles and responsibilities of the Statement of Architecture Work.
+        why: >-
+          The Phase A step says new requirements within the selected scope go into the
+          Architecture Requirements Specification, and those beyond it must be input to the
+          Requirements Repository for management through the Requirements Management process;
+          the stakeholder map identifies the candidate scope boundaries and the concerns that
+          shape the Vision (ADM §3.3.2). Phase B repeats the rule for out-of-scope requirements
+          (ADM §4.3.1). Finance controls resources and so is a stakeholder to be identified and
+          engaged (TECH §3.3.1), and the practitioner assesses whether injected requirements
+          conform to the scope rather than accepting or rejecting them by voice (GUIDE:adm-practitioners §5.1.4).
+      - key: B
+        points: 3
+        text: >-
+          Include all four demands as requirements in the Architecture Requirements
+          Specification, since each comes from a legitimate stakeholder and excluding any of
+          them would create a gap, and extend the Vision's scope to cover maintenance
+          scheduling and invoicing so that the Finance Director's funding condition is met.
+        why: >-
+          Recording every concern is right, but placing out-of-scope demands directly in the
+          Architecture Requirements Specification, and widening scope unilaterally to
+          accommodate them, bypasses the governed Requirements Management route that Phase A
+          prescribes for requirements beyond the selected scope (ADM §3.3.2; §4.3.1). Scope is
+          set by the sponsor under governance, not by accumulating demands.
+      - key: C
+        points: 1
+        text: >-
+          Follow the sponsor's instruction: treat pricing and the safety rules as
+          requirements, and decline maintenance and invoicing as out of scope without recording
+          them, since the Request for Architecture Work defines the boundary and the sponsor
+          has confirmed it.
+        why: >-
+          Out-of-scope requirements are not discarded; they must be input to the Requirements
+          Repository so that they are managed, and the stakeholder map must capture the Finance
+          Director's concern because he controls resources (ADM §3.3.2; TECH §3.3.1). Discarding
+          the funding condition means the Statement of Architecture Work will fail approval.
+      - key: D
+        points: 0
+        text: >-
+          Adopt the Head of Yard Operations' position and re-scope the engagement to wagon
+          maintenance scheduling first, because capacity cannot be sold without it, deferring
+          the booking channel to a later cycle.
+        why: >-
+          This replaces the sponsor's Request for Architecture Work with one stakeholder's
+          demand, with no governance decision; the Phase A step captures concerns to identify
+          scope boundaries and candidate requirements, not to let the loudest concern redefine
+          the engagement (ADM §3.3.2; TECH §3.1).
+    refs: ["ADM §3.3.2", "ADM §4.3.1", "TECH §3.3.1", "TECH §3.1", "GUIDE:adm-practitioners §5.1.4"]
+    open_book_hint: "Where to look: ADM §3.3.2 (Identify Stakeholders, Concerns and Business Requirements: in-scope to the ARS, out-of-scope to the Requirements Repository); ADM §4.3.1 (the same rule in Phase B); ADM Techniques §3.3.1; Practitioners' Approach §5.1.4."
+    difficulty: 2
+    tags: [requirements, scope, stakeholders, phase-a]
+  - id: P2-104
+    unit: P2
+    objective: "P2.2"
+    lesson: P2/02_classifying_and_engaging_stakeholders
+    scenario: |
+      Quill & Barton is a national retail chain with 420 stores, an online business and 19,000
+      staff, selling homewares and gifts. Its board has approved a programme to unify store and
+      online stock so that any item can be bought, collected or returned anywhere; the business case
+      depends on reduced markdowns and on stopping the online business from refusing orders for
+      items that are sitting unsold in stores. The Chief Customer Officer is the sponsor. Phase A is
+      under way: the stakeholders have been identified and a stakeholder map drafted with
+      twenty-six entries. The lead architect must now plan engagement for the rest of the cycle and
+      write the Communications Plan that will go into the Statement of Architecture Work, which the
+      sponsor wants signed within a month.
+
+      Among the twenty-six stakeholders:
+
+      The Chief Finance Officer controls the capital budget, has a low understanding of the
+      programme and has said little; her one stated interest is that the store estate's costs fall,
+      and she has asked why a stock programme needs "architecture". The Retail Operations Director
+      runs the stores, can veto changes to store processes, understands the programme well and is
+      against it because he believes online is being favoured; he has skipped two meetings and told
+      his regional managers to "wait and see". The Head of Logistics runs the warehouses and is
+      enthusiastic but has no budget authority and is regarded by the stores as "the online
+      person". The Head of Loss Prevention has a single requirement — returns fraud must not
+      increase — and no interest in anything else; last year's fraud losses were the board's stated
+      reason for caution. Two hundred store managers will have to run the new processes; they are
+      interested and have no power individually, but their union representative sits on the
+      company's consultative committee. The e-commerce platform vendor is interested and has
+      offered "free" architecture support and a template stakeholder plan from another retailer.
+      The Data Protection Officer has a statutory interest in customer data used for returns and
+      has asked to see "the data flows" before anything is built. The external auditor has asked to
+      be kept informed of stock valuation changes because unified stock changes how inventory is
+      counted. The Chief Customer Officer, as sponsor, is highly committed and expects weekly
+      updates.
+
+      A first draft of the Communications Plan, produced by the programme office, proposes a
+      monthly newsletter to all twenty-six, a fortnightly steering committee for the ten most senior,
+      and a workshop series "for anyone interested". It contains no analysis of who can block the
+      programme, who needs to understand what, or what each person should be shown. The lead
+      architect thinks the draft treats everyone the same and will not move the Retail Operations
+      Director, who has already skipped two meetings and whose veto could stop the store-side
+      changes entirely. The programme office argues that its plan "reaches everyone" and that
+      anything more elaborate "looks like politics". The sponsor has asked the lead architect to
+      "sort out the stakeholder stuff" so that the Statement of Architecture Work can be signed.
+
+      The lead architect has begun to gather what the classification will need. The Retail
+      Operations Director's understanding of the programme is high; his commitment is low and his
+      required commitment is high, because store process changes cannot happen without him. The
+      CFO's understanding is low and her required understanding is medium, since she must approve
+      year-two capital. The Head of Loss Prevention's commitment is conditional on one requirement.
+      The store managers' understanding is low and their required understanding is high, because
+      they will run the processes. The e-commerce vendor's interest is high and its power, in
+      theory, nil — but it has the sponsor's ear. Two regional managers are known to be the people
+      the Retail Operations Director actually listens to; neither is on the list of twenty-six. The
+      programme office's plan makes no distinction between any of these people. The sponsor has
+      said she would like the Statement of Architecture Work to include "how we will keep everyone
+      on board", and that she will read whatever the lead architect proposes.
+
+      You must advise on how engagement should be planned: how the twenty-six are classified, what
+      strategy applies to each, what each is shown, and how the result is recorded and kept
+      current through the later phases.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Classify each stakeholder's position — ability to disrupt, current and required
+          understanding, current and required commitment — and place them on the power/interest
+          grid, then plan engagement per quadrant. The CFO (high power, low interest) is kept
+          satisfied with summary views of cost and value; the Retail Operations Director (high
+          power, high interest, low commitment) is a key player to be involved in shaping the
+          store process views and the trade-offs, with the understanding-to-commitment gap
+          worked directly; the store managers and Head of Logistics (high interest, low
+          individual power) are kept informed and represented in design; Loss Prevention, the
+          DPO and the auditor receive the specific artefacts that answer their single concerns
+          — returns process controls, the Data Security view, stock valuation changes. Tailor the
+          catalogs, matrices and diagrams per group accordingly, write the resulting where, how
+          and when into the Communications Plan in the Statement of Architecture Work, and
+          revisit the classification as the engagement moves into Phases E, F and H.
+        why: >-
+          Step 2 classifies stakeholder positions on disruption, understanding and commitment
+          (TECH §3.3.2); step 3 maps power and interest onto a grid that indicates the
+          engagement strategy for each (TECH §3.3.3), with the classes and their artefacts in
+          the template map (TECH §3.4); step 4 tailors the deliverables per group (TECH §3.3.4).
+          The Communications Plan is developed in the last Phase A step and states where, how
+          and when the architects communicate (ADM §3.3.11), and the analysis is refreshed
+          through the later phases (TECH §3.2).
+      - key: B
+        points: 3
+        text: >-
+          Place the twenty-six on the power/interest grid and use it to set the frequency of
+          contact — weekly for key players, monthly for keep satisfied and keep informed,
+          quarterly for the rest — and issue the same monthly architecture briefing to every
+          quadrant so that the message is consistent, adjusting only the cadence. Record the
+          plan in the Statement of Architecture Work.
+        why: >-
+          Using the grid and recording the plan are right, but engagement strategy is not
+          only cadence: the classification step identifies gaps in understanding and commitment
+          that determine what each stakeholder needs (TECH §3.3.2), and step 4 requires
+          tailoring the catalogs, matrices and diagrams to each group so that they can verify
+          their concerns are addressed (TECH §3.3.4; §3.4). A single briefing for all quadrants
+          fails that step.
+      - key: C
+        points: 1
+        text: >-
+          Adopt the programme office's draft, since it reaches everyone, and add a personal
+          escalation from the sponsor to the Retail Operations Director instructing him to
+          attend the steering committee.
+        why: >-
+          A distribution list is not stakeholder management: there is no classification, no
+          grid and no tailoring (TECH §3.3.2 to §3.3.4). Escalation to compel attendance ignores
+          the standard's approach of understanding the stakeholder's readiness and required
+          commitment and developing a strategy for dealing with those who lose from the change
+          (TECH §3.1; §3.3.2).
+      - key: D
+        points: 0
+        text: >-
+          Accept the e-commerce vendor's offer to run stakeholder engagement, since it has
+          done this for other retailers, and concentrate the architecture team's effort on the
+          key players who already support the programme, leaving the Retail Operations Director
+          until the design is complete enough to persuade him.
+        why: >-
+          Delegating engagement to a supplier with its own interest, and deferring the most
+          powerful opponent until there is something to "persuade" him with, contradicts the
+          purpose of identifying powerful stakeholders early so that their input shapes the
+          architecture (TECH §3.1), and it treats a stakeholder as someone to be sold to
+          rather than acted for.
+    refs: ["TECH §3.3.2", "TECH §3.3.3", "TECH §3.3.4", "TECH §3.4", "TECH §3.2", "ADM §3.3.11"]
+    open_book_hint: "Where to look: ADM Techniques §3.3.2 (classify positions), §3.3.3 (power/interest grid), §3.3.4 (tailor deliverables), §3.4 (classes and artefacts per stakeholder), §3.2; ADM §3.3.11 (the Communications Plan in the Statement of Architecture Work)."
+    difficulty: 2
+    tags: [power-interest, engagement, communications-plan]
+  - id: P2-105
+    unit: P2
+    objective: "P2.2"
+    lesson: P2/02_classifying_and_engaging_stakeholders
+    scenario: |
+      Kestrel Insurance Services is a claims-handling company with 4,100 staff across six regional
+      centres, processing motor and household claims for a dozen insurers under long-term
+      contracts. Its target architecture, approved at the end of Phase D, consolidates claims
+      handling into two centres and automates first-notification triage, which the architecture's
+      value proposition estimates will reduce claims staff by roughly a third over three years; the
+      insurers' contracts are up for renewal in eighteen months and the pricing depends on the
+      savings. The Chief Operating Officer sponsored the work. The Architecture Definition Document
+      is complete and Phase E has begun with a first cut of work packages.
+
+      The stakeholder map from Phase A classifies the regional centre managers as key players, the
+      staff union as "keep satisfied", the Human Resources Director as "keep informed", and the
+      group's investor relations team as "minimal effort". It has not been updated since Phase A.
+      In Phase A the Business Transformation Readiness Assessment rated "desire, willingness and
+      resolve" and "enterprise ability to implement and operate" as low, and recorded that the last
+      consolidation attempt, five years ago, collapsed after a strike that cost the company two
+      client contracts. The improvement actions recorded then were "to be developed in Phase E".
+      Nobody has yet developed them; the Phase E work has so far concentrated on sequencing the
+      technology work packages.
+
+      Three things have now happened. The programme office has scheduled an all-staff webinar to
+      "share the target architecture" next week, at the COO's request, because rumours are
+      circulating that "three centres will close" — the rumour is wrong in detail and right in
+      substance. The union's regional convenor has written to the Chief Executive asking for "the
+      plan" and reminding him of the consultation obligations in the recognition agreement. The
+      Human Resources Director, who was kept informed but not involved, has said that no
+      redeployment, retraining or consultation plan exists, that she has not been asked to produce
+      one, and that the statutory consultation period alone is longer than the programme office's
+      timeline assumes. Two of the six regional managers have privately told the lead architect that
+      they will support the architecture only if their centre is one of the two survivors, and each
+      expects the other to lose; the two-centre choice has not yet been made and no criteria for it
+      have been agreed.
+
+      The COO wants to proceed with the webinar: "people deserve to know, and delay looks like we
+      have something to hide". The programme director agrees and has drafted slides showing the
+      two-centre model without naming centres. The Chief Executive has asked whether the webinar
+      will "settle the rumours". The lead architect has been asked to confirm that the architecture
+      is ready to be communicated, and has 48 hours to answer. Two members of the EA team think the
+      approval at the end of Phase D settles the question; one thinks the readiness assessment
+      results make the webinar unsafe.
+
+      Two further facts complicate the advice. The two-centre decision is, in the approved
+      architecture, a Phase E and F sequencing matter with criteria to be agreed; the regional
+      managers believe it was decided at Phase D because the target diagram shows two boxes. The
+      readiness assessment's improvement actions, though never developed, are listed in the
+      Capability Assessment and were referenced in the Statement of Architecture Work as "to be
+      carried into the Implementation and Migration Plan". The programme office has not read the
+      readiness assessment. The insurers, whose contracts fund the company, have consultation
+      clauses of their own that a strike would trigger. The lead architect has a good relationship
+      with the HR Director, who has said she would "drop everything" to build the plan if asked
+      properly, and with the union convenor, who has said he expects to be talked to "before the
+      staff, not after". The COO has asked, half seriously, whether the architects are "the
+      communications department now".
+
+      You must advise the lead architect what to say, what to do about the stakeholder map, the
+      readiness actions and the two-centre decision, and what should happen instead of the
+      webinar.
+    question: "Refer to the scenario. Based on the TOGAF Standard and the Series Guides, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Advise that the Architecture Definition should not be widely circulated until the
+          transformation issues identified in the readiness assessment have been mitigated and
+          the associated actions are part of a marketing plan for the Vision and the
+          Implementation and Migration Plan. Concretely: reclassify the union and the HR
+          Director as key players given their power and interest at this stage, and update the
+          stakeholder map; work with HR to formulate the redeployment, retraining and
+          consultation plan that the readiness actions require, collaborating with the union
+          convenor rather than presenting a finished plan to him; and facilitate the trade-off
+          between the regional managers on the two-centre decision as a stakeholder trade-off
+          across organisational boundaries, with the criteria and rationale documented, rather
+          than leaving each to assume the other loses. Replace the all-staff webinar with the
+          Communications Plan sequence — affected staff informed through the HR and union route
+          first — and tell the COO plainly that announcing before the supporting plan exists is
+          the specific failure the standard warns about.
+        why: >-
+          The standard says the Architecture Definition should not be widely circulated until
+          business transformation issues are identified and mitigated and part of a marketing
+          plan, gives the example of lost jobs needing a supporting HR plan first, and
+          recommends collaborating with unions and shop stewards and a Communications Plan for
+          affected personnel (TECH §7.6). Readiness actions belong in the Implementation and
+          Migration Plan and are on the critical path (TECH §7.5). Stakeholder analysis is
+          updated as the engagement moves into Phases E and F (TECH §3.2), and facilitating
+          trade-off across boundaries is the practitioner's most valuable act, with preferences
+          never manipulated (GUIDE:adm-practitioners §6.1.2; §6.1.1).
+      - key: B
+        points: 3
+        text: >-
+          Agree that the union and HR Director must be moved up the grid and that HR must
+          produce a redeployment and consultation plan as a readiness action in Phase E, but
+          allow the webinar to go ahead as scheduled, presenting the target architecture
+          without the staffing numbers, so that the rumours are addressed while the HR plan is
+          developed in parallel.
+        why: >-
+          The reclassification and the HR action are right, but the standard's rule is that
+          the definition should not be widely circulated before the transformation issues are
+          mitigated and the supporting plan formulated; presenting the consolidation without
+          the numbers still announces a vision that "should not be announced before a
+          supporting business transformation/human resources plan is formulated" (TECH §7.6).
+          The two-centre trade-off is also left unfacilitated.
+      - key: C
+        points: 1
+        text: >-
+          Confirm that the architecture is ready, since it was approved at the end of Phase D
+          by its stakeholders, and recommend that the webinar include a question-and-answer
+          session and that the union convenor be sent the Architecture Definition Document in
+          response to his letter.
+        why: >-
+          Approval of the architecture is not readiness to communicate it; the readiness
+          assessment recorded low resolve and low ability to operate the change, and the
+          improvement actions were never developed, so circulating the definition now is the
+          error TECH §7.6 describes and ignores the Phase E and F role of the readiness factors
+          (TECH §7.5).
+      - key: D
+        points: 0
+        text: >-
+          Advise the COO to proceed with the webinar and to reassure staff that no decisions on
+          centres or headcount have been taken, so that the target architecture can be
+          communicated positively; the two regional managers can be told privately that their
+          centres will survive to secure their support.
+        why: >-
+          This manipulates stakeholder preferences and misrepresents the approved
+          architecture, which the Practitioners' Approach forbids — architecture is never sold
+          and preferences are never manipulated (GUIDE:adm-practitioners §6.1.1) — and it makes
+          incompatible private promises instead of facilitating the trade-off (§6.1.2).
+    refs: ["TECH §7.6", "TECH §7.5", "TECH §3.2", "TECH §3.3.3", "GUIDE:adm-practitioners §6.1.1", "GUIDE:adm-practitioners §6.1.2"]
+    open_book_hint: "Where to look: ADM Techniques §7.6 (Marketing the Implementation Plan: do not circulate before the HR plan exists; unions; Communications Plan), §7.5 (readiness and migration planning), §3.2 and §3.3.3 (update the map and grid through the phases); Practitioners' Approach §6.1.1 and §6.1.2."
+    difficulty: 3
+    tags: [readiness, communication, trade-off, phase-e]

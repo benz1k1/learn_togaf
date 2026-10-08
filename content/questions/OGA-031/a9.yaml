@@ -1,0 +1,557 @@
+# A9 Viewpoints and the TOGAF Mapping bank (learn_sabsa_archimate.md §4.3). Authored, original
+# paraphrase; every item cites the ArchiMate 3.2 section it is grounded on.
+code: A9_BANK
+exam: OGA-031
+name: "A9 Viewpoints and the TOGAF Mapping bank"
+kind: DRILL
+source: authored
+questions:
+  # ---------------------------------------------------------------- A9.1 view, viewpoint, mechanism
+  - id: A9-101
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "Which statement correctly distinguishes a view from a viewpoint?"
+    options:
+      - {key: A, text: "A view is a part of the architecture description addressing stakeholder concerns; a viewpoint specifies the concepts, models, techniques and visualisations that view provides", correct: true}
+      - {key: B, text: "A viewpoint is a diagram of a specific enterprise; a view is the generic template", why: "Reversed."}
+      - {key: C, text: "They are synonyms in ArchiMate", why: "They are distinct ISO 42010 terms."}
+      - {key: D, text: "A view is a grouping of elements; a viewpoint is the stakeholder", why: "Neither is correct: a grouping is an element and a stakeholder holds concerns."}
+    explanation: "A view is what you see; a viewpoint is where you are looking from — the specification's own summary."
+    refs: ["ARCHIMATE §13.3"]
+    difficulty: 1
+    tags: [view, viewpoint, definitions]
+  - id: A9-102
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "Which standard does the ArchiMate viewpoint mechanism conform to?"
+    options:
+      - {key: A, text: "ISO/IEC 42010", correct: true}
+      - {key: B, text: "ISO 9001", why: "A quality-management standard."}
+      - {key: C, text: "BPMN 2.0", why: "A process-modelling notation."}
+      - {key: D, text: "UML 2.5", why: "A software-modelling language."}
+    explanation: "The mechanism conforms to ISO/IEC 42010, whose model links stakeholders, concerns, viewpoints and views."
+    refs: ["ARCHIMATE §13.2"]
+    difficulty: 1
+    tags: [iso-42010]
+  - id: A9-103
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "What are the two aspects of an architecture viewpoint?"
+    options:
+      - {key: A, text: "The concerns it frames for stakeholders and the conventions it establishes on views", correct: true}
+      - {key: B, text: "Its layer and its aspect", why: "Those are the content dimension's axes, not the two aspects of a viewpoint."}
+      - {key: C, text: "Its purpose and its content", why: "Those are the classification dimensions of the viewpoint mechanism."}
+      - {key: D, text: "Its diagram and its legend", why: "A representation is only one of the conventions."}
+    explanation: "A viewpoint frames concerns and establishes conventions (languages, notations, model kinds, design rules, analysis techniques) for its views."
+    refs: ["ARCHIMATE §13.3"]
+    difficulty: 2
+    tags: [viewpoint]
+  - id: A9-104
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "Can one stakeholder concern be framed by more than one viewpoint?"
+    options:
+      - {key: A, text: "Yes — a concern can be framed by several viewpoints, and a viewpoint frames one or more concerns", correct: true}
+      - {key: B, text: "No — each concern belongs to exactly one viewpoint", why: "The specification allows many-to-many."}
+      - {key: C, text: "Only if the viewpoints share the same purpose", why: "No such restriction."}
+      - {key: D, text: "Only in the motivation aspect", why: "No such restriction."}
+    explanation: "An architecture viewpoint frames one or more concerns; a concern can be framed by more than one viewpoint."
+    refs: ["ARCHIMATE §13.3"]
+    difficulty: 2
+    tags: [concerns]
+  - id: A9-105
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "What decides which elements and relationships appear in a view?"
+    options:
+      - {key: A, text: "Relevance to the concerns of the stakeholder the viewpoint is designed for", correct: true}
+      - {key: B, text: "The number of elements that fit on one page", why: "Layout is not the selection criterion."}
+      - {key: C, text: "The layer the architect is most familiar with", why: "The stakeholder's concerns, not the architect's preference, decide."}
+      - {key: D, text: "The tool's default template", why: "Tools apply viewpoints; they do not define relevance."}
+    explanation: "Relevance to a stakeholder's concern is the selection criterion for what appears in a view."
+    refs: ["ARCHIMATE §13.3"]
+    difficulty: 1
+    tags: [view, selection]
+  - id: A9-106
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "What are the two dimensions of the viewpoint mechanism?"
+    options:
+      - {key: A, text: "Purpose and content", correct: true}
+      - {key: B, text: "Layer and aspect", why: "Those structure the core framework; content uses them but the dimensions are purpose and content."}
+      - {key: C, text: "Stakeholder and concern", why: "Those are inputs to the mechanism, not its dimensions."}
+      - {key: D, text: "Baseline and target", why: "Those are plateaus."}
+    explanation: "The viewpoint mechanism classifies viewpoints by purpose (designing, deciding, informing) and content (details, coherence, overview)."
+    refs: ["ARCHIMATE §13.4"]
+    difficulty: 1
+    tags: [mechanism]
+  - id: A9-107
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "Which purpose category is typically served by cross-reference tables, landscape maps and reports?"
+    options:
+      - {key: A, text: "Deciding", correct: true}
+      - {key: B, text: "Designing", why: "Design viewpoints typically consist of diagrams."}
+      - {key: C, text: "Informing", why: "Informing uses illustrations, animations, cartoons and flyers."}
+      - {key: D, text: "Overview", why: "Overview is a content category, not a purpose."}
+    explanation: "Decision-support viewpoints help managers through projections and intersections of models — cross-reference tables, landscape maps, lists, reports."
+    refs: ["ARCHIMATE §13.4.1"]
+    difficulty: 2
+    tags: [purpose]
+  - id: A9-108
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "A view shows one application component together with the data objects it accesses — one layer, two aspects. Which content category is this?"
+    options:
+      - {key: A, text: "Coherence, because it spans multiple aspects", correct: true}
+      - {key: B, text: "Details, because it is a single layer", why: "Details requires one layer and one aspect; two aspects make it coherence."}
+      - {key: C, text: "Overview, because it shows data", why: "Overview needs multiple layers and multiple aspects."}
+      - {key: D, text: "Designing", why: "That is a purpose category."}
+    explanation: "Coherence spans multiple layers or multiple aspects; details is confined to one layer and one aspect; overview spans both."
+    refs: ["ARCHIMATE §13.4.1"]
+    difficulty: 3
+    tags: [content, trap]
+  - id: A9-109
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "Which stakeholders are typical for the overview content level?"
+    options:
+      - {key: A, text: "Enterprise architects and decision-makers such as CEOs and CIOs", correct: true}
+      - {key: B, text: "A software engineer implementing a component", why: "That is the details level."}
+      - {key: C, text: "A process owner", why: "That is the details level."}
+      - {key: D, text: "An operational manager responsible for a set of IT services", why: "That is the coherence level."}
+    explanation: "Overview addresses multiple layers and aspects for enterprise architects and executive decision-makers."
+    refs: ["ARCHIMATE §13.4.1"]
+    difficulty: 2
+    tags: [content, stakeholders]
+  - id: A9-110
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "What are the two steps in creating an ArchiMate viewpoint?"
+    options:
+      - {key: A, text: "Select the relevant subset of elements and relationships from the metamodel, then define a representation for them", correct: true}
+      - {key: B, text: "Choose a layer, then choose a colour scheme", why: "Colour is a representation detail; layers alone do not define a viewpoint."}
+      - {key: C, text: "Interview the stakeholder, then draw the Layered view", why: "Interviewing precedes the mechanism; the Layered view is one possible outcome."}
+      - {key: D, text: "Define the plateau, then the gap", why: "Those are elements, not viewpoint steps."}
+    explanation: "Step one selects concepts based on the concerns; step two defines a representation — a diagram, catalogue, matrix or other visualisation."
+    refs: ["ARCHIMATE §13.4"]
+    difficulty: 2
+    tags: [mechanism, steps]
+  - id: A9-111
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "Must a view be a diagram?"
+    options:
+      - {key: A, text: "No — a view need not be visual or graphical; a catalogue, matrix or heat map is also a view", correct: true}
+      - {key: B, text: "Yes — ArchiMate views are always diagrams in the standard notation", why: "The specification states the view does not have to be graphical."}
+      - {key: C, text: "Yes, except for the motivation viewpoints", why: "No such exception."}
+      - {key: D, text: "No, but only catalogues are allowed as alternatives", why: "Matrices and other visualisations are also allowed."}
+    explanation: "The representation may be a diagram, a catalogue, a matrix or something else entirely; the profile mechanism can even drive colour-coded heat maps."
+    refs: ["ARCHIMATE §13.4.2", "ARCHIMATE §13.4"]
+    difficulty: 2
+    tags: [view, representation]
+  - id: A9-112
+    unit: A9
+    objective: "A9.1"
+    lesson: A9/01_views_viewpoints_and_the_mechanism
+    stem: "Why does the specification describe views as having a 'limiting character'?"
+    options:
+      - {key: A, text: "Because a view is a partial, incomplete depiction restricted to some aspects; the full description comes from views in combination", correct: true}
+      - {key: B, text: "Because a view may contain at most one layer", why: "Views may span several layers."}
+      - {key: C, text: "Because views cannot be changed after approval", why: "No such rule."}
+      - {key: D, text: "Because only architects may read views", why: "Views are for stakeholders of every kind."}
+    explanation: "Viewpoints and views restrict the whole system to a partial number of aspects; it is the combination of inter-related views that describes an architecture."
+    refs: ["ARCHIMATE §13.1"]
+    difficulty: 2
+    tags: [view]
+  # ---------------------------------------------------------------- A9.2 example viewpoints
+  - id: A9-113
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "How does the specification characterise the viewpoints in Appendix C?"
+    options:
+      - {key: A, text: "As examples and starting points, not a normative or exhaustive list; organisations may select, modify or define their own", correct: true}
+      - {key: B, text: "As the only viewpoints permitted in a conformant model", why: "They are explicitly non-normative."}
+      - {key: C, text: "As mandatory deliverables of each ADM phase", why: "ArchiMate is not a method and mandates no deliverables."}
+      - {key: D, text: "As replacements for TOGAF viewpoints", why: "They complement TOGAF; there is no one-to-one replacement."}
+    explanation: "The basic viewpoints are starting points that should not constrain modelling; they are examples."
+    refs: ["ARCHIMATE §C.1", "ARCHIMATE §13.5"]
+    difficulty: 1
+    tags: [example-viewpoints]
+  - id: A9-114
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "Into which four categories are the basic viewpoints grouped?"
+    options:
+      - {key: A, text: "Composition, Support, Cooperation, Realization", correct: true}
+      - {key: B, text: "Business, Application, Technology, Physical", why: "Those are layers."}
+      - {key: C, text: "Designing, Deciding, Informing, Overview", why: "Three purposes and one content level; not the categories."}
+      - {key: D, text: "Motivation, Strategy, Core, Implementation", why: "Those are domains used in the derivation restrictions."}
+    explanation: "The categories describe the direction the viewpoint looks: internal composition, support from below, cooperation between peers, realization downward."
+    refs: ["ARCHIMATE §C.1"]
+    difficulty: 1
+    tags: [categories]
+  - id: A9-115
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "Which basic viewpoint has single-layer, single-aspect scope?"
+    options:
+      - {key: A, text: "Organization", correct: true}
+      - {key: B, text: "Layered", why: "Layered is multiple layers, multiple aspects."}
+      - {key: C, text: "Application Cooperation", why: "Application layer, multiple aspects."}
+      - {key: D, text: "Information Structure", why: "Multiple layers, single aspect."}
+    explanation: "Organization shows actors, roles, collaborations, interfaces and locations of the business layer's active structure only."
+    refs: ["ARCHIMATE §C.1", "ARCHIMATE §C.1.1"]
+    difficulty: 2
+    tags: [organization-viewpoint, scope]
+  - id: A9-116
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "An enterprise architect wants an overview of the application landscape: components, the flows between them and the services they offer each other. Which viewpoint?"
+    options:
+      - {key: A, text: "Application Cooperation", correct: true}
+      - {key: B, text: "Application Structure", why: "Structure looks inside one application at its components, interfaces and data."}
+      - {key: C, text: "Application Usage", why: "Usage relates applications to the business processes they serve."}
+      - {key: D, text: "Implementation and Deployment", why: "That maps applications onto technology."}
+    explanation: "The application cooperation viewpoint describes relationships between application components in terms of flows and services, typically for a landscape overview."
+    refs: ["ARCHIMATE §C.1.11"]
+    difficulty: 2
+    tags: [viewpoint-choice, application]
+  - id: A9-117
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "A process owner wants to see which application services her business processes depend on. Which viewpoint?"
+    options:
+      - {key: A, text: "Application Usage", correct: true}
+      - {key: B, text: "Technology Usage", why: "That shows technology serving applications."}
+      - {key: C, text: "Service Realization", why: "That shows processes realizing business services, the opposite direction of interest."}
+      - {key: D, text: "Application Structure", why: "That looks inside an application."}
+    explanation: "Application usage describes how applications support business processes and other applications, identifying the services processes need."
+    refs: ["ARCHIMATE §C.1.8"]
+    difficulty: 1
+    tags: [viewpoint-choice, application-usage]
+  - id: A9-118
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "Which viewpoint is described as providing the bridge between the product view and the business process view?"
+    options:
+      - {key: A, text: "Service Realization", correct: true}
+      - {key: B, text: "Business Process Cooperation", why: "That shows relationships among processes and their environment."}
+      - {key: C, text: "Product", why: "Product shows what a product bundles, not what realizes its services."}
+      - {key: D, text: "Layered", why: "Layered spans everything but is not the described bridge."}
+    explanation: "Service realization shows how business services are realized by processes, a view from the outside on one or more processes."
+    refs: ["ARCHIMATE §C.1.12"]
+    difficulty: 2
+    tags: [service-realization]
+  - id: A9-119
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "What characterises the Layered viewpoint?"
+    options:
+      - {key: A, text: "Several layers and aspects in one diagram, alternating dedicated layers and service layers, for consistency, complexity reduction and impact of change", correct: true}
+      - {key: B, text: "One layer at a time, to reduce clutter", why: "Layered is explicitly multi-layer."}
+      - {key: C, text: "Only the technology layer and its physical environment", why: "That is Physical or Technology."}
+      - {key: D, text: "Plateaus stacked by time", why: "That is Migration."}
+    explanation: "The layered viewpoint pictures several layers and aspects together using grouping to partition them; its purpose covers designing, deciding and informing."
+    refs: ["ARCHIMATE §C.1.5"]
+    difficulty: 2
+    tags: [layered-viewpoint]
+  - id: A9-120
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "Which motivation viewpoint contains stakeholders, drivers, assessments, goals and outcomes but no requirements?"
+    options:
+      - {key: A, text: "Stakeholder viewpoint", correct: true}
+      - {key: B, text: "Goal Realization viewpoint", why: "That contains goals, principles, requirements, constraints and outcomes, but no stakeholders or drivers."}
+      - {key: C, text: "Requirements Realization viewpoint", why: "That relates requirements to core elements."}
+      - {key: D, text: "Motivation viewpoint", why: "That contains every motivation element including requirements."}
+    explanation: "The stakeholder viewpoint models stakeholders, drivers, their assessments and the initial goals."
+    refs: ["ARCHIMATE §C.2.1"]
+    difficulty: 2
+    tags: [stakeholder-viewpoint]
+  - id: A9-121
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "In the Goal Realization viewpoint, which relationships refine goals into sub-goals and then into requirements?"
+    options:
+      - {key: A, text: "Aggregation for goal to sub-goal; realization for requirement to goal", correct: true}
+      - {key: B, text: "Composition for both", why: "The specification names aggregation and realization."}
+      - {key: C, text: "Influence for both", why: "Influence is the goal contribution viewpoint's relationship."}
+      - {key: D, text: "Specialization for both", why: "Not the refinement relationships."}
+    explanation: "Refinement of goals into sub-goals uses aggregation; refinement into requirements or constraints uses realization."
+    refs: ["ARCHIMATE §C.2.2"]
+    difficulty: 3
+    tags: [goal-realization]
+  - id: A9-122
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "A requirements manager wants to show which application components and business processes satisfy each requirement. Which viewpoint?"
+    options:
+      - {key: A, text: "Requirements Realization", correct: true}
+      - {key: B, text: "Stakeholder", why: "No requirements or core elements."}
+      - {key: C, text: "Goal Realization", why: "No core elements."}
+      - {key: D, text: "Application Usage", why: "No requirements."}
+    explanation: "The requirements realization viewpoint models the realization of requirements by core elements such as actors, services, processes and components."
+    refs: ["ARCHIMATE §C.2.3"]
+    difficulty: 1
+    tags: [viewpoint-choice, requirements]
+  - id: A9-123
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "Which two strategy viewpoints does the specification describe as usable as heat maps to identify areas of investment?"
+    options:
+      - {key: A, text: "Capability Map and Resource Map", correct: true}
+      - {key: B, text: "Strategy and Value Stream", why: "Neither is described as a heat map."}
+      - {key: C, text: "Outcome Realization and Motivation", why: "Motivation is not a strategy viewpoint and neither is a heat map."}
+      - {key: D, text: "Layered and Physical", why: "Basic viewpoints, not strategy."}
+    explanation: "Both the capability map and the resource map typically show two or three levels across the enterprise and can be used as heat maps."
+    refs: ["ARCHIMATE §C.3.2", "ARCHIMATE §C.3"]
+    difficulty: 2
+    tags: [strategy-viewpoints, heat-map]
+  - id: A9-124
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "Which viewpoint gives a CxO a high-level picture of courses of action, capabilities, value streams, resources and outcomes?"
+    options:
+      - {key: A, text: "Strategy viewpoint", correct: true}
+      - {key: B, text: "Capability Map viewpoint", why: "Capabilities, resources and outcomes only."}
+      - {key: C, text: "Motivation viewpoint", why: "Motivation elements, not strategy elements."}
+      - {key: D, text: "Project viewpoint", why: "Work packages and deliverables."}
+    explanation: "The strategy viewpoint is for CxOs, business managers and enterprise and business architects, with the concern of strategy development."
+    refs: ["ARCHIMATE §C.3"]
+    difficulty: 1
+    tags: [strategy-viewpoint]
+  - id: A9-125
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "A product manager asks what the 'Gold Account' includes — its services, the contract and the value offered. Which viewpoint?"
+    options:
+      - {key: A, text: "Product", correct: true}
+      - {key: B, text: "Service Realization", why: "That shows what lies behind a service, not what a product bundles."}
+      - {key: C, text: "Organization", why: "Actors and roles only."}
+      - {key: D, text: "Business Process Cooperation", why: "Processes and their dependencies."}
+    explanation: "The product viewpoint depicts the composition of a product in terms of its services, contract and the value it offers."
+    refs: ["ARCHIMATE §C.1.7"]
+    difficulty: 1
+    tags: [viewpoint-choice, product]
+  - id: A9-126
+    unit: A9
+    objective: "A9.2"
+    lesson: A9/02_example_viewpoints
+    stem: "Which elements may be used in every example viewpoint even when not listed?"
+    options:
+      - {key: A, text: "Grouping, and-junction and or-junction", correct: true}
+      - {key: B, text: "Location and plateau", why: "Location is listed only for some viewpoints; plateau for the migration ones."}
+      - {key: C, text: "Any motivation element", why: "Motivation elements appear only where listed."}
+      - {key: D, text: "None — the element lists are exhaustive", why: "The specification adds grouping and junctions to every viewpoint."}
+    explanation: "In addition to the listed elements, the grouping element and the junctions can be used in every viewpoint."
+    refs: ["ARCHIMATE §C.1"]
+    difficulty: 2
+    tags: [example-viewpoints]
+  # ---------------------------------------------------------------- A9.3 TOGAF mapping
+  - id: A9-127
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "How does the specification describe the relationship between ArchiMate and the TOGAF framework?"
+    options:
+      - {key: A, text: "Complementary: TOGAF provides the process and framework, ArchiMate a vendor-independent modelling language with notation, sharing the viewpoint concept and a common repository", correct: true}
+      - {key: B, text: "Competing: an organisation must choose one", why: "The appendix concludes they can easily be used in conjunction."}
+      - {key: C, text: "Identical: ArchiMate is the notation chapter of TOGAF", why: "They are separate standards."}
+      - {key: D, text: "Unrelated: ArchiMate maps only to Zachman", why: "Appendix D.1 is devoted to the TOGAF correspondence."}
+    explanation: "ArchiMate complements TOGAF by providing the consistent model 'below the waterline' that TOGAF views depict; they overlap in viewpoints and repository."
+    refs: ["ARCHIMATE §D.1"]
+    difficulty: 1
+    tags: [togaf, complementary]
+  - id: A9-128
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "Which ADM phases does the ArchiMate core (business, application, technology layers) correspond to?"
+    options:
+      - {key: A, text: "Phases B, C and D", correct: true}
+      - {key: B, text: "Preliminary and A", why: "Those correspond to motivation and strategy elements."}
+      - {key: C, text: "Phases E, F and G", why: "Those correspond to implementation and migration elements."}
+      - {key: D, text: "Requirements Management only", why: "That corresponds to motivation elements."}
+    explanation: "The core language closely corresponds with the three main architectures of the ADM; strategy, motivation and implementation elements map approximately onto the rest."
+    refs: ["ARCHIMATE §D.1"]
+    difficulty: 1
+    tags: [togaf, phases]
+  - id: A9-129
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "Is there a one-to-one mapping between TOGAF viewpoints and ArchiMate viewpoints?"
+    options:
+      - {key: A, text: "No — there is a fair amount of correspondence, but some TOGAF viewpoints cannot be mapped directly, and the viewpoint mechanism can define them from ArchiMate concepts", correct: true}
+      - {key: B, text: "Yes — every TOGAF viewpoint has exactly one ArchiMate counterpart", why: "The specification says there is no one-to-one mapping."}
+      - {key: C, text: "No — they share no viewpoints at all", why: "Many address the same issues."}
+      - {key: D, text: "Yes, but only for the technology architecture", why: "No such limitation."}
+    explanation: "Appendix D.1 states there is no one-to-one mapping but considerable correspondence, and ArchiMate's viewpoint definitions are more detailed than TOGAF's."
+    refs: ["ARCHIMATE §D.1"]
+    difficulty: 2
+    tags: [togaf, viewpoints]
+  - id: A9-130
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "Which ArchiMate element models a TOGAF Transition Architecture?"
+    options:
+      - {key: A, text: "Plateau", correct: true}
+      - {key: B, text: "Deliverable", why: "A deliverable is a work package result; the architecture state is a plateau."}
+      - {key: C, text: "Grouping", why: "Grouping models building blocks and domains."}
+      - {key: D, text: "Work Package", why: "That is the project, not the state."}
+    explanation: "The plateau element was defined to support Baseline, Target and Transition Architectures."
+    refs: ["ARCHIMATE §12.2.4", "ARCHIMATE §D.1"]
+    difficulty: 1
+    tags: [togaf, plateau]
+  - id: A9-131
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "Which viewpoints most directly draw ADM Phase C, and how do the data and application halves split?"
+    options:
+      - {key: A, text: "Information Structure for Data Architecture; Application Cooperation and Application Usage for Application Architecture", correct: true}
+      - {key: B, text: "Technology and Physical for both halves", why: "Those draw Phase D."}
+      - {key: C, text: "Migration for both halves", why: "Migration draws Phase E."}
+      - {key: D, text: "Stakeholder and Goal Realization", why: "Those draw Phase A."}
+    explanation: "Data Architecture is the Information Structure viewpoint; Application Architecture the Application Cooperation and Usage viewpoints — the split in the ADM crosswalk."
+    refs: ["ARCHIMATE §D.1", "ARCHIMATE §C.1"]
+    difficulty: 2
+    tags: [togaf, phase-c]
+  - id: A9-132
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "Which viewpoints draw ADM Phase E, Opportunities and Solutions?"
+    options:
+      - {key: A, text: "Migration, and Implementation and Migration", correct: true}
+      - {key: B, text: "Project only", why: "Project is the Phase F and G viewpoint for schedules and responsibilities."}
+      - {key: C, text: "Layered", why: "Layered draws Phase D's cross-layer overview."}
+      - {key: D, text: "Motivation", why: "Motivation draws Preliminary, A, H and Requirements Management."}
+    explanation: "Phase E defines Transition Architectures (plateaus) and consolidates gaps, which the Migration and Implementation and Migration viewpoints show."
+    refs: ["ARCHIMATE §D.1", "ARCHIMATE §C.4"]
+    difficulty: 2
+    tags: [togaf, phase-e]
+  - id: A9-133
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "Which viewpoints are associated with Phase F, Migration Planning?"
+    options:
+      - {key: A, text: "Implementation and Migration, and Project", correct: true}
+      - {key: B, text: "Migration only", why: "Migration shows states; Phase F sequences work packages, events and responsibilities."}
+      - {key: C, text: "Organization and Product", why: "Those draw Phase B."}
+      - {key: D, text: "Requirements Realization", why: "That draws Requirements Management."}
+    explanation: "The Implementation and Migration Plan is work packages in sequence realizing deliverables with implementation events as milestones: Implementation and Migration and Project views."
+    refs: ["ARCHIMATE §D.1", "ARCHIMATE §C.4"]
+    difficulty: 2
+    tags: [togaf, phase-f]
+  - id: A9-134
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "Which ArchiMate element best models a TOGAF Objective — a measurable, time-bounded milestone toward a goal?"
+    options:
+      - {key: A, text: "Outcome", correct: true}
+      - {key: B, text: "Goal", why: "Goal is the qualitative end state; the measurable result is an outcome."}
+      - {key: C, text: "Requirement", why: "A requirement is a statement of need, not a result."}
+      - {key: D, text: "Implementation Event", why: "An event is a state change in delivery, not a business result."}
+    explanation: "Outcome represents an end result; TOGAF's objectives are measurable results, which is the outcome element's role."
+    refs: ["ARCHIMATE §C.2", "ARCHIMATE §D.1"]
+    difficulty: 3
+    tags: [togaf, entity-mapping]
+  - id: A9-135
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "How is a TOGAF Architecture Building Block best represented in ArchiMate?"
+    options:
+      - {key: A, text: "As a grouping around the elements the block comprises", correct: true}
+      - {key: B, text: "As a plateau", why: "A plateau is a state in time."}
+      - {key: C, text: "As a deliverable", why: "A deliverable is a work package result."}
+      - {key: D, text: "As a dedicated Building Block element", why: "No such element exists."}
+    explanation: "The specification names modelling ABBs and SBBs as one useful application of grouping."
+    refs: ["ARCHIMATE §4.5.1", "ARCHIMATE §D.1"]
+    difficulty: 2
+    tags: [togaf, building-blocks]
+  - id: A9-136
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "A TOGAF Data Entity appears at conceptual and logical levels. Which ArchiMate elements and relationship express this?"
+    options:
+      - {key: A, text: "Business Object for the conceptual level, Data Object for the logical, with the data object realizing the business object", correct: true}
+      - {key: B, text: "Two Data Objects joined by composition", why: "The conceptual level is a business object."}
+      - {key: C, text: "A Business Object assigned to a Data Object", why: "Passive elements are not assigned; the relationship is realization."}
+      - {key: D, text: "An Artifact serving a Business Object", why: "Artifacts realize, and passive elements do not serve."}
+    explanation: "Business object and data object are the conceptual and logical forms, linked by upward realization."
+    refs: ["ARCHIMATE §D.1", "ARCHIMATE §5.1.4"]
+    difficulty: 2
+    tags: [togaf, entity-mapping]
+  - id: A9-137
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "Why are ArchiMate viewpoint definitions more detailed than TOGAF's?"
+    options:
+      - {key: A, text: "Because ArchiMate is a modelling language, so its viewpoints specify stakeholders, concerns, abstraction level and entity types, whereas TOGAF as a framework describes views more generally", correct: true}
+      - {key: B, text: "Because TOGAF has no viewpoints", why: "TOGAF describes a taxonomy of views and guidelines for viewpoints."}
+      - {key: C, text: "Because ArchiMate is newer", why: "Age is not the reason given."}
+      - {key: D, text: "Because ArchiMate viewpoints are normative", why: "They are examples."}
+    explanation: "The specification stresses that ArchiMate is a language, not a framework, and that some interpretation is needed when mapping to TOGAF's more general viewpoint descriptions."
+    refs: ["ARCHIMATE §D.1"]
+    difficulty: 2
+    tags: [togaf, viewpoints]
+  - id: A9-138
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "A change request in Phase H is to be modelled so its impact on the current architecture is visible. Which elements and viewpoints fit?"
+    options:
+      - {key: A, text: "A new Driver or Assessment, with the impact as a Gap against the current Plateau — Motivation and Migration viewpoints", correct: true}
+      - {key: B, text: "A Work Package in the Project viewpoint", why: "Work packages come once the change is approved; the request itself is motivation."}
+      - {key: C, text: "A Node in the Technology viewpoint", why: "The change request is not a technology element."}
+      - {key: D, text: "A Contract in the Product viewpoint", why: "Contracts model agreements, not change requests."}
+    explanation: "In the crosswalk, Phase H is drawn with the Motivation and Migration viewpoints: the request is a driver or assessment and its impact is a gap against the current plateau."
+    refs: ["ARCHIMATE §D.1", "ARCHIMATE §12.2.5"]
+    difficulty: 3
+    tags: [togaf, phase-h]
+  - id: A9-139
+    unit: A9
+    objective: "A9.3"
+    lesson: A9/03_the_togaf_mapping
+    stem: "A TOGAF matrix such as the Actor/Role matrix is best understood in ArchiMate terms as what?"
+    options:
+      - {key: A, text: "A viewpoint whose representation is a matrix of relationships between two element types — here the assignments of an Organization view", correct: true}
+      - {key: B, text: "A grouping of actors and roles", why: "A grouping is a model element, not a representation."}
+      - {key: C, text: "A plateau", why: "A plateau is a state in time."}
+      - {key: D, text: "Something ArchiMate cannot express", why: "The viewpoint mechanism explicitly allows a matrix as the representation."}
+    explanation: "The second step of the viewpoint mechanism allows a matrix showing relationships between two groups of elements; a TOGAF matrix is exactly that."
+    refs: ["ARCHIMATE §13.4", "ARCHIMATE §D.1"]
+    difficulty: 2
+    tags: [togaf, artifacts]

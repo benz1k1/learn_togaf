@@ -1,0 +1,686 @@
+# Authored Practitioner scenarios for unit P8, Supporting the ADM Work (the Series Guides).
+# Shape per learn_togaf.md §2; grounded on the Business Architecture guides, the risk and security guide,
+# the agility guides and the digital guides.
+code: P8_BANK
+exam: OGEA-102
+name: P8 Supporting the ADM Work, authored bank
+kind: DRILL
+source: authored
+questions:
+  - id: P8-101
+    unit: P8
+    objective: "P8.1"
+    lesson: P8/01_choosing_the_business_architecture_guides
+    scenario: |
+      Marlowe Assurance is a life and pensions insurer with 3,900 staff, 2.2 million policies and a
+      history of growth by acquisition: over twenty years it has absorbed four smaller insurers and
+      still runs their product lines on separate administration systems. Its new Chief Executive has
+      announced a strategy to "run as one company" within three years, to launch a workplace pensions
+      product in the first year, and to cut the cost of administration by a quarter. The Chief
+      Operating Officer sponsors the Enterprise Architecture work. The architecture team of four
+      reports to the Chief Information Officer and completed the Preliminary Phase last quarter: a
+      tailored ADM, approved principles and an initial Architecture Repository that so far contains
+      the four legacy systems' documentation and an application inventory.
+
+      Phase A has begun. In the first stakeholder meeting the directors could not agree what the
+      company actually does. The Director of Pensions described the business as "administration
+      and investment"; the Director of Protection described it as "underwriting and claims"; the
+      Chief Financial Officer described it as "asset management with a policy front end". Each of the
+      four acquired businesses has its own organisation chart, its own department names and its own
+      vocabulary: what one calls "policy servicing" another calls "customer operations" and a third
+      splits between "new business" and "in-force". The Chief Executive has said she wants a view of
+      the company that will still be true after the planned reorganisation in six months, and that
+      she does not want "another org chart".
+
+      The Head of Operations has offered the architecture team a set of process maps produced for a
+      previous efficiency programme: 240 swim-lane diagrams at task level, three years old, covering
+      two of the four businesses. The Chief Information Officer has suggested the team start from the
+      application inventory and map which department uses which system, because "that is what the
+      cost-cutting will need". A consultant engaged by the Chief Financial Officer has proposed
+      building a detailed entity-relationship model of policy data as the "foundation for one
+      company". The Director of Pensions wants the team to concentrate on the workplace pensions
+      launch and not on "abstract models".
+
+      The sponsor has asked you, as lead architect, to recommend which Business Architecture
+      technique to apply first so that Phase A can establish a shared view of what the company does,
+      identify what the workplace pensions launch requires, and give Phase B a basis for finding the
+      duplication that the cost target depends on. He has asked you to say what the technique
+      produces, how it should be structured and named, which of the offered inputs it should use,
+      and where in the ADM the detailed analysis belongs.
+    question: "Refer to the scenario. The sponsor has asked you to recommend which Business Architecture technique to apply first and how to apply it. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Recommend business capability mapping. In Phase A build a business capability map that
+          describes what Marlowe does independently of who does it and how: name each capability in a
+          noun-verb form built around a persistent business object, such as Policy Administration,
+          Claims Management, Investment Management, and describe each as "the ability to ...", using
+          language that resonates with the directors but deliberately not the department names of any
+          of the four businesses, because organisation structures change and capabilities endure, which
+          is exactly the Chief Executive's requirement. Level the map so that the top level gives the
+          shared view the directors lack and the next levels support planning, and check each
+          candidate capability by asking what people, processes, information and resources realise it,
+          which also tests that it is a capability rather than a process or a department. Use the map
+          in Phase A to identify the capabilities the workplace pensions launch requires and to sketch
+          the high-level baseline and target. Use the application inventory and, selectively, the
+          process maps as inputs to the realisation elements, not as the structure of the map. Leave
+          the detailed gap assessment, heat-mapping the capabilities for maturity, effectiveness,
+          performance and cost to find the duplication, to Phase B, where the guide places it, and
+          map capabilities to organisation units, value streams and systems there.
+        why: >-
+          A business capability delineates what a business does without how, why or where, and a map
+          gives a stable view agnostic of organisation structure (GUIDE:business-capabilities §2, §7);
+          naming is noun-verb around a business object, in stakeholder language, and must resist
+          repeating department names because structures change while capabilities are stable
+          (GUIDE:business-capabilities §2.1.1); people, processes, information and resources realise a
+          capability and decomposing them tests the definition (GUIDE:business-capabilities §2.2). In
+          the ADM, Phase A identifies the capabilities the strategy requires and uses the map for the
+          high-level baseline and target, while heat mapping for gaps belongs in Phase B, with
+          relationship mapping to organisation units, value streams and systems
+          (GUIDE:business-capabilities §6). Every planted fact, the disagreement, the reorganisation, the
+          launch and the cost target, is addressed by the guide's own placement.
+      - key: B
+        points: 3
+        text: >-
+          Recommend value stream mapping first: define the customer-facing value streams such as
+          "Obtain Pension" and "Make Claim" with their stages, then derive the capability map from the
+          stages and heat-map the capabilities in Phase A so that the duplication is visible before the
+          Statement of Architecture Work is signed.
+        why: >-
+          Value streams are a legitimate starting point and the Value Streams guide says it often does
+          not matter which comes first, but the question the directors cannot answer is "what does the
+          company do", which is the capability map's purpose, and the guide places the detailed gap
+          assessment and heat mapping in Phase B, not Phase A (GUIDE:business-capabilities §6,
+          GUIDE:value-streams §3). Deriving the map only from customer-facing streams also tends to miss
+          supporting capabilities, which the Value Streams guide notes map to different tiers
+          (GUIDE:value-streams §4.2).
+      - key: C
+        points: 1
+        text: >-
+          Recommend starting from the Head of Operations' 240 process maps and the application
+          inventory, consolidating them into a single process model per department and mapping each
+          process to its systems, since this gives the cost-cutting programme the detail it needs and
+          avoids abstract models.
+        why: >-
+          Task-level process maps and department-based structures are the wrong level and the wrong
+          basis: capabilities are coarse-grained and stable, processes are one of the elements that
+          realise them and change regularly, and a map built from department names will not survive
+          the reorganisation (GUIDE:business-capabilities §2.2, §2.1.1). The Value Streams guide likewise
+          warns that operational detail is the domain of process design, not of strategy-level analysis
+          (GUIDE:value-streams §3.1).
+      - key: D
+        points: 0
+        text: >-
+          Accept the consultant's proposal and build a detailed entity-relationship model of policy
+          data as the foundation for "one company", since the four businesses' data must be unified
+          before anything else can be planned.
+        why: >-
+          A data model is an Information Systems artefact for Phase C, not a Business Architecture
+          view of what the company does; the Information Mapping guide distinguishes information maps
+          from data models and places translation into data models in Phases C and D
+          (GUIDE:information-mapping §5, §6). It answers none of the sponsor's three questions and
+          ignores the capability map that the guides place in Phase A (GUIDE:business-capabilities §6).
+    refs: ["GUIDE:business-capabilities §2", "GUIDE:business-capabilities §2.1.1", "GUIDE:business-capabilities §2.2", "GUIDE:business-capabilities §6", "GUIDE:value-streams §3", "GUIDE:information-mapping §6"]
+    open_book_hint: "Where to look: Series Guide Business Capabilities, chapter 2 (definition, naming convention, description, the four realisation elements), chapter 3 (mapping and leveling), chapter 5 (heat mapping) and chapter 6 (use with the ADM: Phase A identification, Phase B gap assessment); Value Streams chapter 3 for which comes first; Information Mapping chapters 5 and 6 for maps versus data models."
+    difficulty: 2
+    tags: [business-capabilities, phase-a, phase-b, heat-mapping]
+    status: draft
+
+  - id: P8-102
+    unit: P8
+    objective: "P8.1"
+    lesson: P8/01_choosing_the_business_architecture_guides
+    scenario: |
+      Harbourside Health is a private healthcare group with eleven clinics, two day-surgery centres
+      and 2,300 staff, offering diagnostics, outpatient consultations and elective procedures to
+      insured and self-paying patients. Its board has set a strategy to grow self-pay revenue by
+      making it "effortless to get a diagnosis and a treatment plan". The Chief Medical Officer
+      sponsors the architecture work; the Enterprise Architecture team of three sits in the
+      transformation office. A business capability map with three levels was completed in the
+      previous cycle and is maintained in the Architecture Repository. The current cycle is in Phase B,
+      with an approved Statement of Architecture Work scoped to the self-pay patient pathway.
+
+      The problem the sponsor wants solved is a symptom, not a cause. Self-pay patients who make an
+      initial enquiry are converting to booked consultations at half the rate of two years ago,
+      online reviews complain of "being passed around", and the clinics' net promoter score has
+      fallen. The Head of Patient Services blames the call centre's scripts; the Head of Clinical
+      Operations blames a shortage of consultant slots; the Head of Digital blames the enquiry form on
+      the website; the Finance Director blames the pricing. Each has proposed a project for their
+      own area, and each expects the architecture team to endorse it.
+
+      An earlier attempt to analyse the problem produced a 60-page process document in which every
+      call-centre and clinic task was mapped in detail; nobody outside the process team has read it.
+      The Head of Digital has offered customer-journey analytics from the website, which show where
+      visitors abandon the enquiry form. The capability map in the repository covers the whole group
+      and includes capabilities such as Patient Enquiry Management, Appointment Scheduling,
+      Clinical Assessment, Treatment Planning and Billing, but has never been assessed for how well
+      any capability performs. The Chief Medical Officer has said that the analysis must be done
+      with the clinical and administrative staff, not to them, and that she wants a result within
+      six weeks.
+
+      You are the lead architect. The sponsor has asked you to propose the Business Architecture
+      technique that will show where the self-pay pathway is failing, connect that failure to the
+      capabilities that must improve, and give the four directors a shared basis for deciding which
+      project to fund first. She also wants to know how the technique should be structured, who
+      should be in the room, what level of detail is right, and what to do when the first result
+      points at one obvious culprit.
+    question: "Refer to the scenario. The sponsor has asked you to propose the technique that will show where the self-pay pathway is failing and connect it to the capabilities that must improve. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Propose value stream mapping in Phase B. With a cross-functional team of patient services,
+          clinical operations, digital and finance staff guided by the architect, define the
+          value stream "Obtain Diagnosis and Treatment Plan" from the initiating stakeholder's
+          perspective, the self-pay patient, with a description and the value the patient expects.
+          Decompose it into stages, for example Make Enquiry, Book Consultation, Attend Assessment,
+          Receive Treatment Plan, each with participating stakeholders, entrance and exit criteria and
+          the value item it adds, without descending to the task level of the earlier process document.
+          Cross-map the existing capability map to each stage to show which capabilities enable it,
+          then heat-map how well each capability supports the value required at each stage, using
+          the web analytics and the staff's knowledge as evidence. When the first heat map suggests
+          one obvious culprit, use it as a focus for gathering more information on each gap area before
+          concluding, as the guide's worked example does, because the root cause may be a missing role
+          or hand-off rather than the loudest symptom. Present the heat map to the four directors as the
+          shared basis for prioritising the projects, and refine the capability map where the analysis
+          reveals a missing capability.
+        why: >-
+          A value stream is defined by name in verb-noun form, description, triggering stakeholder and
+          value, and decomposed into stages with stakeholders, entrance and exit criteria and value
+          items (GUIDE:value-streams §2.1, §2.2); capabilities are cross-mapped to stages to show which
+          are critical to delivering the value (GUIDE:value-streams §2.3); guiding principles require a
+          clear triggering stakeholder, external streams first and concise, non-operational detail
+          (GUIDE:value-streams §3.1). The heat-mapping scenario in the guide shows exactly this method,
+          a cross-functional team led by the Business Architect, a heat map used as a focus for
+          gathering more information before reaching a conclusion, and the discovery of a missing role
+          and a new subordinate value stream (GUIDE:value-streams §4.3). Heat mapping of capabilities
+          belongs in Phase B (GUIDE:business-capabilities §6).
+      - key: B
+        points: 3
+        text: >-
+          Propose value stream mapping, define the patient value stream and its stages with the
+          cross-functional team, and, since the web analytics already show where enquiries are
+          abandoned, conclude that the enquiry form is the failing stage and recommend funding the Head
+          of Digital's project first, then heat-map the remaining stages later if the conversion rate
+          does not recover.
+        why: >-
+          The value stream and the team are right, but the analysis stops at the first symptom without
+          cross-mapping capabilities to every stage and heat-mapping them, and it reaches a conclusion
+          from one source of evidence; the guide's worked example specifically recommends using the
+          heat map as a focus for gathering more information about each gap area before concluding,
+          and finds the real cause elsewhere (GUIDE:value-streams §2.3, §4.3).
+      - key: C
+        points: 1
+        text: >-
+          Propose extending the existing 60-page process document to cover the self-pay pathway
+          end to end at task level, since it already exists, and then mapping every task to the
+          applications used, so that the failing task can be identified precisely.
+        why: >-
+          Operational, task-level detail is the domain of business process design and does not give the
+          end-to-end perspective needed for strategy-level decisions; the guide's principle is to keep
+          value streams concise (GUIDE:value-streams §3.1). The existing document's fate, unread by
+          anyone outside its authors, illustrates the point, and mapping tasks to applications answers
+          an IT question rather than the sponsor's value question.
+      - key: D
+        points: 0
+        text: >-
+          Endorse all four directors' projects as a programme, since each addresses a plausible cause,
+          and let the programme discover the root cause during delivery; the architecture team should
+          not delay funding decisions with modelling.
+        why: >-
+          This abandons the analysis the sponsor asked for and the guides exist to provide: value
+          streams and capabilities are the means of finding which capabilities are critical to
+          stakeholder value and where they fall short, so that the business focuses effort
+          (GUIDE:value-streams §2.3, §4.3). Funding four projects on four hypotheses is not a Business
+          Architecture decision.
+    refs: ["GUIDE:value-streams §2.1", "GUIDE:value-streams §2.2", "GUIDE:value-streams §2.3", "GUIDE:value-streams §3.1", "GUIDE:value-streams §4.3", "GUIDE:business-capabilities §6"]
+    open_book_hint: "Where to look: Series Guide Value Streams, chapter 2 (describing a value stream, decomposing into stages, mapping capabilities to stages), chapter 3 (guiding principles, which comes first) and section 4.3 (the heat-mapping scenario with the missing role); Business Capabilities chapter 6 for heat mapping in Phase B."
+    difficulty: 2
+    tags: [value-streams, heat-mapping, phase-b, capabilities]
+    status: draft
+
+  - id: P8-103
+    unit: P8
+    objective: "P8.1"
+    lesson: P8/01_choosing_the_business_architecture_guides
+    scenario: |
+      Cobalt Freight Exchange is a digital marketplace that matches shippers with road hauliers
+      across four countries. It has 640 employees, 9,000 registered hauliers, 2,400 shipper accounts,
+      and an ecosystem of insurers, customs brokers, fuel-card providers and telematics vendors
+      whose systems exchange data with the platform daily. It was founded eight years ago as a
+      start-up and is now owned by a logistics group that wants to integrate it with two sister
+      companies. The group's Chief Digital Officer sponsors an ADM cycle to define the Target
+      Architecture for a shared "freight data backbone" across the three companies. The architecture
+      team of five completed the Preliminary Phase and is in Phase B.
+
+      Two problems have surfaced in the Phase B workshops. The first is vocabulary. When the shipper
+      sales team says "load" they mean a customer order; when operations says "load" they mean a
+      vehicle's cargo on a leg; the sister companies use "consignment" and "shipment" for
+      overlapping ideas; the insurers' data uses "cargo" and "risk". Two integration projects have
+      already failed because the parties agreed a field mapping without agreeing what the words
+      meant. The Head of Data has proposed solving this with an enterprise data model in a modelling
+      tool, to be produced by her team over four months, before any business discussion.
+
+      The second problem is people. The group's organisation charts show three companies with
+      conventional reporting lines, but the way work actually happens crosses them: a joint
+      "cross-border desk" staffed from two companies handles customs, a shared pricing team sits in
+      one company but serves all three, the customs brokers are external but sit inside the
+      operational workflow, and the largest hauliers have dedicated account teams. The Chief Digital
+      Officer has been surprised twice by stakeholders "nobody told him about" objecting to
+      decisions, and he has asked the architecture team how to make sure the right stakeholders are
+      identified for the phases ahead. The Head of Human Resources has offered the official
+      organisation charts and considers them sufficient.
+
+      The sponsor has asked you, the lead architect, to recommend which Business Architecture
+      artefacts should be built in Phase B to address the vocabulary problem and the stakeholder
+      problem, how each differs from what the Head of Data and the Head of Human Resources have
+      offered, and how the artefacts relate to the capability map already in the repository.
+    question: "Refer to the scenario. The sponsor has asked which Business Architecture artefacts should be built in Phase B for the vocabulary and stakeholder problems and how they differ from what has been offered. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Build two Business Architecture artefacts in Phase B. For vocabulary, an information map:
+          listen for the nouns the business uses, load, consignment, shipment, cargo, haulier, leg,
+          and apply a noun-challenge to decide which represent information the business needs to
+          know, store or manipulate, then define the information concepts in business terms and their
+          relationships, including where two names denote one concept and where one name hides two.
+          Explain that this is a business vocabulary artefact, distinct from the data model the Head
+          of Data proposes, which Phases C and D derive from it. For stakeholders, an organization
+          map: show the organisational units, partners and stakeholder groups that make up the
+          ecosystem, including the cross-border desk, the shared pricing team, the customs brokers
+          and the key haulier account teams, and the formal and informal working relationships between
+          them, at enterprise, line of business, function, partner and collaborative team levels.
+          Explain that this differs from the organisation charts, which show reporting lines between
+          named individuals, and that its purpose for the Enterprise Architect is to identify the
+          stakeholders for the solutions of later phases. Link both artefacts to the capability map so
+          that a capability gap can be traced to the units that deliver it and the information it
+          depends on.
+        why: >-
+          An information map is a collection of information concepts and relationships reflecting the
+          business vocabulary, found by listening for nouns and challenging each one
+          (GUIDE:information-mapping §2); it is distinct from data models, and Phase B builds it while
+          Phases C and D translate into data models (GUIDE:information-mapping §5, §6). An organization
+          map shows organisational units, partners and stakeholder groups and their formal and informal
+          relationships, which distinguishes it from an org chart of reporting lines, and includes
+          partners and collaborative teams at defined levels (GUIDE:organization-mapping §2); for the
+          Enterprise Architect it is the means of identifying stakeholders for later solutions, used in
+          Phase A and built out in Phase B, and it should be linked to capabilities and information
+          (GUIDE:organization-mapping §6).
+      - key: B
+        points: 3
+        text: >-
+          Build an information map for the vocabulary problem as described, but for the stakeholder
+          problem adopt the official organisation charts annotated with the external partners, since
+          the charts are authoritative and adding partners covers the customs brokers; identify
+          stakeholders from the annotated charts at the start of each phase.
+        why: >-
+          The information map is right, but an annotated org chart still portrays reporting lines
+          between named individuals rather than the working relationships that cross formal boundaries,
+          which is precisely why the organization map concept was created; the cross-border desk, the
+          shared pricing team and the collaborative account teams would not appear
+          (GUIDE:organization-mapping §2, §3).
+      - key: C
+        points: 1
+        text: >-
+          Accept the Head of Data's proposal to build the enterprise data model first, since agreed
+          field definitions will settle the vocabulary, and use the model's entity owners as the
+          stakeholder list for the phases ahead.
+        why: >-
+          A data model is an Information Systems artefact and the guide places translation of the
+          information map into data models in Phases C and D, after the business concepts are agreed
+          in Phase B; starting from the model repeats the failure of the two integration projects that
+          agreed mappings without agreeing meanings (GUIDE:information-mapping §5, §6). Entity owners are
+          a subset of stakeholders, not the ecosystem the organization map exists to reveal
+          (GUIDE:organization-mapping §2).
+      - key: D
+        points: 0
+        text: >-
+          Treat both problems as outside the architecture's scope: vocabulary is for the integration
+          projects to resolve in their interface specifications, and stakeholder identification is a
+          matter for Human Resources and the programme office.
+        why: >-
+          Both are Business Architecture concerns the standard's guides address directly, and the
+          scenario shows the cost of leaving them to projects; stakeholder identification is an
+          architecture responsibility that the organization map supports, and the information map
+          exists so that meaning is agreed before interfaces are built (GUIDE:information-mapping §2,
+          GUIDE:organization-mapping §6).
+    refs: ["GUIDE:information-mapping §2", "GUIDE:information-mapping §5", "GUIDE:information-mapping §6", "GUIDE:organization-mapping §2", "GUIDE:organization-mapping §3", "GUIDE:organization-mapping §6"]
+    open_book_hint: "Where to look: Series Guide Information Mapping, chapter 2 (what an information map is, the noun challenge), chapter 5 (information maps versus data models) and chapter 6 (use with the ADM); Series Guide Organization Mapping, chapter 2 (what an organization map is, unit levels), chapter 3 (maps versus org charts) and chapter 6 (use with the TOGAF Standard, identifying stakeholders)."
+    difficulty: 2
+    tags: [information-mapping, organization-mapping, phase-b, stakeholders]
+    status: draft
+
+  - id: P8-104
+    unit: P8
+    objective: "P8.2"
+    lesson: P8/02_applying_the_risk_security_agile_and_digital_guides
+    scenario: |
+      Ferrol Payments is a payments processor handling 900 million card transactions a year for
+      merchants in two regions, with 1,700 staff and obligations under payment-industry security
+      standards, banking regulation and data-protection law in both regions. Its board has approved a
+      strategy to open the platform to third-party developers through public interfaces and to add
+      real-time fraud scoring. The Chief Technology Officer sponsors the architecture cycle. The
+      Enterprise Architecture team of five includes one Security Architect seconded from the Chief
+      Information Security Officer's function. The Preliminary Phase confirmed principles and a
+      tailored ADM, and the Phase A Architecture Vision was approved a month ago with a Statement of
+      Architecture Work scoped to the developer platform and the fraud service.
+
+      The security integration is not going well. The Chief Information Security Officer's team has
+      produced a 340-item controls checklist derived from the payment-industry standard and has
+      asked the architecture team to "make sure every control is in the design". The Security
+      Architect points out that the checklist says nothing about which risks the developer platform
+      actually introduces or how much of that risk the board would accept. When the architects asked
+      the board's risk committee about appetite, the answer was "no breaches", which the Security
+      Architect says is not a usable statement. Phase A identified stakeholders, but the stakeholder
+      list separates "security stakeholders", the CISO and the compliance team, from "business
+      stakeholders", and the business stakeholders' concerns record nothing about security. The
+      Head of Developer Relations, who owns the platform's commercial success, says security "is the
+      CISO's problem" and worries that controls will make the platform unattractive.
+
+      Phase B has started. The Head of Legal has asked where the differing regional data-protection
+      obligations will be recorded. The fraud-service product owner wants to know what the
+      architecture will say about the confidentiality of the fraud models and the availability of
+      the scoring service, and finds the answer "confidential, high availability" meaningless.
+
+      You are the lead Enterprise Architect. The sponsor has asked you to explain how security and
+      risk should be integrated into the architecture work from this point, what artefacts belong in
+      which phase, and how to answer the Head of Developer Relations and the product owner.
+    question: "Refer to the scenario. The sponsor has asked how security and risk should be integrated into the architecture work from this point. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Apply the Integrating Risk and Security guide. Go back briefly to the Preliminary and Phase A
+          artefacts to establish the security context the checklist cannot provide: a stated risk
+          appetite, expressed as a boundary on an impact and likelihood grid or as security principles
+          with a mitigation strategy for risks above it, and key risk areas from a business impact
+          analysis for the developer platform and fraud service. Correct the Phase A stakeholder
+          analysis so that all stakeholders, including the Head of Developer Relations and the product
+          owner, have their security and risk concerns captured, since separating security
+          stakeholders narrows the requirements. In Phase B produce the business-level security
+          artefacts: a Security Policy Architecture assigning ownership, a Security Domain Model for the
+          developer and merchant domains, a Trust Framework for third-party developers, a risk
+          assessment producing a Business Risk Model or register with security classification, an
+          Applicable Law and Regulation Register for the two regions' obligations, and an Applicable
+          Control Framework Register in which the payment-industry standard sits as one framework. Use
+          SABSA Business Attribute Profiling to turn "confidential, high availability" into specific,
+          measurable attributes with targets, which answers the product owner and shows Developer
+          Relations that security is scoped to business value. Plan the Phase C Security Services
+          Catalog so that controls are bundled into security services as building blocks rather than
+          designed from the 340-item list.
+        why: >-
+          Risk appetite and key risk areas belong to the Preliminary Phase and are confirmed in Phase A
+          (GUIDE:integrating-risk-and-security §5.1.3, §5.1.4); Phase A must identify the complete list
+          of stakeholders because all have security concerns, and separating security stakeholders
+          addresses only a subset (§5.2). The Phase B artefacts are the Security Policy Architecture,
+          Security Domain Model, Trust Framework, Risk Assessment and Business Risk Model, Applicable
+          Law and Regulation Register and Applicable Control Framework Register (§5.3). Business
+          Attribute Profiling replaces the overloaded CIA vocabulary with specific, measurable
+          attributes (§3.2.1, §5.10.1), and integrating security is not selecting controls from a
+          checklist but defining security services as ABBs in a Security Services Catalog in Phase C
+          (§1.3, §5.4.1).
+      - key: B
+        points: 3
+        text: >-
+          Adopt the CISO's checklist as the security requirements for the architecture and allocate
+          each control to a domain architecture, but add a risk assessment in Phase B to prioritise the
+          controls, and ask the risk committee to approve the resulting register as the statement of
+          appetite.
+        why: >-
+          Adding a Phase B risk assessment and register is correct, but a risk register is not a
+          statement of appetite; appetite is set before assessment and defines the level of risk
+          accepted and the strategy above it (§5.1.3). Treating the checklist as the requirements is
+          the approach the guide rejects, controls belong in security services chosen by risk, not
+          allocated from a list (§1.3), and the stakeholder narrowing in Phase A is left uncorrected
+          (§5.2).
+      - key: C
+        points: 1
+        text: >-
+          Leave security to Phase D, where the Technology Architecture will select the security
+          products, since the developer platform's risks are technical; in the meantime record the
+          regional legal obligations as constraints in the Requirements Repository and tell the
+          product owner that availability targets are set in Phase G's service-level agreements.
+        why: >-
+          The guide says Phase D usually needs no specific security artefacts because the controls are
+          defined in earlier phases and Phase D verifies them; the business-level trust, risk and
+          controls belong in Phase B and the security services in Phase C (§5.5, §5.3, §5.4). Deferring
+          security to technology selection is the bolted-on approach the guide exists to prevent (§1),
+          and performance targets are set through Business Attribute Profiling, not left to Phase G
+          (§5.10.1).
+      - key: D
+        points: 0
+        text: >-
+          Agree with the Head of Developer Relations that security is the CISO's responsibility, keep
+          the security work in the CISO's function with the checklist as its scope, and have the
+          architecture team focus on the developer experience so that the platform is attractive.
+        why: >-
+          Security is a cross-cutting concern that interacts with all four domains and must be
+          developed integrated with the architecture, not in a separate function (§4, §1); every
+          stakeholder has security concerns (§5.2); and a checklist is not an architecture (§1.3).
+          This is the separation of disciplines the guide was written to end.
+    refs: ["GUIDE:integrating-risk-and-security §1.3", "GUIDE:integrating-risk-and-security §5.1.3", "GUIDE:integrating-risk-and-security §5.2", "GUIDE:integrating-risk-and-security §5.3", "GUIDE:integrating-risk-and-security §5.4", "GUIDE:integrating-risk-and-security §5.10"]
+    open_book_hint: "Where to look: Series Guide Integrating Risk and Security, section 1.3 (services, not checklists), 3.2.1 (why not the CIA triad), 5.1.3 and 5.1.4 (risk appetite and key risk areas), 5.2 (all stakeholders have security concerns), 5.3 (the Phase B artefacts), 5.4 (Security Services Catalog and classification in Phase C), 5.10.1 (Business Attribute Profiling)."
+    difficulty: 3
+    tags: [risk-security, risk-appetite, phase-b, security-services]
+    status: draft
+
+  - id: P8-105
+    unit: P8
+    objective: "P8.2"
+    lesson: P8/02_applying_the_risk_security_agile_and_digital_guides
+    scenario: |
+      Willowbrook Software is a business-software vendor with 1,400 staff that sells a payroll and
+      human-resources suite to mid-sized employers and is moving the suite from on-premise
+      installations to a subscription service. Two years ago it reorganised development into
+      fourteen product teams working in two-week sprints with product owners and a continuous
+      delivery pipeline. The Enterprise Architecture team of four was created a year later, after
+      the teams' independent choices produced three incompatible identity mechanisms, two payroll
+      calculation engines and a customer-facing portal that could not show data from half the
+      products. The Chief Product Officer sponsors the architecture work; the Preliminary Phase
+      defined principles including a single product owner per product and a tailored ADM.
+
+      The architecture team's first attempt did not land. It ran Phases A to D over five months,
+      produced a 180-page Architecture Definition Document for the whole suite, and presented it to
+      the product teams as the architecture they must follow. The teams called it "waterfall in
+      disguise", pointed out that by the time it was published two products had pivoted, and
+      largely ignored it. The Chief Product Officer has now asked the architecture team to "work the
+      way the teams work" without abandoning the enterprise view that the identity and portal
+      failures showed was missing.
+
+      The current situation has specific features. The board has agreed a strategic theme,
+      "one subscription, one login, one view of the employee", with a horizon of eighteen months.
+      Three portfolio-level programmes are being formed, for identity, for a shared data platform and
+      for the portal. The product teams have full backlogs and a release train every eight weeks.
+      The Head of Security insists that identity is not something to "try and see" because of
+      customer data obligations. The product owners want to know what the architects will actually
+      deliver in a sprint and how decisions between teams will be governed without a monthly board
+      becoming a bottleneck. One team lead has proposed that the architects simply join the sprint
+      retrospectives.
+
+      You are the lead Enterprise Architect. The sponsor has asked you to propose how the
+      architecture work will be organised so that it supports the sprinting teams, keeps the
+      enterprise view and delivers the strategic theme.
+    question: "Refer to the scenario. The sponsor has asked how the architecture work should be organised to support the sprinting teams while keeping the enterprise view. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Restructure the architecture work using the agility guides. Partition it into three levels:
+          an Enterprise Strategic Architecture that turns the strategic theme into context, guardrails
+          and the identification of the identity, data and portal segments; Segment Architectures for
+          each of the three programmes, providing just enough architecture to identify features and
+          the epics for the portfolio backlogs, with KPIs; and Capability Architectures developed just
+          in time as a solution runway for the product teams' sprints, tightly scoped to sprint
+          time-boxes and fed back upward. Run the architecture work itself in sprints using the
+          solution-collaboration pattern: a sprint zero to build the business change backlog from the
+          theme, value streams and capabilities and to take the no-regret decisions, then each sprint
+          delivering a Minimum Viable Architecture for the coming solution sprints, demonstrated,
+          reviewed and re-planned in a DORP with the product owners. Embed governance in the sprints
+          as guardrails and runway with compliance reviewed continuously rather than at a gate, using
+          delegation levels so that reversible decisions sit with teams and irreversible ones, such as
+          the identity mechanism, are made by the wider group, and treat identity as a Robust-style
+          transition within the otherwise agile programme because of its risk.
+        why: >-
+          The three levels, strategic, segment and capability, with Capability Architectures scoped to
+          sprint time-boxes and just-in-time runway, are the agility guide's model
+          (GUIDE:enabling-enterprise-agility §4.1, §4.4.3), governance is embedded and continuous rather
+          than deferred (§4.4.4), and high-risk elements use the Robust delivery style (§4.7.1). The
+          sprints guide supplies the collaboration patterns, the sprint zero that builds the business
+          change backlog and no-regret decisions, the MVA per sprint and the DORP
+          (GUIDE:agile-sprints §3.3, §3.3.2, §3.3.4), and its governance section moves governance into
+          the sprint process with delegation levels and the reversible versus irreversible decision
+          rule (§5.4). The answer addresses every planted fact: the failed big document, the pivots,
+          the security constraint and the product owners' questions.
+      - key: B
+        points: 3
+        text: >-
+          Keep the Architecture Definition Document as the enterprise view but re-issue it as a shorter
+          set of standards and patterns, then have architects join each product team's sprint
+          retrospectives to check compliance and feed issues back into the document, revising it
+          every release train.
+        why: >-
+          Joining retrospectives and shortening the document move toward embedded governance, but
+          the architecture is still delivered as one whole-suite document rather than partitioned into
+          levels with just-in-time Capability Architectures, so the pivot problem remains
+          (GUIDE:enabling-enterprise-agility §4.1, §4.3); and compliance checking in retrospectives
+          without a collaboration pattern, a backlog or MVAs is not the sprinting of architecture work
+          the guide describes (GUIDE:agile-sprints §3.3).
+      - key: C
+        points: 1
+        text: >-
+          Run every part of the work, including the identity mechanism, in the same two-week sprints
+          as the product teams so that the architects are seen to "work the way the teams work", and
+          let each team choose its own identity approach within a sprint, to be reconciled later.
+        why: >-
+          The guide is explicit that agility is not just sprints and that high-risk, large-scale,
+          quality-driven change belongs in the Robust style, nested within the agile programme
+          (GUIDE:enabling-enterprise-agility §4.7.1); letting teams pick identity mechanisms per sprint
+          recreates the incompatibility that created the architecture team, and irreversible decisions
+          should be made by the wider group (GUIDE:agile-sprints §5.4).
+      - key: D
+        points: 0
+        text: >-
+          Conclude that an enterprise architecture cannot coexist with fourteen autonomous sprint teams,
+          disband the architecture team's ADM work and rely on the product owners and the release train
+          to converge the products over time.
+        why: >-
+          The guides exist because the ADM can be applied in sprints and because architecture is what
+          maintains the link between business needs and agile solution delivery; the standard says
+          iteration is deep-rooted in the ADM and warns that agile delivery without architecture yields
+          products that cannot connect (GUIDE:agile-sprints §3.1, GUIDE:enabling-enterprise-agility §4.1).
+    refs: ["GUIDE:enabling-enterprise-agility §4.1", "GUIDE:enabling-enterprise-agility §4.4.3", "GUIDE:enabling-enterprise-agility §4.4.4", "GUIDE:enabling-enterprise-agility §4.7.1", "GUIDE:agile-sprints §3.3", "GUIDE:agile-sprints §3.3.4"]
+    open_book_hint: "Where to look: Series Guide Enabling Enterprise Agility, section 4.1 (three levels), 4.4 (levels and iterations, governance), 4.7.1 (delivery styles); Series Guide Applying the TOGAF ADM using Agile Sprints, section 3.3 (collaboration patterns, DORP, sprint zero), 4.4 (Phase G in sprints), 5.4 (governance and delegation)."
+    difficulty: 3
+    tags: [agile, sprints, architecture-levels, governance]
+    status: draft
+
+  - id: P8-106
+    unit: P8
+    objective: "P8.2"
+    lesson: P8/02_applying_the_risk_security_agile_and_digital_guides
+    scenario: |
+      Beacon Mutual is a regional mutual bank with 620,000 members, 90 branches and 2,100 staff. Its
+      board has been alarmed by a digital-only competitor that opened 40,000 accounts in the region
+      last year, and it has approved a "digital first" programme with a budget for the coming two
+      years. The Chief Executive, who is the sponsor, has been persuaded by a vendor that a cloud
+      banking platform with embedded machine-learning credit decisions and a conversational
+      assistant would let the bank "leapfrog" the competitor, and he wants the platform selected and
+      contracted within three months, with all branches and channels moved in one programme.
+
+      The Enterprise Architecture function is one architect and a manager, created a year ago; the
+      Preliminary Phase produced principles and a tailored method but no assessment of the bank's own
+      capabilities. The facts that have emerged in early conversations are uncomfortable. The core
+      banking system is thirty years old and the two people who understand its batch processes retire
+      next year. The IT department has never run a cloud workload; its change process is a quarterly
+      release. Branch managers run the bank's relationship model and see digital as a threat to their
+      roles. The Chief Financial Officer has funded the first year only and wants "a business case per
+      release". The Chief Risk Officer notes that the regulator has not yet published guidance on
+      machine-learning credit decisions and that the bank's model-risk policy does not cover them.
+      The Head of Retail is enthusiastic, has drafted a new mobile onboarding journey with a design
+      agency, and wants to start with it. Two board members have asked whether the bank should instead
+      partner with a technology provider, given the competitor's success.
+
+      The Chief Executive has asked the architecture manager to bring a recommendation to the next
+      board meeting on how the bank should approach the adoption of the digital technologies, what
+      should be assessed before the platform decision is made, and how the vision, the sponsor's
+      timetable and the bank's actual readiness should be reconciled. He has warned that he does not
+      want "a report that says no".
+    question: "Refer to the scenario. You have been asked to recommend how the bank should approach the adoption of the digital technologies and what should be assessed before the platform decision. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Recommend that the bank follow the Digital Technology Adoption guide's four steps before
+          contracting the platform. First, select and justify an adoption approach with the ABCD
+          framework, breadth of adoption against speed: given the bank's facts, an Avant-Garde approach
+          that lets one part of the bank, for example the mobile onboarding journey the Head of Retail
+          has drafted, adopt first and pass on the experience, or a Discreet approach that builds
+          competence gradually, rather than the Big-Bang the sponsor assumes. Second, perform a Digital
+          Technology Readiness Assessment with the key leaders through dialogue and consensus, using
+          the guide's questionnaire, across the foundational factors of vision, sponsorship and
+          direction, IT capability, culture, scope and scale, business rationale and implementation
+          approach, the impact factors of business-model adaptability, skills and competence,
+          technology maturity, ecosystem and governance and compliance, and the sustaining factors of
+          value realisation, policy and regulations and funding. Third, identify the factors needing
+          management attention and their consequences, which the scenario already signals in IT
+          capability, culture, skills, technology maturity of machine-learning credit decisions, and
+          policy and regulation. Fourth, address the foundational shortcomings first before evaluating
+          the rest, and use the assessment to initiate Phase A of the ADM so that the vision, the
+          stakeholders and the readiness output shape the architecture path, including the partner
+          option, with value realisation measured per release for the CFO.
+        why: >-
+          The guide makes the readiness assessment a prerequisite for adoption and the antidote to the
+          70 percent failure rate (GUIDE:digital-technology-adoption §2.2, §2.3, §2.4); the factors are
+          grouped as foundational, impact and sustaining (§4); the four steps are select the approach
+          with the ABCD framework, where no quadrant is better than another and the choice must be
+          justified, perform the assessment with key leaders, identify factors needing attention and
+          their consequences, and address shortcomings progressively, foundational first, because it is
+          futile to evaluate impact and sustaining factors when foundational ones are unmet (§5.1, §5.2,
+          §5.3, §5.4). The assessment should initiate the Architecture Vision phase and its output guides
+          the architecture path selected (§6). The answer gives the sponsor a route rather than a no.
+      - key: B
+        points: 3
+        text: >-
+          Recommend a Big-Bang adoption as the sponsor wants, but precede it with a readiness
+          assessment limited to IT capability and skills, since those are the obvious gaps, and plan
+          training and cloud recruitment into the first year so that the platform can be contracted on
+          schedule.
+        why: >-
+          Assessing readiness before contracting is right, but restricting it to two factors ignores
+          the guide's insistence that all factors be assessed with the leadership and that missing
+          foundational factors, here culture, business rationale and implementation approach as well as
+          IT capability, be addressed before the rest (§4, §5.2, §5.4); and the adoption approach is
+          chosen before, not after, the evidence, when the guide requires strong justification for the
+          approach selected (§5.1).
+      - key: C
+        points: 1
+        text: >-
+          Recommend that the bank start immediately with the Head of Retail's mobile onboarding
+          journey as a pilot, using the vendor's platform on a trial basis, and let the pilot's results
+          decide the wider adoption; skip the assessment because the pilot will reveal readiness in
+          practice.
+        why: >-
+          A pilot in one part of the bank resembles the Avant-Garde approach, but the guide treats the
+          adoption approach and the readiness assessment as separate, complementary steps; a pilot does
+          not assess sponsorship, governance and compliance, policy and regulations or funding, and the
+          machine-learning regulatory gap is a policy factor no pilot resolves (§5.1, §5.2, §4). Trial
+          use of an unassessed platform also pre-empts the platform decision the board asked about.
+      - key: D
+        points: 0
+        text: >-
+          Recommend that the platform be contracted within three months as the sponsor asks, since the
+          competitor's success proves the technology works and delay is the greater risk; readiness
+          issues can be handled by the vendor's implementation team.
+        why: >-
+          This is precisely the pattern the guide's failure examples describe: transformation for its
+          own sake, disconnected from an assessment of the enterprise's readiness and strategy, with
+          the guide warning that enterprises do not want to begin a large transformation without knowing
+          they have the resources to complete it (§2.2, §2.3). It also ignores the regulatory and
+          model-risk gap that no vendor can close.
+    refs: ["GUIDE:digital-technology-adoption §2.2", "GUIDE:digital-technology-adoption §4", "GUIDE:digital-technology-adoption §5.1", "GUIDE:digital-technology-adoption §5.2", "GUIDE:digital-technology-adoption §5.4", "GUIDE:digital-technology-adoption §6"]
+    open_book_hint: "Where to look: Series Guide Digital Technology Adoption, section 2.2 (what a readiness assessment is and why), 2.3 (why transformations fail), chapter 4 (foundational, impact and sustaining factors), chapter 5 (the four steps: ABCD approach, assessment, factors needing attention, addressing shortcomings), chapter 6 (alignment to the ADM, initiating Phase A)."
+    difficulty: 2
+    tags: [digital, readiness-assessment, adoption-approach]
+    status: draft

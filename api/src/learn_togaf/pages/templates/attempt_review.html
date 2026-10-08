@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Attempt {{ attempt.id }} review · Learn TOGAF{% endblock %}
-{% block heading %}Review · {{ attempt.exam | lower | capitalize }} {{ attempt.mode | lower }} #{{ attempt.id }}{% endblock %}
+{% block heading %}Review · {{ attempt.exam }} {{ attempt.mode | lower }} #{{ attempt.id }}{% endblock %}
 {% block header_actions %}
 <form method="post" action="/practice" class="inline">
   {% include "_csrf.html" %}
-  <input type="hidden" name="mode" value="{{ mode_label }}">
+  <input type="hidden" name="mode" value="{{ attempt.mode }}">
   <input type="hidden" name="seed" value="{{ attempt.seed }}">
+  <input type="hidden" name="exam" value="{{ attempt.exam }}">
   {% if attempt.mode == 'DRILL' %}
-    <input type="hidden" name="exam" value="{{ attempt.exam }}">
     {% if filters.phase %}<input type="hidden" name="phase" value="{{ filters.phase }}"><input type="hidden" name="kind" value="io">{% endif %}
     {% for unit in filters.units or [] %}<input type="hidden" name="units" value="{{ unit }}">{% endfor %}
     {% for objective in filters.objectives or [] %}<input type="hidden" name="objectives" value="{{ objective }}">{% endfor %}
@@ -19,9 +19,9 @@
 </form>
 <form method="post" action="/practice" class="inline">
   {% include "_csrf.html" %}
-  <input type="hidden" name="mode" value="{{ mode_label }}">
+  <input type="hidden" name="mode" value="{{ attempt.mode }}">
+  <input type="hidden" name="exam" value="{{ attempt.exam }}">
   {% if attempt.mode == 'DRILL' %}
-    <input type="hidden" name="exam" value="{{ attempt.exam }}">
     {% if filters.phase %}<input type="hidden" name="phase" value="{{ filters.phase }}"><input type="hidden" name="kind" value="io">{% endif %}
     {% for unit in filters.units or [] %}<input type="hidden" name="units" value="{{ unit }}">{% endfor %}
     {% for objective in filters.objectives or [] %}<input type="hidden" name="objectives" value="{{ objective }}">{% endfor %}
@@ -108,7 +108,7 @@
         {% if item.changed_from_correct %}<span class="badge badge-error badge-outline badge-sm">changed from correct</span>{% endif %}
         <span class="ml-auto">{{ item.points }} / {{ item.max_points }} pts · {{ item.seconds | duration }}</span>
       </div>
-      {% if item.question.exam == 'PRACTITIONER' %}
+      {% if item.question.scoring == 'gradient' %}
       <details class="text-sm"><summary class="cursor-pointer text-base-content/70">Scenario</summary><div class="prose-lesson bg-base-200/60 rounded p-3 mt-1">{{ item.question.stem_or_scenario | markdown }}</div></details>
       <div class="prose-lesson font-medium text-sm">{{ item.question.question_text | markdown }}</div>
       {% else %}
@@ -121,9 +121,9 @@
         <li class="flex items-start gap-2 p-1.5 rounded {% if is_correct %}bg-success/10{% elif is_chosen %}bg-error/10{% endif %}">
           <span class="font-mono font-semibold w-5">{{ option.key }}.</span>
           <span class="flex-1">{{ option.text }}
-            {% if item.question.exam == 'PRACTITIONER' %}<span class="badge badge-xs ml-1 {% if option.points == 5 %}badge-success{% elif option.points == 3 %}badge-info{% elif option.points == 1 %}badge-warning{% else %}badge-error{% endif %}">{{ option.points }} pts</span>{% endif %}
+            {% if item.question.scoring == 'gradient' %}<span class="badge badge-xs ml-1 {% if option.points == 5 %}badge-success{% elif option.points == 3 %}badge-info{% elif option.points == 1 %}badge-warning{% else %}badge-error{% endif %}">{{ option.points }} pts</span>{% endif %}
             {% if is_chosen %}<span class="badge badge-outline badge-xs ml-1">your answer</span>{% endif %}
-            {% if is_correct %}<span class="badge badge-success badge-xs ml-1">{% if item.question.exam == 'PRACTITIONER' %}best{% else %}correct{% endif %}</span>{% endif %}
+            {% if is_correct %}<span class="badge badge-success badge-xs ml-1">{% if item.question.scoring == 'gradient' %}best{% else %}correct{% endif %}</span>{% endif %}
             {% if option.why %}<span class="block text-xs text-base-content/70 mt-0.5">{{ option.why }}</span>{% endif %}
           </span>
         </li>

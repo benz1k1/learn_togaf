@@ -5,7 +5,7 @@
 <div class="flex flex-wrap items-center gap-2 text-sm">
   <span class="badge badge-neutral">{{ preview.format }}</span>
   <span class="font-medium">{{ preview.file_name }}</span>
-  <span>→ set <code>{{ preview.set_code }}</code> · {{ preview.name }} · {{ preview.exam | lower }}</span>
+  <span>→ set <code>{{ preview.set_code }}</code> · {{ preview.name }} · {{ preview.exam }}</span>
   <span class="ml-auto flex gap-1">
     <span class="badge badge-success">{{ preview.importable }} valid</span>
     <span class="badge {% if preview.errors %}badge-error{% else %}badge-ghost{% endif %}">{{ preview.errors | length }} invalid</span>

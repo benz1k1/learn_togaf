@@ -5,6 +5,10 @@ from typing import Any
 
 import orjson
 
+from learn_togaf.content.models import document_track
+
+TRACKS = ("TOGAF", "ARCHIMATE", "SABSA", "CROSSWALK")
+
 
 def _names(connection: sqlite3.Connection, ids: list[str]) -> list[dict[str, str]]:
     if not ids:
@@ -21,16 +25,26 @@ def _shape(connection: sqlite3.Connection, row: sqlite3.Row) -> dict[str, Any]:
     data = dict(row)
     data["confusable_with"] = _names(connection, orjson.loads(row["confusable_with"]))
     data["objectives"] = orjson.loads(row["objectives"])
+    data["track"] = document_track(row["document"])
     return data
 
 
-def search(connection: sqlite3.Connection, query: str) -> list[dict[str, Any]]:
+def search(connection: sqlite3.Connection, query: str, track: str = "") -> list[dict[str, Any]]:
+    """Terms matching the query; ``track`` keeps one framework's terms (by the document they cite)."""
     needle = f"%{query.strip()}%"
     rows = connection.execute(
         "SELECT * FROM glossary_term WHERE term LIKE ? OR definition LIKE ? ORDER BY term COLLATE NOCASE",
         (needle, needle),
     ).fetchall()
-    return [_shape(connection, row) for row in rows]
+    shaped = [_shape(connection, row) for row in rows]
+    return [term for term in shaped if not track or term["track"] == track]
+
+
+def track_counts(connection: sqlite3.Connection) -> dict[str, int]:
+    counts = dict.fromkeys(TRACKS, 0)
+    for row in connection.execute("SELECT document FROM glossary_term"):
+        counts[document_track(row["document"])] += 1
+    return counts
 
 
 def term(connection: sqlite3.Connection, term_id: str) -> dict[str, Any] | None:

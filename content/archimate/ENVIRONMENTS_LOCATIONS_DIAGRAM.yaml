@@ -1,0 +1,37 @@
+# Northgate Bank — Environments and Locations Diagram (Phase D) as a Physical view: each site is
+# a Location (drawn as a group) holding a Facility that aggregates the Nodes of each environment.
+id: ENVIRONMENTS_LOCATIONS_DIAGRAM
+title: "Northgate Bank — Environments and Locations Diagram as a Physical view"
+viewpoint: Physical
+grid: {gap_y: 64}
+groups:
+  - {id: loc_primary, type: location, name: "Head Office — primary data centre (in-country)", from: [0, 1], to: [4, 2]}
+  - {id: loc_dr, type: location, name: "Operations Centre — DR data centre", from: [0, 3], to: [1, 4]}
+  - {id: loc_cloud, type: location, name: "Cloud region eu-west (in-country)", from: [2, 3], to: [3, 4]}
+elements:
+  - {id: f_primary, type: facility, name: "Primary DC hall: 6 x R760, SAN 120 TB, MPLS and internet ingress", col: 0, row: 1, w: 5}
+  - {id: e_link_a, type: equipment, name: "Card network link termination A", col: 4, row: 2}
+  - {id: n_core_prod, type: node, name: "Core Banking — production", col: 0, row: 2}
+  - {id: n_switch_prod, type: node, name: "Card Switch — production", col: 1, row: 2}
+  - {id: n_mobile_prod, type: node, name: "Mobile backend — production", col: 2, row: 2}
+  - {id: n_preprod, type: node, name: "Pre-production: Core Banking, Card Switch", col: 3, row: 2}
+  - {id: f_dr, type: facility, name: "DR hall: standby, replicated", col: 0, row: 3}
+  - {id: e_link_b, type: equipment, name: "Card network link termination B (dual-homing)", col: 1, row: 3}
+  - {id: n_core_dr, type: node, name: "Core Banking — production standby", col: 0, row: 4}
+  - {id: n_switch_dr, type: node, name: "Card Switch — production standby", col: 1, row: 4}
+  - {id: n_cloud, type: node, name: "Container platform — development and test", col: 2, row: 3, w: 2}
+  - {id: n_mobile_dev, type: node, name: "Mobile backend — dev / test", col: 2, row: 4}
+  - {id: n_fraud_dev, type: node, name: "Fraud Engine — dev / test", col: 3, row: 4}
+notes:
+  - {text: "Three sites as Locations. Solid production, standby and pre-production nodes are aggregated by the facility that houses them; the cloud region hosts development and test only. Users (Head Office, 42 branches, customers anywhere) are on the TOGAF drawing, not here.", col: 0, row: 0, w: 5, h: 1}
+relations:
+  - {from: f_primary, to: n_core_prod, type: aggregation}
+  - {from: f_primary, to: n_switch_prod, type: aggregation}
+  - {from: f_primary, to: n_mobile_prod, type: aggregation}
+  - {from: f_primary, to: n_preprod, type: aggregation}
+  - {from: f_primary, to: e_link_a, type: aggregation}
+  - {from: f_dr, to: n_core_dr, type: aggregation}
+  - {from: f_dr, to: n_switch_dr, type: aggregation}
+  - {from: f_dr, to: e_link_b, type: aggregation}
+  - {from: n_cloud, to: n_mobile_dev, type: aggregation}
+  - {from: n_cloud, to: n_fraud_dev, type: aggregation}

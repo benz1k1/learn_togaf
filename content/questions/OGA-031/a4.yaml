@@ -1,0 +1,880 @@
+# A4 Business Layer drill bank (learn_sabsa_archimate.md §4.3). Every question is original,
+# cites the entailing ArchiMate 3.2 section, and is status: draft until reviewed. Ids A4-101 upward.
+code: A4_BANK
+exam: OGA-031
+name: A4 Business Layer bank
+kind: DRILL
+source: authored
+questions:
+  # ------------------------------------------------------------ A4.1 active structure
+  - id: A4-101
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "To which aspect of the ArchiMate language does the Business Role element belong?"
+    options:
+      - {key: A, text: "Behaviour", why: "Behaviour is what happens; a role is a responsibility for performing behaviour, which makes it active structure."}
+      - {key: B, text: "Active structure", correct: true}
+      - {key: C, text: "Passive structure", why: "Passive structure is what behaviour acts on, such as a business object."}
+      - {key: D, text: "Motivation", why: "Motivation elements such as Goal and Driver are not part of the Business Layer at all."}
+    explanation: "Business actor, role, collaboration and interface are the active-structure elements of the Business Layer; a role is the responsibility to which an actor is assigned."
+    refs: ["ARCHIMATE §8.2", "ARCHIMATE §8.2.2"]
+    difficulty: 1
+    tags: [business, aspect, role]
+  - id: A4-102
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "Which Business Layer element represents a business entity that is capable of performing behaviour?"
+    options:
+      - {key: A, text: "Business Role", why: "A role is the responsibility for behaviour, not the entity that performs it."}
+      - {key: B, text: "Business Actor", correct: true}
+      - {key: C, text: "Business Function", why: "A function is behaviour, not an entity that performs behaviour."}
+      - {key: D, text: "Business Interface", why: "An interface is a point of access to services, not a performer of behaviour."}
+    explanation: "The specification defines a business actor as a business entity capable of performing behaviour; it may be a person, a department or an external party such as a customer."
+    refs: ["ARCHIMATE §8.2.1"]
+    difficulty: 1
+    tags: [business, definition, actor]
+  - id: A4-103
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "A modeller shows the specific company 'ABC Corporation' taking on the responsibility 'Supplier'. Which is the correct representation?"
+    options:
+      - {key: A, text: "Business actor 'ABC Corporation' assigned to business role 'Supplier'", correct: true}
+      - {key: B, text: "Business role 'ABC Corporation' assigned to business actor 'Supplier'", why: "The actor is the entity and the role is the responsibility; this reverses both element types."}
+      - {key: C, text: "Business actor 'ABC Corporation' realizes business role 'Supplier'", why: "Realization never links two active-structure elements; the actor is assigned to the role."}
+      - {key: D, text: "Business collaboration 'ABC Corporation' aggregates business role 'Supplier'", why: "A single company is an actor, not a collaboration, and taking on a responsibility is assignment."}
+    explanation: "The specification uses exactly this example: a specific or generic actor is assigned to carry the responsibility depicted as the 'Supplier' role."
+    refs: ["ARCHIMATE §8.2.2"]
+    difficulty: 2
+    tags: [business, actor, role, assignment]
+  - id: A4-104
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "Which statement about a Business Collaboration is correct?"
+    options:
+      - {key: A, text: "It must have a permanent, official status in the organisation", why: "Unlike a department, a collaboration need not have official or permanent status."}
+      - {key: B, text: "It aggregates two or more business internal active structure elements that work together", correct: true}
+      - {key: C, text: "It is a behaviour element that describes collective work", why: "The collective behaviour is the business interaction; the collaboration is active structure."}
+      - {key: D, text: "It can aggregate at most one business role and one business actor", why: "It aggregates two or more roles, actors or other collaborations, in any combination."}
+    explanation: "A business collaboration is an aggregate of two or more internal active-structure elements — roles, actors or collaborations — that perform collective behaviour, and it may be temporary."
+    refs: ["ARCHIMATE §8.2.3"]
+    difficulty: 2
+    tags: [business, collaboration]
+  - id: A4-105
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "Which element models the channel — such as telephone, web or local office — through which a business service is made available?"
+    options:
+      - {key: A, text: "Business Service", why: "The service is the behaviour offered; the channel through which it is reached is the interface."}
+      - {key: B, text: "Business Interface", correct: true}
+      - {key: C, text: "Business Collaboration", why: "A collaboration is a grouping of actors and roles, not an access point."}
+      - {key: D, text: "Representation", why: "A representation is a passive document or message, not a channel."}
+    explanation: "A business interface is the point of access where business services are made available to the environment; it is often called a channel."
+    refs: ["ARCHIMATE §8.2.4"]
+    difficulty: 1
+    tags: [business, interface]
+  - id: A4-106
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "Which relationship connects a Business Interface to the Business Service it exposes?"
+    options:
+      - {key: A, text: "Realization", why: "A service is realized by a process, function or interaction, not by an interface."}
+      - {key: B, text: "Serving", why: "An interface may serve a role; the link to the service it exposes is assignment."}
+      - {key: C, text: "Assignment", correct: true}
+      - {key: D, text: "Access", why: "Access links behaviour to passive structure; neither end here is passive."}
+    explanation: "A business interface may be assigned to one or more business services, meaning those services are exposed through that interface."
+    refs: ["ARCHIMATE §8.2.4"]
+    difficulty: 2
+    tags: [business, interface, assignment]
+  - id: A4-107
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "Which of the following can be modelled as a Business Actor?"
+    options:
+      - {key: A, text: "Only individual employees of the enterprise", why: "Actors include groups such as departments and business units, and outside parties."}
+      - {key: B, text: "Only organisational units inside the enterprise", why: "Individuals and external parties such as customers are actors too."}
+      - {key: C, text: "Individuals, organisational units, and external parties such as customers and partners", correct: true}
+      - {key: D, text: "Responsibilities such as 'approver' or 'supplier'", why: "A responsibility is a business role, not an actor."}
+    explanation: "Actors may be individuals, departments and business units, and may also be entities outside the organisation such as customers and partners."
+    refs: ["ARCHIMATE §8.2", "ARCHIMATE §8.2.1"]
+    difficulty: 1
+    tags: [business, actor]
+  - id: A4-108
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "In the standard notation, which icon marks the Business Actor element?"
+    options:
+      - {key: A, text: "A stick figure", correct: true}
+      - {key: B, text: "A cylinder lying on its side", why: "That icon marks the Business Role."}
+      - {key: C, text: "Two overlapping circles", why: "That icon marks a Collaboration."}
+      - {key: D, text: "A lollipop shape", why: "That icon marks an Interface."}
+    explanation: "The actor uses the stick-figure icon; role, collaboration and interface use the cylinder, overlapping circles and lollipop respectively."
+    refs: ["ARCHIMATE §8.2.1", "ARCHIMATE §8.6"]
+    difficulty: 1
+    tags: [business, notation, actor]
+  - id: A4-109
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "Which Business Layer element is best suited to modelling a temporary provider network of several companies working together in a B2B arrangement?"
+    options:
+      - {key: A, text: "Business Actor", why: "A single actor cannot express that several parties work together on collective behaviour."}
+      - {key: B, text: "Business Collaboration", correct: true}
+      - {key: C, text: "Business Interface", why: "An interface is an access point, not a grouping of parties."}
+      - {key: D, text: "Product", why: "A product is a bundle of services and a contract, not a grouping of actors."}
+    explanation: "The specification names B2B interactions between organisations such as provider networks as a case where the possibly temporary business collaboration is especially useful."
+    refs: ["ARCHIMATE §8.2.3"]
+    difficulty: 2
+    tags: [business, collaboration, which-element]
+  - id: A4-110
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "According to the specification, which relationship may exist between a Business Interface and a Business Role?"
+    options:
+      - {key: A, text: "The interface may be part of the role through composition", correct: true}
+      - {key: B, text: "The interface realizes the role", why: "Realization does not link an interface to a role."}
+      - {key: C, text: "The role accesses the interface", why: "Access links behaviour to passive structure, and neither element is passive."}
+      - {key: D, text: "The role triggers the interface", why: "Triggering is a dynamic relationship between behaviour elements or events."}
+    explanation: "A business interface may be part of a business role or actor through composition; it may also serve a role."
+    refs: ["ARCHIMATE §8.2.2", "ARCHIMATE §8.2.4"]
+    difficulty: 2
+    tags: [business, interface, role, composition]
+  - id: A4-111
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "Which statement about naming Business Layer active-structure elements follows the specification's guidance?"
+    options:
+      - {key: A, text: "An actor's name should be a verb in the perfect tense", why: "Perfect-tense verbs are for events; actors take nouns."}
+      - {key: B, text: "A role's name should be an '-ing' verb", why: "'-ing' verbs are for services; roles take nouns."}
+      - {key: C, text: "Actor, role and interface names should preferably be nouns", correct: true}
+      - {key: D, text: "A collaboration must always be named", why: "The specification says leaving a collaboration unnamed is rather common."}
+    explanation: "Actor, role, collaboration and interface names should preferably be nouns, and a collaboration is often left unnamed."
+    refs: ["ARCHIMATE §8.2.1", "ARCHIMATE §8.2.3"]
+    difficulty: 2
+    tags: [business, naming]
+  - id: A4-112
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "Which of the following is NOT one of the three internal active structure elements of the Business Layer?"
+    options:
+      - {key: A, text: "Business Actor", why: "Actor is one of the three internal active-structure elements."}
+      - {key: B, text: "Business Role", why: "Role is one of the three internal active-structure elements."}
+      - {key: C, text: "Business Interface", correct: true}
+      - {key: D, text: "Business Collaboration", why: "Collaboration is one of the three internal active-structure elements."}
+    explanation: "Actor, role and collaboration are the internal active-structure elements; the interface is the external active-structure element."
+    refs: ["ARCHIMATE §8.2"]
+    difficulty: 2
+    tags: [business, negative, active-structure]
+  - id: A4-113
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "An actor assigned to a business role is responsible for what, according to the specification?"
+    options:
+      - {key: A, text: "Personally performing every activity of the role's processes", why: "The actor may also delegate and manage the performance."}
+      - {key: B, text: "Ensuring the behaviour is carried out, by performing it or by delegating and managing it", correct: true}
+      - {key: C, text: "Defining the business services the role exposes", why: "Services are realized by behaviour and exposed by interfaces, not defined by the actor."}
+      - {key: D, text: "Nothing; assignment only records an organisational chart position", why: "Assignment to a role carries responsibility for the role's behaviour."}
+    explanation: "An actor assigned to a role must ensure the corresponding behaviour happens, either by doing it or by delegating and managing its performance."
+    refs: ["ARCHIMATE §8.2.2"]
+    difficulty: 2
+    tags: [business, role, assignment]
+  - id: A4-114
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "In which element may a Business Actor be aggregated to show where it is situated?"
+    options:
+      - {key: A, text: "Location", correct: true}
+      - {key: B, text: "Facility", why: "A facility is a technology-layer physical element; the specification says an actor may be aggregated in a location."}
+      - {key: C, text: "Business Interface", why: "An interface is an access point and does not aggregate actors."}
+      - {key: D, text: "Product", why: "A product aggregates services and passive elements, not actors."}
+    explanation: "The specification states that a business actor can be aggregated in a location."
+    refs: ["ARCHIMATE §8.2.1"]
+    difficulty: 2
+    tags: [business, actor, location]
+  - id: A4-115
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "In the specification's contact-centre example, 'High-Risk Claims Adjudication' groups the roles 'Specialist' and 'Customer Service Representative'. Which element is it?"
+    options:
+      - {key: A, text: "Business Interaction", why: "The interaction is the behaviour; the grouping of the two roles is the collaboration."}
+      - {key: B, text: "Business Collaboration", correct: true}
+      - {key: C, text: "Business Actor", why: "An actor is a single entity, not a grouping of roles."}
+      - {key: D, text: "Business Function", why: "A function is behaviour grouped by skills, not a grouping of roles."}
+    explanation: "A collaboration of two business roles is the example's business collaboration; the behaviour it performs would be a business interaction."
+    refs: ["ARCHIMATE §8.2", "ARCHIMATE §8.2.3"]
+    difficulty: 2
+    tags: [business, collaboration, example]
+  - id: A4-116
+    unit: A4
+    objective: "A4.1"
+    lesson: A4/01_business_active_structure
+    stem: "Which relationship is used when one Business Actor, such as a contact centre, is made up of several employee actors?"
+    options:
+      - {key: A, text: "Assignment", why: "Assignment links structure to behaviour or an actor to a role, not a whole to its parts."}
+      - {key: B, text: "Composition", correct: true}
+      - {key: C, text: "Realization", why: "Realization links a concrete element to a more abstract one, not parts to a whole."}
+      - {key: D, text: "Serving", why: "Serving is a dependency; it does not express part-whole structure."}
+    explanation: "Every element may be composed of elements of its own type; the example's contact centre actor is composed of three employee actors."
+    refs: ["ARCHIMATE §8.1", "ARCHIMATE §8.2"]
+    difficulty: 1
+    tags: [business, actor, composition]
+  # ------------------------------------------------------------ A4.2 behaviour
+  - id: A4-117
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "Which element represents a sequence of business behaviours that achieves a specific result, such as a defined set of products or services?"
+    options:
+      - {key: A, text: "Business Function", why: "A function groups behaviour by criteria such as skills; it is not defined as a sequence."}
+      - {key: B, text: "Business Process", correct: true}
+      - {key: C, text: "Business Service", why: "A service is externally exposed behaviour, not the internal sequence that realizes it."}
+      - {key: D, text: "Business Event", why: "An event is an instantaneous state change."}
+    explanation: "The business process is defined as a sequence of behaviours achieving a specific result."
+    refs: ["ARCHIMATE §8.3.1"]
+    difficulty: 1
+    tags: [business, definition, process]
+  - id: A4-118
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "What is the key criterion that distinguishes a Business Function from a Business Process?"
+    options:
+      - {key: A, text: "A function is performed by an application, a process by people", why: "Both are business behaviour performed by roles; automation is not the distinction."}
+      - {key: B, text: "A function groups behaviour by required resources, skills or competencies; a process groups it by a sequence or flow", correct: true}
+      - {key: C, text: "A function is external behaviour, a process internal", why: "Both are internal behaviour; the service is the external behaviour."}
+      - {key: D, text: "A function cannot realize a service, a process can", why: "Both may realize business services."}
+    explanation: "A process groups behaviour by the sequence needed to realize a product or service; a function groups it by required resources, skills, competencies or knowledge."
+    refs: ["ARCHIMATE §8.3", "ARCHIMATE §8.3.2"]
+    difficulty: 2
+    tags: [business, process, function, confusable]
+  - id: A4-119
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "A company policy says two people must always be involved in adjudicating high-risk claims. Which element models this behaviour?"
+    options:
+      - {key: A, text: "Business Process", why: "A process is performed by a single role; the requirement for two parties makes it collective behaviour."}
+      - {key: B, text: "Business Function", why: "A function is also single-role internal behaviour."}
+      - {key: C, text: "Business Interaction", correct: true}
+      - {key: D, text: "Business Collaboration", why: "The collaboration is the grouping of the two roles; the behaviour they perform is the interaction."}
+    explanation: "A business interaction is a unit of collective behaviour performed by two or more actors, roles or a collaboration; the specification uses exactly this claims example."
+    refs: ["ARCHIMATE §8.3", "ARCHIMATE §8.3.3"]
+    difficulty: 2
+    tags: [business, interaction, which-element]
+  - id: A4-120
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "Which statement about a Business Event is correct?"
+    options:
+      - {key: A, text: "It has a duration during which the organisation responds", why: "An event is instantaneous; it has no duration."}
+      - {key: B, text: "It is instantaneous and may trigger or be raised by a process, function or interaction", correct: true}
+      - {key: C, text: "It can only originate from outside the organisation", why: "Events may also be internal, generated by other processes."}
+      - {key: D, text: "A business role is assigned to it", why: "Roles are assigned to processes and functions, not to events."}
+    explanation: "A business event is a state change with no duration; it may trigger or be triggered by processes, functions and interactions, and may come from inside or outside."
+    refs: ["ARCHIMATE §8.3.4"]
+    difficulty: 2
+    tags: [business, event]
+  - id: A4-121
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "Which elements may realize a Business Service?"
+    options:
+      - {key: A, text: "Business role, actor or collaboration", why: "Active-structure elements are assigned to behaviour; they do not realize services."}
+      - {key: B, text: "Business process, function or interaction", correct: true}
+      - {key: C, text: "Business interface only", why: "An interface is assigned to a service to expose it; it does not realize it."}
+      - {key: D, text: "Business event", why: "An event triggers behaviour; it does not realize a service."}
+    explanation: "The three internal behaviour elements — process, function and interaction — may realize a business service."
+    refs: ["ARCHIMATE §8.3.5"]
+    difficulty: 2
+    tags: [business, service, realization]
+  - id: A4-122
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "What does the specification say an ArchiMate Business Process shows about the flow of activities?"
+    options:
+      - {key: A, text: "It lists the flow of activities in detail, replacing BPMN", why: "ArchiMate depicts the existence of processes, not their detailed flow; BPMN is used for that."}
+      - {key: B, text: "It depicts the existence of the process and its relationships, but not the detailed activity flow", correct: true}
+      - {key: C, text: "It can only model end-to-end processes, not workflows", why: "High-level, end-to-end, macro flows and workflows all use the same element."}
+      - {key: D, text: "It must be decomposed to atomic tasks before it can be used in a model", why: "No such decomposition is required."}
+    explanation: "An ArchiMate model shows that processes exist and how they relate; the detailed activity flow is left to a process design language such as BPMN."
+    refs: ["ARCHIMATE §8.3.1"]
+    difficulty: 2
+    tags: [business, process, bpmn]
+  - id: A4-123
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "A Business Function differs from a Capability in which way?"
+    options:
+      - {key: A, text: "A function is potential behaviour independent of the organisation; a capability is current day-to-day activity", why: "This is reversed."}
+      - {key: B, text: "A function describes current, organisation-aligned activity; a capability represents potential behaviour independent of the organisation structure", correct: true}
+      - {key: C, text: "There is no difference; the two are synonyms", why: "They are distinct elements; a function may realize a capability."}
+      - {key: D, text: "A capability is a Business Layer element; a function is a strategy element", why: "The layers are the other way round."}
+    explanation: "Business functions can realize capabilities: the function is aligned with the organisation and describes what it does today; the capability is potential behaviour independent of implementation."
+    refs: ["ARCHIMATE §8.3.2"]
+    difficulty: 3
+    tags: [business, function, capability, confusable]
+  - id: A4-124
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "In the specification's example, the function 'Claims Administration' is composed of several processes and an interaction, and realizes 'Claims Processing'. What element type is 'Claims Processing'?"
+    options:
+      - {key: A, text: "Business Process", why: "The processes are the parts of the function; what the function realizes is a service."}
+      - {key: B, text: "Business Service", correct: true}
+      - {key: C, text: "Business Interface", why: "An interface exposes a service; it is not what a function realizes."}
+      - {key: D, text: "Product", why: "A product aggregates services; it is not realized directly by a function."}
+    explanation: "Internal behaviour realizes external behaviour: the 'Claims Administration' function realizes the 'Claims Processing' business service."
+    refs: ["ARCHIMATE §8.3"]
+    difficulty: 2
+    tags: [business, service, example]
+  - id: A4-125
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "According to the naming guidance, which is the preferred form for a Business Event name?"
+    options:
+      - {key: A, text: "A noun, e.g. 'claim'", why: "Nouns are for structure elements."}
+      - {key: B, text: "A verb in the perfect tense, e.g. 'claim received'", correct: true}
+      - {key: C, text: "A verb ending in '-ing', e.g. 'claim processing'", why: "'-ing' verbs are the guidance for services."}
+      - {key: D, text: "A verb-noun combination, e.g. 'adjudicate claim'", why: "That is the guidance for processes."}
+    explanation: "Event names should preferably be verbs in the perfect tense, such as 'claim received'."
+    refs: ["ARCHIMATE §8.3.4"]
+    difficulty: 1
+    tags: [business, naming, event]
+  - id: A4-126
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "Which of the following may serve a Business Process?"
+    options:
+      - {key: A, text: "Business, application and technology services", correct: true}
+      - {key: B, text: "Business services only", why: "Application and technology services may also serve a business process."}
+      - {key: C, text: "Business roles", why: "A role is assigned to a process, not serving it."}
+      - {key: D, text: "Business objects", why: "A process accesses business objects; they do not serve it."}
+    explanation: "A business process may be served by business, application or technology services."
+    refs: ["ARCHIMATE §8.3.1"]
+    difficulty: 2
+    tags: [business, process, serving]
+  - id: A4-127
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "How is the purpose of a Business Service, in terms of the utility it delivers, expressed in a model?"
+    options:
+      - {key: A, text: "As a Goal element that the service realizes", why: "The specification names value, not goal, as the element carrying the service's purpose."}
+      - {key: B, text: "As a Value element associated with the service", correct: true}
+      - {key: C, text: "As a Contract aggregated in the service", why: "A contract is aggregated in a product, not a service."}
+      - {key: D, text: "As a Requirement the service satisfies", why: "The purpose is modelled as an associated value."}
+    explanation: "A business service has a purpose stating its utility in terms of the value it delivers, modelled as a value element associated with the service."
+    refs: ["ARCHIMATE §8.3.5"]
+    difficulty: 2
+    tags: [business, service, value]
+  - id: A4-128
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "An automated business process, with no human role performing it, is best related to the Application Layer how?"
+    options:
+      - {key: A, text: "It is realized by an application process", correct: true}
+      - {key: B, text: "It is assigned to an application component", why: "The specification says an automated business process can be realized by an application process, to which the component is assigned."}
+      - {key: C, text: "It is replaced by an application function and removed from the Business Layer", why: "The business process remains; realization links it downward."}
+      - {key: D, text: "It accesses an application service", why: "Access is for passive structure; services serve a process."}
+    explanation: "A role is assigned to a process to perform it manually; an automated business process can be realized by an application process."
+    refs: ["ARCHIMATE §8.3.1"]
+    difficulty: 3
+    tags: [business, process, cross-layer]
+  - id: A4-129
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "Which Business Layer behaviour element is described as externally visible and independent of how the functionality is realized internally?"
+    options:
+      - {key: A, text: "Business Process", why: "A process is internal behaviour, a black box to the consumer."}
+      - {key: B, text: "Business Function", why: "A function is internal behaviour."}
+      - {key: C, text: "Business Service", correct: true}
+      - {key: D, text: "Business Interaction", why: "An interaction is internal to the collaboration that performs it."}
+    explanation: "The business service models externally visible behaviour that offers added value regardless of how it is realized inside the organisation."
+    refs: ["ARCHIMATE §8.3"]
+    difficulty: 1
+    tags: [business, service, external]
+  - id: A4-130
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "From whose perspective is a Business Interaction considered internal behaviour?"
+    options:
+      - {key: A, text: "Each participating role", why: "For each participating role the interaction is external behaviour."}
+      - {key: B, text: "The collaboration as a whole", correct: true}
+      - {key: C, text: "The customer of the service it realizes", why: "The customer sees only the service."}
+      - {key: D, text: "The application component that supports it", why: "Application support is not the perspective the specification uses."}
+    explanation: "Interactions are external from the perspective of the roles participating in the collaboration, but internal to the collaboration as a whole."
+    refs: ["ARCHIMATE §8.3"]
+    difficulty: 3
+    tags: [business, interaction]
+  - id: A4-131
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "A business process that must run on the first Monday of every month is best modelled with what?"
+    options:
+      - {key: A, text: "A business event with a time attribute that triggers the process", correct: true}
+      - {key: B, text: "A business function named 'monthly run'", why: "A function groups behaviour by skills; it does not model a schedule."}
+      - {key: C, text: "A constraint on the process", why: "A schedule is modelled as a timed event, not a motivation constraint."}
+      - {key: D, text: "A business interface that serves the process monthly", why: "An interface is an access point, not a timer."}
+    explanation: "A business event may carry a time attribute denoting when it happens, which is how recurring schedules such as 'every first Monday' are modelled."
+    refs: ["ARCHIMATE §8.3.4"]
+    difficulty: 2
+    tags: [business, event, time]
+  - id: A4-132
+    unit: A4
+    objective: "A4.2"
+    lesson: A4/02_business_behaviour
+    stem: "Which of the following is NOT one of the internal behaviour elements of the Business Layer?"
+    options:
+      - {key: A, text: "Business Process", why: "Process is an internal behaviour element."}
+      - {key: B, text: "Business Function", why: "Function is an internal behaviour element."}
+      - {key: C, text: "Business Interaction", why: "Interaction is an internal behaviour element."}
+      - {key: D, text: "Business Service", correct: true}
+    explanation: "Process, function and interaction are the three internal behaviour elements; the service is the external behaviour element."
+    refs: ["ARCHIMATE §8.3"]
+    difficulty: 1
+    tags: [business, negative, behaviour]
+  # ------------------------------------------------------------ A4.3 passive structure and product
+  - id: A4-133
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "To which aspect does the Business Object element belong?"
+    options:
+      - {key: A, text: "Active structure", why: "Active structure performs behaviour; a business object is acted upon."}
+      - {key: B, text: "Behaviour", why: "A business object never triggers or performs behaviour."}
+      - {key: C, text: "Passive structure", correct: true}
+      - {key: D, text: "Composite", why: "The composite element of the Business Layer is the product."}
+    explanation: "Business objects are the passive-structure elements manipulated by behaviour such as processes and functions."
+    refs: ["ARCHIMATE §8.4", "ARCHIMATE §8.4.1"]
+    difficulty: 1
+    tags: [business, aspect, object]
+  - id: A4-134
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "Which element represents a perceptible form — such as a document or message — of the information carried by a business object?"
+    options:
+      - {key: A, text: "Data Object", why: "A data object is data structured for automated processing, in the Application Layer."}
+      - {key: B, text: "Representation", correct: true}
+      - {key: C, text: "Artifact", why: "An artifact is a technology-layer file, not a business-level perceptible form."}
+      - {key: D, text: "Contract", why: "A contract is an agreement, a specialization of business object."}
+    explanation: "A representation is the perceptible carrier of a business object's information, classifiable by medium or format."
+    refs: ["ARCHIMATE §8.4.3"]
+    difficulty: 1
+    tags: [business, representation, definition]
+  - id: A4-135
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "Which relationship connects a Business Process to the Business Object it creates or updates?"
+    options:
+      - {key: A, text: "Association", why: "Association is the weakest relationship; the specification states that behaviour accesses objects."}
+      - {key: B, text: "Access", correct: true}
+      - {key: C, text: "Flow", why: "Flow is a dynamic relationship between behaviour elements."}
+      - {key: D, text: "Assignment", why: "Assignment links active structure to behaviour."}
+    explanation: "Business objects may be accessed — created, read or written — by a process, function, interaction, event or service."
+    refs: ["ARCHIMATE §8.4.1"]
+    difficulty: 1
+    tags: [business, object, access]
+  - id: A4-136
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "Which statement about Contract is correct?"
+    options:
+      - {key: A, text: "It is a specialization of Business Object and may be aggregated in a Product", correct: true}
+      - {key: B, text: "It is a specialization of Representation", why: "A contract specializes business object, not representation."}
+      - {key: C, text: "It can only model legally binding agreements", why: "It covers informal agreements and SLAs as well."}
+      - {key: D, text: "It is a behaviour element that governs service quality", why: "It is passive structure; it specifies rights and obligations."}
+    explanation: "A contract specializes business object, may be or include an SLA, and may additionally have an aggregation relationship with a product."
+    refs: ["ARCHIMATE §8.4.2"]
+    difficulty: 2
+    tags: [business, contract]
+  - id: A4-137
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "A Business Object may be realized by which of the following?"
+    options:
+      - {key: A, text: "A business process", why: "A process accesses a business object; it does not realize it."}
+      - {key: B, text: "A representation or a data object", correct: true}
+      - {key: C, text: "A business role", why: "Active structure does not realize passive structure."}
+      - {key: D, text: "A product", why: "A product aggregates business objects; it does not realize them."}
+    explanation: "A business object may be realized by a representation, by a data object, or by both."
+    refs: ["ARCHIMATE §8.4.1"]
+    difficulty: 2
+    tags: [business, object, realization]
+  - id: A4-138
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "Which element represents a coherent collection of services and/or passive structure elements, accompanied by a contract, offered as a whole to customers?"
+    options:
+      - {key: A, text: "Business Service", why: "A service is one unit of behaviour, not the bundle with a contract."}
+      - {key: B, text: "Product", correct: true}
+      - {key: C, text: "Business Collaboration", why: "A collaboration groups active structure, not services and a contract."}
+      - {key: D, text: "Value Stream", why: "A value stream is a strategy element, not a customer-facing bundle."}
+    explanation: "This is the definition of the product, the Business Layer's one composite element."
+    refs: ["ARCHIMATE §8.5.1"]
+    difficulty: 1
+    tags: [business, product, definition]
+  - id: A4-139
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "Which of the following may a Product aggregate or compose?"
+    options:
+      - {key: A, text: "Business processes that realize its services", why: "Processes are not in the list; they realize the services that the product aggregates."}
+      - {key: B, text: "Business, application and technology services, business and data objects, artifacts, material and a contract", correct: true}
+      - {key: C, text: "Business services and a contract only", why: "Products may also contain application and technology services and passive elements from other layers."}
+      - {key: D, text: "Business actors who deliver the product", why: "Actors are active structure and are not aggregated in a product."}
+    explanation: "A product may aggregate or compose services from all three core layers, business and data objects, technology passive elements and a contract."
+    refs: ["ARCHIMATE §8.5.1"]
+    difficulty: 3
+    tags: [business, product, aggregation]
+  - id: A4-140
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "Why does a Business Object usually model a type rather than an instance?"
+    options:
+      - {key: A, text: "Because the language cannot model instances at all", why: "Singleton types and occasionally actual instances can be modelled."}
+      - {key: B, text: "Because types are what matter at the Enterprise Architecture level of description", correct: true}
+      - {key: C, text: "Because business objects are always realized by database tables", why: "Realization by artifacts is not the reason; the type focus is an EA-level choice."}
+      - {key: D, text: "Because only data objects may model instances", why: "Data objects also model types."}
+    explanation: "The language focuses on types, comparable to UML classes, because that is most relevant at EA level; only singleton types occasionally stand for instances."
+    refs: ["ARCHIMATE §8.4.1", "ARCHIMATE §3.6"]
+    difficulty: 2
+    tags: [business, object, types]
+  - id: A4-141
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "In the specification's example the business object 'Claim' is realized by 'Submission Form', 'Claim File Summary' and 'Claim Letter'. What element type are these three?"
+    options:
+      - {key: A, text: "Data Object", why: "They are perceptible business documents, not application-level data structures."}
+      - {key: B, text: "Representation", correct: true}
+      - {key: C, text: "Artifact", why: "Artifacts are technology-layer files."}
+      - {key: D, text: "Contract", why: "A contract is an agreement, and none of these is one."}
+    explanation: "The three are physical representations of the 'Claim' business object at different stages of the process."
+    refs: ["ARCHIMATE §8.4"]
+    difficulty: 2
+    tags: [business, representation, example]
+  - id: A4-142
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "Which motivation element may be associated with a Representation that carries it?"
+    options:
+      - {key: A, text: "Value", why: "Value is associated with services and products, not representations."}
+      - {key: B, text: "Meaning", correct: true}
+      - {key: C, text: "Driver", why: "Drivers motivate; they do not attach to representations."}
+      - {key: D, text: "Principle", why: "Principles are not associated with representations."}
+    explanation: "A meaning can be associated with a representation that carries this meaning."
+    refs: ["ARCHIMATE §8.4.3"]
+    difficulty: 2
+    tags: [business, representation, meaning]
+  - id: A4-143
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "Which of the following can access a Business Object?"
+    options:
+      - {key: A, text: "Business actor and business role", why: "Active structure does not access objects; behaviour does."}
+      - {key: B, text: "Business process, function, interaction, event and service", correct: true}
+      - {key: C, text: "Business interface", why: "An interface is an access point for services, not an accessor of objects."}
+      - {key: D, text: "Product", why: "A product aggregates objects rather than accessing them."}
+    explanation: "Business objects may be accessed by all the business behaviour elements: process, function, interaction, event and service."
+    refs: ["ARCHIMATE §8.4.1"]
+    difficulty: 2
+    tags: [business, object, access]
+  - id: A4-144
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "In the notation, which element is drawn as a box with a wavy bottom edge?"
+    options:
+      - {key: A, text: "Business Object", why: "A business object is a rectangle with a header band."}
+      - {key: B, text: "Representation", correct: true}
+      - {key: C, text: "Product", why: "A product is a box with a small rectangle icon."}
+      - {key: D, text: "Contract", why: "A contract reuses the business object shape with a contract icon."}
+    explanation: "The representation's document-like wavy bottom edge distinguishes it from the rectangular business object."
+    refs: ["ARCHIMATE §8.4.3", "ARCHIMATE §8.6"]
+    difficulty: 1
+    tags: [business, notation, representation]
+  - id: A4-145
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "Which statement about the Product element is correct?"
+    options:
+      - {key: A, text: "It may only contain elements from the Business Layer", why: "The product metamodel crosses layers; it may contain application and technology services and passive elements."}
+      - {key: B, text: "It generally specifies a product type, and 'buying' is usually one of its services", correct: true}
+      - {key: C, text: "It is a behaviour element realized by processes", why: "It is a composite element that aggregates services; it is not itself behaviour."}
+      - {key: D, text: "It covers only intangible, service-based products", why: "The definition covers tangible physical products too."}
+    explanation: "The product element specifies a product type; buying is usually one of its services and creates a new instance for the customer; it may contain elements from other layers."
+    refs: ["ARCHIMATE §8.5.1"]
+    difficulty: 2
+    tags: [business, product]
+  - id: A4-146
+    unit: A4
+    objective: "A4.3"
+    lesson: A4/03_business_passive_structure_and_product
+    stem: "Which of the following is NOT a passive structure element of the Business Layer?"
+    options:
+      - {key: A, text: "Business Object", why: "Business object is a passive-structure element."}
+      - {key: B, text: "Representation", why: "Representation is a passive-structure element."}
+      - {key: C, text: "Contract", why: "Contract is a passive-structure element, a specialization of business object."}
+      - {key: D, text: "Business Interface", correct: true}
+    explanation: "Business object, representation and contract are the passive-structure elements; the interface is active structure."
+    refs: ["ARCHIMATE §8.4"]
+    difficulty: 1
+    tags: [business, negative, passive]
+  # ------------------------------------------------------------ A4.4 relationships and viewpoints
+  - id: A4-147
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "Which relationship links a Business Role to the Business Process it performs?"
+    options:
+      - {key: A, text: "Assignment", correct: true}
+      - {key: B, text: "Realization", why: "Realization links internal behaviour to a service, not structure to behaviour."}
+      - {key: C, text: "Serving", why: "Serving is a dependency between behaviour or interfaces and their users."}
+      - {key: D, text: "Composition", why: "Composition links elements of the same type as whole and part."}
+    explanation: "Assignment is the structure-to-behaviour relationship: a business role is assigned to a process or function."
+    refs: ["ARCHIMATE §8.2", "ARCHIMATE §8.2.2"]
+    difficulty: 1
+    tags: [business, assignment, relationships]
+  - id: A4-148
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "The Business Layer metamodel figure omits some relationships. Which relationships does the specification say every element may have with elements of the same type?"
+    options:
+      - {key: A, text: "Serving, access and influence", why: "These are dependency relationships between different element types."}
+      - {key: B, text: "Composition, aggregation and specialization", correct: true}
+      - {key: C, text: "Triggering and flow", why: "These dynamic relationships apply to behaviour elements, not to every element."}
+      - {key: D, text: "Realization and assignment", why: "These are structural relationships between different element types."}
+    explanation: "Every element in the language may have composition, aggregation and specialization relationships with elements of the same type, even where a metamodel figure omits them."
+    refs: ["ARCHIMATE §8.1"]
+    difficulty: 2
+    tags: [business, metamodel, relationships]
+  - id: A4-149
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "Which basic viewpoint has the scope 'single layer, single aspect'?"
+    options:
+      - {key: A, text: "Business Process Cooperation", why: "That viewpoint spans multiple layers and aspects."}
+      - {key: B, text: "Organization", correct: true}
+      - {key: C, text: "Product", why: "The product viewpoint spans multiple layers and aspects."}
+      - {key: D, text: "Layered", why: "The layered viewpoint spans everything."}
+    explanation: "The organization viewpoint covers only the active-structure aspect of the Business Layer and is the one basic viewpoint with single layer, single aspect scope."
+    refs: ["ARCHIMATE §C.1", "ARCHIMATE §C.1.1"]
+    difficulty: 2
+    tags: [viewpoint, organization]
+  - id: A4-150
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "Which of the following elements is NOT part of the Organization viewpoint?"
+    options:
+      - {key: A, text: "Business Actor", why: "Actor is one of the viewpoint's elements."}
+      - {key: B, text: "Location", why: "Location is listed among the viewpoint's elements."}
+      - {key: C, text: "Business Process", correct: true}
+      - {key: D, text: "Business Interface", why: "Interface is listed among the viewpoint's elements."}
+    explanation: "The organization viewpoint contains business actor, role, collaboration, interface and location; it contains no behaviour elements."
+    refs: ["ARCHIMATE §C.1.1"]
+    difficulty: 2
+    tags: [viewpoint, organization, negative]
+  - id: A4-151
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "What concern does the Organization viewpoint address?"
+    options:
+      - {key: A, text: "Dependencies between business processes", why: "That is the concern of the business process cooperation viewpoint."}
+      - {key: B, text: "Identification of competencies, authority and responsibilities", correct: true}
+      - {key: C, text: "Value offered by the products of the enterprise", why: "That is the concern of the product viewpoint."}
+      - {key: D, text: "Added value of business processes", why: "That is the concern of the service realization viewpoint."}
+    explanation: "The organization viewpoint is useful in identifying competencies, authority and responsibilities in an organisation."
+    refs: ["ARCHIMATE §C.1.1"]
+    difficulty: 2
+    tags: [viewpoint, organization, concern]
+  - id: A4-152
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "Which viewpoint category does the Business Process Cooperation viewpoint belong to?"
+    options:
+      - {key: A, text: "Composition", why: "Composition viewpoints such as organization show internal structure."}
+      - {key: B, text: "Support", why: "Support viewpoints such as application usage look upward at what supports what."}
+      - {key: C, text: "Cooperation", correct: true}
+      - {key: D, text: "Realization", why: "Realization viewpoints such as service realization look downward at what realizes what."}
+    explanation: "Business process cooperation and application cooperation form the cooperation category, which looks at peer elements cooperating with each other."
+    refs: ["ARCHIMATE §C.1"]
+    difficulty: 2
+    tags: [viewpoint, category]
+  - id: A4-153
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "Which of the following is named as a sub-viewpoint of the Business Process Cooperation viewpoint?"
+    options:
+      - {key: A, text: "Mapping of applications onto technology", why: "That belongs to the implementation and deployment viewpoint."}
+      - {key: B, text: "Mapping of business processes onto business functions", correct: true}
+      - {key: C, text: "Composition of products from services", why: "That belongs to the product viewpoint."}
+      - {key: D, text: "Structure of the organisation in terms of departments", why: "That belongs to the organization viewpoint."}
+    explanation: "The four named aspects are causal relationships between processes, mapping of processes onto functions, realization of services by processes, and use of shared data."
+    refs: ["ARCHIMATE §C.1.10"]
+    difficulty: 2
+    tags: [viewpoint, business-process-cooperation]
+  - id: A4-154
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "What is the scope of the Business Process Cooperation viewpoint?"
+    options:
+      - {key: A, text: "Single layer, single aspect", why: "That is the organization viewpoint's scope."}
+      - {key: B, text: "Single layer, multiple aspects", why: "The viewpoint includes application elements, so it is not single-layer."}
+      - {key: C, text: "Multiple layers, multiple aspects", correct: true}
+      - {key: D, text: "Business layer, behaviour aspect only", why: "It includes active and passive structure and application elements."}
+    explanation: "Despite its name the business process cooperation viewpoint may include application components and services, giving it multi-layer, multi-aspect scope."
+    refs: ["ARCHIMATE §C.1.10"]
+    difficulty: 2
+    tags: [viewpoint, scope]
+  - id: A4-155
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "Which stakeholders does the specification list for the Business Process Cooperation viewpoint?"
+    options:
+      - {key: A, text: "Process and domain architects, operational managers", correct: true}
+      - {key: B, text: "Infrastructure architects, operational managers", why: "Those are the stakeholders of the technology and physical viewpoints."}
+      - {key: C, text: "Product developers and product managers", why: "Those are stakeholders of the product viewpoint."}
+      - {key: D, text: "Managers, employees and shareholders", why: "Those are among the stakeholders of the organization viewpoint."}
+    explanation: "Process and domain architects and operational managers responsible for the processes are the viewpoint's stakeholders."
+    refs: ["ARCHIMATE §C.1.10"]
+    difficulty: 2
+    tags: [viewpoint, stakeholders]
+  - id: A4-156
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "A modeller draws a Business Actor directly assigned to a Business Process, although the actor is only assigned to a Role that is assigned to the process. How does the specification treat this?"
+    options:
+      - {key: A, text: "It is invalid because the metamodel figure does not show it", why: "The figures omit derivable relationships; derivation makes it permitted."}
+      - {key: B, text: "It is a permitted derived relationship along the assignment chain", correct: true}
+      - {key: C, text: "It is valid only if the role is deleted from the model", why: "The role can remain; the derived relationship is additional."}
+      - {key: D, text: "It must be drawn as realization instead", why: "Realization does not link an actor to a process."}
+    explanation: "Metamodel figures omit indirect relationships that can be derived; the derivation rules permit drawing the actor assigned to the process."
+    refs: ["ARCHIMATE §8.1", "ARCHIMATE §5.7"]
+    difficulty: 3
+    tags: [business, derivation]
+  - id: A4-157
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "A stakeholder wants a view that starts from a business service and shows the processes that realize it, giving a 'view from the outside' on those processes. Which viewpoint fits best?"
+    options:
+      - {key: A, text: "Organization", why: "The organization viewpoint has no behaviour elements."}
+      - {key: B, text: "Service Realization", correct: true}
+      - {key: C, text: "Application Cooperation", why: "That viewpoint is limited to the Application Layer."}
+      - {key: D, text: "Product", why: "The product viewpoint shows a product's composition and value, not how services are realized."}
+    explanation: "The service realization viewpoint shows how business services are realized by underlying processes and provides an outside view on those processes."
+    refs: ["ARCHIMATE §C.1.12"]
+    difficulty: 2
+    tags: [viewpoint, service-realization]
+  - id: A4-158
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "What is the purpose classification of the Business Process Cooperation viewpoint?"
+    options:
+      - {key: A, text: "Designing only", why: "The viewpoint is also used for deciding."}
+      - {key: B, text: "Designing, deciding", correct: true}
+      - {key: C, text: "Informing only", why: "Informing is not listed for this viewpoint."}
+      - {key: D, text: "Designing, deciding, informing", why: "Informing is listed for the organization and layered viewpoints, not this one."}
+    explanation: "The business process cooperation viewpoint is classified for designing and deciding."
+    refs: ["ARCHIMATE §C.1.10"]
+    difficulty: 3
+    tags: [viewpoint, purpose]
+  - id: A4-159
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "Which relationship runs from a Business Process to the Business Service it provides?"
+    options:
+      - {key: A, text: "Serving", why: "Serving runs from the service to its users, not from the process to the service."}
+      - {key: B, text: "Realization", correct: true}
+      - {key: C, text: "Assignment", why: "Assignment links active structure to behaviour or an interface to a service."}
+      - {key: D, text: "Triggering", why: "Triggering is a dynamic relationship between behaviour elements and events."}
+    explanation: "Internal behaviour realizes external behaviour: a process, function or interaction realizes a business service."
+    refs: ["ARCHIMATE §8.3", "ARCHIMATE §8.3.5"]
+    difficulty: 1
+    tags: [business, realization]
+  - id: A4-160
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "Which elements may be used in every basic viewpoint even when they are not listed in its element table?"
+    options:
+      - {key: A, text: "Grouping, junction and or-junction", correct: true}
+      - {key: B, text: "Location and business actor", why: "Location and actor appear only where the viewpoint lists them."}
+      - {key: C, text: "Any motivation element", why: "Motivation elements are not implicitly allowed in the basic viewpoints."}
+      - {key: D, text: "Product and contract", why: "These are listed only for the viewpoints that include them."}
+    explanation: "In addition to its listed elements, every basic viewpoint may use the grouping element and the junctions."
+    refs: ["ARCHIMATE §C.1"]
+    difficulty: 2
+    tags: [viewpoint, grouping, junction]
+  - id: A4-161
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "How does the specification characterise the basic viewpoints of Appendix C?"
+    options:
+      - {key: A, text: "A normative list that all conformant models must use", why: "They are explicitly examples, not normative or exhaustive."}
+      - {key: B, text: "Examples and starting points that organisations may select from, modify or replace", correct: true}
+      - {key: C, text: "The only viewpoints tools are permitted to implement", why: "Organisations and modellers may define new viewpoints."}
+      - {key: D, text: "Views produced for end users rather than architects", why: "The basic viewpoints are mainly useful for architects and their peers."}
+    explanation: "The basic viewpoints are starting points intended as examples; modellers should select, modify or define viewpoints to address stakeholder concerns."
+    refs: ["ARCHIMATE §C.1"]
+    difficulty: 2
+    tags: [viewpoint, basic]
+  - id: A4-162
+    unit: A4
+    objective: "A4.4"
+    lesson: A4/04_business_relationships_and_viewpoints
+    stem: "Which viewpoint shows the composition of a product from its services and contract, together with the value it offers?"
+    options:
+      - {key: A, text: "Product", correct: true}
+      - {key: B, text: "Business Process Cooperation", why: "That viewpoint focuses on process relationships, not product composition."}
+      - {key: C, text: "Organization", why: "The organization viewpoint shows structure, not products."}
+      - {key: D, text: "Information Structure", why: "That viewpoint shows the structure of information."}
+    explanation: "The product viewpoint depicts the value products offer and their composition from services and contracts."
+    refs: ["ARCHIMATE §C.1.7"]
+    difficulty: 1
+    tags: [viewpoint, product]

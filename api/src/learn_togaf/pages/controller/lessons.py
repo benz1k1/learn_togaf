@@ -30,10 +30,8 @@ async def lesson_page(request: Request, lesson_id: str, connection: sqlite3.Conn
     detail = lessons.lesson_detail(connection, lesson_id)
     if detail is None:
         raise HTTPException(404, f"No lesson {lesson_id}")
-    with transaction(connection):
-        lessons.auto_read(connection, lesson_id)
-    if detail["state"] is None:
-        detail["state"] = "READ"
+    # Opening a lesson is not reading it: the learner marks it read with the button in
+    # _progress.html, so an unread lesson stays "unread" until they say otherwise.
     body_html = lessons.autolink_terms(
         str(render_markdown(detail["lesson"]["body_md"])), lessons.glossary_terms(connection)
     )
@@ -42,17 +40,23 @@ async def lesson_page(request: Request, lesson_id: str, connection: sqlite3.Conn
         request,
         "lesson.html",
         base_context(
-            request, connection, body_html=body_html, note=note, states=lessons.PROGRESS_STATES, **detail
+            request,
+            connection,
+            lesson_id=lesson_id,  # the progress fragment posts to /lesson-progress/{lesson_id}
+            body_html=body_html,
+            note=note,
+            states=lessons.PROGRESS_STATES,
+            **detail,
         ),
     )
 
 
 async def check_yourself(request: Request, lesson_id: str, connection: sqlite3.Connection = Depends(get_db)):
-    questions = lessons.check_questions(connection, lesson_id)
+    check = lessons.check_questions(connection, lesson_id)
     return templates.TemplateResponse(
         request,
         "_check_yourself.html",
-        base_context(request, connection, lesson_id=lesson_id, questions=questions),
+        base_context(request, connection, lesson_id=lesson_id, **check),
     )
 
 

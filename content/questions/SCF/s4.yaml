@@ -1,0 +1,1132 @@
+# S4 Logical Layer, Domains and Trust bank (learn_sabsa_archimate.md §4.3). Authored, original paraphrase
+# of the SABSA framework; refs name the SABSA White Paper sections and are to be verified once the PDF is
+# registered. status: draft until reviewed.
+code: S4_BANK
+exam: SCF
+name: "S4 Logical Layer, Domains and Trust bank"
+kind: DRILL
+source: authored
+questions:
+  # ---------------------------------------------------------------- S4.1 the Logical layer
+  - id: S4-101
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "Whose view is the Logical layer?"
+    options:
+      - {key: A, text: "The designer", correct: true}
+      - {key: B, text: "The architect", why: "Conceptual."}
+      - {key: C, text: "The builder", why: "Physical."}
+      - {key: D, text: "The tradesman", why: "Component."}
+    explanation: "The Logical layer is the designer's view: technology-independent design."
+    refs: ["SABSA §6"]
+    difficulty: 1
+    tags: [logical, views]
+  - id: S4-102
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "What is a security service in SABSA?"
+    options:
+      - {key: A, text: "A logical capability that delivers a control or enablement objective, described by what it does without saying how", correct: true}
+      - {key: B, text: "A named product installed on a server", why: "Component."}
+      - {key: C, text: "A configured mechanism such as TLS", why: "Physical."}
+      - {key: D, text: "A managed security contract", why: "Commercial."}
+    explanation: "Services are Logical; mechanisms are Physical; products are Component."
+    refs: ["SABSA §6"]
+    difficulty: 1
+    tags: [logical, services]
+  - id: S4-103
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "'Encryption service', 'AES-256 in the database layer' and 'the named HSM product' belong to which layers respectively?"
+    options:
+      - {key: A, text: "Logical; Physical; Component", correct: true}
+      - {key: B, text: "Conceptual; Logical; Physical", why: "One layer too high each."}
+      - {key: C, text: "Logical; Component; Physical", why: "Mechanism precedes product."}
+      - {key: D, text: "Physical; Physical; Component", why: "The service is Logical."}
+    explanation: "Service → mechanism → product is the three-layer drop."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [logical, layers, services]
+  - id: S4-104
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "What is in the Logical × Assets cell?"
+    options:
+      - {key: A, text: "The inventory of information assets, classified by the attributes each needs", correct: true}
+      - {key: B, text: "The data dictionary", why: "Physical."}
+      - {key: C, text: "The Business Attributes Profile", why: "Conceptual."}
+      - {key: D, text: "ICT components", why: "Component."}
+    explanation: "Information (Logical) becomes data (Physical) becomes repositories (Component)."
+    refs: ["SABSA §6.1"]
+    difficulty: 1
+    tags: [logical, cells]
+  - id: S4-105
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "What is in the Logical × Motivation cell?"
+    options:
+      - {key: A, text: "Risk management policies, written per domain", correct: true}
+      - {key: B, text: "Control and enablement objectives", why: "Conceptual."}
+      - {key: C, text: "Risk management practices and procedures", why: "Physical."}
+      - {key: D, text: "Business risk", why: "Contextual."}
+    explanation: "Objectives become policies at the Logical layer."
+    refs: ["SABSA §6.1"]
+    difficulty: 1
+    tags: [logical, cells, policy]
+  - id: S4-106
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "What is in the Logical × Process cell?"
+    options:
+      - {key: A, text: "Process maps as information flows, with security services attached", correct: true}
+      - {key: B, text: "Applications and middleware", why: "Physical."}
+      - {key: C, text: "Strategies for process assurance", why: "Conceptual."}
+      - {key: D, text: "Business processes", why: "Contextual."}
+    explanation: "The service-oriented view of security: services placed where attributes must be assured."
+    refs: ["SABSA §6.1"]
+    difficulty: 1
+    tags: [logical, cells, services]
+  - id: S4-107
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "What is in the Logical × People cell?"
+    options:
+      - {key: A, text: "The entity schema, privilege profiles and trust relationships", correct: true}
+      - {key: B, text: "Roles and responsibilities", why: "Conceptual."}
+      - {key: C, text: "Identity and access-control systems", why: "Physical."}
+      - {key: D, text: "Business governance", why: "Contextual."}
+    explanation: "The entity and trust framework is the designer's 'who'."
+    refs: ["SABSA §6.1"]
+    difficulty: 1
+    tags: [logical, cells, trust]
+  - id: S4-108
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "What is in the Logical × Location cell?"
+    options:
+      - {key: A, text: "Domain maps: domain definitions, boundaries and inter-domain associations", correct: true}
+      - {key: B, text: "The domain framework", why: "Conceptual."}
+      - {key: C, text: "Platforms and networks", why: "Physical."}
+      - {key: D, text: "Nodes and addresses", why: "Component."}
+    explanation: "The framework is anticipated at Conceptual; the maps are drawn at Logical."
+    refs: ["SABSA §6.1"]
+    difficulty: 1
+    tags: [logical, cells, domains]
+  - id: S4-109
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "What is in the Logical × Time cell?"
+    options:
+      - {key: A, text: "Calendar and timetable: start times, lifetimes, deadlines and validity periods", correct: true}
+      - {key: B, text: "The processing schedule", why: "Physical."}
+      - {key: C, text: "The through-life risk framework", why: "Conceptual."}
+      - {key: D, text: "Clocks and timers", why: "Component."}
+    explanation: "When a policy applies, how long a credential lives, when a service must be available."
+    refs: ["SABSA §6.1"]
+    difficulty: 1
+    tags: [logical, cells, time]
+  - id: S4-110
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "What does 'security classification' mean in SABSA's Logical layer?"
+    options:
+      - {key: A, text: "Attaching to each information asset the attributes and targets it needs, not only a confidentiality label", correct: true}
+      - {key: B, text: "Marking documents secret or public", why: "Confidentiality only; SABSA classification covers every attribute."}
+      - {key: C, text: "Ranking products by price", why: "Not classification."}
+      - {key: D, text: "Assigning domains to networks", why: "Location-cell work."}
+    explanation: "Classification is the input to service selection: a non-repudiable asset needs a signing service."
+    refs: ["SABSA §6.1", "GUIDE:integrating-risk-and-security §5.4"]
+    difficulty: 2
+    tags: [logical, classification]
+  - id: S4-111
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "Which of these is a Logical-layer security service rather than a mechanism?"
+    options:
+      - {key: A, text: "Entity authentication", correct: true}
+      - {key: B, text: "A password policy of twelve characters", why: "A practice or mechanism."}
+      - {key: C, text: "A hardware token model", why: "Component."}
+      - {key: D, text: "A VPN concentrator", why: "Physical or Component."}
+    explanation: "Services are named by function: authentication, authorisation, confidentiality, integrity, non-repudiation, audit."
+    refs: ["SABSA §6.2"]
+    difficulty: 2
+    tags: [logical, services]
+  - id: S4-112
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "Which TOGAF concept pair is the nearest to SABSA's service versus mechanism?"
+    options:
+      - {key: A, text: "Architecture Building Block versus Solution Building Block", correct: true}
+      - {key: B, text: "Baseline versus target", why: "Architecture states."}
+      - {key: C, text: "Deliverable versus artifact", why: "Work-product kinds."}
+      - {key: D, text: "Principle versus requirement", why: "Motivation concepts."}
+    explanation: "Logical services are ABBs defined by function; Physical mechanisms are the SBBs that implement them."
+    refs: ["GUIDE:integrating-risk-and-security §5.4.1", "SABSA §6"]
+    difficulty: 2
+    tags: [logical, togaf, confusables]
+  - id: S4-113
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "Which is an enablement-side Logical security service?"
+    options:
+      - {key: A, text: "Federation and provisioning services that make new business possible", correct: true}
+      - {key: B, text: "Intrusion detection", why: "Detect type, threat side."}
+      - {key: C, text: "Backup and restore", why: "Recover type."}
+      - {key: D, text: "Patch management", why: "Correct type."}
+    explanation: "Enhance-type services appear in the services catalogue alongside the protective ones."
+    refs: ["SABSA §6.2"]
+    difficulty: 2
+    tags: [logical, services, enhance]
+  - id: S4-114
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "Why is the Logical row a good place to check coverage of the attribute profile?"
+    options:
+      - {key: A, text: "Because it is technology-independent, so an attribute with no footprint there has not been designed for regardless of what products exist", correct: true}
+      - {key: B, text: "Because it is the shortest row", why: "Not shorter."}
+      - {key: C, text: "Because it is owned by the auditor", why: "Not the reason."}
+      - {key: D, text: "Because it contains the product list", why: "Products are Component."}
+    explanation: "Each attribute should be visible as a classification, a policy statement, a service, a privilege, a domain boundary and a calendar entry."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [logical, completeness]
+  - id: S4-115
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "Which ADM phases correspond to the Logical layer?"
+    options:
+      - {key: A, text: "Phases B and C", correct: true}
+      - {key: B, text: "Phase A", why: "Conceptual."}
+      - {key: C, text: "Phase D", why: "Physical and Component."}
+      - {key: D, text: "Phases G and H", why: "Service Management."}
+    explanation: "Phase B: policy, domains, trust; Phase C: services catalogue and classification."
+    refs: ["GUIDE:integrating-risk-and-security §5.3", "GUIDE:integrating-risk-and-security §5.4"]
+    difficulty: 1
+    tags: [logical, togaf]
+  - id: S4-116
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "In the TOGAF guide, which phase produces the security services catalogue?"
+    options:
+      - {key: A, text: "Phase C", correct: true}
+      - {key: B, text: "Phase B", why: "Phase B is policy, domains, trust and risk assessment."}
+      - {key: C, text: "Phase E", why: "Risk mitigation plan."}
+      - {key: D, text: "Preliminary", why: "Capability and principles."}
+    explanation: "The guide's Phase C covers the security services catalogue, security classification and data quality."
+    refs: ["GUIDE:integrating-risk-and-security §5.4.1"]
+    difficulty: 2
+    tags: [logical, togaf, services]
+  - id: S4-117
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "One mechanism realising several services, and one service realised by different mechanisms in different places, illustrates what?"
+    options:
+      - {key: A, text: "The many-to-many relationship between the Logical and Physical layers", correct: true}
+      - {key: B, text: "A failure of traceability", why: "Traceability accommodates many-to-many."}
+      - {key: C, text: "A multi-tiered domain", why: "Domains are Location content."}
+      - {key: D, text: "Transitive trust", why: "Unrelated."}
+    explanation: "Services are defined by function; mechanisms by implementation; the mapping between them is not one-to-one."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [logical, services, mechanisms]
+  - id: S4-118
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "An asset classified 'recoverable to four hours' implies which Logical service?"
+    options:
+      - {key: A, text: "A backup and recovery service with a four-hour recovery objective", correct: true}
+      - {key: B, text: "A signing service", why: "That serves non-repudiable."}
+      - {key: C, text: "An encryption service", why: "That serves confidential."}
+      - {key: D, text: "A federation service", why: "That serves enablement attributes."}
+    explanation: "Classification by attribute is the input to service selection."
+    refs: ["SABSA §6.1"]
+    difficulty: 2
+    tags: [logical, classification, services]
+  - id: S4-119
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "What does the Logical layer's distinctive contribution answer?"
+    options:
+      - {key: A, text: "Who is allowed to trust whom, and where", correct: true}
+      - {key: B, text: "Which vendor to buy from", why: "Component."}
+      - {key: C, text: "What the business's goals are", why: "Contextual."}
+      - {key: D, text: "How the data centre is cabled", why: "Physical."}
+    explanation: "The entity and trust framework and the domain maps together answer that question."
+    refs: ["SABSA §6.1"]
+    difficulty: 2
+    tags: [logical, trust, domains]
+  - id: S4-120
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "Which sequence correctly pairs views with layers?"
+    options:
+      - {key: A, text: "Business–Contextual; architect–Conceptual; designer–Logical; builder–Physical; tradesman–Component; facilities manager–Service Management", correct: true}
+      - {key: B, text: "Business–Conceptual; architect–Contextual; designer–Logical", why: "Contextual and Conceptual are swapped."}
+      - {key: C, text: "Designer–Physical; builder–Logical", why: "Swapped."}
+      - {key: D, text: "Tradesman–Service Management; facilities manager–Component", why: "Swapped."}
+    explanation: "The six views map to the six layers in order."
+    refs: ["SABSA §6", "SABSA §2.2"]
+    difficulty: 1
+    tags: [logical, views]
+  - id: S4-121
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "Where are the per-domain policies written, and by whom?"
+    options:
+      - {key: A, text: "Logical × Motivation, by each domain's policy authority", correct: true}
+      - {key: B, text: "Conceptual × Motivation, by the business", why: "Conceptual holds objectives; the business does not write policy."}
+      - {key: C, text: "Physical × Motivation, by operations", why: "Physical holds practices and procedures."}
+      - {key: D, text: "Contextual × Motivation, by the regulator", why: "Contextual holds business risk."}
+    explanation: "Policies are Logical content, owned by the domain's authority."
+    refs: ["SABSA §6.1"]
+    difficulty: 2
+    tags: [logical, policy]
+  - id: S4-122
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "Which is NOT a common Logical security service?"
+    options:
+      - {key: A, text: "Message integrity", why: "A standard service."}
+      - {key: B, text: "Non-repudiation of origin", why: "A standard service."}
+      - {key: C, text: "A firewall appliance", correct: true}
+      - {key: D, text: "Audit and accountability", why: "A standard service."}
+    explanation: "An appliance is a Component product; the service it realises might be 'network access control'."
+    refs: ["SABSA §6.2"]
+    difficulty: 1
+    tags: [logical, services]
+  - id: S4-123
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "In the TOGAF guide, where is security classification placed?"
+    options:
+      - {key: A, text: "Phase C, beside the data architecture", correct: true}
+      - {key: B, text: "Phase A", why: "Vision."}
+      - {key: C, text: "Phase G", why: "Governance."}
+      - {key: D, text: "Phase F", why: "Migration planning."}
+    explanation: "Classification of information assets is Phase C work in the guide."
+    refs: ["GUIDE:integrating-risk-and-security §5.4"]
+    difficulty: 2
+    tags: [logical, togaf, classification]
+  - id: S4-124
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "A process map in the Logical layer shows what?"
+    options:
+      - {key: A, text: "Where information enters, is transformed, stored and leaves, with a security service at each point an attribute must be assured", correct: true}
+      - {key: B, text: "The organisation chart", why: "Contextual People."}
+      - {key: C, text: "The server rack layout", why: "Physical."}
+      - {key: D, text: "The product roadmap", why: "Component."}
+    explanation: "Services are placed on the flows."
+    refs: ["SABSA §6.2"]
+    difficulty: 1
+    tags: [logical, process]
+  - id: S4-125
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "'Service' in ArchiMate versus SABSA: which is correct?"
+    options:
+      - {key: A, text: "ArchiMate: a behaviour element in each layer exposed via an interface; SABSA: a Logical-layer security capability", correct: true}
+      - {key: B, text: "Both mean a contract with a supplier", why: "Neither."}
+      - {key: C, text: "ArchiMate has no service element", why: "It has business, application and technology services."}
+      - {key: D, text: "SABSA services are Physical", why: "Logical."}
+    explanation: "Cross-framework confusable: the word is shared, the meaning differs."
+    refs: ["SABSA §6"]
+    difficulty: 2
+    tags: [logical, confusables, service]
+  - id: S4-126
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "Which Logical-layer cells does the TOGAF guide's Phase B fill?"
+    options:
+      - {key: A, text: "Motivation (policy), People (trust framework) and Location (domain model)", correct: true}
+      - {key: B, text: "Assets and Process", why: "Those are Phase C in the guide."}
+      - {key: C, text: "Time only", why: "Not a Phase B focus."}
+      - {key: D, text: "None; Phase B is Contextual", why: "Phase B is Logical work."}
+    explanation: "Phase B: security policy architecture, security domain model, trust framework, risk assessment."
+    refs: ["GUIDE:integrating-risk-and-security §5.3"]
+    difficulty: 2
+    tags: [logical, togaf]
+  - id: S4-127
+    unit: S4
+    objective: "S4.1"
+    lesson: S4/01_the_logical_layer
+    stem: "'How long a credential lives' is recorded in which Logical cell?"
+    options:
+      - {key: A, text: "Time", correct: true}
+      - {key: B, text: "People", why: "The entity is People; its lifetime is Time."}
+      - {key: C, text: "Assets", why: "Not an information asset."}
+      - {key: D, text: "Location", why: "Not a domain."}
+    explanation: "Lifetimes and validity periods are calendar and timetable content."
+    refs: ["SABSA §6.1"]
+    difficulty: 2
+    tags: [logical, cells, time]
+  # ---------------------------------------------------------------- S4.2 domains
+  - id: S4-128
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "What is a security domain?"
+    options:
+      - {key: A, text: "A set of elements subject to a common security policy defined and enforced by a single policy authority", correct: true}
+      - {key: B, text: "A network segment", why: "A segment with no accountable authority is not a domain."}
+      - {key: C, text: "One of Business, Data, Application and Technology architecture", why: "TOGAF's domain."}
+      - {key: D, text: "A DNS zone", why: "Not the architecture meaning."}
+    explanation: "Three parts: a set of elements, a common policy, one authority."
+    refs: ["SABSA §6.3"]
+    difficulty: 1
+    tags: [domains, definitions]
+  - id: S4-129
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "What is a policy authority?"
+    options:
+      - {key: A, text: "The person or body accountable for a domain's policy: it defines it, approves exceptions and answers for the domain's risk", correct: true}
+      - {key: B, text: "The regulator", why: "External; a domain's authority is internal to the domain."}
+      - {key: C, text: "The firewall administrator", why: "An operator, not the accountable authority."}
+      - {key: D, text: "The SABSA Institute", why: "Irrelevant."}
+    explanation: "Naming the authority is what makes a domain real."
+    refs: ["SABSA §6.3"]
+    difficulty: 1
+    tags: [domains, authority]
+  - id: S4-130
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "Two systems are under the same policy but different policy authorities. How many domains?"
+    options:
+      - {key: A, text: "One", why: "One authority is required for one domain."}
+      - {key: B, text: "Two", correct: true}
+      - {key: C, text: "Zero", why: "Each is a domain."}
+      - {key: D, text: "It depends on the network", why: "Domains are defined by policy and authority, not topology."}
+    explanation: "A domain is the scope of one policy from one authority; two authorities mean two domains."
+    refs: ["SABSA §6.3"]
+    difficulty: 2
+    tags: [domains, definitions]
+  - id: S4-131
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "What is a sub-domain?"
+    options:
+      - {key: A, text: "A domain wholly contained within a super-domain, with its own authority and a policy that must comply with the super-domain's", correct: true}
+      - {key: B, text: "A domain with no policy", why: "Every domain has a policy."}
+      - {key: C, text: "A domain in another country", why: "Location is not the criterion."}
+      - {key: D, text: "A domain with a weaker policy than its parent", why: "It may be stricter, never more permissive."}
+    explanation: "The sub-domain's policy may add restrictions; it may not relax the super-domain's."
+    refs: ["SABSA §6.3.1"]
+    difficulty: 1
+    tags: [domains, sub-domains]
+  - id: S4-132
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "May a sub-domain's policy be more permissive than its super-domain's?"
+    options:
+      - {key: A, text: "Yes, if its authority agrees", why: "The sub-domain authority cannot relax the parent policy."}
+      - {key: B, text: "No; it must comply with the super-domain's policy and may only be more specific or more restrictive", correct: true}
+      - {key: C, text: "Yes, for physical domains only", why: "The rule applies to all sub-domains."}
+      - {key: D, text: "Yes, if the domains are peers", why: "Peers are not sub-domains."}
+    explanation: "Compliance flows downward in a multi-tiered structure."
+    refs: ["SABSA §6.3.1"]
+    difficulty: 1
+    tags: [domains, sub-domains, policy]
+  - id: S4-133
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "What is a multi-tiered domain structure?"
+    options:
+      - {key: A, text: "Several levels of super- and sub-domains with a matching hierarchy of policy authorities", correct: true}
+      - {key: B, text: "A three-tier web application", why: "Not a domain concept."}
+      - {key: C, text: "Domains in multiple data centres", why: "Physical layout."}
+      - {key: D, text: "A domain with multiple policies", why: "A domain has one policy."}
+    explanation: "Bank → business unit → department → project team is a multi-tiered structure."
+    refs: ["SABSA §6.3.1"]
+    difficulty: 1
+    tags: [domains, multi-tiered]
+  - id: S4-134
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "What are peer domains?"
+    options:
+      - {key: A, text: "Domains at the same level with no containment between them", correct: true}
+      - {key: B, text: "A domain and its sub-domain", why: "That is containment."}
+      - {key: C, text: "Domains with the same name", why: "Not the criterion."}
+      - {key: D, text: "Domains that share a network", why: "Topology is not the criterion."}
+    explanation: "Two business units side by side under the bank are peers."
+    refs: ["SABSA §6.3.1"]
+    difficulty: 1
+    tags: [domains, peers]
+  - id: S4-135
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "What are independent domains?"
+    options:
+      - {key: A, text: "Domains with unrelated policy authorities, such as the bank and a supplier", correct: true}
+      - {key: B, text: "A domain and its parent", why: "Related by containment."}
+      - {key: C, text: "Domains with no elements", why: "Meaningless."}
+      - {key: D, text: "Domains inside the same super-domain", why: "Those share an authority chain."}
+    explanation: "Independence is about authorities, and it is what makes an inter-domain agreement necessary."
+    refs: ["SABSA §6.3.1"]
+    difficulty: 2
+    tags: [domains, independent]
+  - id: S4-136
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "What distinguishes a logical domain from a physical domain?"
+    options:
+      - {key: A, text: "A logical domain groups elements by policy regardless of place; a physical domain groups by place", correct: true}
+      - {key: B, text: "Logical domains have no authority", why: "Every domain has one."}
+      - {key: C, text: "Physical domains are Component-layer content", why: "Both are Logical-layer maps."}
+      - {key: D, text: "There is no difference", why: "There is."}
+    explanation: "All payment-card data wherever stored is logical; a data centre is physical; most enterprises overlay both."
+    refs: ["SABSA §6.3"]
+    difficulty: 2
+    tags: [domains, logical-physical]
+  - id: S4-137
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "A boundary is drawn on a network diagram with nobody accountable for what crosses it. In SABSA's terms it is what?"
+    options:
+      - {key: A, text: "A domain", why: "No authority means no domain."}
+      - {key: B, text: "A segment, not a domain", correct: true}
+      - {key: C, text: "A sub-domain", why: "Still needs an authority."}
+      - {key: D, text: "A trust relationship", why: "Unrelated."}
+    explanation: "The policy authority is what makes a domain real."
+    refs: ["SABSA §6.3"]
+    difficulty: 2
+    tags: [domains, authority]
+  - id: S4-138
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "In the worked diagram, the Cardholder Data Environment inside Card Payments inside the Bank is what?"
+    options:
+      - {key: A, text: "A third-tier sub-domain with a policy that adds the card-scheme requirements to the bank's", correct: true}
+      - {key: B, text: "An independent domain", why: "It is inside the bank's authority chain."}
+      - {key: C, text: "A peer of the Bank", why: "It is contained, not a peer."}
+      - {key: D, text: "A trust broker", why: "Unrelated."}
+    explanation: "Bank → Card Payments → Cardholder Data Environment is three tiers."
+    refs: ["SABSA §6.3.2"]
+    difficulty: 2
+    tags: [domains, multi-tiered]
+  - id: S4-139
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "In the worked diagram, the outsourced call centre with its own board as authority is what?"
+    options:
+      - {key: A, text: "An independent domain associated with Retail Banking by contract", correct: true}
+      - {key: B, text: "A sub-domain of Retail Banking", why: "It has its own unrelated authority."}
+      - {key: C, text: "A logical domain", why: "It is a separate organisation, not a policy overlay."}
+      - {key: D, text: "An isolated domain", why: "It interacts with the bank."}
+    explanation: "Different authority, associated by agreement: independent."
+    refs: ["SABSA §6.3.2"]
+    difficulty: 2
+    tags: [domains, independent]
+  - id: S4-140
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "In the worked diagram, 'Regulated Data' cutting across Retail Banking and Card Payments with the compliance officer as authority is what?"
+    options:
+      - {key: A, text: "A logical domain overlaid on the physical structure", correct: true}
+      - {key: B, text: "A super-domain of the bank", why: "It is inside the bank."}
+      - {key: C, text: "A peer sub-domain", why: "It overlaps rather than sits beside."}
+      - {key: D, text: "An isolated domain", why: "It overlaps others."}
+    explanation: "A report using Regulated Data in two units must satisfy the logical domain's policy and each physical domain's."
+    refs: ["SABSA §6.3.2"]
+    difficulty: 2
+    tags: [domains, logical-physical]
+  - id: S4-141
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "What is an isolated domain?"
+    options:
+      - {key: A, text: "A domain with no association to any other, such as an air-gapped lab", correct: true}
+      - {key: B, text: "A domain with no policy", why: "Every domain has a policy."}
+      - {key: C, text: "A sub-domain", why: "Sub-domains are associated with parents."}
+      - {key: D, text: "A domain in another jurisdiction", why: "Location is not the criterion."}
+    explanation: "Isolation means no inter-domain association at all."
+    refs: ["SABSA §6.3.1"]
+    difficulty: 1
+    tags: [domains, isolated]
+  - id: S4-142
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "What is the policy architecture?"
+    options:
+      - {key: A, text: "The structure of authorities and policies over the domain model: who owns which domain, which policy each publishes, how each complies with the one above", correct: true}
+      - {key: B, text: "The network architecture", why: "Physical."}
+      - {key: C, text: "The list of products", why: "Component."}
+      - {key: D, text: "The attribute taxonomy", why: "Conceptual Assets."}
+    explanation: "Conceptual in its framework, Logical in its content."
+    refs: ["SABSA §6.3", "GUIDE:integrating-risk-and-security §5.3.1"]
+    difficulty: 2
+    tags: [domains, policy]
+  - id: S4-143
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "A data flow moves from Retail Banking into the Cardholder Data Environment. What applies?"
+    options:
+      - {key: A, text: "The stricter sub-domain policy must be met on entry", correct: true}
+      - {key: B, text: "An inter-domain service between independent authorities", why: "Same authority chain; no independent boundary."}
+      - {key: C, text: "Nothing; both are in the bank", why: "The sub-domain's stricter policy still applies."}
+      - {key: D, text: "The flow is forbidden", why: "Not forbidden; governed."}
+    explanation: "Moving into a stricter sub-domain means meeting its policy."
+    refs: ["SABSA §6.3.2"]
+    difficulty: 2
+    tags: [domains, sub-domains]
+  - id: S4-144
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "In the TOGAF guide, in which phase is the security domain model produced?"
+    options:
+      - {key: A, text: "Phase B", correct: true}
+      - {key: B, text: "Phase D", why: "Technology."}
+      - {key: C, text: "Phase A", why: "Vision."}
+      - {key: D, text: "Phase G", why: "Governance."}
+    explanation: "The guide's Phase B includes the security domain model, drawn against the Business Architecture."
+    refs: ["GUIDE:integrating-risk-and-security §5.3.2"]
+    difficulty: 1
+    tags: [domains, togaf]
+  - id: S4-145
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "'Domain' in TOGAF, ArchiMate and SABSA — which row is correct?"
+    options:
+      - {key: A, text: "TOGAF: architecture discipline; ArchiMate: no element, layers instead; SABSA: policy scope under one authority", correct: true}
+      - {key: B, text: "All three: a network segment", why: "None."}
+      - {key: C, text: "TOGAF: policy scope; SABSA: architecture discipline", why: "Reversed."}
+      - {key: D, text: "ArchiMate: Domain element", why: "ArchiMate has no Domain element."}
+    explanation: "Cross-framework confusable."
+    refs: ["SABSA §6.3"]
+    difficulty: 2
+    tags: [domains, confusables]
+  - id: S4-146
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "Why do domains matter to the rest of the architecture?"
+    options:
+      - {key: A, text: "Because policies are written for, services deployed in, trust established between, classifications applied within and privileges granted by domains", correct: true}
+      - {key: B, text: "Because they determine the product list", why: "Products are Component."}
+      - {key: C, text: "Because auditors require them", why: "Not the SABSA reason."}
+      - {key: D, text: "Because they replace the attribute profile", why: "They scope it; they do not replace it."}
+    explanation: "Domains scope everything else."
+    refs: ["SABSA §6.3"]
+    difficulty: 2
+    tags: [domains]
+  - id: S4-147
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "Who is accountable for the whole in a super-/sub-domain pair?"
+    options:
+      - {key: A, text: "The super-domain's authority, with the sub-domain's authority accountable for the part", correct: true}
+      - {key: B, text: "The sub-domain's authority", why: "Accountable for the part only."}
+      - {key: C, text: "Neither; accountability is shared equally", why: "The hierarchy is explicit."}
+      - {key: D, text: "The regulator", why: "External."}
+    explanation: "A hierarchy of domains has a hierarchy of authorities to match."
+    refs: ["SABSA §6.3.1"]
+    difficulty: 2
+    tags: [domains, authority]
+  - id: S4-148
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "Which TOGAF idea is nearest to the SABSA domain model, though narrower in SABSA?"
+    options:
+      - {key: A, text: "Scope of the enterprise and architecture partitioning in the Preliminary Phase", correct: true}
+      - {key: B, text: "The Architecture Repository", why: "Storage, not scoping."}
+      - {key: C, text: "The Solutions Continuum", why: "Building block classification."}
+      - {key: D, text: "The ADM cycle", why: "Method, not scope."}
+    explanation: "Both decide which parts of the organisation are governed by which architecture; SABSA's domain adds one policy and one authority."
+    refs: ["GUIDE:integrating-risk-and-security §5.3.2", "SABSA §6.3"]
+    difficulty: 3
+    tags: [domains, togaf]
+  - id: S4-149
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "Two systems under one authority but different policies. How many domains?"
+    options:
+      - {key: A, text: "One", why: "Different policies mean different domains."}
+      - {key: B, text: "Two", correct: true}
+      - {key: C, text: "None", why: "Each is a domain."}
+      - {key: D, text: "Three", why: "No third."}
+    explanation: "A domain is one policy from one authority; two policies mean two domains, possibly sub-domains of the authority's super-domain."
+    refs: ["SABSA §6.3"]
+    difficulty: 2
+    tags: [domains, definitions]
+  - id: S4-150
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "Which is the correct rule for a lower-level policy in the policy architecture?"
+    options:
+      - {key: A, text: "It inherits from and complies with the higher-level policy", correct: true}
+      - {key: B, text: "It overrides the higher-level policy", why: "Never."}
+      - {key: C, text: "It is independent of the higher-level policy", why: "Independence is between different authorities."}
+      - {key: D, text: "It is written by the regulator", why: "External."}
+    explanation: "Both SABSA and the TOGAF guide state the same inheritance rule."
+    refs: ["SABSA §6.3.1", "GUIDE:integrating-risk-and-security §5.3.1"]
+    difficulty: 1
+    tags: [domains, policy]
+  - id: S4-151
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "Which Matrix cells hold the domain concept and the domain maps respectively?"
+    options:
+      - {key: A, text: "Conceptual × Location and Logical × Location", correct: true}
+      - {key: B, text: "Logical × Location and Physical × Location", why: "Physical is infrastructure."}
+      - {key: C, text: "Contextual × Location and Conceptual × Location", why: "Contextual is geography."}
+      - {key: D, text: "Logical × People and Logical × Location", why: "People is the trust framework."}
+    explanation: "Framework at Conceptual; maps at Logical."
+    refs: ["SABSA §6.3", "SABSA §2.2"]
+    difficulty: 2
+    tags: [domains, cells]
+  - id: S4-152
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "Which of these is a valid example of a logical domain?"
+    options:
+      - {key: A, text: "All payment-card data, wherever it is stored, under the payments security manager", correct: true}
+      - {key: B, text: "The Mumbai data centre", why: "A physical domain."}
+      - {key: C, text: "The third-floor network segment", why: "Physical, and without an authority not a domain at all."}
+      - {key: D, text: "The building", why: "Physical."}
+    explanation: "Grouping by policy regardless of place is a logical domain."
+    refs: ["SABSA §6.3"]
+    difficulty: 1
+    tags: [domains, logical-physical]
+  - id: S4-153
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "What does the sub-domain's policy authority decide?"
+    options:
+      - {key: A, text: "The sub-domain's own policy and exceptions, within the constraints of the super-domain's policy", correct: true}
+      - {key: B, text: "The super-domain's policy", why: "That is the super-domain authority's."}
+      - {key: C, text: "Nothing; sub-domains have no authority", why: "They do."}
+      - {key: D, text: "The products for the whole enterprise", why: "Component decision, not policy."}
+    explanation: "Own policy, own exceptions, bounded by the parent."
+    refs: ["SABSA §6.3.1"]
+    difficulty: 2
+    tags: [domains, authority]
+  - id: S4-154
+    unit: S4
+    objective: "S4.2"
+    lesson: S4/02_security_domains_and_policy_authorities
+    stem: "Against what is the TOGAF guide's security domain model drawn?"
+    options:
+      - {key: A, text: "The organisation, roles and processes of the Business Architecture in Phase B", correct: true}
+      - {key: B, text: "The technology platforms of Phase D", why: "Domains precede platforms."}
+      - {key: C, text: "The migration plan of Phase F", why: "Unrelated."}
+      - {key: D, text: "The Architecture Contract", why: "Governance artefact."}
+    explanation: "Domains match real organisational units and jurisdictions, which is Phase B content."
+    refs: ["GUIDE:integrating-risk-and-security §5.3.2"]
+    difficulty: 2
+    tags: [domains, togaf]
+  # ---------------------------------------------------------------- S4.3 trust
+  - id: S4-155
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "What is trust in SABSA?"
+    options:
+      - {key: A, text: "An explicit, directed relationship between two domains in which one authority accepts assertions made under the other's policy", correct: true}
+      - {key: B, text: "A feeling of confidence in a vendor", why: "Not a property of a system or a feeling."}
+      - {key: C, text: "A property of an encrypted link", why: "A mechanism may support trust; it is not trust."}
+      - {key: D, text: "Compliance with ISO 27001", why: "A standard, not a relationship."}
+    explanation: "Trust always has a direction and a basis."
+    refs: ["SABSA §6.4"]
+    difficulty: 1
+    tags: [trust, definitions]
+  - id: S4-156
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "In a trust relationship, which party is the 'trusting' one?"
+    options:
+      - {key: A, text: "The domain whose authority accepts the other's assertions", correct: true}
+      - {key: B, text: "The domain whose assertions are accepted", why: "That is the trusted party."}
+      - {key: C, text: "The broker", why: "A third party, not one of the two."}
+      - {key: D, text: "The regulator", why: "External."}
+    explanation: "Trusting accepts; trusted is accepted."
+    refs: ["SABSA §6.4"]
+    difficulty: 1
+    tags: [trust, definitions]
+  - id: S4-157
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "A merchant accepts the card scheme's authorisation response; the scheme does not accept the merchant's assertions. What kind of trust?"
+    options:
+      - {key: A, text: "One-way", correct: true}
+      - {key: B, text: "Two-way", why: "Only one direction is present."}
+      - {key: C, text: "Transitive", why: "No third party."}
+      - {key: D, text: "Brokered", why: "No broker."}
+    explanation: "One-way (unilateral) trust runs in a single direction."
+    refs: ["SABSA §6.4.1"]
+    difficulty: 1
+    tags: [trust, one-way]
+  - id: S4-158
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "Two banks in a payment network authenticate each other's messages under one agreement. What kind of trust?"
+    options:
+      - {key: A, text: "Two-way", correct: true}
+      - {key: B, text: "One-way", why: "Both directions are present."}
+      - {key: C, text: "Transitive", why: "No pass-through."}
+      - {key: D, text: "Isolated", why: "Not a trust kind."}
+    explanation: "Two-way (bilateral, mutual) trust needs two decisions, one per authority, even in one agreement."
+    refs: ["SABSA §6.4.1"]
+    difficulty: 1
+    tags: [trust, two-way]
+  - id: S4-159
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "A trusts B and B trusts C. When does A trust C?"
+    options:
+      - {key: A, text: "Always; trust is transitive", why: "Not by default."}
+      - {key: B, text: "Only when A's policy authority has explicitly allowed trust to pass through B", correct: true}
+      - {key: C, text: "Never", why: "It can be permitted explicitly."}
+      - {key: D, text: "Only if C is a sub-domain of A", why: "Sub-domain trust is a different relationship."}
+    explanation: "Transitive trust is a designed decision, not an automatic consequence."
+    refs: ["SABSA §6.4.1"]
+    difficulty: 2
+    tags: [trust, transitive]
+  - id: S4-160
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "A supplier has access to the bank; the supplier's own subcontractors do not. What is this?"
+    options:
+      - {key: A, text: "Non-transitive trust", correct: true}
+      - {key: B, text: "Transitive trust", why: "Trust does not pass to the subcontractors."}
+      - {key: C, text: "Two-way trust", why: "Direction is not the point here."}
+      - {key: D, text: "A super-domain", why: "Unrelated."}
+    explanation: "Trust stops at B."
+    refs: ["SABSA §6.4.1"]
+    difficulty: 2
+    tags: [trust, transitive]
+  - id: S4-161
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "What is third-party or brokered trust?"
+    options:
+      - {key: A, text: "Two domains rely on a trusted third party, such as a certificate authority or federation hub, rather than trusting each other directly", correct: true}
+      - {key: B, text: "Trust between a domain and its sub-domain", why: "That is containment."}
+      - {key: C, text: "Trust that is automatically transitive", why: "Each party explicitly trusts the broker."}
+      - {key: D, text: "Trust bought with insurance", why: "Not the meaning."}
+    explanation: "The broker is an inter-domain service provided by a domain both parties already trust."
+    refs: ["SABSA §6.4.2"]
+    difficulty: 2
+    tags: [trust, broker]
+  - id: S4-162
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "When is an inter-domain service needed?"
+    options:
+      - {key: A, text: "When two domains with different policy authorities need to interact", correct: true}
+      - {key: B, text: "Between a super-domain and its sub-domain", why: "One authority chain already governs the boundary."}
+      - {key: C, text: "Inside a single domain", why: "Trust is implicit inside a domain."}
+      - {key: D, text: "Whenever a network link exists", why: "Topology is not the criterion."}
+    explanation: "Neither policy governs both sides of an independent boundary, so a service enforces the agreed terms."
+    refs: ["SABSA §6.4.2"]
+    difficulty: 2
+    tags: [trust, inter-domain]
+  - id: S4-163
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "What is an inter-domain policy or association?"
+    options:
+      - {key: A, text: "The agreement negotiated between two authorities that the inter-domain service enforces", correct: true}
+      - {key: B, text: "The super-domain's policy", why: "Applies within one authority chain."}
+      - {key: C, text: "A network ACL", why: "A mechanism."}
+      - {key: D, text: "The attribute taxonomy", why: "Unrelated."}
+    explanation: "Agreement is the policy; the service is the enforcement."
+    refs: ["SABSA §6.4.2"]
+    difficulty: 2
+    tags: [trust, inter-domain]
+  - id: S4-164
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "Between two peer sub-domains under the same bank, what trust exists by default?"
+    options:
+      - {key: A, text: "None; peer trust must be designed, by the bank's policy or by agreement between the peers", correct: true}
+      - {key: B, text: "Full two-way trust", why: "Not inherent."}
+      - {key: C, text: "Transitive trust through the bank", why: "Only if explicitly permitted."}
+      - {key: D, text: "One-way trust from the larger to the smaller", why: "Size is irrelevant."}
+    explanation: "Containment gives super/sub trust; peers get nothing inherent."
+    refs: ["SABSA §6.4"]
+    difficulty: 2
+    tags: [trust, peers]
+  - id: S4-165
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "What trust is inherent between a super-domain and its sub-domain?"
+    options:
+      - {key: A, text: "The super-domain trusts the sub-domain to the extent its policy complies; the sub-domain trusts the super-domain's authority as the source of its policy", correct: true}
+      - {key: B, text: "None", why: "Containment gives inherent trust."}
+      - {key: C, text: "Only one-way from sub to super", why: "Both directions, on the stated bases."}
+      - {key: D, text: "Full transitive trust to all peers", why: "Peers are separate."}
+    explanation: "The trust is inherent in the containment and the compliance rule."
+    refs: ["SABSA §6.4"]
+    difficulty: 2
+    tags: [trust, sub-domains]
+  - id: S4-166
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "Where is trust implicit rather than established?"
+    options:
+      - {key: A, text: "Within a single domain, under one policy and one authority", correct: true}
+      - {key: B, text: "Between independent domains", why: "Must be established."}
+      - {key: C, text: "Between peers", why: "Must be designed."}
+      - {key: D, text: "Between a domain and a broker", why: "Explicitly chosen."}
+    explanation: "Inside a domain the elements share policy and authority."
+    refs: ["SABSA §6.4"]
+    difficulty: 1
+    tags: [trust]
+  - id: S4-167
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "What does the entity and trust framework record for each pair of interacting domains?"
+    options:
+      - {key: A, text: "Direction, basis, transitivity, the inter-domain service and agreement, and the privileges a trusted entity receives", correct: true}
+      - {key: B, text: "The IP addresses", why: "Component locators."}
+      - {key: C, text: "The product versions", why: "Component."}
+      - {key: D, text: "The budget", why: "Not architecture content."}
+    explanation: "A Logical-layer deliverable that the Physical layer realises with certificates, federation protocols, VPNs and contracts."
+    refs: ["SABSA §6.4.1"]
+    difficulty: 2
+    tags: [trust, framework]
+  - id: S4-168
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "Supplier staff need access to the enterprise's systems. Which inter-domain service fits?"
+    options:
+      - {key: A, text: "A federation service accepting the supplier's authenticated identities under agreed terms, with the enterprise granting privileges", correct: true}
+      - {key: B, text: "Giving the supplier the enterprise's admin credentials", why: "No inter-domain control at all."}
+      - {key: C, text: "Making the supplier a sub-domain", why: "Its authority is independent; containment is impossible."}
+      - {key: D, text: "Air-gapping the supplier", why: "That is isolation, not interaction."}
+    explanation: "Federation is the classic inter-domain service between independent authorities."
+    refs: ["SABSA §6.4.2"]
+    difficulty: 2
+    tags: [trust, inter-domain, federation]
+  - id: S4-169
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "Does the existence of a trust broker make trust between its clients transitive by accident?"
+    options:
+      - {key: A, text: "Yes; anything the broker trusts, they trust", why: "Each party has explicitly chosen to trust the broker, and only the broker."}
+      - {key: B, text: "No; each party has explicitly chosen to trust the broker, and further transitivity is a separate decision", correct: true}
+      - {key: C, text: "Yes, for certificate authorities only", why: "No exception."}
+      - {key: D, text: "Brokers are forbidden in SABSA", why: "They are a recognised pattern."}
+    explanation: "Brokered trust is explicit, not accidental transitivity."
+    refs: ["SABSA §6.4.2"]
+    difficulty: 3
+    tags: [trust, broker, transitive]
+  - id: S4-170
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "What is direct trust?"
+    options:
+      - {key: A, text: "A trusts B on A's own verification, such as a bank checking a customer's identity documents", correct: true}
+      - {key: B, text: "Trust via a certificate authority", why: "Brokered."}
+      - {key: C, text: "Trust inherited from a super-domain", why: "Containment."}
+      - {key: D, text: "Trust that passes through B to C", why: "Transitive."}
+    explanation: "Direct trust rests on the trusting domain's own checks."
+    refs: ["SABSA §6.4.1"]
+    difficulty: 1
+    tags: [trust, direct]
+  - id: S4-171
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "A question states 'the merchant trusts the scheme, and therefore the scheme trusts the merchant'. What is wrong?"
+    options:
+      - {key: A, text: "It has turned one-way trust into two-way without a second decision by the scheme's authority", correct: true}
+      - {key: B, text: "Nothing; trust is always mutual", why: "It is not."}
+      - {key: C, text: "Merchants cannot trust schemes", why: "They can."}
+      - {key: D, text: "It should say transitive", why: "No third party."}
+    explanation: "Two-way trust needs two decisions."
+    refs: ["SABSA §6.4.1"]
+    difficulty: 2
+    tags: [trust, one-way, two-way]
+  - id: S4-172
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "In the TOGAF guide, in which phase is the trust framework produced?"
+    options:
+      - {key: A, text: "Phase B", correct: true}
+      - {key: B, text: "Phase C", why: "Services catalogue."}
+      - {key: C, text: "Phase D", why: "Technology."}
+      - {key: D, text: "Phase H", why: "Change."}
+    explanation: "The trust framework sits beside the security domain model in Phase B."
+    refs: ["GUIDE:integrating-risk-and-security §5.3.3"]
+    difficulty: 1
+    tags: [trust, togaf]
+  - id: S4-173
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "In which layer do the mechanisms that realise trust relationships — certificates, federation protocols, VPNs — belong?"
+    options:
+      - {key: A, text: "Physical", correct: true}
+      - {key: B, text: "Logical", why: "Logical holds the relationships and services."}
+      - {key: C, text: "Conceptual", why: "Conceptual holds the roles framework."}
+      - {key: D, text: "Contextual", why: "Business view."}
+    explanation: "The framework is Logical; its realisation is Physical (and products Component)."
+    refs: ["SABSA §6.4.1"]
+    difficulty: 2
+    tags: [trust, layers]
+  - id: S4-174
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "Which framework has no first-class trust concept, so that cross-framework trust questions resolve to SABSA?"
+    options:
+      - {key: A, text: "TOGAF", correct: true}
+      - {key: B, text: "SABSA", why: "SABSA defines trust."}
+      - {key: C, text: "Both TOGAF and SABSA", why: "SABSA defines it."}
+      - {key: D, text: "None; all three define trust identically", why: "Only SABSA does."}
+    explanation: "TOGAF's guide borrows the trust framework from SABSA; ArchiMate can draw it but does not define it."
+    refs: ["GUIDE:integrating-risk-and-security §5.3.2", "SABSA §6.4"]
+    difficulty: 2
+    tags: [trust, confusables]
+  - id: S4-175
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "Customer data is shared with a regulator under a data-sharing agreement. What is the SABSA pattern?"
+    options:
+      - {key: A, text: "An inter-domain service (secure transfer preserving classification) enforcing an inter-domain agreement between independent authorities", correct: true}
+      - {key: B, text: "A sub-domain of the regulator", why: "The enterprise is not contained by the regulator's domain."}
+      - {key: C, text: "Implicit trust", why: "Different authorities; nothing is implicit."}
+      - {key: D, text: "Isolation", why: "They interact."}
+    explanation: "Independent authorities interact through an agreed service."
+    refs: ["SABSA §6.4.2"]
+    difficulty: 2
+    tags: [trust, inter-domain]
+  - id: S4-176
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "What is always required for a trust relationship to exist between domains?"
+    options:
+      - {key: A, text: "A direction and a basis such as a contract, shared authority, verified credential or audit", correct: true}
+      - {key: B, text: "An encrypted link", why: "A mechanism, not a prerequisite for the relationship."}
+      - {key: C, text: "A shared network", why: "Topology is irrelevant."}
+      - {key: D, text: "A common vendor", why: "Irrelevant."}
+    explanation: "Trust is explicit, directed and grounded."
+    refs: ["SABSA §6.4"]
+    difficulty: 1
+    tags: [trust]
+  - id: S4-177
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "A partner's staff are accepted because the partner's identity provider vouches for them and the partner is trusted. What kind of trust has been designed?"
+    options:
+      - {key: A, text: "Transitive trust, explicitly permitted through the partner", correct: true}
+      - {key: B, text: "Direct trust", why: "The enterprise did not verify each person."}
+      - {key: C, text: "Isolated trust", why: "Not a kind."}
+      - {key: D, text: "Non-transitive trust", why: "Trust does pass through the partner."}
+    explanation: "A trusts C because B vouches — permitted transitivity."
+    refs: ["SABSA §6.4.1"]
+    difficulty: 2
+    tags: [trust, transitive]
+  - id: S4-178
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "Where would the inter-domain services appear in the TOGAF guide's phases?"
+    options:
+      - {key: A, text: "Phase C's security services catalogue, with mechanisms in Phase D", correct: true}
+      - {key: B, text: "Preliminary Phase", why: "Capability and principles."}
+      - {key: C, text: "Phase F", why: "Migration planning."}
+      - {key: D, text: "Phase H only", why: "Change management."}
+    explanation: "Services are Phase C; mechanisms Phase D; the trust framework itself Phase B."
+    refs: ["GUIDE:integrating-risk-and-security §5.3.2", "GUIDE:integrating-risk-and-security §5.4"]
+    difficulty: 2
+    tags: [trust, togaf]
+  - id: S4-179
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "How would SABSA domains and trust relationships be drawn in ArchiMate?"
+    options:
+      - {key: A, text: "Domains as Groupings or Locations; trust between Business Roles and Interfaces", correct: true}
+      - {key: B, text: "As a dedicated Trust element", why: "ArchiMate has none."}
+      - {key: C, text: "As Plateaus", why: "Implementation and migration elements."}
+      - {key: D, text: "They cannot be drawn", why: "They can, with existing elements."}
+    explanation: "ArchiMate draws the SABSA model with composite and business elements."
+    refs: ["SABSA §6.4", "GUIDE:integrating-risk-and-security §5.3.2"]
+    difficulty: 3
+    tags: [trust, archimate, confusables]
+  - id: S4-180
+    unit: S4
+    objective: "S4.3"
+    lesson: S4/03_trust_relationships
+    stem: "Which is the correct list of trust relationship kinds SABSA distinguishes?"
+    options:
+      - {key: A, text: "One-way, two-way, transitive (and non-transitive), direct and third-party (brokered)", correct: true}
+      - {key: B, text: "Read, write, execute", why: "File permissions."}
+      - {key: C, text: "Enhance, protect, detect, recover, correct", why: "Control types."}
+      - {key: D, text: "Super, sub, peer", why: "Domain relationships, not trust kinds."}
+    explanation: "Direction, transitivity and basis are the three axes of the classification."
+    refs: ["SABSA §6.4.1"]
+    difficulty: 1
+    tags: [trust, kinds]

@@ -1,0 +1,691 @@
+# Authored Practitioner scenarios for unit P6, Architecture Change Management (Phase H).
+# Shape per learn_togaf.md §2; grounded on ADM chapter 12, GOV chapters 4-5, CONTENT 4.2.11.
+code: P6_BANK
+exam: OGEA-102
+name: P6 Architecture Change Management, authored bank
+kind: DRILL
+source: authored
+questions:
+  - id: P6-101
+    unit: P6
+    objective: "P6.1"
+    lesson: P6/01_classifying_change_in_phase_h
+    scenario: |
+      Orion Telecom is a regional telecommunications operator with 2.1 million subscribers, 3,300
+      staff and a network operations centre that runs around the clock. Two years ago it completed an
+      ADM cycle that produced a Target Architecture for customer care and billing: a single customer
+      record, a product catalogue shared between the sales channels, an order-orchestration service
+      and a real-time charging platform. The architecture was delivered through two Transition
+      Architectures, the Architecture Contract with the delivery organisation was fulfilled, and the
+      cycle moved into Phase H. The Enterprise Architecture team of five reports to the Chief
+      Technology Officer; an Architecture Board of five executives meets every month with an
+      executive sponsor on the group board.
+
+      The Phase H monitoring the team put in place has now produced its first significant finding. The
+      vendor of the message-queue middleware that carries order events between the orchestration
+      service and the charging platform has announced end of support in fourteen months and offers a
+      successor product with a different programming model. The middleware is also used, in a smaller
+      way, by two network-management applications outside the customer-care architecture. The
+      Technology Architecture in the Architecture Definition Document names the current middleware as
+      a selected Solution Building Block; the Application Architecture names an "event transport"
+      Architecture Building Block with the interface characteristics the orchestration and charging
+      components depend on. Nothing in the Business Architecture or the Data Architecture refers to
+      the product.
+
+      The Head of Infrastructure has proposed to "just swap the product" during a maintenance window
+      and update the configuration management database afterwards, since the vendor's successor is
+      the obvious choice. The Head of Customer Care is worried that any change to the order path will
+      affect the launch of a new bundle in nine months. The Chief Financial Officer notes that the
+      successor product has a higher licence cost and asks whether a competing open-source product
+      should be considered instead. The Head of Network Operations, whose applications also use the
+      middleware, has not been consulted.
+
+      The Phase H arrangements are in place and working. Monitoring tools track vendor lifecycle notices,
+      service levels for the order path and the charging platform, and the business value metrics agreed
+      at the end of the cycle: order completion time and billing accuracy, both of which are meeting
+      their targets. The Architecture Repository holds the Architecture Definition Document, the signed
+      Architecture Contract and the Compliance Assessments from Phase G. The Board's terms of reference
+      set out its criteria for deciding whether a Change Request is an update to the architecture or the
+      start of a new cycle, and give it authority to grant dispensations for a defined period.
+
+      The middleware question is more tangled than the Head of Infrastructure's proposal suggests. The
+      successor product uses a different messaging model, which the orchestration team believes will
+      require code changes to the components that publish and subscribe to order events, and it charges
+      per message rather than per server, which the Chief Financial Officer estimates would raise the
+      annual cost by a third at current volumes and more as the new bundle drives order growth. The
+      open-source alternative is used by the two network-management applications' vendor in another
+      product, but nobody in Orion has operated it in production. The current product's support ends
+      fourteen months from now, which leaves time, but the new bundle launch in nine months freezes
+      changes to the order path for the six weeks around it.
+
+      The event-transport building block in the Application Architecture specifies guaranteed delivery,
+      ordering within a customer's events and a maximum latency; those characteristics were chosen in
+      Phase C because the charging platform bills in real time and a lost or reordered event produces a
+      billing error. The Head of Customer Care remembers the last billing incident and does not want
+      another. The Head of Network Operations, when told of the proposal by a colleague, has said that
+      his applications' use of the middleware is "nobody else's business" and that he will not accept a
+      change he has not been consulted on. The Chief Technology Officer wants a recommendation for the
+      Board in two weeks and has said that "just swapping it" sounds attractive but that he is not sure it
+      is an architecture decision or an operations one.
+
+      The Chief Technology Officer has asked the Architecture Board how the vendor's announcement
+      should be handled under Architecture Change Management, and you, the lead Enterprise Architect,
+      have been asked to recommend the classification and the route.
+    question: "Refer to the scenario. You have been asked to recommend how the middleware end-of-support should be classified and handled in Phase H. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Register the vendor's technology-withdrawal notice as a Change Request in Phase H and assess
+          its impact. Note that it is a technology driver, which the standard says is normally
+          manageable through change management and Architecture Governance, but that it affects more
+          than one stakeholder: customer care, infrastructure and network operations. Classify it as an
+          incremental change: the event-transport Architecture Building Block and the Business and Data
+          Architectures are unaffected, so the Technology Architecture is refreshed rather than the
+          whole Enterprise Architecture, but the choice of successor Solution Building Block, including
+          the open-source alternative the CFO raised, is an architectural decision with interface and
+          cost implications, not a maintenance swap. Take the request to the Architecture Board with an
+          impact assessment covering the interface characteristics the orchestration and charging
+          components depend on, the two network-management applications and the bundle launch, consult
+          the Head of Network Operations, have the Board decide the successor and any dispensation for
+          a transition period, update the Technology Architecture and the Architecture Definition
+          Document under governance, and record the decision in the Architecture Repository.
+        why: >-
+          Technology withdrawal is a listed technology driver, normally handled through change
+          management and governance processes (ADM §12.5.1, §12.2.3); the emergence of new technology
+          calls for a refresh of the Technology Architecture rather than the whole Enterprise
+          Architecture, which is an incremental change (ADM §12.5.3). Because the change impacts two or
+          more stakeholders the guideline points to an architectural decision under the Board, not a
+          bare maintenance action (ADM §12.5.3, §12.3.6); the Board assesses and approves Requests for
+          Change (ADM §12.5.1, GOV §4.2), and changes made in Phase H are captured in the repository
+          (ADM §12.3.7). The answer names the correct classification, the route, the missing stakeholder
+          and the governance record.
+      - key: B
+        points: 3
+        text: >-
+          Classify the announcement as a simplification change, since the vendor's successor replaces
+          one product with another without changing the architecture above the physical layer, and
+          authorise the Head of Infrastructure to swap the product in a maintenance window, updating the
+          Baseline Technology Architecture description afterwards and informing the Board.
+        why: >-
+          The reasoning that the architecture above the physical layer is unchanged echoes the
+          standard's simplification example, but a simplification change is driven by reducing
+          investment, whereas replacing withdrawn technology with a successor that has a different
+          programming model and higher cost derives value from existing investment and refreshes the
+          Technology Architecture, which the standard gives as the incremental example (ADM §12.5.2,
+          §12.5.3). The multi-stakeholder impact also means the decision belongs to the Board before the
+          change, not after (ADM §12.5.3, §12.3.6).
+      - key: C
+        points: 1
+        text: >-
+          Treat the announcement as a re-architecting change and issue a new Request for Architecture
+          Work to start a full ADM cycle for customer care and billing, since the middleware is a
+          selected building block in the approved Target Architecture and any change to it invalidates
+          the Architecture Definition Document.
+        why: >-
+          The standard reserves re-architecting change and a new cycle for changes that realign the
+          Foundation Architecture with strategy, require substantial change to deployment components
+          and guidelines, or change significant standards with end-user impact; a new technology or
+          standard that refreshes the Technology Architecture is explicitly the incremental case
+          (ADM §12.5.3). A full cycle for a middleware replacement is the "creeping elegance" the
+          governance body must avoid (ADM §12.5).
+      - key: D
+        points: 0
+        text: >-
+          Take no architecture action, because Phase H is complete for this cycle and vendor product
+          changes are an operational matter for infrastructure and the configuration management
+          database; revisit the architecture at the next scheduled strategic review.
+        why: >-
+          Phase H exists to monitor technology changes that could impact the baseline and to decide
+          how each change is handled; technology withdrawal reports are named inputs to the phase
+          (ADM §12.3.2, §12.2.3). Treating a selected Solution Building Block's withdrawal as outside
+          architecture contradicts the objectives of the phase (ADM §12.1).
+    refs: ["ADM §12.2.3", "ADM §12.5.1", "ADM §12.5.2", "ADM §12.5.3", "ADM §12.3.6", "GOV §4.2"]
+    open_book_hint: "Where to look: ADM chapter 12, Phase H: 12.2.3 for the technology-change inputs, 12.5.1 for technology versus business drivers, 12.5.2 for the three change classes and their investment rationale, 12.5.3 for the stakeholder guideline and the Technology Architecture refresh example; EA Capability and Governance 4.2 for the Board's role in approving change."
+    difficulty: 2
+    tags: [phase-h, incremental-change, technology-withdrawal, classification]
+    status: draft
+
+  - id: P6-102
+    unit: P6
+    objective: "P6.1"
+    lesson: P6/01_classifying_change_in_phase_h
+    scenario: |
+      Silverline Bank is a domestic retail and business bank with 1.8 million customers, 5,200
+      staff and a well-established Enterprise Architecture capability that has completed three ADM
+      cycles over six years. The most recent cycle produced a Target Architecture for lending: a
+      single credit-decision service, a loan-origination platform shared by branches and the digital
+      channel, a customer data hub and a set of retired legacy systems. The architecture was fully
+      deployed eleven months ago, Phase G closed with a post-implementation review, and the lending
+      architecture has been in Phase H since. The Architecture Board, chaired by the Chief Operating
+      Officer, meets monthly and has agreed criteria for judging whether a Change Request warrants an
+      architecture update or a new cycle.
+
+      The national regulator has now published final rules for a new consumer-credit regime. The
+      rules change the information a lender must give customers before a credit agreement, require
+      affordability to be assessed against a new standard data set drawn from external sources,
+      oblige lenders to offer a cooling-off period with a defined cancellation process, and require
+      quarterly reporting of lending decisions in a prescribed format. The rules apply to every
+      lending product, take effect in twenty months, and carry personal liability for senior
+      managers.
+
+      The bank's Head of Lending has proposed that the changes be "absorbed as enhancements" to the
+      loan-origination platform by the platform's product team, under the existing Architecture
+      Contract, because the platform was designed to be configurable. The Head of Compliance
+      disagrees: she believes the affordability data set changes the credit-decision service, the
+      customer data hub and the branch and digital processes, and that the cooling-off process
+          touches operations and finance. The Chief Information Officer has asked whether the lending
+      Target Architecture is still valid at all. The Head of Data notes that the external sources
+      required are not in the current Data Architecture. The Chief Financial Officer wants to know
+      whether this is a maintenance cost or a new investment.
+
+      The lending architecture's documentation is complete and current. The Architecture Definition
+      Document describes the credit-decision service as a rules engine fed by internal data and one
+      external credit bureau; the customer data hub holds the data the service uses; the loan-origination
+      platform's business process model shows the customer-information step, the decision step and the
+      completion step; the Data Architecture contains no entities for the external affordability sources
+      the new rules require, and no cancellation process exists in any product. The Architecture Contract
+      with the business stakeholders, drawn up at the end of Phase F, defines the scope as "lending
+      products as described in the Architecture Definition Document" and includes conformance
+      requirements and business metrics for that scope.
+
+      Phase H's monitoring has been running since deployment and reports good value realisation: the
+      decision time target is met and branch and digital channels use the same platform. The Board's
+      criteria for a new cycle, agreed at the end of the last cycle, say that a change warrants a new
+      Request for Architecture Work when it "changes the business strategy, requires new domain
+      architecture content in more than one domain, or is required by a regulatory change with
+      customer-facing impact"; otherwise a change is handled as an update under governance. The criteria
+      have not yet been tested by a real case.
+
+      The regulator's rules have been analysed by Compliance and Legal, who have produced a list of
+      forty-seven obligations. Twenty relate to the customer-information step and could be met by
+      changing content and screens; eleven relate to the affordability assessment and require new data
+      sources, new decision rules and new evidence retention; nine relate to the cooling-off process and
+      require a new process across lending, operations and finance with customer communications; seven
+      relate to reporting and require a new extract in a prescribed format from the decision and
+      origination records. Senior managers, including the Head of Lending, will be personally
+      accountable to the regulator for compliance from the effective date. The bank's Portfolio Office
+      has asked whether this is one programme or several, and the Chief Operating Officer has asked the
+      Board to decide the route before any money is committed.
+
+      As lead Enterprise Architect you have been asked to classify the regulatory change under Phase H
+      and to recommend how the bank should respond.
+    question: "Refer to the scenario. You have been asked to classify the regulatory change and recommend the response. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Register the regulatory rules as a business-driven Change Request and assess it against the
+          Board's criteria. Conclude that it is a re-architecting change: significant regulatory
+          standards used in the product architecture are changing with significant end-user impact,
+          the change impacts many stakeholders across lending, compliance, data, operations, branches,
+          the digital channel and finance, and it requires new elements in the Data Architecture and
+          changes to the Business, Application and Technology Architectures, so it cannot be allowed
+          under a dispensation or handled as an enhancement to one platform. Recommend that the
+          Architecture Board issue a new Request for Architecture Work to start a new ADM cycle scoped
+          to the consumer-credit regime, with the regulator's date as a constraint, and advise the CFO
+          that the standard characterises re-architecting change as increasing investment to create
+          new value. Record the classification and the decision in the Architecture Repository and
+          route the new requirements through Requirements Management.
+        why: >-
+          Business drivers such as strategic and regulatory change often result in re-development of
+          the architecture (ADM §12.5.1); a refreshment cycle is required when significant standards in
+          the product architecture change with significant end-user impact, regulatory change being the
+          standard's own example, and a new Request for Architecture Work must then be issued
+          (ADM §12.5.3). The stakeholder guideline, two or more stakeholders impacted, points to
+          redesign and re-entry to the ADM (ADM §12.5.3); re-architecting change is driven by a
+          requirement to increase investment for new value (ADM §12.5.2); the new Request for
+          Architecture Work is the Phase H output for major change (ADM §12.4); and Phase H changes are
+          recorded in the repository and managed as requirements (ADM §12.3.7, §13.3).
+      - key: B
+        points: 3
+        text: >-
+          Classify the rules as an incremental change because the Target Architecture's building blocks
+          remain broadly valid, and handle them as a partial re-architecting of the Data Architecture
+          and the credit-decision service under the existing Architecture Contract, with the
+          loan-origination product team absorbing the customer-information and cooling-off changes as
+          enhancements.
+        why: >-
+          Recognising that partial re-architecting may be needed is closer than a pure enhancement, but
+          the change meets the standard's explicit triggers for a refreshment cycle, a significant
+          regulatory standard with end-user impact, and touches every domain and many stakeholders,
+          which the guideline says requires redesign and re-entry to the ADM rather than an incremental
+          route (ADM §12.5.3). Handling it under the existing contract also ignores that the contract
+          was drawn for the previous scope (GOV §5.2.3).
+      - key: C
+        points: 1
+        text: >-
+          Classify the rules as a simplification change, since they reduce the bank's discretion in
+          lending and can be met by tightening configuration and switching off non-compliant product
+          features, and handle them through the platform's change management process with an
+          Architecture Compliance report.
+        why: >-
+          A simplification change is one that reduces investment and does not change the architecture
+          above the physical layer, for example consolidating systems; new affordability data sources,
+          a new cancellation process and prescribed reporting add elements to several domains and
+          cannot be met by switching features off (ADM §12.5.2, §12.5.3). A compliance report alone
+          does not decide the route; the Board applies its criteria (ADM §12.5).
+      - key: D
+        points: 0
+        text: >-
+          Advise the Board that regulatory compliance is an operational obligation of the lending
+          business rather than an architectural change, and that the lending Target Architecture
+          remains valid until the next planned strategic review.
+        why: >-
+          Regulatory change is a named business driver for architecture Change Requests and the
+          standard's own example of a change that requires a refreshment cycle; declaring it outside
+          architecture contradicts the phase's objective of keeping the architecture development cycle
+          maintained (ADM §12.1, §12.5.1, §12.5.3).
+    refs: ["ADM §12.5.1", "ADM §12.5.2", "ADM §12.5.3", "ADM §12.4", "ADM §13.3", "GOV §5.2.3"]
+    open_book_hint: "Where to look: ADM chapter 12: 12.5.1 for business drivers and their consequence, 12.5.2 for the three classes and the investment view, 12.5.3 for the refreshment-cycle triggers including regulatory change and the rule that a new Request for Architecture Work must be issued, 12.4 for the outputs; ADM 13.3 step 7 for Phase H requirements; EA Capability and Governance 5.2.3 for the contract used in Phase H."
+    difficulty: 2
+    tags: [phase-h, re-architecting, regulatory-change, request-for-architecture-work]
+    status: draft
+
+  - id: P6-103
+    unit: P6
+    objective: "P6.1"
+    lesson: P6/01_classifying_change_in_phase_h
+    scenario: |
+      Greenfield Council is a local government authority serving a population of 410,000 with 6,800
+      staff across social care, housing, environment, planning and corporate services. Three years ago
+      it completed an ADM cycle that produced a Target Architecture for "one council, one customer
+      record": a shared customer-account service, a case-management platform used by housing and
+      environment services, a payments gateway and a document service. The architecture is deployed
+      and has been in Phase H for two years. The Enterprise Architecture team of three reports to the
+      Head of Digital; an Architecture Board of the Chief Executive's four directors meets quarterly,
+      and its terms of reference include criteria for deciding whether a change requires a new
+      architecture cycle.
+
+      Phase H monitoring has raised a finding from asset management. The council still runs ten
+      small departmental applications for booking appointments, each on its own server, each with its
+      own support contract, and all of them superseded functionally by the appointment feature of the
+      case-management platform, which every department has now adopted. The ten applications hold no
+      data that is not already in the platform. Retiring them would save a licence and hosting cost
+      of about 180,000 a year and remove ten servers from the estate. The Baseline Technology
+      Architecture in the Architecture Definition Document still lists the ten servers and their
+      operating systems.
+
+      The Head of Housing is nervous: one of the ten applications is used by a tenants' association
+      that meets in a council building and she does not want "another change imposed on residents".
+      The Head of IT Operations wants the retirement done within the financial year to bank the
+      saving. The Head of Digital has asked whether a change of this size needs the full architecture
+      process, given how long the last cycle took. A junior architect has drafted a proposal to
+      "re-baseline the whole Technology Architecture" as part of the work.
+
+      The council's architecture governance is modest but real. The Board's criteria for a new cycle,
+      written by the previous Head of Digital, say that a change warrants a new Request for Architecture
+      Work when it "introduces new capability, changes more than one domain architecture or affects
+      residents' services across more than one department", and that other changes are "handled through
+      the council's change process with the architecture team confirming compliance and updating the
+      Architecture Definition Document". The council's change process is run by IT Operations with a
+      weekly change advisory board. The Architecture Repository holds the Definition Document, the
+      Phase G Compliance Assessments and the signed Architecture Contract, which was fulfilled when the
+      last transition went live.
+
+      The ten appointment applications have been examined by the architecture team. All ten offer the
+      same function that the case-management platform's appointment feature now provides; the platform
+      has been adopted by every department, including the ones that still run their own application "just
+      in case". No application holds data that is not already in the platform, though three hold
+      historical appointment records older than the platform's retention period, which Legal has
+      confirmed can be archived and deleted. Two of the applications are hosted on servers whose
+      operating system is out of vendor support, which Information Security has flagged as a risk. The
+      support contracts for all ten run to the end of the financial year and renew automatically unless
+      cancelled with three months' notice.
+
+      The tenants' association concern turns out to be narrow. The association uses one of the
+      applications to book a meeting room in a council building; the case-management platform has a room
+      booking feature, and the Head of Housing's concern is that residents were not consulted about the
+      last change. The junior architect's proposal to re-baseline the whole Technology Architecture arose
+      because the Definition Document's Baseline Technology Architecture is known to be out of date in
+      other respects: it lists servers retired eighteen months ago and omits a cloud service adopted last
+      year. The Head of Digital, who is new in post, has asked for a short paper for the Board that says
+      what class of change this is, who decides it, what documents change, and whether the wider
+      re-baseline should be done now or separately.
+
+      As the lead Enterprise Architect you have been asked to classify the change and recommend how
+      it should be governed.
+    question: "Refer to the scenario. You have been asked to classify the retirement of the ten applications and recommend how it should be governed. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Register the asset-management finding as a Change Request in Phase H and classify it as a
+          simplification change: it is driven by a requirement to reduce investment, it consolidates
+          ten systems into one already in place, and it does not change the architecture above the
+          physical layer, only the Baseline Technology Architecture description. Handle it through the
+          council's change management techniques under Architecture Governance rather than a new
+          cycle: confirm with the Board that the change is compliant with the current architecture,
+          check that the one stakeholder with a concern, the tenants' association through the Head of
+          Housing, is addressed in the decommissioning plan, update the Baseline Technology
+          Architecture description in the Architecture Definition Document and the Architecture
+          Repository as an architecture update, and record the decision in the repository. Decline the
+          proposal to re-baseline the whole Technology Architecture as unnecessary for this change.
+        why: >-
+          The standard's simplification example is exactly this case: ten systems reduced to one does
+          not change the architecture above the physical layer but changes the Baseline Description of
+          the Technology Architecture, and it is handled via change management techniques
+          (ADM §12.5.3); simplification change is driven by a requirement to reduce investment
+          (ADM §12.5.2). A change impacting one stakeholder is a candidate for change management
+          (ADM §12.5.3), the compliance position is stated in an Architecture Compliance report
+          (ADM §12.5), maintenance changes produce architecture updates rather than a new Request for
+          Architecture Work (ADM §12.4), and changes made in Phase H are captured in the repository
+          (ADM §12.3.7). Avoiding an unnecessary re-baseline is the "creeping elegance" guard (ADM §12.5).
+      - key: B
+        points: 3
+        text: >-
+          Classify the retirement as an incremental change because it derives additional value from
+          the existing investment in the case-management platform, and take it through the Board as a
+          partial re-architecting of the Technology Architecture, including the re-baseline the junior
+          architect proposed so that the Architecture Definition Document is brought fully up to date.
+        why: >-
+          The Board route and the recognition that the platform investment is being exploited are
+          reasonable, but the change adds nothing to the architecture; it removes redundant physical
+          systems, which the standard classifies as simplification handled through change management,
+          and a whole-architecture re-baseline for a decommissioning is disproportionate, the
+          "creeping elegance" the governance body must avoid (ADM §12.5.2, §12.5.3, §12.5).
+      - key: C
+        points: 1
+        text: >-
+          Because the last cycle took so long, recommend that IT Operations decommission the ten
+          applications as ordinary maintenance within the financial year without involving the
+          architecture function, and update the configuration management database; the Architecture
+          Definition Document can be corrected at the next major revision.
+        why: >-
+          The route is nearly right but the governance is missing: the change must be registered,
+          its compliance with the current architecture stated, and the Baseline Technology
+          Architecture description updated as an architecture update recorded in the repository
+          (ADM §12.5, §12.4, §12.3.7). The tenants' association concern is also left unaddressed
+          (ADM §12.5.3).
+      - key: D
+        points: 0
+        text: >-
+          Recommend that the Board issue a new Request for Architecture Work so that the retirement is
+          designed and approved through a full ADM cycle, since every change to a deployed architecture
+          should follow the same process to be safe.
+        why: >-
+          A new cycle is reserved for re-architecting change; simplification change is handled through
+          change management, and the governance body must judge whether a request warrants an update
+          or a new cycle rather than sending everything through the cycle (ADM §12.5.2, §12.5). This
+          also contradicts the Board's own criteria and the aim of a dynamic architecture (ADM §12.5).
+    refs: ["ADM §12.5", "ADM §12.5.2", "ADM §12.5.3", "ADM §12.4", "ADM §12.3.7", "ADM §12.3.2"]
+    open_book_hint: "Where to look: ADM chapter 12: 12.5.3 for the three worked examples (simplification is the ten-systems-to-one case), 12.5.2 for the classes and their investment rationale, 12.5 for creeping elegance and the compliance report, 12.4 for architecture updates versus a new Request for Architecture Work, 12.3.2 for asset-management monitoring."
+    difficulty: 1
+    tags: [phase-h, simplification-change, decommissioning]
+    status: draft
+
+  - id: P6-104
+    unit: P6
+    objective: "P6.1"
+    lesson: P6/01_classifying_change_in_phase_h
+    scenario: |
+      Vantage Retail is a fashion retailer with 320 stores, an online channel that now takes forty
+      percent of sales, and 9,000 staff. Eighteen months ago it completed an ADM cycle for "unified
+      commerce": one order-management service for stores and online, a single inventory view, a
+      customer loyalty service and a payments platform. The architecture is live in all stores. The
+      Enterprise Architecture team reports to the Chief Digital Officer; an Architecture Board of six
+      executives meets monthly and holds a business stakeholders' Architecture Contract with the
+      commercial directors that was drawn up at the end of Phase F and is used to manage change.
+
+      In the past quarter four requests have reached the Board through Phase H. The Marketing
+      Director wants a "buy online, collect in store within two hours" promise, which the Head of
+      Stores says would require store staff to pick online orders during trading and the Head of
+      Logistics says would change stock allocation rules. The Head of Online wants a new gift-wrapping
+      option at checkout, which affects only the online order flow. The Head of Finance wants the
+      loyalty service to move to a new points-expiry rule required by a change in accounting policy,
+      which affects the loyalty service and finance reporting but no other stakeholder. The Chief
+      Digital Officer has heard from a vendor about a "composable commerce" platform that would
+      replace the order-management service and the payments platform with a suite of microservices,
+      and wants to know whether the architecture should be re-done around it.
+
+      Phase H monitoring also shows that the promised reduction in stock-outs has not materialised:
+      the inventory view is accurate but store managers still hold safety stock in back rooms because
+      they do not trust it. The programme that delivered the architecture was closed six months ago
+      with no benefits review.
+
+      The unified-commerce architecture is documented in an Architecture Definition Document that
+      describes the order-management service as the single system of record for orders from any channel,
+      the inventory view as a near-real-time aggregate of store and warehouse stock, and the loyalty and
+      payments services as shared building blocks. Phase H monitoring was set up at the end of the cycle
+      with business value metrics agreed with the commercial directors: online conversion, in-store
+      stock-outs, loyalty redemption and payment failure rates. Three of the four metrics have improved;
+      stock-outs have not. The Architecture Board's criteria for a new cycle, adopted when the contract
+      was signed, say that a change warrants a new Request for Architecture Work when it "changes the
+      target business value, requires new building blocks in more than one domain, or replaces a shared
+      building block".
+
+      The four requests arrived through different routes. The two-hour collection promise came from the
+      Marketing Director as a strategic proposal to the executive committee; the gift-wrapping option
+      and the points-expiry rule came through the online and finance change processes; the composable
+      commerce idea came from a vendor briefing the Chief Digital Officer attended, with no requirement
+      attached. The Head of Stores has done a rough assessment of the collection promise: it would require
+      store staff to pick online orders during trading, a new allocation rule that reserves store stock
+      for online orders, changes to the order-management service, and a new customer-communication flow,
+      and it would affect every store's operating model. The Head of Online estimates that the
+      gift-wrapping option is a configuration change to the online checkout with no impact elsewhere.
+      Finance has confirmed that the points-expiry rule affects only the loyalty service's expiry logic
+      and its own reporting.
+
+      The stock-out finding has a story behind it. The programme that delivered the architecture closed
+      with a lessons-learned session that nobody wrote up, and its benefits review was cancelled because
+      the programme director left. Store managers interviewed by the architecture team say the inventory
+      view is accurate but that they were never told to change their replenishment practice, and that
+      their bonus scheme still rewards "never running out". The Head of Stores, who sponsored the
+      transition, was not asked to sign off any benefits. The Chief Digital Officer has asked the Board
+      whether the architecture "failed" and whether a new cycle around the vendor's platform would fix
+      it.
+
+      The Board has asked you, as lead Enterprise Architect, to advise on how each of the four
+      requests should be classified and routed, and what the monitoring finding means for Phase H.
+    question: "Refer to the scenario. The Board has asked you to classify and route the four requests and to interpret the monitoring finding. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Classify each request with the standard's guideline. The gift-wrapping option and the
+          points-expiry rule each impact one stakeholder area and can be handled as change management
+          within the current architecture under the Board's governance and the business stakeholders'
+          contract, with an Architecture Compliance report and an architecture update where the
+          Definition Document changes. The two-hour collection promise impacts stores, logistics and
+          online and changes stock-allocation and fulfilment processes across several domains, so it is
+          at least an incremental change requiring partial re-architecting under the Board, with an
+          impact assessment before it is committed. The composable-commerce proposal is a
+          technology-driven idea with no business requirement behind it yet; do not start a new cycle on
+          a vendor pitch, but register it and assess whether it would increase investment to create new
+          value, which would make it re-architecting and require a Request for Architecture Work. On the
+          monitoring finding, invoke the value-realisation process: the architecture's business value
+          has not been achieved, so analyse performance with service management, develop change
+          requirements to meet the stock-out target, and record the lessons. Record all decisions in
+          the repository.
+        why: >-
+          The guideline that a change impacting one stakeholder is a candidate for change management
+          and one impacting two or more likely needs redesign and re-entry to the ADM sorts the first
+          three requests (ADM §12.5.3); the classes and their investment rationale sort the vendor
+          proposal, and the governance body must look for changes that relate directly to business value
+          and avoid creeping elegance (ADM §12.5.2, §12.5). The business stakeholders' contract is the
+          instrument for managing change in Phase H (GOV §5.2.3). The goal of the phase is that the
+          architecture achieves its original target business value, with a value realisation process,
+          analysis and change requirements to meet performance targets (ADM §12.5, §12.3.1, §12.3.4,
+          §12.3.5), and changes are captured in the repository (ADM §12.3.7).
+      - key: B
+        points: 3
+        text: >-
+          Route the gift-wrapping option, the points-expiry rule and the two-hour collection promise all
+          through change management as incremental enhancements, since the unified-commerce building
+          blocks already exist, and reject the composable-commerce idea outright as vendor-driven. Ask
+          the closed programme's sponsor to commission a benefits review.
+        why: >-
+          Two of the three routings and the caution about the vendor are right, but the two-hour
+          promise impacts several stakeholders and changes processes across domains, which the
+          guideline says is likely to need redesign rather than change management (ADM §12.5.3); and
+          the benefits question is not the closed programme's to answer but Phase H's value-realisation
+          process (ADM §12.3.1, §12.5). Rejecting a technology driver without registering and assessing it
+          also skips the phase's activities (ADM §12.5.2).
+      - key: C
+        points: 1
+        text: >-
+          Because four requests have arrived together and the vendor's platform would address most of
+          them, recommend a new Request for Architecture Work for a "unified commerce 2.0" cycle that
+          designs all four changes around the composable-commerce suite.
+        why: >-
+          Bundling small single-stakeholder changes into a full cycle delays them for no architectural
+          reason and starts a cycle on a vendor proposal rather than a business requirement, which is
+          the creeping elegance the standard warns against; the cycle is for re-architecting change,
+          and the governance body must establish criteria to distinguish an update from a new cycle
+          (ADM §12.5, §12.5.2).
+      - key: D
+        points: 0
+        text: >-
+          Advise the Board that the architecture is complete and under maintenance, that requests
+          should wait for the next annual planning round, and that the stock-out target was the
+          programme's responsibility and the programme is closed.
+        why: >-
+          Phase H exists to receive and assess Change Requests continuously and to ensure the
+          architecture achieves its original target business value; usage and value realisation are
+          the most important part of the cycle, and an architecture that works for yesterday's
+          organisation is the failure the phase is designed to prevent (ADM §12.1, §12.5).
+    refs: ["ADM §12.5", "ADM §12.5.2", "ADM §12.5.3", "ADM §12.3.1", "ADM §12.3.4", "GOV §5.2.3"]
+    open_book_hint: "Where to look: ADM chapter 12: 12.5.3 for the stakeholder guideline, 12.5.2 for the classes and investment rationale, 12.5 for value realisation and creeping elegance, 12.3.1 to 12.3.5 for the value, monitoring, analysis and change-requirement steps; EA Capability and Governance 5.2.3 for the business stakeholders' contract used in Phase H."
+    difficulty: 3
+    tags: [phase-h, classification, value-realisation, stakeholders]
+    status: draft
+
+  - id: P6-105
+    unit: P6
+    objective: "P6.1"
+    lesson: P6/02_running_phase_h_value_monitoring_and_the_board
+    scenario: |
+      Pioneer Pharma is a mid-sized pharmaceutical manufacturer with plants in three countries and
+      4,100 staff, operating under strict regulatory oversight of its manufacturing and quality
+      records. It completed an ADM cycle two years ago for "digital quality": an electronic batch
+      record platform, a laboratory information system, a deviation and change-control workflow and
+      a validated data lake for quality analytics. The architecture was deployed in the first plant
+      through two Transition Architectures and is being rolled out to the other two plants by an
+      ongoing programme; the first plant's deployment is in Phase H while the other plants are still
+      in Phase G. An Architecture Board chaired by the Chief Operating Officer meets monthly, with the
+      Head of Quality, the Chief Information Officer, the Head of Manufacturing and the Head of
+      Regulatory Affairs as members.
+
+      Three items have reached the Board. First, a Request for Change from the first plant's quality
+      team: the deviation workflow forces a second approver for every minor deviation, which the team
+      says doubles their workload; they ask for a rule change so that minor deviations need one
+      approver. The Head of Regulatory Affairs believes the second approver may be required by the
+          plant's regulatory commitments. Second, the rollout programme in the second plant reports a
+      lesson learned: the laboratory system's integration with the plant's older instruments needed a
+      custom adapter that the Target Architecture did not anticipate, and the programme wants to
+      know whether the adapter should become part of the architecture for the third plant. Third, an
+      Architecture Compliance report on the first plant's analytics use shows that a data scientist
+      has connected an unvalidated statistics tool directly to the data lake, which is non-compliant
+      with the validated-data principle; the scientist argues the tool produces insights the
+      validated tools cannot.
+
+      The Chief Operating Officer wants the Board to "clear the backlog" at one meeting. The Head of
+      Quality wants the approver change now. The Chief Information Officer asks how lessons from
+      Phase G should feed the architecture. The Head of Regulatory Affairs wants no exemption for the
+      statistics tool.
+
+      The company's governance was strengthened in the last cycle. The Board's criteria for a new cycle,
+      approved with regulatory input, state that a change warrants a new Request for Architecture Work
+      when it "alters a validated process or record in a way that requires re-validation across more
+      than one plant, or introduces a new domain architecture element". Other changes are handled as
+      updates under the Board's authority, with an Architecture Compliance report stating the position
+      and, where a non-compliant change is to be allowed, an exemption "granted for a defined period,
+      with rationale and criteria recorded". The validated-data principle, adopted in the Preliminary
+      Phase, says that quality decisions may be based only on data produced by validated tools, and the
+      regulator's inspectors have cited it approvingly.
+
+      The three items have more detail than the headlines suggest. The deviation workflow's two-approver
+      rule was designed in Phase B from the first plant's quality manual, which the plant's regulatory
+      commitments reference; the quality team's data shows that minor deviations are a third of the
+      volume and that the second approval adds a day on average. The custom adapter built in the second
+      plant connects the laboratory system to a family of instruments that the third plant also uses,
+      and the second plant's team estimates that reusing the adapter would save eight weeks; the adapter
+      was built by the programme's integrator and is not documented in the Architecture Repository. The
+      data scientist's statistics tool has been used for exploratory analysis only, but its outputs have
+      been shown at a quality review meeting, which the Head of Regulatory Affairs regards as a breach in
+      itself; the scientist's underlying need, faster exploratory analytics, is shared by the quality
+      teams in all three plants and has never been recorded as a requirement.
+
+      The Board's practice matters too. Its agenda template includes Requests for Change, dispensations,
+      compliance assessments, dispute resolution and actions, but recent meetings have been dominated by
+      rollout status reports and the Chief Operating Officer's wish to "clear the backlog" reflects
+      frustration that the three items have appeared on three successive agendas without decision. The
+      Chief Information Officer has asked whether lessons from Phase G in one plant are supposed to
+      change the architecture for the others, or whether that "waits until everything is in Phase H".
+      The Head of Quality has hinted that she may implement the approver change locally if the Board does
+      not decide.
+
+      As the lead Enterprise Architect you have been asked to advise the Board on how to handle the
+      three items.
+    question: "Refer to the scenario. You have been asked to advise the Board on how to handle the three items. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Advise the Board to handle each item through the Phase H governance process rather than by
+          a blanket decision. For the approver rule, the Board assesses and approves the Request for
+          Change: first determine whether the second approver is a regulatory commitment, in which case
+          the change is not permissible, and if it is not, classify it as a change impacting one
+          stakeholder that can be handled by change management with an architecture update to the
+          workflow. For the adapter, treat the programme's lesson learned as a Change Request from
+          lessons learned, a named Phase H input: assess whether the adapter is an incremental change to
+          the Application Architecture that should be added to the Target Architecture for the third
+          plant and to the Architecture Repository, so that the mistake is made once. For the statistics
+          tool, the Architecture Compliance report states non-compliance; the Board may grant a
+          time-bound exemption only with valid rationale and enforced criteria, and since the validated-
+          data principle is regulatory in nature and Regulatory Affairs objects, require realignment,
+          while registering the scientist's need as a requirement for a validated analytics capability.
+          Record every decision in the repository.
+        why: >-
+          The Architecture Board assesses and approves Requests for Change (ADM §12.5.1); Change Requests
+          from lessons learned are an input to Phase H and a lessons learned process ensures mistakes
+          are made once (ADM §12.2.3, §12.5.1); a change impacting one stakeholder is a candidate for
+          change management (ADM §12.5.3); an Architecture Compliance report states whether a change is
+          compliant, and an exemption may be granted only with valid rationale (ADM §12.5), with
+          dispensations time-bound and criteria-based (GOV §3.2.1); the Board grants dispensations in
+          keeping with strategy and objectives (GOV §4.2); changes are captured in the repository
+          (ADM §12.3.7) and new requirements flow to Requirements Management (ADM §13.3). Each item gets
+          the route the standard assigns to its class.
+      - key: B
+        points: 3
+        text: >-
+          Advise the Board to approve the approver change as a simple configuration, to add the
+          adapter to the third plant's project scope as a project matter, and to grant the data
+          scientist a permanent exception because the insights are valuable, recording all three as
+          Board decisions.
+        why: >-
+          Recording the decisions is right, but the approver change is approved without checking the
+          regulatory commitment the guideline's "allowed under a dispensation" test implies (ADM
+          §12.5.3); the adapter is treated as a project matter rather than a lessons-learned Change
+          Request that should update the Target Architecture and repository (ADM §12.2.3, §12.5.1); and a
+          permanent exception is not an exemption with valid rationale under a time-bound dispensation
+          (ADM §12.5, GOV §3.2.1).
+      - key: C
+        points: 1
+        text: >-
+          Because the three plants are at different phases, advise the Board to defer all three items
+          until the rollout programme completes and the whole architecture enters Phase H, then start a
+          new ADM cycle to incorporate the approver rule, the adapter and a validated analytics tool
+          together.
+        why: >-
+          Phase H and Phase G run concurrently for different increments and the standard expects
+          governance to co-ordinate change requests from operations, from ongoing projects and from
+          lessons learned as they arise (ADM §12.5.1); deferring them and bundling into a new cycle
+          delays small changes for no architectural reason and misuses the cycle reserved for
+          re-architecting change (ADM §12.5.2).
+      - key: D
+        points: 0
+        text: >-
+          Advise the Board to clear the backlog by approving all three items as requested, since each
+          has a business justification and the Board's job is to unblock the plants.
+        why: >-
+          The Board's job is to decide on changes and dispensations against the architecture and its
+          governance criteria, not to approve requests on business justification alone; approving a
+          non-compliant tool without rationale or criteria and a rule change that may breach a
+          regulatory commitment contradicts the compliance and dispensation processes (ADM §12.5,
+          GOV §3.2.1, GOV §4.2).
+    refs: ["ADM §12.2.3", "ADM §12.5", "ADM §12.5.1", "ADM §12.5.3", "GOV §3.2.1", "GOV §4.2"]
+    open_book_hint: "Where to look: ADM chapter 12: 12.2.3 for the three kinds of Change Request input including lessons learned, 12.5 for the compliance report and exemptions with rationale, 12.5.1 for the Board assessing Requests for Change and the lessons learned process, 12.5.3 for the stakeholder and dispensation guideline; EA Capability and Governance 3.2.1 for dispensations and 4.2 for the Board's responsibilities."
+    difficulty: 3
+    tags: [phase-h, architecture-board, lessons-learned, exemption]
+    status: draft

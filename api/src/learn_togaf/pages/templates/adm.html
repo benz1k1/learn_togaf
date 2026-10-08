@@ -56,4 +56,24 @@
     </div>
   </div>
 </div>
+{% if crosswalk | selectattr('crosswalk') | list %}
+<div class="card bg-base-100 shadow-sm mt-4" data-testid="crosswalk-table"><div class="card-body p-4">
+  <h2 class="card-title text-sm">Crosswalk — each phase in ArchiMate and in SABSA</h2>
+  <p class="text-xs text-base-content/60">The ArchiMate specification's TOGAF appendix and The Open Group's W14C say which viewpoints carry a phase; W117 and G152 say which SABSA Matrix cells it fills. One enterprise, three descriptions — the braid on the study plan follows this table.</p>
+  <div class="overflow-x-auto"><table class="table table-xs mt-2">
+    <thead><tr><th>Phase</th><th>ArchiMate viewpoints</th><th>Elements</th><th>SABSA layers</th><th>Cells</th></tr></thead>
+    <tbody>
+    {% for row in crosswalk if row.crosswalk %}
+    <tr>
+      <td><a class="link" href="/adm/{{ row.code }}"><span class="badge badge-neutral badge-xs mr-1">{{ row.code }}</span>{{ row.name }}</a></td>
+      <td class="text-xs">{{ row.crosswalk.archimate.viewpoints | join(', ') }}</td>
+      <td class="text-xs">{{ row.crosswalk.archimate.elements | join(', ') }}</td>
+      <td class="text-xs">{{ row.crosswalk.sabsa.layers | join(', ') | lower }}</td>
+      <td class="text-xs">{{ row.crosswalk.sabsa.cells | join(' · ') }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+</div></div>
+{% endif %}
 {% endblock %}

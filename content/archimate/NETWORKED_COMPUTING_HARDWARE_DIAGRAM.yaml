@@ -1,0 +1,52 @@
+# Northgate Bank — Networked Computing/Hardware Diagram (Phase D, baseline) as a Technology view:
+# Devices and Nodes in three zones (Groupings), Communication Networks between them, and the
+# two logical links that matter as Paths.
+id: NETWORKED_COMPUTING_HARDWARE_DIAGRAM
+title: "Northgate Bank — Networked Computing/Hardware Diagram as a Technology view"
+viewpoint: Technology
+grid: {gap_y: 64}
+groups:
+  - {id: g_dmz, type: grouping, name: "DMZ", from: [0, 2], to: [2, 2]}
+  - {id: g_app, type: grouping, name: "Application tier", from: [0, 3], to: [3, 3]}
+  - {id: g_data, type: grouping, name: "Data tier", from: [0, 4], to: [2, 4]}
+elements:
+  - {id: phone, type: device, name: "Customer phone: Mobile App client", col: 0, row: 0}
+  - {id: teller, type: device, name: "Teller workstation, browser, x 420", col: 2, row: 0}
+  - {id: cardnet, type: node, name: "Card network: ISO 8583 endpoint (external)", col: 4, row: 0}
+  - {id: internet, type: communication_network, name: "Internet", col: 0, row: 1}
+  - {id: mpls, type: communication_network, name: "MPLS WAN, 42 branches", col: 1, row: 1}
+  - {id: branch_lan, type: communication_network, name: "Branch LAN", col: 2, row: 1}
+  - {id: iso_path, type: path, name: "ISO 8583 link, single-homed (finding vs RQ-08)", col: 4, row: 1}
+  - {id: fw, type: device, name: "Firewall pair fw-01 / fw-02", col: 0, row: 2}
+  - {id: lb, type: device, name: "Load balancer pair lb-01 / lb-02", col: 1, row: 2}
+  - {id: gw, type: node, name: "API gateway gw-01 / gw-02", col: 2, row: 2}
+  - {id: app_core, type: node, name: "app-01, app-02: Core Banking", col: 0, row: 3}
+  - {id: app_mobile, type: node, name: "app-05: Mobile backend", col: 1, row: 3}
+  - {id: app_switch, type: node, name: "app-03, app-04: Card Switch, Fraud Engine", col: 2, row: 3}
+  - {id: kafka, type: node, name: "kafka-01..03: event streaming", col: 3, row: 3}
+  - {id: db1, type: node, name: "db-01 primary: PostgreSQL 16", col: 0, row: 4}
+  - {id: db2, type: node, name: "db-02 replica: PostgreSQL 16", col: 1, row: 4}
+  - {id: san, type: node, name: "SAN 120 TB", col: 2, row: 4}
+  - {id: repl_path, type: path, name: "Async replication to DR", col: 0, row: 5}
+  - {id: dr, type: node, name: "DR data centre (Operations Centre)", col: 1, row: 5}
+relations:
+  - {from: phone, to: internet, type: association}
+  - {from: internet, to: fw, type: association}
+  - {from: teller, to: branch_lan, type: association}
+  - {from: branch_lan, to: mpls, type: association}
+  - {from: mpls, to: fw, type: association}
+  - {from: fw, to: lb, type: association}
+  - {from: lb, to: gw, type: association}
+  - {from: lb, to: app_core, type: association}
+  - {from: lb, to: app_mobile, type: association}
+  - {from: gw, to: app_mobile, type: association}
+  - {from: cardnet, to: iso_path, type: association}
+  - {from: iso_path, to: app_switch, type: association}
+  - {from: app_switch, to: kafka, type: association}
+  - {from: app_core, to: db1, type: association}
+  - {from: app_mobile, to: db2, type: association}
+  - {from: app_switch, to: san, type: association}
+  - {from: db1, to: db2, type: association}
+  - {from: db2, to: san, type: association}
+  - {from: db1, to: repl_path, type: association}
+  - {from: repl_path, to: dr, type: association}

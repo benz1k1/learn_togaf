@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 388" font-family="sans-serif" font-size="12" role="img" aria-label="Example Platform Decomposition Diagram for a fictional retail bank, an original study illustration">
+<defs><marker id="arr-platform-decomposition-diagram" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="760" height="388" fill="#fff"/>
+<text x="10" y="20" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Example: Platform Decomposition Diagram — retail bank</text>
+<text x="750" y="20" text-anchor="end" font-size="11" fill="#666" font-style="italic">diagram: Phase D</text>
+<rect x="10" y="36" width="740" height="56" rx="6" fill="#f3e3f7" stroke="#b58ac9" stroke-width="1"/><text x="22" y="52" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Applications</text>
+<rect x="130" y="46" width="140" height="36" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="200.0" y="67.7" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Core Banking</text>
+<rect x="282" y="46" width="140" height="36" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="352.0" y="67.7" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Mobile App backend</text>
+<rect x="434" y="46" width="140" height="36" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="504.0" y="67.7" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Card Switch</text>
+<rect x="586" y="46" width="140" height="36" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="656.0" y="67.7" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Fraud Engine</text>
+<rect x="10" y="100" width="740" height="96" rx="6" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/><text x="22" y="116" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Software platform</text><text x="22" y="130" text-anchor="start" font-size="9" fill="#345">(logical → physical)</text>
+<rect x="130" y="110" width="140" height="76" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="200.0" y="138.3" text-anchor="middle" font-size="10" fill="#222" font-weight="bold">Application runtime</text>
+<text x="200.0" y="151.3" text-anchor="middle" font-size="10" fill="#222">—</text>
+<text x="200.0" y="164.3" text-anchor="middle" font-size="10" fill="#222">OpenJDK 21 on Tomcat 10</text>
+<rect x="282" y="110" width="140" height="76" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="352.0" y="138.3" text-anchor="middle" font-size="10" fill="#222" font-weight="bold">Relational database</text>
+<text x="352.0" y="151.3" text-anchor="middle" font-size="10" fill="#222">—</text>
+<text x="352.0" y="164.3" text-anchor="middle" font-size="10" fill="#222">PostgreSQL 16, 2 nodes</text>
+<rect x="434" y="110" width="140" height="76" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="504.0" y="138.3" text-anchor="middle" font-size="10" fill="#222" font-weight="bold">Event streaming</text>
+<text x="504.0" y="151.3" text-anchor="middle" font-size="10" fill="#222">—</text>
+<text x="504.0" y="164.3" text-anchor="middle" font-size="10" fill="#222">Kafka 3.7, 3 brokers</text>
+<rect x="586" y="110" width="140" height="76" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="656.0" y="138.3" text-anchor="middle" font-size="10" fill="#222" font-weight="bold">API gateway</text>
+<text x="656.0" y="151.3" text-anchor="middle" font-size="10" fill="#222">—</text>
+<text x="656.0" y="164.3" text-anchor="middle" font-size="10" fill="#222">Kong 3.6</text>
+<rect x="10" y="204" width="740" height="96" rx="6" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/><text x="22" y="220" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Hardware platform</text><text x="22" y="234" text-anchor="start" font-size="9" fill="#345">(logical → physical)</text>
+<rect x="130" y="214" width="140" height="76" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="200.0" y="242.3" text-anchor="middle" font-size="10" fill="#222" font-weight="bold">Application server</text>
+<text x="200.0" y="255.3" text-anchor="middle" font-size="10" fill="#222">—</text>
+<text x="200.0" y="268.3" text-anchor="middle" font-size="10" fill="#222">4 × R760, 32 CPU, 256 GB</text>
+<rect x="282" y="214" width="140" height="76" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="352.0" y="242.3" text-anchor="middle" font-size="10" fill="#222" font-weight="bold">Database server</text>
+<text x="352.0" y="255.3" text-anchor="middle" font-size="10" fill="#222">—</text>
+<text x="352.0" y="268.3" text-anchor="middle" font-size="10" fill="#222">2 × R760, 64 CPU, 1 TB</text>
+<rect x="434" y="214" width="140" height="76" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="504.0" y="242.3" text-anchor="middle" font-size="10" fill="#222" font-weight="bold">Storage</text>
+<text x="504.0" y="255.3" text-anchor="middle" font-size="10" fill="#222">—</text>
+<text x="504.0" y="268.3" text-anchor="middle" font-size="10" fill="#222">SAN 120 TB, RAID 10</text>
+<rect x="586" y="214" width="140" height="76" rx="6" fill="#fff" stroke="#666" stroke-width="1"/>
+<text x="656.0" y="242.3" text-anchor="middle" font-size="10" fill="#222" font-weight="bold">Network</text>
+<text x="656.0" y="255.3" text-anchor="middle" font-size="10" fill="#222">—</text>
+<text x="656.0" y="268.3" text-anchor="middle" font-size="10" fill="#222">2 × firewall, 2 × LB, 10 GbE</text>
+<rect x="10" y="308" width="740" height="30" rx="6" fill="#f2f2f2" stroke="#999" stroke-width="1"/><text x="380" y="327" text-anchor="middle" font-size="10" fill="#222">Cross-platform: MPLS WAN to 42 branches, internet ingress via DMZ, telephony (branch)</text>
+<text x="380" y="362" text-anchor="middle" font-size="10" fill="#345">An &#x27;eye-chart&#x27; of the technology platform under the applications: each layer names the logical component and the physical product/spec that realises it.</text>
+<text x="10" y="380" text-anchor="start" font-size="11" fill="#666">Original illustration for study; the artifact is defined in CONTENT §3.6.7</text>
+</svg>

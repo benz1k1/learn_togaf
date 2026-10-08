@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 190" font-family="sans-serif" font-size="12" role="img" aria-label="Example Technology Standards Catalog for a fictional retail bank, an original study illustration">
+<defs><marker id="arr-technology-standards-catalog" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="760" height="190" fill="#fff"/>
+<text x="10" y="20" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Example: Technology Standards Catalog — retail bank</text>
+<text x="750" y="20" text-anchor="end" font-size="11" fill="#666" font-style="italic">catalog: Technology Service and Components</text>
+<rect x="10" y="34" width="140" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="16" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Technology Service</text>
+<rect x="150" y="34" width="150" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="156" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Logical (standard)</text>
+<rect x="300" y="34" width="170" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="306" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Physical (product)</text>
+<rect x="470" y="34" width="130" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="476" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Lifecycle</text>
+<rect x="600" y="34" width="150" height="22" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="606" y="49" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Refresh cycle</text>
+<rect x="10" y="56" width="140" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="71" text-anchor="start" font-size="11" fill="#222">Relational database</text>
+<rect x="150" y="56" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="156" y="71" text-anchor="start" font-size="11" fill="#222">RDBMS</text>
+<rect x="300" y="56" width="170" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="306" y="71" text-anchor="start" font-size="11" fill="#222">PostgreSQL 16</text>
+<rect x="470" y="56" width="130" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="476" y="71" text-anchor="start" font-size="11" fill="#222">Mainstream</text>
+<rect x="600" y="56" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="606" y="71" text-anchor="start" font-size="11" fill="#222">major every 3 years</text>
+<rect x="10" y="78" width="140" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="93" text-anchor="start" font-size="11" fill="#222">Application runtime</text>
+<rect x="150" y="78" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="156" y="93" text-anchor="start" font-size="11" fill="#222">Java runtime</text>
+<rect x="300" y="78" width="170" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="306" y="93" text-anchor="start" font-size="11" fill="#222">OpenJDK 21 LTS</text>
+<rect x="470" y="78" width="130" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="476" y="93" text-anchor="start" font-size="11" fill="#222">Mainstream</text>
+<rect x="600" y="78" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="606" y="93" text-anchor="start" font-size="11" fill="#222">next LTS + 12 months</text>
+<rect x="10" y="100" width="140" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="115" text-anchor="start" font-size="11" fill="#222">Messaging</text>
+<rect x="150" y="100" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="156" y="115" text-anchor="start" font-size="11" fill="#222">Event streaming</text>
+<rect x="300" y="100" width="170" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="306" y="115" text-anchor="start" font-size="11" fill="#222">Apache Kafka 3.x</text>
+<rect x="470" y="100" width="130" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="476" y="115" text-anchor="start" font-size="11" fill="#222">Mainstream</text>
+<rect x="600" y="100" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="606" y="115" text-anchor="start" font-size="11" fill="#222">annual minor</text>
+<rect x="10" y="122" width="140" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="137" text-anchor="start" font-size="11" fill="#222">Mobile platform</text>
+<rect x="150" y="122" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="156" y="137" text-anchor="start" font-size="11" fill="#222">Native mobile OS</text>
+<rect x="300" y="122" width="170" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="306" y="137" text-anchor="start" font-size="11" fill="#222">iOS 17+, Android 13+</text>
+<rect x="470" y="122" width="130" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="476" y="137" text-anchor="start" font-size="11" fill="#222">Mainstream</text>
+<rect x="600" y="122" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="606" y="137" text-anchor="start" font-size="11" fill="#222">support N-2 versions</text>
+<rect x="10" y="144" width="140" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="16" y="159" text-anchor="start" font-size="11" fill="#222">Directory</text>
+<rect x="150" y="144" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="156" y="159" text-anchor="start" font-size="11" fill="#222">LDAP directory</text>
+<rect x="300" y="144" width="170" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="306" y="159" text-anchor="start" font-size="11" fill="#222">OpenLDAP 2.4</text>
+<rect x="470" y="144" width="130" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="476" y="159" text-anchor="start" font-size="11" fill="#222">Retiring 2027</text>
+<rect x="600" y="144" width="150" height="22" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="606" y="159" text-anchor="start" font-size="11" fill="#222">replace, no refresh</text>
+<text x="10" y="182" text-anchor="start" font-size="11" fill="#666">Original illustration for study; the artifact is defined in CONTENT §3.6.7</text>
+</svg>

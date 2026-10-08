@@ -1,0 +1,543 @@
+# A8 Implementation, Migration and Composite Elements bank (learn_sabsa_archimate.md §4.3).
+# Authored, original paraphrase; every item cites the ArchiMate 3.2 section it is grounded on.
+code: A8_BANK
+exam: OGA-031
+name: "A8 Implementation, Migration and Composite Elements bank"
+kind: DRILL
+source: authored
+questions:
+  # ---------------------------------------------------------------- A8.1 the five elements
+  - id: A8-101
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "Which element represents a series of actions designed to achieve specific results within time and resource constraints?"
+    options:
+      - {key: A, text: "Work Package", correct: true}
+      - {key: B, text: "Deliverable", why: "A deliverable is the result, not the work."}
+      - {key: C, text: "Business Process", why: "A process is repeatable; the definition here is the one-off work package."}
+      - {key: D, text: "Plateau", why: "A plateau is a state of the architecture."}
+    explanation: "The work package is the behavioural element of the implementation and migration layer, with a start and an end and a defined result."
+    refs: ["ARCHIMATE §12.2.1"]
+    difficulty: 1
+    tags: [work-package, definitions]
+  - id: A8-102
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "How does a work package differ from a business process, according to the specification?"
+    options:
+      - {key: A, text: "A work package is a unique one-off, whereas a process is repeatable; otherwise they are described similarly", correct: true}
+      - {key: B, text: "A work package has no result", why: "It produces a well-defined set of results."}
+      - {key: C, text: "A work package cannot be composed of other work packages", why: "Work packages compose: tasks, projects, programmes, portfolios."}
+      - {key: D, text: "A work package is passive structure", why: "It is behaviour."}
+    explanation: "Conceptually similar to a process, a work package is a unique one-off with a start and end."
+    refs: ["ARCHIMATE §12.2.1"]
+    difficulty: 2
+    tags: [work-package]
+  - id: A8-103
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "What does a deliverable represent?"
+    options:
+      - {key: A, text: "A precisely defined result of a work package, which may be a report, software, a service, a physical product, or an organisational change", correct: true}
+      - {key: B, text: "A milestone with no duration", why: "That is an implementation event."}
+      - {key: C, text: "A stable state of the architecture", why: "That is a plateau."}
+      - {key: D, text: "The difference between two architectures", why: "That is a gap."}
+    explanation: "Deliverables are what work packages produce, often contractually specified and signed off, as the TOGAF framework prescribes."
+    refs: ["ARCHIMATE §12.2.2"]
+    difficulty: 1
+    tags: [deliverable, definitions]
+  - id: A8-104
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "Which relationship does the specification now recommend from a work package to the deliverable it produces?"
+    options:
+      - {key: A, text: "Access, because the realization from work package to deliverable is deprecated", correct: true}
+      - {key: B, text: "Realization, which is the only permitted relationship", why: "Realization is marked deprecated in the metamodel figure."}
+      - {key: C, text: "Triggering", why: "Triggering connects work packages and events, not deliverables."}
+      - {key: D, text: "Composition", why: "A deliverable is not a part of the work package."}
+    explanation: "Figure 106 marks the work-package-to-deliverable realization as deprecated and recommends access instead."
+    refs: ["ARCHIMATE §12.1"]
+    difficulty: 2
+    tags: [deliverable, deprecated]
+  - id: A8-105
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "Which statement about an implementation event is correct?"
+    options:
+      - {key: A, text: "It is instantaneous, may carry a time attribute, and may trigger or be triggered by a work package or plateau", correct: true}
+      - {key: B, text: "It has a start and an end like a work package", why: "An event has no duration."}
+      - {key: C, text: "It may only be triggered, never trigger", why: "Events trigger work packages and other behaviour."}
+      - {key: D, text: "It cannot access a deliverable", why: "Events access deliverables to mark lifecycle changes."}
+    explanation: "An implementation event is a state change with no duration, used for milestones and schedules; it triggers, is triggered, and may access deliverables."
+    refs: ["ARCHIMATE §12.2.3"]
+    difficulty: 2
+    tags: [implementation-event]
+  - id: A8-106
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "How should an implementation event preferably be named?"
+    options:
+      - {key: A, text: "With a verb in the perfect tense, e.g. 'Project initiation phase completed'", correct: true}
+      - {key: B, text: "With a noun phrase, e.g. 'Project initiation'", why: "The recommendation is a perfect-tense verb."}
+      - {key: C, text: "With an imperative, e.g. 'Initiate project'", why: "Imperatives suit work packages, not events."}
+      - {key: D, text: "With a date only", why: "The date is an attribute; the name is a perfect-tense phrase."}
+    explanation: "The specification recommends a perfect-tense verb for implementation event names."
+    refs: ["ARCHIMATE §12.2.3"]
+    difficulty: 1
+    tags: [implementation-event, naming]
+  - id: A8-107
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "A 'Release to production' event makes the 'Final build' and 'Production environment' deliverables live. Which relationship connects the event to the deliverables?"
+    options:
+      - {key: A, text: "Access", correct: true}
+      - {key: B, text: "Realization", why: "Events do not realize deliverables."}
+      - {key: C, text: "Triggering", why: "Deliverables are passive; they are not triggered."}
+      - {key: D, text: "Assignment", why: "Assignment is not defined between an event and a deliverable."}
+    explanation: "Implementation events access deliverables to denote a lifecycle change — the specification's own release example."
+    refs: ["ARCHIMATE §12.2.3"]
+    difficulty: 2
+    tags: [implementation-event, access]
+  - id: A8-108
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "What does a plateau represent?"
+    options:
+      - {key: A, text: "A relatively stable state of the architecture that exists during a limited period of time", correct: true}
+      - {key: B, text: "A project phase with a start and an end", why: "That is a work package."}
+      - {key: C, text: "A grouping of deliverables", why: "A plateau aggregates architecture concepts, not primarily deliverables."}
+      - {key: D, text: "A difference between two architectures", why: "That is a gap."}
+    explanation: "The plateau element supports TOGAF's Baseline, Target and Transition Architectures as stable states in time."
+    refs: ["ARCHIMATE §12.2.4"]
+    difficulty: 1
+    tags: [plateau, definitions]
+  - id: A8-109
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "Which TOGAF concepts does the plateau element directly support?"
+    options:
+      - {key: A, text: "Baseline, Target and Transition Architectures", correct: true}
+      - {key: B, text: "Architecture Principles", why: "Principles are motivation elements."}
+      - {key: C, text: "Work packages and projects", why: "Those map to work packages."}
+      - {key: D, text: "Architecture Contracts", why: "A contract is a business-layer element."}
+    explanation: "The specification introduces the plateau precisely to model the baseline, target and transition states TOGAF describes across Phases B–E."
+    refs: ["ARCHIMATE §12.2.4"]
+    difficulty: 1
+    tags: [plateau, togaf]
+  - id: A8-110
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "What does a gap represent, and to what is it related?"
+    options:
+      - {key: A, text: "A statement of difference between two plateaus, associated with both and with the core concepts unique to one of them", correct: true}
+      - {key: B, text: "A missing deliverable, realized by a work package", why: "A gap is a difference between states, not a missing output."}
+      - {key: C, text: "A risk, associated with a driver", why: "Risk modelling uses motivation elements."}
+      - {key: D, text: "A work package that has not started", why: "Work packages and gaps are different elements."}
+    explanation: "A gap is associated with two plateaus and with the core concepts that differ between them; it is the outcome of TOGAF gap analysis."
+    refs: ["ARCHIMATE §12.2.5", "ARCHIMATE §12.5"]
+    difficulty: 1
+    tags: [gap, definitions]
+  - id: A8-111
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "Which relationship connects a plateau to the core concepts that belong to that state of the architecture?"
+    options:
+      - {key: A, text: "Aggregation or composition", correct: true}
+      - {key: B, text: "Serving", why: "A plateau does not serve its contents."}
+      - {key: C, text: "Triggering", why: "Plateaus trigger each other, not their contents."}
+      - {key: D, text: "Access", why: "Plateau contents are not necessarily passive."}
+    explanation: "A plateau may aggregate or compose any core concept to indicate which parts of the architecture belong to it; realization to part of the architecture is also permitted."
+    refs: ["ARCHIMATE §12.5"]
+    difficulty: 2
+    tags: [plateau, relationships]
+  - id: A8-112
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "A capability increment is valid only during one transition state. How is this modelled?"
+    options:
+      - {key: A, text: "The plateau realizes the capability", correct: true}
+      - {key: B, text: "The capability triggers the plateau", why: "Capabilities do not trigger plateaus."}
+      - {key: C, text: "The plateau is assigned to the capability", why: "Assignment is not permitted from a plateau to a capability."}
+      - {key: D, text: "The gap realizes the capability", why: "Gaps associate; they do not realize."}
+    explanation: "Realization from a plateau to part of the architecture is permitted; a capability realized by a plateau is a capability increment valid for that time span."
+    refs: ["ARCHIMATE §12.5"]
+    difficulty: 3
+    tags: [plateau, capability]
+  - id: A8-113
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "Which relationship expresses that a 'Project Manager' role is responsible for a work package?"
+    options:
+      - {key: A, text: "Assignment from the role to the work package", correct: true}
+      - {key: B, text: "Realization from the role to the work package", why: "Core-to-I&M relationships are assignment or association."}
+      - {key: C, text: "Serving from the work package to the role", why: "Not the meaning of responsibility."}
+      - {key: D, text: "Composition from the role to the work package", why: "Different types; composition does not apply."}
+    explanation: "A business internal active structure element may be assigned to a work package to show responsibility."
+    refs: ["ARCHIMATE §12.5"]
+    difficulty: 1
+    tags: [work-package, assignment]
+  - id: A8-114
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "In the specification's example, how do deliverables relate to the plateau 'Strategic Plan Complete'?"
+    options:
+      - {key: A, text: "The deliverables collectively realize the plateau", correct: true}
+      - {key: B, text: "The plateau triggers the deliverables", why: "Plateaus trigger events and plateaus, not deliverables."}
+      - {key: C, text: "The deliverables aggregate the plateau", why: "Direction and relationship are both wrong."}
+      - {key: D, text: "The deliverables access the plateau", why: "Deliverables are passive and do not access."}
+    explanation: "In the example the business plan, architecture and roadmap deliverables together realize the plateau, which follows the baseline across a gap."
+    refs: ["ARCHIMATE §12.2.6"]
+    difficulty: 2
+    tags: [deliverable, plateau, example]
+  - id: A8-115
+    unit: A8
+    objective: "A8.1"
+    lesson: A8/01_implementation_and_migration_elements
+    stem: "Can a deliverable realize a requirement, given that strictly the realization runs through a core element?"
+    options:
+      - {key: A, text: "Yes — the indirect relationship may be made explicit to show the deliverable is needed for the requirement", correct: true}
+      - {key: B, text: "No — only core elements realize requirements", why: "The specification explicitly allows the explicit shortcut."}
+      - {key: C, text: "Only through an influence relationship", why: "Realization is the relationship shown in Figure 113."}
+      - {key: D, text: "Only if the requirement is aggregated in a plateau", why: "No such condition."}
+    explanation: "Deliverables realize requirements (and so, indirectly, goals and outcomes); the relationship is strictly indirect but useful to draw."
+    refs: ["ARCHIMATE §12.5"]
+    difficulty: 2
+    tags: [deliverable, motivation]
+  # ---------------------------------------------------------------- A8.2 grouping, location, composites
+  - id: A8-116
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "Which elements does the specification name as composite elements?"
+    options:
+      - {key: A, text: "Grouping and Location as generic composites, plus Product and Plateau", correct: true}
+      - {key: B, text: "Grouping and Junction", why: "A junction is a relationship connector."}
+      - {key: C, text: "Business Collaboration and Application Collaboration", why: "Collaborations are active structure elements."}
+      - {key: D, text: "Node and Facility", why: "Those are technology and physical active structure."}
+    explanation: "Composite elements consist of other concepts across layers and aspects: grouping and location generically, and product and plateau in their own chapters."
+    refs: ["ARCHIMATE §4.5"]
+    difficulty: 1
+    tags: [composite, definitions]
+  - id: A8-117
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "Which relationship links a grouping to the concepts it groups?"
+    options:
+      - {key: A, text: "Aggregation or composition", correct: true}
+      - {key: B, text: "Assignment", why: "Assignment expresses allocation, not grouping."}
+      - {key: C, text: "Association", why: "Association is always possible but is not the grouping relationship."}
+      - {key: D, text: "Specialization", why: "Grouping is not a kind-of relationship."}
+    explanation: "The grouping element aggregates or composes an arbitrary set of concepts that belong together."
+    refs: ["ARCHIMATE §4.5.1"]
+    difficulty: 1
+    tags: [grouping]
+  - id: A8-118
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "May a grouping contain relationships as well as elements?"
+    options:
+      - {key: A, text: "Yes — elements and/or relationships, of the same or different types, and a concept may be in several overlapping groups", correct: true}
+      - {key: B, text: "No — only elements", why: "Relationships may be grouped too."}
+      - {key: C, text: "Only elements of one type", why: "Mixed types are allowed."}
+      - {key: D, text: "Only if the grouping is inside a plateau", why: "No such condition."}
+    explanation: "A grouping may aggregate or compose an arbitrary group of concepts, which can be elements and/or relationships, and groups may overlap."
+    refs: ["ARCHIMATE §4.5.1"]
+    difficulty: 2
+    tags: [grouping]
+  - id: A8-119
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "Which TOGAF concept does the specification suggest modelling with a grouping?"
+    options:
+      - {key: A, text: "Architecture and Solution Building Blocks", correct: true}
+      - {key: B, text: "Transition Architectures", why: "Those are plateaus."}
+      - {key: C, text: "Architecture Contracts", why: "A contract is a business-layer element."}
+      - {key: D, text: "Work packages", why: "Work package is its own element."}
+    explanation: "Grouping is called out as a useful way to model ABBs and SBBs, and also to model domains such as information domains."
+    refs: ["ARCHIMATE §4.5.1"]
+    difficulty: 2
+    tags: [grouping, togaf]
+  - id: A8-120
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "How is a relationship drawn from a grouping to another element interpreted?"
+    options:
+      - {key: A, text: "As a collective relationship of the group's contents — the contents together, or some of them, hold that relationship", correct: true}
+      - {key: B, text: "As a relationship held by every member individually", why: "The semantics are collective, not universal per member."}
+      - {key: C, text: "As having no meaning, since groupings are visual only", why: "Groupings are model elements with semantics."}
+      - {key: D, text: "As a view of the members", why: "A grouping is not a view."}
+    explanation: "The specification notes that a relationship from or to a group is a collective relationship with the group's contents."
+    refs: ["ARCHIMATE §4.5.1"]
+    difficulty: 2
+    tags: [grouping, semantics]
+  - id: A8-121
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "What is the difference between a grouping and an architecture view?"
+    options:
+      - {key: A, text: "A grouping is a model element that structures concepts within views; a view is a separate visualisation of part of the architecture governed by a viewpoint", correct: true}
+      - {key: B, text: "They are the same thing under different names", why: "The specification explicitly warns against confusing them."}
+      - {key: C, text: "A grouping is a viewpoint", why: "A viewpoint specifies views; a grouping is an element."}
+      - {key: D, text: "A view is a kind of grouping", why: "Views are not elements in the model."}
+    explanation: "Grouping is not to be confused with creating views: it does not provide a separate visualisation and is itself used inside views."
+    refs: ["ARCHIMATE §4.5.1"]
+    difficulty: 2
+    tags: [grouping, view]
+  - id: A8-122
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "Which relationship links a location to the business actors and devices situated there?"
+    options:
+      - {key: A, text: "Aggregation from the location to the structure elements", correct: true}
+      - {key: B, text: "Assignment from the location to the elements", why: "Location uses aggregation, not assignment."}
+      - {key: C, text: "Realization from the elements to the location", why: "Nothing realizes a location."}
+      - {key: D, text: "Serving from the location to the elements", why: "A location does not serve."}
+    explanation: "A location aggregates the structure elements located there and may aggregate behaviour to say where it is performed."
+    refs: ["ARCHIMATE §4.5.2"]
+    difficulty: 1
+    tags: [location]
+  - id: A8-123
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "Which column of the Zachman framework does the location element correspond to?"
+    options:
+      - {key: A, text: "Where", correct: true}
+      - {key: B, text: "Who", why: "Who corresponds to actors and roles."}
+      - {key: C, text: "When", why: "When corresponds to events and time."}
+      - {key: D, text: "Why", why: "Why corresponds to motivation."}
+    explanation: "The specification states that location corresponds to the 'Where' column of Zachman."
+    refs: ["ARCHIMATE §4.5.2"]
+    difficulty: 1
+    tags: [location, zachman]
+  - id: A8-124
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "Can a location aggregate a behaviour element?"
+    options:
+      - {key: A, text: "Yes — to indicate where the behaviour is performed", correct: true}
+      - {key: B, text: "No — only structure elements", why: "Behaviour may be located too."}
+      - {key: C, text: "Only technology behaviour", why: "Any behaviour element may be aggregated."}
+      - {key: D, text: "Only via a grouping", why: "Direct aggregation is permitted."}
+    explanation: "A location can aggregate a behaviour element to indicate where the behaviour is performed."
+    refs: ["ARCHIMATE §4.5.2"]
+    difficulty: 2
+    tags: [location]
+  - id: A8-125
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "How does Product differ from Grouping as a composite element?"
+    options:
+      - {key: A, text: "Product may only aggregate the concepts shown in its own metamodel fragment (services, contract, value, interfaces); grouping may aggregate anything", correct: true}
+      - {key: B, text: "Product may contain relationships; grouping may not", why: "Grouping may contain relationships; product's contents are limited to its fragment."}
+      - {key: C, text: "Product is not a composite element", why: "The specification lists product as a composite."}
+      - {key: D, text: "There is no difference", why: "Product's containment is restricted."}
+    explanation: "Product and plateau are composite elements but may only aggregate or compose the specific concepts in their metamodel fragments."
+    refs: ["ARCHIMATE §B.4", "ARCHIMATE §8.5.1", "ARCHIMATE §4.5"]
+    difficulty: 3
+    tags: [product, composite]
+  - id: A8-126
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "What does PDR 12 allow for a grouping that realizes a service?"
+    options:
+      - {key: A, text: "That a member of the grouping might realize the service, provided the metamodel allows realization from that member to the service", correct: true}
+      - {key: B, text: "That every member realizes the service, validly", why: "PDR 12 is potential and per member, subject to the metamodel."}
+      - {key: C, text: "That the service realizes the grouping", why: "No rule reverses realization."}
+      - {key: D, text: "Nothing — groupings take no part in derivation", why: "PDR 12 is written specifically for grouping."}
+    explanation: "PDR 12: if a grouping aggregates or composes a and the grouping realizes or is assigned to c, then a might have that relationship to c, only if the metamodel allows it."
+    refs: ["ARCHIMATE §B.3.5"]
+    difficulty: 3
+    tags: [grouping, derivation]
+  - id: A8-127
+    unit: A8
+    objective: "A8.2"
+    lesson: A8/02_grouping_location_and_composite_elements
+    stem: "A junction is aggregated inside a grouping. How is that aggregation to be read?"
+    options:
+      - {key: A, text: "Only as the junction belonging to the grouping; it does not join the junction's relationships to the grouping", correct: true}
+      - {key: B, text: "As the grouping aggregating everything the junction connects", why: "The specification says the containment is interpreted on its own."}
+      - {key: C, text: "As invalid — junctions cannot be contained", why: "A junction may be aggregated or composed in a plateau, grouping or location."}
+      - {key: D, text: "As converting the junction into an and-junction", why: "Containment does not change the junction's kind."}
+    explanation: "When a junction is composed or aggregated in a composite, that relationship merely states membership; the junction must still connect same-type relationships on its own."
+    refs: ["ARCHIMATE §5.5.1"]
+    difficulty: 3
+    tags: [junction, composite]
+  # ---------------------------------------------------------------- A8.3 the three viewpoints
+  - id: A8-128
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    stem: "Which viewpoint contains only plateaus and gaps?"
+    options:
+      - {key: A, text: "Migration viewpoint", correct: true}
+      - {key: B, text: "Project viewpoint", why: "Project contains work packages, events, deliverables, actors, roles, goals and outcomes — not plateaus."}
+      - {key: C, text: "Implementation and Migration viewpoint", why: "That viewpoint adds work packages, deliverables and core elements."}
+      - {key: D, text: "Layered viewpoint", why: "Layered is a basic viewpoint across the core layers."}
+    explanation: "The migration viewpoint specifies the transition from one architecture to another using plateaus and gaps only."
+    refs: ["ARCHIMATE §C.4.2"]
+    difficulty: 1
+    tags: [migration-viewpoint]
+  - id: A8-129
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    stem: "What is the Project viewpoint primarily used for?"
+    options:
+      - {key: A, text: "Modelling the management of architecture change", correct: true}
+      - {key: B, text: "Modelling the sequence of architecture states", why: "That is the Migration viewpoint."}
+      - {key: C, text: "Relating projects to the architecture elements they implement", why: "That is the Implementation and Migration viewpoint."}
+      - {key: D, text: "Modelling technology deployment", why: "That is Implementation and Deployment, a basic viewpoint."}
+    explanation: "The project viewpoint models the management of architecture change, including governance constraints such as portfolio and project management."
+    refs: ["ARCHIMATE §C.4.1"]
+    difficulty: 1
+    tags: [project-viewpoint]
+  - id: A8-130
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    stem: "Which elements are in the Project viewpoint?"
+    options:
+      - {key: A, text: "Goal, outcome, work package, implementation event, deliverable, business actor, business role", correct: true}
+      - {key: B, text: "Plateau and gap", why: "Those are the Migration viewpoint."}
+      - {key: C, text: "Work package, plateau, gap and any core element", why: "That is the Implementation and Migration viewpoint."}
+      - {key: D, text: "Requirement, constraint and capability", why: "Requirement and constraint appear in Implementation and Migration, not Project."}
+    explanation: "The project viewpoint lists the delivery elements plus the actors and roles responsible and the goals and outcomes served."
+    refs: ["ARCHIMATE §C.4.1"]
+    difficulty: 2
+    tags: [project-viewpoint, elements]
+  - id: A8-131
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    stem: "Which viewpoint would you choose to check whether two projects both change the same application component?"
+    options:
+      - {key: A, text: "Implementation and Migration viewpoint, because it relates work packages to core elements", correct: true}
+      - {key: B, text: "Migration viewpoint", why: "It has no work packages or core elements."}
+      - {key: C, text: "Project viewpoint", why: "It has no core elements to show the overlap."}
+      - {key: D, text: "Application Cooperation viewpoint", why: "It shows applications, not projects."}
+    explanation: "The implementation and migration viewpoint is suited to analysing potential overlap between project activities and consistency between project and plateau dependencies."
+    refs: ["ARCHIMATE §C.4.3"]
+    difficulty: 2
+    tags: [implementation-migration-viewpoint, choice]
+  - id: A8-132
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    stem: "A portfolio manager wants to see whether every business goal is covered by at least one programme. Which viewpoint does the specification suggest?"
+    options:
+      - {key: A, text: "The Project viewpoint, which relates business goals to programmes and projects", correct: true}
+      - {key: B, text: "The Migration viewpoint", why: "It shows states, not goals or programmes."}
+      - {key: C, text: "The Goal Realization viewpoint", why: "It refines goals into requirements; it has no work packages."}
+      - {key: D, text: "The Capability Map viewpoint", why: "It shows capabilities, not programmes."}
+    explanation: "In the pairing for portfolio management, the programmes-and-projects (Project) viewpoint checks goal coverage; Implementation and Migration traces on to architecture elements."
+    refs: ["ARCHIMATE §C.4.3"]
+    difficulty: 2
+    tags: [project-viewpoint, choice]
+  - id: A8-133
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    stem: "What is the scope of the Implementation and Migration viewpoint?"
+    options:
+      - {key: A, text: "Multiple layers, multiple aspects", correct: true}
+      - {key: B, text: "Implementation and migration only", why: "That is the scope of the Project and Migration viewpoints; this one includes any core element."}
+      - {key: C, text: "Single layer, single aspect", why: "It spans the whole architecture."}
+      - {key: D, text: "Motivation", why: "That is the scope of the motivation viewpoints."}
+    explanation: "Because it includes core elements alongside work packages, plateaus and motivation elements, its scope is multiple layers and multiple aspects."
+    refs: ["ARCHIMATE §C.4.3"]
+    difficulty: 2
+    tags: [implementation-migration-viewpoint, scope]
+  - id: A8-134
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    stem: "Which of the three implementation and migration viewpoints has 'designing' among its purposes?"
+    options:
+      - {key: A, text: "Migration only", correct: true}
+      - {key: B, text: "Project only", why: "Project is deciding and informing."}
+      - {key: C, text: "All three", why: "Project and Implementation and Migration are deciding and informing."}
+      - {key: D, text: "None of them", why: "Migration is designing, deciding and informing."}
+    explanation: "Migration's purpose is designing, deciding, informing; the other two are deciding, informing."
+    refs: ["ARCHIMATE §C.4.2", "ARCHIMATE §C.4.1", "ARCHIMATE §C.4.3"]
+    difficulty: 3
+    tags: [purpose, viewpoints]
+  - id: A8-135
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    stem: "What concern does the Migration viewpoint list?"
+    options:
+      - {key: A, text: "History of models", correct: true}
+      - {key: B, text: "Architecture vision and policies", why: "That is the concern of the Project and Implementation and Migration viewpoints."}
+      - {key: C, text: "Consistency and completeness", why: "That is a concern of several basic viewpoints."}
+      - {key: D, text: "Strategy development", why: "That is the Strategy viewpoint's concern."}
+    explanation: "The migration viewpoint's concern is the history of models — which architecture was valid when."
+    refs: ["ARCHIMATE §C.4.2"]
+    difficulty: 2
+    tags: [migration-viewpoint, concerns]
+  - id: A8-136
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    stem: "Which issue does the specification list as something the Project viewpoint should address?"
+    options:
+      - {key: A, text: "All systems and services must remain operational throughout the change process", correct: true}
+      - {key: B, text: "The exact class structure of each application", why: "That is Application Structure."}
+      - {key: C, text: "The physical layout of data centres", why: "That is the Physical viewpoint."}
+      - {key: D, text: "The read and write access of processes to objects", why: "That is a business-process-level concern."}
+    explanation: "Among the listed issues: multi-year duration, continuity of operation, immature standards, and consequences for people and culture."
+    refs: ["ARCHIMATE §C.4.1"]
+    difficulty: 2
+    tags: [project-viewpoint]
+  - id: A8-137
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    stem: "How may the scope of a project be expressed in the Implementation and Migration viewpoint?"
+    options:
+      - {key: A, text: "As the plateaus it realizes or as the individual architecture elements it affects, with the relationships annotated to say how", correct: true}
+      - {key: B, text: "Only as a list of deliverables", why: "The viewpoint relates projects to architecture, not only to outputs."}
+      - {key: C, text: "Only as the gaps it closes", why: "Gaps may appear, but scope is stated through plateaus or elements."}
+      - {key: D, text: "As a budget attribute on the work package", why: "Budget is not the viewpoint's concern."}
+    explanation: "The viewpoint allows modelling the scope of programmes and projects in terms of realized plateaus or affected elements, with annotated relationships."
+    refs: ["ARCHIMATE §C.4.3"]
+    difficulty: 2
+    tags: [implementation-migration-viewpoint]
+  - id: A8-138
+    unit: A8
+    objective: "A8.3"
+    lesson: A8/03_implementation_and_migration_viewpoints
+    stem: "A model shows Baseline, Transition 1 and Target plateaus, a gap between each pair, and nothing else. Which viewpoint is this a view of, and which ADM phase most directly produces it?"
+    options:
+      - {key: A, text: "Migration viewpoint; Phase E, where Transition Architectures are defined", correct: true}
+      - {key: B, text: "Project viewpoint; Phase F", why: "Project has no plateaus, and F is migration planning of work packages."}
+      - {key: C, text: "Implementation and Migration viewpoint; Phase G", why: "No work packages or core elements are shown."}
+      - {key: D, text: "Layered viewpoint; Phase D", why: "Layered shows the core layers, not states in time."}
+    explanation: "Plateaus and gaps alone make a Migration view; the plateau element exists to model the Transition Architectures Phase E defines."
+    refs: ["ARCHIMATE §C.4.2", "ARCHIMATE §12.2.4"]
+    difficulty: 2
+    tags: [migration-viewpoint, togaf]

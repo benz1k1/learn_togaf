@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 282" font-family="sans-serif" font-size="12" role="img" aria-label="Example Business Interaction Matrix for a fictional retail bank, an original study illustration">
+<defs><marker id="arr-business-interaction-matrix" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="760" height="282" fill="#fff"/>
+<text x="10" y="20" text-anchor="start" font-size="12" fill="#222" font-weight="bold">Example: Business Interaction Matrix — retail bank</text>
+<text x="750" y="20" text-anchor="end" font-size="11" fill="#666" font-style="italic">matrix: Organization/Function × Function</text>
+<rect x="10" y="34" width="140" height="34" rx="0" fill="#f2f2f2" stroke="#999" stroke-width="1"/>
+<text x="144" y="46" text-anchor="end" font-size="10" fill="#345" font-style="italic">Consuming function / org →</text>
+<text x="16" y="62" text-anchor="start" font-size="10" fill="#345" font-style="italic">Providing function ↓</text>
+<rect x="150" y="34" width="120" height="34" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="210.0" y="51" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Onboarding</text>
+<rect x="270" y="34" width="120" height="34" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="330.0" y="51" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Payments</text>
+<rect x="390" y="34" width="120" height="34" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="450.0" y="51" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Lending</text>
+<rect x="510" y="34" width="120" height="34" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="570.0" y="51" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Cards Operations</text>
+<rect x="630" y="34" width="120" height="34" rx="0" fill="#e0ecff" stroke="#7aa2e3" stroke-width="1"/>
+<text x="690.0" y="45" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Risk and</text>
+<text x="690.0" y="58" text-anchor="middle" font-size="11" fill="#222" font-weight="bold">Compliance</text>
+<rect x="10" y="68" width="140" height="34" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="85" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Onboarding</text>
+<rect x="150" y="68" width="120" height="34" rx="0" fill="#e6e6e6" stroke="#bbb" stroke-width="1"/>
+<rect x="270" y="68" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="330.0" y="80" text-anchor="middle" font-size="10" fill="#222">supplies</text>
+<text x="330.0" y="92" text-anchor="middle" font-size="10" fill="#222">customer record</text>
+<rect x="390" y="68" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="450.0" y="80" text-anchor="middle" font-size="10" fill="#222">supplies</text>
+<text x="450.0" y="92" text-anchor="middle" font-size="10" fill="#222">customer record</text>
+<rect x="510" y="68" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="570.0" y="80" text-anchor="middle" font-size="10" fill="#222">supplies</text>
+<text x="570.0" y="92" text-anchor="middle" font-size="10" fill="#222">customer record</text>
+<rect x="630" y="68" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="690.0" y="80" text-anchor="middle" font-size="10" fill="#222">requests</text>
+<text x="690.0" y="92" text-anchor="middle" font-size="10" fill="#222">KYC check</text>
+<rect x="10" y="102" width="140" height="34" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="119" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Payments</text>
+<rect x="150" y="102" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<rect x="270" y="102" width="120" height="34" rx="0" fill="#e6e6e6" stroke="#bbb" stroke-width="1"/>
+<rect x="390" y="102" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="450.0" y="114" text-anchor="middle" font-size="10" fill="#222">credits loan</text>
+<text x="450.0" y="126" text-anchor="middle" font-size="10" fill="#222">disbursement</text>
+<rect x="510" y="102" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="570.0" y="114" text-anchor="middle" font-size="10" fill="#222">settles card</text>
+<text x="570.0" y="126" text-anchor="middle" font-size="10" fill="#222">transactions</text>
+<rect x="630" y="102" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="690.0" y="114" text-anchor="middle" font-size="10" fill="#222">reports</text>
+<text x="690.0" y="126" text-anchor="middle" font-size="10" fill="#222">transactions</text>
+<rect x="10" y="136" width="140" height="34" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="153" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Lending</text>
+<rect x="150" y="136" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<rect x="270" y="136" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="330.0" y="148" text-anchor="middle" font-size="10" fill="#222">collects</text>
+<text x="330.0" y="160" text-anchor="middle" font-size="10" fill="#222">repayments</text>
+<rect x="390" y="136" width="120" height="34" rx="0" fill="#e6e6e6" stroke="#bbb" stroke-width="1"/>
+<rect x="510" y="136" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<rect x="630" y="136" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="690.0" y="148" text-anchor="middle" font-size="10" fill="#222">requests</text>
+<text x="690.0" y="160" text-anchor="middle" font-size="10" fill="#222">credit check</text>
+<rect x="10" y="170" width="140" height="34" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="187" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Cards Operations</text>
+<rect x="150" y="170" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<rect x="270" y="170" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="330.0" y="182" text-anchor="middle" font-size="10" fill="#222">supplies card</text>
+<text x="330.0" y="194" text-anchor="middle" font-size="10" fill="#222">authorisations</text>
+<rect x="390" y="170" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<rect x="510" y="170" width="120" height="34" rx="0" fill="#e6e6e6" stroke="#bbb" stroke-width="1"/>
+<rect x="630" y="170" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="690.0" y="182" text-anchor="middle" font-size="10" fill="#222">escalates</text>
+<text x="690.0" y="194" text-anchor="middle" font-size="10" fill="#222">fraud cases</text>
+<rect x="10" y="204" width="140" height="34" rx="0" fill="#e3f5e1" stroke="#7fbf7a" stroke-width="1"/>
+<text x="16" y="221" text-anchor="start" font-size="11" fill="#222" font-weight="bold">Risk and Compliance</text>
+<rect x="150" y="204" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="210.0" y="216" text-anchor="middle" font-size="10" fill="#222">returns KYC</text>
+<text x="210.0" y="228" text-anchor="middle" font-size="10" fill="#222">verdict</text>
+<rect x="270" y="204" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<rect x="390" y="204" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="450.0" y="216" text-anchor="middle" font-size="10" fill="#222">returns credit</text>
+<text x="450.0" y="228" text-anchor="middle" font-size="10" fill="#222">verdict</text>
+<rect x="510" y="204" width="120" height="34" rx="0" fill="#fff" stroke="#bbb" stroke-width="1"/>
+<text x="570.0" y="216" text-anchor="middle" font-size="10" fill="#222">returns fraud</text>
+<text x="570.0" y="228" text-anchor="middle" font-size="10" fill="#222">verdict</text>
+<rect x="630" y="204" width="120" height="34" rx="0" fill="#e6e6e6" stroke="#bbb" stroke-width="1"/><text x="10" y="254" text-anchor="start" font-size="10" fill="#345">Cell text names the interaction (a business service communicates with, or depends on, another). Grey diagonal = self.</text>
+<text x="10" y="274" text-anchor="start" font-size="11" fill="#666">Original illustration for study; the artifact is defined in CONTENT §3.6.4</text>
+</svg>

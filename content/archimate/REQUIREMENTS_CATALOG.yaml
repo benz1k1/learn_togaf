@@ -1,0 +1,33 @@
+# Northgate Bank — Requirements Catalog (REQ) as a Requirements Realization view: each requirement
+# or constraint realizes a goal above it and is realized by the business service below it.
+id: REQUIREMENTS_CATALOG
+title: "Northgate Bank — Requirements Catalog as a Requirements Realization view"
+viewpoint: Requirements Realization
+elements:
+  - {id: g_mobile, type: goal, name: "60% of transfers in the Mobile App", col: 0, row: 0}
+  - {id: cn02, type: constraint, name: "CN-02 Live before the Q3 2027 card re-issue", col: 1, row: 0}
+  - {id: g_fraud, type: goal, name: "Card fraud losses down 30%", col: 2, row: 0}
+  - {id: g_onboard, type: goal, name: "Ten-minute onboarding", col: 4, row: 0}
+  - {id: rq01, type: requirement, name: "RQ-01 App transfer completes within 10 s (p95)", col: 0, row: 1}
+  - {id: rq04, type: requirement, name: "RQ-04 Card blocked within 5 s of a high score", col: 1, row: 1}
+  - {id: rq02, type: requirement, name: "RQ-02 Every card transaction scored before authorisation", col: 2, row: 1}
+  - {id: cn01, type: constraint, name: "CN-01 Core Banking stays system of record", col: 3, row: 1}
+  - {id: rq03, type: requirement, name: "RQ-03 Same KYC rule set at counter and in app", col: 4, row: 1}
+  - {id: s_transfer, type: business_service, name: "Transfer funds", col: 0, row: 2}
+  - {id: s_auth, type: business_service, name: "Authorise card payment", col: 2, row: 2}
+  - {id: s_record, type: business_service, name: "Maintain customer and account records", col: 3, row: 2}
+  - {id: s_open, type: business_service, name: "Open account", col: 4, row: 2}
+relations:
+  - {from: rq01, to: g_mobile, type: realization}
+  - {from: cn02, to: rq01, type: influence, label: "fixes the date"}
+  - {from: rq02, to: g_fraud, type: realization}
+  - {from: rq04, to: g_fraud, type: realization}
+  - {from: rq03, to: g_onboard, type: realization}
+  - {from: cn01, to: rq03, type: influence}
+  - {from: s_transfer, to: rq01, type: realization}
+  - {from: s_auth, to: rq02, type: realization}
+  - {from: s_auth, to: rq04, type: realization}
+  - {from: s_record, to: cn01, type: realization}
+  - {from: s_open, to: rq03, type: realization}
+notes:
+  - {text: "AS-01 (assumption) and GP-01 (gap) have no motivation element here.", col: 3, row: 0, w: 1, h: 1}

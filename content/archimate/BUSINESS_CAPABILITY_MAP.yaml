@@ -1,0 +1,43 @@
+# Business Capability Map (Phase A) as a Capability Map view: level-1 capabilities composed of their
+# level-2 capabilities; a capability shared with another tier is aggregated (ARCHIMATE §C.3).
+id: BUSINESS_CAPABILITY_MAP
+title: "Northgate Bank — Business Capability Map as a Capability Map view"
+viewpoint: Capability Map
+grid: {gap_y: 60}
+elements:
+  - {id: onboard, type: capability, name: "Customer Onboarding (changes)", col: 0, row: 1, w: 3}
+  - {id: idv, type: capability, name: "Identity Verification (new)", col: 0, row: 2}
+  - {id: open, type: capability, name: "Account Opening (changes)", col: 1, row: 2}
+  - {id: kyc, type: capability, name: "KYC Review (changes)", col: 2, row: 2}
+  - {id: pay, type: capability, name: "Payments (changes)", col: 0, row: 3, w: 3}
+  - {id: card, type: capability, name: "Card Payments (changes)", col: 0, row: 4}
+  - {id: transfer, type: capability, name: "Transfers (changes)", col: 1, row: 4}
+  - {id: settle, type: capability, name: "Settlement", col: 2, row: 4}
+  - {id: lend, type: capability, name: "Lending", col: 0, row: 5, w: 3}
+  - {id: orig, type: capability, name: "Loan Origination", col: 0, row: 6}
+  - {id: credit, type: capability, name: "Credit Assessment", col: 1, row: 6}
+  - {id: service, type: capability, name: "Loan Servicing", col: 2, row: 6}
+  - {id: product, type: capability, name: "Product Management", col: 3, row: 1}
+  - {id: strategy, type: capability, name: "Strategy and Planning", col: 4, row: 1}
+  - {id: risk, type: capability, name: "Risk Management", col: 3, row: 2}
+  - {id: finance, type: capability, name: "Finance", col: 3, row: 4}
+  - {id: hr, type: capability, name: "Human Resources", col: 4, row: 4}
+  - {id: tech, type: capability, name: "Technology", col: 3, row: 5}
+groups:
+  - {id: g_core, type: grouping, name: "Core", from: [0, 1], to: [2, 6]}
+  - {id: g_strat, type: grouping, name: "Strategic", from: [3, 1], to: [4, 2]}
+  - {id: g_supp, type: grouping, name: "Supporting", from: [3, 4], to: [4, 5]}
+relations:
+  - {from: onboard, to: idv, type: composition}
+  - {from: onboard, to: open, type: composition}
+  - {from: onboard, to: kyc, type: composition}
+  - {from: pay, to: card, type: composition}
+  - {from: pay, to: transfer, type: composition}
+  - {from: pay, to: settle, type: composition}
+  - {from: lend, to: orig, type: composition}
+  - {from: lend, to: credit, type: composition}
+  - {from: lend, to: service, type: composition}
+  - {from: risk, to: kyc, type: aggregation}
+  - {from: finance, to: settle, type: aggregation}
+notes:
+  - {text: "\"(changes)\" and \"(new)\" replace the heat-map colour: the capabilities the Digital Channels programme touches. Lending and the supporting tier are untouched.", col: 3, row: 0, w: 2}

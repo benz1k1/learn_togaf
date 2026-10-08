@@ -5,7 +5,15 @@
 <label class="input input-bordered flex items-center gap-2 mb-3 max-w-lg">
   <i class="mdi mdi-magnify"></i>
   <input type="search" name="q" value="{{ q }}" placeholder="Search terms and definitions" class="grow" autofocus
-         hx-get="/glossary" hx-trigger="input changed delay:300ms, search" hx-target="#term-list" hx-swap="outerHTML" hx-push-url="true">
+         hx-get="/glossary" hx-trigger="input changed delay:300ms, search" hx-target="#term-list" hx-swap="outerHTML" hx-push-url="true" hx-include="[name='track']">
 </label>
+<div class="flex flex-wrap items-center gap-2 mb-3" data-testid="track-filter">
+  <input type="hidden" name="track" value="{{ track }}">
+  <a class="btn btn-xs {{ 'btn-primary' if not track else 'btn-outline' }}" href="/glossary?q={{ q | urlencode }}">All ({{ counts.values() | sum }})</a>
+  {% for item in tracks %}
+  <a class="btn btn-xs {{ 'btn-primary' if track == item else 'btn-outline' }}" href="/glossary?q={{ q | urlencode }}&track={{ item }}">{{ item | lower | capitalize }} ({{ counts[item] }})</a>
+  {% endfor %}
+  <span class="text-xs text-base-content/60">The same word means different things across the three frameworks; "not to be confused with" links cross them.</span>
+</div>
 {% include "_term_list.html" %}
 {% endblock %}

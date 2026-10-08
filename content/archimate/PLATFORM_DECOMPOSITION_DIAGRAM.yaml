@@ -1,0 +1,37 @@
+# Northgate Bank — Platform Decomposition Diagram (Phase D) as a Technology view: the platform
+# eye-chart read bottom-up — hardware Nodes host System Software that realizes the Technology
+# Services the applications consume.
+id: PLATFORM_DECOMPOSITION_DIAGRAM
+title: "Northgate Bank — Platform Decomposition Diagram as a Technology view"
+viewpoint: Technology
+elements:
+  - {id: ts_runtime, type: technology_service, name: "Application runtime", col: 0, row: 0}
+  - {id: ts_stream, type: technology_service, name: "Event streaming", col: 1, row: 0}
+  - {id: ts_db, type: technology_service, name: "Relational database", col: 2, row: 0}
+  - {id: ts_gw, type: technology_service, name: "API gateway", col: 3, row: 0}
+  - {id: tf_gw, type: technology_function, name: "Route, authenticate and rate-limit API calls", col: 3, row: 1}
+  - {id: ss_tomcat, type: system_software, name: "OpenJDK 21 on Tomcat 10", col: 0, row: 2}
+  - {id: ss_kafka, type: system_software, name: "Apache Kafka 3.7, 3 brokers", col: 1, row: 2}
+  - {id: ss_pg, type: system_software, name: "PostgreSQL 16, 2 nodes", col: 2, row: 2}
+  - {id: ss_kong, type: system_software, name: "Kong 3.6", col: 3, row: 2}
+  - {id: n_app, type: node, name: "Application server: 4 x R760, 32 CPU, 256 GB", col: 0, row: 3}
+  - {id: n_san, type: node, name: "Storage: SAN 120 TB, RAID 10", col: 1, row: 3}
+  - {id: n_db, type: node, name: "Database server: 2 x R760, 64 CPU, 1 TB", col: 2, row: 3}
+  - {id: n_net, type: node, name: "Network: 2 x firewall, 2 x LB, 10 GbE", col: 3, row: 3}
+  - {id: n_platform, type: node, name: "Primary data centre hardware platform", col: 0, row: 4, w: 4}
+relations:
+  - {from: ss_tomcat, to: ts_runtime, type: realization}
+  - {from: ss_kafka, to: ts_stream, type: realization}
+  - {from: ss_pg, to: ts_db, type: realization}
+  - {from: ss_kong, to: tf_gw, type: assignment}
+  - {from: tf_gw, to: ts_gw, type: realization}
+  - {from: n_app, to: ss_tomcat, type: assignment}
+  - {from: n_app, to: ss_kafka, type: assignment}
+  - {from: n_db, to: ss_pg, type: assignment}
+  - {from: n_net, to: ss_kong, type: assignment}
+  - {from: n_platform, to: n_app, type: composition}
+  - {from: n_platform, to: n_san, type: composition}
+  - {from: n_platform, to: n_db, type: composition}
+  - {from: n_platform, to: n_net, type: composition}
+notes:
+  - {text: "Read bottom-up: the hardware platform is composed of four nodes; system software is assigned to the node it runs on; it realizes the technology service the applications use.", col: 4, row: 2, w: 1, h: 2}

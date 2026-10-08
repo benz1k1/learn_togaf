@@ -1,0 +1,599 @@
+# A3 Strategy Elements drill bank (learn_sabsa_archimate.md §4.3). Original questions, each
+# citing the entailing ArchiMate 3.2 section; status: draft until reviewed. Ids A3-101 upward.
+code: A3_BANK
+exam: OGA-031
+name: A3 Strategy Elements bank
+kind: DRILL
+source: authored
+questions:
+  # ------------------------------------------------------------ A3.1 the four elements
+  - id: A3-101
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "Which element represents an ability that an active structure element such as an organization, person or system possesses?"
+    options:
+      - {key: A, text: "Business Function", why: "A business function is operational behaviour grouped by criteria; the strategic ability is a Capability."}
+      - {key: B, text: "Capability", correct: true}
+      - {key: C, text: "Resource", why: "A resource is an asset owned or controlled, not an ability."}
+      - {key: D, text: "Course of Action", why: "A course of action is a chosen plan, not an ability."}
+    explanation: "Capability is the strategy element for an ability an active structure element possesses; it is classified as behaviour because it describes what the enterprise can do."
+    refs: ["ARCHIMATE §7.3.1"]
+    difficulty: 1
+    tags: [capability, definition]
+  - id: A3-102
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "A Resource is classified in which aspect?"
+    options:
+      - {key: A, text: "Behaviour", why: "Resource is a structure element."}
+      - {key: B, text: "Passive structure", why: "It may be realized by passive structure, but is itself neither active nor passive."}
+      - {key: C, text: "Structure, but neither active nor passive", correct: true}
+      - {key: D, text: "Motivation", why: "Resource is a strategy element, not a motivation element."}
+    explanation: "Resources are realized by both active and passive structure elements and are therefore classified as structures that are neither active nor passive."
+    refs: ["ARCHIMATE §7.2.1"]
+    difficulty: 2
+    tags: [resource, aspect]
+  - id: A3-103
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "Why does the Strategy layer contain no service or interface elements?"
+    options:
+      - {key: A, text: "Because strategy elements are all motivation elements", why: "They are a separate layer, not motivation elements."}
+      - {key: B, text: "Because the Strategy layer abstracts from the internal/external distinction and from the active/passive distinction", correct: true}
+      - {key: C, text: "Because services are only defined in the Technology Layer", why: "Every core layer has services and interfaces."}
+      - {key: D, text: "Because strategy elements cannot be realized", why: "They are realized by core elements."}
+    explanation: "The Strategy layer is kept small and abstract; it abstracts from active versus passive structure and from internal versus external, so it has no service or interface elements."
+    refs: ["ARCHIMATE §7"]
+    difficulty: 2
+    tags: [strategy-layer]
+  - id: A3-104
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "Which element represents a sequence of activities that create an overall result for a customer, stakeholder or end user?"
+    options:
+      - {key: A, text: "Business Process", why: "A business process is the operational, time-ordered sequence for individual cases; the strategic element is the Value Stream."}
+      - {key: B, text: "Value Stream", correct: true}
+      - {key: C, text: "Capability", why: "A capability is an ability, not a sequence."}
+      - {key: D, text: "Value", why: "Value is the worth of a concept, a motivation element."}
+    explanation: "The Value Stream is defined as a sequence of activities creating an overall result for a customer, stakeholder or end user."
+    refs: ["ARCHIMATE §7.3.2"]
+    difficulty: 1
+    tags: [value-stream, definition]
+  - id: A3-105
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "Which statement correctly contrasts a Value Stream with a Business Process?"
+    options:
+      - {key: A, text: "A value stream models decision points with junctions; a business process does not", why: "It is the business process that may model alternative paths and decision points."}
+      - {key: B, text: "A value stream reflects the business model and value proposition; a business process reflects the operating model", correct: true}
+      - {key: C, text: "A value stream is a Business Layer element; a business process is a strategy element", why: "The reverse is true."}
+      - {key: D, text: "They are synonyms at different levels of detail", why: "They are defined at different abstraction levels and serve separate purposes."}
+    explanation: "Value streams and capabilities reflect the business model and value proposition; business processes and functions reflect the operating model. A process describes time-ordered behaviour for an individual case."
+    refs: ["ARCHIMATE §7.3.2"]
+    difficulty: 2
+    tags: [value-stream, business-process]
+  - id: A3-106
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "Which pair of elements both describe the 'enterprise at rest'?"
+    options:
+      - {key: A, text: "Value Stream and Business Process", why: "Both describe the enterprise in motion."}
+      - {key: B, text: "Capability and Business Function", correct: true}
+      - {key: C, text: "Resource and Course of Action", why: "The specification's pairing is capability with function."}
+      - {key: D, text: "Course of Action and Value Stream", why: "A value stream is the enterprise in motion."}
+    explanation: "Value streams and business processes both represent the enterprise in motion; capabilities and business functions both describe the enterprise at rest."
+    refs: ["ARCHIMATE §7.3.2"]
+    difficulty: 2
+    tags: [capability, business-function]
+  - id: A3-107
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "Which element represents an approach or plan for configuring some capabilities and resources of the enterprise, undertaken to achieve a goal?"
+    options:
+      - {key: A, text: "Goal", why: "A goal is the desired end state; the course of action is how the enterprise decides to pursue it."}
+      - {key: B, text: "Work Package", why: "A work package is an Implementation & Migration element for a unit of work, not a strategic plan."}
+      - {key: C, text: "Course of Action", correct: true}
+      - {key: D, text: "Principle", why: "A principle is a general property of systems."}
+    explanation: "A course of action is what the enterprise has decided to do: an approach or plan for configuring capabilities and resources to achieve a goal, categorized as strategies and tactics."
+    refs: ["ARCHIMATE §7.3.3"]
+    difficulty: 1
+    tags: [course-of-action, definition]
+  - id: A3-108
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "How does the specification distinguish a strategy from a tactic as kinds of Course of Action?"
+    options:
+      - {key: A, text: "Strategies are set by the board and tactics by managers", why: "Who sets them is not the distinction."}
+      - {key: B, text: "Strategies tend to be long-term and broad; tactics shorter-term and narrower, with no hard line between them", correct: true}
+      - {key: C, text: "Strategies are modelled as goals and tactics as courses of action", why: "Both are courses of action."}
+      - {key: D, text: "Strategies realize capabilities; tactics realize resources", why: "Courses of action are realized by capabilities and resources, not the reverse."}
+    explanation: "It is not possible to make a hard distinction; strategies tend to be long-term and broad in scope, tactics shorter-term and narrower."
+    refs: ["ARCHIMATE §7.3.3"]
+    difficulty: 2
+    tags: [course-of-action, strategy, tactic]
+  - id: A3-109
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "Which is the recommended naming style for a Capability?"
+    options:
+      - {key: A, text: "A verb-noun in the active tense, e.g. 'Acquire Insurance Product'", why: "That is the value stream naming guidance."}
+      - {key: B, text: "A compound noun or gerund emphasizing what is done, e.g. 'Risk Management'", correct: true}
+      - {key: C, text: "A short sentence stating a finding", why: "That is assessment naming."}
+      - {key: D, text: "A qualitative statement such as 'Improve risk handling'", why: "That is a goal name."}
+    explanation: "A capability name should emphasize 'what we do' rather than 'how', as a compound noun or gerund; a value stream is named verb-noun in the active tense."
+    refs: ["ARCHIMATE §7.3.1", "ARCHIMATE §7.3.2"]
+    difficulty: 2
+    tags: [capability, naming]
+  - id: A3-110
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "Which icon marks the Value Stream element?"
+    options:
+      - {key: A, text: "Three small stepped squares", why: "That is the Capability icon."}
+      - {key: B, text: "A chevron", correct: true}
+      - {key: C, text: "A bar divided into segments", why: "That is the Resource icon."}
+      - {key: D, text: "An arrow pointing at a target", why: "That is the Course of Action icon."}
+    explanation: "Value Stream uses a chevron; Capability stepped squares; Resource a segmented bar; Course of Action an arrow into a target."
+    refs: ["ARCHIMATE §7.5"]
+    difficulty: 2
+    tags: [notation, value-stream]
+  - id: A3-111
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "Which of the following is NOT one of the classes of resource the specification names?"
+    options:
+      - {key: A, text: "Tangible assets such as cash or equipment", why: "Listed."}
+      - {key: B, text: "Intangible assets such as patents or brand", why: "Listed."}
+      - {key: C, text: "Human assets such as skills and motivation", why: "Listed."}
+      - {key: D, text: "Regulatory assets such as licences to operate", correct: true}
+    explanation: "Resources are classified as tangible, intangible and human assets; a regulatory class is not named."
+    refs: ["ARCHIMATE §7.2.1"]
+    difficulty: 2
+    tags: [resource, negative]
+  - id: A3-112
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "In the specification's strategy example, what do the outcomes 'Decreased Costs' and 'Loss of Customers' illustrate?"
+    options:
+      - {key: A, text: "That outcomes always match the goals they serve", why: "The example shows a negative outcome, the opposite point."}
+      - {key: B, text: "That not all outcomes of a course of action lead to the intended results", correct: true}
+      - {key: C, text: "That capabilities cannot realize courses of action", why: "The example shows capabilities realizing the courses of action."}
+      - {key: D, text: "That resources must be located at headquarters", why: "Location is incidental in the example."}
+    explanation: "The courses of action result in one positive and one negative outcome that influence the goals in opposite directions, showing that outcomes are not always what was intended."
+    refs: ["ARCHIMATE §7.4"]
+    difficulty: 2
+    tags: [outcome, example]
+  - id: A3-113
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "In the metamodel, why is Course of Action described as a behaviour element but NOT a strategy behaviour element?"
+    options:
+      - {key: A, text: "Because it is really a motivation element", why: "It is a strategy element."}
+      - {key: B, text: "Because it models a different type of behaviour and has a different set of relationships from capability and value stream", correct: true}
+      - {key: C, text: "Because it has square corners", why: "It has round corners, as behaviour."}
+      - {key: D, text: "Because it cannot be decomposed", why: "Courses of action may be decomposed, as the example shows."}
+    explanation: "Course of Action is behaviour, but is kept apart from the strategy behaviour elements (capability, value stream) because it models a different kind of behaviour with different relationships."
+    refs: ["ARCHIMATE §7.1"]
+    difficulty: 3
+    tags: [course-of-action, metamodel]
+  - id: A3-114
+    unit: A3
+    objective: "A3.1"
+    lesson: A3/01_resource_capability_value_stream_course_of_action
+    stem: "Which TOGAF concept does the ArchiMate Capability correspond to?"
+    options:
+      - {key: A, text: "Architecture Building Block", why: "Building blocks are typically modelled with Grouping."}
+      - {key: B, text: "Business capability", correct: true}
+      - {key: C, text: "Work package", why: "That corresponds to the Implementation & Migration Work Package element."}
+      - {key: D, text: "Business function", why: "That corresponds to the Business Function element."}
+    explanation: "The specification states that the capability concept corresponds to the business capability in the TOGAF framework."
+    refs: ["ARCHIMATE §7.3.1"]
+    difficulty: 1
+    tags: [capability, togaf]
+  # ------------------------------------------------------------ A3.2 relationships
+  - id: A3-115
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "Which relationship is permitted from a Resource to a Capability?"
+    options:
+      - {key: A, text: "Serving", why: "Serving is what capabilities do for value streams and other capabilities."}
+      - {key: B, text: "Assignment", correct: true}
+      - {key: C, text: "Realization", why: "Resources realize courses of action and requirements, not capabilities."}
+      - {key: D, text: "Flow", why: "Flow is between behaviour elements, e.g. value stream stages."}
+    explanation: "Resources are assigned to capabilities (and to value streams); in the example, human and IT resources are assigned to the IT management capability."
+    refs: ["ARCHIMATE §7.3.2", "ARCHIMATE §7.4"]
+    difficulty: 1
+    tags: [relationship, resource, capability]
+  - id: A3-116
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "Which relationship is permitted from a Capability to a Value Stream stage it enables?"
+    options:
+      - {key: A, text: "Assignment", why: "Assignment is from resources to capabilities or value streams."}
+      - {key: B, text: "Serving", correct: true}
+      - {key: C, text: "Triggering", why: "Triggering is not used from capabilities."}
+      - {key: D, text: "Composition", why: "Composition is between elements of the same type."}
+    explanation: "Capabilities can serve, i.e. enable, a value stream; the insurance example shows each stage served by several capabilities."
+    refs: ["ARCHIMATE §7.3.2", "ARCHIMATE §7.4"]
+    difficulty: 1
+    tags: [relationship, capability, value-stream]
+  - id: A3-117
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "Which relationship connects successive stages of a Value Stream?"
+    options:
+      - {key: A, text: "Triggering", why: "Value streams are not time-ordered task sequences; stages are linked by flow of value."}
+      - {key: B, text: "Flow", correct: true}
+      - {key: C, text: "Serving", why: "Serving is from capabilities to the stream."}
+      - {key: D, text: "Realization", why: "Realization is from processes up to the value stream."}
+    explanation: "Value stream stages are typically related using flow relationships to model the flow of value between them."
+    refs: ["ARCHIMATE §7.3.2"]
+    difficulty: 2
+    tags: [relationship, value-stream, flow]
+  - id: A3-118
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "How are the stages of a Value Stream related to the Value Stream as a whole?"
+    options:
+      - {key: A, text: "Stages are Business Processes that realize the value stream", why: "Processes may realize stages, but the stages themselves are value stream elements."}
+      - {key: B, text: "Stages are Value Stream elements composed or aggregated by the overall value stream", correct: true}
+      - {key: C, text: "Stages are Capabilities that serve the value stream", why: "Capabilities serve stages; they are not the stages."}
+      - {key: D, text: "Stages are Outcomes realized by the value stream", why: "An outcome is the result at the end, not a stage."}
+    explanation: "Value streams can be a composition or aggregation of value-adding activities, which are also modelled with the value stream element and known as stages."
+    refs: ["ARCHIMATE §7.3.2"]
+    difficulty: 2
+    tags: [relationship, value-stream, composition]
+  - id: A3-119
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "Which relationship is used to model a capability increment as a specific version of a Capability?"
+    options:
+      - {key: A, text: "Composition", why: "Composition would make the increment a part of the capability."}
+      - {key: B, text: "Specialization", correct: true}
+      - {key: C, text: "Triggering", why: "Not a structural relationship."}
+      - {key: D, text: "Realization", why: "Realization is from core elements up to the capability."}
+    explanation: "To model capability increments, specialization denotes that an increment is a specific version of the capability; increments and their realizing elements are aggregated in plateaus."
+    refs: ["ARCHIMATE §7.3.1", "ARCHIMATE §12.2.4"]
+    difficulty: 2
+    tags: [relationship, capability, specialization]
+  - id: A3-120
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "Which core elements may realize a Capability or a Value Stream?"
+    options:
+      - {key: A, text: "Active structure elements only", why: "Active structure realizes resources, not capabilities."}
+      - {key: B, text: "Internal and external behaviour elements", correct: true}
+      - {key: C, text: "Passive structure elements only", why: "Passive structure realizes resources."}
+      - {key: D, text: "Motivation elements", why: "Motivation elements are the targets of strategy elements, not their realizers."}
+    explanation: "Internal and external behaviour elements may realize strategy behaviour elements, i.e. value streams and capabilities; structure elements realize resources."
+    refs: ["ARCHIMATE §7.6"]
+    difficulty: 2
+    tags: [relationship, realization, core]
+  - id: A3-121
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "Which core element may directly realize a Resource?"
+    options:
+      - {key: A, text: "A Business Process", why: "Behaviour realizes capabilities and value streams, not resources."}
+      - {key: B, text: "An Application Component", correct: true}
+      - {key: C, text: "A Business Service", why: "A service is external behaviour."}
+      - {key: D, text: "A Business Event", why: "An event is behaviour."}
+    explanation: "An active or passive structure element may realize a resource; an application component is active structure."
+    refs: ["ARCHIMATE §7.6", "ARCHIMATE §7.2.1"]
+    difficulty: 2
+    tags: [relationship, resource, realization]
+  - id: A3-122
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "Which relationships are permitted from a Capability to a Requirement?"
+    options:
+      - {key: A, text: "Realization or influence", correct: true}
+      - {key: B, text: "Serving or access", why: "Neither is used toward motivation elements."}
+      - {key: C, text: "Assignment only", why: "Assignment is not used toward motivation elements."}
+      - {key: D, text: "None; capabilities relate only to goals", why: "Capabilities relate to requirements directly and to principles and goals by derivation."}
+    explanation: "Capabilities, value streams, courses of action and resources may realize or influence requirements, and indirectly principles and goals."
+    refs: ["ARCHIMATE §7.6"]
+    difficulty: 2
+    tags: [relationship, capability, requirement]
+  - id: A3-123
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "Which strategy element may directly realize or influence an Outcome according to the strategy-to-motivation relationships?"
+    options:
+      - {key: A, text: "Resource", why: "Resources relate to requirements; outcome is singled out for course of action."}
+      - {key: B, text: "Course of Action", correct: true}
+      - {key: C, text: "Capability only", why: "The specification names course of action for outcomes; capabilities relate to requirements."}
+      - {key: D, text: "None; outcomes are realized only by goals", why: "Goals are realized by outcomes, not the reverse."}
+    explanation: "A course of action may realize or influence an outcome, and indirectly a goal, in addition to the requirement relationships shared by all strategy elements."
+    refs: ["ARCHIMATE §7.6"]
+    difficulty: 3
+    tags: [relationship, course-of-action, outcome]
+  - id: A3-124
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "In the specification's example, how are courses of action related to capabilities?"
+    options:
+      - {key: A, text: "Capabilities are assigned to courses of action", why: "Assignment is used from resources to capabilities."}
+      - {key: B, text: "Courses of action are realized by capabilities", correct: true}
+      - {key: C, text: "Courses of action serve capabilities", why: "Serving is from capabilities to value streams."}
+      - {key: D, text: "Courses of action trigger capabilities", why: "Triggering is not used here."}
+    explanation: "The courses of action 'Centralize IT Systems' and 'Standardize Products' are realized by the capabilities 'IT Management & Operations' and 'Product Management'."
+    refs: ["ARCHIMATE §7.4"]
+    difficulty: 2
+    tags: [relationship, course-of-action, capability]
+  - id: A3-125
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "A modeller wants to show that an Application Component contributes to the 'Customer Management' capability. What is the correct modelling?"
+    options:
+      - {key: A, text: "Draw a realization from the component to the capability directly, because components realize capabilities", why: "Capabilities are realized by behaviour elements; a component is active structure."}
+      - {key: B, text: "Assign the component to an Application Function that realizes the capability", correct: true}
+      - {key: C, text: "Draw a serving relationship from the capability to the component", why: "Capabilities serve value streams and capabilities, and the direction would be wrong anyway."}
+      - {key: D, text: "Draw an assignment from the component to the capability", why: "Assignment to a capability is from a resource."}
+    explanation: "Behaviour elements realize capabilities; an active structure element is assigned to the behaviour it performs. The chain assignment then realization may also justify a derived relationship."
+    refs: ["ARCHIMATE §7.6", "ARCHIMATE §5.7"]
+    difficulty: 3
+    tags: [relationship, capability, derivation]
+  - id: A3-126
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "How is the perceived value produced by a Value Stream modelled?"
+    options:
+      - {key: A, text: "As an attribute of the value stream", why: "Value is an element, not an attribute."}
+      - {key: B, text: "With a Value element associated with the result and, optionally, with the stakeholder", correct: true}
+      - {key: C, text: "With an Outcome realized by the stakeholder", why: "Stakeholders do not realize outcomes; and value is the Value element."}
+      - {key: D, text: "With a Business Object accessed by the value stream", why: "Access and business objects are core concepts unrelated to perceived worth."}
+    explanation: "Value is always defined from the stakeholder's perspective and is modelled with the Value element, associated with the result produced and with the stakeholder."
+    refs: ["ARCHIMATE §7.3.2"]
+    difficulty: 2
+    tags: [relationship, value-stream, value]
+  - id: A3-127
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "Which of the following relationships is NOT permitted between two Capabilities?"
+    options:
+      - {key: A, text: "Serving", why: "A capability may serve another to show contribution."}
+      - {key: B, text: "Aggregation", why: "Every element may aggregate elements of its own type."}
+      - {key: C, text: "Specialization", why: "Used for capability increments."}
+      - {key: D, text: "Access", correct: true}
+    explanation: "Access is between behaviour and passive structure; between capabilities the language allows serving, composition, aggregation and specialization."
+    refs: ["ARCHIMATE §7.3.1", "ARCHIMATE §7.1"]
+    difficulty: 2
+    tags: [relationship, capability, negative]
+  - id: A3-128
+    unit: A3
+    objective: "A3.2"
+    lesson: A3/02_strategy_relationships
+    stem: "Where would a modeller find the complete list of permitted relationships, direct and derived, between any two element types?"
+    options:
+      - {key: A, text: "The metamodel figures in each chapter", why: "The figures deliberately omit derived relationships for legibility."}
+      - {key: B, text: "Appendix B relationship tables", correct: true}
+      - {key: C, text: "Appendix A notation summary", why: "Appendix A summarizes iconography."}
+      - {key: D, text: "Appendix C example viewpoints", why: "Viewpoints list elements, not permitted relationships."}
+    explanation: "Derived relationships are not shown in the metamodel diagrams; the tables in Appendix B show all permitted relationships between two elements."
+    refs: ["ARCHIMATE §5.7", "ARCHIMATE §B.5"]
+    difficulty: 1
+    tags: [relationship, appendix-b]
+  # ------------------------------------------------------------ A3.3 strategy viewpoints
+  - id: A3-129
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "Which viewpoint gives a high-level overview of the enterprise's courses of action together with the capabilities, value streams and resources that support them and the envisaged outcomes?"
+    options:
+      - {key: A, text: "Capability Map viewpoint", why: "The Capability Map shows outcome, capability and resource, not course of action."}
+      - {key: B, text: "Strategy viewpoint", correct: true}
+      - {key: C, text: "Outcome Realization viewpoint", why: "Outcome Realization shows how outcomes are produced down to core elements; it has no course of action."}
+      - {key: D, text: "Motivation viewpoint", why: "The Motivation viewpoint holds motivation elements only."}
+    explanation: "The Strategy viewpoint models courses of action, capabilities, value streams, resources and outcomes for strategy development."
+    refs: ["ARCHIMATE §C.3.1"]
+    difficulty: 1
+    tags: [viewpoint, strategy]
+  - id: A3-130
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "Which viewpoint is described as usable as a heat map to identify areas of investment across the enterprise's capabilities?"
+    options:
+      - {key: A, text: "Strategy viewpoint", why: "That is an overview of strategies, not a levelled capability map."}
+      - {key: B, text: "Capability Map viewpoint", correct: true}
+      - {key: C, text: "Value Stream viewpoint", why: "That shows one value stream's stages and supporting capabilities."}
+      - {key: D, text: "Goal Realization viewpoint", why: "That is a motivation viewpoint."}
+    explanation: "A capability map typically shows two or three levels of capabilities across the enterprise and can be used as a heat map for investment decisions."
+    refs: ["ARCHIMATE §C.3.2"]
+    difficulty: 1
+    tags: [viewpoint, capability-map]
+  - id: A3-131
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "Which elements does the Capability Map viewpoint admit?"
+    options:
+      - {key: A, text: "Outcome, Capability, Resource", correct: true}
+      - {key: B, text: "Course of Action, Capability, Value Stream, Resource, Outcome", why: "That is the Strategy viewpoint."}
+      - {key: C, text: "Value Stream, Capability, Outcome, Stakeholder", why: "That is the Value Stream viewpoint."}
+      - {key: D, text: "Resource, Capability, Work Package", why: "That is the Resource Map viewpoint."}
+    explanation: "The Capability Map viewpoint lists outcome, capability and resource."
+    refs: ["ARCHIMATE §C.3.2"]
+    difficulty: 2
+    tags: [viewpoint, capability-map, elements]
+  - id: A3-132
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "Which viewpoint shows a value stream, the capabilities supporting its stages, the value created and the stakeholders involved?"
+    options:
+      - {key: A, text: "Value Stream viewpoint", correct: true}
+      - {key: B, text: "Business Process Cooperation viewpoint", why: "That is a Business Layer viewpoint about processes."}
+      - {key: C, text: "Outcome Realization viewpoint", why: "That shows how outcomes are produced, including core elements."}
+      - {key: D, text: "Stakeholder viewpoint", why: "That is a motivation viewpoint about drivers and assessments."}
+    explanation: "The Value Stream viewpoint gives a structured overview of a value stream with supporting capabilities, value created and stakeholders."
+    refs: ["ARCHIMATE §C.3.3"]
+    difficulty: 1
+    tags: [viewpoint, value-stream]
+  - id: A3-133
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "Which is the only strategy viewpoint that admits core elements, Value and Meaning?"
+    options:
+      - {key: A, text: "Strategy viewpoint", why: "It admits strategy elements and outcome only."}
+      - {key: B, text: "Outcome Realization viewpoint", correct: true}
+      - {key: C, text: "Resource Map viewpoint", why: "It admits resource, capability and work package."}
+      - {key: D, text: "Capability Map viewpoint", why: "It admits outcome, capability and resource."}
+    explanation: "Outcome Realization shows how the highest-level business results are produced by capabilities and underlying core elements; it admits capability, value stream, resource, outcome, value, meaning and core elements."
+    refs: ["ARCHIMATE §C.3.4"]
+    difficulty: 2
+    tags: [viewpoint, outcome-realization]
+  - id: A3-134
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "What is the purpose classification shared by the Strategy, Capability Map, Value Stream and Outcome Realization viewpoints?"
+    options:
+      - {key: A, text: "Informing only", why: "None of them is an informing viewpoint."}
+      - {key: B, text: "Designing and deciding", correct: true}
+      - {key: C, text: "Designing, deciding and informing", why: "Informing is not listed for the strategy viewpoints."}
+      - {key: D, text: "Deciding only", why: "Designing is listed too."}
+    explanation: "All the strategy viewpoints are classified with purpose designing and deciding and scope strategy."
+    refs: ["ARCHIMATE §C.3.1", "ARCHIMATE §C.3.4", "ARCHIMATE §13.4.1"]
+    difficulty: 2
+    tags: [viewpoint, purpose]
+  - id: A3-135
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "Which stakeholders does the Strategy viewpoint address that the other strategy viewpoints do not list?"
+    options:
+      - {key: A, text: "CxOs", correct: true}
+      - {key: B, text: "Business Managers", why: "Listed for every strategy viewpoint."}
+      - {key: C, text: "Enterprise and Business Architects", why: "Listed for every strategy viewpoint."}
+      - {key: D, text: "Software engineers", why: "Not listed for any strategy viewpoint."}
+    explanation: "The Strategy viewpoint lists CxOs, business managers, and enterprise and business architects; the others list only the latter two groups."
+    refs: ["ARCHIMATE §C.3.1", "ARCHIMATE §C.3.2"]
+    difficulty: 3
+    tags: [viewpoint, stakeholders]
+  - id: A3-136
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "Which strategy viewpoint admits the Work Package element?"
+    options:
+      - {key: A, text: "Strategy viewpoint", why: "No work package."}
+      - {key: B, text: "Resource Map viewpoint", correct: true}
+      - {key: C, text: "Value Stream viewpoint", why: "No work package."}
+      - {key: D, text: "Outcome Realization viewpoint", why: "No work package; it admits core elements instead."}
+    explanation: "The Resource Map viewpoint lists resource, capability and work package."
+    refs: ["ARCHIMATE §C.3.5"]
+    difficulty: 2
+    tags: [viewpoint, resource-map]
+  - id: A3-137
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "What is the concern of the Outcome Realization viewpoint?"
+    options:
+      - {key: A, text: "Strategy development", why: "That is the Strategy viewpoint's concern."}
+      - {key: B, text: "Business-oriented results", correct: true}
+      - {key: C, text: "Architecture strategy and tactics, motivation", why: "That is the concern of the Capability Map, Value Stream and Resource Map viewpoints."}
+      - {key: D, text: "Architecture mission and strategy", why: "That is the Stakeholder viewpoint's concern."}
+    explanation: "Outcome Realization addresses business-oriented results: how the highest-level results are produced by capabilities and core elements."
+    refs: ["ARCHIMATE §C.3.4"]
+    difficulty: 3
+    tags: [viewpoint, concern]
+  - id: A3-138
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "A Business Architect needs to show the time-ordered steps and decision points for handling a single mortgage application. Which is correct?"
+    options:
+      - {key: A, text: "Use the Value Stream viewpoint, since the steps add value", why: "A value stream is not a description of time-ordered tasks for individual cases and has no decision points."}
+      - {key: B, text: "This is a business process, not a value stream; a Business Layer process view is appropriate", correct: true}
+      - {key: C, text: "Use the Capability Map viewpoint", why: "Capabilities describe the enterprise at rest, not a step sequence."}
+      - {key: D, text: "Use the Strategy viewpoint", why: "That is a high-level overview of courses of action and supporting elements."}
+    explanation: "A business process describes the time-ordered sequence for an individual case with alternative paths and decision points; a value stream describes overall value creation at a strategic level."
+    refs: ["ARCHIMATE §7.3.2", "ARCHIMATE §C.3.3"]
+    difficulty: 2
+    tags: [viewpoint, value-stream, business-process]
+  - id: A3-139
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "How many levels of capabilities does a capability map typically show?"
+    options:
+      - {key: A, text: "One", why: "The specification says two or three."}
+      - {key: B, text: "Two or three", correct: true}
+      - {key: C, text: "Exactly five", why: "Not what the specification says."}
+      - {key: D, text: "As many as there are plateaus", why: "Plateaus are unrelated to the depth of a capability map."}
+    explanation: "A capability map typically shows two or three levels of capabilities across the entire enterprise."
+    refs: ["ARCHIMATE §C.3.2"]
+    difficulty: 1
+    tags: [viewpoint, capability-map]
+  - id: A3-140
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "In the Value Stream viewpoint, which relationship connects a Capability to the stage it supports?"
+    options:
+      - {key: A, text: "Serving", correct: true}
+      - {key: B, text: "Assignment", why: "Assignment is from resources."}
+      - {key: C, text: "Realization", why: "Realization is from processes to the value stream."}
+      - {key: D, text: "Influence", why: "Influence targets motivation elements."}
+    explanation: "Capabilities serve (enable) value stream stages, as in the specification's cross-mapping example."
+    refs: ["ARCHIMATE §C.3.3", "ARCHIMATE §7.4"]
+    difficulty: 2
+    tags: [viewpoint, value-stream, serving]
+  - id: A3-141
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "On the content dimension of the viewpoint classification, which category does a viewpoint spanning multiple layers AND multiple aspects fall into?"
+    options:
+      - {key: A, text: "Details", why: "Details is one layer and one aspect."}
+      - {key: B, text: "Coherence", why: "Coherence spans multiple layers or multiple aspects, not necessarily both."}
+      - {key: C, text: "Overview", correct: true}
+      - {key: D, text: "Deciding", why: "Deciding is a purpose category, not a content category."}
+    explanation: "The content dimension is details, coherence and overview; overview addresses both multiple layers and multiple aspects and is aimed at enterprise architects and decision-makers."
+    refs: ["ARCHIMATE §13.4.1"]
+    difficulty: 2
+    tags: [viewpoint, classification]
+  - id: A3-142
+    unit: A3
+    objective: "A3.3"
+    lesson: A3/03_strategy_viewpoints
+    stem: "Which of the following is NOT one of the five strategy viewpoints defined in Appendix C?"
+    options:
+      - {key: A, text: "Resource Map viewpoint", why: "Defined in C.3.5."}
+      - {key: B, text: "Outcome Realization viewpoint", why: "Defined in C.3.4."}
+      - {key: C, text: "Goal Realization viewpoint", correct: true}
+      - {key: D, text: "Capability Map viewpoint", why: "Defined in C.3.2."}
+    explanation: "The strategy viewpoints are Strategy, Capability Map, Value Stream, Outcome Realization and Resource Map; Goal Realization is a motivation viewpoint."
+    refs: ["ARCHIMATE §C.3", "ARCHIMATE §C.2.2"]
+    difficulty: 1
+    tags: [viewpoint, negative]

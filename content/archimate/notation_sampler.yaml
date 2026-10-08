@@ -1,0 +1,104 @@
+# Every element type and every relationship type once: the notation the Part 1 exam shows.
+# Rendered by draw_archimate.py; embedded by the A1 lessons and the worked-examples page.
+id: notation_sampler
+title: "ArchiMate 3.2 notation sampler"
+viewpoint: ""
+elements:
+  - {id: st, type: stakeholder, name: "Stakeholder", col: 0, row: 0}
+  - {id: dr, type: driver, name: "Driver", col: 1, row: 0}
+  - {id: as, type: assessment, name: "Assessment", col: 2, row: 0}
+  - {id: go, type: goal, name: "Goal", col: 3, row: 0}
+  - {id: ou, type: outcome, name: "Outcome", col: 4, row: 0}
+  - {id: pr, type: principle, name: "Principle", col: 0, row: 1}
+  - {id: rq, type: requirement, name: "Requirement", col: 1, row: 1}
+  - {id: co, type: constraint, name: "Constraint", col: 2, row: 1}
+  - {id: me, type: meaning, name: "Meaning", col: 3, row: 1}
+  - {id: va, type: value, name: "Value", col: 4, row: 1}
+  - {id: re, type: resource, name: "Resource", col: 0, row: 2}
+  - {id: ca, type: capability, name: "Capability", col: 1, row: 2}
+  - {id: vs, type: value_stream, name: "Value Stream", col: 2, row: 2}
+  - {id: coa, type: course_of_action, name: "Course of Action", col: 3, row: 2}
+  - {id: ba, type: business_actor, name: "Business Actor", col: 0, row: 3}
+  - {id: br, type: business_role, name: "Business Role", col: 1, row: 3}
+  - {id: bc, type: business_collaboration, name: "Business Collaboration", col: 2, row: 3}
+  - {id: bi, type: business_interface, name: "Business Interface", col: 3, row: 3}
+  - {id: bp, type: business_process, name: "Business Process", col: 4, row: 3}
+  - {id: bf, type: business_function, name: "Business Function", col: 0, row: 4}
+  - {id: bx, type: business_interaction, name: "Business Interaction", col: 1, row: 4}
+  - {id: be, type: business_event, name: "Business Event", col: 2, row: 4}
+  - {id: bs, type: business_service, name: "Business Service", col: 3, row: 4}
+  - {id: bo, type: business_object, name: "Business Object", col: 4, row: 4}
+  - {id: ct, type: contract, name: "Contract", col: 0, row: 5}
+  - {id: rp, type: representation, name: "Representation", col: 1, row: 5}
+  - {id: pd, type: product, name: "Product", col: 2, row: 5}
+  - {id: ac, type: application_component, name: "Application Component", col: 0, row: 6}
+  - {id: acl, type: application_collaboration, name: "Application Collaboration", col: 1, row: 6}
+  - {id: ai, type: application_interface, name: "Application Interface", col: 2, row: 6}
+  - {id: af, type: application_function, name: "Application Function", col: 3, row: 6}
+  - {id: ap, type: application_process, name: "Application Process", col: 4, row: 6}
+  - {id: ax, type: application_interaction, name: "Application Interaction", col: 0, row: 7}
+  - {id: ae, type: application_event, name: "Application Event", col: 1, row: 7}
+  - {id: asv, type: application_service, name: "Application Service", col: 2, row: 7}
+  - {id: do, type: data_object, name: "Data Object", col: 3, row: 7}
+  - {id: nd, type: node, name: "Node", col: 0, row: 8}
+  - {id: dv, type: device, name: "Device", col: 1, row: 8}
+  - {id: ss, type: system_software, name: "System Software", col: 2, row: 8}
+  - {id: tc, type: technology_collaboration, name: "Technology Collaboration", col: 3, row: 8}
+  - {id: ti, type: technology_interface, name: "Technology Interface", col: 4, row: 8}
+  - {id: pa, type: path, name: "Path", col: 0, row: 9}
+  - {id: cn, type: communication_network, name: "Communication Network", col: 1, row: 9}
+  - {id: tf, type: technology_function, name: "Technology Function", col: 2, row: 9}
+  - {id: tp, type: technology_process, name: "Technology Process", col: 3, row: 9}
+  - {id: tx, type: technology_interaction, name: "Technology Interaction", col: 4, row: 9}
+  - {id: te, type: technology_event, name: "Technology Event", col: 0, row: 10}
+  - {id: ts, type: technology_service, name: "Technology Service", col: 1, row: 10}
+  - {id: ar, type: artifact, name: "Artifact", col: 2, row: 10}
+  - {id: eq, type: equipment, name: "Equipment", col: 3, row: 10}
+  - {id: fa, type: facility, name: "Facility", col: 4, row: 10}
+  - {id: dn, type: distribution_network, name: "Distribution Network", col: 0, row: 11}
+  - {id: ma, type: material, name: "Material", col: 1, row: 11}
+  - {id: wp, type: work_package, name: "Work Package", col: 2, row: 11}
+  - {id: de, type: deliverable, name: "Deliverable", col: 3, row: 11}
+  - {id: ie, type: implementation_event, name: "Implementation Event", col: 4, row: 11}
+  - {id: pl, type: plateau, name: "Plateau", col: 0, row: 12}
+  - {id: gp, type: gap, name: "Gap", col: 1, row: 12}
+  - {id: lo, type: location, name: "Location", col: 2, row: 12}
+  - {id: ju, type: junction, name: "", col: 3, row: 12}
+  - {id: oj, type: or_junction, name: "", col: 4, row: 12}
+  # relationship sampler: a source and a target per relationship type
+  - {id: r1a, type: business_actor, name: "composition (whole → part)", col: 0, row: 14}
+  - {id: r1b, type: business_actor, name: "part", col: 1, row: 14}
+  - {id: r2a, type: business_actor, name: "aggregation (whole → part)", col: 2, row: 14}
+  - {id: r2b, type: business_actor, name: "part", col: 3, row: 14}
+  - {id: r3a, type: business_role, name: "assignment (role → behaviour)", col: 0, row: 15}
+  - {id: r3b, type: business_process, name: "behaviour", col: 1, row: 15}
+  - {id: r4a, type: application_component, name: "realization (concrete → abstract)", col: 2, row: 15}
+  - {id: r4b, type: application_service, name: "abstract", col: 3, row: 15}
+  - {id: r5a, type: application_service, name: "serving (provider → consumer)", col: 0, row: 16}
+  - {id: r5b, type: business_process, name: "consumer", col: 1, row: 16}
+  - {id: r6a, type: application_function, name: "access (behaviour → passive)", col: 2, row: 16}
+  - {id: r6b, type: data_object, name: "passive (write)", col: 3, row: 16}
+  - {id: r7a, type: assessment, name: "influence (+/−)", col: 0, row: 17}
+  - {id: r7b, type: goal, name: "influenced", col: 1, row: 17}
+  - {id: r8a, type: business_actor, name: "association", col: 2, row: 17}
+  - {id: r8b, type: business_object, name: "associated", col: 3, row: 17}
+  - {id: r9a, type: business_event, name: "triggering (before → after)", col: 0, row: 18}
+  - {id: r9b, type: business_process, name: "after", col: 1, row: 18}
+  - {id: r10a, type: business_process, name: "flow (sender → receiver)", col: 2, row: 18}
+  - {id: r10b, type: business_process, name: "receiver", col: 3, row: 18}
+  - {id: r11a, type: business_role, name: "specialization (specific → general)", col: 0, row: 19}
+  - {id: r11b, type: business_role, name: "general", col: 1, row: 19}
+relations:
+  - {from: r1a, to: r1b, type: composition}
+  - {from: r2a, to: r2b, type: aggregation}
+  - {from: r3a, to: r3b, type: assignment}
+  - {from: r4a, to: r4b, type: realization}
+  - {from: r5a, to: r5b, type: serving}
+  - {from: r6a, to: r6b, type: access, access: write}
+  - {from: r7a, to: r7b, type: influence, label: "+"}
+  - {from: r8a, to: r8b, type: association}
+  - {from: r9a, to: r9b, type: triggering}
+  - {from: r10a, to: r10b, type: flow}
+  - {from: r11a, to: r11b, type: specialization}
+notes:
+  - {text: "Colours: motivation purple, strategy tan, business yellow, application blue, technology and physical green, implementation pink, plateau green. Shape: active structure square-cornered, behaviour rounded, motivation chamfered, service pill, event flag.", col: 0, row: 13, w: 5, h: 1}

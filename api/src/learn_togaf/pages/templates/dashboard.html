@@ -11,11 +11,11 @@
 <div class="card bg-base-100 shadow-sm mb-4">
   <div class="card-body py-4">
     <p class="text-lg font-semibold" id="summary-line">{{ summary }}</p>
-    <p class="text-xs text-base-content/60">Foundation: accuracy over the last 200 answered Foundation questions, weighted by the blueprint, scaled to /40. Practitioner: mean of the last three finished mocks. Pass mark {{ pass_mark }}/{{ max_score }} on both.</p>
+    <p class="text-xs text-base-content/60">Single-answer papers (OGEA-101, OGA-031, SCF): accuracy over the last 200 answered questions of that exam, weighted by the blueprint, scaled to the paper. Scenario papers (OGEA-102, OGA-032): mean of the last three finished mocks. Pass marks are the blueprint's, marked <em>verify</em> until checked against the certifying body.</p>
   </div>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-  <div class="lg:col-span-2">{% include "_readiness.html" %}</div>
+  <div class="lg:col-span-2 flex flex-col gap-4">{% include "_readiness.html" %}</div>
   <div class="flex flex-col gap-4">
     {% include "_due.html" %}
     {% include "_weakest.html" %}

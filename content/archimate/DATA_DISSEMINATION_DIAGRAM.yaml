@@ -1,0 +1,29 @@
+# Northgate Bank — Data Dissemination Diagram (Phase C) as an Application Usage view: which
+# component holds which data (Access, labelled master or copy) for which business service (Serving).
+id: DATA_DISSEMINATION_DIAGRAM
+title: "Northgate Bank — Data Dissemination Diagram as an Application Usage view"
+viewpoint: Application Usage
+elements:
+  - {id: s_transfer, type: business_service, name: "Transfer funds", col: 0, row: 0}
+  - {id: s_open, type: business_service, name: "Open account", col: 1, row: 0}
+  - {id: s_auth, type: business_service, name: "Authorise card payment", col: 3, row: 0}
+  - {id: mobile, type: application_component, name: "Mobile App", col: 0, row: 1}
+  - {id: core, type: application_component, name: "Core Banking", col: 1, row: 1, w: 2}
+  - {id: switch, type: application_component, name: "Card Switch", col: 3, row: 1}
+  - {id: customer, type: data_object, name: "Customer", col: 0, row: 2}
+  - {id: account, type: data_object, name: "Account", col: 2, row: 2}
+  - {id: txn, type: data_object, name: "Transaction", col: 1, row: 2}
+  - {id: card, type: data_object, name: "Card", col: 3, row: 2}
+relations:
+  - {from: mobile, to: s_transfer, type: serving}
+  - {from: core, to: s_transfer, type: serving}
+  - {from: core, to: s_open, type: serving}
+  - {from: switch, to: s_auth, type: serving}
+  - {from: core, to: customer, type: access, access: readwrite, label: "master"}
+  - {from: core, to: account, type: access, access: readwrite, label: "master"}
+  - {from: core, to: txn, type: access, access: readwrite, label: "master"}
+  - {from: switch, to: card, type: access, access: readwrite, label: "master"}
+  - {from: switch, to: account, type: access, access: read, label: "copy"}
+  - {from: mobile, to: customer, type: access, access: read, label: "cache"}
+notes:
+  - {text: "Core Banking is the only master of Customer and Account (CN-01, CN-03); every other holding is a copy or cache that expires.", col: 4, row: 1, w: 1, h: 2}

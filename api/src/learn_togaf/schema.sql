@@ -46,8 +46,10 @@ CREATE TABLE IF NOT EXISTS objective_source (
 
 -- ---------------------------------------------------------------- content cache (§2)
 CREATE TABLE IF NOT EXISTS learning_unit (
-    code TEXT PRIMARY KEY,                   -- F1..F8, P1..P9, G_*
-    exam TEXT NOT NULL,                      -- FOUNDATION | PRACTITIONER
+    code TEXT PRIMARY KEY,                   -- F1..F8, P1..P9, G_*, A1..A9, S1..S7, X1..X3
+    exam TEXT NOT NULL,                      -- exam code from blueprint.exams ('' for a crosswalk unit)
+    track TEXT NOT NULL DEFAULT 'TOGAF',     -- TOGAF | ARCHIMATE | SABSA | CROSSWALK
+    scoring TEXT NOT NULL DEFAULT '',        -- single | gradient | '' (no exam)
     name TEXT NOT NULL,
     ordinal INTEGER NOT NULL,
     weight INTEGER NOT NULL,                 -- questions in the blueprint (Foundation) or scenarios (Practitioner)
@@ -77,6 +79,19 @@ CREATE TABLE IF NOT EXISTS lesson_objective (
     objective_code TEXT NOT NULL,
     PRIMARY KEY (lesson_id, objective_code)
 );
+-- The braid (learn_sabsa_archimate.md §4.6): content/curriculum.yaml as rows, one per week, and
+-- the position every lesson takes in it. Rebuilt with the rest of the cache.
+CREATE TABLE IF NOT EXISTS curriculum_week (
+    week INTEGER PRIMARY KEY,
+    theme TEXT NOT NULL,
+    exercise_draw TEXT NOT NULL DEFAULT '',
+    exercise_justify TEXT NOT NULL DEFAULT ''
+);
+CREATE TABLE IF NOT EXISTS lesson_week (
+    lesson_id TEXT PRIMARY KEY REFERENCES lesson(id) ON DELETE CASCADE,
+    week INTEGER NOT NULL REFERENCES curriculum_week(week) ON DELETE CASCADE,
+    position INTEGER NOT NULL
+);
 CREATE TABLE IF NOT EXISTS glossary_term (
     id TEXT PRIMARY KEY,                     -- slug
     term TEXT NOT NULL,
@@ -100,6 +115,7 @@ CREATE TABLE IF NOT EXISTS adm_phase (
     deliverables TEXT NOT NULL,              -- JSON array
     refs TEXT NOT NULL,                      -- JSON array
     traps TEXT NOT NULL,                     -- JSON array
+    crosswalk TEXT NOT NULL DEFAULT '',      -- JSON object from adm/crosswalk.yaml, or ''
     ordinal INTEGER NOT NULL
 );
 CREATE TABLE IF NOT EXISTS adm_technique (
@@ -118,7 +134,26 @@ CREATE TABLE IF NOT EXISTS adm_artefact (
     phase_code TEXT NOT NULL,
     domain TEXT NOT NULL,                    -- BUSINESS | DATA | APPLICATION | TECHNOLOGY | CROSS
     purpose TEXT NOT NULL,
-    refs TEXT NOT NULL
+    refs TEXT NOT NULL,
+    archimate TEXT NOT NULL DEFAULT ''       -- JSON object: viewpoint, elements, relationships, ref, note; or ''
+);
+CREATE TABLE IF NOT EXISTS example_document (
+    id TEXT PRIMARY KEY,                     -- "<nn>_<slug>" under content/examples/
+    deliverable TEXT NOT NULL,               -- the deliverable or technique the document is an example of
+    title TEXT NOT NULL,
+    phase_code TEXT NOT NULL,                -- the phase that produces it
+    kind TEXT NOT NULL,                      -- DELIVERABLE | ASSESSMENT | SCENARIO | MODEL | PROFILE
+    track TEXT NOT NULL DEFAULT 'TOGAF',     -- TOGAF | ARCHIMATE | SABSA
+    figure TEXT NOT NULL DEFAULT '',         -- static SVG a MODEL embeds (pages/static/archimate/<figure>)
+    viewpoint TEXT NOT NULL DEFAULT '',      -- ArchiMate viewpoint of a MODEL
+    artefacts TEXT NOT NULL DEFAULT '[]',    -- JSON array of TOGAF artefact codes the example realises
+    summary TEXT NOT NULL,
+    body_md TEXT NOT NULL,
+    ordinal INTEGER NOT NULL,
+    refs TEXT NOT NULL,                      -- JSON array of section refs
+    source TEXT NOT NULL,
+    status TEXT NOT NULL,
+    content_hash TEXT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS question_set (
     code TEXT PRIMARY KEY,
@@ -132,7 +167,9 @@ CREATE TABLE IF NOT EXISTS question_set (
 );
 CREATE TABLE IF NOT EXISTS question (
     id TEXT PRIMARY KEY,
-    exam TEXT NOT NULL,                      -- FOUNDATION | PRACTITIONER
+    exam TEXT NOT NULL,                      -- exam code from blueprint.exams
+    track TEXT NOT NULL DEFAULT 'TOGAF',
+    scoring TEXT NOT NULL DEFAULT 'single',  -- single (1/0) | gradient (5/3/1/0)
     unit_code TEXT NOT NULL,
     objective_code TEXT NOT NULL,
     set_code TEXT NOT NULL REFERENCES question_set(code) ON DELETE CASCADE,
@@ -162,12 +199,19 @@ CREATE TABLE IF NOT EXISTS question_option (
     ordinal INTEGER NOT NULL,
     PRIMARY KEY (question_id, key)
 );
+-- One lesson per question: the lesson whose "check yourself" shows it (content/models.py `lesson`,
+-- or derived by the loader from refs). Rebuilt with the rest of the cache.
+CREATE TABLE IF NOT EXISTS lesson_question (
+    question_id TEXT PRIMARY KEY REFERENCES question(id) ON DELETE CASCADE,
+    lesson_id TEXT NOT NULL REFERENCES lesson(id) ON DELETE CASCADE
+);
+CREATE INDEX IF NOT EXISTS lesson_question_lesson_idx ON lesson_question(lesson_id);
 
 -- ---------------------------------------------------------------- learner state (§3)
 CREATE TABLE IF NOT EXISTS attempt (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    exam TEXT NOT NULL,
-    mode TEXT NOT NULL,                      -- DRILL | MOCK
+    exam TEXT NOT NULL,                      -- exam code
+    mode TEXT NOT NULL,                      -- DRILL | MOCK | CHECK
     set_code TEXT,
     seed INTEGER NOT NULL,
     question_ids TEXT NOT NULL,              -- JSON array, in order
@@ -206,7 +250,7 @@ CREATE TABLE IF NOT EXISTS card_review (
 CREATE INDEX IF NOT EXISTS card_review_due_idx ON card_review(due_at);
 CREATE TABLE IF NOT EXISTS note (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    ref_kind TEXT NOT NULL,                  -- LESSON | TERM | PHASE | QUESTION
+    ref_kind TEXT NOT NULL,                  -- LESSON | TERM | PHASE | QUESTION | EXAMPLE
     ref_id TEXT NOT NULL,
     body_md TEXT NOT NULL,
     updated_at TEXT NOT NULL,
@@ -226,6 +270,6 @@ CREATE TABLE IF NOT EXISTS lesson_progress (
     updated_at TEXT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS setting (
-    key TEXT PRIMARY KEY,                    -- exam_date, daily_card_cap, plan_json, import_mapping:<source>
+    key TEXT PRIMARY KEY,                    -- exam_date:<code>, daily_card_cap, plan_json, exercise:<week>:<kind>, import_mapping:<source>
     value TEXT NOT NULL
 );

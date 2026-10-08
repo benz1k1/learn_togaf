@@ -1,0 +1,39 @@
+# Business Model Diagram (Phase A) as a Strategy view: the value proposition is a Value, the segments
+# and partners are Stakeholders, key activities are Capabilities realizing the chosen Course of
+# Action, key resources are Resources (ARCHIMATE §C.3).
+id: BUSINESS_MODEL_DIAGRAM
+title: "Northgate Bank — Business Model Diagram as a Strategy view"
+viewpoint: Strategy
+elements:
+  - {id: seg_retail, type: stakeholder, name: "Retail customers (segment)", col: 0, row: 0}
+  - {id: seg_smb, type: stakeholder, name: "Small business owners (segment)", col: 1, row: 0}
+  - {id: v_prop, type: value, name: "Everyday banking that fits in a pocket", col: 2, row: 0}
+  - {id: v_rev, type: value, name: "Interest margin, card interchange, account fees", col: 3, row: 0}
+  - {id: v_cost, type: value, name: "Cost to serve: technology, branches, staff, fraud losses", col: 4, row: 1}
+  - {id: coa, type: course_of_action, name: "Mobile-first everyday banking; reinvest in lending", col: 2, row: 1}
+  - {id: c_onboard, type: capability, name: "Onboarding", col: 1, row: 2}
+  - {id: c_pay, type: capability, name: "Payments", col: 2, row: 2}
+  - {id: c_lend, type: capability, name: "Lending", col: 3, row: 2}
+  - {id: r_branch, type: resource, name: "Branch network", col: 0, row: 3}
+  - {id: r_core, type: resource, name: "Core Banking", col: 1, row: 3}
+  - {id: r_app, type: resource, name: "Mobile App", col: 2, row: 3}
+  - {id: r_card, type: resource, name: "Card licence", col: 3, row: 3}
+  - {id: partners, type: stakeholder, name: "Partners: card network, credit bureau, cloud provider", col: 4, row: 3}
+relations:
+  - {from: seg_retail, to: v_prop, type: association}
+  - {from: seg_smb, to: v_prop, type: association}
+  - {from: v_prop, to: v_rev, type: influence, label: "+"}
+  - {from: coa, to: v_prop, type: association}
+  - {from: v_cost, to: v_rev, type: influence, label: "−"}
+  - {from: coa, to: v_cost, type: association}
+  - {from: c_onboard, to: coa, type: realization}
+  - {from: c_pay, to: coa, type: realization}
+  - {from: c_lend, to: coa, type: realization}
+  - {from: r_branch, to: c_onboard, type: association}
+  - {from: r_core, to: c_onboard, type: association}
+  - {from: r_app, to: c_pay, type: association}
+  - {from: r_card, to: c_pay, type: association}
+  - {from: partners, to: r_card, type: association}
+  - {from: partners, to: c_lend, type: association}
+notes:
+  - {text: "Canvas blocks by row: segments and value (create/deliver), the strategy and the revenue and cost it moves (capture), key activities, key resources and partners.", col: 0, row: 1, w: 1, h: 2}

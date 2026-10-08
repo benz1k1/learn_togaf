@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Worked examples · Learn TOGAF{% endblock %}
+{% block heading %}Worked examples — every deliverable, one enterprise{% endblock %}
+{% block content %}
+<div class="card bg-base-100 shadow-sm mb-4"><div class="card-body p-4 text-sm">
+  <p>The standard defines each deliverable by its purpose and a contents list, but never shows one filled in. These documents are written for <strong>Northgate Bank</strong>, the same fictional retail bank the <a class="link" href="/artefact">artefact drawings</a> use, following one architecture project — <em>Digital Channels: mobile payments, faster onboarding and fraud scoring</em> — from the Preliminary Phase round the cycle to Phase H and a second Request for Architecture Work.</p>
+  <p class="mt-1">The same project is then <strong>drawn in ArchiMate</strong> — one view per viewpoint the ADM phase calls for, in the notation the OGA-031/032 papers show — and <strong>justified in SABSA</strong>: the Business Attributes Profile, the domain model and the Matrix cells filled in for the bank. Three descriptions of one enterprise; the crosswalk on each <a class="link" href="/adm">ADM phase</a> says which belongs where.</p>
+  <p class="text-base-content/70 mt-1">Every document follows the contents list of its defining section (linked on each page). Names, figures and dates are invented for study; nothing here is a figure or template from the standard or the specification.</p>
+</div></div>
+<div class="flex flex-wrap items-center gap-2 mb-3" data-testid="track-filter">
+  <a class="btn btn-xs {{ 'btn-primary' if not track else 'btn-outline' }}" href="/example">All ({{ total if not track else counts.values() | sum }})</a>
+  {% for item in tracks %}
+  <a class="btn btn-xs {{ 'btn-primary' if track == item else 'btn-outline' }}" href="/example?track={{ item }}">{{ item | lower | capitalize }} ({{ counts[item] }})</a>
+  {% endfor %}
+</div>
+{% for group in groups %}
+<h2 class="text-sm font-semibold uppercase text-base-content/60 mt-4 mb-2"><a class="link link-hover" href="/adm/{{ group.code }}"><span class="badge badge-neutral badge-sm mr-1">{{ group.code }}</span>{{ group.name }}</a></h2>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+  {% for item in group.examples %}
+  <a href="/example/{{ item.id }}" class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow {{ 'border-l-4 border-info' if item.track == 'ARCHIMATE' else 'border-l-4 border-secondary' if item.track == 'SABSA' else '' }}">
+    <div class="card-body p-4">
+      <div class="flex items-start justify-between gap-2">
+        <span class="font-semibold">{{ item.title }}</span>
+        <span class="flex gap-1 shrink-0">
+          {% if item.track != 'TOGAF' %}<span class="badge badge-sm {{ 'badge-info' if item.track == 'ARCHIMATE' else 'badge-secondary' }}">{{ item.track | lower }}</span>{% endif %}
+          <span class="badge badge-ghost badge-sm">{{ item.kind | lower }}</span>
+        </span>
+      </div>
+      {% if item.figure %}<img src="/static/archimate/{{ item.figure }}" alt="" loading="lazy" class="rounded border border-base-200 bg-white my-1">{% endif %}
+      <p class="text-xs text-base-content/70">{{ item.summary }}</p>
+      <p class="text-xs text-base-content/50">{% if item.viewpoint %}{{ item.viewpoint }} viewpoint · {% endif %}{{ item.refs[0] }}{% if item.status == 'draft' %} · <span class="badge badge-warning badge-xs">draft</span>{% endif %}</p>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<p class="text-sm text-base-content/60">No worked examples on this track yet.</p>
+{% endfor %}
+{% endblock %}

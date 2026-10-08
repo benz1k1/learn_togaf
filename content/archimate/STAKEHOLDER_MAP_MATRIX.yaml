@@ -1,0 +1,41 @@
+# Stakeholder Map Matrix (Phase A) as a Stakeholder view: a row of the matrix is a Stakeholder
+# associated with the Driver (concern) that moves it; Assessments of the concern influence Goals
+# (ARCHIMATE §C.2). Class and involvement stay as documentation on the Stakeholder element.
+id: STAKEHOLDER_MAP_MATRIX
+title: "Northgate Bank — Stakeholder Map Matrix as a Stakeholder view"
+viewpoint: Stakeholder
+elements:
+  - {id: s_retail, type: stakeholder, name: "Head of Retail (key player, sponsor)", col: 0, row: 0}
+  - {id: s_cio, type: stakeholder, name: "CIO (key player)", col: 0, row: 1}
+  - {id: s_compl, type: stakeholder, name: "Compliance Officer (keep satisfied)", col: 0, row: 3}
+  - {id: s_cards, type: stakeholder, name: "Card Ops Lead (keep informed)", col: 0, row: 4}
+  - {id: s_branch, type: stakeholder, name: "Branch Manager (keep informed)", col: 0, row: 2}
+  - {id: d_mobile, type: driver, name: "Mobile adoption and cost to serve", col: 1, row: 0}
+  - {id: d_fit, type: driver, name: "Fit with the Core Banking roadmap", col: 1, row: 1}
+  - {id: d_kyc, type: driver, name: "KYC and fraud controls", col: 1, row: 3}
+  - {id: d_latency, type: driver, name: "Card authorisation latency", col: 1, row: 4}
+  - {id: d_branch, type: driver, name: "Branch workload after the change", col: 1, row: 2}
+  - {id: a_app, type: assessment, name: "The app can show but not do", col: 2, row: 0}
+  - {id: a_rules, type: assessment, name: "Every channel is wired to Core Banking; rules differ", col: 2, row: 1}
+  - {id: a_fraud, type: assessment, name: "Fraud is scored overnight, cards blocked next morning", col: 2, row: 3}
+  - {id: a_counter, type: assessment, name: "Counter onboarding takes 45 minutes plus a night", col: 2, row: 2}
+  - {id: g_mobile, type: goal, name: "Grow mobile adoption", col: 3, row: 0}
+  - {id: g_fraud, type: goal, name: "Reduce fraud losses", col: 3, row: 3}
+  - {id: g_cost, type: goal, name: "Lower cost to serve", col: 3, row: 1}
+relations:
+  - {from: s_retail, to: d_mobile, type: association}
+  - {from: s_cio, to: d_fit, type: association}
+  - {from: s_compl, to: d_kyc, type: association}
+  - {from: s_cards, to: d_latency, type: association}
+  - {from: s_branch, to: d_branch, type: association}
+  - {from: d_mobile, to: a_app, type: association}
+  - {from: d_fit, to: a_rules, type: association}
+  - {from: d_kyc, to: a_fraud, type: association}
+  - {from: d_latency, to: a_fraud, type: association}
+  - {from: d_branch, to: a_counter, type: association}
+  - {from: a_app, to: g_mobile, type: influence, label: "−"}
+  - {from: a_rules, to: g_cost, type: influence, label: "−"}
+  - {from: a_fraud, to: g_fraud, type: influence, label: "−"}
+  - {from: a_counter, to: g_cost, type: influence, label: "−"}
+notes:
+  - {text: "Left to right: who cares, what they care about, what we found, what the programme therefore aims at. The matrix's class and involvement columns are attributes of the Stakeholder, not elements.", col: 2, row: 4, w: 2}

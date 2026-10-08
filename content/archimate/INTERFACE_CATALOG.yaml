@@ -1,0 +1,35 @@
+# Northgate Bank — Interface Catalog (Phase C) as an Application Cooperation view: four rows of the
+# catalog drawn as provider component -composition-> Application Interface -assignment->
+# Application Service -serving-> consumer component.
+id: INTERFACE_CATALOG
+title: "Northgate Bank — Interface Catalog as an Application Cooperation view"
+viewpoint: Application Cooperation
+elements:
+  - {id: core, type: application_component, name: "Core Banking", col: 0, row: 0, w: 2}
+  - {id: fraud, type: application_component, name: "Fraud Engine", col: 3, row: 0}
+  - {id: if01, type: application_interface, name: "IF-01 REST API", col: 0, row: 1}
+  - {id: if02, type: application_interface, name: "IF-02 settlement queue", col: 1, row: 1}
+  - {id: if04, type: application_interface, name: "IF-04 scoring REST API", col: 3, row: 1}
+  - {id: s01, type: application_service, name: "Account balance and transfer", col: 0, row: 2}
+  - {id: s02, type: application_service, name: "Authorisation and settlement posting", col: 1, row: 2}
+  - {id: s04, type: application_service, name: "Card transaction scoring", col: 3, row: 2}
+  - {id: mobile, type: application_component, name: "Mobile App", col: 0, row: 3}
+  - {id: switch, type: application_component, name: "Card Switch", col: 2, row: 3}
+  - {id: if06, type: application_interface, name: "IF-06 ISO 8583 endpoint", col: 2, row: 4}
+  - {id: s06, type: application_service, name: "Card authorisation", col: 3, row: 4}
+  - {id: network, type: application_component, name: "Card network (external)", col: 4, row: 4}
+relations:
+  - {from: core, to: if01, type: composition}
+  - {from: core, to: if02, type: composition}
+  - {from: fraud, to: if04, type: composition}
+  - {from: switch, to: if06, type: composition}
+  - {from: if01, to: s01, type: assignment}
+  - {from: if02, to: s02, type: assignment}
+  - {from: if04, to: s04, type: assignment}
+  - {from: if06, to: s06, type: assignment}
+  - {from: s01, to: mobile, type: serving, label: "real time"}
+  - {from: s02, to: switch, type: serving, label: "real time / nightly"}
+  - {from: s04, to: switch, type: serving, label: "real time"}
+  - {from: s06, to: network, type: serving}
+notes:
+  - {text: "One catalog row = one interface. Provider owns the interface (composition); the interface exposes a service (assignment); the service serves the consumer. Frequency is the serving label.", col: 4, row: 0, w: 1, h: 2}

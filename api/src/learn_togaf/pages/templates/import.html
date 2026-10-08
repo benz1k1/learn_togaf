@@ -7,7 +7,7 @@
     <div class="card-body gap-3">
       <h2 class="card-title text-base"><i class="mdi mdi-tray-arrow-down"></i> Load a question set</h2>
       <p class="text-sm text-base-content/70">
-        Files only, from disk (§4.7). Native YAML (a set file like <code>content/questions/foundation/starter.yaml</code>
+        Files only, from disk (§4.7). Native YAML (a set file like <code>content/questions/OGEA-101/starter.yaml</code>
         or a bare list), CSV with header
         <code>id,exam,unit,objective,stem,option_a,option_b,option_c,option_d,correct,explanation,refs</code>
         (refs separated by <code>;</code>), JSON arrays of either shape, or Markdown
@@ -26,8 +26,7 @@
         <label class="form-control">
           <span class="label-text">Exam</span>
           <select name="exam" class="select select-bordered select-sm" required>
-            <option value="FOUNDATION">Foundation (OGEA-101)</option>
-            <option value="PRACTITIONER">Practitioner (OGEA-102)</option>
+            {% for exam in exams %}<option value="{{ exam.code }}">{{ exam.label }} · {{ exam.scoring }}</option>{% endfor %}
           </select>
         </label>
         <label class="form-control">
@@ -43,7 +42,7 @@
           <select name="default_unit" class="select select-bordered select-sm">
             <option value="">guess by keyword (flagged unverified)</option>
             {% for code, exam, name in units %}
-            <option value="{{ code }}">{{ code }} · {{ name }} ({{ exam | lower }})</option>
+            <option value="{{ code }}">{{ code }} · {{ name }} ({{ exam }})</option>
             {% endfor %}
           </select>
         </label>
@@ -74,7 +73,7 @@
               <div class="text-xs text-base-content/60">{{ set.name }} · {{ set.file_name }} · {{ set.imported_at | fmt_dt }}</div>
               {% if set.unverified %}<span class="badge badge-warning badge-xs">{{ set.unverified }} unit unverified</span>{% endif %}
             </td>
-            <td class="text-xs">{{ set.exam | lower }}</td>
+            <td class="text-xs">{{ set.exam }}</td>
             <td class="text-right">{{ set.question_count }}</td>
             <td>
               <form method="post" action="/import/remove/{{ set.code }}" onsubmit="return confirm('Remove set {{ set.code }} and its {{ set.question_count }} questions?')">

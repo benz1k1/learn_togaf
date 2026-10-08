@@ -1,4 +1,4 @@
-# Handoff — content authoring from the real source store (2026-09-11)
+# Handoff — content authoring from the real source store (2026-09-11; three-framework pass 2026-09-25)
 
 The crawl is done: 33 documents, 2,100 sections, 295 figures, all 58 objectives mapped
 (`resources/sources/`, index in `resources/learn_togaf.db`). Content is being authored IN
@@ -16,8 +16,15 @@ same grounding rules as `generate.py` (learn_togaf.md §1.3, §1.5).
 | Glossary (INTRO §4) + `content/adm/artefacts.yaml` from CONTENT ch. 3–4 | NOT started |
 | P1–P4 scenarios + guide lessons G1–G4 | NOT started |
 | P5–P9 scenarios + guide lessons G5–G8 | NOT started |
+| Worked examples (`content/examples/`, page `/example`) | DONE 2026-09-24: 26 documents, every CONTENT Table 4-1 deliverable + Business Scenario + ACMM scorecard, one enterprise (Northgate Bank) through all phases |
+| A1–A9 ArchiMate (OGA-031 bank, OGA-032 scenarios) | DONE 2026-09-25: 33 lessons, 449 single-answer questions (≥ 10 per objective), 24 scenarios; grounded on the crawled specification (ARCHIMATE, 287 sections, 117 figures) |
+| S1–S7 SABSA (SCF bank) | DONE 2026-09-25: 22 lessons, 480 questions; written from recollection of the framework — SABSA §n refs are placeholders until `sources.py pdf` registers the White Paper; the open factual checks are listed in learn_sabsa_archimate.md (status header) |
+| X1–X3 crosswalk units | DONE 2026-09-25: 6 lessons, no bank; `content/adm/crosswalk.yaml` drives the /adm panels |
+| ArchiMate views (`content/archimate/`, `/artefact` Example panel, `/example?track=ARCHIMATE`) | DONE 2026-09-25: 27 Northgate Bank views + the notation sampler, one MODEL worked example each (27–38, 41–55) |
+| SABSA worked examples (`/example?track=SABSA`) | DONE 2026-09-25: 10 documents (60–69): contextual/conceptual cells, Business Attributes Profile, risk assessment, domain and trust model, services, mechanisms, control gaps, service management, traceability matrix |
+| Glossary | 113 terms (47 TOGAF + 46 ArchiMate + 19 SABSA + `architecture_domain`), confusables linked across frameworks (§3.4) |
 
-Check what landed: `ls content/lessons/*/ content/questions/foundation/` and
+Check what landed: `ls content/lessons/*/ content/questions/*/` and
 `cd api && LEARN_TOGAF_ENV=dev PYTHONPATH=src .venv/bin/python -m pytest tests/test_content.py -q`.
 
 ## The brief to give each authoring agent (reuse verbatim, change the unit list)
@@ -40,10 +47,12 @@ PY
 
 Refs are "<DOC> §<heading number>" ("CONTENT §3.4", "GUIDE:business-scenarios §2.1") and
 every ref must resolve via `learn_togaf.sources.index.resolve_ref(connection, ref)`.
-Lessons: `content/lessons/<UNIT>/<nn>_<slug>.md` numbered 10_ upward, front matter as the
+Lessons: `content/lessons/<UNIT>/<nn>_<slug>.md` numbered with the next free number, front matter as the
 examples, `source: authored`, `status: draft`, tables + trap callouts, a ref per paragraph.
 Questions: `content/questions/foundation/<unit>.yaml` (code <UNIT>_BANK, exam FOUNDATION,
-kind DRILL) or `content/questions/practitioner/<unit>.yaml` (exam PRACTITIONER; scenario
+kind DRILL; every question carries `lesson: <lesson id>` naming the ONE lesson that teaches
+it — a lesson of the same unit carrying the question's objective — because check-yourself shows
+each question in exactly one lesson) or `content/questions/practitioner/<unit>.yaml` (exam PRACTITIONER; scenario
 600–900 words, four answers with points exactly 5/3/1/0, a `why` per answer, `open_book_hint`,
 ≥ 5 per Practitioner unit). Validate with tests/test_content.py. New or edited files show in the app only after a reload:
 `python start.py --load-content` (restarts the server) or, with the server up, run the loader
@@ -67,3 +76,15 @@ Review drafts on `/review-queue` or flip `status: reviewed` by hand; mocks draw 
 items only. `tests/test_bank_targets.py` is the §6 gate. Open items: the ADM diff
 (`content/review/adm_phases.parsed.yaml`) misses inputs, Phase C sub-chapters and chapter 13;
 no PDFs under `resources/sources/pdf/`; generation via the API needs `anthropic.api_key`.
+
+## The three-framework pass (2026-09-25)
+
+Exams are data now (`blueprint.exams`, five codes) and question sets live in
+`content/questions/<exam code>/` — see CLAUDE.md. Everything authored on 2026-09-25 is
+`status: draft`. Next steps, in order: (1) register the SABSA White Paper and W117/W14C/W172
+under `resources/sources/pdf/` (`sources.py pdf && sources.py index`), then re-point the
+`SABSA §n` / `WP:… §n` placeholder refs and settle the Business Attributes Profile cell
+(learn_sabsa_archimate.md status header); (2) map the S* objectives in
+`resources/sources/objective_sections.yaml`; (3) review the banks on /review-queue or flip
+`status: reviewed` so `tests/test_bank_targets.py` (the per-exam gate) can pass; (4) fill the
+`lessons:` links in `content/adm/crosswalk.yaml` now that A9/03, X1/01, X2/01, S6/03 exist.

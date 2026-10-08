@@ -305,7 +305,7 @@ def _question_card(connection: sqlite3.Connection, ref: str) -> dict[str, Any] |
         "SELECT * FROM question_option WHERE question_id = ? ORDER BY points DESC, ordinal LIMIT 1", (ref,)
     ).fetchone()
     front = row["stem_or_scenario"]
-    if row["exam"] == "PRACTITIONER":
+    if row["scoring"] == "gradient":
         front = f"{row['stem_or_scenario']}\n\n**{row['question_text']}**"
     explanation = row["explanation"] or (best["why"] if best else "")
     return {

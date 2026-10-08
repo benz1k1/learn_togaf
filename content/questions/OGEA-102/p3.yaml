@@ -1,0 +1,673 @@
+# Authored Practitioner scenarios for P3, Architecture Vision and Phase A (learn_togaf.md §2, §6).
+code: P3_BANK
+exam: OGEA-102
+name: "P3 Architecture Vision and Phase A"
+kind: DRILL
+source: authored
+questions:
+  - id: P3-101
+    unit: P3
+    objective: "P3.1"
+    lesson: P3/02_scope_principles_and_the_statement_of_work
+    scenario: |
+      Coriander Bank is a mid-sized retail bank with 5,500 staff and 1.8 million customers,
+      offering current accounts, mortgages and small-business lending through 120 branches and a
+      mobile app. Its Preliminary Phase was completed three years ago: an EA Capability exists
+      under the CIO with a team of nine, an architecture board meets monthly and is chaired by the
+      Chief Risk Officer, and a set of twelve Architecture Principles was approved by that board,
+      each with a name, statement, rationale and implications. Two of them are "Data is an asset
+      shared across the bank" and "Buy before build". The principles are stored in the Architecture
+      Repository, referenced in the bank's Tailored Architecture Framework, and used by the board as
+      criteria when it reviews project designs. They were last reviewed for currency two years ago.
+
+      A new Chief Technology Officer joined six months ago from a cloud-native fintech, with a
+      mandate from the board to modernise. The board has now approved a Request for Architecture
+      Work, sponsored by the CTO, for a target architecture to move the bank's customer-facing
+      services to a public cloud platform over four years, starting with the mobile app and
+      onboarding. Phase A has begun. You are the lead architect, and the Statement of Architecture
+      Work is due in six weeks.
+
+      In the kick-off, the CTO tabled a document titled "Cloud Principles" that he wrote over a
+      weekend. It contains eight items, including "Adopt Vendor Aurora's platform for all new
+      workloads", "Support open standards where practical", "Consider serverless first", "Avoid
+      lock-in" and "Be cloud native". None has a rationale or implications statement. He wants them
+      adopted as the Architecture Principles for the engagement, replacing the existing twelve,
+      which he calls "out of date" and "written for a data centre". He notes that the architecture
+      board is "slow" and proposes that the CTO's office ratifies the new set so that the Vision can
+      proceed. He has also pointed out, correctly, that "Buy before build" and "Be cloud native" can
+      pull in different directions and that nobody has said which wins.
+
+      The Chief Risk Officer, who chairs the board, has seen the document and objects that "Adopt
+      Vendor Aurora" contradicts the bank's outsourcing policy, which requires demonstrable exit
+      routes from any critical supplier, and that the regulator will ask for evidence of exit
+      planning. The Head of Data notes that nothing in the new set says what happens when the
+      "shared data" principle conflicts with a cloud region restriction imposed by the regulator on
+      where customer data may be held; two projects have already been stuck on that question for
+      months. The Head of Architecture Governance points out that the existing principles were
+      approved through a process that includes an amendment procedure, and that nobody has invoked
+      it.
+
+      The programme manager wants the principles question settled in two weeks so that the
+      Architecture Vision can be written and the vendor engagement can start. Some members of the EA
+      team think the existing twelve simply carry forward and no work is needed in Phase A; others
+      think the CTO, as sponsor, is entitled to set the principles for his engagement and that the
+      board can be informed afterwards. The CIO has asked you to "find a way through that does not
+      lose the CTO".
+
+      You have looked at the existing twelve principles against the cloud request. Nine are
+      unaffected by where services run. "Buy before build" is current but its implications
+      statement predates cloud services and does not say whether a managed platform service counts
+      as "buy". "Data is an asset shared across the bank" has a rationale about avoiding
+      duplicate customer records and an implications statement that says nothing about location.
+      "Systems are hosted in bank-controlled facilities" is plainly out of date and its rationale
+      — physical control for regulatory access — is now met by the regulator's own cloud guidance.
+      The board's amendment procedure requires a proposer, a draft to the template, consultation
+      with the CRO and the Head of Data, and a vote; it has been used once, two years ago, and took
+      six weeks. The CTO has not read the existing set and has asked whether the board would
+      "really block" the cloud programme over wording. The Chief Risk Officer has said she would
+      support a cloud principle set that names exit and residency explicitly.
+
+      You must decide how the principles are handled in Phase A: what is confirmed, what is
+      changed, by whom, and how the conflicts already visible are resolved.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Treat this as the Phase A step Confirm and Elaborate Architecture Principles, not as
+          a rewrite. Start from the existing twelve, which are the Preliminary Phase principles
+          the engagement inherits, review whether each is current and clarify ambiguity — in
+          particular, document how "data is a shared asset" is to be interpreted against a
+          regulatory region restriction, recording which principle takes precedence and why.
+          Where the cloud strategy genuinely needs new or amended principles, draft them to the
+          standard template with the CTO and the key stakeholders including the CRO and Head of
+          Data, test them against the five qualities, and take them to the architecture board
+          for approval through its amendment process. Reject "Adopt Vendor Aurora" as a
+          principle because a principle must not name a technology platform, and rework
+          "support", "consider" and "avoid" statements whose wording the template warns against.
+          Record the outcome as the Architecture Principles output of Phase A.
+        why: >-
+          Phase A reviews the principles under which the architecture is developed; they are
+          normally based on the Preliminary Phase set, and the work is to ensure they are
+          current and clarify ambiguity, going to the governance body only to define them for
+          the first time (ADM §3.3.7). Principles are developed with key stakeholders and
+          approved by the Architecture Board, with an amendment process once ratified (TECH
+          §2.4; §2.4.1). The template forbids naming technology platforms and warns against
+          "support", "open", "consider" and "avoid" (TECH §2.3). Competing principles are read
+          "all other things being equal" and the precedence rationale is documented (TECH §2.5).
+      - key: B
+        points: 3
+        text: >-
+          Carry the existing twelve forward unchanged, since they were approved by the board
+          and remain valid, and treat the CTO's eight items as engagement-specific constraints
+          recorded in the Statement of Architecture Work rather than as principles, so that the
+          Vision can proceed without reopening governance.
+        why: >-
+          It correctly refuses to let the CTO's office replace board-approved principles and
+          correctly declines to call a platform choice a principle, but it skips the Phase A
+          work the step requires: confirming the existing set is current and clarifying the
+          ambiguity the Head of Data raised (ADM §3.3.7; TECH §2.5). Constraints are also
+          defined by the business and architecture principles, not used as a way to smuggle
+          platform decisions past them (ADM §3.3.3).
+      - key: C
+        points: 1
+        text: >-
+          Adopt the CTO's eight items as the engagement's Architecture Principles, since the
+          sponsor is accountable for the outcome and the existing set predates the cloud
+          strategy, but ask the architecture board to note the change at its next meeting for
+          the record.
+        why: >-
+          Principles are approved by the Architecture Board, not noted after the fact, and
+          they must be traceable and consensual across the enterprise (TECH §2.4). The set
+          would fail the template on naming a platform and on ambiguous wording (TECH §2.3),
+          and the sponsor's engagement does not override principles that constrain all
+          architecture work from the Preliminary Phase (ADM §3.5.1).
+      - key: D
+        points: 0
+        text: >-
+          Accept "Adopt Vendor Aurora's platform" as the governing principle, since the CTO
+          has already chosen the platform, and use it as the primary evaluation criterion for
+          every building block in Phases B to D, deferring the CRO's exit-route objection to
+          Phase G compliance.
+        why: >-
+          A principle must not mention a specific technology platform in its name or
+          statement (TECH §2.3), and this one contradicts an enterprise-level policy that
+          architecture principles must be informed and constrained by (TECH §2.1 as applied in
+          §2.4). Deferring a principle conflict to compliance review reverses the purpose of
+          principles, which is to guide decisions before they are made (TECH §2.5).
+    refs: ["ADM §3.3.7", "TECH §2.3", "TECH §2.4", "TECH §2.4.1", "TECH §2.5", "ADM §3.5.1"]
+    open_book_hint: "Where to look: ADM §3.3.7 (Confirm and Elaborate Architecture Principles) and §3.5.1; ADM Techniques §2.3 (template: name, statement, rationale, implications; no platforms; words to avoid), §2.4 (developed with stakeholders, approved by the board), §2.4.1 (five qualities), §2.5 (competing principles, precedence documented)."
+    difficulty: 2
+    tags: [principles, phase-a, governance]
+  - id: P3-102
+    unit: P3
+    objective: "P3.1"
+    lesson: P3/02_scope_principles_and_the_statement_of_work
+    scenario: |
+      Wexcombe University has 3,200 staff, 28,000 students and four campuses, and a reputation for
+      research rather than for teaching innovation. Its Council has approved a strategy to double
+      online and part-time enrolment within five years, partly to reduce dependence on international
+      student fees, and the Vice-Chancellor, as sponsor, has issued a Request for Architecture Work
+      for "the architecture for flexible learning". The Preliminary Phase was done eighteen months
+      ago on a small scale: an EA team of two reporting to the IT Director, a tailored framework
+      adopted from the standard with little change, and eight principles approved by the IT
+      governance committee. The Architecture Repository is thin — it holds the principles, an
+      application inventory of 190 systems, and a capability map that the previous lead drafted but
+      never validated with the faculties. There is no modelling tool; the inventory is a spreadsheet.
+
+      Phase A has started and you are the lead architect, having joined three months ago. In the
+      first month the following has become clear.
+
+      The two-person EA team has no experience of learning technology, no business architect, and
+      no modelling tool; the previous lead left and took much of the context with him. The
+      faculties do not agree on what "flexible learning" means: the business school thinks it is
+      recorded lectures and online assessment, the engineering faculty thinks it is modular credit
+      that can be earned across institutions and stacked into a degree, and the health faculty thinks
+      it is an apprenticeship model with employers and placements. Each has started its own pilot.
+      The Registrar's student records system is at end of life and its replacement is being tendered
+      separately by the Registrar, who was not consulted about the Request for Architecture Work and
+      regards the architecture engagement as "an IT thing"; the tender closes in five months. The
+      Council expects a costed plan within nine months and has said it will not release capital
+      without one. The Vice-Chancellor has said he wants the architecture to cover "everything a
+      student touches", from application to graduation, across all four campuses and every mode of
+      study, "so that we do this once". The Finance Director has said that whatever is proposed must
+      show a return within the five-year strategy period.
+
+      A consultancy has offered to "do the full baseline" of every application, dataset and server in
+      the university in three months for a fixed fee, arguing that a target cannot be set without
+      it; it has done similar work at two other universities. The Finance Director thinks the fee is
+      worth paying because "at least we would know what we have". The IT Director wants the tender
+      for the student records system stopped until the architecture exists, and has said so to the
+      Registrar, who has refused. The Vice-Chancellor has asked you whether the EA team "is up to
+      this" and what you need.
+
+      You have also assessed what the repository can and cannot give you. The draft capability map
+      lists 34 level-1 capabilities in academic language that the faculties do not recognise; three
+      faculty deans have said they would validate it "if someone asked". The application inventory
+      has no owner or lifecycle data. The eight principles include "one student record" and
+      "digital by default", both endorsed by the Council. The Registrar's tender specification was
+      written from the current system's functions and mentions neither online study nor modular
+      credit. The health faculty's employer pilot has produced a one-page description of what an
+      apprenticeship student needs from the university that is, in effect, a business scenario in
+      outline. The two architects have between them one year of experience with the standard; both
+      are willing and neither has run a Phase A before. The IT Director has budget for one contract
+      architect for a year if a case is made. The Council's nine-month deadline was set by the
+      Finance Director, who has said he would accept a costed plan for the first two years with the
+      rest at outline.
+
+      You must decide how to handle the evaluation of capabilities and the definition of scope in
+      Phase A, and what you tell the Vice-Chancellor about the team, the consultancy and the
+      Registrar's tender.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Run Evaluate Capabilities in both of its senses and then Define Scope from the
+          result. First assess the enterprise's capability to develop and consume the
+          architecture: a two-person team with no business architect, no learning-technology
+          knowledge and no tooling is a gap in the ability to progress through the ADM that
+          must be resolved by iterating with the Preliminary Phase — extending the team,
+          acquiring skills and tooling — and it is a serious consideration in whether the
+          effort can continue at the scale requested. Second, identify the business
+          capabilities the strategy requires (modular credit, employer partnership, online
+          delivery), using the draft capability map as a starting point but deferring the
+          detailed capability gap assessment to Phase B. Record both in the Capability
+          Assessment. Then define scope explicitly with the Vice-Chancellor: breadth limited to
+          the capabilities the strategy changes rather than "everything a student touches";
+          level of detail sufficient for a costed roadmap; the partitioning between this
+          engagement and the Registrar's student records replacement, which is brought into the
+          stakeholder map and the landscape rather than stopped; the domains and time horizon;
+          and the repository assets to reuse. Decline the consultancy's full baseline, and
+          describe the baseline only at the abstraction needed to define the target.
+        why: >-
+          Evaluate Capabilities has two parts: the capability of the enterprise to develop and
+          consume the architecture — gaps here require iteration between Architecture Vision
+          and the Preliminary Phase and bear on whether the effort should continue — and the
+          baseline and target business capability, whose detailed gap assessment belongs in
+          Phase B; results go in the Capability Assessment (ADM §3.3.4). Define Scope lists
+          breadth, detail, partitioning, domains, time and assets, and notes the baseline may be
+          described at a higher level of abstraction (ADM §3.3.6). Scope rests on a practical
+          assessment of resource and competence availability, and where the framework cannot
+          deliver the Vision the Preliminary Phase is revisited (ADM §3.5.1).
+      - key: B
+        points: 3
+        text: >-
+          Define scope with the Vice-Chancellor along breadth, detail, domains and time,
+          narrowing "everything a student touches" to the capabilities the strategy changes,
+          and proceed with the two-person team, planning to recruit a business architect during
+          Phase B when the detailed capability work begins. Pay the consultancy for the
+          baseline so that the team's limited capacity is spent on the target.
+        why: >-
+          The scoping is right, but it skips the first half of Evaluate Capabilities — the
+          team's ability to develop the architecture is a Phase A concern requiring iteration
+          with the Preliminary Phase, not a Phase B recruitment plan (ADM §3.3.4) — and buying
+          a full baseline contradicts the guidance that the baseline is described only to the
+          extent needed, often at a higher abstraction than the target (ADM §3.3.6).
+      - key: C
+        points: 1
+        text: >-
+          Accept the sponsor's scope of everything a student touches across all campuses and
+          modes, commission the consultancy baseline so the target can be derived from it, and
+          ask the IT Director to stop the student records tender so that the replacement can be
+          designed inside the architecture.
+        why: >-
+          It treats scope as given rather than defined by breadth, detail and value that can
+          realistically accrue (ADM §3.5.1; §3.3.6), commissions detailed baseline work the
+          standard says is unnecessary, and blocks an in-flight initiative instead of bringing
+          it into the landscape and stakeholder map; it also ignores the team capability gap
+          entirely (ADM §3.3.4).
+      - key: D
+        points: 0
+        text: >-
+          Report to the Vice-Chancellor that the EA team cannot deliver the engagement and
+          recommend that the consultancy be engaged to produce the target architecture and the
+          costed plan directly, with the EA team reviewing the result.
+        why: >-
+          A gap in the Architecture Capability is resolved by iterating with the Preliminary
+          Phase to make the capability suitable for the project's scope (ADM §3.3.4), not by
+          outsourcing the architecture and abandoning the governance that the Preliminary Phase
+          established (ADM §3.5.1).
+    refs: ["ADM §3.3.4", "ADM §3.3.6", "ADM §3.5.1", "APPLY §3.4", "GUIDE:adm-practitioners §6.3.2"]
+    open_book_hint: "Where to look: ADM §3.3.4 (Evaluate Capabilities: architecture capability versus business capability; iteration with the Preliminary Phase; Capability Assessment), §3.3.6 (Define Scope), §3.5.1 (scoping on resource and competence; revisit the Preliminary Phase); Applying the ADM §3.4."
+    difficulty: 3
+    tags: [capabilities, scope, preliminary-phase, phase-a]
+  - id: P3-103
+    unit: P3
+    objective: "P3.1"
+    lesson: P3/02_scope_principles_and_the_statement_of_work
+    scenario: |
+      Halloran Precision makes machined and assembled components for aerospace customers, with
+      2,600 staff in three plants and a quality function that reports directly to the Chief
+      Executive. Its board has approved an initiative to achieve end-to-end traceability of every
+      part from raw material to delivered assembly, driven by a customer's contractual demand — the
+      customer will not renew a five-year supply agreement without it — and by a regulator's audit
+      findings that identified gaps in the current paper-and-spreadsheet records. The Chief
+      Operating Officer is the sponsor. The EA team of four completed the Preliminary Phase last
+      year.
+
+      Phase A has run for five weeks. Stakeholders and concerns are mapped, the goals and drivers
+      are confirmed against the board's minute, readiness has been assessed in a workshop across
+      the three plants, scope is defined across the plants and the four domains, and the principles
+      have been confirmed with one clarification. The lead architect has written an Architecture
+      Vision with a solution concept diagram and high-level baseline and target views across the
+      four domains, and it reads well.
+
+      Yesterday the lead architect presented the Vision to the COO and the plant directors. The COO
+      said, "Excellent — that is exactly what we need; get started on the Business Architecture on
+      Monday." The programme manager has booked the Phase B workshops for the following week and
+      told the plant directors to send their process experts. The Head of Quality asked in the
+      meeting how success would be measured and got no answer; she pointed out that the regulator
+      will want to see measures, not diagrams. The Finance Director, who was present, asked what
+      it would cost and how long it would take; the lead architect said that would be worked out in
+      Phase E. The plant directors asked who from their plants would be needed and for how much of
+      their time, because the plants are at capacity; nobody knew. The Chief Information Security
+      Officer was not at the meeting and has since asked whether the traceability data will be
+      shared with the customer, because that would put it in scope of export controls that require
+      specific handling; nobody had considered it.
+
+      This morning the EA manager reviewed the Phase A folder and found: the Vision document; the
+      stakeholder map; the Capability Assessment with the readiness results; the confirmed
+      principles; and the goals and drivers. There is no Statement of Architecture Work, no
+      Communications Plan, no business case or value propositions, no performance metrics, no risk
+      assessment beyond the readiness factors, no roadmap or schedule for the architecture work
+      itself, and nothing signed by anyone. The Vision is a well-argued document with no plan
+      attached to it.
+
+      The programme manager argues that the COO's verbal endorsement is approval — "he is the
+      sponsor, he said yes" — and that producing more documents now will "look bureaucratic" and
+      lose the momentum of the meeting. The lead architect is inclined to agree and has started
+      preparing the Phase B workshop material. The EA manager is uneasy and has asked you, as the
+      governance lead, whether Phase A is complete and, if not, what must happen before Phase B
+      starts on Monday.
+
+      The EA manager has also checked what the governance procedures say. The bank of approvals in
+      the Tailored Architecture Framework requires that a Statement of Architecture Work be
+      reviewed by the architecture board and signed by the sponsor before a phase after A begins;
+      the board's next meeting is in ten days. The Finance Director is a member of that board. The
+      plant directors control the process experts the Phase B workshops depend on and have not
+      released anyone. The customer whose contract drives the initiative has asked, through the
+      account manager, for "a plan with dates" within the month. The CISO's export-control question,
+      if answered "yes", changes which parts of the traceability data can be hosted where and who
+      may see them, which the Vision's target views do not reflect. The COO, told of the EA
+      manager's concerns informally, said he "signed off the idea, not a contract" and asked what
+      exactly he would be signing.
+
+      You must advise the EA manager whether Phase A is complete, what is missing, and what to say
+      to the COO and the programme manager.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Phase A is not complete, because its second objective — approval of a Statement of
+          Architecture Work — has not been met. Before Phase B, finish the remaining steps:
+          define the target architecture value propositions and KPIs (the business case, a value
+          proposition per stakeholder group, the performance measures the Head of Quality asked
+          for, and the business risk), identify the business transformation risks with initial
+          and residual levels and mitigation, and develop the Statement of Architecture Work —
+          which domains to what detail, which views, resource requirements including the plant
+          staff the directors asked about, a roadmap and schedule for this cycle, the team's
+          performance metrics, and the Communications Plan. Bring the CISO's export-control
+          concern into the stakeholder map and the Vision's constraints. Then review and agree
+          the plans with the COO as sponsor, secure formal approval under the governance
+          procedures, and obtain the sponsor's sign-off. The COO's verbal endorsement of the
+          Vision is not the approval the phase exists to obtain, and Phase B has no mandate
+          without it.
+        why: >-
+          Phase A's objectives are the Vision and approval of a Statement of Architecture
+          Work that defines the programme of works (ADM §3.1). Step 9 develops the business
+          case, value propositions, metrics and business risk, incorporated into the Statement
+          of Architecture Work (ADM §3.3.9); step 10 assesses risks with initial and residual
+          levels (ADM §3.3.10); step 11 determines domains, views, resources, roadmap, metrics
+          and the Communications Plan, then agrees the plans with sponsors, secures formal
+          approval under governance and gains sign-off (ADM §3.3.11). Consensus is represented by
+          the sponsoring organisation signing the Statement of Architecture Work (ADM §3.5.2).
+      - key: B
+        points: 3
+        text: >-
+          Phase A is substantially complete: the Vision is endorsed and the analysis is done.
+          Draft a short Statement of Architecture Work over the next week, covering scope,
+          the Vision summary and a plan and schedule, and have the COO sign it; the business
+          case, value propositions, metrics and Communications Plan can be produced during
+          Phase B, and the CISO's question can be handled as a Phase C data requirement.
+        why: >-
+          It recognises that the Statement of Architecture Work must exist and be signed, but
+          it defers content the standard places inside Phase A — value propositions, KPIs and
+          business risk are incorporated into the Statement of Architecture Work (ADM §3.3.9),
+          the Communications Plan is developed in step 11 (ADM §3.3.11) — and it leaves a
+          stakeholder's constraint out of the Vision that defines scope (ADM §3.3.2).
+      - key: C
+        points: 1
+        text: >-
+          Accept the COO's endorsement as approval, since the sponsor has authority, minute
+          it, and start Phase B on Monday; produce a Statement of Architecture Work in
+          parallel as a record, and answer the Finance Director's cost question when Phase E
+          produces the roadmap.
+        why: >-
+          An endorsed presentation is not the formal approval of a Statement of Architecture
+          Work under governance procedures that step 11 requires, and without it there is no
+          agreed scope, resource plan or schedule for the cycle (ADM §3.3.11; §3.1). Cost and
+          effort for the cycle are estimated in Phase A, not left to Phase E, which plans the
+          implementation rather than the architecture work (ADM §3.3.11).
+      - key: D
+        points: 0
+        text: >-
+          Phase A is complete because the Vision exists; the missing items are administrative
+          and "bureaucratic", and the value propositions, metrics and risks are better defined
+          once the Business Architecture reveals what the traceability process actually looks
+          like.
+        why: >-
+          This discards the phase's second objective altogether (ADM §3.1) and inverts the
+          method: the Vision, value propositions, KPIs and risks are what the Statement of
+          Architecture Work uses to define and track the programme of works that Phase B then
+          executes (ADM §3.3.9; §3.3.11).
+    refs: ["ADM §3.1", "ADM §3.3.9", "ADM §3.3.10", "ADM §3.3.11", "ADM §3.4", "ADM §3.5.2"]
+    open_book_hint: "Where to look: ADM §3.1 (the two objectives), §3.3.9 (value propositions and KPIs), §3.3.10 (risks), §3.3.11 (Develop Statement of Architecture Work; Secure Approval — its activities and sponsor sign-off), §3.4 (outputs), §3.5.2 (consensus by signing)."
+    difficulty: 2
+    tags: [statement-of-architecture-work, approval, phase-a]
+  - id: P3-104
+    unit: P3
+    objective: "P3.2"
+    lesson: P3/03_business_scenarios_readiness_and_risk
+    scenario: |
+      Aurelia Air is a regional airline with 4,000 staff, 38 aircraft, 60 routes and a loyalty
+      programme of two million members. Its Chief Commercial Officer has issued a Request for
+      Architecture Work for "a new CRM platform to fix our customer problems", sponsored by
+      herself, and the EA team has begun Phase A. The Preliminary Phase is in place: a team of
+      five, a repository, and principles approved by the executive committee. You are the lead
+      architect.
+
+      The Request for Architecture Work names a preferred product, which the Chief Commercial
+      Officer saw demonstrated at an industry conference, and a launch date twelve months away that
+      coincides with the summer schedule. The vendor has been in contact with the commercial team for
+      three months and has produced a proposal. In the first two weeks of stakeholder conversations,
+      the following emerges.
+
+      The Head of Customer Service says the problem is that agents cannot see a passenger's
+      disruption history and so make compensation decisions blind, paying some passengers twice and
+      others nothing. The Head of Loyalty says the problem is that members cannot redeem points on
+      partner flights, which is a partner integration issue that has nothing to do with the
+      airline's own systems. The Airport Operations Director says the problem is that rebooking
+      during disruption takes forty minutes per passenger because five systems must be updated by
+      hand, and that on a bad weather day the queue at the desk is the whole problem. The Head of
+      Digital says the problem is the website's conversion rate, which is half the industry
+      benchmark. The Finance Director says the problem is compensation costs rising 30% in two years
+      and nobody knowing why, and that he will fund whatever fixes that. The Chief Commercial
+      Officer says all of these are "customer problems" and that the CRM product she saw
+      demonstrated "does all of it". The vendor has offered to run "requirements workshops" for
+      free, using its own template, and to have its consultants write the requirements document.
+
+      The EA team notes that "fix our customer problems" is not a business requirement, that the
+      five stakeholders describe five different problems in five different parts of the business,
+      that the premise — a CRM product — presumes an answer to a question nobody has asked, and that
+      nobody has stated what a successful outcome would look like or by when; "fewer complaints" is
+      the closest anyone has come. Nobody has described the disruption-handling process end to end,
+      and the operations and commercial sides have never been in the same room about it. The
+      repository contains an old process map for check-in and nothing for disruption. The Chief
+      Commercial Officer is impatient: "I have told you the answer; I need you to architect it." The
+      Chief Executive, asked by the Finance Director, has said he wants "the right thing, not the
+      fast thing, but I also want it this year".
+
+      You have looked at what the standard's technique would need. The five stakeholders are
+      willing to take part; four of them have never met about this. The Finance Director has
+      compensation data by route and by cause code, unanalysed. The operations control centre logs
+      every rebooking with a timestamp. The loyalty programme's partner contracts specify the
+      redemption interface and have been ignored for two years. The website's analytics show where
+      customers leave. The Chief Commercial Officer's "answer" is a product whose demonstration
+      covered contact-centre screens and marketing campaigns, and did not touch rebooking or
+      partner redemption. Your team has a facilitator with airline experience and four weeks before
+      the Vision is due. The vendor's proposal has a validity date in six weeks, which the Chief
+      Commercial Officer regards as the real deadline. The Chief Executive has asked to see "the
+      problem statement" before he sees any product.
+
+      You must decide how to establish the business requirements in Phase A: what technique, run
+      how and with whom, what it produces, where the result goes, and what you say to the sponsor
+      and the vendor.
+    question: "Refer to the scenario. Based on the TOGAF Standard and the Series Guides, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Use the Business Scenario method, starting with premise formulation: document the
+          proposition ("a CRM platform fixes our customer problems") as a premise, the unstated
+          questions it presumes answers to, and the stakeholders willing to validate it. Then
+          run the six steps with the sponsor and the five stakeholders in the EA team's own
+          workshops — identify, document and rank the problems; describe the business and
+          technical environment in models including the disruption-handling value stream and
+          the capabilities it needs; define desired outcomes and make them SMART, for example a
+          measurable reduction in compensation cost and rebooking time by a date; identify the
+          human actors and the computer actors; and check fitness for purpose — through initial
+          verification and refinement until the sponsors agree a statement of requirements at a
+          readout. Place the released scenario in the Requirements Repository and reference it
+          in the Architecture Vision, and only then assess whether a CRM product, or something
+          else, is the course of action. Decline the vendor's offer to run the requirements
+          workshops.
+        why: >-
+          A business scenario is the technique to validate, elaborate or change the premise
+          behind an architecture effort, and its triggers include "solution looking for a
+          problem" and "dominance of technology speak" (GUIDE:business-scenarios §3.3.1; §1).
+          It is created in six steps over three phases, and the released document goes in the
+          Requirements Repository as the requirements statement that drives the work
+          (GUIDE:business-scenarios §3.1; §3.3); the readout aims at buy-in or stop (§3.2.5).
+          Phase A names business scenarios as the technique to discover requirements and
+          articulate a Vision that responds to them, with a business assessment of courses of
+          action (ADM §3.3.8; §3.5.2). Vendors contribute later, when technical solutions are
+          explored, not at requirements (GUIDE:business-scenarios §5).
+      - key: B
+        points: 3
+        text: >-
+          Accept that the stakeholders describe five problems and consolidate them into a
+          single business scenario document by interviewing each stakeholder, listing their
+          problems, and writing desired outcomes for each; then present the document to the
+          Chief Commercial Officer for approval and use it as the requirements for evaluating
+          the CRM product against alternatives.
+        why: >-
+          It applies the right technique and correctly turns the premise into requirements,
+          but it skips the premise-formulation and verification phases, produces outcomes that
+          are not made SMART, and substitutes a single presentation to the sponsor for the
+          reviewing step's readout with all sponsors and involved parties, which is where shared
+          expectations — the root cause of failure when absent — are established
+          (GUIDE:business-scenarios §3.3; §3.2.5; §1).
+      - key: C
+        points: 1
+        text: >-
+          Take the Chief Commercial Officer's request at face value, since she is the sponsor:
+          write the Architecture Vision around the CRM product, and record the five
+          stakeholders' problems as requirements in the Architecture Requirements
+          Specification to be addressed by the product's configuration in Phase C.
+        why: >-
+          This accepts the premise unexamined — the "critical mistake" premise formulation
+          exists to prevent — and builds an architecture on requirements that do not add up to
+          a whole problem description, the specific risk business scenarios address
+          (GUIDE:business-scenarios §3.3.1; §2). A Vision that assumes a product is not a Vision
+          of business value (ADM §3.5.2).
+      - key: D
+        points: 0
+        text: >-
+          Accept the vendor's offer to run the requirements workshops, since it has done this
+          for other airlines and the offer is free, and use the resulting requirements
+          document as the business scenario for the Vision.
+        why: >-
+          Business management's involvement is greatest in the early stages and the vendor's
+          in the later ones, when the role of specific technical solutions is explored
+          (GUIDE:business-scenarios §5); letting the vendor gather the requirements for its own
+          product cements the premise, and a vendor's requirements document is not a business
+          scenario (GUIDE:business-scenarios §1).
+    refs: ["GUIDE:business-scenarios §1", "GUIDE:business-scenarios §3.1", "GUIDE:business-scenarios §3.3", "GUIDE:business-scenarios §3.3.1", "GUIDE:business-scenarios §3.2.5", "GUIDE:business-scenarios §5", "ADM §3.3.8"]
+    open_book_hint: "Where to look: Series Guide: Business Scenarios §1 (definition, SMART), §3.1 (six steps), §3.3 and §3.3.1 (phases; premise formulation and its triggers), §3.2.5 (review: buy-in or stop), §5 (who contributes when); ADM §3.3.8 and §3.5.2 (business scenarios in Phase A)."
+    difficulty: 2
+    tags: [business-scenarios, requirements, premise, phase-a]
+  - id: P3-105
+    unit: P3
+    objective: "P3.2"
+    lesson: P3/03_business_scenarios_readiness_and_risk
+    scenario: |
+      The Licensing Directorate is a government agency of 1,900 staff that issues professional and
+      vehicle licences, handling 2.4 million applications a year. New legislation requires that all
+      licence applications be handled digitally, with a decision within ten working days, from a
+      fixed date twenty months away. The Director General is the sponsor of an architecture
+      engagement to meet the deadline, and the agency's newly formed EA team of three, set up in a
+      Preliminary Phase four months ago, is running it. Phase A has started; stakeholders are
+      mapped and the goals and drivers are confirmed against the legislation. You are the lead
+      architect.
+
+      The agency's situation is as follows. Applications are today processed on paper by 900
+      caseworkers in six regional offices, using a mainframe system that was last changed in 2009 by
+      a supplier who no longer exists; the two remaining staff who understand its code are
+      contractors. A previous digital programme, four years ago, was abandoned after eighteen months
+      when the caseworker union rejected the new process and two regional directors withdrew their
+      staff from testing; the programme's post-mortem blamed "lack of engagement" and was never
+      acted on. The agency has never run a programme of this size; its IT function has 40 people,
+      most of whom maintain the mainframe, and its procurement team has never run a digital
+      procurement. Funding for the first year is approved; the second year depends on a spending
+      review whose outcome is not known until month nine. The Director General is due to retire in
+      fourteen months and no successor has been named. The legislation includes a penalty regime for
+      missed decisions from day one, with the penalties paid from the agency's budget. A parallel
+      government-wide identity service that the agency is expected to use for applicant
+      verification is itself late and has no confirmed go-live date; the agency has no fallback if
+      it is not ready. The union has written to say it expects "meaningful consultation this time".
+
+      The programme director, newly appointed from a consultancy, wants to move quickly: "we know
+      what the target is — digital applications — so let's get into the Business Architecture and
+      start procurement". She proposes that the risk register be started in Phase E "when we know
+      what the projects are", that culture "is an HR matter" to be handled by a staff engagement
+      programme, and that the identity service dependency be "logged as an issue". She has the
+      Director General's confidence and a mandate to hit the date. The regional directors have not
+      been asked what they think of the target. The Finance Director has asked what happens to the
+      programme if the spending review is unfavourable and received no answer.
+
+      What has been done so far is thin. The stakeholder map lists the regional directors, the
+      union, the identity service programme and the spending review team as stakeholders, with
+      concerns recorded in a line each. The goals and drivers are the legislation's clauses. The
+      Capability Assessment has a section for readiness that is empty. The programme director's
+      draft plan shows procurement starting in month four, build in month eight, and "rollout" in
+      month sixteen, with no dependency on the identity service and no mention of the spending
+      review. The union's letter has not been answered. The two regional directors who withdrew
+      their staff last time are still in post. The agency's own audit function has flagged the
+      previous programme's failure as "not learned from". Your team has access to the Business
+      Transformation Enablement Program factor list and the risk classification scheme in the
+      standard, a facilitator, and three weeks before the Vision must be finalised. The Director
+      General has said he wants "no surprises this time" and will attend whatever workshop you
+      propose.
+
+      You must decide what Phase A should do about readiness and risk before the Vision is
+      finalised and the Statement of Architecture Work is signed, and what you tell the programme
+      director.
+    question: "Refer to the scenario. Based on the TOGAF Standard, which of the following is the best answer?"
+    answers:
+      - key: A
+        points: 5
+        text: >-
+          Run the Business Transformation Readiness Assessment in Phase A and chain it into risk
+          management. Hold a facilitated workshop with people from the regions, the union, IT,
+          HR and finance to determine the readiness factors, starting from the standard's list
+          and paying particular attention to desire, willingness and resolve; sponsorship and
+          leadership; funding; IT and enterprise capacity to execute; and ability to implement
+          and operate. Present each factor as a maturity model, rate urgency, readiness status
+          and difficulty to fix, and derive improvement actions — for example caseworker
+          involvement in process design, a succession decision for the sponsor, a funding
+          contingency for year two — recording the results in the Capability Assessment so that
+          they shape scope and identify project activities. Then identify the transformation
+          risks of the Vision, including the identity service dependency and the day-one
+          penalty regime, assess initial risk by effect and frequency, assign mitigation, assess
+          residual risk, and take the residual risks to the governance framework for acceptance.
+          Put the mitigation activities and the readiness actions into the Statement of
+          Architecture Work and carry them into the Implementation and Migration Plan in
+          Phases E and F, to be monitored in Phase G.
+        why: >-
+          Assess Readiness is a Phase A step whose results are added to the Capability
+          Assessment and used to shape scope, identify activities and identify risk areas
+          (ADM §3.3.5); the technique determines factors in a workshop, presents them as
+          maturity models, rates urgency, status and difficulty, and derives actions worked
+          into the E and F plan (TECH §7.1; §7.2; §7.4.2; §7.4.3; §7.5). Risk identification is
+          also a Phase A step with initial and residual levels and mitigation considered for
+          the Statement of Architecture Work (ADM §3.3.10); risks are assessed by effect and
+          frequency, mitigated, re-assessed as residual, and accepted within the governance
+          framework and monitored in Phase G (TECH §8.4; §8.6; §8.7). Readiness assessments
+          generate risks, so the two are chained (TECH §7.4.3).
+      - key: B
+        points: 3
+        text: >-
+          Run the readiness assessment now, since the previous failure makes culture the
+          obvious issue: workshop the factors, rate them, and record the improvement actions in
+          the Capability Assessment and the Vision. Start the risk register in Phase E as the
+          programme director proposes, when the work packages are known and the identity
+          service's timeline is clearer, so that risks are attached to real projects.
+        why: >-
+          Readiness is handled correctly, but deferring risk to Phase E contradicts the Phase
+          A step that identifies the business transformation risks of the Vision and assesses
+          their initial level (ADM §3.3.10), and it breaks the chain in which readiness factors
+          are each assessed for risk and their actions managed as risks (TECH §7.4.3). Risks
+          with triggers outside the planners' control, like the identity service, are exactly
+          the ones to identify before starting (TECH §8.1).
+      - key: C
+        points: 1
+        text: >-
+          Proceed to Phase B as the programme director suggests, because the target is
+          legislated and cannot change, and ask HR to run a staff engagement programme in
+          parallel; deal with the identity service dependency by putting it on the programme's
+          issue log.
+        why: >-
+          A legislated target does not remove the need to assess readiness — the human
+          element is "by far the most important" dimension of change and the previous failure
+          was cultural (TECH §7.1) — and treating culture as an HR matter outside the
+          architecture leaves the readiness actions off the Implementation and Migration Plan
+          where the standard puts them (TECH §7.5). An issue log is not risk assessment.
+      - key: D
+        points: 0
+        text: >-
+          Because the deadline and penalties are fixed, declare the programme "must succeed",
+          skip readiness and risk to save time, begin procurement of a digital applications
+          platform immediately, and rely on the penalty regime to motivate the regional
+          directors and caseworkers this time.
+        why: >-
+          This is the pattern the technique exists to prevent: a sound architecture "could go
+          nowhere" against a change-averse culture, and neglecting the cultural factors in
+          favour of the technical "will invariably result in an implementation that falls short"
+          (TECH §7.1; §7.7). Skipping risk before starting means nothing can be tracked or
+          accepted through governance (TECH §8.1).
+    refs: ["ADM §3.3.5", "ADM §3.3.10", "TECH §7.1", "TECH §7.2", "TECH §7.4.2", "TECH §7.4.3", "TECH §7.5", "TECH §8.1", "TECH §8.4", "TECH §8.6", "TECH §8.7"]
+    open_book_hint: "Where to look: ADM §3.3.5 (Assess Readiness) and §3.3.10 (Identify Risks); ADM Techniques §7.1 (activities), §7.2 (factors), §7.4.2 (ratings), §7.4.3 (actions and risk), §7.5 (into E and F, monitored in G); §8.1 (initial and residual), §8.4 (effect and frequency), §8.6 (residual), §8.7 (governance and Phase G)."
+    difficulty: 3
+    tags: [readiness, risk, phase-a, culture]

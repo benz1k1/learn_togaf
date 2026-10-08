@@ -5,7 +5,7 @@ description = "Learn TOGAF — single-user study app for the TOGAF 10 Foundation
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.115.12",
-    "uvicorn[standard]>=0.34.0",
+    "granian[reload]>=2.0",
     "jinja2>=3.1.6",
     "pydantic>=2.11.0",
     "pyyaml>=6.0.2",
@@ -53,6 +53,8 @@ zip-safe = false
     "static/*.md",
     "static/mdi/css/*.css",
     "static/mdi/fonts/*",
+    "static/artefact/*.svg",
+    "static/archimate/*.svg",
 ]
 
 [tool.setuptools.exclude-package-data]

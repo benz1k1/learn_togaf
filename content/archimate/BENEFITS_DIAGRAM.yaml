@@ -1,0 +1,35 @@
+# Northgate Bank — Benefits Diagram (Phase E) as an Outcome Realization view: the opportunities
+# of the TOGAF bubble chart become Work Packages and Deliverables that realize measurable
+# Outcomes, which realize (or influence) the programme Goals.
+id: BENEFITS_DIAGRAM
+title: "Northgate Bank — Benefits Diagram as an Outcome Realization view"
+viewpoint: Outcome Realization
+elements:
+  - {id: g_rev, type: goal, name: "Grow digital share of transfers", col: 0, row: 0}
+  - {id: g_cost, type: goal, name: "Cut cost to serve", col: 1, row: 0}
+  - {id: g_fraud, type: goal, name: "Cut card fraud losses", col: 3, row: 0}
+  - {id: g_eol, type: goal, name: "Retire end-of-life platforms", col: 4, row: 0}
+  - {id: o_mobile, type: outcome, name: "SM-02: 60% of transfers in the app by 2027", col: 0, row: 1}
+  - {id: o_onboard, type: outcome, name: "SM-01: onboarding in 10 minutes", col: 1, row: 1}
+  - {id: d_estmt, type: deliverable, name: "Statement e-delivery (quick win)", col: 2, row: 1}
+  - {id: o_fraud, type: outcome, name: "SM-03: fraud loss index 100 to 70", col: 3, row: 1}
+  - {id: o_dwh, type: outcome, name: "Oracle 11g warehouse retired 2028", col: 4, row: 1}
+  - {id: wp3, type: work_package, name: "WP-3 Mobile payments", col: 0, row: 2}
+  - {id: wp2, type: work_package, name: "WP-2 Digital onboarding", col: 1, row: 2}
+  - {id: d_tablets, type: deliverable, name: "Branch tablets (fill-in)", col: 2, row: 2}
+  - {id: wp4, type: work_package, name: "WP-4 Real-time fraud scoring", col: 3, row: 2}
+  - {id: wp_dwh, type: work_package, name: "Warehouse replacement (next cycle)", col: 4, row: 2}
+relations:
+  - {from: o_mobile, to: g_rev, type: realization}
+  - {from: o_mobile, to: g_cost, type: influence, label: "+"}
+  - {from: o_onboard, to: g_cost, type: realization}
+  - {from: d_estmt, to: g_cost, type: influence, label: "+"}
+  - {from: o_fraud, to: g_fraud, type: realization}
+  - {from: o_dwh, to: g_eol, type: realization}
+  - {from: wp3, to: o_mobile, type: realization}
+  - {from: wp2, to: o_onboard, type: realization}
+  - {from: d_tablets, to: o_onboard, type: influence, label: "+"}
+  - {from: wp4, to: o_fraud, type: realization}
+  - {from: wp_dwh, to: o_dwh, type: realization}
+notes:
+  - {text: "Major projects realize outcomes; quick wins and fill-ins only influence them.", col: 2, row: 0, w: 1, h: 1}

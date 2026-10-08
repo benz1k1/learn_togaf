@@ -1,0 +1,599 @@
+# A2 Motivation Elements drill bank (learn_sabsa_archimate.md §4.3). Original questions, each
+# citing the entailing ArchiMate 3.2 section; status: draft until reviewed. Ids A2-101 upward.
+code: A2_BANK
+exam: OGA-031
+name: A2 Motivation Elements bank
+kind: DRILL
+source: authored
+questions:
+  # ------------------------------------------------------------ A2.1 Stakeholder, Driver, Assessment, Goal, Outcome
+  - id: A2-101
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "Which element represents the role of an individual, team or organization that holds interests in the effects of the architecture?"
+    options:
+      - {key: A, text: "Business Actor", why: "A business actor is a core active structure element; it may be assigned to a stakeholder but is not one."}
+      - {key: B, text: "Business Role", why: "A business role is operational responsibility, not a motivation element."}
+      - {key: C, text: "Stakeholder", correct: true}
+      - {key: D, text: "Driver", why: "A driver is a condition that motivates, not the party that holds the interest."}
+    explanation: "Stakeholder is the motivation element representing the role of a person, team or organization (or classes thereof) with interests in the architecture's effects; the definition follows the TOGAF framework."
+    refs: ["ARCHIMATE §6.2.1"]
+    difficulty: 1
+    tags: [stakeholder, definition]
+  - id: A2-102
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "Drivers that are associated with a stakeholder are commonly called what?"
+    options:
+      - {key: A, text: "Goals", why: "Goals are what the stakeholder wants, set in response to drivers."}
+      - {key: B, text: "Concerns", correct: true}
+      - {key: C, text: "Constraints", why: "Constraints limit the architecture; they are not the name for a stakeholder's drivers."}
+      - {key: D, text: "Outcomes", why: "Outcomes are results, not motivating conditions."}
+    explanation: "Drivers associated with a stakeholder are often called the concerns of that stakeholder, in the TOGAF sense of an interest in a system."
+    refs: ["ARCHIMATE §6.2", "ARCHIMATE §6.2.2"]
+    difficulty: 1
+    tags: [driver, concern]
+  - id: A2-103
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "Which statement about drivers is correct?"
+    options:
+      - {key: A, text: "Every driver must be associated with at least one stakeholder", why: "External drivers such as changing legislation need not have a stakeholder associated."}
+      - {key: B, text: "Drivers may be internal or external to the enterprise, and an external driver need not have an associated stakeholder", correct: true}
+      - {key: C, text: "Drivers are always quantitative measures", why: "A driver is a condition that motivates; Metric is only an informative specialization."}
+      - {key: D, text: "Drivers are the result of a SWOT analysis", why: "Assessments are the results of analysing drivers."}
+    explanation: "A driver is an internal or external condition that motivates goals and change; drivers of change may be external, e.g. economic changes, and need not have a stakeholder."
+    refs: ["ARCHIMATE §6.2.2"]
+    difficulty: 2
+    tags: [driver]
+  - id: A2-104
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "'Customers complain about the helpdesk' is best modelled as which element?"
+    options:
+      - {key: A, text: "Goal", why: "A goal is an intent; 'improve helpdesk' would be the goal that addresses this finding."}
+      - {key: B, text: "Driver", why: "The driver would be the underlying condition, e.g. customer satisfaction."}
+      - {key: C, text: "Assessment", correct: true}
+      - {key: D, text: "Constraint", why: "It restricts nothing; it is an analysis result."}
+    explanation: "An assessment is the result of analysing the state of affairs against a driver; a weakness such as customer complaints is addressed by a goal that negates it."
+    refs: ["ARCHIMATE §6.2.3"]
+    difficulty: 1
+    tags: [assessment, which-element]
+  - id: A2-105
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "In a SWOT-style assessment, which two categories are internal to the organization?"
+    options:
+      - {key: A, text: "Opportunities and threats", why: "These are external."}
+      - {key: B, text: "Strengths and weaknesses", correct: true}
+      - {key: C, text: "Strengths and opportunities", why: "Opportunities are external."}
+      - {key: D, text: "Weaknesses and threats", why: "Threats are external."}
+    explanation: "Strengths and weaknesses are internal; opportunities and threats are external. Weaknesses and threats are problems addressed by goals that negate them."
+    refs: ["ARCHIMATE §6.2.3"]
+    difficulty: 1
+    tags: [assessment, swot]
+  - id: A2-106
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "Which icon marks the Driver element in the standard notation?"
+    options:
+      - {key: A, text: "A magnifying glass", why: "That is the Assessment icon."}
+      - {key: B, text: "A target (bullseye)", why: "That is the Goal icon."}
+      - {key: C, text: "A ship's wheel", correct: true}
+      - {key: D, text: "A cloud", why: "That is the Meaning icon."}
+    explanation: "Driver is drawn with a wheel icon; Assessment with a magnifier, Goal with a target, Meaning with a cloud, all on boxes with diagonal corners."
+    refs: ["ARCHIMATE §6.2.2", "ARCHIMATE §6.5"]
+    difficulty: 2
+    tags: [notation, driver]
+  - id: A2-107
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "What is the corner shape of every motivation element in the standard notation?"
+    options:
+      - {key: A, text: "Square corners", why: "Square corners denote structure elements."}
+      - {key: B, text: "Round corners", why: "Round corners denote behaviour elements."}
+      - {key: C, text: "Diagonal corners", correct: true}
+      - {key: D, text: "A chevron outline", why: "The chevron is the Value Stream shape."}
+    explanation: "Motivation elements are usually denoted by boxes with diagonal corners."
+    refs: ["ARCHIMATE §4.4", "ARCHIMATE §3.9"]
+    difficulty: 1
+    tags: [notation, corners]
+  - id: A2-108
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "Which relationship is used between a Stakeholder and the Driver it is concerned with?"
+    options:
+      - {key: A, text: "Assignment", why: "Assignment is used from a business internal active structure element to a stakeholder, not from stakeholder to driver."}
+      - {key: B, text: "Realization", why: "Realization is for goals, outcomes, principles and requirements."}
+      - {key: C, text: "Association", correct: true}
+      - {key: D, text: "Serving", why: "Serving is not used between motivation elements."}
+    explanation: "In the motivation metamodel and its worked example, stakeholders are associated with drivers, and drivers with assessments."
+    refs: ["ARCHIMATE §6.1", "ARCHIMATE §6.2.4"]
+    difficulty: 2
+    tags: [relationship, stakeholder, driver]
+  - id: A2-109
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "In the specification's example, 'Market Share Is Declining' leads to 'Revenue Is Declining'. Which relationship models this between the two assessments?"
+    options:
+      - {key: A, text: "Triggering", why: "Triggering is a dynamic relationship between behaviour elements, not motivation elements."}
+      - {key: B, text: "Influence", correct: true}
+      - {key: C, text: "Composition", why: "Composition would say one assessment is part of the other."}
+      - {key: D, text: "Flow", why: "Flow is between behaviour elements."}
+    explanation: "Assessments may influence each other positively or negatively; the example chains declining market share to declining revenue to declining profitability with influence."
+    refs: ["ARCHIMATE §6.2.4"]
+    difficulty: 2
+    tags: [relationship, assessment, influence]
+  - id: A2-110
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "Which of the following is the best name for a Goal, following the specification's guidance?"
+    options:
+      - {key: A, text: "Increase customer satisfaction", correct: true}
+      - {key: B, text: "First-place customer satisfaction ranking achieved", why: "An achieved, time-definite result is an Outcome name."}
+      - {key: C, text: "Customer satisfaction", why: "A bare noun is a Driver name."}
+      - {key: D, text: "Customer satisfaction is falling", why: "A short finding is an Assessment name."}
+    explanation: "Goals are expressed with qualitative words such as increase, improve or easier; outcomes name achieved end results; drivers and assessments are nouns or short findings."
+    refs: ["ARCHIMATE §6.3.1", "ARCHIMATE §6.3.2"]
+    difficulty: 2
+    tags: [goal, naming]
+  - id: A2-111
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "What is the essential difference between a Goal and an Outcome?"
+    options:
+      - {key: A, text: "A goal is quantitative and an outcome is qualitative", why: "It is the reverse: outcomes are the tangible, possibly quantitative, time-related results."}
+      - {key: B, text: "A goal is what you want; an outcome is what you get", correct: true}
+      - {key: C, text: "A goal belongs to a stakeholder and an outcome to a driver", why: "Both relate to stakeholders; outcomes may be associated with assessments."}
+      - {key: D, text: "There is no difference; outcome is the ArchiMate 3 name for goal", why: "Both elements exist and are distinct."}
+    explanation: "Simply put, a goal is what you want and an outcome is what you get: outcomes are the end results produced by capabilities, and goals are often related to outcomes that should be realized."
+    refs: ["ARCHIMATE §6.3.2"]
+    difficulty: 1
+    tags: [goal, outcome]
+  - id: A2-112
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "Which motivation element can be used to model a potentially unwanted effect, such as 'Increased technology expenditure by 10%'?"
+    options:
+      - {key: A, text: "Goal", why: "A goal is something desired; it does not model unwanted effects."}
+      - {key: B, text: "Outcome", correct: true}
+      - {key: C, text: "Driver", why: "A driver is a motivating condition, not a result."}
+      - {key: D, text: "Principle", why: "A principle is a normative guideline."}
+    explanation: "Unlike goals, outcomes can model unwanted effects, for example to design mitigating measures; the specification's example includes a negative outcome about technology spending."
+    refs: ["ARCHIMATE §6.3.2", "ARCHIMATE §6.3.6"]
+    difficulty: 2
+    tags: [outcome]
+  - id: A2-113
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "Which relationship is used from an Outcome to the Goal it brings about?"
+    options:
+      - {key: A, text: "Realization", correct: true}
+      - {key: B, text: "Aggregation", why: "Aggregation refines a goal into sub-goals of the same type."}
+      - {key: C, text: "Association", why: "Association is used where nothing more specific applies; the metamodel provides realization here."}
+      - {key: D, text: "Access", why: "Access is between behaviour and passive structure."}
+    explanation: "In the worked example the goal to improve profitability is realized by the outcome of a 10% profit increase; realization is the relationship between outcomes and goals."
+    refs: ["ARCHIMATE §6.3.6"]
+    difficulty: 2
+    tags: [relationship, outcome, goal]
+  - id: A2-114
+    unit: A2
+    objective: "A2.1"
+    lesson: A2/01_stakeholder_driver_assessment_goal_outcome
+    stem: "Which viewpoint contains exactly the elements Stakeholder, Driver, Assessment, Goal and Outcome?"
+    options:
+      - {key: A, text: "Goal Realization viewpoint", why: "Goal Realization has Goal, Principle, Requirement, Constraint and Outcome."}
+      - {key: B, text: "Stakeholder viewpoint", correct: true}
+      - {key: C, text: "Motivation viewpoint", why: "The Motivation viewpoint admits all ten motivation elements."}
+      - {key: D, text: "Strategy viewpoint", why: "The Strategy viewpoint holds course of action, capability, value stream, resource and outcome."}
+    explanation: "The Stakeholder viewpoint models stakeholders, drivers, their assessments and the initial goals and outcomes that address them."
+    refs: ["ARCHIMATE §C.2.1"]
+    difficulty: 2
+    tags: [viewpoint, stakeholder]
+  # ------------------------------------------------------------ A2.2 Principle, Requirement, Constraint
+  - id: A2-115
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "Which element represents a statement of intent defining a general property that applies to any system in a certain context?"
+    options:
+      - {key: A, text: "Requirement", why: "A requirement applies to a specific system described by the architecture."}
+      - {key: B, text: "Principle", correct: true}
+      - {key: C, text: "Goal", why: "A goal is a desired end state, not a property of systems."}
+      - {key: D, text: "Constraint", why: "A constraint is a limitation, and a subtype of requirement."}
+    explanation: "A principle defines a general property applying to any system in a context; a requirement defines a property of one specific system."
+    refs: ["ARCHIMATE §6.3.3"]
+    difficulty: 1
+    tags: [principle, definition]
+  - id: A2-116
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "'Use a single CRM system' is given in the specification as an example of which element?"
+    options:
+      - {key: A, text: "Principle", why: "The related principle is the broader 'data should be stored only once'."}
+      - {key: B, text: "Requirement", correct: true}
+      - {key: C, text: "Goal", why: "The goal would be 'data consistency'."}
+      - {key: D, text: "Course of Action", why: "That is a strategy element for a chosen plan, not a statement of need."}
+    explanation: "The requirement 'use a single CRM system' conforms to the principle 'data should be stored only once' by applying it to the current architecture."
+    refs: ["ARCHIMATE §6.3"]
+    difficulty: 1
+    tags: [requirement, which-element]
+  - id: A2-117
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "How does a Constraint differ from a Requirement?"
+    options:
+      - {key: A, text: "A constraint applies to all systems; a requirement to one system", why: "That is the principle/requirement distinction."}
+      - {key: B, text: "A constraint imposes a restriction on how the system operates or is realized, rather than prescribing intended functionality", correct: true}
+      - {key: C, text: "A constraint is set by external stakeholders; a requirement by internal ones", why: "Origin is not the distinction."}
+      - {key: D, text: "A constraint can only be realized by technology elements", why: "Constraints may restrict implementation, the implementation process, or functioning; nothing limits them to technology."}
+    explanation: "A constraint does not prescribe functionality; it restricts implementation (e.g. required technology), the implementation process (time, budget) or functioning (legal limits)."
+    refs: ["ARCHIMATE §6.3.5"]
+    difficulty: 1
+    tags: [constraint]
+  - id: A2-118
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "'The migration must be complete within the current budget year' is best modelled as:"
+    options:
+      - {key: A, text: "Requirement", why: "It prescribes no function of the system; it limits the implementation process."}
+      - {key: B, text: "Constraint", correct: true}
+      - {key: C, text: "Goal", why: "It is a limit on the work, not a desired end state of the organization."}
+      - {key: D, text: "Implementation Event", why: "An event marks a moment; this is a restriction on the process."}
+    explanation: "A time or budget restriction on the implementation process is one of the three kinds of constraint the specification names."
+    refs: ["ARCHIMATE §6.3.5"]
+    difficulty: 2
+    tags: [constraint, which-element]
+  - id: A2-119
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "In the motivation metamodel, Constraint is:"
+    options:
+      - {key: A, text: "A specialization (subtype) of Requirement", correct: true}
+      - {key: B, text: "A specialization of Principle", why: "Constraint is a subtype of requirement, not principle."}
+      - {key: C, text: "A composite element", why: "It is a motivation element."}
+      - {key: D, text: "An independent element with no parent", why: "It is introduced as a subtype of requirement."}
+    explanation: "Requirement has constraint as a subtype, which is why the two share relationships and appear together as 'requirement/constraint' in viewpoint tables."
+    refs: ["ARCHIMATE §4.4", "ARCHIMATE §C.2.3"]
+    difficulty: 2
+    tags: [constraint, metamodel]
+  - id: A2-120
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "Which relationship is used from a Requirement to the Principle it conforms to?"
+    options:
+      - {key: A, text: "Influence", why: "Influence is the weaker, non-critical relationship; the metamodel uses realization here."}
+      - {key: B, text: "Specialization", why: "Specialization is only between elements of the same type."}
+      - {key: C, text: "Realization", correct: true}
+      - {key: D, text: "Assignment", why: "Assignment is not used between motivation elements."}
+    explanation: "A principle is realized by the requirements that apply it to a specific system; in the worked example each principle is realized by requirements and constraints."
+    refs: ["ARCHIMATE §6.3.3", "ARCHIMATE §6.3.6"]
+    difficulty: 2
+    tags: [relationship, requirement, principle]
+  - id: A2-121
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "Which direction of realization between Principle and Requirement is correct?"
+    options:
+      - {key: A, text: "The principle realizes the requirement, because principles come first", why: "Order of definition is not direction of realization; the specific realizes the general."}
+      - {key: B, text: "The requirement realizes the principle, because the more specific element realizes the more general one", correct: true}
+      - {key: C, text: "Either direction is allowed", why: "The metamodel and Appendix B allow one direction."}
+      - {key: D, text: "Neither; only association is permitted between them", why: "Realization is the defined relationship."}
+    explanation: "Realization also models abstract realization, such as a more specific requirement realizing a more generic principle, where fulfilling the requirement implies adhering to the principle."
+    refs: ["ARCHIMATE §3.6", "ARCHIMATE §6.3.3"]
+    difficulty: 2
+    tags: [relationship, direction]
+  - id: A2-122
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "Which relationship refines a Goal into sub-goals in the Goal Realization viewpoint?"
+    options:
+      - {key: A, text: "Realization", why: "Realization refines goals into requirements or constraints."}
+      - {key: B, text: "Aggregation", correct: true}
+      - {key: C, text: "Influence", why: "Influence models contribution, not decomposition."}
+      - {key: D, text: "Triggering", why: "Not permitted between motivation elements."}
+    explanation: "Refinement of goals into sub-goals uses aggregation; refinement of goals into requirements uses realization."
+    refs: ["ARCHIMATE §C.2.2"]
+    difficulty: 2
+    tags: [relationship, goal, viewpoint]
+  - id: A2-123
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "Which relationship connects a Requirement to the Application Component that fulfils it?"
+    options:
+      - {key: A, text: "Serving, from the component to the requirement", why: "Serving is between core elements; a requirement is not served."}
+      - {key: B, text: "Realization, from the component to the requirement", correct: true}
+      - {key: C, text: "Assignment, from the requirement to the component", why: "Assignment does not connect motivation elements to core elements this way."}
+      - {key: D, text: "Access, from the component to the requirement", why: "Access is for passive structure."}
+    explanation: "A requirement (and indirectly a principle, outcome or goal) can be related directly to a structure or behaviour element by realization; influence is the weaker alternative."
+    refs: ["ARCHIMATE §6.6"]
+    difficulty: 2
+    tags: [relationship, requirement, core]
+  - id: A2-124
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "Which icon distinguishes a Constraint from a Requirement in the standard notation?"
+    options:
+      - {key: A, text: "An exclamation mark", why: "The exclamation mark is the Principle icon."}
+      - {key: B, text: "A parallelogram with an extra vertical bar on the left", correct: true}
+      - {key: C, text: "A target with an arrow", why: "That is Outcome."}
+      - {key: D, text: "A magnifying glass", why: "That is Assessment."}
+    explanation: "Requirement uses a parallelogram; Constraint uses the same parallelogram with an additional line on its left side; Principle uses an exclamation mark."
+    refs: ["ARCHIMATE §6.3.4", "ARCHIMATE §6.3.5", "ARCHIMATE §6.5"]
+    difficulty: 2
+    tags: [notation, constraint]
+  - id: A2-125
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "Which of the following describes the role of Requirements relative to Goals?"
+    options:
+      - {key: A, text: "Requirements are the ends and goals are the means", why: "It is the other way round."}
+      - {key: B, text: "Requirements are the means to realize the ends expressed by goals", correct: true}
+      - {key: C, text: "Requirements and goals are interchangeable at different abstraction levels", why: "They are distinct elements with a realization relationship between them."}
+      - {key: D, text: "Requirements influence goals but cannot realize them", why: "Goals are realized by requirements once sufficiently decomposed."}
+    explanation: "Requirements model the properties needed to achieve the ends modelled by goals; in this respect they are the means to realize goals."
+    refs: ["ARCHIMATE §6.3.4"]
+    difficulty: 1
+    tags: [requirement, goal]
+  - id: A2-126
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "Which viewpoint focuses on how requirements are realized by core elements such as actors, services, processes and application components?"
+    options:
+      - {key: A, text: "Goal Realization viewpoint", why: "That viewpoint refines goals into requirements, and contains no core elements."}
+      - {key: B, text: "Requirements Realization viewpoint", correct: true}
+      - {key: C, text: "Stakeholder viewpoint", why: "That covers stakeholders, drivers, assessments, goals and outcomes."}
+      - {key: D, text: "Principles viewpoint", why: "That models principles and the goals motivating them."}
+    explanation: "The Requirements Realization viewpoint models the realization of requirements and constraints by core elements, and may refine requirements with aggregation."
+    refs: ["ARCHIMATE §C.2.3"]
+    difficulty: 1
+    tags: [viewpoint, requirement]
+  - id: A2-127
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "'Business Rule', an enforceable directive, is shown in the informative examples as a specialization of which element?"
+    options:
+      - {key: A, text: "Principle", why: "Principle is specialized as Business Policy, a directive that is not directly enforceable."}
+      - {key: B, text: "Requirement", correct: true}
+      - {key: C, text: "Constraint", why: "The example specializes Requirement, not Constraint."}
+      - {key: D, text: "Goal", why: "Goal is specialized as Business Objective."}
+    explanation: "Table 16 specializes Requirement as Business Rule (enforceable) and Control Measure, and Principle as Business Policy (not directly enforceable)."
+    refs: ["ARCHIMATE §14.2.5"]
+    difficulty: 2
+    tags: [specialization, requirement]
+  - id: A2-128
+    unit: A2
+    objective: "A2.2"
+    lesson: A2/02_principle_requirement_constraint
+    stem: "Which of the following is NOT one of the kinds of restriction the specification lists for a Constraint?"
+    options:
+      - {key: A, text: "A restriction on the implementation of the system, such as a specific technology", why: "This is listed."}
+      - {key: B, text: "A restriction on the implementation process, such as time or budget", why: "This is listed."}
+      - {key: C, text: "A restriction on the functioning of the system, such as legal constraints", why: "This is listed."}
+      - {key: D, text: "A restriction on which stakeholders may set goals", correct: true}
+    explanation: "The three named restrictions are on implementation, on the implementation process and on the functioning of the system; who may set goals is not a constraint."
+    refs: ["ARCHIMATE §6.3.5"]
+    difficulty: 2
+    tags: [constraint, negative]
+  # ------------------------------------------------------------ A2.3 Meaning, Value, motivation relationships
+  - id: A2-129
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "Which element represents the relative worth, utility or importance of a concept?"
+    options:
+      - {key: A, text: "Meaning", why: "Meaning is interpretation or knowledge, not worth."}
+      - {key: B, text: "Value", correct: true}
+      - {key: C, text: "Outcome", why: "An outcome is an end result, which may have a value but is not the value."}
+      - {key: D, text: "Product", why: "Product is a Business Layer composite element."}
+    explanation: "Value is the motivation element for worth, utility, benefit or gain to a customer, stakeholder or end user, monetary or not."
+    refs: ["ARCHIMATE §6.4.2"]
+    difficulty: 1
+    tags: [value, definition]
+  - id: A2-130
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "A 'Review Complete' message tells the customer that their claim has been reviewed. Which element models 'Claim Review Complete'?"
+    options:
+      - {key: A, text: "Value", why: "Value would be the benefit, such as 'being informed'."}
+      - {key: B, text: "Meaning", correct: true}
+      - {key: C, text: "Business Event", why: "The event would be the review finishing; the interpretation of the message is a Meaning."}
+      - {key: D, text: "Representation", why: "Representation is the perceptible form of the message, not what it signifies."}
+    explanation: "Meaning is the interpretation given to a concept, used especially for passive structure such as messages and documents; the specification's example assigns exactly such meanings to notification messages."
+    refs: ["ARCHIMATE §6.4.1", "ARCHIMATE §6.4.3"]
+    difficulty: 2
+    tags: [meaning, which-element]
+  - id: A2-131
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "Which icon marks the Meaning element?"
+    options:
+      - {key: A, text: "A cloud", correct: true}
+      - {key: B, text: "An ellipse", why: "The ellipse is the Value notation."}
+      - {key: C, text: "A cylinder", why: "The cylinder-like outline is the Stakeholder icon."}
+      - {key: D, text: "A wheel", why: "The wheel is the Driver icon."}
+    explanation: "Meaning is drawn with a cloud icon, Value with an ellipse."
+    refs: ["ARCHIMATE §6.4.1", "ARCHIMATE §6.4.2"]
+    difficulty: 2
+    tags: [notation, meaning]
+  - id: A2-132
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "Which statement about Value is correct?"
+    options:
+      - {key: A, text: "Value must always be expressed as a monetary amount", why: "Non-monetary value, including functional value and the value of information, is explicitly recognized."}
+      - {key: B, text: "Value may be associated with any concept, and with the stakeholder for whom it applies", correct: true}
+      - {key: C, text: "Value can only be attached to business services", why: "It can be associated with any concept."}
+      - {key: D, text: "Value is a Business Layer element", why: "It is a motivation element."}
+    explanation: "A value can be associated with any concept, and the stakeholder for whom it holds may also be associated; it is often but not necessarily monetary."
+    refs: ["ARCHIMATE §6.4.2"]
+    difficulty: 1
+    tags: [value]
+  - id: A2-133
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "Which relationship connects a Meaning to the Business Object it interprets?"
+    options:
+      - {key: A, text: "Realization", why: "Realization is for goals, outcomes, principles and requirements."}
+      - {key: B, text: "Association", correct: true}
+      - {key: C, text: "Access", why: "Access is from behaviour to passive structure."}
+      - {key: D, text: "Influence", why: "Influence models contribution to achieving a motivation element."}
+    explanation: "Meaning and value can be associated with any concept, including any structure or behaviour element."
+    refs: ["ARCHIMATE §6.4.1", "ARCHIMATE §6.6"]
+    difficulty: 2
+    tags: [relationship, meaning]
+  - id: A2-134
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "When should Influence be used instead of Realization between an element and a motivation element?"
+    options:
+      - {key: A, text: "When the source is critical to the existence or achievement of the target", why: "That is exactly when realization should be used."}
+      - {key: B, text: "When the source contributes to or counteracts the target but is not critical to its achievement", correct: true}
+      - {key: C, text: "Only between two goals", why: "Influence works vertically from core elements and horizontally between any motivation elements."}
+      - {key: D, text: "When the direction of the relationship is unknown", why: "That is what association is for."}
+    explanation: "Realization is for relationships critical to the target's realization; influence for those that are not, and it may be positive or negative."
+    refs: ["ARCHIMATE §5.2.3"]
+    difficulty: 2
+    tags: [relationship, influence, realization]
+  - id: A2-135
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "How is the Influence relationship drawn in the standard notation?"
+    options:
+      - {key: A, text: "A solid line with a filled arrowhead", why: "That is triggering."}
+      - {key: B, text: "A dashed line with an open arrowhead, optionally annotated with + or −", correct: true}
+      - {key: C, text: "A dotted line with a hollow triangular head", why: "That is realization."}
+      - {key: D, text: "A solid line with a filled diamond", why: "That is composition."}
+    explanation: "Influence is a dashed line with an open arrowhead; attributes such as +, −, ++ or a number may indicate the sign and strength."
+    refs: ["ARCHIMATE §5.2.3"]
+    difficulty: 2
+    tags: [notation, influence]
+  - id: A2-136
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "The goal 'lay off employees' reduces the achievement of the goal 'improve company reputation'. How is this modelled?"
+    options:
+      - {key: A, text: "A negative influence relationship from 'lay off employees' to 'improve company reputation'", correct: true}
+      - {key: B, text: "A realization relationship from 'improve company reputation' to 'lay off employees'", why: "Neither goal realizes the other; and the effect is negative."}
+      - {key: C, text: "A constraint on 'improve company reputation'", why: "A constraint is a limitation on the architecture, not a contribution between goals."}
+      - {key: D, text: "A triggering relationship between the two goals", why: "Triggering is not permitted between motivation elements."}
+    explanation: "Influence may be negative, meaning the source prevents or counteracts the achievement of the target; the specification uses this exact example."
+    refs: ["ARCHIMATE §5.2.3"]
+    difficulty: 2
+    tags: [influence, negative]
+  - id: A2-137
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "Which relationship is always allowed between any two elements?"
+    options:
+      - {key: A, text: "Influence", why: "Influence has a motivation element as target."}
+      - {key: B, text: "Association", correct: true}
+      - {key: C, text: "Realization", why: "Realization is restricted by the relationship tables."}
+      - {key: D, text: "Serving", why: "Serving is restricted to permitted element pairs."}
+    explanation: "An association relationship is always allowed between two elements, or between a relationship and an element; it represents an unspecified relationship."
+    refs: ["ARCHIMATE §5.2.4"]
+    difficulty: 1
+    tags: [association]
+  - id: A2-138
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "How can the model show that the 'Claims Manager' business role is also a stakeholder in the architecture?"
+    options:
+      - {key: A, text: "By drawing a realization from the role to the stakeholder", why: "Realization is not the defined relationship for this."}
+      - {key: B, text: "By assigning the business role to a Stakeholder element", correct: true}
+      - {key: C, text: "By using the same element for both", why: "Business Role and Stakeholder are different element types."}
+      - {key: D, text: "By an influence relationship from the role to the stakeholder", why: "Influence is for contributions to achieving motivation elements."}
+    explanation: "A business internal active structure element (actor, role or collaboration) may be assigned to a stakeholder to express that someone with an operational position is also a stakeholder."
+    refs: ["ARCHIMATE §6.6"]
+    difficulty: 2
+    tags: [relationship, stakeholder, assignment]
+  - id: A2-139
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "Which of the following relationships is NOT permitted between two motivation elements?"
+    options:
+      - {key: A, text: "Influence", why: "Permitted between any motivation elements."}
+      - {key: B, text: "Aggregation between elements of the same type", why: "Every element may compose, aggregate and specialize elements of its own type."}
+      - {key: C, text: "Serving", correct: true}
+      - {key: D, text: "Association", why: "Always permitted."}
+    explanation: "Serving, access, triggering and flow are core-element relationships; between motivation elements the language offers realization, influence, association, and composition/aggregation/specialization within a type."
+    refs: ["ARCHIMATE §6.1", "ARCHIMATE §5.2.3"]
+    difficulty: 2
+    tags: [relationship, negative]
+  - id: A2-140
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "Which of the following describes the 'vertical' use of the influence relationship?"
+    options:
+      - {key: A, text: "Contribution between goals at the same level", why: "That is the horizontal use."}
+      - {key: B, text: "A traceable path from core elements upward through requirements and principles to goals", correct: true}
+      - {key: C, text: "Decomposition of a goal into sub-goals", why: "Decomposition uses aggregation."}
+      - {key: D, text: "Layering a model from Technology up to Business", why: "That is serving and realization between core layers."}
+    explanation: "Consistently modelling contributions from core elements up to requirements and goals with influence yields a traceable motivational path that supports impact assessment."
+    refs: ["ARCHIMATE §5.2.3"]
+    difficulty: 3
+    tags: [influence, traceability]
+  - id: A2-141
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "Which viewpoint allows the use of all motivation elements without focusing on any particular subset?"
+    options:
+      - {key: A, text: "Stakeholder viewpoint", why: "Limited to stakeholder, driver, assessment, goal, outcome."}
+      - {key: B, text: "Goal Contribution viewpoint", why: "Focuses on influence relationships between goals and requirements."}
+      - {key: C, text: "Motivation viewpoint", correct: true}
+      - {key: D, text: "Outcome Realization viewpoint", why: "That is a strategy viewpoint admitting only outcome, value and meaning from the motivation aspect."}
+    explanation: "The Motivation viewpoint covers the entire motivation aspect and allows use of all motivation elements; its purpose is designing, deciding and informing."
+    refs: ["ARCHIMATE §C.2", "ARCHIMATE §C.2.4"]
+    difficulty: 1
+    tags: [viewpoint, motivation]
+  - id: A2-142
+    unit: A2
+    objective: "A2.3"
+    lesson: A2/03_meaning_value_and_motivation_relationships
+    stem: "An application component realizes a requirement, which realizes a principle, which realizes a goal. What may be concluded?"
+    options:
+      - {key: A, text: "Nothing; relationships cannot be chained", why: "Derivation of indirect relationships from chains is a defining feature of the language."}
+      - {key: B, text: "A derived realization relationship from the application component to the goal is valid", correct: true}
+      - {key: C, text: "The goal realizes the application component", why: "Direction is preserved in derivation; the core element realizes the goal, not the reverse."}
+      - {key: D, text: "The component must be redrawn as a stakeholder", why: "There is no such rule."}
+    explanation: "Indirect relationships can be derived from chains according to the rules of Appendix B; a requirement and indirectly a principle, outcome or goal can be realized by a core element."
+    refs: ["ARCHIMATE §5.7", "ARCHIMATE §6.6"]
+    difficulty: 3
+    tags: [derivation, realization]

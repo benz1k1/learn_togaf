@@ -1,0 +1,29 @@
+# Northgate Bank — Project Context Diagram (Phase E) for WP-3 as a Project view: the work package
+# at the centre, the roles and actors assigned to it above, the deliverables it realizes below,
+# and the triggering chain from WP-1 to the Transition 1 event.
+id: PROJECT_CONTEXT_DIAGRAM
+title: "Northgate Bank — Project Context Diagram as a Project view"
+viewpoint: Project
+elements:
+  - {id: r_pm, type: business_role, name: "Product owner, Mobile", col: 1, row: 0}
+  - {id: a_retail_it, type: business_actor, name: "Retail IT delivery team", col: 2, row: 0}
+  - {id: a_cards, type: business_actor, name: "Cards Operations", col: 3, row: 0}
+  - {id: wp1, type: work_package, name: "WP-1 Platform and API layer", col: 0, row: 1}
+  - {id: wp3, type: work_package, name: "WP-3 Mobile payments launch", col: 2, row: 1}
+  - {id: ev_t1, type: implementation_event, name: "Transition 1 complete, 30 June 2027", col: 4, row: 1}
+  - {id: d_api, type: deliverable, name: "Payments and Card Management APIs", col: 0, row: 2}
+  - {id: d_app, type: deliverable, name: "Mobile App v4: transfers, card controls", col: 1, row: 2}
+  - {id: d_if01, type: deliverable, name: "IF-01 re-pointed to the API layer", col: 2, row: 2}
+  - {id: d_sms, type: deliverable, name: "SMS gateway decommissioned", col: 3, row: 2}
+relations:
+  - {from: r_pm, to: wp3, type: assignment}
+  - {from: a_retail_it, to: wp3, type: assignment}
+  - {from: a_cards, to: wp3, type: assignment}
+  - {from: wp1, to: wp3, type: triggering}
+  - {from: wp3, to: ev_t1, type: triggering}
+  - {from: wp1, to: d_api, type: realization}
+  - {from: wp3, to: d_app, type: realization}
+  - {from: wp3, to: d_if01, type: realization}
+  - {from: wp3, to: d_sms, type: realization}
+notes:
+  - {text: "Added, changed and removed elements are the deliverables; impacted units are the assigned actors.", col: 4, row: 2, w: 1, h: 1}

@@ -44,12 +44,16 @@ def content_hash(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def classify_url(url: str, base_url: str) -> tuple[str, str] | None:
+def classify_url(url: str, base_url: str, root_segment: str | None = None) -> tuple[str, str] | None:
     """(document segment, page file name) for an in-scope page URL, else None.
 
     ``…/togaf-standard/adm/chap03.html`` → ``("adm", "chap03.html")``;
     ``…/togaf-standard/guides/business-scenarios/`` → ``("guides/business-scenarios", "index.html")``;
     the publication root itself → ``("root", "index.html")``. Images, PDFs and assets are None.
+
+    With ``root_segment`` the whole site under ``base_url`` is one document (the ArchiMate
+    specification is published flat): every page lands in that segment,
+    ``…/archimate3-doc/ch-Business-Layer.html`` → ``("archimate", "ch-Business-Layer.html")``.
     """
     if not url.startswith(base_url):
         return None
@@ -58,6 +62,11 @@ def classify_url(url: str, base_url: str) -> tuple[str, str] | None:
     if suffix in BINARY_SUFFIXES or (suffix and suffix not in PAGE_SUFFIXES):
         return None
     parts = [part for part in rel.split("/") if part]
+    if root_segment is not None:
+        page = "__".join(parts) if parts else "index.html"
+        if rel.endswith("/") or not Path(page).suffix:
+            page = f"{page}__index.html" if parts else "index.html"
+        return root_segment, page
     if not parts:
         return "root", "index.html"
     if parts[0] == "guides":
@@ -94,6 +103,7 @@ def crawl(
     manifest: Manifest,
     delay_seconds: float,
     limit: int | None = None,
+    root_segment: str | None = None,
 ) -> CrawlReport:
     report = CrawlReport()
     queue = [base_url]
@@ -103,7 +113,7 @@ def crawl(
             logger.info(f"--limit {limit} reached; {len(queue)} URLs left in the queue")
             break
         url = queue.pop(0)
-        classified = classify_url(url, base_url)
+        classified = classify_url(url, base_url, root_segment)
         if classified is None:
             report.skipped += 1
             continue
